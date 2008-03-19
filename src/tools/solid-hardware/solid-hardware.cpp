@@ -228,10 +228,10 @@ int main(int argc, char **argv)
       return 0;
   }
 
-  return SolidShell::doIt() ? 0 : 1;
+  return SolidHardware::doIt() ? 0 : 1;
 }
 
-bool SolidShell::doIt()
+bool SolidHardware::doIt()
 {
     KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
     checkArgumentCount(1, 0);
@@ -240,7 +240,7 @@ bool SolidShell::doIt()
 
     int fake_argc = 0;
     char **fake_argv = 0;
-    SolidShell shell(fake_argc, fake_argv);
+    SolidHardware shell(fake_argc, fake_argv);
 
     if (command == "list")
     {
@@ -300,7 +300,7 @@ bool SolidShell::doIt()
     return false;
 }
 
-bool SolidShell::hwList(bool interfaces, bool system)
+bool SolidHardware::hwList(bool interfaces, bool system)
 {
     const QList<Solid::Device> all = Solid::Device::allDevices();
 
@@ -322,7 +322,7 @@ bool SolidShell::hwList(bool interfaces, bool system)
     return true;
 }
 
-bool SolidShell::hwCapabilities(const QString &udi)
+bool SolidHardware::hwCapabilities(const QString &udi)
 {
     const Solid::Device device(udi);
 
@@ -332,7 +332,7 @@ bool SolidShell::hwCapabilities(const QString &udi)
     return true;
 }
 
-bool SolidShell::hwProperties(const QString &udi)
+bool SolidHardware::hwProperties(const QString &udi)
 {
     const Solid::Device device(udi);
 
@@ -345,7 +345,7 @@ bool SolidShell::hwProperties(const QString &udi)
     return true;
 }
 
-bool SolidShell::hwQuery(const QString &parentUdi, const QString &query)
+bool SolidHardware::hwQuery(const QString &parentUdi, const QString &query)
 {
     const QList<Solid::Device> devices
         = Solid::Device::listFromQuery(query, parentUdi);
@@ -358,7 +358,7 @@ bool SolidShell::hwQuery(const QString &parentUdi, const QString &query)
     return true;
 }
 
-bool SolidShell::hwVolumeCall(SolidShell::VolumeCallType type, const QString &udi)
+bool SolidHardware::hwVolumeCall(SolidHardware::VolumeCallType type, const QString &udi)
 {
     Solid::Device device(udi);
 
@@ -409,7 +409,7 @@ bool SolidShell::hwVolumeCall(SolidShell::VolumeCallType type, const QString &ud
     return true;
 }
 
-void SolidShell::connectJob(KJob *job)
+void SolidHardware::connectJob(KJob *job)
 {
     connect(job, SIGNAL(result(KJob *)),
              this, SLOT(slotResult(KJob *)));
@@ -419,17 +419,17 @@ void SolidShell::connectJob(KJob *job)
              this, SLOT(slotInfoMessage(KJob *, const QString &)));
 }
 
-void SolidShell::slotPercent(KJob */*job */, unsigned long percent)
+void SolidHardware::slotPercent(KJob */*job */, unsigned long percent)
 {
     cout << i18n("Progress: %1%" , percent) << endl;
 }
 
-void SolidShell::slotInfoMessage(KJob */*job */, const QString &message)
+void SolidHardware::slotInfoMessage(KJob */*job */, const QString &message)
 {
     cout << i18n("Info: %1" , message) << endl;
 }
 
-void SolidShell::slotResult(KJob *job)
+void SolidHardware::slotResult(KJob *job)
 {
     m_error = 0;
 
@@ -442,7 +442,7 @@ void SolidShell::slotResult(KJob *job)
     m_loop.exit();
 }
 
-void SolidShell::slotStorageResult(Solid::ErrorType error, const QVariant &errorData)
+void SolidHardware::slotStorageResult(Solid::ErrorType error, const QVariant &errorData)
 {
     if (error) {
         m_error = 1;
