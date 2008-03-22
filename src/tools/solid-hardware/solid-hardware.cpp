@@ -174,7 +174,7 @@ int main(int argc, char **argv)
 
   KCmdLineOptions options;
 
-  options.add("commands", ki18n("Show available commands by domains"));
+  options.add("commands", ki18n("Show available commands"));
 
   options.add("+command", ki18n("Command (see --commands)"));
 
