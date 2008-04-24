@@ -142,7 +142,7 @@ std::ostream &operator<<(std::ostream &out, const Solid::Device &device)
 
 std::ostream &operator<<(std::ostream &out, const QMap<QString,QVariant> &properties)
 {
-    foreach (QString key, properties.keys())
+    foreach (const QString &key, properties.keys())
     {
         out << "  " << key << " = " << properties[key] << endl;
     }
