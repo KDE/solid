@@ -304,7 +304,7 @@ bool SolidHardware::hwList(bool interfaces, bool system)
 {
     const QList<Solid::Device> all = Solid::Device::allDevices();
 
-    foreach (const Solid::Device device, all)
+    foreach (const Solid::Device &device, all)
     {
         cout << "udi = '" << device.udi() << "'" << endl;
 
