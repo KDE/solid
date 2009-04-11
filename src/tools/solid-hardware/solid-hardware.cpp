@@ -350,7 +350,7 @@ bool SolidHardware::hwQuery(const QString &parentUdi, const QString &query)
     const QList<Solid::Device> devices
         = Solid::Device::listFromQuery(query, parentUdi);
 
-    foreach (const Solid::Device device, devices)
+    foreach (const Solid::Device &device, devices)
     {
         cout << "udi = '" << device.udi() << "'" << endl;
     }
