@@ -156,14 +156,12 @@ void checkArgumentCount(int min, int max)
 
     if (count < min)
     {
-        cerr << i18n("Syntax Error: Not enough arguments") << endl;
-        ::exit(1);
+        KCmdLineArgs::usageError(i18n("Syntax Error: Not enough arguments"));
     }
 
     if ((max > 0) && (count > max))
     {
-        cerr << i18n("Syntax Error: Too many arguments") << endl;
-        ::exit(1);
+        KCmdLineArgs::usageError(i18n("Syntax Error: Too many arguments"));
     }
 }
 
