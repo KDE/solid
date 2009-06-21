@@ -83,8 +83,14 @@ std::ostream &operator<<(std::ostream &out, const QVariant &value)
         out << (value.toBool()?"true":"false") << "  (bool)";
         break;
     case QVariant::Int:
+    case QVariant::LongLong:
         out << value.toString()
-            << "  (0x" << QString::number(value.toInt(), 16) << ")  (int)";
+            << "  (0x" << QString::number(value.toLongLong(), 16) << ")  (" << QVariant::typeToName(value.type()) << ")";
+        break;
+    case QVariant::UInt:
+    case QVariant::ULongLong:
+        out << value.toString()
+            << "  (0x" << QString::number(value.toULongLong(), 16) << ")  (" << QVariant::typeToName(value.type()) << ")";
         break;
     default:
         out << "'" << value.toString() << "'  (string)";
