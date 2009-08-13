@@ -423,13 +423,15 @@ void SolidHardware::connectJob(KJob *job)
              this, SLOT(slotInfoMessage(KJob *, const QString &)));
 }
 
-void SolidHardware::slotPercent(KJob */*job */, unsigned long percent)
+void SolidHardware::slotPercent(KJob *job, unsigned long percent)
 {
+    Q_UNUSED(job)
     cout << i18n("Progress: %1%" , percent) << endl;
 }
 
-void SolidHardware::slotInfoMessage(KJob */*job */, const QString &message)
+void SolidHardware::slotInfoMessage(KJob *job, const QString &message)
 {
+    Q_UNUSED(job)
     cout << i18n("Info: %1" , message) << endl;
 }
 
