@@ -17,8 +17,8 @@
 
 */
 
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef SOLID_HARDWARE_H
+#define SOLID_HARDWARE_H
 
 #include <QCoreApplication>
 #include <QEventLoop>
@@ -63,5 +63,4 @@ private slots:
     void slotInfoMessage(KJob *job, const QString &message);
 };
 
-
-#endif
+#endif // SOLID_HARDWARE_H
