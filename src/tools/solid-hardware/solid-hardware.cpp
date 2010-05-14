@@ -173,7 +173,7 @@ void checkArgumentCount(int min, int max)
 
 int main(int argc, char **argv)
 {
-  KCmdLineArgs::init(argc, argv, appName, 0, ki18n(programName), version, ki18n(description), false);
+  KCmdLineArgs::init(argc, argv, appName, 0, ki18n(programName), version, ki18n(description), KCmdLineArgs::CmdLineArgNone);
 
 
   KCmdLineOptions options;
