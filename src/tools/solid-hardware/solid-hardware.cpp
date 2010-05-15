@@ -31,7 +31,6 @@
 #include <kdebug.h>
 #include <kjob.h>
 #include <klocale.h>
-#include <k3socketaddress.h>
 
 #include <solid/device.h>
 #include <solid/genericinterface.h>
