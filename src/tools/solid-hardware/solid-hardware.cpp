@@ -127,12 +127,12 @@ std::ostream &operator<<(std::ostream &out, const Solid::Device &device)
 
                 if (property.isEnumType()) {
                     QMetaEnum metaEnum = property.enumerator();
-                    out << "'" << metaEnum.valueToKeys(value.toInt()).constData() << "'"
-                        << "  (0x" << QString::number(value.toInt(), 16) << ")  ";
                     if (metaEnum.isFlag()) {
-                        out << "(flag)";
+                        out << "'" << metaEnum.valueToKeys(value.toInt()).constData() << "'"
+                            << "  (0x" << QString::number(value.toInt(), 16) << ")  (flag)";
                     } else {
-                        out << "(enum)";
+                        out << "'" << metaEnum.valueToKey(value.toInt()) << "'"
+                            << "  (0x" << QString::number(value.toInt(), 16) << ")  (enum)";
                     }
                     out << endl;
                 } else {
