@@ -104,6 +104,7 @@ std::ostream &operator<<(std::ostream &out, const Solid::Device &device)
     out << "  parent = " << QVariant(device.parentUdi()) << endl;
     out << "  vendor = " << QVariant(device.vendor()) << endl;
     out << "  product = " << QVariant(device.product()) << endl;
+    out << "  description = " << QVariant(device.description()) << endl;
 
     int index = Solid::DeviceInterface::staticMetaObject.indexOfEnumerator("Type");
     QMetaEnum typeEnum = Solid::DeviceInterface::staticMetaObject.enumerator(index);
