@@ -226,7 +226,7 @@ int main(int argc, char **argv)
       cout << "  solid-hardware unmount 'udi'" << endl;
       cout << i18n("             # If applicable, unmount the device corresponding to 'udi'.\n") << endl;
 
-      cout << "  solid-hardware hardware eject 'udi'" << endl;
+      cout << "  solid-hardware eject 'udi'" << endl;
       cout << i18n("             # If applicable, eject the device corresponding to 'udi'.\n") << endl;
 
       return 0;
