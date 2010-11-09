@@ -90,7 +90,20 @@ std::ostream &operator<<(std::ostream &out, const QVariant &value)
     case QVariant::ULongLong:
         out << value.toString()
             << "  (0x" << QString::number(value.toULongLong(), 16) << ")  (" << QVariant::typeToName(value.type()) << ")";
+        break;        
+    case QVariant::UserType:
+    {
+        //qDebug() << "got variant type:" << value.typeName();
+        if (value.canConvert<QList<int> >())
+        {
+            QList<int> intlist = value.value<QList<int> >();
+            QStringList tmp;
+            foreach (int val, intlist)
+                tmp.append(QString::number(val));
+            out << "{" << tmp.join(",") << "} (int list)";
+        }
         break;
+    }
     default:
         out << "'" << value.toString() << "'  (string)";
         break;

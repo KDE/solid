@@ -63,4 +63,6 @@ private slots:
     void slotInfoMessage(KJob *job, const QString &message);
 };
 
+Q_DECLARE_METATYPE(QList<int>);
+
 #endif // SOLID_HARDWARE_H
