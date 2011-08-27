@@ -46,6 +46,7 @@ public:
     bool hwCapabilities(const QString &udi);
     bool hwProperties(const QString &udi);
     bool hwQuery(const QString &parentUdi, const QString &query);
+    bool listen();
 
     enum VolumeCallType { Mount, Unmount, Eject };
     bool hwVolumeCall(VolumeCallType type, const QString &udi);
@@ -61,6 +62,8 @@ private slots:
     void slotResult(KJob *job);
     void slotPercent(KJob *job, unsigned long percent);
     void slotInfoMessage(KJob *job, const QString &message);
+    void deviceAdded(const QString &udi);
+    void deviceRemoved(const QString &udi);
 };
 
 Q_DECLARE_METATYPE(QList<int>)

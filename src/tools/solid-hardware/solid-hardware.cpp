@@ -38,6 +38,7 @@
 #include <solid/opticaldrive.h>
 
 #include <iostream>
+#include <solid/devicenotifier.h>
 using namespace std;
 
 static const char appName[] = "solid-hardware";
@@ -242,6 +243,9 @@ int main(int argc, char **argv)
       cout << "  solid-hardware eject 'udi'" << endl;
       cout << i18n("             # If applicable, eject the device corresponding to 'udi'.\n") << endl;
 
+      cout << "  solid-hardware listen" << endl;
+      cout << i18n("             # Listen to all add/remove events on supported hardware.") << endl;
+
       return 0;
   }
 
@@ -308,6 +312,10 @@ bool SolidHardware::doIt()
         checkArgumentCount(2, 2);
         QString udi(args->arg(1));
         return shell.hwVolumeCall(Eject, udi);
+    }
+    else if (command == "listen")
+    {
+        return shell.listen();
     }
     else
     {
@@ -426,6 +434,21 @@ bool SolidHardware::hwVolumeCall(SolidHardware::VolumeCallType type, const QStri
     return true;
 }
 
+bool SolidHardware::listen()
+{
+    Solid::DeviceNotifier *notifier = Solid::DeviceNotifier::instance();
+    bool a = connect(notifier, SIGNAL(deviceAdded(QString)), this, SLOT(deviceAdded(QString)));
+    bool d = connect(notifier, SIGNAL(deviceRemoved(QString)), this, SLOT(deviceRemoved(QString)));
+
+    if (!a || !d) {
+        return false;
+    }
+
+    cout << "Listening to add/remove events: " << endl;
+    m_loop.exec();
+    return true;
+}
+
 void SolidHardware::connectJob(KJob *job)
 {
     connect(job, SIGNAL(result(KJob *)),
@@ -447,6 +470,19 @@ void SolidHardware::slotInfoMessage(KJob *job, const QString &message)
     Q_UNUSED(job)
     cout << i18n("Info: %1" , message) << endl;
 }
+
+void SolidHardware::deviceAdded(const QString &udi)
+{
+    cout << "Device Added:" << endl;
+    cout << "udi = '" << udi << "'" << endl;
+}
+
+void SolidHardware::deviceRemoved(const QString &udi)
+{
+    cout << "Device Removed:" << endl;
+    cout << "udi = '" << udi << "'" << endl;
+}
+
 
 void SolidHardware::slotResult(KJob *job)
 {
