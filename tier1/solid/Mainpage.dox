@@ -1,0 +1,162 @@
+/** \mainpage Solid
+
+%Solid is a device integration framework.  It provides a way of querying and
+interacting with hardware independently of the underlying operating system.
+
+Currently the following backends are implemented on Linux:
+<ul>
+<li><a href="http://www.freedesktop.org/wiki/Software/hal">HAL</a></li>
+<li><a href="http://www.freedesktop.org/wiki/Software/udisks">udisks</a></li>
+<li><a href="http://upower.freedesktop.org/">upower</a></li>
+<li><a href="http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html">udev</a></li>
+</ul>
+
+on MacOS X:
+<ul>
+<li><a href="http://developer.apple.com/mac/library/documentation/DeviceDrivers/Conceptual/IOKitFundamentals/Introduction/Introduction.html">IOKit</a></li>
+</ul>
+
+on Windows:
+<ul>
+<li><a href="http://msdn.microsoft.com/en-us/library/aa384642(v=VS.85).aspx">WMI</a></li>
+</ul>
+
+See the documentation for the Solid namespace, and the
+<a href="http://techbase.kde.org/Development/Tutorials/Solid_Tutorials">tutorial
+on TechBase</a>.
+
+Examples:
+- \ref tutorial1
+- \ref tutorial2
+- \ref tutorial3
+- \ref tutorial4
+- \ref tutorial5
+
+Just for fun: \ref song
+
+
+\authors
+Kevin Ottens \<ervin@kde.org\><br>
+Lukas Tinkl \<ltinkl@redhat.com\><br>
+Pino Toscano \<pino@kde.org\><br>
+Alex Fiestas \<alex@eyeos.org\><br>
+Rafael Fernández López \<ereslibre@kde.org\><br>
+Alex Merry \<alex.merry@kdemail.net\><br>
+Mario Bensi \<mbensi@ipsquad.net\><br>
+Harald Fernengel \<harry@kdevelop.org\>
+
+<b>Maintainers</b>:<br>
+Kevin Ottens \<ervin@kde.org\>
+
+\licenses
+\lgpl
+
+*/
+
+
+/** \page tutorial1 Tutorial 1
+
+<p><b>
+\ref index "Back to Overview" |
+Tutorial 1 |
+\ref tutorial2 |
+\ref tutorial3 |
+\ref tutorial4 |
+\ref tutorial5
+</b></p>
+
+\includelineno tutorial1/tutorial1.cpp
+
+*/
+
+
+/** \page tutorial2 Tutorial 2
+
+<p><b>
+\ref index "Back to Overview" |
+\ref tutorial1 |
+Tutorial 2 |
+\ref tutorial3 |
+\ref tutorial4 |
+\ref tutorial5
+</b></p>
+
+\includelineno tutorial2/tutorial2.cpp
+
+*/
+
+
+/** \page tutorial3 Tutorial 3
+
+<p><b>
+\ref index "Back to Overview" |
+\ref tutorial1 |
+\ref tutorial2 |
+Tutorial 3 |
+\ref tutorial4 |
+\ref tutorial5
+</b></p>
+
+\includelineno tutorial3/tutorial3.cpp
+
+*/
+
+
+/** \page tutorial4 Tutorial 4
+
+<p><b>
+\ref index "Back to Overview" |
+\ref tutorial1 |
+\ref tutorial2 |
+\ref tutorial3 |
+Tutorial 4 |
+\ref tutorial5
+</b></p>
+
+\includelineno tutorial4/tutorial4.cpp
+
+*/
+
+
+/** \page tutorial5 Tutorial 5
+
+<p><b>
+\ref index "Back to Overview" |
+\ref tutorial1 |
+\ref tutorial2 |
+\ref tutorial3 |
+\ref tutorial4 |
+Tutorial 5
+</b></p>
+
+\includelineno tutorial5/tutorial5.cpp
+
+*/
+
+
+
+
+/** \page song A Solid Song
+
+<p><b>\ref index "Back to Overview"</b></p>
+
+And for HAL's sake, each mistake, ah, you forgave<br>
+And soon both of us learned to trust<br>
+Not run away, it was no time to play;<br>
+We built it up and built it up and committed it.
+<p>
+And now it's solid,<br>
+%Solid as a rock;<br>
+That's what this code is,<br>
+That's what we've got, oh, mmm?
+
+%Solid (Oh),<br>
+%Solid as a rock;<br>
+And nothing's changed it (Ooh),<br>
+The code is still hot, hot, hot, hot, hot, hot, hot, hot
+*/
+
+// DOXYGEN_SET_EXAMPLE_PATH += @topdir@/solid/examples
+// DOXYGEN_EXCLUDE = solid/backends solid/ifaces tests
+// DOXYGEN_SET_PROJECT_NAME = Solid
+// vim:ts=4:sw=4:expandtab:filetype=doxygen
