@@ -37,8 +37,7 @@ namespace UPnP
 UPnPControlPoint::UPnPControlPoint() :
     m_controlPoint(new Herqq::Upnp::HControlPoint(this))
 {
-    if (!m_controlPoint->init())
-    {
+    if (!m_controlPoint->init()) {
         qDebug() << "control point init error:" << m_controlPoint->errorDescription();
         return;
     }
@@ -49,12 +48,11 @@ UPnPControlPoint::~UPnPControlPoint()
     delete m_controlPoint;
 }
 
-UPnPControlPoint* UPnPControlPoint::inst = 0;
+UPnPControlPoint *UPnPControlPoint::inst = 0;
 
-UPnPControlPoint* UPnPControlPoint::instance()
+UPnPControlPoint *UPnPControlPoint::instance()
 {
-    if (!inst)
-    {
+    if (!inst) {
         inst = new UPnPControlPoint;
     }
 
@@ -63,7 +61,7 @@ UPnPControlPoint* UPnPControlPoint::instance()
 
 QMutex UPnPControlPoint::mutex;
 
-UPnPControlPoint* UPnPControlPoint::acquireInstance()
+UPnPControlPoint *UPnPControlPoint::acquireInstance()
 {
     mutex.lock();
 
@@ -75,7 +73,7 @@ void UPnPControlPoint::releaseInstance()
     mutex.unlock();
 }
 
-Herqq::Upnp::HControlPoint* UPnPControlPoint::controlPoint()
+Herqq::Upnp::HControlPoint *UPnPControlPoint::controlPoint()
 {
     return m_controlPoint;
 }
@@ -87,13 +85,12 @@ QStringList UPnPControlPoint::allDevices()
 
     Herqq::Upnp::HClientDevices list = m_controlPoint->rootDevices();
 
-    for (int i = 0; i < list.size(); ++i)
-    {
-        Herqq::Upnp::HClientDevice* device = list[i];
+    for (int i = 0; i < list.size(); ++i) {
+        Herqq::Upnp::HClientDevice *device = list[i];
         Herqq::Upnp::HDeviceInfo info = device->info();
 
-        result << ( QString::fromLatin1("/org/kde/upnp") + '/' + info.udn().toString() );
-        qDebug() << "Found device:" << ( QString::fromLatin1("/org/kde/upnp") + '/' + info.udn().toString() );
+        result << (QString::fromLatin1("/org/kde/upnp") + '/' + info.udn().toString());
+        qDebug() << "Found device:" << (QString::fromLatin1("/org/kde/upnp") + '/' + info.udn().toString());
         // listing only root devices
     }
 

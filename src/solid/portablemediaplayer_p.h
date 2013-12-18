@@ -26,12 +26,12 @@
 
 namespace Solid
 {
-    class PortableMediaPlayerPrivate : public DeviceInterfacePrivate
-    {
-    public:
-        PortableMediaPlayerPrivate()
-            : DeviceInterfacePrivate() { }
-    };
+class PortableMediaPlayerPrivate : public DeviceInterfacePrivate
+{
+public:
+    PortableMediaPlayerPrivate()
+        : DeviceInterfacePrivate() { }
+};
 }
 
 #endif

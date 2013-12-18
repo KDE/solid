@@ -66,34 +66,30 @@ static QString formatByteSize(double size)
 
     QString s;
     // Gibi-byte
-    if ( size >= 1073741824.0 )
-    {
+    if (size >= 1073741824.0) {
         size /= 1073741824.0;
-        if ( size > 1024 ) // Tebi-byte
+        if (size > 1024) { // Tebi-byte
             s = HalDevice::tr("%1 TiB").arg(QLocale().toString(size / 1024.0, 'f', 1));
-        else
+        } else {
             s = HalDevice::tr("%1 GiB").arg(QLocale().toString(size, 'f', 1));
+        }
     }
     // Mebi-byte
-    else if ( size >= 1048576.0 )
-    {
+    else if (size >= 1048576.0) {
         size /= 1048576.0;
         s = HalDevice::tr("%1 MiB").arg(QLocale().toString(size, 'f', 1));
     }
     // Kibi-byte
-    else if ( size >= 1024.0 )
-    {
+    else if (size >= 1024.0) {
         size /= 1024.0;
         s = HalDevice::tr("%1 KiB").arg(QLocale().toString(size, 'f', 1));
     }
     // Just byte
-    else if ( size > 0 )
-    {
+    else if (size > 0) {
         s = HalDevice::tr("%1 B").arg(QLocale().toString(size, 'f', 1));
     }
     // Nothing
-    else
-    {
+    else {
         s = HalDevice::tr("0 B");
     }
     return s;
@@ -104,14 +100,14 @@ class Solid::Backends::Hal::HalDevicePrivate
 public:
     HalDevicePrivate(const QString &udi)
         : device("org.freedesktop.Hal",
-                  udi,
-                  "org.freedesktop.Hal.Device",
-                  QDBusConnection::systemBus()),
-          cacheSynced(false), parent(0) { }
+                 udi,
+                 "org.freedesktop.Hal.Device",
+                 QDBusConnection::systemBus()),
+        cacheSynced(false), parent(0) { }
     void checkCache(const QString &key = QString());
 
     QDBusInterface device;
-    QMap<QString,QVariant> cache;
+    QMap<QString, QVariant> cache;
     QMap<Solid::DeviceInterface::Type, bool> capListCache;
     QSet<QString> invalidKeys;
 
@@ -144,13 +140,13 @@ HalDevice::HalDevice(const QString &udi)
     qDBusRegisterMetaType< QList<ChangeDescription> >();
 
     d->device.connection().connect("org.freedesktop.Hal",
-                                    udi, "org.freedesktop.Hal.Device",
-                                    "PropertyModified",
-                                    this, SLOT(slotPropertyModified(int,QList<ChangeDescription>)));
+                                   udi, "org.freedesktop.Hal.Device",
+                                   "PropertyModified",
+                                   this, SLOT(slotPropertyModified(int,QList<ChangeDescription>)));
     d->device.connection().connect("org.freedesktop.Hal",
-                                    udi, "org.freedesktop.Hal.Device",
-                                    "Condition",
-                                    this, SLOT(slotCondition(QString,QString)));
+                                   udi, "org.freedesktop.Hal.Device",
+                                   "Condition",
+                                   this, SLOT(slotCondition(QString,QString)));
 }
 
 HalDevice::~HalDevice()
@@ -189,27 +185,27 @@ QString HalDevice::icon() const
 {
     QString category = prop("info.category").toString();
 
-    if(parentUdi().isEmpty()) {
+    if (parentUdi().isEmpty()) {
 
         QString formfactor = prop("system.formfactor").toString();
-        if (formfactor=="laptop") {
+        if (formfactor == "laptop") {
             return "computer-laptop";
         } else {
             return "computer";
         }
 
-    } else if (category=="storage" || category=="storage.cdrom") {
+    } else if (category == "storage" || category == "storage.cdrom") {
 
-        if (prop("storage.drive_type").toString()=="floppy") {
+        if (prop("storage.drive_type").toString() == "floppy") {
             return "media-floppy";
-        } else if (prop("storage.drive_type").toString()=="cdrom") {
+        } else if (prop("storage.drive_type").toString() == "cdrom") {
             return "drive-optical";
-        } else if (prop("storage.drive_type").toString()=="sd_mmc") {
+        } else if (prop("storage.drive_type").toString() == "sd_mmc") {
             return "media-flash-sd-mmc";
         } else if (prop("storage.hotpluggable").toBool()) {
-            if (prop("storage.bus").toString()=="usb") {
+            if (prop("storage.bus").toString() == "usb") {
                 if (prop("storage.no_partitions_hint").toBool()
-                 || prop("storage.removable.media_size").toLongLong()<4000000000LL) {
+                        || prop("storage.removable.media_size").toLongLong() < 4000000000LL) {
                     return "drive-removable-media-usb-pendrive";
                 } else {
                     return "drive-removable-media-usb";
@@ -221,18 +217,18 @@ QString HalDevice::icon() const
 
         return "drive-harddisk";
 
-    } else if (category=="volume" || category=="volume.disc") {
+    } else if (category == "volume" || category == "volume.disc") {
 
         QStringList capabilities = prop("info.capabilities").toStringList();
 
         if (capabilities.contains("volume.disc")) {
             bool has_video = prop("volume.disc.is_vcd").toBool()
-                          || prop("volume.disc.is_svcd").toBool()
-                          || prop("volume.disc.is_videodvd").toBool();
+                             || prop("volume.disc.is_svcd").toBool()
+                             || prop("volume.disc.is_videodvd").toBool();
             bool has_audio = prop("volume.disc.has_audio").toBool();
             bool recordable = prop("volume.disc.is_blank").toBool()
-                          || prop("volume.disc.is_appendable").toBool()
-                          || prop("volume.disc.is_rewritable").toBool();
+                              || prop("volume.disc.is_appendable").toBool()
+                              || prop("volume.disc.is_rewritable").toBool();
 
             if (has_video) {
                 return "media-optical-video";
@@ -257,10 +253,10 @@ QString HalDevice::icon() const
             return "drive-harddisk";
         }
 
-    } else if (category=="camera") {
+    } else if (category == "camera") {
         return "camera-photo";
 
-    } else if (category=="input") {
+    } else if (category == "input") {
         QStringList capabilities = prop("info.capabilities").toStringList();
 
         if (capabilities.contains("input.mouse")) {
@@ -273,7 +269,7 @@ QString HalDevice::icon() const
             return "input-tablet";
         }
 
-    } else if (category=="portable_audio_player") {
+    } else if (category == "portable_audio_player") {
         QStringList protocols = prop("portable_audio_player.access_method.protocols").toStringList();
 
         if (protocols.contains("ipod")) {
@@ -281,11 +277,11 @@ QString HalDevice::icon() const
         } else {
             return "multimedia-player";
         }
-    } else if (category=="battery") {
+    } else if (category == "battery") {
         return "battery";
-    } else if (category=="processor") {
+    } else if (category == "processor") {
         return "cpu"; // FIXME: Doesn't follow icon spec
-    } else if (category=="video4linux") {
+    } else if (category == "video4linux") {
         return "camera-web";
     } else if (category == "alsa" || category == "oss") {
         // Sorry about this const_cast, but it's the best way to not copy the code from
@@ -324,7 +320,7 @@ QStringList HalDevice::emblems() const
     QStringList res;
 
     if (queryDeviceInterface(Solid::DeviceInterface::StorageAccess)) {
-        bool isEncrypted = prop("volume.fsusage").toString()=="crypto";
+        bool isEncrypted = prop("volume.fsusage").toString() == "crypto";
 
         const Hal::StorageAccess accessIface(const_cast<HalDevice *>(this));
         if (accessIface.isAccessible()) {
@@ -349,13 +345,13 @@ QString HalDevice::description() const
 {
     QString category = prop("info.category").toString();
 
-    if (category=="storage" || category=="storage.cdrom") {
+    if (category == "storage" || category == "storage.cdrom") {
         return storageDescription();
-    } else if (category=="volume" || category=="volume.disc") {
+    } else if (category == "volume" || category == "volume.disc") {
         return volumeDescription();
-    } else if (category=="net.80211") {
+    } else if (category == "net.80211") {
         return tr("WLAN Interface");
-    } else if (category=="net.80203") {
+    } else if (category == "net.80203") {
         return tr("Networking Interface");
     } else {
         return product();
@@ -386,7 +382,7 @@ void HalDevicePrivate::checkCache(const QString &key)
         cache = reply;
     } else {
         qWarning() << Q_FUNC_INFO << " error: " << reply.error().name()
-            << ", " << reply.error().message() << endl;
+                   << ", " << reply.error().message() << endl;
         cache = QVariantMap();
     }
 
@@ -410,15 +406,15 @@ bool HalDevice::propertyExists(const QString &key) const
 bool HalDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type) const
 {
     // Special cases not matching with HAL capabilities
-    if (type==Solid::DeviceInterface::GenericInterface) {
+    if (type == Solid::DeviceInterface::GenericInterface) {
         return true;
-    } else if (type==Solid::DeviceInterface::StorageAccess) {
+    } else if (type == Solid::DeviceInterface::StorageAccess) {
         return prop("org.freedesktop.Hal.Device.Volume.method_names").toStringList().contains("Mount")
-            || prop("info.interfaces").toStringList().contains("org.freedesktop.Hal.Device.Volume.Crypto");
-    }
-    else if (type==Solid::DeviceInterface::Video) {
-        if (!prop("video4linux.device").toString().contains("video" ) )
-          return false;
+               || prop("info.interfaces").toStringList().contains("org.freedesktop.Hal.Device.Volume.Crypto");
+    } else if (type == Solid::DeviceInterface::Video) {
+        if (!prop("video4linux.device").toString().contains("video")) {
+            return false;
+        }
     } else if (d->capListCache.contains(type)) {
         return d->capListCache.value(type);
     }
@@ -451,8 +447,7 @@ QObject *HalDevice::createDeviceInterface(const Solid::DeviceInterface::Type &ty
 
     DeviceInterface *iface = 0;
 
-    switch (type)
-    {
+    switch (type) {
     case Solid::DeviceInterface::GenericInterface:
         iface = new GenericInterface(this);
         break;
@@ -528,7 +523,7 @@ QObject *HalDevice::createDeviceInterface(const Solid::DeviceInterface::Type &ty
 
 void HalDevice::slotPropertyModified(int /*count */, const QList<ChangeDescription> &changes)
 {
-    QMap<QString,int> result;
+    QMap<QString, int> result;
 
     Q_FOREACH (const ChangeDescription &change, changes) {
         QString key = change.key;
@@ -566,58 +561,74 @@ void HalDevice::slotCondition(const QString &condition, const QString &reason)
 QString HalDevice::storageDescription() const
 {
     QString description;
-    const Storage storageDrive(const_cast<HalDevice*>(this));
+    const Storage storageDrive(const_cast<HalDevice *>(this));
     Solid::StorageDrive::DriveType drive_type = storageDrive.driveType();
     bool drive_is_hotpluggable = storageDrive.isHotpluggable();
 
     if (drive_type == Solid::StorageDrive::CdromDrive) {
-        const Cdrom opticalDrive(const_cast<HalDevice*>(this));
+        const Cdrom opticalDrive(const_cast<HalDevice *>(this));
         Solid::OpticalDrive::MediumTypes mediumTypes = opticalDrive.supportedMedia();
         QString first;
         QString second;
 
         first = tr("CD-ROM", "First item of %1%2 Drive sentence");
-        if (mediumTypes & Solid::OpticalDrive::Cdr)
+        if (mediumTypes & Solid::OpticalDrive::Cdr) {
             first = tr("CD-R", "First item of %1%2 Drive sentence");
-        if (mediumTypes & Solid::OpticalDrive::Cdrw)
+        }
+        if (mediumTypes & Solid::OpticalDrive::Cdrw) {
             first = tr("CD-RW", "First item of %1%2 Drive sentence");
+        }
 
-        if (mediumTypes & Solid::OpticalDrive::Dvd)
+        if (mediumTypes & Solid::OpticalDrive::Dvd) {
             second = tr("/DVD-ROM", "Second item of %1%2 Drive sentence");
-        if (mediumTypes & Solid::OpticalDrive::Dvdplusr)
+        }
+        if (mediumTypes & Solid::OpticalDrive::Dvdplusr) {
             second = tr("/DVD+R", "Second item of %1%2 Drive sentence");
-        if (mediumTypes & Solid::OpticalDrive::Dvdplusrw)
+        }
+        if (mediumTypes & Solid::OpticalDrive::Dvdplusrw) {
             second = tr("/DVD+RW", "Second item of %1%2 Drive sentence");
-        if (mediumTypes & Solid::OpticalDrive::Dvdr)
+        }
+        if (mediumTypes & Solid::OpticalDrive::Dvdr) {
             second = tr("/DVD-R", "Second item of %1%2 Drive sentence");
-        if (mediumTypes & Solid::OpticalDrive::Dvdrw)
+        }
+        if (mediumTypes & Solid::OpticalDrive::Dvdrw) {
             second = tr("/DVD-RW", "Second item of %1%2 Drive sentence");
-        if (mediumTypes & Solid::OpticalDrive::Dvdram)
+        }
+        if (mediumTypes & Solid::OpticalDrive::Dvdram) {
             second = tr("/DVD-RAM", "Second item of %1%2 Drive sentence");
+        }
         if ((mediumTypes & Solid::OpticalDrive::Dvdr) && (mediumTypes & Solid::OpticalDrive::Dvdplusr)) {
-            if(mediumTypes & Solid::OpticalDrive::Dvdplusdl)
+            if (mediumTypes & Solid::OpticalDrive::Dvdplusdl) {
                 second = tr("/DVD±R DL", "Second item of %1%2 Drive sentence");
-            else
+            } else {
                 second = tr("/DVD±R", "Second item of %1%2 Drive sentence");
+            }
         }
         if ((mediumTypes & Solid::OpticalDrive::Dvdrw) && (mediumTypes & Solid::OpticalDrive::Dvdplusrw)) {
-            if((mediumTypes & Solid::OpticalDrive::Dvdplusdl) || (mediumTypes & Solid::OpticalDrive::Dvdplusdlrw))
+            if ((mediumTypes & Solid::OpticalDrive::Dvdplusdl) || (mediumTypes & Solid::OpticalDrive::Dvdplusdlrw)) {
                 second = tr("/DVD±RW DL", "Second item of %1%2 Drive sentence");
-            else
+            } else {
                 second = tr("/DVD±RW", "Second item of %1%2 Drive sentence");
+            }
         }
-        if (mediumTypes & Solid::OpticalDrive::Bd)
+        if (mediumTypes & Solid::OpticalDrive::Bd) {
             second = tr("/BD-ROM", "Second item of %1%2 Drive sentence");
-        if (mediumTypes & Solid::OpticalDrive::Bdr)
+        }
+        if (mediumTypes & Solid::OpticalDrive::Bdr) {
             second = tr("/BD-R", "Second item of %1%2 Drive sentence");
-        if (mediumTypes & Solid::OpticalDrive::Bdre)
+        }
+        if (mediumTypes & Solid::OpticalDrive::Bdre) {
             second = tr("/BD-RE", "Second item of %1%2 Drive sentence");
-        if (mediumTypes & Solid::OpticalDrive::HdDvd)
+        }
+        if (mediumTypes & Solid::OpticalDrive::HdDvd) {
             second = tr("/HD DVD-ROM", "Second item of %1%2 Drive sentence");
-        if (mediumTypes & Solid::OpticalDrive::HdDvdr)
+        }
+        if (mediumTypes & Solid::OpticalDrive::HdDvdr) {
             second = tr("/HD DVD-R", "Second item of %1%2 Drive sentence");
-        if (mediumTypes & Solid::OpticalDrive::HdDvdrw)
+        }
+        if (mediumTypes & Solid::OpticalDrive::HdDvdrw) {
             second = tr("/HD DVD-RW", "Second item of %1%2 Drive sentence");
+        }
 
         if (drive_is_hotpluggable) {
             description = tr("External %1%2 Drive", "%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/DVD-R'/etc (with leading slash)").arg(first).arg(second);
@@ -629,10 +640,11 @@ QString HalDevice::storageDescription() const
     }
 
     if (drive_type == Solid::StorageDrive::Floppy) {
-        if (drive_is_hotpluggable)
+        if (drive_is_hotpluggable) {
             description = tr("External Floppy Drive");
-        else
+        } else {
             description = tr("Floppy Drive");
+        }
 
         return description;
     }
@@ -648,10 +660,11 @@ QString HalDevice::storageDescription() const
                 description = tr("%1 Hard Drive", "%1 is the size").arg(size_str);
             }
         } else {
-            if (drive_is_hotpluggable)
+            if (drive_is_hotpluggable) {
                 description = tr("External Hard Drive");
-            else
+            } else {
                 description = tr("Hard Drive");
+            }
         }
 
         return description;
@@ -662,19 +675,22 @@ QString HalDevice::storageDescription() const
     QString vendor = prop("storage.vendor").toString();
 
     if (vendor.isEmpty()) {
-        if (!model.isEmpty())
+        if (!model.isEmpty()) {
             vendormodel_str = model;
+        }
     } else {
-        if (model.isEmpty())
+        if (model.isEmpty()) {
             vendormodel_str = vendor;
-        else
+        } else {
             vendormodel_str = tr("%1 %2", "%1 is the vendor, %2 is the model of the device").arg(vendor).arg(model);
+        }
     }
 
-    if (vendormodel_str.isEmpty())
+    if (vendormodel_str.isEmpty()) {
         description = tr("Drive");
-    else
+    } else {
         description = vendormodel_str;
+    }
 
     return description;
 }
@@ -691,121 +707,134 @@ QString HalDevice::volumeDescription() const
     if (!d->parent) {
         d->parent = new HalDevice(parentUdi());
     }
-    const Storage storageDrive(const_cast<HalDevice*>(d->parent));
+    const Storage storageDrive(const_cast<HalDevice *>(d->parent));
     Solid::StorageDrive::DriveType drive_type = storageDrive.driveType();
 
     /* Handle media in optical drives */
     if (drive_type == Solid::StorageDrive::CdromDrive) {
-        const OpticalDisc disc(const_cast<HalDevice*>(this));
+        const OpticalDisc disc(const_cast<HalDevice *>(this));
         switch (disc.discType()) {
-            case Solid::OpticalDisc::UnknownDiscType:
-            case Solid::OpticalDisc::CdRom:
-                description = tr("CD-ROM");
-                break;
+        case Solid::OpticalDisc::UnknownDiscType:
+        case Solid::OpticalDisc::CdRom:
+            description = tr("CD-ROM");
+            break;
 
-            case Solid::OpticalDisc::CdRecordable:
-                if (disc.isBlank())
-                    description = tr("Blank CD-R");
-                else
-                    description = tr("CD-R");
-                break;
-
-            case Solid::OpticalDisc::CdRewritable:
-                if (disc.isBlank())
-                    description = tr("Blank CD-RW");
-                else
-                    description = tr("CD-RW");
-                break;
-
-            case Solid::OpticalDisc::DvdRom:
-                description = tr("DVD-ROM");
-                break;
-
-            case Solid::OpticalDisc::DvdRam:
-                if (disc.isBlank())
-                    description = tr("Blank DVD-RAM");
-                else
-                    description = tr("DVD-RAM");
-                break;
-
-            case Solid::OpticalDisc::DvdRecordable:
-                if (disc.isBlank())
-                    description = tr("Blank DVD-R");
-                else
-                    description = tr("DVD-R");
-                break;
-
-            case Solid::OpticalDisc::DvdPlusRecordableDuallayer:
-                if (disc.isBlank())
-                    description = tr("Blank DVD+R Dual-Layer");
-                else
-                    description = tr("DVD+R Dual-Layer");
-                break;
-
-            case Solid::OpticalDisc::DvdRewritable:
-                if (disc.isBlank())
-                    description = tr("Blank DVD-RW");
-                else
-                    description = tr("DVD-RW");
-                break;
-
-            case Solid::OpticalDisc::DvdPlusRecordable:
-                if (disc.isBlank())
-                    description = tr("Blank DVD+R");
-                else
-                    description = tr("DVD+R");
-                break;
-
-            case Solid::OpticalDisc::DvdPlusRewritable:
-                if (disc.isBlank())
-                    description = tr("Blank DVD+RW");
-                else
-                    description = tr("DVD+RW");
-                break;
-
-            case Solid::OpticalDisc::DvdPlusRewritableDuallayer:
-                if (disc.isBlank())
-                    description = tr("Blank DVD+RW Dual-Layer");
-                else
-                    description = tr("DVD+RW Dual-Layer");
-                break;
-
-            case Solid::OpticalDisc::BluRayRom:
-                description = tr("BD-ROM");
-                break;
-
-            case Solid::OpticalDisc::BluRayRecordable:
-                if (disc.isBlank())
-                    description = tr("Blank BD-R");
-                else
-                    description = tr("BD-R");
-                break;
-
-            case Solid::OpticalDisc::BluRayRewritable:
-                if (disc.isBlank())
-                    description = tr("Blank BD-RE");
-                else
-                    description = tr("BD-RE");
-                break;
-
-            case Solid::OpticalDisc::HdDvdRom:
-                description = tr("HD DVD-ROM");
-                break;
-
-            case Solid::OpticalDisc::HdDvdRecordable:
-                if (disc.isBlank())
-                    description = tr("Blank HD DVD-R");
-                else
-                    description = tr("HD DVD-R");
-                break;
-
-            case Solid::OpticalDisc::HdDvdRewritable:
-                if (disc.isBlank())
-                    description = tr("Blank HD DVD-RW");
-                else
-                    description = tr("HD DVD-RW");
-                break;
+        case Solid::OpticalDisc::CdRecordable:
+            if (disc.isBlank()) {
+                description = tr("Blank CD-R");
+            } else {
+                description = tr("CD-R");
             }
+            break;
+
+        case Solid::OpticalDisc::CdRewritable:
+            if (disc.isBlank()) {
+                description = tr("Blank CD-RW");
+            } else {
+                description = tr("CD-RW");
+            }
+            break;
+
+        case Solid::OpticalDisc::DvdRom:
+            description = tr("DVD-ROM");
+            break;
+
+        case Solid::OpticalDisc::DvdRam:
+            if (disc.isBlank()) {
+                description = tr("Blank DVD-RAM");
+            } else {
+                description = tr("DVD-RAM");
+            }
+            break;
+
+        case Solid::OpticalDisc::DvdRecordable:
+            if (disc.isBlank()) {
+                description = tr("Blank DVD-R");
+            } else {
+                description = tr("DVD-R");
+            }
+            break;
+
+        case Solid::OpticalDisc::DvdPlusRecordableDuallayer:
+            if (disc.isBlank()) {
+                description = tr("Blank DVD+R Dual-Layer");
+            } else {
+                description = tr("DVD+R Dual-Layer");
+            }
+            break;
+
+        case Solid::OpticalDisc::DvdRewritable:
+            if (disc.isBlank()) {
+                description = tr("Blank DVD-RW");
+            } else {
+                description = tr("DVD-RW");
+            }
+            break;
+
+        case Solid::OpticalDisc::DvdPlusRecordable:
+            if (disc.isBlank()) {
+                description = tr("Blank DVD+R");
+            } else {
+                description = tr("DVD+R");
+            }
+            break;
+
+        case Solid::OpticalDisc::DvdPlusRewritable:
+            if (disc.isBlank()) {
+                description = tr("Blank DVD+RW");
+            } else {
+                description = tr("DVD+RW");
+            }
+            break;
+
+        case Solid::OpticalDisc::DvdPlusRewritableDuallayer:
+            if (disc.isBlank()) {
+                description = tr("Blank DVD+RW Dual-Layer");
+            } else {
+                description = tr("DVD+RW Dual-Layer");
+            }
+            break;
+
+        case Solid::OpticalDisc::BluRayRom:
+            description = tr("BD-ROM");
+            break;
+
+        case Solid::OpticalDisc::BluRayRecordable:
+            if (disc.isBlank()) {
+                description = tr("Blank BD-R");
+            } else {
+                description = tr("BD-R");
+            }
+            break;
+
+        case Solid::OpticalDisc::BluRayRewritable:
+            if (disc.isBlank()) {
+                description = tr("Blank BD-RE");
+            } else {
+                description = tr("BD-RE");
+            }
+            break;
+
+        case Solid::OpticalDisc::HdDvdRom:
+            description = tr("HD DVD-ROM");
+            break;
+
+        case Solid::OpticalDisc::HdDvdRecordable:
+            if (disc.isBlank()) {
+                description = tr("Blank HD DVD-R");
+            } else {
+                description = tr("HD DVD-R");
+            }
+            break;
+
+        case Solid::OpticalDisc::HdDvdRewritable:
+            if (disc.isBlank()) {
+                description = tr("Blank HD DVD-RW");
+            } else {
+                description = tr("HD DVD-RW");
+            }
+            break;
+        }
 
         /* Special case for pure audio disc */
         if (disc.availableContent() == Solid::OpticalDisc::Audio) {
@@ -817,7 +846,7 @@ QString HalDevice::volumeDescription() const
 
     bool drive_is_removable = storageDrive.isRemovable();
     bool drive_is_hotpluggable = storageDrive.isHotpluggable();
-    bool drive_is_encrypted_container = prop("volume.fsusage").toString()=="crypto";
+    bool drive_is_encrypted_container = prop("volume.fsusage").toString() == "crypto";
 
     QString size_str = formatByteSize(prop("volume.size").toULongLong());
     if (drive_is_encrypted_container) {
@@ -834,10 +863,11 @@ QString HalDevice::volumeDescription() const
                 description = tr("%1 Hard Drive", "%1 is the size").arg(size_str);
             }
         } else {
-            if (drive_is_hotpluggable)
+            if (drive_is_hotpluggable) {
                 description = tr("External Hard Drive");
-            else
+            } else {
                 description = tr("Hard Drive");
+            }
         }
     } else {
         if (drive_is_removable) {

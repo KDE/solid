@@ -50,8 +50,7 @@ public:
     {
         QStringList list;
 
-        switch(type)
-        {
+        switch (type) {
         case Solid::DeviceInterface::GenericInterface:
             list << "generic";
             break;
@@ -102,20 +101,21 @@ public:
 
     inline static Solid::DeviceInterface::Type fromString(const QString &capability)
     {
-        if (capability == "generic")
+        if (capability == "generic") {
             return Solid::DeviceInterface::GenericInterface;
-        else if (capability == "block")
+        } else if (capability == "block") {
             return Solid::DeviceInterface::Block;
-        else if (capability == "storage")
+        } else if (capability == "storage") {
             return Solid::DeviceInterface::StorageDrive;
-        else if (capability == "storage.cdrom")
+        } else if (capability == "storage.cdrom") {
             return Solid::DeviceInterface::OpticalDrive;
-        else if (capability == "volume")
+        } else if (capability == "volume") {
             return Solid::DeviceInterface::StorageVolume;
-        else if (capability == "volume.disc")
+        } else if (capability == "volume.disc") {
             return Solid::DeviceInterface::OpticalDisc;
-        else
+        } else {
             return Solid::DeviceInterface::Unknown;
+        }
     }
 };
 

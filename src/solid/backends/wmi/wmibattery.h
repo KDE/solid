@@ -69,7 +69,7 @@ Q_SIGNALS:
     void powerSupplyStateChanged(bool newState, const QString &udi);
 
 private Q_SLOTS:
-    void slotPropertyChanged(const QMap<QString,int> &changes);
+    void slotPropertyChanged(const QMap<QString, int> &changes);
 };
 }
 }

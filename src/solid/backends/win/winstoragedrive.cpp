@@ -45,10 +45,12 @@ Solid::StorageDrive::Bus WinStorageDrive::bus() const
 
 Solid::StorageDrive::DriveType WinStorageDrive::driveType() const
 {
-    if(m_device->type() == Solid::DeviceInterface::OpticalDrive)
+    if (m_device->type() == Solid::DeviceInterface::OpticalDrive) {
         return Solid::StorageDrive::CdromDrive;
-    if(bus() == Solid::StorageDrive::Usb)
+    }
+    if (bus() == Solid::StorageDrive::Usb) {
         return Solid::StorageDrive::MemoryStick;
+    }
     return Solid::StorageDrive::HardDisk;
 }
 
@@ -74,18 +76,14 @@ void WinStorageDrive::updateCache()
     storageProperty.QueryType = PropertyStandardQuery;
 
     QString dev;
-    if(m_device->type() == Solid::DeviceInterface::OpticalDrive)
-    {
+    if (m_device->type() == Solid::DeviceInterface::OpticalDrive) {
         dev =  WinBlock::driveLetterFromUdi(m_device->udi());
-    }
-    else
-    {
+    } else {
         dev = QLatin1String("PhysicalDrive") + QString::number(deviceMajor());
     }
-    STORAGE_ADAPTER_DESCRIPTOR  busInfo = WinDeviceManager::getDeviceInfo<STORAGE_ADAPTER_DESCRIPTOR>(dev,IOCTL_STORAGE_QUERY_PROPERTY,&storageProperty);
+    STORAGE_ADAPTER_DESCRIPTOR  busInfo = WinDeviceManager::getDeviceInfo<STORAGE_ADAPTER_DESCRIPTOR>(dev, IOCTL_STORAGE_QUERY_PROPERTY, &storageProperty);
 
-    switch(busInfo.BusType)
-    {
+    switch (busInfo.BusType) {
     case BusTypeUsb:
         m_bus = Solid::StorageDrive::Usb;
         break;
@@ -100,12 +98,10 @@ void WinStorageDrive::updateCache()
         m_bus = Solid::StorageDrive::Ide;
     }
 
-    DISK_GEOMETRY  sizeInfo = WinDeviceManager::getDeviceInfo<DISK_GEOMETRY>(dev,IOCTL_DISK_GET_DRIVE_GEOMETRY);
+    DISK_GEOMETRY  sizeInfo = WinDeviceManager::getDeviceInfo<DISK_GEOMETRY>(dev, IOCTL_DISK_GET_DRIVE_GEOMETRY);
     m_size = sizeInfo.Cylinders.QuadPart * sizeInfo.TracksPerCylinder * sizeInfo.SectorsPerTrack * sizeInfo.BytesPerSector;
 
-
-
-    STORAGE_HOTPLUG_INFO plugInfo = WinDeviceManager::getDeviceInfo<STORAGE_HOTPLUG_INFO>(dev,IOCTL_STORAGE_GET_HOTPLUG_INFO);
+    STORAGE_HOTPLUG_INFO plugInfo = WinDeviceManager::getDeviceInfo<STORAGE_HOTPLUG_INFO>(dev, IOCTL_STORAGE_GET_HOTPLUG_INFO);
     m_isHotplugges = plugInfo.DeviceHotplug;
     m_isRemovable = plugInfo.MediaRemovable;
 

@@ -48,11 +48,9 @@ static QString readMpiValue(QIODevice &file, const QString &group, const QString
         line = mpiStream.readLine().trimmed();  // trimmed is needed for possible indentation
         if (line.isEmpty() || line.startsWith(QChar(';'))) {
             // skip empty and comment lines
-        }
-        else if (line.startsWith(QChar('[')) && line.endsWith(QChar(']'))) {
+        } else if (line.startsWith(QChar('[')) && line.endsWith(QChar(']'))) {
             currGroup = line.mid(1, line.length() - 2);  // strip [ and ]
-        }
-        else if (line.indexOf(QChar('=') != -1)) {
+        } else if (line.indexOf(QChar('=') != -1)) {
             int index = line.indexOf(QChar('='));
             if (currGroup == group && line.left(index) == key) {
                 line = line.right(line.length() - index - 1);
@@ -61,8 +59,7 @@ static QString readMpiValue(QIODevice &file, const QString &group, const QString
                 }
                 return line;
             }
-        }
-        else {
+        } else {
             qWarning() << "readMpiValue: cannot parse line:" << line;
         }
     }
@@ -124,8 +121,9 @@ QStringList PortableMediaPlayer::supportedDrivers(QString protocol) const
 
 QVariant PortableMediaPlayer::driverHandle(const QString &driver) const
 {
-    if (driver == "mtp" || driver == "usbmux")
+    if (driver == "mtp" || driver == "usbmux") {
         return m_device->property("ID_SERIAL_SHORT");
+    }
 
     return QVariant();
 }

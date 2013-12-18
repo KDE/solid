@@ -26,12 +26,12 @@
 
 namespace Solid
 {
-    class ButtonPrivate : public DeviceInterfacePrivate
-    {
-    public:
-        ButtonPrivate()
-            : DeviceInterfacePrivate() { }
-    };
+class ButtonPrivate : public DeviceInterfacePrivate
+{
+public:
+    ButtonPrivate()
+        : DeviceInterfacePrivate() { }
+};
 }
 
 #endif

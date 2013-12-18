@@ -36,10 +36,11 @@ StorageVolume::~StorageVolume()
 QString StorageVolume::encryptedContainerUdi() const
 {
     const QString path = m_device->prop("CryptoBackingDevice").value<QDBusObjectPath>().path();
-    if ( path.isEmpty() || path == "/")
+    if (path.isEmpty() || path == "/") {
         return QString();
-    else
+    } else {
         return path;
+    }
 }
 
 qulonglong StorageVolume::size() const
@@ -55,10 +56,12 @@ QString StorageVolume::uuid() const
 QString StorageVolume::label() const
 {
     QString label = m_device->prop("HintName").toString();
-    if (label.isEmpty())
+    if (label.isEmpty()) {
         label = m_device->prop("IdLabel").toString();
-    if (label.isEmpty())
+    }
+    if (label.isEmpty()) {
         label = m_device->prop("Name").toString();
+    }
     return label;
 }
 
@@ -71,28 +74,17 @@ Solid::StorageVolume::UsageType StorageVolume::usage() const
 {
     const QString usage = m_device->prop("IdUsage").toString();
 
-    if (m_device->hasInterface(UD2_DBUS_INTERFACE_FILESYSTEM))
-    {
+    if (m_device->hasInterface(UD2_DBUS_INTERFACE_FILESYSTEM)) {
         return Solid::StorageVolume::FileSystem;
-    }
-    else if (m_device->isPartitionTable())
-    {
+    } else if (m_device->isPartitionTable()) {
         return Solid::StorageVolume::PartitionTable;
-    }
-    else if (usage == "raid")
-    {
+    } else if (usage == "raid") {
         return Solid::StorageVolume::Raid;
-    }
-    else if (m_device->isEncryptedContainer())
-    {
+    } else if (m_device->isEncryptedContainer()) {
         return Solid::StorageVolume::Encrypted;
-    }
-    else if (usage == "unused" || usage.isEmpty())
-    {
+    } else if (usage == "unused" || usage.isEmpty()) {
         return Solid::StorageVolume::Unused;
-    }
-    else
-    {
+    } else {
         return Solid::StorageVolume::Other;
     }
 }
@@ -101,5 +93,5 @@ bool StorageVolume::isIgnored() const
 {
     const Solid::StorageVolume::UsageType usg = usage();
     return m_device->prop("HintIgnore").toBool() || m_device->isSwap() ||
-            ((usg == Solid::StorageVolume::Unused || usg == Solid::StorageVolume::Other || usg == Solid::StorageVolume::PartitionTable) && !m_device->isOpticalDisc());
+           ((usg == Solid::StorageVolume::Unused || usg == Solid::StorageVolume::Other || usg == Solid::StorageVolume::PartitionTable) && !m_device->isOpticalDisc());
 }

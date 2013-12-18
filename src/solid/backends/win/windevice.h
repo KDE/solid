@@ -37,20 +37,20 @@ class WinDevice : public Solid::Ifaces::Device
 public:
     WinDevice(const QString &udi);
 
-   virtual QString udi() const;
+    virtual QString udi() const;
 
-   virtual QString parentUdi() const;
-   virtual QString vendor() const;
-   virtual QString product() const;
+    virtual QString parentUdi() const;
+    virtual QString vendor() const;
+    virtual QString product() const;
 
-   virtual QString icon() const;
+    virtual QString icon() const;
 
-   virtual QStringList emblems() const;
+    virtual QStringList emblems() const;
 
-   virtual QString description() const;
+    virtual QString description() const;
 
-   virtual bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const;
-   virtual QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type);
+    virtual bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const;
+    virtual QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type);
 
     Solid::DeviceInterface::Type type() const;
 
@@ -65,8 +65,6 @@ private:
     void initStorageDevice();
     void initBatteryDevice();
     void initCpuDevice();
-
-
 
 };
 

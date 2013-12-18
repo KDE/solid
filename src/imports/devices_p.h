@@ -28,7 +28,8 @@
 #include <solid/devicenotifier.h>
 #include <solid/device.h>
 
-namespace Solid {
+namespace Solid
+{
 
 /**
  * Instances of this class are used as backends for
@@ -43,7 +44,8 @@ namespace Solid {
  * allocation and deallocation - just use DevicesQueryPrivate::forQuery
  * and store the retrieved smart pointer.
  */
-class DevicesQueryPrivate: public QObject {
+class DevicesQueryPrivate: public QObject
+{
     Q_OBJECT
 
 public:

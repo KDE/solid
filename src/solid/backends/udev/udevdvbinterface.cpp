@@ -46,10 +46,11 @@ int DvbInterface::deviceAdapter() const
 {
     bool ok;
     int adapter = m_device->property("DVB_ADAPTER_NUM").toString().toInt(&ok, 10);
-    if (ok)
+    if (ok) {
         return adapter;
-    else
+    } else {
         return -1;
+    }
 }
 
 Solid::DvbInterface::DeviceType DvbInterface::deviceType() const
@@ -84,9 +85,10 @@ int DvbInterface::deviceIndex() const
 {
     bool ok;
     int index = m_device->property("DVB_DEVICE_NUM").toString().toInt(&ok, 10);
-    if (ok)
+    if (ok) {
         return index;
-    else
+    } else {
         return -1;
+    }
 }
 

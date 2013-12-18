@@ -40,7 +40,6 @@ public:
 
     static QSet<QString> getUdis();
 
-
 Q_SIGNALS:
     void plugStateChanged(bool newState, const QString &udi);
 

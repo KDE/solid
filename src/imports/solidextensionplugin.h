@@ -22,7 +22,8 @@
 
 #include <QtQml/QQmlExtensionPlugin>
 
-class SolidExtensionPlugin: public QQmlExtensionPlugin {
+class SolidExtensionPlugin: public QQmlExtensionPlugin
+{
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.kde.solid")
 

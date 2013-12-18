@@ -35,7 +35,6 @@ Battery::~Battery()
 
 }
 
-
 bool Battery::isPlugged() const
 {
     return true;
@@ -44,7 +43,7 @@ bool Battery::isPlugged() const
 Solid::Battery::BatteryType Battery::type() const
 {
     //as far as i know peripheral bateries are not listed
-        return Solid::Battery::PrimaryBattery;
+    return Solid::Battery::PrimaryBattery;
 }
 
 int Battery::chargePercent() const
@@ -60,19 +59,14 @@ bool Battery::isRechargeable() const
 Solid::Battery::ChargeState Battery::chargeState() const
 {
     ushort status =  m_device->property("BatteryStatus").toInt();
-    bool charging = status == 2 || status >= 6 && status <=8;//2 = The system has access to AC so no battery is being discharged. However, the battery is not necessarily charging , but windows mostlikly wont tell anything else then 2 or 1
-    bool discharging = status == 1 || status >=3 && status <=5 || status == 11;
+    bool charging = status == 2 || status >= 6 && status <= 8; //2 = The system has access to AC so no battery is being discharged. However, the battery is not necessarily charging , but windows mostlikly wont tell anything else then 2 or 1
+    bool discharging = status == 1 || status >= 3 && status <= 5 || status == 11;
 
-    if (!charging && !discharging)
-    {
+    if (!charging && !discharging) {
         return Solid::Battery::NoCharge;
-    }
-    else if (charging)
-    {
+    } else if (charging) {
         return Solid::Battery::Charging;
-    }
-    else
-    {
+    } else {
         return Solid::Battery::Discharging;
     }
 }
@@ -90,8 +84,7 @@ int Battery::capacity() const
 QString Battery::batteryTechnology() const
 {
     const ushort tech = m_device->property("Chemistry").toUInt();
-    switch (tech)
-    {
+    switch (tech) {
     case 3:
         return tr("Lead Acid", "battery technology");
     case 4:
@@ -131,15 +124,14 @@ int Battery::capacity() const
 {
     const unsigned int fullChargeCapacity = m_device->property("FullChargeCapacity").toUInt();
     const unsigned int designCapacity = m_device->property("DesignCapacity").toUInt();
-    
-    if ( designCapacity == 0 )
-    {
+
+    if (designCapacity == 0) {
         return 0;
     }
-    return ( (int) (100.0 * fullChargeCapacity / designCapacity) );
+    return ((int)(100.0 * fullChargeCapacity / designCapacity));
 }
 
-void Battery::slotPropertyChanged(const QMap<QString,int> &changes)
+void Battery::slotPropertyChanged(const QMap<QString, int> &changes)
 {
 //     if (changes.contains("battery.charge_level.percentage"))
 //     {

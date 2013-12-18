@@ -38,7 +38,6 @@ public:
     Private();
     ~Private();
 
-
     bool isOfInterest(const QString &udi, const UdevQt::Device &device);
     bool checkOfInterest(const UdevQt::Device &device);
     bool isPowerBubtton(const UdevQt::Device &device);
@@ -109,7 +108,7 @@ bool UDevManager::Private::checkOfInterest(const UdevQt::Device &device)
     if (device.subsystem() == QLatin1String("tty")) {
         QString path = device.deviceProperty("DEVPATH").toString();
 
-        int lastSlash = path.length() - path.lastIndexOf(QLatin1String("/")) -1;
+        int lastSlash = path.length() - path.lastIndexOf(QLatin1String("/")) - 1;
         QByteArray lastElement = path.right(lastSlash).toLatin1();
 
         if (lastElement.startsWith("tty") && !path.startsWith("/devices/virtual")) {
@@ -141,12 +140,12 @@ bool UDevManager::Private::checkOfInterest(const UdevQt::Device &device)
            device.deviceProperty("ID_GPHOTO2").toInt() == 1; // GPhoto2 cameras
 }
 
-bool UDevManager::Private::isLidBubtton(const UdevQt::Device& device)
+bool UDevManager::Private::isLidBubtton(const UdevQt::Device &device)
 {
     long bitmask[NBITS(SW_MAX)];
     int nbits = input_str_to_bitmask(device.deviceProperty("SW").toByteArray(), bitmask, sizeof(bitmask), NBITS(SW_MAX));
     if (nbits == 1) {
-        if (test_bit (SW_LID, bitmask)) {
+        if (test_bit(SW_LID, bitmask)) {
 //             qDebug() << "Lid button detected";
             return true;
         }
@@ -155,12 +154,12 @@ bool UDevManager::Private::isLidBubtton(const UdevQt::Device& device)
     return false;
 }
 
-bool UDevManager::Private::isPowerBubtton(const UdevQt::Device& device)
+bool UDevManager::Private::isPowerBubtton(const UdevQt::Device &device)
 {
     long bitmask[NBITS(KEY_MAX)];
     int nbits = input_str_to_bitmask(device.deviceProperty("KEY").toByteArray(), bitmask, sizeof(bitmask), NBITS(KEY_MAX));
     if (nbits == 1) {
-        if (test_bit (KEY_POWER, bitmask)) {
+        if (test_bit(KEY_POWER, bitmask)) {
 //             qDebug() << "Power button detected";
             return true;
         }
@@ -220,7 +219,7 @@ QStringList UDevManager::allDevices()
 }
 
 QStringList UDevManager::devicesFromQuery(const QString &parentUdi,
-                                          Solid::DeviceInterface::Type type)
+        Solid::DeviceInterface::Type type)
 {
     QStringList allDev = allDevices();
     QStringList result;

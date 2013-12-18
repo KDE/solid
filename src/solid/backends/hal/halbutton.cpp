@@ -26,7 +26,7 @@ Button::Button(HalDevice *device)
     : DeviceInterface(device)
 {
     connect(device, SIGNAL(conditionRaised(QString,QString)),
-             this, SLOT(slotConditionRaised(QString,QString)));
+            this, SLOT(slotConditionRaised(QString,QString)));
 }
 
 Button::~Button()
@@ -38,24 +38,15 @@ Solid::Button::ButtonType Button::type() const
 {
     QString buttontype = m_device->prop("button.type").toString();
 
-    if (buttontype=="lid")
-    {
+    if (buttontype == "lid") {
         return Solid::Button::LidButton;
-    }
-    else if (buttontype=="power")
-    {
+    } else if (buttontype == "power") {
         return Solid::Button::PowerButton;
-    }
-    else if (buttontype=="sleep")
-    {
+    } else if (buttontype == "sleep") {
         return Solid::Button::SleepButton;
-    }
-    else if (buttontype=="tablet_mode")
-    {
+    } else if (buttontype == "tablet_mode") {
         return Solid::Button::TabletButton;
-    }
-    else
-    {
+    } else {
         return Solid::Button::UnknownButtonType;
     }
 }
@@ -72,8 +63,7 @@ bool Button::stateValue() const
 
 void Button::slotConditionRaised(const QString &name, const QString &/*reason */)
 {
-    if (name == "ButtonPressed")
-    {
+    if (name == "ButtonPressed") {
         emit pressed(type(), m_device->udi());
     }
 }

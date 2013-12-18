@@ -31,42 +31,42 @@ namespace Backends
 namespace UPnP
 {
 
-    class UPnPMediaServer : public Solid::Backends::UPnP::UPnPDeviceInterface, virtual public Solid::Ifaces::StorageAccess
-    {
-        Q_OBJECT
-        Q_INTERFACES(Solid::Ifaces::StorageAccess)
+class UPnPMediaServer : public Solid::Backends::UPnP::UPnPDeviceInterface, virtual public Solid::Ifaces::StorageAccess
+{
+    Q_OBJECT
+    Q_INTERFACES(Solid::Ifaces::StorageAccess)
 
-        public:
-            explicit UPnPMediaServer(UPnPDevice* device);
+public:
+    explicit UPnPMediaServer(UPnPDevice *device);
 
-            virtual ~UPnPMediaServer();
+    virtual ~UPnPMediaServer();
 
-            virtual bool isAccessible() const;
+    virtual bool isAccessible() const;
 
-            virtual QString filePath() const;
+    virtual QString filePath() const;
 
-            virtual bool isIgnored() const;
+    virtual bool isIgnored() const;
 
-            virtual bool setup();
+    virtual bool setup();
 
-            virtual bool teardown();
+    virtual bool teardown();
 
-        private Q_SLOTS:
-            void onSetupTimeout();
+private Q_SLOTS:
+    void onSetupTimeout();
 
-            void onTeardownTimeout();
+    void onTeardownTimeout();
 
-        Q_SIGNALS:
-            void accessibilityChanged(bool accessible, const QString &udi);
+Q_SIGNALS:
+    void accessibilityChanged(bool accessible, const QString &udi);
 
-            void setupDone(Solid::ErrorType error, QVariant data, const QString &udi);
+    void setupDone(Solid::ErrorType error, QVariant data, const QString &udi);
 
-            void teardownDone(Solid::ErrorType error, QVariant data, const QString &udi);
+    void teardownDone(Solid::ErrorType error, QVariant data, const QString &udi);
 
-            void setupRequested(const QString &udi);
+    void setupRequested(const QString &udi);
 
-            void teardownRequested(const QString &udi);
-    };
+    void teardownRequested(const QString &udi);
+};
 
 }
 }

@@ -30,54 +30,57 @@
 
 namespace Solid
 {
-    class InternetGatewayPrivate;
+class InternetGatewayPrivate;
 
-    class Device;
+class Device;
 
-    class SOLID_EXPORT InternetGateway : public Solid::DeviceInterface
+class SOLID_EXPORT InternetGateway : public Solid::DeviceInterface
+{
+    Q_OBJECT
+    Q_DECLARE_PRIVATE(InternetGateway)
+    friend class Device;
+
+private:
+    explicit InternetGateway(QObject *backendObject);
+
+public:
+    enum InternetStatus { InternetEnabled = 0, InternetDisabled = 1, UnknownStatus = 2 };
+
+    enum NetworkProtocol { TCP = 0, UDP = 1 };
+
+    virtual ~InternetGateway();
+
+    static Type deviceInterfaceType()
     {
-        Q_OBJECT
-        Q_DECLARE_PRIVATE(InternetGateway)
-        friend class Device;
+        return DeviceInterface::InternetGateway;
+    }
 
-        private:
-            explicit InternetGateway(QObject* backendObject);
+    void requestCurrentConnections() const;
 
-        public:
-            enum InternetStatus { InternetEnabled = 0, InternetDisabled = 1, UnknownStatus = 2 };
+    QStringList currentConnections() const;
 
-            enum NetworkProtocol { TCP = 0, UDP = 1 };
+    void addPortMapping(const QString &remoteHost, qint16 externalPort, const NetworkProtocol &mappingProtocol,
+                        qint16 internalPort, const QString &internalClient);
 
-            virtual ~InternetGateway();
+    void deletePortMapping(const QString &remoteHost, qint16 externalPort, const NetworkProtocol &mappingProtocol);
 
-            static Type deviceInterfaceType() { return DeviceInterface::InternetGateway; }
+    InternetStatus isEnabledForInternet() const;
 
-            void requestCurrentConnections() const;
+    void setEnabledForInternet(bool enabled);
 
-            QStringList currentConnections() const;
+Q_SIGNALS:
+    void portMappingAdded(const QString &remoteHost, qint16 externalPort, const NetworkProtocol &mappingProtocol,
+                          qint16 internalPort, const QString &internalClient);
 
-            void addPortMapping(const QString& remoteHost, qint16 externalPort, const NetworkProtocol& mappingProtocol,
-                                qint16 internalPort, const QString& internalClient);
+    void portMappingDeleted(const QString &remoteHost, qint16 externalPort, const NetworkProtocol &mappingProtocol);
 
-            void deletePortMapping(const QString& remoteHost, qint16 externalPort, const NetworkProtocol& mappingProtocol);
+    void enabledForInternet(bool enabled);
 
-            InternetStatus isEnabledForInternet() const;
+    void currentConnectionsDataIsReady(QStringList currentConnections);
 
-            void setEnabledForInternet(bool enabled);
-
-        Q_SIGNALS:
-            void portMappingAdded(const QString& remoteHost, qint16 externalPort, const NetworkProtocol& mappingProtocol,
-                                  qint16 internalPort, const QString& internalClient);
-
-            void portMappingDeleted(const QString& remoteHost, qint16 externalPort, const NetworkProtocol& mappingProtocol);
-
-            void enabledForInternet(bool enabled);
-
-            void currentConnectionsDataIsReady(QStringList currentConnections);
-
-        protected:
-            InternetGateway(InternetGatewayPrivate& dd, QObject* backendObject);
-    };
+protected:
+    InternetGateway(InternetGatewayPrivate &dd, QObject *backendObject);
+};
 
 }
 #endif // SOLID_INTERNETGATEWAY_H

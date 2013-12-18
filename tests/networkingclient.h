@@ -37,9 +37,9 @@
  */
 class TestClient : public QMainWindow
 {
-Q_OBJECT
+    Q_OBJECT
 public:
-    enum AppStatus{ AppDisconnected, AppWaitingForConnect, AppConnected };
+    enum AppStatus { AppDisconnected, AppWaitingForConnect, AppConnected };
     /**
      * Default Constructor
      */
@@ -51,7 +51,7 @@ public:
     virtual ~TestClient();
 
 private Q_SLOTS:
-    void networkStatusChanged( Solid::Networking::Status status );
+    void networkStatusChanged(Solid::Networking::Status status);
     void connectButtonClicked();
     void doConnect();
     void doDisconnect();
@@ -61,12 +61,12 @@ private:
     void appIsConnected();
     void appDisestablishing();
     void appDisconnected();
-    static QColor toQColor( TestClient::AppStatus );
+    static QColor toQColor(TestClient::AppStatus);
 private:
     //OrgKdeSolidNetworkingClientInterface *m_service;
     Ui_TestClientView ui;
     AppStatus m_status; // this represents the app's status not the network's status
-    QWidget * m_view;
+    QWidget *m_view;
 };
 
 #endif // KTESTNETWORKSTATUS_H

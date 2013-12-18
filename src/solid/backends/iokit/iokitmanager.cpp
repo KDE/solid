@@ -29,7 +29,12 @@
 
 #include <CoreFoundation/CoreFoundation.h>
 
-namespace Solid { namespace Backends { namespace IOKit {
+namespace Solid
+{
+namespace Backends
+{
+namespace IOKit
+{
 
 class IOKitManagerPrivate
 {
@@ -86,21 +91,21 @@ const char *IOKitManagerPrivate::typeToName(Solid::DeviceInterface::Type type)
     case Solid::DeviceInterface::Battery:
         return "AppleSmartBattery";
 
-    //Solid::DeviceInterface::GenericInterface:
-    //Solid::DeviceInterface::Block:
-    //Solid::DeviceInterface::StorageAccess:
-    //Solid::DeviceInterface::StorageDrive:
-    //Solid::DeviceInterface::OpticalDrive:
-    //Solid::DeviceInterface::StorageVolume:
-    //Solid::DeviceInterface::OpticalDisc:
-    //Solid::DeviceInterface::Camera:
-    //Solid::DeviceInterface::PortableMediaPlayer:
-    //Solid::DeviceInterface::NetworkInterface:
-    //Solid::DeviceInterface::AcAdapter:
-    //Solid::DeviceInterface::Button:
-    //Solid::DeviceInterface::AudioInterface:
-    //Solid::DeviceInterface::DvbInterface:
-    //Solid::DeviceInterface::Video:
+        //Solid::DeviceInterface::GenericInterface:
+        //Solid::DeviceInterface::Block:
+        //Solid::DeviceInterface::StorageAccess:
+        //Solid::DeviceInterface::StorageDrive:
+        //Solid::DeviceInterface::OpticalDrive:
+        //Solid::DeviceInterface::StorageVolume:
+        //Solid::DeviceInterface::OpticalDisc:
+        //Solid::DeviceInterface::Camera:
+        //Solid::DeviceInterface::PortableMediaPlayer:
+        //Solid::DeviceInterface::NetworkInterface:
+        //Solid::DeviceInterface::AcAdapter:
+        //Solid::DeviceInterface::Button:
+        //Solid::DeviceInterface::AudioInterface:
+        //Solid::DeviceInterface::DvbInterface:
+        //Solid::DeviceInterface::Video:
     }
 
     return 0;
@@ -146,10 +151,12 @@ IOKitManager::IOKitManager(QObject *parent)
 
 IOKitManager::~IOKitManager()
 {
-    if (d->source)
+    if (d->source) {
         CFRunLoopRemoveSource(CFRunLoopGetCurrent(), d->source, kCFRunLoopDefaultMode);
-    if (d->port)
+    }
+    if (d->port) {
         IONotificationPortDestroy(d->port);
+    }
 
     delete d;
 }
@@ -170,10 +177,10 @@ QStringList IOKitManager::allDevices()
 
     io_iterator_t it;
     kern_return_t ret = IORegistryCreateIterator(
-            kIOMasterPortDefault,
-            kIOServicePlane,
-            kIORegistryIterateRecursively,
-            &it);
+                            kIOMasterPortDefault,
+                            kIOServicePlane,
+                            kIORegistryIterateRecursively,
+                            &it);
     if (ret != KERN_SUCCESS) {
         qWarning() << Q_FUNC_INFO << "unable to create iterator";
         return QStringList();
@@ -183,7 +190,7 @@ QStringList IOKitManager::allDevices()
 }
 
 QStringList IOKitManager::devicesFromQuery(const QString &parentUdi,
-                                           Solid::DeviceInterface::Type type)
+        Solid::DeviceInterface::Type type)
 {
     QStringList result;
 
@@ -192,34 +199,38 @@ QStringList IOKitManager::devicesFromQuery(const QString &parentUdi,
         result = allDevices();
     } else {
         const char *deviceClassName = IOKitManagerPrivate::typeToName(type);
-        if (!deviceClassName)
+        if (!deviceClassName) {
             return QStringList();
+        }
 
         CFMutableDictionaryRef matchingDict = IOServiceMatching(deviceClassName);
 
-        if (!matchingDict)
+        if (!matchingDict) {
             return QStringList();
+        }
 
         io_iterator_t it = 0;
 
         // note - IOServiceGetMatchingServices dereferences the dict
         kern_return_t ret = IOServiceGetMatchingServices(
-                kIOMasterPortDefault,
-                matchingDict,
-                &it);
+                                kIOMasterPortDefault,
+                                matchingDict,
+                                &it);
 
         result = IOKitManagerPrivate::devicesFromRegistry(it);
     }
 
     // if the parentUdi is an empty string, return all matches
-    if (parentUdi.isEmpty())
+    if (parentUdi.isEmpty()) {
         return result;
+    }
 
     // return only matches that start with the parent's UDI
     QStringList filtered;
     Q_FOREACH (const QString &udi, result) {
-        if (udi.startsWith(parentUdi))
+        if (udi.startsWith(parentUdi)) {
             filtered += udi;
+        }
     }
 
     return filtered;
@@ -228,18 +239,21 @@ QStringList IOKitManager::devicesFromQuery(const QString &parentUdi,
 QObject *IOKitManager::createDevice(const QString &udi)
 {
     io_registry_entry_t entry = IORegistryEntryFromPath(
-            kIOMasterPortDefault,
-            udi.toLocal8Bit().constData());
+                                    kIOMasterPortDefault,
+                                    udi.toLocal8Bit().constData());
 
     // we have to do IOObjectConformsTo - comparing the class names is not good enough
     //if (IOObjectConformsTo(entry, kIOEthernetInterfaceClass)) {
     //}
 
-    if (entry == MACH_PORT_NULL)
+    if (entry == MACH_PORT_NULL) {
         return 0;
+    }
 
     return new IOKitDevice(udi, entry);
 }
 
-}}} // namespaces
+}
+}
+} // namespaces
 

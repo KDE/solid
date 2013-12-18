@@ -28,11 +28,11 @@
 #include <QtCore/QVector>
 
 class QDBusArgument;
-QDBusArgument& operator<<( QDBusArgument& argument,
-                           const Cagibi::Device& device );
-const QDBusArgument& operator>>( const QDBusArgument& argument,
-                                 Cagibi::Device& device );
+QDBusArgument &operator<<(QDBusArgument &argument,
+                          const Cagibi::Device &device);
+const QDBusArgument &operator>>(const QDBusArgument &argument,
+                                Cagibi::Device &device);
 
-Q_DECLARE_METATYPE( Cagibi::Device )
+Q_DECLARE_METATYPE(Cagibi::Device)
 
 #endif

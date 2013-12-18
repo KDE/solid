@@ -22,7 +22,6 @@
 
 #include <QtCore/QStringList>
 
-
 using namespace Solid::Backends::Fake;
 
 FakeAudioInterface::FakeAudioInterface(FakeDevice *device)
@@ -36,21 +35,15 @@ FakeAudioInterface::~FakeAudioInterface()
 
 }
 
-
 Solid::AudioInterface::AudioDriver FakeAudioInterface::driver() const
 {
     QString driver = fakeDevice()->property("driver").toString();
 
-    if (driver == "alsa")
-    {
+    if (driver == "alsa") {
         return Solid::AudioInterface::Alsa;
-    }
-    else if (driver == "oss")
-    {
+    } else if (driver == "oss") {
         return Solid::AudioInterface::OpenSoundSystem;
-    }
-    else
-    {
+    } else {
         return Solid::AudioInterface::UnknownAudioDriver;
     }
 }
@@ -79,19 +72,13 @@ Solid::AudioInterface::AudioInterfaceTypes FakeAudioInterface::deviceType() cons
 
     QStringList type_list = fakeDevice()->property("type").toString().split(',');
 
-    Q_FOREACH (const QString &type_str, type_list)
-    {
-        if (type_str == "control")
-        {
-            result|=Solid::AudioInterface::AudioControl;
-        }
-        else if (type_str == "input")
-        {
-            result|=Solid::AudioInterface::AudioInput;
-        }
-        else if (type_str == "output")
-        {
-            result|=Solid::AudioInterface::AudioOutput;
+    Q_FOREACH (const QString &type_str, type_list) {
+        if (type_str == "control") {
+            result |= Solid::AudioInterface::AudioControl;
+        } else if (type_str == "input") {
+            result |= Solid::AudioInterface::AudioInput;
+        } else if (type_str == "output") {
+            result |= Solid::AudioInterface::AudioOutput;
         }
     }
 
@@ -102,20 +89,13 @@ Solid::AudioInterface::SoundcardType FakeAudioInterface::soundcardType() const
 {
     QString type_str = fakeDevice()->property("soundcardType").toString();
 
-    if (type_str == "internal")
-    {
+    if (type_str == "internal") {
         return Solid::AudioInterface::InternalSoundcard;
-    }
-    else if (type_str == "usb")
-    {
+    } else if (type_str == "usb") {
         return Solid::AudioInterface::UsbSoundcard;
-    }
-    else if (type_str == "firewire")
-    {
+    } else if (type_str == "firewire") {
         return Solid::AudioInterface::FirewireSoundcard;
-    }
-    else if (type_str == "headset")
-    {
+    } else if (type_str == "headset") {
         return Solid::AudioInterface::Headset;
     }
     return Solid::AudioInterface::InternalSoundcard;

@@ -56,7 +56,7 @@ Q_SIGNALS:
     void teardownRequested(const QString &udi);
 
 private Q_SLOTS:
-    void slotPropertyChanged(const QMap<QString,int> &changes);
+    void slotPropertyChanged(const QMap<QString, int> &changes);
     void slotProcessFinished(int exitCode, QProcess::ExitStatus exitStatus);
 
 private:

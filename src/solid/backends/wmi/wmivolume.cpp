@@ -26,11 +26,9 @@ using namespace Solid::Backends::Wmi;
 Volume::Volume(WmiDevice *device)
     : Block(device)
 {
-    if(m_device->type() == Solid::DeviceInterface::StorageVolume)
-    {
+    if (m_device->type() == Solid::DeviceInterface::StorageVolume) {
         m_logicalDisk = WmiDevice::win32LogicalDiskByDiskPartitionID(m_device->property("DeviceID").toString());
-    }else if(m_device->type() == Solid::DeviceInterface::OpticalDisc)
-    {
+    } else if (m_device->type() == Solid::DeviceInterface::OpticalDisc) {
         m_logicalDisk = WmiDevice::win32LogicalDiskByDriveLetter(m_device->property("Drive").toString());
     }
 }
@@ -40,7 +38,6 @@ Volume::~Volume()
 
 }
 
-
 bool Volume::isIgnored() const
 {
     return m_logicalDisk.isNull();
@@ -48,7 +45,7 @@ bool Volume::isIgnored() const
 
 Solid::StorageVolume::UsageType Volume::usage() const
 {
-        return Solid::StorageVolume::FileSystem;//TODO:???
+    return Solid::StorageVolume::FileSystem;//TODO:???
 }
 
 QString Volume::fsType() const

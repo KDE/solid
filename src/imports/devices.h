@@ -26,7 +26,8 @@
 
 #include <QSharedPointer>
 
-namespace Solid {
+namespace Solid
+{
 
 class DeviceNotifier;
 class DevicesQueryPrivate;
@@ -67,7 +68,8 @@ class DevicesQueryPrivate;
  *    }
  * </code>
  */
-class Devices: public QObject {
+class Devices: public QObject
+{
     Q_OBJECT
 
     Q_PROPERTY(QString query READ query WRITE setQuery NOTIFY queryChanged)
@@ -76,7 +78,7 @@ class Devices: public QObject {
     Q_PROPERTY(QStringList devices READ devices NOTIFY devicesChanged)
 
 public:
-    explicit Devices(QObject * parent = Q_NULLPTR);
+    explicit Devices(QObject *parent = Q_NULLPTR);
     ~Devices();
 
 Q_SIGNALS:

@@ -24,7 +24,6 @@
 #include "soliddefs_p.h"
 #include <solid/ifaces/processor.h>
 
-
 Solid::Processor::Processor(QObject *backendObject)
     : DeviceInterface(*new ProcessorPrivate(), backendObject)
 {

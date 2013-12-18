@@ -25,12 +25,12 @@
 
 namespace Solid
 {
-    class DvbInterfacePrivate : public DeviceInterfacePrivate
-    {
-    public:
-        DvbInterfacePrivate()
-            : DeviceInterfacePrivate() { }
-    };
+class DvbInterfacePrivate : public DeviceInterfacePrivate
+{
+public:
+    DvbInterfacePrivate()
+        : DeviceInterfacePrivate() { }
+};
 }
 
 #endif // SOLID_DVBINTERFACE_P_H

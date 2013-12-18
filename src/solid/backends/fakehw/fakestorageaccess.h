@@ -54,7 +54,7 @@ Q_SIGNALS:
     void teardownRequested(const QString &udi);
 
 private Q_SLOTS:
-    void onPropertyChanged(const QMap<QString,int> &changes);
+    void onPropertyChanged(const QMap<QString, int> &changes);
 };
 }
 }

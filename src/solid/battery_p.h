@@ -25,12 +25,12 @@
 
 namespace Solid
 {
-    class BatteryPrivate : public DeviceInterfacePrivate
-    {
-    public:
-        BatteryPrivate()
-            : DeviceInterfacePrivate() { }
-    };
+class BatteryPrivate : public DeviceInterfacePrivate
+{
+public:
+    BatteryPrivate()
+        : DeviceInterfacePrivate() { }
+};
 }
 
 #endif

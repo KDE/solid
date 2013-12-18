@@ -45,10 +45,12 @@ QVariant SerialInterface::driverHandle() const
 Solid::SerialInterface::SerialType SerialInterface::serialType() const
 {
     QString type = m_device->prop("serial.type").toString();
-    if (type == QLatin1String("platform"))
+    if (type == QLatin1String("platform")) {
         return Solid::SerialInterface::Platform;
-    if (type == QLatin1String("usb"))
+    }
+    if (type == QLatin1String("usb")) {
         return Solid::SerialInterface::Usb;
+    }
     return Solid::SerialInterface::Unknown;
 }
 

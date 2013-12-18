@@ -32,58 +32,58 @@ namespace Backends
 {
 namespace Fstab
 {
-    class FstabDevice;
-    class FstabStorageAccess : public QObject, public Solid::Ifaces::StorageAccess
-    {
-        Q_OBJECT
-        Q_INTERFACES(Solid::Ifaces::StorageAccess)
+class FstabDevice;
+class FstabStorageAccess : public QObject, public Solid::Ifaces::StorageAccess
+{
+    Q_OBJECT
+    Q_INTERFACES(Solid::Ifaces::StorageAccess)
 
-        public:
-            explicit FstabStorageAccess(Solid::Backends::Fstab::FstabDevice *device);
+public:
+    explicit FstabStorageAccess(Solid::Backends::Fstab::FstabDevice *device);
 
-            virtual ~FstabStorageAccess();
+    virtual ~FstabStorageAccess();
 
-            virtual bool isAccessible() const;
+    virtual bool isAccessible() const;
 
-            virtual QString filePath() const;
+    virtual QString filePath() const;
 
-            virtual bool isIgnored() const;
+    virtual bool isIgnored() const;
 
-            virtual bool setup();
+    virtual bool setup();
 
-            virtual bool teardown();
+    virtual bool teardown();
 
-        public:
-            const Solid::Backends::Fstab::FstabDevice* fstabDevice() const;
+public:
+    const Solid::Backends::Fstab::FstabDevice *fstabDevice() const;
 
-        Q_SIGNALS:
-            void accessibilityChanged(bool accessible, const QString &udi);
+Q_SIGNALS:
+    void accessibilityChanged(bool accessible, const QString &udi);
 
-            void setupDone(Solid::ErrorType error, QVariant data, const QString &udi);
+    void setupDone(Solid::ErrorType error, QVariant data, const QString &udi);
 
-            void teardownDone(Solid::ErrorType error, QVariant data, const QString &udi);
+    void teardownDone(Solid::ErrorType error, QVariant data, const QString &udi);
 
-            void setupRequested(const QString &udi);
+    void setupRequested(const QString &udi);
 
-            void teardownRequested(const QString &udi);
+    void teardownRequested(const QString &udi);
 
-        private Q_SLOTS:
-            void slotSetupFinished(int exitCode, QProcess::ExitStatus exitStatus);
-            void slotTeardownFinished(int exitCode, QProcess::ExitStatus exitStatus);
-            void onMtabChanged(const QString& device);
-            void connectDBusSignals();
+private Q_SLOTS:
+    void slotSetupFinished(int exitCode, QProcess::ExitStatus exitStatus);
+    void slotTeardownFinished(int exitCode, QProcess::ExitStatus exitStatus);
+    void onMtabChanged(const QString &device);
+    void connectDBusSignals();
 
-            void slotSetupRequested();
-            void slotSetupDone(int error, const QString &errorString);
-            void slotTeardownRequested();
-            void slotTeardownDone(int error, const QString &errorString);
+    void slotSetupRequested();
+    void slotSetupDone(int error, const QString &errorString);
+    void slotTeardownRequested();
+    void slotTeardownDone(int error, const QString &errorString);
 
-        private:
-            Solid::Backends::Fstab::FstabDevice *m_fstabDevice;
-            QProcess *m_process;
-            QString m_filePath;
-            bool m_isAccessible;
-    };
+private:
+    Solid::Backends::Fstab::FstabDevice *m_fstabDevice;
+    QProcess *m_process;
+    QString m_filePath;
+    bool m_isAccessible;
+};
 
 }
 }

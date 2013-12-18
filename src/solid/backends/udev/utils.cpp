@@ -22,12 +22,12 @@
 #include <QtCore/QList>
 #include <QDebug>
 
-int Solid::Backends::UDev::input_str_to_bitmask(const QByteArray& value, long int* bitmask, size_t max_size, int max_bits)
+int Solid::Backends::UDev::input_str_to_bitmask(const QByteArray &value, long int *bitmask, size_t max_size, int max_bits)
 {
     int i, j;
     int num_bits_set = 0;
 
-    memset (bitmask, 0, max_size);
+    memset(bitmask, 0, max_size);
     QList<QByteArray> bits = value.split(' ');
     for (i = bits.length() - 1, j = 0; i >= 0; i--, j++) {
         if (j >= max_bits) {

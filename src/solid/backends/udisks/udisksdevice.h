@@ -44,9 +44,8 @@ public:
     UDisksDevice(const QString &udi);
     virtual ~UDisksDevice();
 
-
-    virtual QObject* createDeviceInterface(const Solid::DeviceInterface::Type& type);
-    virtual bool queryDeviceInterface(const Solid::DeviceInterface::Type& type) const;
+    virtual QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type);
+    virtual bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const;
     virtual QString description() const;
     virtual QStringList emblems() const;
     virtual QString icon() const;
@@ -61,8 +60,8 @@ public:
 
     bool isDeviceBlacklisted() const;
 
-    QString errorToString(const QString & error) const;
-    Solid::ErrorType errorToSolidError(const QString & error) const;
+    QString errorToString(const QString &error) const;
+    Solid::ErrorType errorToSolidError(const QString &error) const;
 
 Q_SIGNALS:
     void changed();

@@ -43,9 +43,8 @@ public:
     UPowerDevice(const QString &udi);
     virtual ~UPowerDevice();
 
-
-    virtual QObject* createDeviceInterface(const Solid::DeviceInterface::Type& type);
-    virtual bool queryDeviceInterface(const Solid::DeviceInterface::Type& type) const;
+    virtual QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type);
+    virtual bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const;
     virtual QString description() const;
     virtual QStringList emblems() const;
     virtual QString icon() const;

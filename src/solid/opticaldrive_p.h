@@ -25,12 +25,12 @@
 
 namespace Solid
 {
-    class OpticalDrivePrivate : public StorageDrivePrivate
-    {
-    public:
-        OpticalDrivePrivate()
-            : StorageDrivePrivate() { }
-    };
+class OpticalDrivePrivate : public StorageDrivePrivate
+{
+public:
+    OpticalDrivePrivate()
+        : StorageDrivePrivate() { }
+};
 }
 
 #endif // SOLID_OPTICALDRIVE_P_H

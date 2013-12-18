@@ -113,10 +113,10 @@ Solid::Backends::Fstab::FstabHandling::FstabHandling()
 bool _k_isFstabNetworkFileSystem(const QString &fstype, const QString &devName)
 {
     if (fstype == "nfs"
-     || fstype == "nfs4"
-     || fstype == "smbfs"
-     || fstype == "cifs"
-     || devName.startsWith(QLatin1String("//"))) {
+            || fstype == "nfs4"
+            || fstype == "smbfs"
+            || fstype == "cifs"
+            || devName.startsWith(QLatin1String("//"))) {
         return true;
     }
     return false;
@@ -124,8 +124,9 @@ bool _k_isFstabNetworkFileSystem(const QString &fstype, const QString &devName)
 
 void Solid::Backends::Fstab::FstabHandling::_k_updateFstabMountPointsCache()
 {
-    if (globalFstabCache->m_fstabCacheValid)
+    if (globalFstabCache->m_fstabCacheValid) {
         return;
+    }
 
     globalFstabCache->m_fstabCache.clear();
 
@@ -213,8 +214,8 @@ QStringList Solid::Backends::Fstab::FstabHandling::mountPoints(const QString &de
 }
 
 QProcess *Solid::Backends::Fstab::FstabHandling::callSystemCommand(const QString &commandName,
-                                                                 const QStringList &args,
-                                                                 QObject *obj, const char *slot)
+        const QStringList &args,
+        QObject *obj, const char *slot)
 {
     QStringList env = QProcess::systemEnvironment();
     env.replaceInStrings(QRegExp("^PATH=(.*)", Qt::CaseInsensitive), "PATH=/sbin:/bin:/usr/sbin/:/usr/bin");
@@ -236,16 +237,17 @@ QProcess *Solid::Backends::Fstab::FstabHandling::callSystemCommand(const QString
 }
 
 QProcess *Solid::Backends::Fstab::FstabHandling::callSystemCommand(const QString &commandName,
-                                                                 const QString &device,
-                                                                 QObject *obj, const char *slot)
+        const QString &device,
+        QObject *obj, const char *slot)
 {
     return callSystemCommand(commandName, QStringList() << device, obj, slot);
 }
 
 void Solid::Backends::Fstab::FstabHandling::_k_updateMtabMountPointsCache()
 {
-    if (globalFstabCache->m_mtabCacheValid)
+    if (globalFstabCache->m_mtabCacheValid) {
         return;
+    }
 
     globalFstabCache->m_mtabCache.clear();
 
@@ -259,8 +261,7 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateMtabMountPointsCache()
 
     int num_fs = getmntinfo(&mounted, MNT_NOWAIT);
 
-    for (int i=0;i< num_fs;i++)
-    {
+    for (int i = 0; i < num_fs; i++) {
 #ifdef __osf__
         QString type = QFile::decodeName(mnt_names[mounted[i].f_type]);
 #else
@@ -282,30 +283,27 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateMtabMountPointsCache()
     int fsname_len, num;
     int buf_sz = 4096;
 
-    mntctl_buffer = (struct vmount*)malloc(buf_sz);
+    mntctl_buffer = (struct vmount *)malloc(buf_sz);
     num = mntctl(MCTL_QUERY, buf_sz, mntctl_buffer);
-    if (num == 0)
-    {
-        buf_sz = *(int*)mntctl_buffer;
+    if (num == 0) {
+        buf_sz = *(int *)mntctl_buffer;
         free(mntctl_buffer);
-        mntctl_buffer = (struct vmount*)malloc(buf_sz);
+        mntctl_buffer = (struct vmount *)malloc(buf_sz);
         num = mntctl(MCTL_QUERY, buf_sz, mntctl_buffer);
     }
 
-    if (num > 0)
-    {
+    if (num > 0) {
         /* iterate through items in the vmount structure: */
         vm = (struct vmount *)mntctl_buffer;
-        for ( ; num > 0; --num )
-        {
+        for (; num > 0; --num) {
             /* get the name of the mounted file systems: */
             fsname_len = vmt2datasize(vm, VMT_STUB);
-            mountedto     = (char*)malloc(fsname_len + 1);
+            mountedto     = (char *)malloc(fsname_len + 1);
             mountedto[fsname_len] = '\0';
             strncpy(mountedto, (char *)vmt2dataptr(vm, VMT_STUB), fsname_len);
 
             fsname_len = vmt2datasize(vm, VMT_OBJECT);
-            mountedfrom     = (char*)malloc(fsname_len + 1);
+            mountedfrom     = (char *)malloc(fsname_len + 1);
             mountedfrom[fsname_len] = '\0';
             strncpy(mountedfrom, (char *)vmt2dataptr(vm, VMT_OBJECT), fsname_len);
 
@@ -313,7 +311,7 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateMtabMountPointsCache()
              * as listed in /etc/vfs.
              * ex.: nfs,jfs,afs,cdrfs,sfs,cachefs,nfs3,autofs
              */
-            struct vfs_ent* ent = getvfsbytype(vm->vmt_gfstype);
+            struct vfs_ent *ent = getvfsbytype(vm->vmt_gfstype);
 
             QString type = QFile::decodeName(ent->vfsent_name);
             if (_k_isFstabNetworkFileSystem(type, QString())) {
@@ -329,18 +327,18 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateMtabMountPointsCache()
             vm = (struct vmount *)((char *)vm + vm->vmt_length);
         }
 
-        endvfsent( );
+        endvfsent();
     }
 
-    free( mntctl_buffer );
+    free(mntctl_buffer);
 #else
     STRUCT_SETMNTENT mnttab;
-    if ((mnttab = SETMNTENT(MNTTAB, "r")) == 0)
+    if ((mnttab = SETMNTENT(MNTTAB, "r")) == 0) {
         return;
+    }
 
     STRUCT_MNTENT fe;
-    while (GETMNTENT(mnttab, fe))
-    {
+    while (GETMNTENT(mnttab, fe)) {
         QString type = QFile::decodeName(MOUNTTYPE(fe));
         if (_k_isFstabNetworkFileSystem(type, QString())) {
             const QString device = QFile::decodeName(FSNAME(fe));

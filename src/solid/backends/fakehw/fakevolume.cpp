@@ -44,24 +44,15 @@ Solid::StorageVolume::UsageType FakeVolume::usage() const
 {
     QString usage = fakeDevice()->property("usage").toString();
 
-    if (usage == "filesystem")
-    {
+    if (usage == "filesystem") {
         return Solid::StorageVolume::FileSystem;
-    }
-    else if (usage == "partitiontable")
-    {
+    } else if (usage == "partitiontable") {
         return Solid::StorageVolume::PartitionTable;
-    }
-    else if (usage == "raid")
-    {
+    } else if (usage == "raid") {
         return Solid::StorageVolume::Raid;
-    }
-    else if (usage == "unused")
-    {
+    } else if (usage == "unused") {
         return Solid::StorageVolume::Unused;
-    }
-    else
-    {
+    } else {
         return Solid::StorageVolume::Other;
     }
 }

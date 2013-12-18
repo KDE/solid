@@ -27,46 +27,46 @@ namespace Solid
 {
 namespace Ifaces
 {
+/**
+ * This device interface is available on block devices.
+ *
+ * A block device is an adressable device such as drive or partition.
+ * It is possible to interact with such a device using a special file
+ * in the system.
+ */
+class Block : virtual public DeviceInterface
+{
+public:
     /**
-     * This device interface is available on block devices.
-     *
-     * A block device is an adressable device such as drive or partition.
-     * It is possible to interact with such a device using a special file
-     * in the system.
+     * Destroys a Block object.
      */
-    class Block : virtual public DeviceInterface
-    {
-    public:
-        /**
-         * Destroys a Block object.
-         */
-        virtual ~Block();
+    virtual ~Block();
 
-        /**
-         * Retrieves the major number of the node file to interact with
-         * the device.
-         *
-         * @return the device major number
-         */
-        virtual int deviceMajor() const = 0;
+    /**
+     * Retrieves the major number of the node file to interact with
+     * the device.
+     *
+     * @return the device major number
+     */
+    virtual int deviceMajor() const = 0;
 
-        /**
-         * Retrieves the minor number of the node file to interact with
-         * the device.
-         *
-         * @return the device minor number
-         */
-        virtual int deviceMinor() const = 0;
+    /**
+     * Retrieves the minor number of the node file to interact with
+     * the device.
+     *
+     * @return the device minor number
+     */
+    virtual int deviceMinor() const = 0;
 
-        /**
-         * Retrieves the absolute path of the special file to interact
-         * with the device.
-         *
-         * @return the absolute path of the special file to interact with
-         * the device
-         */
-        virtual QString device() const = 0;
-    };
+    /**
+     * Retrieves the absolute path of the special file to interact
+     * with the device.
+     *
+     * @return the absolute path of the special file to interact with
+     * the device
+     */
+    virtual QString device() const = 0;
+};
 }
 }
 

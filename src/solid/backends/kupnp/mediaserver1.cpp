@@ -37,30 +37,30 @@ static const char MediaServer1Udn[] = "urn:schemas-upnp-org:device:MediaServer:1
 
 MediaServer1Factory::MediaServer1Factory() {}
 
-void MediaServer1Factory::addSupportedInterfaces( QSet<Solid::DeviceInterface::Type>& interfaces ) const
+void MediaServer1Factory::addSupportedInterfaces(QSet<Solid::DeviceInterface::Type> &interfaces) const
 {
     interfaces << Solid::DeviceInterface::StorageAccess;
 }
 
-QStringList MediaServer1Factory::typeNames( Solid::DeviceInterface::Type type ) const
+QStringList MediaServer1Factory::typeNames(Solid::DeviceInterface::Type type) const
 {
     QStringList result;
 
-    if (type==Solid::DeviceInterface::StorageAccess)
+    if (type == Solid::DeviceInterface::StorageAccess) {
         result << QLatin1String(MediaServer1Udn);
+    }
 
     return result;
 }
 
-QObject* MediaServer1Factory::tryCreateDevice( const Cagibi::Device& device ) const
+QObject *MediaServer1Factory::tryCreateDevice(const Cagibi::Device &device) const
 {
-    return ( device.type() == QLatin1String(MediaServer1Udn) ) ?
-        new MediaServer1( device ) : 0;
+    return (device.type() == QLatin1String(MediaServer1Udn)) ?
+           new MediaServer1(device) : 0;
 }
 
-
-MediaServer1::MediaServer1(const Cagibi::Device& device)
-  : KUPnPDevice(device)
+MediaServer1::MediaServer1(const Cagibi::Device &device)
+    : KUPnPDevice(device)
 {
 }
 
@@ -73,29 +73,27 @@ QString MediaServer1::icon() const
     return QString::fromLatin1("folder-remote");
 }
 
-
 QString MediaServer1::description() const
 {
     return tr("UPnP Media Server v1");
 }
 
-
 bool MediaServer1::queryDeviceInterface(const Solid::DeviceInterface::Type &type) const
 {
     bool result = false;
 
-    if (type==Solid::DeviceInterface::StorageAccess) {
+    if (type == Solid::DeviceInterface::StorageAccess) {
         result = true;
     }
 
     return result;
 }
 
-QObject* MediaServer1::createDeviceInterface(const Solid::DeviceInterface::Type& type)
+QObject *MediaServer1::createDeviceInterface(const Solid::DeviceInterface::Type &type)
 {
-    DeviceInterface* interface = 0;
+    DeviceInterface *interface = 0;
 
-    if (type==Solid::DeviceInterface::StorageAccess) {
+    if (type == Solid::DeviceInterface::StorageAccess) {
         interface = new StorageAccess(this);
     }
 

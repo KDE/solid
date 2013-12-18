@@ -47,19 +47,19 @@ public:
     class WmiEventSink : public IWbemObjectSink
     {
     public:
-        WmiEventSink(class WmiManager* parent,const QString &query,const QList<Solid::DeviceInterface::Type> &types);
+        WmiEventSink(class WmiManager *parent, const QString &query, const QList<Solid::DeviceInterface::Type> &types);
         ~WmiEventSink();
 
         virtual ulong STDMETHODCALLTYPE AddRef();
         virtual ulong STDMETHODCALLTYPE Release();
 
-        virtual HRESULT  STDMETHODCALLTYPE QueryInterface(REFIID riid, void** ppv);
+        virtual HRESULT  STDMETHODCALLTYPE QueryInterface(REFIID riid, void **ppv);
 
-        virtual HRESULT STDMETHODCALLTYPE Indicate(long lObjectCount,IWbemClassObject **apObjArray);
+        virtual HRESULT STDMETHODCALLTYPE Indicate(long lObjectCount, IWbemClassObject **apObjArray);
 
-        virtual HRESULT STDMETHODCALLTYPE SetStatus(long lFlags,HRESULT hResult,BSTR strParam,IWbemClassObject *pObjParam);
+        virtual HRESULT STDMETHODCALLTYPE SetStatus(long lFlags, HRESULT hResult, BSTR strParam, IWbemClassObject *pObjParam);
 
-        const QString& query() const;
+        const QString &query() const;
 
     private:
         WmiManager *m_parent;
@@ -69,10 +69,10 @@ public:
 
     };
 
-    WmiManager(QObject *parent=0);
+    WmiManager(QObject *parent = 0);
     virtual ~WmiManager();
 
-    virtual QString udiPrefix() const ;
+    virtual QString udiPrefix() const;
     virtual QSet<Solid::DeviceInterface::Type> supportedInterfaces() const;
 
     virtual QStringList allDevices();
@@ -82,7 +82,6 @@ public:
                                          Solid::DeviceInterface::Type type);
 
     virtual QObject *createDevice(const QString &udi);
-
 
 private Q_SLOTS:
     void slotDeviceAdded(const QString &udi);

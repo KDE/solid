@@ -22,14 +22,11 @@
 
 using namespace Solid::Backends::Win;
 
-
 WinInterface::WinInterface(WinDevice *device)
-    :QObject(device)
-    ,m_device(device)
+    : QObject(device)
+    , m_device(device)
 {
 }
-
-
 
 WinInterface::~WinInterface()
 {

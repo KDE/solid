@@ -32,35 +32,23 @@ WinOpticalDisc::WinOpticalDisc(WinDevice *device) :
     m_isRewritable(false)
 {
     //TODO: blueray etc
-    QMap<ulong,MediaProfiles> profiles = MediaProfiles::profiles(WinBlock::driveLetterFromUdi(m_device->udi()));
+    QMap<ulong, MediaProfiles> profiles = MediaProfiles::profiles(WinBlock::driveLetterFromUdi(m_device->udi()));
 
-    if(profiles[ProfileCdRecordable].active)
-    {
+    if (profiles[ProfileCdRecordable].active) {
         m_discType = Solid::OpticalDisc::CdRecordable;
-    }else if(profiles[ProfileCdRewritable].active)
-    {
+    } else if (profiles[ProfileCdRewritable].active) {
         m_discType = Solid::OpticalDisc::CdRewritable;
         m_isRewritable =  true;
-    }
-    else if(profiles[ProfileCdrom].active)
-    {
+    } else if (profiles[ProfileCdrom].active) {
         m_discType = Solid::OpticalDisc::CdRom;
-    }
-    else if(profiles[ProfileDvdRecordable].active)
-    {
+    } else if (profiles[ProfileDvdRecordable].active) {
         m_discType = Solid::OpticalDisc::DvdRecordable;
-    }
-    else if(profiles[ProfileDvdRewritable].active)
-    {
+    } else if (profiles[ProfileDvdRewritable].active) {
         m_discType = Solid::OpticalDisc::DvdRewritable;
         m_isRewritable = true;
-    }
-    else if(profiles[ProfileDvdRom].active)
-    {
+    } else if (profiles[ProfileDvdRom].active) {
         m_discType = Solid::OpticalDisc::DvdRom;
-    }
-    else
-    {
+    } else {
         m_discType = Solid::OpticalDisc::UnknownDiscType;
     }
 }
@@ -90,16 +78,15 @@ bool WinOpticalDisc::isBlank() const
     wchar_t dLetter[MAX_PATH];
     int dLetterSize = WinBlock::driveLetterFromUdi(m_device->udi()).toWCharArray(dLetter);
     dLetter[dLetterSize] = (wchar_t)'\\';
-    dLetter[dLetterSize+1] = 0;
+    dLetter[dLetterSize + 1] = 0;
 
     ULARGE_INTEGER sizeTotal;
     ULARGE_INTEGER sizeFree;
-    if(GetDiskFreeSpaceEx(dLetter,&sizeFree,&sizeTotal,NULL))
-    {
-        return sizeFree.QuadPart>0 && sizeTotal.QuadPart == 0;
+    if (GetDiskFreeSpaceEx(dLetter, &sizeFree, &sizeTotal, NULL)) {
+        return sizeFree.QuadPart > 0 && sizeTotal.QuadPart == 0;
     }
     //FIXME: the call will fail on a blank cd, and inf there is no cd, but if we got a disc type we could guess that it is a blank cd
-    return m_discType != Solid::OpticalDisc::UnknownDiscType ;
+    return m_discType != Solid::OpticalDisc::UnknownDiscType;
 }
 
 bool WinOpticalDisc::isRewritable() const

@@ -25,7 +25,6 @@
 
 #include <QtCore/QMetaEnum>
 
-
 Solid::DeviceInterface::DeviceInterface(DeviceInterfacePrivate &dd, QObject *backendObject)
     : d_ptr(&dd)
 {
@@ -33,7 +32,6 @@ Solid::DeviceInterface::DeviceInterface(DeviceInterfacePrivate &dd, QObject *bac
 
     d->setBackendObject(backendObject);
 }
-
 
 Solid::DeviceInterface::~DeviceInterface()
 {
@@ -44,7 +42,7 @@ Solid::DeviceInterface::~DeviceInterface()
 bool Solid::DeviceInterface::isValid() const
 {
     Q_D(const DeviceInterface);
-    return d->backendObject()!=0;
+    return d->backendObject() != 0;
 }
 
 QString Solid::DeviceInterface::typeToString(Type type)
@@ -63,8 +61,7 @@ Solid::DeviceInterface::Type Solid::DeviceInterface::stringToType(const QString 
 
 QString Solid::DeviceInterface::typeDescription(Type type)
 {
-    switch (type)
-    {
+    switch (type) {
     case Unknown:
         return tr("Unknown", "Unknown device type");
     case GenericInterface:
@@ -140,7 +137,7 @@ void Solid::DeviceInterfacePrivate::setBackendObject(QObject *object)
     m_backendObject = object;
 }
 
-Solid::DevicePrivate* Solid::DeviceInterfacePrivate::devicePrivate() const
+Solid::DevicePrivate *Solid::DeviceInterfacePrivate::devicePrivate() const
 {
     return m_devicePrivate;
 }

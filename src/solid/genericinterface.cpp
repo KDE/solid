@@ -24,7 +24,6 @@
 
 #include <solid/ifaces/genericinterface.h>
 
-
 Solid::GenericInterface::GenericInterface(QObject *backendObject)
     : DeviceInterface(*new GenericInterfacePrivate(), backendObject)
 {
@@ -35,7 +34,6 @@ Solid::GenericInterface::GenericInterface(QObject *backendObject)
                 this, SIGNAL(conditionRaised(QString,QString)));
     }
 }
-
 
 Solid::GenericInterface::~GenericInterface()
 {

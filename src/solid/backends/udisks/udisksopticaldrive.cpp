@@ -53,8 +53,9 @@ UDisksOpticalDrive::~UDisksOpticalDrive()
 
 bool UDisksOpticalDrive::eject()
 {
-    if (m_ejectInProgress)
+    if (m_ejectInProgress) {
         return false;
+    }
     m_ejectInProgress = true;
     m_device->broadcastActionRequested("eject");
 
@@ -77,7 +78,7 @@ void UDisksOpticalDrive::slotDBusError(const QDBusError &error)
 {
     m_ejectInProgress = false;
     m_device->broadcastActionDone("eject", m_device->errorToSolidError(error.name()),
-                                  m_device->errorToString(error.name()) + ": " +error.message());
+                                  m_device->errorToString(error.name()) + ": " + error.message());
 }
 
 void UDisksOpticalDrive::slotEjectRequested()
@@ -102,7 +103,7 @@ void UDisksOpticalDrive::initReadWriteSpeeds() const
     //qDebug("Doing open (\"%s\", O_RDONLY | O_NONBLOCK)", device_file.constData());
     int fd = open(device_file, O_RDONLY | O_NONBLOCK);
     if (fd < 0) {
-        qWarning("Cannot open %s: %s", device_file.constData(), strerror (errno));
+        qWarning("Cannot open %s: %s", device_file.constData(), strerror(errno));
         return;
     }
 
@@ -111,8 +112,9 @@ void UDisksOpticalDrive::initReadWriteSpeeds() const
         m_writeSpeed = write_speed;
 
         QStringList list = QString::fromLatin1(write_speeds).split(',', QString::SkipEmptyParts);
-        Q_FOREACH (const QString & speed, list)
+        Q_FOREACH (const QString &speed, list) {
             m_writeSpeeds.append(speed.toInt());
+        }
 
         free(write_speeds);
 
@@ -125,23 +127,26 @@ void UDisksOpticalDrive::initReadWriteSpeeds() const
 
 QList<int> UDisksOpticalDrive::writeSpeeds() const
 {
-    if (!m_speedsInit)
+    if (!m_speedsInit) {
         initReadWriteSpeeds();
+    }
     //qDebug() << "solid write speeds:" << m_writeSpeeds;
     return m_writeSpeeds;
 }
 
 int UDisksOpticalDrive::writeSpeed() const
 {
-    if (!m_speedsInit)
+    if (!m_speedsInit) {
         initReadWriteSpeeds();
+    }
     return m_writeSpeed;
 }
 
 int UDisksOpticalDrive::readSpeed() const
 {
-    if (!m_speedsInit)
+    if (!m_speedsInit) {
         initReadWriteSpeeds();
+    }
     return m_readSpeed;
 }
 
@@ -155,27 +160,25 @@ Solid::OpticalDrive::MediumTypes UDisksOpticalDrive::supportedMedia() const
     map[Solid::OpticalDrive::Cdrw] = "optical_cd_rw";
     map[Solid::OpticalDrive::Dvd] = "optical_dvd";
     map[Solid::OpticalDrive::Dvdr] = "optical_dvd_r";
-    map[Solid::OpticalDrive::Dvdrw] ="optical_dvd_rw";
-    map[Solid::OpticalDrive::Dvdram] ="optical_dvd_ram";
-    map[Solid::OpticalDrive::Dvdplusr] ="optical_dvd_plus_r";
-    map[Solid::OpticalDrive::Dvdplusrw] ="optical_dvd_plus_rw";
-    map[Solid::OpticalDrive::Dvdplusdl] ="optical_dvd_plus_r_dl";
-    map[Solid::OpticalDrive::Dvdplusdlrw] ="optical_dvd_plus_rw_dl";
-    map[Solid::OpticalDrive::Bd] ="optical_bd";
-    map[Solid::OpticalDrive::Bdr] ="optical_bd_r";
-    map[Solid::OpticalDrive::Bdre] ="optical_bd_re";
-    map[Solid::OpticalDrive::HdDvd] ="optical_hddvd";
-    map[Solid::OpticalDrive::HdDvdr] ="optical_hddvd_r";
-    map[Solid::OpticalDrive::HdDvdrw] ="optical_hddvd_rw";
+    map[Solid::OpticalDrive::Dvdrw] = "optical_dvd_rw";
+    map[Solid::OpticalDrive::Dvdram] = "optical_dvd_ram";
+    map[Solid::OpticalDrive::Dvdplusr] = "optical_dvd_plus_r";
+    map[Solid::OpticalDrive::Dvdplusrw] = "optical_dvd_plus_rw";
+    map[Solid::OpticalDrive::Dvdplusdl] = "optical_dvd_plus_r_dl";
+    map[Solid::OpticalDrive::Dvdplusdlrw] = "optical_dvd_plus_rw_dl";
+    map[Solid::OpticalDrive::Bd] = "optical_bd";
+    map[Solid::OpticalDrive::Bdr] = "optical_bd_r";
+    map[Solid::OpticalDrive::Bdre] = "optical_bd_re";
+    map[Solid::OpticalDrive::HdDvd] = "optical_hddvd";
+    map[Solid::OpticalDrive::HdDvdr] = "optical_hddvd_r";
+    map[Solid::OpticalDrive::HdDvdrw] = "optical_hddvd_rw";
     // TODO add these to Solid
     //map[Solid::OpticalDrive::Mo] ="optical_mo";
     //map[Solid::OpticalDrive::Mr] ="optical_mrw";
     //map[Solid::OpticalDrive::Mrw] ="optical_mrw_w";
 
-    Q_FOREACH ( const Solid::OpticalDrive::MediumType & type, map.keys() )
-    {
-        if ( mediaTypes.contains( map[type] ) )
-        {
+    Q_FOREACH (const Solid::OpticalDrive::MediumType &type, map.keys()) {
+        if (mediaTypes.contains(map[type])) {
             supported |= type;
         }
     }

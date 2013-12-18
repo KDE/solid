@@ -35,35 +35,35 @@ namespace UdevQt
 
 class DevicePrivate
 {
-    public:
-        DevicePrivate(struct udev_device *udev_, bool ref = true);
-        ~DevicePrivate();
-        DevicePrivate &operator=(const DevicePrivate& other);
+public:
+    DevicePrivate(struct udev_device *udev_, bool ref = true);
+    ~DevicePrivate();
+    DevicePrivate &operator=(const DevicePrivate &other);
 
-        QString decodePropertyValue(const QByteArray &encoded) const;
+    QString decodePropertyValue(const QByteArray &encoded) const;
 
-        struct udev_device *udev;
+    struct udev_device *udev;
 };
 
 class Client;
 class ClientPrivate
 {
-    public:
-        enum ListenToWhat { ListenToList, ListenToNone };
+public:
+    enum ListenToWhat { ListenToList, ListenToNone };
 
-        ClientPrivate(Client *q_);
-        ~ClientPrivate();
+    ClientPrivate(Client *q_);
+    ~ClientPrivate();
 
-        void init(const QStringList &subsystemList, ListenToWhat what);
-        void setWatchedSubsystems(const QStringList &subsystemList);
-        void _uq_monitorReadyRead(int fd);
-        DeviceList deviceListFromEnumerate(struct udev_enumerate *en);
+    void init(const QStringList &subsystemList, ListenToWhat what);
+    void setWatchedSubsystems(const QStringList &subsystemList);
+    void _uq_monitorReadyRead(int fd);
+    DeviceList deviceListFromEnumerate(struct udev_enumerate *en);
 
-        struct udev *udev;
-        struct udev_monitor *monitor;
-        Client *q;
-        QSocketNotifier *monitorNotifier;
-        QStringList watchedSubsystems;
+    struct udev *udev;
+    struct udev_monitor *monitor;
+    Client *q;
+    QSocketNotifier *monitorNotifier;
+    QStringList watchedSubsystems;
 };
 
 inline QStringList listFromListEntry(struct udev_list_entry *list)

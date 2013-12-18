@@ -27,80 +27,80 @@
 
 namespace Solid
 {
-    class NetworkInterfacePrivate;
-    class Device;
+class NetworkInterfacePrivate;
+class Device;
+
+/**
+ * This device interface is available on network interfaces.
+ */
+class SOLID_EXPORT NetworkInterface : public DeviceInterface
+{
+    Q_OBJECT
+    Q_PROPERTY(QString ifaceName READ ifaceName)
+    Q_PROPERTY(bool wireless READ isWireless)
+    Q_PROPERTY(QString hwAddress READ hwAddress)
+    Q_PROPERTY(qulonglong macAddress READ macAddress)
+    Q_DECLARE_PRIVATE(NetworkInterface)
+    friend class Device;
+
+private:
+    /**
+     * Creates a new NetworkInterface object.
+     * You generally won't need this. It's created when necessary using
+     * Device::as().
+     *
+     * @param backendObject the device interface object provided by the backend
+     * @see Solid::Device::as()
+     */
+    explicit NetworkInterface(QObject *backendObject);
+
+public:
+    /**
+     * Destroys a NetworkInterface object.
+     */
+    virtual ~NetworkInterface();
 
     /**
-     * This device interface is available on network interfaces.
+     * Get the Solid::DeviceInterface::Type of the NetworkInterface device interface.
+     *
+     * @return the NetworkInterface device interface type
+     * @see Solid::Ifaces::Enums::DeviceInterface::Type
      */
-    class SOLID_EXPORT NetworkInterface : public DeviceInterface
+    static Type deviceInterfaceType()
     {
-        Q_OBJECT
-        Q_PROPERTY(QString ifaceName READ ifaceName)
-        Q_PROPERTY(bool wireless READ isWireless)
-        Q_PROPERTY(QString hwAddress READ hwAddress)
-        Q_PROPERTY(qulonglong macAddress READ macAddress)
-        Q_DECLARE_PRIVATE(NetworkInterface)
-        friend class Device;
+        return DeviceInterface::NetworkInterface;
+    }
 
-    private:
-        /**
-         * Creates a new NetworkInterface object.
-         * You generally won't need this. It's created when necessary using
-         * Device::as().
-         *
-         * @param backendObject the device interface object provided by the backend
-         * @see Solid::Device::as()
-         */
-        explicit NetworkInterface(QObject *backendObject);
+    /**
+     * Retrieves the name of the interface in the system.
+     * This name is system dependent, it allows to identify the interface
+     * in the system. For example it can be of the form "eth0" under Linux.
+     *
+     * @return the interface name
+     */
+    QString ifaceName() const;
 
-    public:
-        /**
-         * Destroys a NetworkInterface object.
-         */
-        virtual ~NetworkInterface();
+    /**
+     * Indicates if this interface is wireless.
+     *
+     * @return true if the interface is wireless, false otherwise
+     */
+    bool isWireless() const;
 
+    /**
+     * Retrieves the hardware address of the interface.
+     *
+     * @return the hardware address as a string
+     */
+    QString hwAddress() const;
 
-        /**
-         * Get the Solid::DeviceInterface::Type of the NetworkInterface device interface.
-         *
-         * @return the NetworkInterface device interface type
-         * @see Solid::Ifaces::Enums::DeviceInterface::Type
-         */
-        static Type deviceInterfaceType() { return DeviceInterface::NetworkInterface; }
-
-
-        /**
-         * Retrieves the name of the interface in the system.
-         * This name is system dependent, it allows to identify the interface
-         * in the system. For example it can be of the form "eth0" under Linux.
-         *
-         * @return the interface name
-         */
-        QString ifaceName() const;
-
-        /**
-         * Indicates if this interface is wireless.
-         *
-         * @return true if the interface is wireless, false otherwise
-         */
-        bool isWireless() const;
-
-
-        /**
-         * Retrieves the hardware address of the interface.
-         *
-         * @return the hardware address as a string
-         */
-        QString hwAddress() const;
-
-        /**
-         * Retrieves the MAC address of the interface.
-         *
-         * @return the MAC address
-         */
-        qulonglong macAddress() const;
-    };
+    /**
+     * Retrieves the MAC address of the interface.
+     *
+     * @return the MAC address
+     */
+    qulonglong macAddress() const;
+};
 }
 
 #endif // SOLID_NETWORKINTERFACE_H

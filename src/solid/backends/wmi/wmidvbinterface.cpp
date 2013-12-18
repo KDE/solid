@@ -44,25 +44,29 @@ int DvbInterface::deviceAdapter() const
 {
     QString string = device();
     int pos = string.lastIndexOf('/');
-    if (pos < 0)
+    if (pos < 0) {
         return -1;
+    }
     string = string.left(pos);
 
     pos = string.lastIndexOf('/');
-    if (pos < 0)
+    if (pos < 0) {
         return -1;
+    }
     string = string.mid(pos + 1);
 
-    if (!string.startsWith(QLatin1String("adapter")))
+    if (!string.startsWith(QLatin1String("adapter"))) {
         return -1;
+    }
     string = string.mid(7);
 
     bool ok;
     int adapter = string.toInt(&ok, 10);
-    if (ok)
+    if (ok) {
         return adapter;
-    else
+    } else {
         return -1;
+    }
 }
 
 Solid::DvbInterface::DeviceType DvbInterface::deviceType() const
@@ -70,10 +74,11 @@ Solid::DvbInterface::DeviceType DvbInterface::deviceType() const
     Solid::DvbInterface::DeviceType type;
     int index;
 
-    if (parseTypeIndex(&type, &index))
+    if (parseTypeIndex(&type, &index)) {
         return type;
-    else
+    } else {
         return Solid::DvbInterface::DvbUnknown;
+    }
 }
 
 int DvbInterface::deviceIndex() const
@@ -81,18 +86,20 @@ int DvbInterface::deviceIndex() const
     Solid::DvbInterface::DeviceType type;
     int index;
 
-    if (parseTypeIndex(&type, &index))
+    if (parseTypeIndex(&type, &index)) {
         return index;
-    else
+    } else {
         return -1;
+    }
 }
 
 bool DvbInterface::parseTypeIndex(Solid::DvbInterface::DeviceType *type, int *index) const
 {
     QString string = device();
     int pos = string.lastIndexOf('/');
-    if (pos < 0)
+    if (pos < 0) {
         return false;
+    }
     string = string.mid(pos + 1);
 
     if (string.startsWith(QLatin1String("audio"))) {
@@ -122,8 +129,9 @@ bool DvbInterface::parseTypeIndex(Solid::DvbInterface::DeviceType *type, int *in
     } else if (string.startsWith(QLatin1String("video"))) {
         *type = Solid::DvbInterface::DvbVideo;
         string = string.mid(5);
-    } else
+    } else {
         return false;
+    }
 
     bool ok;
     *index = string.toInt(&ok, 10);

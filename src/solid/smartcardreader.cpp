@@ -40,4 +40,3 @@ Solid::SmartCardReader::ReaderType Solid::SmartCardReader::readerType() const
     return_SOLID_CALL(Ifaces::SmartCardReader *, d->backendObject(), CardReader, readerType());
 }
 
-

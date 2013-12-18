@@ -52,7 +52,6 @@ Solid::StorageAccess::StorageAccess(StorageAccessPrivate &dd, QObject *backendOb
     connect(backendObject, SIGNAL(teardownRequested(QString)),
             this, SIGNAL(teardownRequested(QString)));
 
-
     connect(backendObject, SIGNAL(accessibilityChanged(bool,QString)),
             this, SIGNAL(accessibilityChanged(bool,QString)));
 }

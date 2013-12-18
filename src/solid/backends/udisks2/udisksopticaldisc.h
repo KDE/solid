@@ -70,7 +70,7 @@ private:
     mutable Identity m_identity;
     QString media() const;
     mutable Solid::OpticalDisc::ContentTypes m_cachedContent;
-    Device * m_drive;
+    Device *m_drive;
     UdevQt::Device m_udevDevice;
 };
 

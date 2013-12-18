@@ -47,24 +47,33 @@ Solid::DvbInterface::DeviceType FakeDvbInterface::deviceType() const
 {
     QString string = fakeDevice()->property("deviceType").toString();
 
-    if (string == "audio")
+    if (string == "audio") {
         return Solid::DvbInterface::DvbAudio;
-    if (string == "ca")
+    }
+    if (string == "ca") {
         return Solid::DvbInterface::DvbCa;
-    if (string == "demux")
+    }
+    if (string == "demux") {
         return Solid::DvbInterface::DvbDemux;
-    if (string == "dvr")
+    }
+    if (string == "dvr") {
         return Solid::DvbInterface::DvbDvr;
-    if (string == "frontend")
+    }
+    if (string == "frontend") {
         return Solid::DvbInterface::DvbFrontend;
-    if (string == "net")
+    }
+    if (string == "net") {
         return Solid::DvbInterface::DvbNet;
-    if (string == "osd")
+    }
+    if (string == "osd") {
         return Solid::DvbInterface::DvbOsd;
-    if (string == "sec")
+    }
+    if (string == "sec") {
         return Solid::DvbInterface::DvbSec;
-    if (string == "video")
+    }
+    if (string == "video") {
         return Solid::DvbInterface::DvbVideo;
+    }
 
     return Solid::DvbInterface::DvbUnknown;
 }

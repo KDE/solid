@@ -60,4 +60,3 @@ Solid::Processor::InstructionSets Processor::instructionSets() const
     return cpuextensions;
 }
 
-

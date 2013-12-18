@@ -36,14 +36,14 @@ SerialInterface::SerialInterface(UDevDevice *device)
 
     QString path = m_device->deviceName();
 
-    int lastSlash = path.length() - path.lastIndexOf(QLatin1String("/")) -1;
+    int lastSlash = path.length() - path.lastIndexOf(QLatin1String("/")) - 1;
     QByteArray lastElement = path.right(lastSlash).toLatin1();
 
     const char *lastElementAscii = lastElement.constData();
 
-    if (sscanf (lastElementAscii, "ttyS%d", &m_portnum) == 1) {
+    if (sscanf(lastElementAscii, "ttyS%d", &m_portnum) == 1) {
         m_type = Solid::SerialInterface::Platform;
-    } else if (sscanf (lastElementAscii, "ttyUSB%d", &m_portnum) == 1) {
+    } else if (sscanf(lastElementAscii, "ttyUSB%d", &m_portnum) == 1) {
         m_type = Solid::SerialInterface::Usb;
     }
 }

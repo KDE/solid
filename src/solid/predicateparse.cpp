@@ -22,7 +22,7 @@ extern "C"
 {
 #include "predicateparse.h"
 
-void PredicateParse_mainParse(const char *_code);
+    void PredicateParse_mainParse(const char *_code);
 }
 
 #include "predicate.h"
@@ -38,8 +38,7 @@ namespace Solid
 namespace PredicateParse
 {
 
-struct ParsingData
-{
+struct ParsingData {
     ParsingData()
         : result(0)
     {}
@@ -60,8 +59,7 @@ Solid::Predicate Solid::Predicate::fromString(const QString &predicate)
     data->buffer = predicate.toLatin1();
     PredicateParse_mainParse(data->buffer.constData());
     Predicate result;
-    if (data->result)
-    {
+    if (data->result) {
         result = Predicate(*data->result);
         delete data->result;
     }
@@ -69,14 +67,13 @@ Solid::Predicate Solid::Predicate::fromString(const QString &predicate)
     return result;
 }
 
-
 void PredicateParse_setResult(void *result)
 {
     Solid::PredicateParse::ParsingData *data = s_parsingData->localData();
     data->result = (Solid::Predicate *) result;
 }
 
-void PredicateParse_errorDetected(const char* s)
+void PredicateParse_errorDetected(const char *s)
 {
     qWarning("ERROR from solid predicate parser: %s", s);
     s_parsingData->localData()->result = 0;
@@ -121,7 +118,6 @@ void *PredicateParse_newMaskAtom(char *interface, char *property, void *value)
     return result;
 }
 
-
 void *PredicateParse_newIsAtom(char *interface)
 {
     QString iface(interface);
@@ -133,7 +129,6 @@ void *PredicateParse_newIsAtom(char *interface)
     return result;
 }
 
-
 void *PredicateParse_newAnd(void *pred1, void *pred2)
 {
     Solid::Predicate *result = new Solid::Predicate();
@@ -142,7 +137,7 @@ void *PredicateParse_newAnd(void *pred1, void *pred2)
     Solid::Predicate *p1 = (Solid::Predicate *)pred1;
     Solid::Predicate *p2 = (Solid::Predicate *)pred2;
 
-    if (p1==data->result || p2==data->result) {
+    if (p1 == data->result || p2 == data->result) {
         data->result = 0;
     }
 
@@ -154,7 +149,6 @@ void *PredicateParse_newAnd(void *pred1, void *pred2)
     return result;
 }
 
-
 void *PredicateParse_newOr(void *pred1, void *pred2)
 {
     Solid::Predicate *result = new Solid::Predicate();
@@ -163,7 +157,7 @@ void *PredicateParse_newOr(void *pred1, void *pred2)
     Solid::Predicate *p1 = (Solid::Predicate *)pred1;
     Solid::Predicate *p2 = (Solid::Predicate *)pred2;
 
-    if (p1==data->result || p2==data->result) {
+    if (p1 == data->result || p2 == data->result) {
         data->result = 0;
     }
 
@@ -175,7 +169,6 @@ void *PredicateParse_newOr(void *pred1, void *pred2)
     return result;
 }
 
-
 void *PredicateParse_newStringValue(char *val)
 {
     QString s(val);
@@ -185,31 +178,26 @@ void *PredicateParse_newStringValue(char *val)
     return new QVariant(s);
 }
 
-
 void *PredicateParse_newBoolValue(int val)
 {
     bool b = (val != 0);
     return new QVariant(b);
 }
 
-
 void *PredicateParse_newNumValue(int val)
 {
     return new QVariant(val);
 }
-
 
 void *PredicateParse_newDoubleValue(double val)
 {
     return new QVariant(val);
 }
 
-
 void *PredicateParse_newEmptyStringListValue()
 {
     return new QVariant(QStringList());
 }
-
 
 void *PredicateParse_newStringListValue(char *name)
 {
@@ -220,7 +208,6 @@ void *PredicateParse_newStringListValue(char *name)
 
     return new QVariant(list);
 }
-
 
 void *PredicateParse_appendStringListValue(char *name, void *list)
 {
@@ -236,7 +223,7 @@ void *PredicateParse_appendStringListValue(char *name, void *list)
     return new QVariant(new_list);
 }
 
-void PredicateLexer_unknownToken(const char* text)
+void PredicateLexer_unknownToken(const char *text)
 {
     qWarning("ERROR from solid predicate parser: unrecognized token '%s' in predicate '%s'\n",
              text, s_parsingData->localData()->buffer.constData());

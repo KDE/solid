@@ -46,8 +46,9 @@ QStringList Video::supportedDrivers(QString protocol) const
 {
     QStringList drivers;
 
-    if (m_device->propertyExists("ID_USB_DRIVER"))
+    if (m_device->propertyExists("ID_USB_DRIVER")) {
         drivers << m_device->property("ID_USB_DRIVER").toString();
+    }
 
     if (protocol == QLatin1String("video4linux")) {
         drivers << QLatin1String("video4linux"); //Retrocompatibility with KDE < 4.3

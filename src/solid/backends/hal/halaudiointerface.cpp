@@ -27,8 +27,8 @@ using namespace Solid::Backends::Hal;
 
 AudioInterface::AudioInterface(HalDevice *device)
     : DeviceInterface(device),
-    m_soundcardType(Solid::AudioInterface::InternalSoundcard),
-    m_soundcardTypeValid(false)
+      m_soundcardType(Solid::AudioInterface::InternalSoundcard),
+      m_soundcardTypeValid(false)
 {
 
 }
@@ -38,21 +38,15 @@ AudioInterface::~AudioInterface()
 
 }
 
-
 Solid::AudioInterface::AudioDriver AudioInterface::driver() const
 {
     QString capacity = m_device->prop("info.category").toString();
 
-    if (capacity == "alsa")
-    {
+    if (capacity == "alsa") {
         return Solid::AudioInterface::Alsa;
-    }
-    else if (capacity == "oss")
-    {
+    } else if (capacity == "oss") {
         return Solid::AudioInterface::OpenSoundSystem;
-    }
-    else
-    {
+    } else {
         return Solid::AudioInterface::UnknownAudioDriver;
     }
 }
@@ -61,21 +55,16 @@ QVariant AudioInterface::driverHandle() const
 {
     Solid::AudioInterface::AudioDriver d = driver();
 
-    if (d == Solid::AudioInterface::Alsa)
-    {
+    if (d == Solid::AudioInterface::Alsa) {
         QVariant card_id = m_device->prop("alsa.card");
         QVariant dev_id = m_device->prop("alsa.device");
         QVariant subdev_id;
         //TODO alsa.subdevice
 
         return QList<QVariant>() << card_id << dev_id << subdev_id;
-    }
-    else if (d == Solid::AudioInterface::OpenSoundSystem)
-    {
+    } else if (d == Solid::AudioInterface::OpenSoundSystem) {
         return m_device->prop("oss.device_file");
-    }
-    else
-    {
+    } else {
         return QVariant();
     }
 }
@@ -84,26 +73,19 @@ QString AudioInterface::name() const
 {
     Solid::AudioInterface::AudioDriver d = driver();
 
-    if (d == Solid::AudioInterface::Alsa)
-    {
+    if (d == Solid::AudioInterface::Alsa) {
         QVariant card_id = m_device->prop("alsa.card_id");
-        if (card_id.isValid())
-        {
+        if (card_id.isValid()) {
             return card_id.toString().trimmed() + QLatin1String(" (") + m_device->prop("alsa.device_id").toString().trimmed() + ')';
         }
         return m_device->prop("alsa.device_id").toString();
-    }
-    else if (d == Solid::AudioInterface::OpenSoundSystem)
-    {
+    } else if (d == Solid::AudioInterface::OpenSoundSystem) {
         QVariant card_id = m_device->prop("oss.card_id");
-        if (card_id.isValid())
-        {
+        if (card_id.isValid()) {
             return card_id.toString().trimmed() + QLatin1String(" (") + m_device->prop("oss.device_id").toString().trimmed() + ')';
         }
         return m_device->prop("oss.device_id").toString();
-    }
-    else
-    {
+    } else {
         return QString();
     }
 }
@@ -112,54 +94,36 @@ Solid::AudioInterface::AudioInterfaceTypes AudioInterface::deviceType() const
 {
     Solid::AudioInterface::AudioDriver d = driver();
 
-    if (d == Solid::AudioInterface::Alsa)
-    {
+    if (d == Solid::AudioInterface::Alsa) {
         QString type = m_device->prop("alsa.type").toString();
 
-        if (type == "control")
-        {
+        if (type == "control") {
             return Solid::AudioInterface::AudioControl;
-        }
-        else if (type == "capture")
-        {
+        } else if (type == "capture") {
             return Solid::AudioInterface::AudioInput;
-        }
-        else if (type == "playback")
-        {
+        } else if (type == "playback") {
             return Solid::AudioInterface::AudioOutput;
-        }
-        else
-        {
+        } else {
             return Solid::AudioInterface::UnknownAudioInterfaceType;
         }
-    }
-    else if (d == Solid::AudioInterface::OpenSoundSystem)
-    {
+    } else if (d == Solid::AudioInterface::OpenSoundSystem) {
         QString type = m_device->prop("oss.type").toString();
 
-        if (type == "mixer")
-        {
+        if (type == "mixer") {
             return Solid::AudioInterface::AudioControl;
-        }
-        else if (type == "pcm")
-        {
-            return Solid::AudioInterface::AudioInput|Solid::AudioInterface::AudioOutput;
-        }
-        else
-        {
+        } else if (type == "pcm") {
+            return Solid::AudioInterface::AudioInput | Solid::AudioInterface::AudioOutput;
+        } else {
             return Solid::AudioInterface::UnknownAudioInterfaceType;
         }
-    }
-    else
-    {
+    } else {
         return Solid::AudioInterface::UnknownAudioInterfaceType;
     }
 }
 
 Solid::AudioInterface::SoundcardType AudioInterface::soundcardType() const
 {
-    if (m_soundcardTypeValid)
-    {
+    if (m_soundcardTypeValid) {
         return m_soundcardType;
     }
 
@@ -181,29 +145,19 @@ Solid::AudioInterface::SoundcardType AudioInterface::soundcardType() const
         if (productName.contains("headset", Qt::CaseInsensitive) ||
                 productName.contains("headphone", Qt::CaseInsensitive) ||
                 deviceName.contains("headset", Qt::CaseInsensitive) ||
-                deviceName.contains("headphone", Qt::CaseInsensitive))
-        {
+                deviceName.contains("headphone", Qt::CaseInsensitive)) {
             m_soundcardType = Solid::AudioInterface::Headset;
-        }
-        else if (productName.contains("modem", Qt::CaseInsensitive) ||
-                deviceName.contains("modem", Qt::CaseInsensitive))
-        {
+        } else if (productName.contains("modem", Qt::CaseInsensitive) ||
+                   deviceName.contains("modem", Qt::CaseInsensitive)) {
             m_soundcardType = Solid::AudioInterface::Modem;
-        }
-        else
-        {
+        } else {
             QString busName = parentDevice.prop("info.subsystem").toString();
             QString driverName = parentDevice.prop("info.linux.driver").toString();
-            if (busName == "ieee1394")
-            {
+            if (busName == "ieee1394") {
                 m_soundcardType = Solid::AudioInterface::FirewireSoundcard;
-            }
-            else if (busName == "usb" || busName == "usb_device" || driverName.contains("usb", Qt::CaseInsensitive))
-            {
+            } else if (busName == "usb" || busName == "usb_device" || driverName.contains("usb", Qt::CaseInsensitive)) {
                 m_soundcardType = Solid::AudioInterface::UsbSoundcard;
-            }
-            else
-            {
+            } else {
                 m_soundcardType = Solid::AudioInterface::InternalSoundcard;
             }
         }

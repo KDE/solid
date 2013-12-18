@@ -28,49 +28,48 @@ namespace Solid
 {
 namespace Ifaces
 {
+/**
+ * This device interface is available on serial interfaces,
+ * like modems.
+ * @since 4.3
+ */
+class SerialInterface : virtual public DeviceInterface
+{
+public:
     /**
-     * This device interface is available on serial interfaces,
-     * like modems.
+     * Destroys a SerialInterface object.
      * @since 4.3
      */
-    class SerialInterface : virtual public DeviceInterface
-    {
-    public:
-        /**
-         * Destroys a SerialInterface object.
-         * @since 4.3
-         */
-        virtual ~SerialInterface();
+    virtual ~SerialInterface();
 
+    /**
+     * Retrieves the name of the interface in the system.
+     * This name is system dependent, it allows to identify the interface
+     * in the system. For example it can be of the form "/dev/ttyS0" under Linux.
+     *
+     * @return the interface name
+     * @since 4.3
+     */
+    virtual QVariant driverHandle() const = 0;
 
-        /**
-         * Retrieves the name of the interface in the system.
-         * This name is system dependent, it allows to identify the interface
-         * in the system. For example it can be of the form "/dev/ttyS0" under Linux.
-         *
-         * @return the interface name
-         * @since 4.3
-         */
-        virtual QVariant driverHandle() const = 0;
+    /**
+     * Retrieves the type of the serial device.
+     * Examples for Linux are "usb" for USB based serial devices,
+     * or "platform" for built-in serial ports.
+     *
+     * @return the type of the serial device
+     * @since 4.3
+     */
+    virtual Solid::SerialInterface::SerialType serialType() const = 0;
 
-        /**
-         * Retrieves the type of the serial device.
-         * Examples for Linux are "usb" for USB based serial devices,
-         * or "platform" for built-in serial ports.
-         *
-         * @return the type of the serial device
-         * @since 4.3
-         */
-        virtual Solid::SerialInterface::SerialType serialType() const = 0;
-
-        /**
-         * Retrieves the port number, e.g. 0 for the first COM port.
-         *
-         * @return The port number of the serial device, or -1 if unknown.
-         * @since 4.3
-         */
-        virtual int port() const = 0;
-    };
+    /**
+     * Retrieves the port number, e.g. 0 for the first COM port.
+     *
+     * @return The port number of the serial device, or -1 if unknown.
+     * @since 4.3
+     */
+    virtual int port() const = 0;
+};
 }
 }
 

@@ -34,7 +34,6 @@ FakeStorageAccess::~FakeStorageAccess()
 
 }
 
-
 bool FakeStorageAccess::isAccessible() const
 {
     return fakeDevice()->property("isMounted").toBool();
@@ -70,10 +69,10 @@ bool FakeStorageAccess::teardown()
     }
 }
 
-void Solid::Backends::Fake::FakeStorageAccess::onPropertyChanged(const QMap<QString,int> &changes)
+void Solid::Backends::Fake::FakeStorageAccess::onPropertyChanged(const QMap<QString, int> &changes)
 {
     Q_FOREACH (const QString &property, changes.keys()) {
-        if (property=="isMounted") {
+        if (property == "isMounted") {
             emit accessibilityChanged(fakeDevice()->property("isMounted").toBool(), fakeDevice()->udi());
         }
     }

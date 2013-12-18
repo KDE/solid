@@ -48,12 +48,11 @@ int Block::deviceMinor() const
 QString Block::device() const
 {
     QString drive;
-    switch(m_device->type()){
-    case Solid::DeviceInterface::StorageVolume:
-    {
+    switch (m_device->type()) {
+    case Solid::DeviceInterface::StorageVolume: {
         drive = WmiDevice::win32LogicalDiskByDiskPartitionID(m_device->property("DeviceID").toString()).getProperty("DeviceID").toString();
     }
-        break;
+    break;
     case Solid::DeviceInterface::OpticalDrive:
     case Solid::DeviceInterface::OpticalDisc:
         drive = m_device->property("Drive").toString();

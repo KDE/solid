@@ -23,7 +23,6 @@
 // backend
 #include "kupnpdevice.h"
 
-
 namespace Solid
 {
 namespace Backends
@@ -31,9 +30,9 @@ namespace Backends
 namespace KUPnP
 {
 
-DeviceInterface::DeviceInterface(KUPnPDevice* device)
-  : QObject(device),
-    mDevice(device)
+DeviceInterface::DeviceInterface(KUPnPDevice *device)
+    : QObject(device),
+      mDevice(device)
 {
 }
 

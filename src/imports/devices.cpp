@@ -27,7 +27,8 @@
 #include <solid/devicenotifier.h>
 #include <solid/genericinterface.h>
 
-namespace Solid {
+namespace Solid
+{
 
 // Maps queries to the handler objects
 QHash<QString, QWeakPointer<DevicesQueryPrivate> > DevicesQueryPrivate::handlers;
@@ -60,9 +61,11 @@ DevicesQueryPrivate::DevicesQueryPrivate(const QString &query)
     connect(notifier, &Solid::DeviceNotifier::deviceRemoved,
             this,     &DevicesQueryPrivate::removeDevice);
 
-    if (!query.isEmpty() && !predicate.isValid()) return;
+    if (!query.isEmpty() && !predicate.isValid()) {
+        return;
+    }
 
-    Q_FOREACH(const Solid::Device &device, Solid::Device::listFromQuery(predicate)) {
+    Q_FOREACH (const Solid::Device &device, Solid::Device::listFromQuery(predicate)) {
         matchingDevices << device.udi();
     }
 }
@@ -93,10 +96,11 @@ const QStringList &DevicesQueryPrivate::devices() const
     return matchingDevices;
 }
 
-
 void Devices::initialize() const
 {
-    if (m_backend) return;
+    if (m_backend) {
+        return;
+    }
 
     m_backend = DevicesQueryPrivate::forQuery(m_query);
 
@@ -118,7 +122,9 @@ void Devices::initialize() const
 
 void Devices::reset()
 {
-    if (!m_backend) return;
+    if (!m_backend) {
+        return;
+    }
 
     m_backend->disconnect(this);
     m_backend.reset();
@@ -130,7 +136,9 @@ void Devices::reset()
 
 void Devices::addDevice(const QString &udi)
 {
-    if (!m_backend) return;
+    if (!m_backend) {
+        return;
+    }
 
     const int count = m_backend->devices().count();
 
@@ -145,7 +153,9 @@ void Devices::addDevice(const QString &udi)
 
 void Devices::removeDevice(const QString &udi)
 {
-    if (!m_backend) return;
+    if (!m_backend) {
+        return;
+    }
 
     const int count = m_backend->devices().count();
 
@@ -158,8 +168,7 @@ void Devices::removeDevice(const QString &udi)
     emit deviceRemoved(udi);
 }
 
-
-Devices::Devices(QObject * parent)
+Devices::Devices(QObject *parent)
     : QObject(parent)
 {
 }
@@ -193,7 +202,9 @@ QString Devices::query() const
 
 void Devices::setQuery(const QString &query)
 {
-    if (m_query == query) return;
+    if (m_query == query) {
+        return;
+    }
 
     m_query = query;
 
@@ -210,5 +221,4 @@ QObject *Devices::device(const QString &udi, const QString &_type)
     return Solid::Device(udi).asDeviceInterface(type);
 }
 } // namespace Solid
-
 

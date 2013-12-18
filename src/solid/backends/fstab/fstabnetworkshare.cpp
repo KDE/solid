@@ -57,7 +57,6 @@ QUrl FstabNetworkShare::url() const
     return m_url;
 }
 
-
 const Solid::Backends::Fstab::FstabDevice *FstabNetworkShare::fstabDevice() const
 {
     return m_fstabDevice;

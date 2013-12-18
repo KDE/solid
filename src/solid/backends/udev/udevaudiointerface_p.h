@@ -19,7 +19,6 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-
 #ifndef AUDIOINTERFACEPRIVATE_H
 #define AUDIOINTERFACEPRIVATE_H
 
@@ -65,7 +64,7 @@ private:
     Solid::AudioInterface::SoundcardType        m_soundcardType;
 
 private:
-  UDevDevice       *m_device;
+    UDevDevice       *m_device;
 };
 }
 }

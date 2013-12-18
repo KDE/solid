@@ -44,8 +44,8 @@ class Manager: public Solid::Ifaces::DeviceManager
 
 public:
     Manager(QObject *parent);
-    virtual QObject* createDevice(const QString& udi);
-    virtual QStringList devicesFromQuery(const QString& parentUdi, Solid::DeviceInterface::Type type);
+    virtual QObject *createDevice(const QString &udi);
+    virtual QStringList devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type);
     virtual QStringList allDevices();
     virtual QSet< Solid::DeviceInterface::Type > supportedInterfaces() const;
     virtual QString udiPrefix() const;
@@ -58,8 +58,8 @@ private Q_SLOTS:
 
 private:
     const QStringList &deviceCache();
-    void introspect(const QString & path, bool checkOptical = false);
-    void updateBackend(const QString & udi);
+    void introspect(const QString &path, bool checkOptical = false);
+    void updateBackend(const QString &udi);
     QSet<Solid::DeviceInterface::Type> m_supportedInterfaces;
     org::freedesktop::DBus::ObjectManager m_manager;
     QStringList m_deviceCache;

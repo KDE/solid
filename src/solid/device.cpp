@@ -75,7 +75,6 @@
 #include <solid/internetgateway.h>
 #include <solid/ifaces/internetgateway.h>
 
-
 Solid::Device::Device(const QString &udi)
 {
     DeviceManagerPrivate *manager
@@ -100,7 +99,7 @@ Solid::Device &Solid::Device::operator=(const Solid::Device &device)
 
 bool Solid::Device::isValid() const
 {
-    return d->backendObject()!=0;
+    return d->backendObject() != 0;
 }
 
 QString Solid::Device::udi() const
@@ -117,12 +116,9 @@ Solid::Device Solid::Device::parent() const
 {
     QString udi = parentUdi();
 
-    if (udi.isEmpty())
-    {
+    if (udi.isEmpty()) {
         return Device();
-    }
-    else
-    {
+    } else {
         return Device(udi);
     }
 }
@@ -170,20 +166,17 @@ const Solid::DeviceInterface *Solid::Device::asDeviceInterface(const DeviceInter
 {
     Ifaces::Device *device = qobject_cast<Ifaces::Device *>(d->backendObject());
 
-    if (device!=0)
-    {
+    if (device != 0) {
         DeviceInterface *iface = d->interface(type);
 
-        if (iface!=0) {
+        if (iface != 0) {
             return iface;
         }
 
         QObject *dev_iface = device->createDeviceInterface(type);
 
-        if (dev_iface!=0)
-        {
-            switch (type)
-            {
+        if (dev_iface != 0) {
+            switch (type) {
             case DeviceInterface::GenericInterface:
                 iface = deviceinterface_cast(Ifaces::GenericInterface, GenericInterface, dev_iface);
                 break;
@@ -259,24 +252,19 @@ const Solid::DeviceInterface *Solid::Device::asDeviceInterface(const DeviceInter
             }
         }
 
-        if (iface!=0)
-        {
+        if (iface != 0) {
             // Lie on the constness since we're simply doing caching here
             const_cast<Device *>(this)->d->setInterface(type, iface);
             iface->d_ptr->setDevicePrivate(d.data());
         }
 
         return iface;
-    }
-    else
-    {
+    } else {
         return 0;
     }
 }
 
-
 //////////////////////////////////////////////////////////////////////
-
 
 Solid::DevicePrivate::DevicePrivate(const QString &udi)
     : QObject(), QSharedData(), m_udi(udi)
@@ -318,7 +306,9 @@ void Solid::DevicePrivate::setBackendObject(Ifaces::Device *object)
         }
 
         m_ifaces.clear();
-        if (!ref.deref()) deleteLater();
+        if (!ref.deref()) {
+            deleteLater();
+        }
     }
 }
 
@@ -329,8 +319,9 @@ Solid::DeviceInterface *Solid::DevicePrivate::interface(const DeviceInterface::T
 
 void Solid::DevicePrivate::setInterface(const DeviceInterface::Type &type, DeviceInterface *interface)
 {
-    if(m_ifaces.isEmpty())
+    if (m_ifaces.isEmpty()) {
         ref.ref();
+    }
     m_ifaces[type] = interface;
 }
 

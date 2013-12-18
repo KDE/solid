@@ -24,7 +24,8 @@
 #include <QtCore/QSocketNotifier>
 #include <qplatformdefs.h>
 
-namespace UdevQt {
+namespace UdevQt
+{
 
 ClientPrivate::ClientPrivate(Client *q_)
     : udev(0), monitor(0), q(q_), monitorNotifier(0)
@@ -36,8 +37,9 @@ ClientPrivate::~ClientPrivate()
     udev_unref(udev);
     delete monitorNotifier;
 
-    if (monitor)
+    if (monitor) {
         udev_monitor_unref(monitor);
+    }
 }
 
 void ClientPrivate::init(const QStringList &subsystemList, ListenToWhat what)
@@ -60,7 +62,7 @@ void ClientPrivate::setWatchedSubsystems(const QStringList &subsystemList)
     }
 
     // apply our filters; an empty list means listen to everything
-    Q_FOREACH (const QString& subsysDevtype, subsystemList) {
+    Q_FOREACH (const QString &subsysDevtype, subsystemList) {
         int ix = subsysDevtype.indexOf("/");
 
         if (ix > 0) {
@@ -79,8 +81,9 @@ void ClientPrivate::setWatchedSubsystems(const QStringList &subsystemList)
 
     // kill any previous monitor
     delete monitorNotifier;
-    if (monitor)
+    if (monitor) {
         udev_monitor_unref(monitor);
+    }
 
     // and save our new one
     monitor = newM;
@@ -95,8 +98,9 @@ void ClientPrivate::_uq_monitorReadyRead(int fd)
     struct udev_device *dev = udev_monitor_receive_device(monitor);
     monitorNotifier->setEnabled(true);
 
-    if (!dev)
+    if (!dev) {
         return;
+    }
 
     Device device(new DevicePrivate(dev, false));
 
@@ -125,10 +129,11 @@ DeviceList ClientPrivate::deviceListFromEnumerate(struct udev_enumerate *en)
     list = udev_enumerate_get_list_entry(en);
     udev_list_entry_foreach(entry, list) {
         struct udev_device *ud = udev_device_new_from_syspath(udev_enumerate_get_udev(en),
-                                        udev_list_entry_get_name(entry));
+                                 udev_list_entry_get_name(entry));
 
-        if (!ud)
+        if (!ud) {
             continue;
+        }
 
         ret << Device(new DevicePrivate(ud, false));
     }
@@ -138,7 +143,6 @@ DeviceList ClientPrivate::deviceListFromEnumerate(struct udev_enumerate *en)
     return ret;
 }
 
-
 Client::Client(QObject *parent)
     : QObject(parent)
     , d(new ClientPrivate(this))
@@ -146,7 +150,7 @@ Client::Client(QObject *parent)
     d->init(QStringList(), ClientPrivate::ListenToNone);
 }
 
-Client::Client(const QStringList& subsystemList, QObject *parent)
+Client::Client(const QStringList &subsystemList, QObject *parent)
     : QObject(parent)
     , d(new ClientPrivate(this))
 {
@@ -161,12 +165,14 @@ Client::~Client()
 QStringList Client::watchedSubsystems() const
 {
     // we're watching a specific list
-    if (!d->watchedSubsystems.isEmpty())
+    if (!d->watchedSubsystems.isEmpty()) {
         return d->watchedSubsystems;
+    }
 
     // we're not watching anything
-    if (!d->monitor)
+    if (!d->monitor) {
         return QStringList();
+    }
 
     // we're watching everything: figure out what "everything" currently is
     // we don't cache it, since it may be subject to change, depending on hotplug
@@ -213,18 +219,21 @@ Device Client::deviceByDeviceFile(const QString &deviceFile)
 {
     QT_STATBUF sb;
 
-    if (QT_STAT(deviceFile.toLatin1().constData(), &sb) != 0)
+    if (QT_STAT(deviceFile.toLatin1().constData(), &sb) != 0) {
         return Device();
+    }
 
     struct udev_device *ud = 0;
 
-    if (S_ISBLK(sb.st_mode))
+    if (S_ISBLK(sb.st_mode)) {
         ud = udev_device_new_from_devnum(d->udev, 'b', sb.st_rdev);
-    else if (S_ISCHR(sb.st_mode))
+    } else if (S_ISCHR(sb.st_mode)) {
         ud = udev_device_new_from_devnum(d->udev, 'c', sb.st_rdev);
+    }
 
-    if (!ud)
+    if (!ud) {
         return Device();
+    }
 
     return Device(new DevicePrivate(ud, false));
 }
@@ -233,8 +242,9 @@ Device Client::deviceBySysfsPath(const QString &sysfsPath)
 {
     struct udev_device *ud = udev_device_new_from_syspath(d->udev, sysfsPath.toLatin1().constData());
 
-    if (!ud)
+    if (!ud) {
         return Device();
+    }
 
     return Device(new DevicePrivate(ud, false));
 }
@@ -242,11 +252,12 @@ Device Client::deviceBySysfsPath(const QString &sysfsPath)
 Device Client::deviceBySubsystemAndName(const QString &subsystem, const QString &name)
 {
     struct udev_device *ud = udev_device_new_from_subsystem_sysname(d->udev,
-                                    subsystem.toLatin1().constData(),
-                                    name.toLatin1().constData());
+                             subsystem.toLatin1().constData(),
+                             name.toLatin1().constData());
 
-    if (!ud)
+    if (!ud) {
         return Device();
+    }
 
     return Device(new DevicePrivate(ud, false));
 }

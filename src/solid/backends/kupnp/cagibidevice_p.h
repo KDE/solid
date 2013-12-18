@@ -27,37 +27,36 @@
 #include <QtCore/QString>
 #include <QtCore/QSharedData>
 
-
 namespace Cagibi
 {
 
 class DevicePrivate : public QSharedData
 {
-  friend const QDBusArgument& ::operator>>( const QDBusArgument& argument,
-                                            Cagibi::Device& device );
+    friend const QDBusArgument &::operator>>(const QDBusArgument &argument,
+            Cagibi::Device &device);
 
-  public:
+public:
     DevicePrivate();
 
-  public:
-    const QString& type() const;
-    const QString& friendlyName() const;
-    const QString& manufacturerName() const;
+public:
+    const QString &type() const;
+    const QString &friendlyName() const;
+    const QString &manufacturerName() const;
 //     const QString& manufacturerUrl() const;
-    const QString& modelDescription() const;
-    const QString& modelName() const;
-    const QString& modelNumber() const;
-    const QString& serialNumber() const;
-    const QString& udn() const;
+    const QString &modelDescription() const;
+    const QString &modelName() const;
+    const QString &modelNumber() const;
+    const QString &serialNumber() const;
+    const QString &udn() const;
 //     const QString upc() const;
-    const QString& presentationUrl() const;
-    const QString& ipAddress() const;
+    const QString &presentationUrl() const;
+    const QString &ipAddress() const;
     int ipPortNumber() const;
 
     bool hasParentDevice() const;
-    const QString& parentDeviceUdn() const;
+    const QString &parentDeviceUdn() const;
 
-  protected:
+protected:
     QString mType;
     /// short user-friendly title
     QString mFriendlyName;
@@ -78,21 +77,59 @@ class DevicePrivate : public QSharedData
     QString mParentDeviceUdn;
 };
 
-
 inline DevicePrivate::DevicePrivate() {}
-inline const QString& DevicePrivate::type() const { return mType; }
-inline const QString& DevicePrivate::friendlyName() const { return mFriendlyName; }
-inline const QString& DevicePrivate::manufacturerName() const { return mManufacturerName; }
-inline const QString& DevicePrivate::modelDescription() const { return mModelDescription; }
-inline const QString& DevicePrivate::modelName() const { return mModelName; }
-inline const QString& DevicePrivate::modelNumber() const { return mModelNumber; }
-inline const QString& DevicePrivate::serialNumber() const { return mSerialNumber; }
-inline const QString& DevicePrivate::udn() const { return mUdn; }
-inline const QString& DevicePrivate::presentationUrl() const { return mPresentationUrl; }
-inline const QString& DevicePrivate::ipAddress() const { return mIpAddress; }
-inline int DevicePrivate::ipPortNumber() const { return mIpPortNumber; }
-inline bool DevicePrivate::hasParentDevice() const { return (! mParentDeviceUdn.isEmpty() ); }
-inline const QString& DevicePrivate::parentDeviceUdn() const { return mParentDeviceUdn; }
+inline const QString &DevicePrivate::type() const
+{
+    return mType;
+}
+inline const QString &DevicePrivate::friendlyName() const
+{
+    return mFriendlyName;
+}
+inline const QString &DevicePrivate::manufacturerName() const
+{
+    return mManufacturerName;
+}
+inline const QString &DevicePrivate::modelDescription() const
+{
+    return mModelDescription;
+}
+inline const QString &DevicePrivate::modelName() const
+{
+    return mModelName;
+}
+inline const QString &DevicePrivate::modelNumber() const
+{
+    return mModelNumber;
+}
+inline const QString &DevicePrivate::serialNumber() const
+{
+    return mSerialNumber;
+}
+inline const QString &DevicePrivate::udn() const
+{
+    return mUdn;
+}
+inline const QString &DevicePrivate::presentationUrl() const
+{
+    return mPresentationUrl;
+}
+inline const QString &DevicePrivate::ipAddress() const
+{
+    return mIpAddress;
+}
+inline int DevicePrivate::ipPortNumber() const
+{
+    return mIpPortNumber;
+}
+inline bool DevicePrivate::hasParentDevice() const
+{
+    return (! mParentDeviceUdn.isEmpty());
+}
+inline const QString &DevicePrivate::parentDeviceUdn() const
+{
+    return mParentDeviceUdn;
+}
 
 }
 

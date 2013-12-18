@@ -31,29 +31,29 @@ namespace Backends
 {
 namespace Fstab
 {
-    class FstabDevice;
-    class FstabNetworkShare : public QObject, public Solid::Ifaces::NetworkShare
-    {
-        Q_OBJECT
-        Q_INTERFACES(Solid::Ifaces::NetworkShare)
+class FstabDevice;
+class FstabNetworkShare : public QObject, public Solid::Ifaces::NetworkShare
+{
+    Q_OBJECT
+    Q_INTERFACES(Solid::Ifaces::NetworkShare)
 
-        public:
-            explicit FstabNetworkShare(Solid::Backends::Fstab::FstabDevice *device);
+public:
+    explicit FstabNetworkShare(Solid::Backends::Fstab::FstabDevice *device);
 
-            virtual ~FstabNetworkShare();
+    virtual ~FstabNetworkShare();
 
-            virtual Solid::NetworkShare::ShareType type() const;
+    virtual Solid::NetworkShare::ShareType type() const;
 
-            virtual QUrl url() const;
+    virtual QUrl url() const;
 
-        public:
-            const Solid::Backends::Fstab::FstabDevice* fstabDevice() const;
+public:
+    const Solid::Backends::Fstab::FstabDevice *fstabDevice() const;
 
-        private:
-            Solid::Backends::Fstab::FstabDevice *m_fstabDevice;
-            Solid::NetworkShare::ShareType m_type;
-            QUrl m_url;
-    };
+private:
+    Solid::Backends::Fstab::FstabDevice *m_fstabDevice;
+    Solid::NetworkShare::ShareType m_type;
+    QUrl m_url;
+};
 
 }
 }

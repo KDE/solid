@@ -38,35 +38,35 @@ namespace Backends
 namespace UPnP
 {
 
-    class UPnPDeviceManager : public Solid::Ifaces::DeviceManager
-    {
-        Q_OBJECT
+class UPnPDeviceManager : public Solid::Ifaces::DeviceManager
+{
+    Q_OBJECT
 
-        public:
-            explicit UPnPDeviceManager(QObject* parent = 0);
+public:
+    explicit UPnPDeviceManager(QObject *parent = 0);
 
-            virtual ~UPnPDeviceManager();
+    virtual ~UPnPDeviceManager();
 
-            virtual QString udiPrefix() const;
+    virtual QString udiPrefix() const;
 
-            virtual QSet<Solid::DeviceInterface::Type> supportedInterfaces() const;
+    virtual QSet<Solid::DeviceInterface::Type> supportedInterfaces() const;
 
-            virtual QStringList allDevices();
+    virtual QStringList allDevices();
 
-            virtual QStringList devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type = Solid::DeviceInterface::Unknown);
+    virtual QStringList devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type = Solid::DeviceInterface::Unknown);
 
-            virtual QObject *createDevice(const QString &udi);
+    virtual QObject *createDevice(const QString &udi);
 
-        public Q_SLOTS:
-            void rootDeviceOnline(Herqq::Upnp::HClientDevice*);
+public Q_SLOTS:
+    void rootDeviceOnline(Herqq::Upnp::HClientDevice *);
 
-            void rootDeviceOffline(Herqq::Upnp::HClientDevice*);
+    void rootDeviceOffline(Herqq::Upnp::HClientDevice *);
 
-        private:
-            QSet<Solid::DeviceInterface::Type> m_supportedInterfaces;
+private:
+    QSet<Solid::DeviceInterface::Type> m_supportedInterfaces;
 
-            //Solid::Backends::UPnP::UPnPControlPoint* m_upnpControlPoint;
-    };
+    //Solid::Backends::UPnP::UPnPControlPoint* m_upnpControlPoint;
+};
 
 }
 }

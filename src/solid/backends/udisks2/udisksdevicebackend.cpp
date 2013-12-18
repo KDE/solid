@@ -32,9 +32,9 @@
 using namespace Solid::Backends::UDisks2;
 
 /* Static cache for DeviceBackends for all UDIs */
-QMap<QString /* UDI */, DeviceBackend*> DeviceBackend::s_backends;
+QMap<QString /* UDI */, DeviceBackend *> DeviceBackend::s_backends;
 
-DeviceBackend* DeviceBackend::backendForUDI(const QString& udi, bool create)
+DeviceBackend *DeviceBackend::backendForUDI(const QString &udi, bool create)
 {
     DeviceBackend *backend = 0;
     if (udi.isEmpty()) {
@@ -51,7 +51,7 @@ DeviceBackend* DeviceBackend::backendForUDI(const QString& udi, bool create)
     return backend;
 }
 
-void DeviceBackend::destroyBackend(const QString& udi)
+void DeviceBackend::destroyBackend(const QString &udi)
 {
     if (s_backends.contains(udi)) {
         DeviceBackend *backend = s_backends.value(udi);
@@ -60,7 +60,7 @@ void DeviceBackend::destroyBackend(const QString& udi)
     }
 }
 
-DeviceBackend::DeviceBackend(const QString& udi)
+DeviceBackend::DeviceBackend(const QString &udi)
     : m_udi(udi)
 {
     //qDebug() << "Creating backend for device" << m_udi;
@@ -70,11 +70,11 @@ DeviceBackend::DeviceBackend(const QString& udi)
 
     if (m_device->isValid()) {
         QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE, m_udi, DBUS_INTERFACE_PROPS, "PropertiesChanged", this,
-                                            SLOT(slotPropertiesChanged(QString,QVariantMap,QStringList)));
+                                             SLOT(slotPropertiesChanged(QString,QVariantMap,QStringList)));
         QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE, UD2_DBUS_PATH, DBUS_INTERFACE_MANAGER, "InterfacesAdded",
-                                            this, SLOT(slotInterfacesAdded(QDBusObjectPath,QVariantMapMap)));
+                                             this, SLOT(slotInterfacesAdded(QDBusObjectPath,QVariantMapMap)));
         QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE, UD2_DBUS_PATH, DBUS_INTERFACE_MANAGER, "InterfacesRemoved",
-                                            this, SLOT(slotInterfacesRemoved(QDBusObjectPath,QStringList)));
+                                             this, SLOT(slotInterfacesRemoved(QDBusObjectPath,QStringList)));
 
         initInterfaces();
     }
@@ -116,18 +116,18 @@ QStringList DeviceBackend::interfaces() const
     return m_interfaces;
 }
 
-const QString& DeviceBackend::udi() const
+const QString &DeviceBackend::udi() const
 {
     return m_udi;
 }
 
-QVariant DeviceBackend::prop(const QString& key) const
+QVariant DeviceBackend::prop(const QString &key) const
 {
     checkCache(key);
     return m_propertyCache.value(key);
 }
 
-bool DeviceBackend::propertyExists(const QString& key) const
+bool DeviceBackend::propertyExists(const QString &key) const
 {
     checkCache(key);
     /* checkCache() will put an invalid QVariant in cache when the property
@@ -139,7 +139,7 @@ QVariantMap DeviceBackend::allProperties() const
 {
     QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, m_udi, DBUS_INTERFACE_PROPS, "GetAll");
 
-    Q_FOREACH (const QString & iface, m_interfaces) {
+    Q_FOREACH (const QString &iface, m_interfaces) {
         call.setArguments(QVariantList() << iface);
         QDBusPendingReply<QVariantMap> reply = QDBusConnection::systemBus().call(call);
 
@@ -162,17 +162,17 @@ void DeviceBackend::invalidateProperties()
 QString DeviceBackend::introspect() const
 {
     QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, m_udi,
-                                                    DBUS_INTERFACE_INTROSPECT, "Introspect");
+                        DBUS_INTERFACE_INTROSPECT, "Introspect");
     QDBusPendingReply<QString> reply = QDBusConnection::systemBus().call(call);
 
-    if (reply.isValid())
+    if (reply.isValid()) {
         return reply.value();
-    else {
+    } else {
         return QString();
     }
 }
 
-void DeviceBackend::checkCache(const QString& key) const
+void DeviceBackend::checkCache(const QString &key) const
 {
     if (m_propertyCache.isEmpty()) { // recreate the cache
         allProperties();
@@ -193,7 +193,7 @@ void DeviceBackend::checkCache(const QString& key) const
     }
 }
 
-void DeviceBackend::slotPropertiesChanged(const QString& ifaceName, const QVariantMap& changedProps, const QStringList& invalidatedProps)
+void DeviceBackend::slotPropertiesChanged(const QString &ifaceName, const QVariantMap &changedProps, const QStringList &invalidatedProps)
 {
     if (!ifaceName.startsWith(UD2_DBUS_SERVICE)) {
         return;
@@ -202,7 +202,7 @@ void DeviceBackend::slotPropertiesChanged(const QString& ifaceName, const QVaria
 
     QMap<QString, int> changeMap;
 
-    Q_FOREACH(const QString & key, invalidatedProps) {
+    Q_FOREACH (const QString &key, invalidatedProps) {
         m_propertyCache.remove(key);
         changeMap.insert(key, Solid::GenericInterface::PropertyModified);
         //qDebug() << "\t invalidated:" << key;
@@ -221,13 +221,13 @@ void DeviceBackend::slotPropertiesChanged(const QString& ifaceName, const QVaria
     emit changed();
 }
 
-void DeviceBackend::slotInterfacesAdded(const QDBusObjectPath& object_path, const QVariantMapMap& interfaces_and_properties)
+void DeviceBackend::slotInterfacesAdded(const QDBusObjectPath &object_path, const QVariantMapMap &interfaces_and_properties)
 {
     if (object_path.path() != m_udi) {
         return;
     }
 
-    Q_FOREACH(const QString & iface, interfaces_and_properties.keys()) {
+    Q_FOREACH (const QString &iface, interfaces_and_properties.keys()) {
         /* Don't store generic DBus interfaces */
         if (iface.startsWith(UD2_DBUS_SERVICE)) {
             m_interfaces.append(interfaces_and_properties.keys());
@@ -235,13 +235,13 @@ void DeviceBackend::slotInterfacesAdded(const QDBusObjectPath& object_path, cons
     }
 }
 
-void DeviceBackend::slotInterfacesRemoved(const QDBusObjectPath& object_path, const QStringList& interfaces)
+void DeviceBackend::slotInterfacesRemoved(const QDBusObjectPath &object_path, const QStringList &interfaces)
 {
     if (object_path.path() != m_udi) {
         return;
     }
 
-    Q_FOREACH(const QString & iface, interfaces) {
+    Q_FOREACH (const QString &iface, interfaces) {
         m_interfaces.removeAll(iface);
     }
 }

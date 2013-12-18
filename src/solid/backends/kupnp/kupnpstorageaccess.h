@@ -26,7 +26,6 @@
 // Solid
 #include <solid/ifaces/storageaccess.h>
 
-
 namespace Solid
 {
 namespace Backends
@@ -40,7 +39,7 @@ class StorageAccess : public DeviceInterface, virtual public Solid::Ifaces::Stor
     Q_INTERFACES(Solid::Ifaces::StorageAccess)
 
 public:
-    explicit StorageAccess(KUPnPDevice* device);
+    explicit StorageAccess(KUPnPDevice *device);
     virtual ~StorageAccess();
 
 public: // Solid::Ifaces::StorageAccess API

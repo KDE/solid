@@ -23,7 +23,7 @@
 using namespace Solid::Backends::Win;
 
 WinGenericInterface::WinGenericInterface(WinDevice *device)
-    :WinInterface(device)
+    : WinInterface(device)
 {
 }
 
@@ -33,8 +33,6 @@ QVariant WinGenericInterface::property(const QString &key) const
     qFatal("Not implemented");
     return QVariant();
 }
-
-
 
 QMap<QString, QVariant> Solid::Backends::Win::WinGenericInterface::allProperties() const
 {

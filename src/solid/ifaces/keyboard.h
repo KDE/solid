@@ -27,34 +27,34 @@ namespace Solid
 {
 namespace Ifaces
 {
+/**
+ * This device interface is available on keyboards.
+ *
+ * A keyboard is an input device.
+ *
+ * @author Ivan Cukic <ivan.cukic@kde.org>
+ */
+class Keyboard : virtual public DeviceInterface
+{
+public:
     /**
-     * This device interface is available on keyboards.
-     *
-     * A keyboard is an input device.
-     *
-     * @author Ivan Cukic <ivan.cukic@kde.org>
+     * Destroys a Keyboard object.
      */
-    class Keyboard : virtual public DeviceInterface
-    {
-    public:
-        /**
-         * Destroys a Keyboard object.
-         */
-        virtual ~Keyboard();
+    virtual ~Keyboard();
 
-        /**
-         * Retrieves the model of the keyboard (for example 'pc105')
-         * @return the keyboard model
-         */
-        virtual QString model() const = 0;
+    /**
+     * Retrieves the model of the keyboard (for example 'pc105')
+     * @return the keyboard model
+     */
+    virtual QString model() const = 0;
 
-        /**
-         * Retrieves the layout of the keyboard (for example 'us')
-         * @return the layout of the keyboard
-         */
-        virtual QString layout() const = 0;
+    /**
+     * Retrieves the layout of the keyboard (for example 'us')
+     * @return the layout of the keyboard
+     */
+    virtual QString layout() const = 0;
 
-    };
+};
 }
 }
 

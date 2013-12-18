@@ -28,35 +28,34 @@ namespace Solid
 {
 namespace Ifaces
 {
+/**
+ * NetworkShare interface.
+ *
+ * a NetworkShare interface is used to determine the type of
+ * network access.
+ */
+class NetworkShare : virtual public DeviceInterface
+{
+public:
     /**
-     * NetworkShare interface.
-     *
-     * a NetworkShare interface is used to determine the type of
-     * network access.
+     * Destroys a NetworkShare object.
      */
-    class NetworkShare : virtual public DeviceInterface
-    {
-    public:
-        /**
-         * Destroys a NetworkShare object.
-         */
-        virtual ~NetworkShare();
+    virtual ~NetworkShare();
 
+    /**
+     * Retrieves the type of network
+     *
+     * @return the type of network
+     */
+    virtual Solid::NetworkShare::ShareType type() const = 0;
 
-        /**
-         * Retrieves the type of network
-         *
-         * @return the type of network
-         */
-        virtual Solid::NetworkShare::ShareType type() const = 0;
-
-        /**
-         * Retrieves the url of network share
-         *
-         * @return the url of network share
-         */
-        virtual QUrl url() const = 0;
-    };
+    /**
+     * Retrieves the url of network share
+     *
+     * @return the url of network share
+     */
+    virtual QUrl url() const = 0;
+};
 }
 }
 

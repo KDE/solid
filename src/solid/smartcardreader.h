@@ -27,64 +27,67 @@
 
 namespace Solid
 {
-    class SmartCardReaderPrivate;
-    class Device;
+class SmartCardReaderPrivate;
+class Device;
+
+/**
+ * This device interface is available on smart card readers.
+ */
+class SOLID_EXPORT SmartCardReader : public DeviceInterface
+{
+    Q_OBJECT
+    Q_ENUMS(ReaderType)
+    Q_PROPERTY(ReaderType readerType READ readerType)
+    Q_DECLARE_PRIVATE(SmartCardReader)
+    friend class Device;
+
+public:
+    /**
+     * This enum type defines the type of smart card reader attached
+     *
+     * - CardReader : A generic smart card reader
+     * - CryptoToken : A smart card reader with a card built into the device
+     */
+    enum ReaderType { UnknownReaderType = -1,
+                      CardReader, CryptoToken
+                    };
+
+private:
+    /**
+     * Creates a new SmartCardReader object.
+     * You generally won't need this. It's created when necessary using
+     * Device::as().
+     *
+     * @param backendObject the device interface object provided by the backend
+     * @see Solid::Device::as()
+     */
+    explicit SmartCardReader(QObject *backendObject);
+
+public:
+    /**
+     * Destroys a SmartCardReader object.
+     */
+    virtual ~SmartCardReader();
 
     /**
-     * This device interface is available on smart card readers.
+     * Get the Solid::DeviceInterface::Type of the SmartCardReader device interface.
+     *
+     * @return the SmartCardReader device interface type
+     * @see Solid::DeviceInterface::Type
      */
-    class SOLID_EXPORT SmartCardReader : public DeviceInterface
+    static Type deviceInterfaceType()
     {
-        Q_OBJECT
-        Q_ENUMS(ReaderType)
-        Q_PROPERTY(ReaderType readerType READ readerType)
-        Q_DECLARE_PRIVATE(SmartCardReader)
-        friend class Device;
+        return DeviceInterface::SmartCardReader;
+    }
 
-    public:
-        /**
-         * This enum type defines the type of smart card reader attached
-         *
-         * - CardReader : A generic smart card reader
-         * - CryptoToken : A smart card reader with a card built into the device
-         */
-        enum ReaderType { UnknownReaderType = -1,
-                          CardReader, CryptoToken };
-
-    private:
-        /**
-         * Creates a new SmartCardReader object.
-         * You generally won't need this. It's created when necessary using
-         * Device::as().
-         *
-         * @param backendObject the device interface object provided by the backend
-         * @see Solid::Device::as()
-         */
-        explicit SmartCardReader(QObject *backendObject);
-
-    public:
-        /**
-         * Destroys a SmartCardReader object.
-         */
-        virtual ~SmartCardReader();
-
-
-        /**
-         * Get the Solid::DeviceInterface::Type of the SmartCardReader device interface.
-         *
-         * @return the SmartCardReader device interface type
-         * @see Solid::DeviceInterface::Type
-         */
-        static Type deviceInterfaceType() { return DeviceInterface::SmartCardReader; }
-
-        /**
-         * Retrieves the type of this smart card reader.
-         *
-         * @return the smart card reader type
-         * @see Solid::SmartCardReader::ReaderType
-         */
-        ReaderType readerType() const;
-    };
+    /**
+     * Retrieves the type of this smart card reader.
+     *
+     * @return the smart card reader type
+     * @see Solid::SmartCardReader::ReaderType
+     */
+    ReaderType readerType() const;
+};
 }
 
 #endif

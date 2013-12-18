@@ -24,12 +24,15 @@
 #include <QtCore/QObject>
 #include <QtCore/QMap>
 
-namespace Solid {
-    namespace Backends {
-        namespace Fake {
-            class FakeManager;
-        }
-    }
+namespace Solid
+{
+namespace Backends
+{
+namespace Fake
+{
+class FakeManager;
+}
+}
 }
 
 class SolidHwTest : public QObject
@@ -49,10 +52,10 @@ private Q_SLOTS:
     void testPredicate();
     void testSetupTeardown();
 
-    void slotPropertyChanged(const QMap<QString,int> &changes);
+    void slotPropertyChanged(const QMap<QString, int> &changes);
 private:
     Solid::Backends::Fake::FakeManager *fakeManager;
-    QList< QMap<QString,int> > m_changesList;
+    QList< QMap<QString, int> > m_changesList;
 };
 
 #endif

@@ -36,7 +36,7 @@ class FakeDevice : public Solid::Ifaces::Device
     Q_OBJECT
 public:
     FakeDevice(const QString &udi, const QMap<QString, QVariant> &propertyMap);
-    FakeDevice(const FakeDevice& dev);
+    FakeDevice(const FakeDevice &dev);
     ~FakeDevice();
 
 public Q_SLOTS:
@@ -68,9 +68,8 @@ public:
     virtual QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type);
 
 Q_SIGNALS:
-    void propertyChanged(const QMap<QString,int> &changes);
+    void propertyChanged(const QMap<QString, int> &changes);
     void conditionRaised(const QString &condition, const QString &reason);
-
 
 private:
     class Private;

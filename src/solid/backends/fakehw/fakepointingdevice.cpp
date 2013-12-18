@@ -37,24 +37,15 @@ Solid::PointingDevice::PointingDeviceType FakePointingDevice::type() const
 {
     QString pointingDeviceType = fakeDevice()->property("type").toString();
 
-    if (pointingDeviceType==QLatin1String("Mouse"))
-    {
+    if (pointingDeviceType == QLatin1String("Mouse")) {
         return Solid::PointingDevice::Mouse;
-    }
-    else if (pointingDeviceType==QLatin1String("Touchpad"))
-    {
+    } else if (pointingDeviceType == QLatin1String("Touchpad")) {
         return Solid::PointingDevice::Touchpad;
-    }
-    else if (pointingDeviceType==QLatin1String("Touchscreen"))
-    {
+    } else if (pointingDeviceType == QLatin1String("Touchscreen")) {
         return Solid::PointingDevice::Touchscreen;
-    }
-    else if (pointingDeviceType==QLatin1String("Tablet"))
-    {
+    } else if (pointingDeviceType == QLatin1String("Tablet")) {
         return Solid::PointingDevice::Tablet;
-    }
-    else
-    {
+    } else {
         return Solid::PointingDevice::UnknownPointingDeviceType;
     }
 }

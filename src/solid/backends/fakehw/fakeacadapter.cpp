@@ -36,7 +36,6 @@ bool FakeAcAdapter::isPlugged() const
     return fakeDevice()->property("isPlugged").toBool();
 }
 
-
 void FakeAcAdapter::plug()
 {
     fakeDevice()->setProperty("isPlugged", true);

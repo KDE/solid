@@ -67,22 +67,22 @@ QString UDevDevice::vendor() const
 {
     QString vendor = m_device.sysfsProperty("manufacturer").toString();
     if (vendor.isEmpty()) {
-         if (queryDeviceInterface(Solid::DeviceInterface::Processor)) {
-             // sysfs doesn't have anything useful here
+        if (queryDeviceInterface(Solid::DeviceInterface::Processor)) {
+            // sysfs doesn't have anything useful here
             vendor = extractCpuInfoLine(deviceNumber(), "vendor_id\\s+:\\s+(\\S.+)");
-         } else if (queryDeviceInterface(Solid::DeviceInterface::Video)) {
-             vendor = m_device.deviceProperty("ID_VENDOR").toString().replace('_', " ");
-         }  else if (queryDeviceInterface(Solid::DeviceInterface::NetworkInterface)) {
-             vendor = m_device.deviceProperty("ID_VENDOR_FROM_DATABASE").toString();
-         } else if (queryDeviceInterface(Solid::DeviceInterface::AudioInterface)) {
-             if (m_device.parent().isValid()) {
-                 vendor = m_device.parent().deviceProperty("ID_VENDOR_FROM_DATABASE").toString();
-             }
-         }
+        } else if (queryDeviceInterface(Solid::DeviceInterface::Video)) {
+            vendor = m_device.deviceProperty("ID_VENDOR").toString().replace('_', " ");
+        }  else if (queryDeviceInterface(Solid::DeviceInterface::NetworkInterface)) {
+            vendor = m_device.deviceProperty("ID_VENDOR_FROM_DATABASE").toString();
+        } else if (queryDeviceInterface(Solid::DeviceInterface::AudioInterface)) {
+            if (m_device.parent().isValid()) {
+                vendor = m_device.parent().deviceProperty("ID_VENDOR_FROM_DATABASE").toString();
+            }
+        }
 
-         if (vendor.isEmpty()) {
-             vendor = m_device.deviceProperty("ID_VENDOR").toString().replace('_', ' ');
-         }
+        if (vendor.isEmpty()) {
+            vendor = m_device.deviceProperty("ID_VENDOR").toString().replace('_', ' ');
+        }
     }
     return vendor;
 }
@@ -94,12 +94,12 @@ QString UDevDevice::product() const
         if (queryDeviceInterface(Solid::DeviceInterface::Processor)) {
             // sysfs doesn't have anything useful here
             product = extractCpuInfoLine(deviceNumber(), "model name\\s+:\\s+(\\S.+)");
-        } else if(queryDeviceInterface(Solid::DeviceInterface::Video)) {
+        } else if (queryDeviceInterface(Solid::DeviceInterface::Video)) {
             product = m_device.deviceProperty("ID_V4L_PRODUCT").toString();
-        } else if(queryDeviceInterface(Solid::DeviceInterface::AudioInterface)) {
+        } else if (queryDeviceInterface(Solid::DeviceInterface::AudioInterface)) {
             const AudioInterface audioIface(const_cast<UDevDevice *>(this));
             product = audioIface.name();
-        }  else if(queryDeviceInterface(Solid::DeviceInterface::NetworkInterface)) {
+        }  else if (queryDeviceInterface(Solid::DeviceInterface::NetworkInterface)) {
             QFile typeFile(deviceName() + "/type");
             if (typeFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
                 int mediaType = typeFile.readAll().trimmed().toInt();
@@ -109,7 +109,7 @@ QString UDevDevice::product() const
                     product = m_device.deviceProperty("ID_MODEL_FROM_DATABASE").toString();
                 }
             }
-        } else if(queryDeviceInterface(Solid::DeviceInterface::SerialInterface)) {
+        } else if (queryDeviceInterface(Solid::DeviceInterface::SerialInterface)) {
             const SerialInterface serialIface(const_cast<UDevDevice *>(this));
             if (serialIface.serialType() == Solid::SerialInterface::Platform) {
                 product.append(QLatin1String("Platform serial"));

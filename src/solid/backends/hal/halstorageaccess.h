@@ -60,7 +60,7 @@ Q_SIGNALS:
 
 private Q_SLOTS:
     void connectDBusSignals();
-    void slotPropertyChanged(const QMap<QString,int> &changes);
+    void slotPropertyChanged(const QMap<QString, int> &changes);
     void slotDBusReply(const QDBusMessage &reply);
     void slotDBusError(const QDBusError &error);
     void slotProcessFinished(int exitCode, QProcess::ExitStatus exitStatus);

@@ -28,8 +28,6 @@
 #include "soliddefs_p.h"
 #include "org_kde_solid_networking_client.h"
 
-
-
 Q_GLOBAL_STATIC(Solid::NetworkingPrivate, globalNetworkManager)
 
 Solid::NetworkingPrivate::NetworkingPrivate()
@@ -53,9 +51,9 @@ Solid::Networking::Notifier::Notifier()
 void Solid::NetworkingPrivate::initialize()
 {
 
-    netStatus = m_manager->isOnline()?Solid::Networking::Connected:Solid::Networking::Unconnected;
+    netStatus = m_manager->isOnline() ? Solid::Networking::Connected : Solid::Networking::Unconnected;
 
-    connect(m_manager,SIGNAL(onlineStateChanged(bool)),this,SLOT(serviceStatusChanged(bool)));
+    connect(m_manager, SIGNAL(onlineStateChanged(bool)), this, SLOT(serviceStatusChanged(bool)));
 }
 
 uint Solid::NetworkingPrivate::status() const
@@ -67,7 +65,7 @@ uint Solid::NetworkingPrivate::status() const
 
 Solid::Networking::Status Solid::Networking::status()
 {
-    return static_cast<Solid::Networking::Status>( globalNetworkManager->status() );
+    return static_cast<Solid::Networking::Status>(globalNetworkManager->status());
 }
 
 Solid::Networking::Notifier *Solid::Networking::notifier()
@@ -75,24 +73,24 @@ Solid::Networking::Notifier *Solid::Networking::notifier()
     return globalNetworkManager;
 }
 
-void Solid::NetworkingPrivate::serviceStatusChanged( bool status )
+void Solid::NetworkingPrivate::serviceStatusChanged(bool status)
 {
 //    kDebug( 921 ) ;
-    netStatus = status?Solid::Networking::Connected:Solid::Networking::Unconnected;
-    switch ( netStatus ) {
-      case Solid::Networking::Unknown:
+    netStatus = status ? Solid::Networking::Connected : Solid::Networking::Unconnected;
+    switch (netStatus) {
+    case Solid::Networking::Unknown:
         break;
-      case Solid::Networking::Unconnected:
+    case Solid::Networking::Unconnected:
         emit globalNetworkManager->shouldDisconnect();
         break;
-      case Solid::Networking::Connected:
+    case Solid::Networking::Connected:
         emit globalNetworkManager->shouldConnect();
         break;
-      default:
+    default:
         break;
 //        kDebug( 921 ) <<  "Unrecognised status code!";
     }
-    emit globalNetworkManager->statusChanged( netStatus );
+    emit globalNetworkManager->statusChanged(netStatus);
 }
 
 Solid::Networking::ManagementPolicy Solid::Networking::connectPolicy()
@@ -100,7 +98,7 @@ Solid::Networking::ManagementPolicy Solid::Networking::connectPolicy()
     return globalNetworkManager->connectPolicy;
 }
 
-void Solid::Networking::setConnectPolicy( Solid::Networking::ManagementPolicy policy )
+void Solid::Networking::setConnectPolicy(Solid::Networking::ManagementPolicy policy)
 {
     globalNetworkManager->connectPolicy = policy;
 }
@@ -110,7 +108,7 @@ Solid::Networking::ManagementPolicy Solid::Networking::disconnectPolicy()
     return globalNetworkManager->disconnectPolicy;
 }
 
-void Solid::Networking::setDisconnectPolicy( Solid::Networking::ManagementPolicy policy )
+void Solid::Networking::setDisconnectPolicy(Solid::Networking::ManagementPolicy policy)
 {
     globalNetworkManager->disconnectPolicy = policy;
 }

@@ -23,7 +23,6 @@
 // backend
 #include "kupnpdevice.h"
 
-
 namespace Solid
 {
 namespace Backends
@@ -31,8 +30,8 @@ namespace Backends
 namespace KUPnP
 {
 
-StorageAccess::StorageAccess(KUPnPDevice* device)
-  : DeviceInterface(device)
+StorageAccess::StorageAccess(KUPnPDevice *device)
+    : DeviceInterface(device)
 {
 }
 
@@ -40,7 +39,6 @@ StorageAccess::~StorageAccess()
 {
 
 }
-
 
 bool StorageAccess::isAccessible() const
 {
@@ -51,10 +49,10 @@ QString StorageAccess::filePath() const
 {
     QString result;
 
-    const Cagibi::Device& device = mDevice->device();
+    const Cagibi::Device &device = mDevice->device();
 
     result = QString::fromLatin1("upnp-ms://%1:%2/")
-        .arg( device.ipAddress() ).arg( device.ipPortNumber() );
+             .arg(device.ipAddress()).arg(device.ipPortNumber());
 
     return result;
 }

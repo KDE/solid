@@ -65,8 +65,9 @@ bool StorageAccess::isAccessible() const
     if (isLuksDevice()) { // check if the cleartext slave is mounted
         const QString path = clearTextPath();
         //qDebug() << Q_FUNC_INFO << "CLEARTEXT device path: " << path;
-        if (path.isEmpty() || path == "/")
+        if (path.isEmpty() || path == "/") {
             return false;
+        }
         Device holderDevice(path);
         return holderDevice.isMounted();
     }
@@ -80,22 +81,25 @@ QString StorageAccess::filePath() const
 
     if (isLuksDevice()) {  // encrypted (and unlocked) device
         const QString path = clearTextPath();
-        if (path.isEmpty() || path == "/")
+        if (path.isEmpty() || path == "/") {
             return QString();
+        }
         Device holderDevice(path);
         mntPoints = qdbus_cast<QByteArrayList>(holderDevice.prop("MountPoints"));
-        if (!mntPoints.isEmpty())
-            return QFile::decodeName(mntPoints.first()); // FIXME Solid doesn't support multiple mount points
-        else
+        if (!mntPoints.isEmpty()) {
+            return QFile::decodeName(mntPoints.first());    // FIXME Solid doesn't support multiple mount points
+        } else {
             return QString();
+        }
     }
 
     mntPoints = qdbus_cast<QByteArrayList>(m_device->prop("MountPoints"));
 
-    if (!mntPoints.isEmpty())
-        return QFile::decodeName(mntPoints.first()); // FIXME Solid doesn't support multiple mount points
-    else
+    if (!mntPoints.isEmpty()) {
+        return QFile::decodeName(mntPoints.first());    // FIXME Solid doesn't support multiple mount points
+    } else {
         return QString();
+    }
 }
 
 bool StorageAccess::isIgnored() const
@@ -105,21 +109,24 @@ bool StorageAccess::isIgnored() const
 
 bool StorageAccess::setup()
 {
-    if ( m_teardownInProgress || m_setupInProgress )
+    if (m_teardownInProgress || m_setupInProgress) {
         return false;
+    }
     m_setupInProgress = true;
     m_device->broadcastActionRequested("setup");
 
-    if (m_device->isEncryptedContainer() && clearTextPath().isEmpty())
+    if (m_device->isEncryptedContainer() && clearTextPath().isEmpty()) {
         return requestPassphrase();
-    else
+    } else {
         return mount();
+    }
 }
 
 bool StorageAccess::teardown()
 {
-    if ( m_teardownInProgress || m_setupInProgress )
+    if (m_teardownInProgress || m_setupInProgress) {
         return false;
+    }
     m_teardownInProgress = true;
     m_device->broadcastActionRequested("teardown");
 
@@ -141,42 +148,31 @@ void StorageAccess::checkAccessibility()
     }
 }
 
-void StorageAccess::slotDBusReply( const QDBusMessage & /*reply*/ )
+void StorageAccess::slotDBusReply(const QDBusMessage & /*reply*/)
 {
     const QString ctPath = clearTextPath();
-    if (m_setupInProgress)
-    {
+    if (m_setupInProgress) {
         if (isLuksDevice() && !isAccessible()) { // unlocked device, now mount it
             mount();
-        }
-        else // Don't broadcast setupDone unless the setup is really done. (Fix kde#271156)
-        {
+        } else { // Don't broadcast setupDone unless the setup is really done. (Fix kde#271156)
             m_setupInProgress = false;
             m_device->broadcastActionDone("setup");
 
             checkAccessibility();
         }
-    }
-    else if (m_teardownInProgress)  // FIXME
-    {
-        if (isLuksDevice() && !ctPath.isEmpty() && ctPath != "/") // unlocked device, lock it
-        {
+    } else if (m_teardownInProgress) { // FIXME
+        if (isLuksDevice() && !ctPath.isEmpty() && ctPath != "/") { // unlocked device, lock it
             callCryptoTeardown();
-        }
-        else if (!ctPath.isEmpty() && ctPath != "/") {
+        } else if (!ctPath.isEmpty() && ctPath != "/") {
             callCryptoTeardown(true); // Lock crypted parent
-        }
-        else
-        {
+        } else {
             // try to "eject" (aka safely remove) from the (parent) drive, e.g. SD card from a reader
             QString drivePath = m_device->drivePath();
-            if (!drivePath.isEmpty() || drivePath != "/")
-            {
+            if (!drivePath.isEmpty() || drivePath != "/") {
                 Device drive(drivePath);
                 if (drive.prop("Ejectable").toBool() &&
                         drive.prop("MediaAvailable").toBool() &&
-                        !m_device->isOpticalDisc()) // optical drives have their Eject method
-                {
+                        !m_device->isOpticalDisc()) { // optical drives have their Eject method
                     QDBusConnection c = QDBusConnection::systemBus();
                     QDBusMessage msg = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, drivePath, UD2_DBUS_INTERFACE_DRIVE, "Eject");
                     msg << QVariantMap();   // options, unused now
@@ -192,20 +188,17 @@ void StorageAccess::slotDBusReply( const QDBusMessage & /*reply*/ )
     }
 }
 
-void StorageAccess::slotDBusError( const QDBusError & error )
+void StorageAccess::slotDBusError(const QDBusError &error)
 {
     //qDebug() << Q_FUNC_INFO << "DBUS ERROR:" << error.name() << error.message();
 
-    if (m_setupInProgress)
-    {
+    if (m_setupInProgress) {
         m_setupInProgress = false;
         m_device->broadcastActionDone("setup", m_device->errorToSolidError(error.name()),
-                                      m_device->errorToString(error.name()) + ": " +error.message());
+                                      m_device->errorToString(error.name()) + ": " + error.message());
 
         checkAccessibility();
-    }
-    else if (m_teardownInProgress)
-    {
+    } else if (m_teardownInProgress) {
         m_teardownInProgress = false;
         m_device->broadcastActionDone("teardown", m_device->errorToSolidError(error.name()),
                                       m_device->errorToString(error.name()) + ": " + error.message());
@@ -256,8 +249,9 @@ bool StorageAccess::mount()
     QDBusMessage msg = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, path, UD2_DBUS_INTERFACE_FILESYSTEM, "Mount");
     QVariantMap options;
 
-    if (m_device->prop("IdType").toString() == "vfat")
+    if (m_device->prop("IdType").toString() == "vfat") {
         options.insert("options", "flush");
+    }
 
     msg << options;
 
@@ -290,14 +284,14 @@ QString StorageAccess::generateReturnObjectPath()
 {
     static int number = 1;
 
-    return "/org/kde/solid/UDisks2StorageAccess_"+QString::number(number++);
+    return "/org/kde/solid/UDisks2StorageAccess_" + QString::number(number++);
 }
 
 QString StorageAccess::clearTextPath() const
 {
     const QString prefix = "/org/freedesktop/UDisks2/block_devices";
     QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, prefix,
-                                                       DBUS_INTERFACE_INTROSPECT, "Introspect");
+                        DBUS_INTERFACE_INTROSPECT, "Introspect");
     QDBusPendingReply<QString> reply = QDBusConnection::systemBus().asyncCall(call);
     reply.waitForFinished();
 
@@ -332,38 +326,38 @@ bool StorageAccess::requestPassphrase()
 
     QWidget *activeWindow = QApplication::activeWindow();
     uint wId = 0;
-    if (activeWindow!=0)
+    if (activeWindow != 0) {
         wId = (uint)activeWindow->winId();
+    }
 
     QString appId = QCoreApplication::applicationName();
 
     QDBusInterface soliduiserver("org.kde.kded5", "/modules/soliduiserver", "org.kde.SolidUiServer");
     QDBusReply<void> reply = soliduiserver.call("showPassphraseDialog", udi, returnService,
-                                                m_lastReturnObject, wId, appId);
+                             m_lastReturnObject, wId, appId);
     m_passphraseRequested = reply.isValid();
-    if (!m_passphraseRequested)
+    if (!m_passphraseRequested) {
         qWarning() << "Failed to call the SolidUiServer, D-Bus said:" << reply.error();
+    }
 
     return m_passphraseRequested;
 }
 
-void StorageAccess::passphraseReply(const QString & passphrase)
+void StorageAccess::passphraseReply(const QString &passphrase)
 {
-    if (m_passphraseRequested)
-    {
+    if (m_passphraseRequested) {
         QDBusConnection::sessionBus().unregisterObject(m_lastReturnObject);
         m_passphraseRequested = false;
-        if (!passphrase.isEmpty())
+        if (!passphrase.isEmpty()) {
             callCryptoSetup(passphrase);
-        else
-        {
+        } else {
             m_setupInProgress = false;
             m_device->broadcastActionDone("setup");
         }
     }
 }
 
-void StorageAccess::callCryptoSetup(const QString & passphrase)
+void StorageAccess::callCryptoSetup(const QString &passphrase)
 {
     QDBusConnection c = QDBusConnection::systemBus();
     QDBusMessage msg = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, m_device->udi(), UD2_DBUS_INTERFACE_ENCRYPTED, "Unlock");
@@ -380,8 +374,8 @@ bool StorageAccess::callCryptoTeardown(bool actOnParent)
 {
     QDBusConnection c = QDBusConnection::systemBus();
     QDBusMessage msg = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE,
-                                                      actOnParent ? (m_device->prop("CryptoBackingDevice").value<QDBusObjectPath>().path()) : m_device->udi(),
-                                                      UD2_DBUS_INTERFACE_ENCRYPTED, "Lock");
+                       actOnParent ? (m_device->prop("CryptoBackingDevice").value<QDBusObjectPath>().path()) : m_device->udi(),
+                       UD2_DBUS_INTERFACE_ENCRYPTED, "Lock");
     msg << QVariantMap();   // options, unused now
 
     return c.callWithCallback(msg, this,

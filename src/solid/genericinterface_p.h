@@ -25,12 +25,12 @@
 
 namespace Solid
 {
-    class GenericInterfacePrivate : public DeviceInterfacePrivate
-    {
-    public:
-        GenericInterfacePrivate()
-            : DeviceInterfacePrivate() { }
-    };
+class GenericInterfacePrivate : public DeviceInterfacePrivate
+{
+public:
+    GenericInterfacePrivate()
+        : DeviceInterfacePrivate() { }
+};
 }
 
 #endif

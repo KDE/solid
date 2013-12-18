@@ -25,12 +25,12 @@
 
 namespace Solid
 {
-    class OpticalDiscPrivate : public StorageVolumePrivate
-    {
-    public:
-        OpticalDiscPrivate()
-            : StorageVolumePrivate() { }
-    };
+class OpticalDiscPrivate : public StorageVolumePrivate
+{
+public:
+    OpticalDiscPrivate()
+        : StorageVolumePrivate() { }
+};
 }
 
 #endif

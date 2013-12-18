@@ -33,7 +33,7 @@ namespace Backends
 namespace UPnP
 {
 
-UPnPMediaServer::UPnPMediaServer(UPnPDevice* device) :
+UPnPMediaServer::UPnPMediaServer(UPnPDevice *device) :
     UPnPDeviceInterface(device)
 {
 }
@@ -49,8 +49,7 @@ bool UPnPMediaServer::isAccessible() const
 
 QString UPnPMediaServer::filePath() const
 {
-    if (isAccessible())
-    {
+    if (isAccessible()) {
         QString scheme = "upnp-ms:";
         QString udn = upnpDevice()->device()->info().udn().toString();
         QString uuid = udn.mid(5); //udn without the uuid: preffix

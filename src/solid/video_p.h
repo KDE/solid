@@ -25,12 +25,12 @@
 
 namespace Solid
 {
-    class VideoPrivate : public DeviceInterfacePrivate
-    {
-    public:
-        VideoPrivate()
-            : DeviceInterfacePrivate() { }
-    };
+class VideoPrivate : public DeviceInterfacePrivate
+{
+public:
+    VideoPrivate()
+        : DeviceInterfacePrivate() { }
+};
 }
 
 #endif

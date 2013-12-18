@@ -35,7 +35,6 @@
 #include <QtDBus/QDBusInterface>
 #include <QtCore/QDebug>
 
-
 namespace Solid
 {
 namespace Backends
@@ -44,12 +43,11 @@ namespace KUPnP
 {
 
 const char KUPnPUdiPrefix[] = "/org/kde/KUPnP";
-static const int KUPnPUdiPrefixLength = sizeof( KUPnPUdiPrefix ); // count final \0 for / separator
+static const int KUPnPUdiPrefixLength = sizeof(KUPnPUdiPrefix);   // count final \0 for / separator
 
-
-KUPnPManager::KUPnPManager(QObject* parent)
-  : Solid::Ifaces::DeviceManager(parent),
-    mUdiPrefix( QString::fromLatin1(KUPnPUdiPrefix) )
+KUPnPManager::KUPnPManager(QObject *parent)
+    : Solid::Ifaces::DeviceManager(parent),
+      mUdiPrefix(QString::fromLatin1(KUPnPUdiPrefix))
 {
     qDBusRegisterMetaType<DeviceTypeMap>();
     qDBusRegisterMetaType<Cagibi::Device>();
@@ -65,25 +63,25 @@ KUPnPManager::KUPnPManager(QObject* parent)
                            "/org/kde/Cagibi",
                            "org.kde.Cagibi",
                            "devicesAdded",
-                           this, SLOT(onDevicesAdded(DeviceTypeMap)) );
+                           this, SLOT(onDevicesAdded(DeviceTypeMap)));
     dbusConnection.connect("org.kde.Cagibi",
                            "/org/kde/Cagibi",
                            "org.kde.Cagibi",
                            "devicesRemoved",
-                           this, SLOT(onDevicesRemoved(DeviceTypeMap)) );
+                           this, SLOT(onDevicesRemoved(DeviceTypeMap)));
 
     mDeviceFactories
-        << new MediaServer1Factory()
-        << new MediaServer2Factory()
-        << new MediaServer3Factory()
-        << new InternetGatewayDevice1Factory()
-        // keep last:
-        << new DeviceFactory();
+            << new MediaServer1Factory()
+            << new MediaServer2Factory()
+            << new MediaServer3Factory()
+            << new InternetGatewayDevice1Factory()
+            // keep last:
+            << new DeviceFactory();
 
-    Q_FOREACH( AbstractDeviceFactory* factory, mDeviceFactories )
-        factory->addSupportedInterfaces( mSupportedInterfaces );
+    Q_FOREACH (AbstractDeviceFactory *factory, mDeviceFactories) {
+        factory->addSupportedInterfaces(mSupportedInterfaces);
+    }
 }
-
 
 QString KUPnPManager::udiPrefix() const
 {
@@ -104,97 +102,96 @@ QStringList KUPnPManager::allDevices()
     QDBusReply<DeviceTypeMap> reply =
         mDBusCagibiProxy->asyncCall("allDevices");
 
-    if( reply.isValid() )
-    {
+    if (reply.isValid()) {
         const DeviceTypeMap deviceTypeMap = reply;
         DeviceTypeMap::ConstIterator it = deviceTypeMap.constBegin();
         DeviceTypeMap::ConstIterator end = deviceTypeMap.constEnd();
-        for( ; it != end; ++it )
-            result << udiFromUdn( it.key() );
-    }
-    else
+        for (; it != end; ++it) {
+            result << udiFromUdn(it.key());
+        }
+    } else {
         qWarning() << Q_FUNC_INFO << " error: " << reply.error().name() << endl;
+    }
 
     return result;
 }
 
-
-QStringList KUPnPManager::devicesFromQuery( const QString& parentUdi,
-                                             Solid::DeviceInterface::Type type)
+QStringList KUPnPManager::devicesFromQuery(const QString &parentUdi,
+        Solid::DeviceInterface::Type type)
 {
     return
         (!parentUdi.isEmpty()) ?
-            findDeviceByParent(parentUdi,type) :
-        (type!=Solid::DeviceInterface::Unknown) ?
-            findDeviceByDeviceInterface(type) :
+        findDeviceByParent(parentUdi, type) :
+        (type != Solid::DeviceInterface::Unknown) ?
+        findDeviceByDeviceInterface(type) :
         /* else */
-            allDevices();
+        allDevices();
 }
 
-QObject* KUPnPManager::createDevice(const QString& udi)
+QObject *KUPnPManager::createDevice(const QString &udi)
 {
-    QObject* result = 0;
+    QObject *result = 0;
 
-    const QString udn = udnFromUdi( udi );
-    if( udn.isEmpty() ) {
+    const QString udn = udnFromUdi(udi);
+    if (udn.isEmpty()) {
         result = new KUPnPRootDevice();
     } else {
         QDBusReply<Cagibi::Device> reply =
-            mDBusCagibiProxy->asyncCall("deviceDetails",udn);
+            mDBusCagibiProxy->asyncCall("deviceDetails", udn);
 
-        if( reply.isValid() )
-        {
+        if (reply.isValid()) {
             Cagibi::Device device = reply;
-qDebug() << "device of type: "<<device.type();
-            Q_FOREACH( AbstractDeviceFactory* factory, mDeviceFactories ) {
-                result = factory->tryCreateDevice( device );
-                if( result != 0 )
+            qDebug() << "device of type: " << device.type();
+            Q_FOREACH (AbstractDeviceFactory *factory, mDeviceFactories) {
+                result = factory->tryCreateDevice(device);
+                if (result != 0) {
                     break;
+                }
             }
-        }
-        else
+        } else {
             qWarning() << Q_FUNC_INFO << " error: " << reply.error().name() << endl;
+        }
     }
 
-return result;
+    return result;
 }
 
-QStringList KUPnPManager::findDeviceByParent(const QString& parentUdi,
-                                              Solid::DeviceInterface::Type type)
+QStringList KUPnPManager::findDeviceByParent(const QString &parentUdi,
+        Solid::DeviceInterface::Type type)
 {
     QStringList result;
 
-    if( parentUdi.isEmpty() ) {
-        if (type!=Solid::DeviceInterface::Unknown) {
+    if (parentUdi.isEmpty()) {
+        if (type != Solid::DeviceInterface::Unknown) {
             result << mUdiPrefix;
         }
     } else {
-        const QString parentUdn = udnFromUdi( parentUdi );
+        const QString parentUdn = udnFromUdi(parentUdi);
 
         QDBusReply<DeviceTypeMap> reply =
-            mDBusCagibiProxy->asyncCall("devicesByParent",parentUdn); // TODO: optional recursive?
+            mDBusCagibiProxy->asyncCall("devicesByParent", parentUdn); // TODO: optional recursive?
 
-        if( reply.isValid() )
-        {
+        if (reply.isValid()) {
             DeviceTypeMap deviceTypeMap = reply;
 
-            Q_FOREACH( AbstractDeviceFactory* factory, mDeviceFactories ) {
-                const QStringList typeNames = factory->typeNames( type );
-                Q_FOREACH( const QString& typeName, typeNames ) {
+            Q_FOREACH (AbstractDeviceFactory *factory, mDeviceFactories) {
+                const QStringList typeNames = factory->typeNames(type);
+                Q_FOREACH (const QString &typeName, typeNames) {
                     DeviceTypeMap::Iterator it = deviceTypeMap.begin();
-                    while( it != deviceTypeMap.end() ) {
-                        if( it.value() == typeName ) {
-                            result << udiFromUdn( it.key() );
+                    while (it != deviceTypeMap.end()) {
+                        if (it.value() == typeName) {
+                            result << udiFromUdn(it.key());
                             // to prevent double inclusion remove the device
-                            it = deviceTypeMap.erase( it );
-                        } else
+                            it = deviceTypeMap.erase(it);
+                        } else {
                             ++it;
+                        }
                     }
                 }
             }
-        }
-        else
+        } else {
             qWarning() << Q_FUNC_INFO << " error: " << reply.error().name() << endl;
+        }
     }
 
     return result;
@@ -204,48 +201,55 @@ QStringList KUPnPManager::findDeviceByDeviceInterface(Solid::DeviceInterface::Ty
 {
     QStringList result;
 
-    Q_FOREACH( AbstractDeviceFactory* factory, mDeviceFactories ) {
-        const QStringList typeNames = factory->typeNames( type );
-        Q_FOREACH( const QString& typeName, typeNames ) {
+    Q_FOREACH (AbstractDeviceFactory *factory, mDeviceFactories) {
+        const QStringList typeNames = factory->typeNames(type);
+        Q_FOREACH (const QString &typeName, typeNames) {
             QDBusReply<DeviceTypeMap> reply =
-                mDBusCagibiProxy->asyncCall("devicesByType",typeName);
+                mDBusCagibiProxy->asyncCall("devicesByType", typeName);
 
-            if( reply.isValid() )
-            {
+            if (reply.isValid()) {
                 const DeviceTypeMap deviceTypeMap = reply;
 
                 DeviceTypeMap::ConstIterator it = deviceTypeMap.constBegin();
                 DeviceTypeMap::ConstIterator end = deviceTypeMap.constEnd();
-                for( ; it != end; ++it )
-                    result << udiFromUdn( it.key() );
-            }
-            else
+                for (; it != end; ++it) {
+                    result << udiFromUdn(it.key());
+                }
+            } else {
                 qWarning() << Q_FUNC_INFO << " error: " << reply.error().name() << endl;
+            }
         }
     }
 
     return result;
 }
 
-QString KUPnPManager::udiFromUdn( const QString& udn ) const { return mUdiPrefix + '/' + udn; }
-QString KUPnPManager::udnFromUdi( const QString& udi ) const { return udi.mid( KUPnPUdiPrefixLength ); }
+QString KUPnPManager::udiFromUdn(const QString &udn) const
+{
+    return mUdiPrefix + '/' + udn;
+}
+QString KUPnPManager::udnFromUdi(const QString &udi) const
+{
+    return udi.mid(KUPnPUdiPrefixLength);
+}
 
-void KUPnPManager::onDevicesAdded( const DeviceTypeMap& deviceTypeMap )
+void KUPnPManager::onDevicesAdded(const DeviceTypeMap &deviceTypeMap)
 {
     DeviceTypeMap::ConstIterator it = deviceTypeMap.constBegin();
     DeviceTypeMap::ConstIterator end = deviceTypeMap.constEnd();
-    for( ; it != end; ++it )
-        emit deviceAdded( udiFromUdn(it.key()) );
+    for (; it != end; ++it) {
+        emit deviceAdded(udiFromUdn(it.key()));
+    }
 }
 
-void KUPnPManager::onDevicesRemoved( const DeviceTypeMap& deviceTypeMap )
+void KUPnPManager::onDevicesRemoved(const DeviceTypeMap &deviceTypeMap)
 {
     DeviceTypeMap::ConstIterator it = deviceTypeMap.constBegin();
     DeviceTypeMap::ConstIterator end = deviceTypeMap.constEnd();
-    for( ; it != end; ++it )
-        emit deviceRemoved( udiFromUdn(it.key()) );
+    for (; it != end; ++it) {
+        emit deviceRemoved(udiFromUdn(it.key()));
+    }
 }
-
 
 KUPnPManager::~KUPnPManager()
 {

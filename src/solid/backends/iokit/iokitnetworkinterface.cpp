@@ -51,8 +51,9 @@ QString NetworkInterface::hwAddress() const
     // TODO - how to get the hw address? Return a string representation of the MAC addr for now
     const QByteArray ba = IOKitDevice(m_device->parentUdi()).property(QLatin1String("IOMACAddress")).toByteArray();
     qDebug() << ba.length();
-    if (ba.length() != 6)
+    if (ba.length() != 6) {
         return QString();
+    }
 
     QString result;
     for (int i = 0; i < 6; ++i) {
@@ -69,8 +70,9 @@ qulonglong NetworkInterface::macAddress() const
 {
     // IOMacAddress property returns the mac address encoded in 6 bytes
     const QByteArray ba = IOKitDevice(m_device->parentUdi()).property(QLatin1String("IOMACAddress")).toByteArray();
-    if (ba.length() != 6)
+    if (ba.length() != 6) {
         return 0;
+    }
 
     // need to bit-shift instead of memcpy because of alignment and endianess
     qulonglong result;

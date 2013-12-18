@@ -46,7 +46,7 @@ UPowerDevice::UPowerDevice(const QString &udi)
     if (m_device.isValid()) {
         connect(&m_device, SIGNAL(Changed()), this, SLOT(slotChanged()));
 
-         // for UPower >= 0.99.0, missing Changed() signal
+        // for UPower >= 0.99.0, missing Changed() signal
         QDBusConnection::systemBus().connect(UP_DBUS_SERVICE, m_udi, "org.freedesktop.DBus.Properties", "PropertiesChanged", this,
                                              SLOT(onPropertiesChanged(QString,QVariantMap,QStringList)));
     }
@@ -56,15 +56,14 @@ UPowerDevice::~UPowerDevice()
 {
 }
 
-QObject* UPowerDevice::createDeviceInterface(const Solid::DeviceInterface::Type& type)
+QObject *UPowerDevice::createDeviceInterface(const Solid::DeviceInterface::Type &type)
 {
     if (!queryDeviceInterface(type)) {
         return 0;
     }
 
     DeviceInterface *iface = 0;
-    switch (type)
-    {
+    switch (type) {
     case Solid::DeviceInterface::GenericInterface:
         iface = new GenericInterface(this);
         break;
@@ -80,19 +79,18 @@ QObject* UPowerDevice::createDeviceInterface(const Solid::DeviceInterface::Type&
     return iface;
 }
 
-bool UPowerDevice::queryDeviceInterface(const Solid::DeviceInterface::Type& type) const
+bool UPowerDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type) const
 {
     const uint uptype = prop("Type").toUInt();
-    switch (type)
-    {
-        case Solid::DeviceInterface::GenericInterface:
-            return true;
-        case Solid::DeviceInterface::Battery:
-            return (uptype == 2 || uptype == 3 || uptype == 5 || uptype == 6 || uptype == 7 || uptype == 8);
-        case Solid::DeviceInterface::AcAdapter:
-            return (uptype == 1);
-        default:
-            return false;
+    switch (type) {
+    case Solid::DeviceInterface::GenericInterface:
+        return true;
+    case Solid::DeviceInterface::Battery:
+        return (uptype == 2 || uptype == 3 || uptype == 5 || uptype == 6 || uptype == 7 || uptype == 8);
+    case Solid::DeviceInterface::AcAdapter:
+        return (uptype == 1);
+    default:
+        return false;
     }
 }
 
@@ -103,11 +101,11 @@ QStringList UPowerDevice::emblems() const
 
 QString UPowerDevice::description() const
 {
-    if (queryDeviceInterface(Solid::DeviceInterface::AcAdapter))
+    if (queryDeviceInterface(Solid::DeviceInterface::AcAdapter)) {
         return tr("A/C Adapter");
-    else if (queryDeviceInterface(Solid::DeviceInterface::Battery))
+    } else if (queryDeviceInterface(Solid::DeviceInterface::Battery)) {
         return tr("%1 Battery", "%1 is battery technology").arg(batteryTechnology());
-    else {
+    } else {
         QString result = prop("Model").toString();
         if (result.isEmpty()) {
             return vendor();
@@ -119,8 +117,7 @@ QString UPowerDevice::description() const
 QString UPowerDevice::batteryTechnology() const
 {
     const uint tech = prop("Technology").toUInt();
-    switch (tech)
-    {
+    switch (tech) {
     case 1:
         return tr("Lithium Ion", "battery technology");
     case 2:
@@ -179,11 +176,13 @@ QString UPowerDevice::parentUdi() const
 
 void UPowerDevice::checkCache(const QString &key) const
 {
-    if (m_cache.isEmpty()) // recreate the cache
+    if (m_cache.isEmpty()) { // recreate the cache
         allProperties();
+    }
 
-    if (m_cache.contains(key))
+    if (m_cache.contains(key)) {
         return;
+    }
 
     QVariant reply = m_device.property(key.toUtf8());
 
@@ -209,15 +208,16 @@ bool UPowerDevice::propertyExists(const QString &key) const
 QMap<QString, QVariant> UPowerDevice::allProperties() const
 {
     QDBusMessage call = QDBusMessage::createMethodCall(m_device.service(), m_device.path(),
-                                                       "org.freedesktop.DBus.Properties", "GetAll");
+                        "org.freedesktop.DBus.Properties", "GetAll");
     call << m_device.interface();
     QDBusPendingReply< QVariantMap > reply = QDBusConnection::systemBus().asyncCall(call);
     reply.waitForFinished();
 
-    if (reply.isValid())
+    if (reply.isValid()) {
         m_cache = reply.value();
-    else
+    } else {
         m_cache.clear();
+    }
 
     return m_cache;
 }

@@ -34,13 +34,12 @@ Volume::~Volume()
 
 }
 
-
 bool Volume::isIgnored() const
 {
     static HalDevice lock("/org/freedesktop/Hal/devices/computer");
     bool isLocked = lock.prop("info.named_locks.Global.org.freedesktop.Hal.Device.Storage.locked").toBool();
 
-    if (m_device->prop("volume.ignore").toBool() || isLocked ){
+    if (m_device->prop("volume.ignore").toBool() || isLocked) {
         return true;
     }
 
@@ -69,28 +68,17 @@ Solid::StorageVolume::UsageType Volume::usage() const
 {
     QString usage = m_device->prop("volume.fsusage").toString();
 
-    if (usage == "filesystem")
-    {
+    if (usage == "filesystem") {
         return Solid::StorageVolume::FileSystem;
-    }
-    else if (usage == "partitiontable")
-    {
+    } else if (usage == "partitiontable") {
         return Solid::StorageVolume::PartitionTable;
-    }
-    else if (usage == "raid")
-    {
+    } else if (usage == "raid") {
         return Solid::StorageVolume::Raid;
-    }
-    else if (usage == "crypto")
-    {
+    } else if (usage == "crypto") {
         return Solid::StorageVolume::Encrypted;
-    }
-    else if (usage == "unused")
-    {
+    } else if (usage == "unused") {
         return Solid::StorageVolume::Unused;
-    }
-    else
-    {
+    } else {
         return Solid::StorageVolume::Other;
     }
 }

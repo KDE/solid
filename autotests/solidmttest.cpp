@@ -31,7 +31,6 @@
 #include <solid/storagedrive.h>
 #include <solid/genericinterface.h>
 
-
 class SolidMtTest : public QObject
 {
     Q_OBJECT
@@ -50,7 +49,7 @@ protected:
 
         QList<Solid::Device> driveList = Solid::Device::listFromType(Solid::DeviceInterface::StorageDrive);
         Q_FOREACH (const Solid::Device &solidDevice, driveList) {
-            const Solid::StorageDrive* solidDrive = solidDevice.as<Solid::StorageDrive>();
+            const Solid::StorageDrive *solidDrive = solidDevice.as<Solid::StorageDrive>();
             Q_ASSERT(solidDrive);
             Q_UNUSED(solidDrive);
         }
@@ -82,7 +81,7 @@ void SolidMtTest::testWorkerThread()
 
     const QList<Solid::Device> driveList = Solid::Device::listFromType(Solid::DeviceInterface::StorageDrive);
     Q_FOREACH (const Solid::Device &solidDevice, driveList) {
-        const Solid::GenericInterface* solidDrive = solidDevice.as<Solid::GenericInterface>();
+        const Solid::GenericInterface *solidDrive = solidDevice.as<Solid::GenericInterface>();
         Q_ASSERT(solidDrive);
         Q_UNUSED(solidDrive);
     }
@@ -102,8 +101,9 @@ void SolidMtTest::testThreadedPredicate()
     futures << QtConcurrent::run(&doPredicates);
     futures << QtConcurrent::run(&doPredicates);
     futures << QtConcurrent::run(&doPredicates);
-    Q_FOREACH(QFuture<void> f, futures)
+    Q_FOREACH (QFuture<void> f, futures) {
         f.waitForFinished();
+    }
     QThreadPool::globalInstance()->setMaxThreadCount(1); // delete those threads
 }
 

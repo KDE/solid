@@ -49,7 +49,7 @@ bool StorageDrive::isHotpluggable() const
 {
     const Solid::StorageDrive::Bus _bus = bus();
     return _bus == Solid::StorageDrive::Usb || _bus == Solid::StorageDrive::Ieee1394 ||
-            (m_udevDevice.deviceProperty("UDISKS_SYSTEM").isValid() && !m_udevDevice.deviceProperty("UDISKS_SYSTEM").toBool());
+           (m_udevDevice.deviceProperty("UDISKS_SYSTEM").isValid() && !m_udevDevice.deviceProperty("UDISKS_SYSTEM").toBool());
 }
 
 bool StorageDrive::isRemovable() const
@@ -61,48 +61,32 @@ Solid::StorageDrive::DriveType StorageDrive::driveType() const
 {
     const QStringList mediaTypes = m_device->prop("MediaCompatibility").toStringList();
 
-    if ( m_device->isOpticalDrive() ) // optical disks
-    {
+    if (m_device->isOpticalDrive()) { // optical disks
         return Solid::StorageDrive::CdromDrive;
-    }
-    else if ( mediaTypes.contains( "floppy" ) )
-    {
+    } else if (mediaTypes.contains("floppy")) {
         return Solid::StorageDrive::Floppy;
     }
 #if 0 // TODO add to Solid
-    else if ( mediaTypes.contains( "floppy_jaz" ) )
-    {
+    else if (mediaTypes.contains("floppy_jaz")) {
         return Solid::StorageDrive::Jaz;
-    }
-    else if ( mediaTypes.contains( "floppy_zip" ) )
-    {
+    } else if (mediaTypes.contains("floppy_zip")) {
         return Solid::StorageDrive::Zip;
-    }
-    else if ( mediaTypes.contains( "flash" ) )
-    {
+    } else if (mediaTypes.contains("flash")) {
         return Solid::StorageDrive::Flash;
     }
 #endif
-    else if ( mediaTypes.contains( "flash_cf" ) )
-    {
+    else if (mediaTypes.contains("flash_cf")) {
         return Solid::StorageDrive::CompactFlash;
-    }
-    else if ( mediaTypes.contains( "flash_ms" ) )
-    {
+    } else if (mediaTypes.contains("flash_ms")) {
         return Solid::StorageDrive::MemoryStick;
-    }
-    else if ( mediaTypes.contains( "flash_sm" ) )
-    {
+    } else if (mediaTypes.contains("flash_sm")) {
         return Solid::StorageDrive::SmartMedia;
-    }
-    else if ( mediaTypes.contains( "flash_sd" ) || mediaTypes.contains( "flash_sdhc" )
-              || mediaTypes.contains( "flash_mmc" ) || mediaTypes.contains("flash_sdxc") )
-    {
+    } else if (mediaTypes.contains("flash_sd") || mediaTypes.contains("flash_sdhc")
+               || mediaTypes.contains("flash_mmc") || mediaTypes.contains("flash_sdxc")) {
         return Solid::StorageDrive::SdMmc;
     }
     // FIXME: udisks2 doesn't know about xD cards
-    else
-    {
+    else {
         return Solid::StorageDrive::HardDisk;
     }
 }
@@ -114,35 +98,27 @@ Solid::StorageDrive::Bus StorageDrive::bus() const
 
     //qDebug() << "bus:" << bus << "udev bus:" << udevBus;
 
-    if (udevBus == "ata")
-    {
-        if (m_udevDevice.deviceProperty("ID_ATA_SATA").toInt() == 1) // serial ATA
+    if (udevBus == "ata") {
+        if (m_udevDevice.deviceProperty("ID_ATA_SATA").toInt() == 1) { // serial ATA
             return Solid::StorageDrive::Sata;
-        else  // parallel (classical) ATA
+        } else { // parallel (classical) ATA
             return Solid::StorageDrive::Ide;
-    }
-    else if (bus == "usb")
-    {
+        }
+    } else if (bus == "usb") {
         return Solid::StorageDrive::Usb;
-    }
-    else if (bus == "ieee1394")
-    {
+    } else if (bus == "ieee1394") {
         return Solid::StorageDrive::Ieee1394;
-    }
-    else if (udevBus == "scsi")
-    {
+    } else if (udevBus == "scsi") {
         return Solid::StorageDrive::Scsi;
     }
 #if 0  // TODO add these to Solid
-    else if ( bus == "sdio" )
-    {
+    else if (bus == "sdio") {
         return Solid::StorageDrive::SDIO;
-    }
-    else if ( bus == "virtual" )
-    {
+    } else if (bus == "virtual") {
         return Solid::StorageDrive::Virtual;
     }
 #endif
-    else
+    else {
         return Solid::StorageDrive::Platform;
+    }
 }

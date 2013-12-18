@@ -56,12 +56,9 @@ QString NetworkInterface::hwAddress() const
 
 qulonglong NetworkInterface::macAddress() const
 {
-    if (m_device->propertyExists("net.80211.mac_address"))
-    {
+    if (m_device->propertyExists("net.80211.mac_address")) {
         return m_device->prop("net.80211.mac_address").toULongLong();
-    }
-    else
-    {
+    } else {
         return m_device->prop("net.80203.mac_address").toULongLong();
     }
 }

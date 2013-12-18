@@ -42,22 +42,23 @@ QStringList PortableMediaPlayer::supportedProtocols() const
 QStringList PortableMediaPlayer::supportedDrivers(QString protocol) const
 {
     QStringList drivers = m_device->property("portable_audio_player.access_method.drivers").toStringList();
-    if(protocol.isNull())
+    if (protocol.isNull()) {
         return drivers;
+    }
     QStringList returnedDrivers;
     QString temp;
-    for(int i = 0; i < drivers.size(); i++)
-    {
+    for (int i = 0; i < drivers.size(); i++) {
         temp = drivers.at(i);
-        if(m_device->property("portable_audio_player." + temp + ".protocol") == protocol)
+        if (m_device->property("portable_audio_player." + temp + ".protocol") == protocol) {
             returnedDrivers << temp;
+        }
     }
     return returnedDrivers;
 }
 
 QVariant Solid::Backends::Wmi::PortableMediaPlayer::driverHandle(const QString &driver) const
 {
-    if (driver=="mtp") {
+    if (driver == "mtp") {
         return m_device->property("usb.serial");
     }
     // TODO: Fill in the blank for other drivers

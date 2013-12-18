@@ -32,7 +32,6 @@ FakeBattery::~FakeBattery()
 {
 }
 
-
 bool FakeBattery::isPlugged() const
 {
     return fakeDevice()->property("isPlugged").toBool();
@@ -42,36 +41,21 @@ Solid::Battery::BatteryType FakeBattery::type() const
 {
     QString name = fakeDevice()->property("batteryType").toString();
 
-    if (name == "pda")
-    {
+    if (name == "pda") {
         return Solid::Battery::PdaBattery;
-    }
-    else if (name == "ups")
-    {
+    } else if (name == "ups") {
         return Solid::Battery::UpsBattery;
-    }
-    else if (name == "primary")
-    {
+    } else if (name == "primary") {
         return Solid::Battery::PrimaryBattery;
-    }
-    else if (name == "mouse")
-    {
+    } else if (name == "mouse") {
         return Solid::Battery::MouseBattery;
-    }
-    else if (name == "keyboard")
-    {
+    } else if (name == "keyboard") {
         return Solid::Battery::KeyboardBattery;
-    }
-    else if (name == "keyboard_mouse")
-    {
+    } else if (name == "keyboard_mouse") {
         return Solid::Battery::KeyboardMouseBattery;
-    }
-    else if (name == "camera")
-    {
+    } else if (name == "camera") {
         return Solid::Battery::CameraBattery;
-    }
-    else
-    {
+    } else {
         return Solid::Battery::UnknownBattery;
     }
 }
@@ -105,16 +89,11 @@ Solid::Battery::ChargeState FakeBattery::chargeState() const
 {
     QString state = fakeDevice()->property("chargeState").toString();
 
-    if (state == "charging")
-    {
+    if (state == "charging") {
         return Solid::Battery::Charging;
-    }
-    else if (state == "discharging")
-    {
+    } else if (state == "discharging") {
         return Solid::Battery::Discharging;
-    }
-    else
-    {
+    } else {
         return Solid::Battery::NoCharge;
     }
 }
@@ -123,8 +102,7 @@ void FakeBattery::setChargeState(Solid::Battery::ChargeState newState)
 {
     QString name;
 
-    switch(newState)
-    {
+    switch (newState) {
     case Solid::Battery::Charging:
         name = "charging";
         break;

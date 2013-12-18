@@ -25,12 +25,12 @@
 
 namespace Solid
 {
-    class StorageDrivePrivate : public DeviceInterfacePrivate
-    {
-    public:
-        StorageDrivePrivate()
-            : DeviceInterfacePrivate() { }
-    };
+class StorageDrivePrivate : public DeviceInterfacePrivate
+{
+public:
+    StorageDrivePrivate()
+        : DeviceInterfacePrivate() { }
+};
 }
 
 #endif // SOLID_STORAGEDRIVE_P_H

@@ -27,92 +27,93 @@
 
 namespace Solid
 {
-    class SerialInterfacePrivate;
-    class Device;
+class SerialInterfacePrivate;
+class Device;
 
+/**
+ * This device interface is available on serial interfaces.
+ * @since 4.3
+ */
+class SOLID_EXPORT SerialInterface : public DeviceInterface
+{
+    Q_OBJECT
+    Q_PROPERTY(QVariant driverHandle READ driverHandle)
+    Q_PROPERTY(QString serialType READ serialType)
+    Q_PROPERTY(int port READ port)
+    Q_ENUMS(SerialType)
+    Q_DECLARE_PRIVATE(SerialInterface)
+    friend class Device;
+
+private:
     /**
-     * This device interface is available on serial interfaces.
+     * Creates a new SerialInterface object.
+     * You generally won't need this. It's created when necessary using
+     * Device::as().
+     *
+     * @param backendObject the device interface object provided by the backend
+     * @see Solid::Device::as()
      * @since 4.3
      */
-    class SOLID_EXPORT SerialInterface : public DeviceInterface
+    explicit SerialInterface(QObject *backendObject);
+
+public:
+    /**
+     * Destroys a SerialInterface object.
+     * @since 4.3
+     */
+    virtual ~SerialInterface();
+
+    /**
+     * Get the Solid::DeviceInterface::Type of the SerialInterface device interface.
+     *
+     * @return the SerialInterface device interface type
+     * @see Solid::Ifaces::Enums::DeviceInterface::Type
+     * @since 4.3
+     */
+    static Type deviceInterfaceType()
     {
-        Q_OBJECT
-        Q_PROPERTY(QVariant driverHandle READ driverHandle)
-        Q_PROPERTY(QString serialType READ serialType)
-        Q_PROPERTY(int port READ port)
-        Q_ENUMS(SerialType)
-        Q_DECLARE_PRIVATE(SerialInterface)
-        friend class Device;
+        return DeviceInterface::SerialInterface;
+    }
 
-    private:
-        /**
-         * Creates a new SerialInterface object.
-         * You generally won't need this. It's created when necessary using
-         * Device::as().
-         *
-         * @param backendObject the device interface object provided by the backend
-         * @see Solid::Device::as()
-         * @since 4.3
-         */
-        explicit SerialInterface(QObject *backendObject);
+    /**
+     * Retrieves the name of the interface in the system.
+     * This name is system dependent, it allows to identify the interface
+     * in the system. For example it can be of the form "/dev/ttyS0" under Linux.
+     *
+     * @return the interface name
+     * @since 4.3
+     */
+    virtual QVariant driverHandle() const;
 
-    public:
-        /**
-         * Destroys a SerialInterface object.
-         * @since 4.3
-         */
-        virtual ~SerialInterface();
+    /**
+     * This enum type defines the type of a serial interface.
+     *
+     * - Unknown : The type could not be determined
+     * - Platform : A built-in serial port
+     * - USB : A USB serial port
+     *
+     * @since 4.3
+     */
+    enum SerialType { Unknown = 0, Platform, Usb };
 
+    /**
+     * Retrieves the type of the serial device.
+     * Examples for Linux are "usb" for USB based serial devices,
+     * or "platform" for built-in serial ports.
+     *
+     * @return the type of the serial device
+     * @since 4.3
+     */
+    virtual SerialType serialType() const;
 
-        /**
-         * Get the Solid::DeviceInterface::Type of the SerialInterface device interface.
-         *
-         * @return the SerialInterface device interface type
-         * @see Solid::Ifaces::Enums::DeviceInterface::Type
-         * @since 4.3
-         */
-        static Type deviceInterfaceType() { return DeviceInterface::SerialInterface; }
-
-
-        /**
-         * Retrieves the name of the interface in the system.
-         * This name is system dependent, it allows to identify the interface
-         * in the system. For example it can be of the form "/dev/ttyS0" under Linux.
-         *
-         * @return the interface name
-         * @since 4.3
-         */
-        virtual QVariant driverHandle() const;
-
-        /**
-         * This enum type defines the type of a serial interface.
-         *
-         * - Unknown : The type could not be determined
-         * - Platform : A built-in serial port
-         * - USB : A USB serial port
-         *
-         * @since 4.3
-         */
-        enum SerialType { Unknown = 0, Platform, Usb };
-
-        /**
-         * Retrieves the type of the serial device.
-         * Examples for Linux are "usb" for USB based serial devices,
-         * or "platform" for built-in serial ports.
-         *
-         * @return the type of the serial device
-         * @since 4.3
-         */
-        virtual SerialType serialType() const;
-
-        /**
-         * Retrieves the port number, e.g. 0 for the first COM port.
-         *
-         * @return The port number of the serial device, or -1 if unknown.
-         * @since 4.3
-         */
-        virtual int port() const;
-    };
+    /**
+     * Retrieves the port number, e.g. 0 for the first COM port.
+     *
+     * @return The port number of the serial device, or -1 if unknown.
+     * @since 4.3
+     */
+    virtual int port() const;
+};
 }
 
 #endif // SOLID_SERIALINTERFACE_H

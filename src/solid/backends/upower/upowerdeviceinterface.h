@@ -52,8 +52,7 @@ public:
     {
         QStringList list;
 
-        switch(type)
-        {
+        switch (type) {
         case Solid::DeviceInterface::GenericInterface:
             list << "generic";
             break;
@@ -133,46 +132,47 @@ public:
 
     inline static Solid::DeviceInterface::Type fromString(const QString &capability)
     {
-        if (capability == "generic")
+        if (capability == "generic") {
             return Solid::DeviceInterface::GenericInterface;
-        else if (capability == "processor")
+        } else if (capability == "processor") {
             return Solid::DeviceInterface::Processor;
-        else if (capability == "block")
+        } else if (capability == "block") {
             return Solid::DeviceInterface::Block;
-        else if (capability == "storage")
+        } else if (capability == "storage") {
             return Solid::DeviceInterface::StorageDrive;
-        else if (capability == "storage.cdrom")
+        } else if (capability == "storage.cdrom") {
             return Solid::DeviceInterface::OpticalDrive;
-        else if (capability == "volume")
+        } else if (capability == "volume") {
             return Solid::DeviceInterface::StorageVolume;
-        else if (capability == "volume.disc")
+        } else if (capability == "volume.disc") {
             return Solid::DeviceInterface::OpticalDisc;
-        else if (capability == "camera")
+        } else if (capability == "camera") {
             return Solid::DeviceInterface::Camera;
-        else if (capability == "portable_audio_player")
+        } else if (capability == "portable_audio_player") {
             return Solid::DeviceInterface::PortableMediaPlayer;
-        else if (capability == "net")
+        } else if (capability == "net") {
             return Solid::DeviceInterface::NetworkInterface;
-        else if (capability == "ac_adapter")
+        } else if (capability == "ac_adapter") {
             return Solid::DeviceInterface::AcAdapter;
-        else if (capability == "battery")
+        } else if (capability == "battery") {
             return Solid::DeviceInterface::Battery;
-        else if (capability == "button")
+        } else if (capability == "button") {
             return Solid::DeviceInterface::Button;
-        else if (capability == "alsa" || capability == "oss")
+        } else if (capability == "alsa" || capability == "oss") {
             return Solid::DeviceInterface::AudioInterface;
-        else if (capability == "dvb")
+        } else if (capability == "dvb") {
             return Solid::DeviceInterface::DvbInterface;
-        else if (capability == "video4linux")
+        } else if (capability == "video4linux") {
             return Solid::DeviceInterface::Video;
-        else if (capability == "serial")
+        } else if (capability == "serial") {
             return Solid::DeviceInterface::SerialInterface;
-        else if (capability == "smart_card_reader")
+        } else if (capability == "smart_card_reader") {
             return Solid::DeviceInterface::SmartCardReader;
-        else if (capability == "networkshare")
+        } else if (capability == "networkshare") {
             return Solid::DeviceInterface::NetworkShare;
-        else
+        } else {
             return Solid::DeviceInterface::Unknown;
+        }
     }
 };
 

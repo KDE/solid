@@ -25,7 +25,7 @@ WinAcadapter::WinAcadapter(WinDevice *device) :
     WinInterface(device)
 {
     powerChanged();
-    connect(WinDeviceManager::instance(),SIGNAL(powerChanged()),this,SLOT(powerChanged()));
+    connect(WinDeviceManager::instance(), SIGNAL(powerChanged()), this, SLOT(powerChanged()));
 }
 
 bool WinAcadapter::isPlugged() const
@@ -44,13 +44,12 @@ void WinAcadapter::powerChanged()
 {
     bool old_pluggedIn = m_pluggedIn;
     SYSTEM_POWER_STATUS status;
-    ZeroMemory(&status,sizeof(SYSTEM_POWER_STATUS));
+    ZeroMemory(&status, sizeof(SYSTEM_POWER_STATUS));
     GetSystemPowerStatus(&status);
 
     m_pluggedIn = status.ACLineStatus == 1;
 
-    if(m_pluggedIn != old_pluggedIn)
-    {
-        emit plugStateChanged(m_pluggedIn,m_device->udi());
+    if (m_pluggedIn != old_pluggedIn) {
+        emit plugStateChanged(m_pluggedIn, m_device->udi());
     }
 }

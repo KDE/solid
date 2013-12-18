@@ -27,12 +27,12 @@ using namespace Solid::Backends::UDisks;
 GenericInterface::GenericInterface(UDisksDevice *device)
     : DeviceInterface(device)
 {
-/* TODO
-    connect(device, SIGNAL(propertyChanged(QMap<QString,int>)),
-            this, SIGNAL(propertyChanged(QMap<QString,int>)));
-    connect(device, SIGNAL(conditionRaised(QString,QString)),
-            this, SIGNAL(conditionRaised(QString,QString)));
-*/
+    /* TODO
+        connect(device, SIGNAL(propertyChanged(QMap<QString,int>)),
+                this, SIGNAL(propertyChanged(QMap<QString,int>)));
+        connect(device, SIGNAL(conditionRaised(QString,QString)),
+                this, SIGNAL(conditionRaised(QString,QString)));
+    */
 }
 
 GenericInterface::~GenericInterface()

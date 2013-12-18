@@ -48,12 +48,12 @@ FstabWatcher::FstabWatcher()
 
     m_mtabFile = new QFile(MTAB, this);
     if (m_mtabFile && m_mtabFile->symLinkTarget().startsWith("/proc/")
-        && m_mtabFile->open(QIODevice::ReadOnly) ) {
+            && m_mtabFile->open(QIODevice::ReadOnly)) {
 
         m_mtabSocketNotifier = new QSocketNotifier(m_mtabFile->handle(),
                 QSocketNotifier::Exception, this);
         connect(m_mtabSocketNotifier,
-                SIGNAL(activated(int)), this, SIGNAL(mtabChanged()) );
+                SIGNAL(activated(int)), this, SIGNAL(mtabChanged()));
     } else {
         m_fileSystemWatcher->addPath(MTAB);
     }
@@ -97,7 +97,6 @@ FstabWatcher *FstabWatcher::instance()
 #endif
 }
 
-
 void FstabWatcher::onFileChanged(const QString &path)
 {
     if (path == MTAB) {
@@ -113,5 +112,4 @@ void FstabWatcher::onFileChanged(const QString &path)
         }
     }
 }
-
 

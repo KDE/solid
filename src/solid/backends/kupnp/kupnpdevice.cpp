@@ -33,16 +33,14 @@ namespace Backends
 namespace KUPnP
 {
 
-struct DeviceData
-{
-    const char* type;
-    const char* iconName;
-    const char* name;
+struct DeviceData {
+    const char *type;
+    const char *iconName;
+    const char *name;
 };
 
 static const
-DeviceData deviceData[] =
-{
+DeviceData deviceData[] = {
     {"BasicDevice1", "network-server", Q_TRANSLATE_NOOP("", "UPnP Basic Device") },
     {"WLANAccessPointDevice1", "network-wireless", Q_TRANSLATE_NOOP("", "UPnP WLAN Access Point Device") },
     {"PrinterBasic1", "printer", Q_TRANSLATE_NOOP("", "UPnP Printer (Basic)") },
@@ -61,50 +59,47 @@ DeviceData deviceData[] =
     {"RADiscoveryAgent1", "device", Q_TRANSLATE_NOOP("", "UPnP Remote Access Discovery Agent") },
     {"Unknown", "device", Q_TRANSLATE_NOOP("", "Unknown UPnP Device") },
     {"LANDevice1", "network-wired", Q_TRANSLATE_NOOP("", "UPnP LAN Device") },
-   {"WANDevice1", "network-wired", Q_TRANSLATE_NOOP("", "UPnP WAN Device") },
+    {"WANDevice1", "network-wired", Q_TRANSLATE_NOOP("", "UPnP WAN Device") },
     {"WANConnectionDevice1", "network-wired", Q_TRANSLATE_NOOP("", "UPnP WAN Connection Device") },
     {"WFADevice1", "network-wireless", Q_TRANSLATE_NOOP("", "UPnP Wi-Fi Alliance Device") }
 };
 
-
 static const int deviceDataCount = sizeof(deviceData) / sizeof(deviceData[0]);
-
 
 AbstractDeviceFactory::~AbstractDeviceFactory() {}
 
 DeviceFactory::DeviceFactory() {}
 
-void AbstractDeviceFactory::addSupportedInterfaces( QSet<Solid::DeviceInterface::Type>& interfaces ) const
+void AbstractDeviceFactory::addSupportedInterfaces(QSet<Solid::DeviceInterface::Type> &interfaces) const
 {
-    Q_UNUSED( interfaces );
+    Q_UNUSED(interfaces);
 }
 #if 0
-bool AbstractDeviceFactory::hasDeviceInterface( const Cagibi::Device& device,
-                                                Solid::DeviceInterface::Type type ) const
+bool AbstractDeviceFactory::hasDeviceInterface(const Cagibi::Device &device,
+        Solid::DeviceInterface::Type type) const
 {
-    Q_UNUSED( device );
-    Q_UNUSED( type );
+    Q_UNUSED(device);
+    Q_UNUSED(type);
 
     return false;
 }
 #endif
-QStringList AbstractDeviceFactory::typeNames( Solid::DeviceInterface::Type type ) const
+QStringList AbstractDeviceFactory::typeNames(Solid::DeviceInterface::Type type) const
 {
-    Q_UNUSED( type );
+    Q_UNUSED(type);
 
     return QStringList();
 }
 
-QObject* DeviceFactory::tryCreateDevice( const Cagibi::Device& device ) const
+QObject *DeviceFactory::tryCreateDevice(const Cagibi::Device &device) const
 {
-    return new KUPnPDevice( device );
+    return new KUPnPDevice(device);
 }
 
-
-KUPnPDevice::KUPnPDevice(const Cagibi::Device& device)
-  : Device(),
-    mDevice(device),
-    mParentDevice(0)
+KUPnPDevice::KUPnPDevice(const Cagibi::Device &device)
+    : Device(),
+      mDevice(device),
+      mParentDevice(0)
 {
 }
 
@@ -115,15 +110,15 @@ KUPnPDevice::~KUPnPDevice()
 
 QString KUPnPDevice::udi() const
 {
-    return QString::fromLatin1("/org/kde/KUPnP/%1").arg( mDevice.udn() );
+    return QString::fromLatin1("/org/kde/KUPnP/%1").arg(mDevice.udn());
 }
 
 QString KUPnPDevice::parentUdi() const
 {
     const QString result =
         mDevice.hasParentDevice() ?
-            QString::fromLatin1("/org/kde/KUPnP/%1").arg( mDevice.parentDeviceUdn() ) :
-            QString::fromLatin1("/org/kde/KUPnP");
+        QString::fromLatin1("/org/kde/KUPnP/%1").arg(mDevice.parentDeviceUdn()) :
+        QString::fromLatin1("/org/kde/KUPnP");
 
     return result;
 }
@@ -140,18 +135,18 @@ QString KUPnPDevice::product() const
 
 QString KUPnPDevice::icon() const
 {
-    const char* result;
+    const char *result;
 
     const QString type = mDevice.type();
     int i = 0;
-    for (;i<deviceDataCount; ++i ) {
-        const DeviceData& data = deviceData[i];
+    for (; i < deviceDataCount; ++i) {
+        const DeviceData &data = deviceData[i];
         if (type == QLatin1String(data.type)) {
             result = data.iconName;
             break;
         }
     }
-    if (i==deviceDataCount) {
+    if (i == deviceDataCount) {
         result = "network-server";
     }
 
@@ -163,7 +158,7 @@ QStringList KUPnPDevice::emblems() const
     QStringList result;
 #if 0
     if (queryDeviceInterface(Solid::DeviceInterface::StorageAccess)) {
-        bool isEncrypted = property("volume.fsusage").toString()=="crypto";
+        bool isEncrypted = property("volume.fsusage").toString() == "crypto";
 
         const Hal::StorageAccess accessIface(const_cast<KUPnPDevice *>(this));
         if (accessIface.isAccessible()) {
@@ -189,17 +184,16 @@ QString KUPnPDevice::description() const
     return mDevice.modelDescription();
 }
 
-
-bool KUPnPDevice::queryDeviceInterface(const Solid::DeviceInterface::Type& type) const
+bool KUPnPDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type) const
 {
-    Q_UNUSED( type );
+    Q_UNUSED(type);
 
     return false;
 }
 
-QObject* KUPnPDevice::createDeviceInterface(const Solid::DeviceInterface::Type& type)
+QObject *KUPnPDevice::createDeviceInterface(const Solid::DeviceInterface::Type &type)
 {
-    Q_UNUSED( type );
+    Q_UNUSED(type);
 
     return 0;
 }

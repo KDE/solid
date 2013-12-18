@@ -42,8 +42,8 @@ class UDisksManager : public Solid::Ifaces::DeviceManager
 
 public:
     UDisksManager(QObject *parent);
-    virtual QObject* createDevice(const QString& udi);
-    virtual QStringList devicesFromQuery(const QString& parentUdi, Solid::DeviceInterface::Type type);
+    virtual QObject *createDevice(const QString &udi);
+    virtual QStringList devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type);
     virtual QStringList allDevices();
     virtual QSet< Solid::DeviceInterface::Type > supportedInterfaces() const;
     virtual QString udiPrefix() const;

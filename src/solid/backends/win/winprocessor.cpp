@@ -26,14 +26,13 @@
 
 using namespace Solid::Backends::Win;
 
-typedef BOOL (WINAPI *GLPI_fn)(SYSTEM_LOGICAL_PROCESSOR_INFORMATION* Buffer, DWORD* ReturnLength);
+typedef BOOL (WINAPI *GLPI_fn)(SYSTEM_LOGICAL_PROCESSOR_INFORMATION *Buffer, DWORD *ReturnLength);
 GLPI_fn pGetLogicalProcessorInformation = (GLPI_fn)GetProcAddress(LoadLibraryA("kernel32.dll"), "GetLogicalProcessorInformation");
-
 
 WinProcessor::WinProcessor(WinDevice *device):
     WinInterface(device)
 {
-    m_number = m_device->udi().mid(m_device->udi().length()-1).toInt();
+    m_number = m_device->udi().mid(m_device->udi().length() - 1).toInt();
 }
 
 WinProcessor::~WinProcessor()
@@ -65,61 +64,50 @@ Solid::Processor::InstructionSets WinProcessor::instructionSets() const
 QSet<QString> WinProcessor::getUdis()
 {
     static QSet<QString> out;
-    if(out.isEmpty())
-    {
-        foreach(const ProcessorInfo &info,updateCache())
-        {
+    if (out.isEmpty()) {
+        foreach (const ProcessorInfo &info, updateCache()) {
             out << QString("/org/kde/solid/win/cpu/device#%1,cpu#%2").arg(info.id).arg(info.lgicalId);
         }
     }
     return out;
 }
 
-
 DWORD WinProcessor::countSetBits(ULONG_PTR bitMask)
 {
-    DWORD LSHIFT = sizeof(ULONG_PTR)*8 - 1;
+    DWORD LSHIFT = sizeof(ULONG_PTR) * 8 - 1;
     DWORD bitSetCount = 0;
     ULONG_PTR bitTest = (ULONG_PTR)1 << LSHIFT;
     DWORD i;
 
-    for (i = 0; i <= LSHIFT; ++i)
-    {
-        bitSetCount += ((bitMask & bitTest)?1:0);
-        bitTest/=2;
+    for (i = 0; i <= LSHIFT; ++i) {
+        bitSetCount += ((bitMask & bitTest) ? 1 : 0);
+        bitTest /= 2;
     }
 
     return bitSetCount;
 }
 
-
-
-const QMap<int,WinProcessor::ProcessorInfo> &WinProcessor::updateCache()
+const QMap<int, WinProcessor::ProcessorInfo> &WinProcessor::updateCache()
 {
-    static QMap<int,ProcessorInfo> p;
+    static QMap<int, ProcessorInfo> p;
 
-    if(p.isEmpty())
-    {
+    if (p.isEmpty()) {
         DWORD size = 0;
-        pGetLogicalProcessorInformation(NULL,&size);
+        pGetLogicalProcessorInformation(NULL, &size);
         char *buff = new char[size];
-        SYSTEM_LOGICAL_PROCESSOR_INFORMATION *info = (SYSTEM_LOGICAL_PROCESSOR_INFORMATION*)buff;
-        pGetLogicalProcessorInformation(info,&size);
+        SYSTEM_LOGICAL_PROCESSOR_INFORMATION *info = (SYSTEM_LOGICAL_PROCESSOR_INFORMATION *)buff;
+        pGetLogicalProcessorInformation(info, &size);
         size /= sizeof(SYSTEM_LOGICAL_PROCESSOR_INFORMATION);
-
 
         uint processorCoreCount = 0;
         uint logicalProcessorCount = 0;
 
-        for(uint i=0;i< size;++i)
-        {
-            if (info[i].Relationship == RelationProcessorCore)
-            {
+        for (uint i = 0; i < size; ++i) {
+            if (info[i].Relationship == RelationProcessorCore) {
                 // A hyperthreaded core supplies more than one logical processor.
                 uint old = logicalProcessorCount;
                 logicalProcessorCount += countSetBits(info[i].ProcessorMask);
-                for(;old<logicalProcessorCount;++old)
-                {
+                for (; old < logicalProcessorCount; ++old) {
                     QSettings settings(QLatin1String("HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\") + QString::number(old),  QSettings::NativeFormat);
                     ProcessorInfo proc;
                     proc.id = processorCoreCount;

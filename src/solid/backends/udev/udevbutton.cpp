@@ -22,8 +22,8 @@
 
 using namespace Solid::Backends::UDev;
 
-Button::Button(UDevDevice* device)
- : DeviceInterface(device)
+Button::Button(UDevDevice *device)
+    : DeviceInterface(device)
 {
     if (m_device->propertyExists("KEY")) {
         m_type = Solid::Button::PowerButton;

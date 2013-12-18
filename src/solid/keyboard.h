@@ -27,62 +27,65 @@
 
 namespace Solid
 {
-    class KeyboardPrivate;
-    class Device;
+class KeyboardPrivate;
+class Device;
+
+/**
+ * This device interface is available on keyboards.
+ *
+ * A keyboard is an input device.
+ *
+ * @author Ivan Cukic <ivan.cukic@kde.org>
+ */
+class SOLID_EXPORT Keyboard : public DeviceInterface
+{
+    Q_OBJECT
+    Q_PROPERTY(QString model READ model CONSTANT)
+    Q_PROPERTY(QString layout READ layout CONSTANT)
+    Q_DECLARE_PRIVATE(Keyboard)
+    friend class Device;
+
+private:
+    /**
+     * Creates a new Keyboard object.
+     * You generally won't need this. It's created when necessary using
+     * Device::as().
+     *
+     * @param backendObject the device interface object provided by the backend
+     * @see Solid::Device::as()
+     */
+    explicit Keyboard(QObject *backendObject);
+
+public:
+    /**
+     * Destroys a Keyboard object.
+     */
+    virtual ~Keyboard();
 
     /**
-     * This device interface is available on keyboards.
+     * Get the Solid::DeviceInterface::Type of the Keyboard device interface.
      *
-     * A keyboard is an input device.
-     *
-     * @author Ivan Cukic <ivan.cukic@kde.org>
+     * @return the Keyboard device interface type
+     * @see Solid::DeviceInterface::Type
      */
-    class SOLID_EXPORT Keyboard : public DeviceInterface
+    static Type deviceInterfaceType()
     {
-        Q_OBJECT
-        Q_PROPERTY(QString model READ model CONSTANT)
-        Q_PROPERTY(QString layout READ layout CONSTANT)
-        Q_DECLARE_PRIVATE(Keyboard)
-        friend class Device;
+        return DeviceInterface::Keyboard;
+    }
 
-    private:
-        /**
-         * Creates a new Keyboard object.
-         * You generally won't need this. It's created when necessary using
-         * Device::as().
-         *
-         * @param backendObject the device interface object provided by the backend
-         * @see Solid::Device::as()
-         */
-        explicit Keyboard(QObject *backendObject);
+    /**
+     * Retrieves the layout of the keyboard (for example 'us')
+     * @return the layout of the keyboard
+     */
+    QString layout() const;
 
-    public:
-        /**
-         * Destroys a Keyboard object.
-         */
-        virtual ~Keyboard();
+    /**
+     * Retrieves the model of the keyboard (for example 'pc105')
+     * @return the keyboard model
+     */
+    QString model() const;
 
-        /**
-         * Get the Solid::DeviceInterface::Type of the Keyboard device interface.
-         *
-         * @return the Keyboard device interface type
-         * @see Solid::DeviceInterface::Type
-         */
-        static Type deviceInterfaceType() { return DeviceInterface::Keyboard; }
-
-        /**
-         * Retrieves the layout of the keyboard (for example 'us')
-         * @return the layout of the keyboard
-         */
-        QString layout() const;
-
-        /**
-         * Retrieves the model of the keyboard (for example 'pc105')
-         * @return the keyboard model
-         */
-        QString model() const;
-
-    };
+};
 }
 
 #endif

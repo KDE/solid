@@ -49,6 +49,3 @@ int SerialInterface::port() const
     return -1; // TODO
 }
 
-
-
-

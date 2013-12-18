@@ -28,26 +28,25 @@ namespace Solid
 {
 namespace Ifaces
 {
+/**
+ * This device interface is available on smart card readers.
+ */
+class SmartCardReader : virtual public DeviceInterface
+{
+public:
     /**
-     * This device interface is available on smart card readers.
+     * Destroys a SmartCardReader object.
      */
-    class SmartCardReader : virtual public DeviceInterface
-    {
-    public:
-        /**
-         * Destroys a SmartCardReader object.
-         */
-        virtual ~SmartCardReader();
+    virtual ~SmartCardReader();
 
-
-        /**
-         * Retrieves the type of this smart card reader.
-         *
-         * @return the reader type
-         * @see Solid::SmartCardReader::ReaderType
-         */
-        virtual Solid::SmartCardReader::ReaderType readerType() const = 0;
-    };
+    /**
+     * Retrieves the type of this smart card reader.
+     *
+     * @return the reader type
+     * @see Solid::SmartCardReader::ReaderType
+     */
+    virtual Solid::SmartCardReader::ReaderType readerType() const = 0;
+};
 }
 }
 

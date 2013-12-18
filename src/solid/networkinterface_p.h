@@ -25,12 +25,12 @@
 
 namespace Solid
 {
-    class NetworkInterfacePrivate : public DeviceInterfacePrivate
-    {
-    public:
-        NetworkInterfacePrivate()
-            : DeviceInterfacePrivate() { }
-    };
+class NetworkInterfacePrivate : public DeviceInterfacePrivate
+{
+public:
+    NetworkInterfacePrivate()
+        : DeviceInterfacePrivate() { }
+};
 }
 
 #endif // SOLID_NETWORKINTERFACE_P_H

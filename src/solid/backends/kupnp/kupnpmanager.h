@@ -33,8 +33,8 @@
 
 class QDBusInterface;
 
-typedef QHash<QString,QString> DeviceTypeMap;
-Q_DECLARE_METATYPE( DeviceTypeMap )
+typedef QHash<QString, QString> DeviceTypeMap;
+Q_DECLARE_METATYPE(DeviceTypeMap)
 
 namespace Solid
 {
@@ -44,40 +44,39 @@ namespace KUPnP
 {
 class AbstractDeviceFactory;
 
-
 class KUPnPManager : public Solid::Ifaces::DeviceManager
 {
     Q_OBJECT
 
 public:
-    KUPnPManager( QObject* parent );
+    KUPnPManager(QObject *parent);
     virtual ~KUPnPManager();
 
 public: // Solid::Ifaces::DeviceManager API
-    virtual QString udiPrefix() const ;
+    virtual QString udiPrefix() const;
     virtual QSet<Solid::DeviceInterface::Type> supportedInterfaces() const;
     virtual QStringList allDevices();
-    virtual QStringList devicesFromQuery(const QString& parentUdi,
+    virtual QStringList devicesFromQuery(const QString &parentUdi,
                                          Solid::DeviceInterface::Type type);
-    virtual QObject* createDevice(const QString& udi);
+    virtual QObject *createDevice(const QString &udi);
 
 private Q_SLOTS:
-    void onDevicesAdded( const DeviceTypeMap& deviceTypeMap );
-    void onDevicesRemoved( const DeviceTypeMap& deviceTypeMap );
+    void onDevicesAdded(const DeviceTypeMap &deviceTypeMap);
+    void onDevicesRemoved(const DeviceTypeMap &deviceTypeMap);
 
 private:
-    QStringList findDeviceByParent(const QString& parentUdi, Solid::DeviceInterface::Type type);
+    QStringList findDeviceByParent(const QString &parentUdi, Solid::DeviceInterface::Type type);
     QStringList findDeviceByDeviceInterface(Solid::DeviceInterface::Type type);
-    QString udiFromUdn( const QString& udn ) const;
-    QString udnFromUdi( const QString& udi ) const;
+    QString udiFromUdn(const QString &udn) const;
+    QString udnFromUdi(const QString &udi) const;
 
 private:
     QSet<Solid::DeviceInterface::Type> mSupportedInterfaces;
 
-    QVector<AbstractDeviceFactory*> mDeviceFactories;
+    QVector<AbstractDeviceFactory *> mDeviceFactories;
     QString mUdiPrefix;
 
-    QDBusInterface* mDBusCagibiProxy;
+    QDBusInterface *mDBusCagibiProxy;
 };
 
 }

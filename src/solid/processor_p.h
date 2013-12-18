@@ -25,12 +25,12 @@
 
 namespace Solid
 {
-    class ProcessorPrivate : public DeviceInterfacePrivate
-    {
-    public:
-        ProcessorPrivate()
-            : DeviceInterfacePrivate() { }
-    };
+class ProcessorPrivate : public DeviceInterfacePrivate
+{
+public:
+    ProcessorPrivate()
+        : DeviceInterfacePrivate() { }
+};
 }
 
 #endif

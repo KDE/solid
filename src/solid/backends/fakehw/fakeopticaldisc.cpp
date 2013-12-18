@@ -44,15 +44,13 @@ Solid::OpticalDisc::ContentTypes FakeOpticalDisc::availableContent() const
     map[Solid::OpticalDisc::Data] = "data";
     map[Solid::OpticalDisc::VideoCd] = "vcd";
     map[Solid::OpticalDisc::SuperVideoCd] = "svcd";
-    map[Solid::OpticalDisc::VideoDvd] ="videodvd";
+    map[Solid::OpticalDisc::VideoDvd] = "videodvd";
 
     QStringList content_typelist = fakeDevice()->property("availableContent").toString().split(',');
 
-    Q_FOREACH (const Solid::OpticalDisc::ContentType type, map.keys())
-    {
-        if (content_typelist.indexOf(map[type]) != -1)
-        {
-            content|= type;
+    Q_FOREACH (const Solid::OpticalDisc::ContentType type, map.keys()) {
+        if (content_typelist.indexOf(map[type]) != -1) {
+            content |= type;
         }
     }
 
@@ -63,76 +61,41 @@ Solid::OpticalDisc::DiscType FakeOpticalDisc::discType() const
 {
     QString type = fakeDevice()->property("discType").toString();
 
-    if (type == "cd_rom")
-    {
+    if (type == "cd_rom") {
         return Solid::OpticalDisc::CdRom;
-    }
-    else if (type == "cd_r")
-    {
+    } else if (type == "cd_r") {
         return Solid::OpticalDisc::CdRecordable;
-    }
-    else if (type == "cd_rw")
-    {
+    } else if (type == "cd_rw") {
         return Solid::OpticalDisc::CdRewritable;
-    }
-    else if (type == "dvd_rom")
-    {
+    } else if (type == "dvd_rom") {
         return Solid::OpticalDisc::DvdRom;
-    }
-    else if (type == "dvd_ram")
-    {
+    } else if (type == "dvd_ram") {
         return Solid::OpticalDisc::DvdRam;
-    }
-    else if (type == "dvd_r")
-    {
+    } else if (type == "dvd_r") {
         return Solid::OpticalDisc::DvdRecordable;
-    }
-    else if (type == "dvd_rw")
-    {
+    } else if (type == "dvd_rw") {
         return Solid::OpticalDisc::DvdRewritable;
-    }
-    else if (type == "dvd_plus_r")
-    {
+    } else if (type == "dvd_plus_r") {
         return Solid::OpticalDisc::DvdPlusRecordable;
-    }
-    else if (type == "dvd_plus_rw")
-    {
+    } else if (type == "dvd_plus_rw") {
         return Solid::OpticalDisc::DvdPlusRewritable;
-    }
-    else if (type == "dvd_plus_r_dl")
-    {
+    } else if (type == "dvd_plus_r_dl") {
         return Solid::OpticalDisc::DvdPlusRecordableDuallayer;
-    }
-    else if (type == "dvd_plus_rw_dl")
-    {
+    } else if (type == "dvd_plus_rw_dl") {
         return Solid::OpticalDisc::DvdPlusRewritableDuallayer;
-    }
-    else if (type == "bd_rom")
-    {
+    } else if (type == "bd_rom") {
         return Solid::OpticalDisc::BluRayRom;
-    }
-    else if (type == "bd_r")
-    {
+    } else if (type == "bd_r") {
         return Solid::OpticalDisc::BluRayRecordable;
-    }
-    else if (type == "bd_re")
-    {
+    } else if (type == "bd_re") {
         return Solid::OpticalDisc::BluRayRewritable;
-    }
-    else if (type == "hddvd_rom")
-    {
+    } else if (type == "hddvd_rom") {
         return Solid::OpticalDisc::HdDvdRom;
-    }
-    else if (type == "hddvd_r")
-    {
+    } else if (type == "hddvd_r") {
         return Solid::OpticalDisc::HdDvdRecordable;
-    }
-    else if (type == "hddvd_rw")
-    {
+    } else if (type == "hddvd_rw") {
         return Solid::OpticalDisc::HdDvdRewritable;
-    }
-    else
-    {
+    } else {
         return Solid::OpticalDisc::UnknownDiscType;
     }
 }

@@ -30,7 +30,9 @@ class OrgFreedesktopDBusObjectManagerInterface: public QDBusAbstractInterface
     Q_OBJECT
 public:
     static inline const char *staticInterfaceName()
-    { return "org.freedesktop.DBus.ObjectManager"; }
+    {
+        return "org.freedesktop.DBus.ObjectManager";
+    }
 
 public:
     OrgFreedesktopDBusObjectManagerInterface(const QString &service, const QString &path, const QDBusConnection &connection, QObject *parent = 0);
@@ -49,11 +51,14 @@ Q_SIGNALS: // SIGNALS
     void InterfacesRemoved(const QDBusObjectPath &object_path, const QStringList &interfaces);
 };
 
-namespace org {
-  namespace freedesktop {
-    namespace DBus {
-      typedef ::OrgFreedesktopDBusObjectManagerInterface ObjectManager;
-    }
-  }
+namespace org
+{
+namespace freedesktop
+{
+namespace DBus
+{
+typedef ::OrgFreedesktopDBusObjectManagerInterface ObjectManager;
+}
+}
 }
 #endif

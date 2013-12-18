@@ -24,7 +24,6 @@
 #include <ifaces/storagevolume.h>
 #include "udisksblock.h"
 
-
 namespace Solid
 {
 namespace Backends

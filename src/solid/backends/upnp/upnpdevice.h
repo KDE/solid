@@ -32,52 +32,52 @@ namespace Backends
 namespace UPnP
 {
 
-    class UPnPDevice : public Solid::Ifaces::Device
-    {
-        Q_OBJECT
+class UPnPDevice : public Solid::Ifaces::Device
+{
+    Q_OBJECT
 
-        public:
-            explicit UPnPDevice(const Herqq::Upnp::HClientDevice* device);
+public:
+    explicit UPnPDevice(const Herqq::Upnp::HClientDevice *device);
 
-            virtual ~UPnPDevice();
+    virtual ~UPnPDevice();
 
-            virtual QString udi() const;
+    virtual QString udi() const;
 
-            virtual QString parentUdi() const;
+    virtual QString parentUdi() const;
 
-            virtual QString vendor() const;
+    virtual QString vendor() const;
 
-            virtual QString product() const;
+    virtual QString product() const;
 
-            virtual QString icon() const;
+    virtual QString icon() const;
 
-            virtual QStringList emblems() const;
+    virtual QStringList emblems() const;
 
-            virtual QString description() const;
+    virtual QString description() const;
 
-            virtual bool queryDeviceInterface(const Solid::DeviceInterface::Type& type) const;
+    virtual bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const;
 
-            virtual QObject* createDeviceInterface(const Solid::DeviceInterface::Type& type);
+    virtual QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type);
 
-            bool isValid() const;
+    bool isValid() const;
 
-            const Herqq::Upnp::HClientDevice* device() const;
+    const Herqq::Upnp::HClientDevice *device() const;
 
-            const QString specVersion() const;
+    const QString specVersion() const;
 
-            const QString deviceType() const;
+    const QString deviceType() const;
 
-            bool isMediaServer() const;
+    bool isMediaServer() const;
 
-            bool isInternetGatewayDevice() const;
+    bool isInternetGatewayDevice() const;
 
-        protected:
-            const Herqq::Upnp::HClientDevice* m_device;
+protected:
+    const Herqq::Upnp::HClientDevice *m_device;
 
-            const QString m_specVersion;
+    const QString m_specVersion;
 
-            const QString m_deviceType;
-    };
+    const QString m_deviceType;
+};
 
 }
 }

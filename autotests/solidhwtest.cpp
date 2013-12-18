@@ -37,7 +37,7 @@
 #include <stdlib.h>
 
 #ifndef FAKE_COMPUTER_XML
-    #error "FAKE_COMPUTER_XML not set. An XML file describing a computer is required for this test"
+#error "FAKE_COMPUTER_XML not set. An XML file describing a computer is required for this test"
 #endif
 
 QTEST_MAIN(SolidHwTest)
@@ -51,8 +51,8 @@ void SolidHwTest::initTestCase()
 {
     qputenv("SOLID_FAKEHW", FAKE_COMPUTER_XML);
     Solid::ManagerBasePrivate *manager
-        = dynamic_cast<Solid::ManagerBasePrivate*>(Solid::DeviceNotifier::instance());
-    fakeManager = qobject_cast<Solid::Backends::Fake::FakeManager*>(manager->managerBackends().first());
+        = dynamic_cast<Solid::ManagerBasePrivate *>(Solid::DeviceNotifier::instance());
+    fakeManager = qobject_cast<Solid::Backends::Fake::FakeManager *>(manager->managerBackends().first());
 }
 
 void SolidHwTest::testAllDevices()
@@ -65,8 +65,7 @@ void SolidHwTest::testAllDevices()
 
     expected_udis = QSet<QString>::fromList(fakeManager->allDevices());
 
-    Q_FOREACH (const Solid::Device &dev , devices)
-    {
+    Q_FOREACH (const Solid::Device &dev, devices) {
         received_udis << dev.udi();
     }
 
@@ -80,7 +79,6 @@ void SolidHwTest::testDeviceBasicFeatures()
 
     QCOMPARE(valid_dev.isValid(), true);
 
-
     // A few attempts at creating invalid Device objects
     Solid::Device invalid_dev("uhoh? doesn't exist, I guess");
     QCOMPARE(invalid_dev.isValid(), false);
@@ -89,11 +87,8 @@ void SolidHwTest::testDeviceBasicFeatures()
     invalid_dev = Solid::Device();
     QCOMPARE(invalid_dev.isValid(), false);
 
-
-
     QCOMPARE(valid_dev.udi(), QString("/org/kde/solid/fakehw/storage_model_solid_writer"));
     QCOMPARE(invalid_dev.udi(), QString());
-
 
     // Query properties
     QCOMPARE(valid_dev.as<Solid::GenericInterface>()->propertyExists("name"), true);
@@ -108,7 +103,6 @@ void SolidHwTest::testDeviceBasicFeatures()
 
     QCOMPARE(valid_dev.as<Solid::GenericInterface>()->allProperties(), expected_properties);
 
-
     // Query device interfaces
     QCOMPARE(valid_dev.isDeviceInterface(Solid::DeviceInterface::StorageDrive), true);
     QCOMPARE(valid_dev.isDeviceInterface(Solid::DeviceInterface::OpticalDrive), true);
@@ -117,14 +111,12 @@ void SolidHwTest::testDeviceBasicFeatures()
     QCOMPARE(invalid_dev.isDeviceInterface(Solid::DeviceInterface::Unknown), false);
     QCOMPARE(invalid_dev.isDeviceInterface(Solid::DeviceInterface::StorageDrive), false);
 
-
     // Query parent
     QCOMPARE(valid_dev.parentUdi(), QString("/org/kde/solid/fakehw/pci_002_ide_1_0"));
     QCOMPARE(valid_dev.parent().udi(), Solid::Device("/org/kde/solid/fakehw/pci_002_ide_1_0").udi());
 
     QVERIFY(!invalid_dev.parent().isValid());
     QVERIFY(invalid_dev.parentUdi().isEmpty());
-
 
     // Query vendor/product
     QCOMPARE(valid_dev.vendor(), QString("Acme Corporation"));
@@ -150,7 +142,6 @@ void SolidHwTest::testManagerSignals()
     Solid::Device cpu("/org/kde/solid/fakehw/acpi_CPU0");
     QVERIFY(cpu.isValid());
 
-
     // Finally we remove the device and spy the corresponding signal again
     QSignalSpy removed(Solid::DeviceNotifier::instance(), SIGNAL(deviceRemoved(QString)));
     fakeManager->unplug("/org/kde/solid/fakehw/acpi_CPU0");
@@ -172,7 +163,7 @@ void SolidHwTest::testDeviceSignals()
 
     // We'll spy our button
     connect(device.as<Solid::GenericInterface>(), SIGNAL(propertyChanged(QMap<QString,int>)),
-             this, SLOT(slotPropertyChanged(QMap<QString,int>)));
+            this, SLOT(slotPropertyChanged(QMap<QString,int>)));
     QSignalSpy condition_raised(device.as<Solid::GenericInterface>(), SIGNAL(conditionRaised(QString,QString)));
 
     fake->setProperty("stateValue", true); // The button is now pressed (modified property)
@@ -183,7 +174,7 @@ void SolidHwTest::testDeviceSignals()
     // 3 property changes occurred in the device
     QCOMPARE(m_changesList.count(), 3);
 
-    QMap<QString,int> changes;
+    QMap<QString, int> changes;
 
     // First one is a "PropertyModified" for "button.state"
     changes = m_changesList.at(0);
@@ -202,8 +193,6 @@ void SolidHwTest::testDeviceSignals()
     QCOMPARE(changes.count(), 1);
     QVERIFY(changes.contains("hactar"));
     QCOMPARE(changes["hactar"], (int)Solid::GenericInterface::PropertyRemoved);
-
-
 
     // Only one condition has been raised in the device
     QCOMPARE(condition_raised.count(), 1);
@@ -240,7 +229,7 @@ void SolidHwTest::testDeviceInterfaces()
     Solid::DeviceInterface *processor = cpu.as<Solid::Processor>();
 
     QVERIFY(cpu.isDeviceInterface(Solid::DeviceInterface::Processor));
-    QVERIFY(iface!=0);
+    QVERIFY(iface != 0);
     QCOMPARE(iface, processor);
 
     Solid::Device cpu2("/org/kde/solid/fakehw/acpi_CPU0");
@@ -248,9 +237,9 @@ void SolidHwTest::testDeviceInterfaces()
     QCOMPARE(cpu.as<Solid::GenericInterface>(), cpu2.as<Solid::GenericInterface>());
 
     QPointer<Solid::Processor> p = cpu.as<Solid::Processor>();
-    QVERIFY(p!=0);
+    QVERIFY(p != 0);
     fakeManager->unplug("/org/kde/solid/fakehw/acpi_CPU0");
-    QVERIFY(p==0);
+    QVERIFY(p == 0);
     fakeManager->plug("/org/kde/solid/fakehw/acpi_CPU0");
 
     QPointer<Solid::StorageVolume> v;
@@ -258,21 +247,21 @@ void SolidHwTest::testDeviceInterfaces()
     {
         Solid::Device partition("/org/kde/solid/fakehw/volume_uuid_f00ba7");
         v = partition.as<Solid::StorageVolume>();
-        QVERIFY(v!=0);
+        QVERIFY(v != 0);
         {
             Solid::Device partition2("/org/kde/solid/fakehw/volume_uuid_f00ba7");
             v2 = partition2.as<Solid::StorageVolume>();
-            QVERIFY(v2!=0);
-            QVERIFY(v==v2);
+            QVERIFY(v2 != 0);
+            QVERIFY(v == v2);
         }
-        QVERIFY(v!=0);
-        QVERIFY(v2!=0);
+        QVERIFY(v != 0);
+        QVERIFY(v2 != 0);
     }
-    QVERIFY(v!=0);
-    QVERIFY(v2!=0);
+    QVERIFY(v != 0);
+    QVERIFY(v2 != 0);
     fakeManager->unplug("/org/kde/solid/fakehw/volume_uuid_f00ba7");
-    QVERIFY(v==0);
-    QVERIFY(v2==0);
+    QVERIFY(v == 0);
+    QVERIFY(v2 == 0);
     fakeManager->plug("/org/kde/solid/fakehw/volume_uuid_f00ba7");
 }
 
@@ -308,7 +297,7 @@ void SolidHwTest::testDeviceInterfaceIntrospection()
 
 void SolidHwTest::testDeviceInterfaceIntrospectionCornerCases()
 {
-    QCOMPARE(Solid::DeviceInterface::typeToString((Solid::DeviceInterface::Type)-1), QString());
+    QCOMPARE(Solid::DeviceInterface::typeToString((Solid::DeviceInterface::Type) - 1), QString());
     QCOMPARE((int)Solid::DeviceInterface::stringToType("blup"), -1);
 }
 
@@ -328,13 +317,13 @@ void SolidHwTest::testPredicate()
     Solid::Device dev("/org/kde/solid/fakehw/acpi_CPU0");
 
     Solid::Predicate p1 = Solid::Predicate(Solid::DeviceInterface::Processor, "maxSpeed", 3200)
-                         & Solid::Predicate(Solid::DeviceInterface::Processor, "canChangeFrequency", true);
+                          & Solid::Predicate(Solid::DeviceInterface::Processor, "canChangeFrequency", true);
     Solid::Predicate p2 = Solid::Predicate(Solid::DeviceInterface::Processor, "maxSpeed", 3200)
-                         & Solid::Predicate(Solid::DeviceInterface::Processor, "canChangeFrequency", false);
+                          & Solid::Predicate(Solid::DeviceInterface::Processor, "canChangeFrequency", false);
     Solid::Predicate p3 = Solid::Predicate(Solid::DeviceInterface::Processor, "maxSpeed", 3201)
-                        | Solid::Predicate(Solid::DeviceInterface::Processor, "canChangeFrequency", true);
+                          | Solid::Predicate(Solid::DeviceInterface::Processor, "canChangeFrequency", true);
     Solid::Predicate p4 = Solid::Predicate(Solid::DeviceInterface::Processor, "maxSpeed", 3201)
-                        | Solid::Predicate(Solid::DeviceInterface::Processor, "canChangeFrequency", false);
+                          | Solid::Predicate(Solid::DeviceInterface::Processor, "canChangeFrequency", false);
     Solid::Predicate p5 = Solid::Predicate::fromString("[[Processor.maxSpeed == 3201 AND Processor.canChangeFrequency == false] OR StorageVolume.mountPoint == '/media/blup']");
 
     QVERIFY(p1.matches(dev));
@@ -376,7 +365,7 @@ void SolidHwTest::testPredicate()
     Solid::DeviceInterface::Type ifaceType = Solid::DeviceInterface::Unknown;
     QCOMPARE(fakeManager->devicesFromQuery(parentUdi, ifaceType).size(), 1);
     QCOMPARE(fakeManager->devicesFromQuery(parentUdi, ifaceType).at(0),
-              QString("/org/kde/solid/fakehw/volume_label_SOLIDMAN_BEGINS"));
+             QString("/org/kde/solid/fakehw/volume_label_SOLIDMAN_BEGINS"));
 
     ifaceType = Solid::DeviceInterface::Processor;
     QCOMPARE(fakeManager->devicesFromQuery(parentUdi, ifaceType).size(), 0);
@@ -384,10 +373,9 @@ void SolidHwTest::testPredicate()
     parentUdi = "/org/kde/solid/fakehw/computer";
     QCOMPARE(fakeManager->devicesFromQuery(parentUdi, ifaceType).size(), 2);
     QCOMPARE(fakeManager->devicesFromQuery(parentUdi, ifaceType).at(0),
-              QString("/org/kde/solid/fakehw/acpi_CPU0"));
+             QString("/org/kde/solid/fakehw/acpi_CPU0"));
     QCOMPARE(fakeManager->devicesFromQuery(parentUdi, ifaceType).at(1),
-              QString("/org/kde/solid/fakehw/acpi_CPU1"));
-
+             QString("/org/kde/solid/fakehw/acpi_CPU1"));
 
     parentUdi.clear();
     ifaceType = Solid::DeviceInterface::Unknown;
@@ -412,20 +400,20 @@ void SolidHwTest::testPredicate()
     QCOMPARE(list.size(), 0);
 
     list = Solid::Device::listFromQuery("[Processor.canChangeFrequency==true AND Processor.number==1]",
-                                                       parentUdi);
+                                        parentUdi);
     QCOMPARE(list.size(), 1);
     QCOMPARE(list.at(0).udi(), QString("/org/kde/solid/fakehw/acpi_CPU1"));
 
     list = Solid::Device::listFromQuery("[Processor.number==1 OR IS StorageVolume]",
-                                                       parentUdi);
+                                        parentUdi);
     QCOMPARE(list.size(), 10);
 
     //make sure predicate case-insensitiveness is sane
     list = Solid::Device::listFromQuery("[Processor.number==1 or is StorageVolume]",
-                                                       parentUdi);
+                                        parentUdi);
     QCOMPARE(list.size(), 10);
     list = Solid::Device::listFromQuery("[Processor.number==1 oR Is StorageVolume]",
-                                                       parentUdi);
+                                        parentUdi);
     QCOMPARE(list.size(), 10);
 
     QSet<QString> set;
@@ -443,7 +431,7 @@ void SolidHwTest::testPredicate()
     QCOMPARE(set, to_string_set(list));
 
     list = Solid::Device::listFromQuery("[IS Processor OR IS StorageVolume]",
-                                         parentUdi);
+                                        parentUdi);
     QCOMPARE(list.size(), 11);
     set << "/org/kde/solid/fakehw/acpi_CPU0";
     QCOMPARE(set, to_string_set(list));
@@ -484,11 +472,10 @@ void SolidHwTest::testSetupTeardown()
 
 }
 
-void SolidHwTest::slotPropertyChanged(const QMap<QString,int> &changes)
+void SolidHwTest::slotPropertyChanged(const QMap<QString, int> &changes)
 {
     m_changesList << changes;
 }
-
 
 #include "moc_solidhwtest.cpp"
 

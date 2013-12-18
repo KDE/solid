@@ -42,14 +42,14 @@ public:
     explicit FstabManager(QObject *parent);
     virtual ~FstabManager();
 
-    virtual QString udiPrefix() const ;
+    virtual QString udiPrefix() const;
     virtual QSet<Solid::DeviceInterface::Type> supportedInterfaces() const;
     virtual QStringList allDevices();
     virtual QStringList devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type);
     virtual QObject *createDevice(const QString &udi);
 
 Q_SIGNALS:
-    void mtabChanged(const QString& device);
+    void mtabChanged(const QString &device);
 
 private Q_SLOTS:
     void onFstabChanged();

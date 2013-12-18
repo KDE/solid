@@ -34,8 +34,7 @@ namespace Hal
 class HalManager;
 class HalDevicePrivate;
 
-struct ChangeDescription
-{
+struct ChangeDescription {
     QString key;
     bool added;
     bool removed;
@@ -67,7 +66,7 @@ public:
     bool propertyExists(const QString &key) const;
 
 Q_SIGNALS:
-    void propertyChanged(const QMap<QString,int> &changes);
+    void propertyChanged(const QMap<QString, int> &changes);
     void conditionRaised(const QString &condition, const QString &reason);
 
 private Q_SLOTS:

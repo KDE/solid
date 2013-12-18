@@ -39,9 +39,9 @@ UdevAudioInterfacePrivate::UdevAudioInterfacePrivate(UDevDevice *device) : m_dev
 
     QString path = m_device->deviceName();
 
-    int lastSlash = path.length() - path.lastIndexOf(QLatin1String("/")) -1;
+    int lastSlash = path.length() - path.lastIndexOf(QLatin1String("/")) - 1;
     QByteArray lastElement = path.right(lastSlash).toLatin1();
-    
+
     const char *lastElementAscii = lastElement.constData();
 
     if (isHardware(lastElementAscii)) {
@@ -58,7 +58,7 @@ UdevAudioInterfacePrivate::UdevAudioInterfacePrivate(UDevDevice *device) : m_dev
     if (isAlsaHw(lastElementAscii)) {
         return;
     }
-    
+
     if (isAlsaMidi(lastElementAscii)) {
         return;
     }
@@ -92,29 +92,19 @@ Solid::AudioInterface::SoundcardType UdevAudioInterfacePrivate::soundcardType()
         if (productName.contains("headset", Qt::CaseInsensitive) ||
                 productName.contains("headphone", Qt::CaseInsensitive) ||
                 deviceName.contains("headset", Qt::CaseInsensitive) ||
-                deviceName.contains("headphone", Qt::CaseInsensitive))
-        {
+                deviceName.contains("headphone", Qt::CaseInsensitive)) {
             m_soundcardType = Solid::AudioInterface::Headset;
-        }
-        else if (productName.contains("modem", Qt::CaseInsensitive) ||
-                deviceName.contains("modem", Qt::CaseInsensitive))
-        {
+        } else if (productName.contains("modem", Qt::CaseInsensitive) ||
+                   deviceName.contains("modem", Qt::CaseInsensitive)) {
             m_soundcardType = Solid::AudioInterface::Modem;
-        }
-        else
-        {
+        } else {
             QString busName = parentDevice.subsystem();
             QString driverName = parentDevice.driver();
-            if (busName == "ieee1394")
-            {
+            if (busName == "ieee1394") {
                 m_soundcardType = Solid::AudioInterface::FirewireSoundcard;
-            }
-            else if (busName == "usb" || busName == "usb_device" || driverName.contains("usb", Qt::CaseInsensitive))
-            {
+            } else if (busName == "usb" || busName == "usb_device" || driverName.contains("usb", Qt::CaseInsensitive)) {
                 m_soundcardType = Solid::AudioInterface::UsbSoundcard;
-            }
-            else
-            {
+            } else {
                 m_soundcardType = Solid::AudioInterface::InternalSoundcard;
             }
         }
@@ -123,8 +113,7 @@ Solid::AudioInterface::SoundcardType UdevAudioInterfacePrivate::soundcardType()
     return m_soundcardType;
 }
 
-
-bool UdevAudioInterfacePrivate::isHardware(const char* lastElement)
+bool UdevAudioInterfacePrivate::isHardware(const char *lastElement)
 {
     //Root devices like /sys/devices/pci0000:00/0000:00:1b.0/sound/card0 only have sound capability
     //in hal, so ATM just report it as unknown
@@ -137,9 +126,9 @@ bool UdevAudioInterfacePrivate::isHardware(const char* lastElement)
     return false;
 }
 
-bool UdevAudioInterfacePrivate::isAlsaControl(const char* lastElement)
+bool UdevAudioInterfacePrivate::isAlsaControl(const char *lastElement)
 {
-    if (sscanf (lastElement, "controlC%d", &m_cardnum) == 1) {
+    if (sscanf(lastElement, "controlC%d", &m_cardnum) == 1) {
         m_deviceFile = m_device->property("DEVNAME").toString();
         m_name = cardNumberToName();
         m_driver = Solid::AudioInterface::Alsa;
@@ -149,10 +138,10 @@ bool UdevAudioInterfacePrivate::isAlsaControl(const char* lastElement)
     return false;
 }
 
-bool UdevAudioInterfacePrivate::isAlsaPcm(const char* lastElement)
+bool UdevAudioInterfacePrivate::isAlsaPcm(const char *lastElement)
 {
     char type;
-    if (sscanf (lastElement, "pcmC%dD%d%c", &m_cardnum, &m_devicenum, &type) == 3) {
+    if (sscanf(lastElement, "pcmC%dD%d%c", &m_cardnum, &m_devicenum, &type) == 3) {
         m_driver = Solid::AudioInterface::Alsa;
         m_name = cardNumberToName();
         QString name = deviceName(type);
@@ -161,7 +150,7 @@ bool UdevAudioInterfacePrivate::isAlsaPcm(const char* lastElement)
         }
         if (type == 'p') {
             m_type = Solid::AudioInterface::AudioOutput;
-        } else if(type == 'c') {
+        } else if (type == 'c') {
             m_type = Solid::AudioInterface::AudioInput;
         } else {
             m_type = Solid::AudioInterface::UnknownAudioInterfaceType;
@@ -171,7 +160,7 @@ bool UdevAudioInterfacePrivate::isAlsaPcm(const char* lastElement)
     return false;
 }
 
-bool UdevAudioInterfacePrivate::isAlsaHw(const char* lastElement)
+bool UdevAudioInterfacePrivate::isAlsaHw(const char *lastElement)
 {
     if (sscanf(lastElement, "hwC%dD%d", &m_cardnum, &m_devicenum) == 2) {
         m_driver = Solid::AudioInterface::Alsa;
@@ -182,7 +171,7 @@ bool UdevAudioInterfacePrivate::isAlsaHw(const char* lastElement)
     return false;
 }
 
-bool UdevAudioInterfacePrivate::isAlsaMidi(const char* lastElement)
+bool UdevAudioInterfacePrivate::isAlsaMidi(const char *lastElement)
 {
     if (sscanf(lastElement, "midiC%dD%d", &m_cardnum, &m_devicenum) == 2) {
         m_driver = Solid::AudioInterface::Alsa;
@@ -193,9 +182,9 @@ bool UdevAudioInterfacePrivate::isAlsaMidi(const char* lastElement)
     return false;
 }
 
-bool UdevAudioInterfacePrivate::isAlsaTimer(const char* lastElement)
+bool UdevAudioInterfacePrivate::isAlsaTimer(const char *lastElement)
 {
-    if(lastElement == QLatin1String("timer")) {
+    if (lastElement == QLatin1String("timer")) {
         /* ALSA Global timer device */
         m_driver = Solid::AudioInterface::Alsa;
         m_name = QLatin1String("ALSA Timer Device");
@@ -205,7 +194,7 @@ bool UdevAudioInterfacePrivate::isAlsaTimer(const char* lastElement)
     return false;
 }
 
-bool UdevAudioInterfacePrivate::isAlsaSequencer(const char* lastElement)
+bool UdevAudioInterfacePrivate::isAlsaSequencer(const char *lastElement)
 {
     if (lastElement == QLatin1String("seq")) {
         /* ALSA global sequencer devices */
@@ -217,7 +206,7 @@ bool UdevAudioInterfacePrivate::isAlsaSequencer(const char* lastElement)
     return false;
 }
 
-bool UdevAudioInterfacePrivate::isOSSSequencer(const QByteArray& lastElement)
+bool UdevAudioInterfacePrivate::isOSSSequencer(const QByteArray &lastElement)
 {
     if (lastElement.startsWith("sequencer")) {
         /* OSS global sequencer devices */
@@ -229,7 +218,7 @@ bool UdevAudioInterfacePrivate::isOSSSequencer(const QByteArray& lastElement)
     return false;
 }
 
-bool UdevAudioInterfacePrivate::isOSSDevice(const QByteArray& lastElement, const char* lastElementAscii)
+bool UdevAudioInterfacePrivate::isOSSDevice(const QByteArray &lastElement, const char *lastElementAscii)
 {
     m_driver = Solid::AudioInterface::UnknownAudioDriver;
     m_type = Solid::AudioInterface::UnknownAudioInterfaceType;
@@ -239,33 +228,33 @@ bool UdevAudioInterfacePrivate::isOSSDevice(const QByteArray& lastElement, const
 
     if (lastElement.startsWith("dsp")) {
         m_driver = Solid::AudioInterface::OpenSoundSystem;
-        sscanf (lastElementAscii, "dsp%d", &m_cardnum);
+        sscanf(lastElementAscii, "dsp%d", &m_cardnum);
     }
 
     if (lastElement.startsWith("adsp")) {
         m_driver = Solid::AudioInterface::OpenSoundSystem;
-        sscanf (lastElementAscii, "adsp%d", &m_cardnum);
+        sscanf(lastElementAscii, "adsp%d", &m_cardnum);
     }
 
     if (lastElement.startsWith("midi")) {
         m_driver = Solid::AudioInterface::OpenSoundSystem;
-        sscanf (lastElementAscii, "midi%d", &m_cardnum);
+        sscanf(lastElementAscii, "midi%d", &m_cardnum);
     }
 
     if (lastElement.startsWith("amidi")) {
         m_driver = Solid::AudioInterface::OpenSoundSystem;
-        sscanf (lastElementAscii, "amidi%d", &m_cardnum);
+        sscanf(lastElementAscii, "amidi%d", &m_cardnum);
     }
 
     if (lastElement.startsWith("audio")) {
         m_driver = Solid::AudioInterface::OpenSoundSystem;
-        sscanf (lastElementAscii, "audio%d", &m_cardnum);
+        sscanf(lastElementAscii, "audio%d", &m_cardnum);
     }
 
     if (lastElement.startsWith("mixer")) {
         m_driver = Solid::AudioInterface::OpenSoundSystem;
         m_type = Solid::AudioInterface::AudioControl;
-        sscanf (lastElementAscii, "mixer%d", &m_cardnum);
+        sscanf(lastElementAscii, "mixer%d", &m_cardnum);
     }
 
     if (m_driver != Solid::AudioInterface::UnknownAudioDriver) {
@@ -302,18 +291,18 @@ QString UdevAudioInterfacePrivate::cardNumberToName()
 QString UdevAudioInterfacePrivate::deviceName(char type)
 {
     QString path;
-    path.sprintf("/proc/asound/card%d/pcm%d%c/info",m_cardnum, m_devicenum, type);
+    path.sprintf("/proc/asound/card%d/pcm%d%c/info", m_cardnum, m_devicenum, type);
     return grepHelper(path, "name: ");
 }
 
-QByteArray UdevAudioInterfacePrivate::grepHelper(const QString& path, const QByteArray& grepValue)
+QByteArray UdevAudioInterfacePrivate::grepHelper(const QString &path, const QByteArray &grepValue)
 {
     QFile file(path);
 
     if (file.exists()) {
         if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
             QByteArray line = file.readLine();
-            while(!line.isNull()) {
+            while (!line.isNull()) {
                 if (line.startsWith(grepValue)) {
                     line.remove(0, grepValue.length());
                     return line.trimmed();

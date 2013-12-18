@@ -44,31 +44,30 @@ Solid::Battery::BatteryType Battery::type() const
 {
     Solid::Battery::BatteryType result = Solid::Battery::UnknownBattery;
     const uint t = m_device.data()->prop("Type").toUInt();
-    switch (t)
-    {
-        case 1: // TODO "Line Power"
-            break;
-        case 2:
-            result = Solid::Battery::PrimaryBattery;
-            break;
-        case 3:
-            result = Solid::Battery::UpsBattery;
-            break;
-        case 4:
-            result = Solid::Battery::MonitorBattery;
-            break;
-        case 5:
-            result = Solid::Battery::MouseBattery;
-            break;
-        case 6:
-            result = Solid::Battery::KeyboardBattery;
-            break;
-        case 7:
-            result = Solid::Battery::PdaBattery;
-            break;
-        case 8:
-            result = Solid::Battery::PhoneBattery;
-            break;
+    switch (t) {
+    case 1: // TODO "Line Power"
+        break;
+    case 2:
+        result = Solid::Battery::PrimaryBattery;
+        break;
+    case 3:
+        result = Solid::Battery::UpsBattery;
+        break;
+    case 4:
+        result = Solid::Battery::MonitorBattery;
+        break;
+    case 5:
+        result = Solid::Battery::MouseBattery;
+        break;
+    case 6:
+        result = Solid::Battery::KeyboardBattery;
+        break;
+    case 7:
+        result = Solid::Battery::PdaBattery;
+        break;
+    case 8:
+        result = Solid::Battery::PhoneBattery;
+        break;
     }
     return result;
 }
@@ -97,25 +96,24 @@ Solid::Battery::ChargeState Battery::chargeState() const
 {
     Solid::Battery::ChargeState result = Solid::Battery::NoCharge;
     const uint state = m_device.data()->prop("State").toUInt();
-    switch (state)
-    {
-        case 0:
-            result = Solid::Battery::NoCharge; // stable or unknown
-            break;
-        case 1:
-            result = Solid::Battery::Charging;
-            break;
-        case 2:
-            result = Solid::Battery::Discharging;
-            break;
-        case 3: // TODO "Empty"
-            break;
-        case 4: // TODO "Fully charged"
-            break;
-        case 5: // TODO "Pending charge"
-            break;
-        case 6: // TODO "Pending discharge"
-            break;
+    switch (state) {
+    case 0:
+        result = Solid::Battery::NoCharge; // stable or unknown
+        break;
+    case 1:
+        result = Solid::Battery::Charging;
+        break;
+    case 2:
+        result = Solid::Battery::Discharging;
+        break;
+    case 3: // TODO "Empty"
+        break;
+    case 4: // TODO "Fully charged"
+        break;
+    case 5: // TODO "Pending charge"
+        break;
+    case 6: // TODO "Pending discharge"
+        break;
     }
     return result;
 }
@@ -123,8 +121,7 @@ Solid::Battery::ChargeState Battery::chargeState() const
 Solid::Battery::Technology Battery::technology() const
 {
     const uint tech = m_device.data()->prop("Technology").toUInt();
-    switch (tech)
-    {
+    switch (tech) {
     case 1:
         return Solid::Battery::LithiumIon;
     case 2:
@@ -181,8 +178,7 @@ void Battery::slotChanged()
             emit capacityChanged(m_capacity, m_device.data()->udi());
         }
 
-        if (old_chargeState != m_chargeState)
-        {
+        if (old_chargeState != m_chargeState) {
             emit chargeStateChanged(m_chargeState, m_device.data()->udi());
         }
 
@@ -198,8 +194,7 @@ void Battery::slotChanged()
             emit energyRateChanged(m_energyRate, m_device.data()->udi());
         }
 
-        if (old_isPowerSupply != m_isPowerSupply)
-        {
+        if (old_isPowerSupply != m_isPowerSupply) {
             emit powerSupplyStateChanged(m_isPowerSupply, m_device.data()->udi());
         }
     }

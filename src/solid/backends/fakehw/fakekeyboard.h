@@ -43,7 +43,6 @@ public Q_SLOTS:
     QString layout() const;
     QString model() const;
 
-
 };
 }
 }

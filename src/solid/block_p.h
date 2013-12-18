@@ -25,12 +25,12 @@
 
 namespace Solid
 {
-    class BlockPrivate : public DeviceInterfacePrivate
-    {
-    public:
-        BlockPrivate()
-            : DeviceInterfacePrivate() { }
-    };
+class BlockPrivate : public DeviceInterfacePrivate
+{
+public:
+    BlockPrivate()
+        : DeviceInterfacePrivate() { }
+};
 }
 
 #endif

@@ -48,7 +48,7 @@ public:
     FakeManager(QObject *parent, const QString &xmlFile);
     virtual ~FakeManager();
 
-    virtual QString udiPrefix() const ;
+    virtual QString udiPrefix() const;
     virtual QSet<Solid::DeviceInterface::Type> supportedInterfaces() const;
 
     /**

@@ -27,72 +27,74 @@
 
 namespace Solid
 {
-    class PointingDevicePrivate;
-    class Device;
+class PointingDevicePrivate;
+class Device;
+
+/**
+ * This device interface is available on pointing devices.
+ *
+ * A pointing device is a device like a mouse, touchpad, touch
+ * screen or a tablet (graphics tablet).
+ *
+ * @author Ivan Cukic <ivan.cukic@kde.org>
+ */
+class SOLID_EXPORT PointingDevice : public DeviceInterface
+{
+    Q_OBJECT
+    Q_ENUMS(PointingDeviceType)
+    Q_PROPERTY(PointingDeviceType type READ type CONSTANT)
+    Q_DECLARE_PRIVATE(PointingDevice)
+    friend class Device;
+
+public:
+    /**
+     * This enum type defines the type of a PointingDevice.
+     *
+     * - Mouse : A mouse
+     * - Touchpad : A touchpad
+     * - Touchscreen : The touchscreen input device
+     * - Tablet : A graphics tablet with a stylus
+     * - UnknownPointingDeviceType : The type of the pointing device is unknown.
+     */
+    enum PointingDeviceType { Mouse, Touchpad, Touchscreen, Tablet, UnknownPointingDeviceType };
+
+private:
+    /**
+     * Creates a new PointingDevice object.
+     * You generally won't need this. It's created when necessary using
+     * Device::as().
+     *
+     * @param backendObject the device interface object provided by the backend
+     * @see Solid::Device::as()
+     */
+    explicit PointingDevice(QObject *backendObject);
+
+public:
+    /**
+     * Destroys a PointingDevice object.
+     */
+    virtual ~PointingDevice();
 
     /**
-     * This device interface is available on pointing devices.
+     * Get the Solid::DeviceInterface::Type of the pointing device interface.
      *
-     * A pointing device is a device like a mouse, touchpad, touch
-     * screen or a tablet (graphics tablet).
-     *
-     * @author Ivan Cukic <ivan.cukic@kde.org>
+     * @return the pointing device interface type
+     * @see Solid::DeviceInterface::Type
      */
-    class SOLID_EXPORT PointingDevice : public DeviceInterface
+    static Type deviceInterfaceType()
     {
-        Q_OBJECT
-        Q_ENUMS(PointingDeviceType)
-        Q_PROPERTY(PointingDeviceType type READ type CONSTANT)
-        Q_DECLARE_PRIVATE(PointingDevice)
-        friend class Device;
+        return DeviceInterface::PointingDevice;
+    }
 
-    public:
-        /**
-         * This enum type defines the type of a PointingDevice.
-         *
-         * - Mouse : A mouse
-         * - Touchpad : A touchpad
-         * - Touchscreen : The touchscreen input device
-         * - Tablet : A graphics tablet with a stylus
-         * - UnknownPointingDeviceType : The type of the pointing device is unknown.
-         */
-         enum PointingDeviceType{ Mouse, Touchpad, Touchscreen, Tablet, UnknownPointingDeviceType };
+    /**
+     * Retrieves the type of the pointing device.
+     *
+     * @return the type of the pointing device.
+     * @see Solid::PointingDevice::PointingDeviceType
+     */
+    PointingDeviceType type() const;
 
-
-    private:
-        /**
-         * Creates a new PointingDevice object.
-         * You generally won't need this. It's created when necessary using
-         * Device::as().
-         *
-         * @param backendObject the device interface object provided by the backend
-         * @see Solid::Device::as()
-         */
-        explicit PointingDevice(QObject *backendObject);
-
-    public:
-        /**
-         * Destroys a PointingDevice object.
-         */
-        virtual ~PointingDevice();
-
-        /**
-         * Get the Solid::DeviceInterface::Type of the pointing device interface.
-         *
-         * @return the pointing device interface type
-         * @see Solid::DeviceInterface::Type
-         */
-        static Type deviceInterfaceType() { return DeviceInterface::PointingDevice; }
-
-        /**
-         * Retrieves the type of the pointing device.
-         *
-         * @return the type of the pointing device.
-         * @see Solid::PointingDevice::PointingDeviceType
-         */
-        PointingDeviceType type() const;
-
-    };
+};
 }
 
 #endif

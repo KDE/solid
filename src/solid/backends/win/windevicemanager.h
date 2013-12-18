@@ -38,9 +38,9 @@ inline QString qGetLastError(ulong errorNummber = GetLastError())
                                NULL,
                                errorNummber,
                                MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
-                               (LPWSTR) &error ,
-                               0, NULL );
-    QString out = QString::fromWCharArray((wchar_t*)error,len).trimmed().append(" %1").arg(errorNummber);
+                               (LPWSTR) &error,
+                               0, NULL);
+    QString out = QString::fromWCharArray((wchar_t *)error, len).trimmed().append(" %1").arg(errorNummber);
     LocalFree(error);
     return out;
 }
@@ -56,7 +56,7 @@ class WinDeviceManager : public Solid::Ifaces::DeviceManager
 {
     Q_OBJECT
 public:
-    WinDeviceManager(QObject *parent=0);
+    WinDeviceManager(QObject *parent = 0);
     ~WinDeviceManager();
 
     virtual QString udiPrefix() const;
@@ -75,29 +75,28 @@ public:
     template< class INFO>
     static INFO getDeviceInfo(const QString &devName, int code)
     {
-        return getDeviceInfo<INFO,void*>(devName,code);
+        return getDeviceInfo<INFO, void *>(devName, code);
     }
-
 
     template< class INFO, class QUERY>
     static INFO getDeviceInfo(const QString &devName, int code, QUERY *query = NULL)
     {
         INFO info;
-        ZeroMemory(&info,sizeof(INFO));
-        getDeviceInfoPrivate(devName,code,&info,sizeof(INFO),query);
+        ZeroMemory(&info, sizeof(INFO));
+        getDeviceInfoPrivate(devName, code, &info, sizeof(INFO), query);
         return info;
     }
 
-    template<class BUFFER_TYPE,class QUERY>
+    template<class BUFFER_TYPE, class QUERY>
     static void getDeviceInfo(const QString &devName, int code, BUFFER_TYPE *out, size_t outSize, QUERY *query = NULL)
     {
-        ZeroMemory(out,sizeof(BUFFER_TYPE)*outSize);
-        getDeviceInfoPrivate(devName,code,out,outSize,query);
+        ZeroMemory(out, sizeof(BUFFER_TYPE)*outSize);
+        getDeviceInfoPrivate(devName, code, out, outSize, query);
     }
 
     static void deviceAction(const QString &devName, int code)
     {
-        getDeviceInfoPrivate<void,void*>(devName,code,NULL,0,NULL);
+        getDeviceInfoPrivate<void, void *>(devName, code, NULL, 0, NULL);
     }
 
 Q_SIGNALS:
@@ -121,52 +120,45 @@ private:
     void promotePowerChange();
 
     template< class INFO, class QUERY>
-    static void getDeviceInfoPrivate(const QString &devName, int code,INFO *info,size_t size, QUERY *query = NULL)
+    static void getDeviceInfoPrivate(const QString &devName, int code, INFO *info, size_t size, QUERY *query = NULL)
     {
         Q_ASSERT(!devName.isNull());
         wchar_t deviceNameBuffer[MAX_PATH];
         QString dev = devName;
-        if(!dev.startsWith("\\"))
-        {
+        if (!dev.startsWith("\\")) {
             dev = QLatin1String("\\\\?\\") + dev;
         }
         deviceNameBuffer[dev.toWCharArray(deviceNameBuffer)] = 0;
         DWORD bytesReturned =  0;
 
         ulong err = NO_ERROR;
-        HANDLE handle = ::CreateFileW(deviceNameBuffer, GENERIC_READ, FILE_SHARE_READ|FILE_SHARE_WRITE, NULL  , OPEN_EXISTING , 0, NULL);
-        if(handle == INVALID_HANDLE_VALUE)
-        {
+        HANDLE handle = ::CreateFileW(deviceNameBuffer, GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL);
+        if (handle == INVALID_HANDLE_VALUE) {
 
             err = GetLastError();
-            if(err == ERROR_ACCESS_DENIED)
-            {
+            if (err == ERROR_ACCESS_DENIED) {
                 //we would need admin rights for GENERIC_READ on systenm drives and volumes
-                handle = ::CreateFileW(deviceNameBuffer, 0, FILE_SHARE_READ|FILE_SHARE_WRITE, NULL  , OPEN_EXISTING , 0, NULL);
+                handle = ::CreateFileW(deviceNameBuffer, 0, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL);
                 err = GetLastError();
             }
-            if(handle == INVALID_HANDLE_VALUE)
-            {
+            if (handle == INVALID_HANDLE_VALUE) {
                 qWarning() << "Invalid Handle" << dev << "reason:" << qGetLastError(err) << " this should not happen.";
                 return;
             }
 
         }
-        if(::DeviceIoControl(handle, code, query, sizeof(QUERY), info, size, &bytesReturned, NULL))
-        {
+        if (::DeviceIoControl(handle, code, query, sizeof(QUERY), info, size, &bytesReturned, NULL)) {
             ::CloseHandle(handle);
             return;
         }
 
-        if(handle == INVALID_HANDLE_VALUE)
-        {
-            qWarning() <<" Invalid Handle" << devName << "reason:" << qGetLastError() << " is probaply a subst path or more seriously there is  bug!";
+        if (handle == INVALID_HANDLE_VALUE) {
+            qWarning() << " Invalid Handle" << devName << "reason:" << qGetLastError() << " is probaply a subst path or more seriously there is  bug!";
             return;
         }
 
         err = GetLastError();
-        if(err == ERROR_NOT_READY)
-        {
+        if (err == ERROR_NOT_READY) {
             //the drive is a cd drive with no disk
             ::CloseHandle(handle);
             return;
@@ -178,7 +170,6 @@ private:
 #else
         qWarning() << "Failed to query" << dev << "reason:" << qGetLastError(err);
 #endif
-
 
         ::CloseHandle(handle);
     }

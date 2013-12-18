@@ -49,7 +49,6 @@ Solid::StorageVolume::UsageType WinStorageVolume::usage() const
     return Solid::StorageVolume::FileSystem;//TODO:???
 }
 
-
 void WinStorageVolume::updateCache()
 {
     wchar_t label[MAX_PATH];
@@ -60,22 +59,19 @@ void WinStorageVolume::updateCache()
     wchar_t dLetter[MAX_PATH];
     int dLetterSize = WinBlock::driveLetterFromUdi(m_device->udi()).toWCharArray(dLetter);
     dLetter[dLetterSize] = (wchar_t)'\\';
-    dLetter[dLetterSize+1] = 0;
+    dLetter[dLetterSize + 1] = 0;
 
-    if(GetVolumeInformation(dLetter,label,MAX_PATH,&serial,NULL,&flags,fs,MAX_PATH))
-    {
+    if (GetVolumeInformation(dLetter, label, MAX_PATH, &serial, NULL, &flags, fs, MAX_PATH)) {
         m_label = QString::fromWCharArray(label);
         m_fs = QString::fromWCharArray(fs);
-        m_uuid =  QString::number(serial,16);
+        m_uuid =  QString::number(serial, 16);
     }
 
     ULARGE_INTEGER size;
-    if(GetDiskFreeSpaceEx(dLetter,NULL,&size,NULL))
-    {
+    if (GetDiskFreeSpaceEx(dLetter, NULL, &size, NULL)) {
         m_size = size.QuadPart;
     }
 }
-
 
 QString WinStorageVolume::fsType() const
 {

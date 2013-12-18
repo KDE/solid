@@ -44,7 +44,7 @@ public:
     bool broken;
 
 Q_SIGNALS:
-    void propertyChanged(const QMap<QString,int> &changes);
+    void propertyChanged(const QMap<QString, int> &changes);
     void conditionRaised(const QString &condition, const QString &reason);
 
     friend class FakeDevice;

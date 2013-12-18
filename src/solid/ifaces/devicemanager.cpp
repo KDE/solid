@@ -20,7 +20,6 @@
 
 #include "ifaces/devicemanager.h"
 
-
 Solid::Ifaces::DeviceManager::DeviceManager(QObject *parent)
     : QObject(parent)
 {

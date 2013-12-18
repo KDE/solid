@@ -32,16 +32,15 @@
 
 #include "../shared/rootdevice.h"
 
-
 using namespace Solid::Backends::UPnP;
 using namespace Solid::Backends::Shared;
 
-UPnPDeviceManager::UPnPDeviceManager(QObject* parent) :
+UPnPDeviceManager::UPnPDeviceManager(QObject *parent) :
     Solid::Ifaces::DeviceManager(parent),
     m_supportedInterfaces()
     //m_upnpControlPoint(Solid::Backends::UPnP::UPnPControlPoint::instance())
 {
-    UPnPControlPoint* upnpControlPoint = UPnPControlPoint::acquireInstance();
+    UPnPControlPoint *upnpControlPoint = UPnPControlPoint::acquireInstance();
 
     connect(
         upnpControlPoint->controlPoint(),
@@ -80,25 +79,25 @@ QStringList UPnPDeviceManager::allDevices()
 
     result << udiPrefix();
 
-    UPnPControlPoint* upnpControlPoint = UPnPControlPoint::acquireInstance();
+    UPnPControlPoint *upnpControlPoint = UPnPControlPoint::acquireInstance();
 
-    result+= upnpControlPoint->allDevices();
+    result += upnpControlPoint->allDevices();
 
     UPnPControlPoint::releaseInstance();
 
     return result;
 }
 
-QStringList UPnPDeviceManager::devicesFromQuery(const QString& parentUdi, Solid::DeviceInterface::Type type)
+QStringList UPnPDeviceManager::devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type)
 {
     Q_UNUSED(parentUdi)
     Q_UNUSED(type)
     return QStringList(); //FIXME implement it!
 }
 
-QObject *UPnPDeviceManager::createDevice(const QString& udi)
+QObject *UPnPDeviceManager::createDevice(const QString &udi)
 {
-    if (udi==udiPrefix()) {
+    if (udi == udiPrefix()) {
         RootDevice *root = new RootDevice(udiPrefix());
 
         root->setProduct(tr("UPnP Devices"));
@@ -110,15 +109,13 @@ QObject *UPnPDeviceManager::createDevice(const QString& udi)
 
     QString udnFromUdi = udi.mid(udiPrefix().length() + 1);
     Herqq::Upnp::HUdn udn(udnFromUdi);
-    if (udn.isValid(Herqq::Upnp::LooseChecks))
-    {
-        UPnPControlPoint* upnpControlPoint = UPnPControlPoint::acquireInstance();
+    if (udn.isValid(Herqq::Upnp::LooseChecks)) {
+        UPnPControlPoint *upnpControlPoint = UPnPControlPoint::acquireInstance();
 
-        Herqq::Upnp::HClientDevice* device = upnpControlPoint->controlPoint()->device(udn);
+        Herqq::Upnp::HClientDevice *device = upnpControlPoint->controlPoint()->device(udn);
 
         UPnPControlPoint::releaseInstance();
-        if (device)
-        {
+        if (device) {
             return new Solid::Backends::UPnP::UPnPDevice(device);
         }
     }
@@ -126,20 +123,20 @@ QObject *UPnPDeviceManager::createDevice(const QString& udi)
     return 0;
 }
 
-void UPnPDeviceManager::rootDeviceOnline(Herqq::Upnp::HClientDevice* device)
+void UPnPDeviceManager::rootDeviceOnline(Herqq::Upnp::HClientDevice *device)
 {
     QString udn = device->info().udn().toString();
     qDebug() << "UPnP device entered:" << udn;
     emit deviceAdded(udiPrefix() + '/' + udn);
 }
 
-void UPnPDeviceManager::rootDeviceOffline(Herqq::Upnp::HClientDevice* device)
+void UPnPDeviceManager::rootDeviceOffline(Herqq::Upnp::HClientDevice *device)
 {
     QString udn = device->info().udn().toString();
     qDebug() << "UPnP device gone:" << udn;
     emit deviceRemoved(udiPrefix() + '/' + udn);
 
-    UPnPControlPoint* upnpControlPoint = UPnPControlPoint::acquireInstance();
+    UPnPControlPoint *upnpControlPoint = UPnPControlPoint::acquireInstance();
 
     upnpControlPoint->controlPoint()->removeRootDevice(device);
 

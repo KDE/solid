@@ -24,7 +24,6 @@
 // Solid
 #include <solid/ifaces/device.h>
 
-
 namespace Solid
 {
 namespace Backends
@@ -50,8 +49,8 @@ public: // Solid::Ifaces::Device API
     virtual QStringList emblems() const;
     virtual QString description() const;
 
-    virtual bool queryDeviceInterface(const Solid::DeviceInterface::Type& type) const;
-    virtual QObject* createDeviceInterface(const Solid::DeviceInterface::Type& type);
+    virtual bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const;
+    virtual QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type);
 
 private:
 };

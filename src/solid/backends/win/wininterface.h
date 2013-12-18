@@ -34,13 +34,12 @@ namespace Win
 {
 class WinInterface : public QObject, virtual public Solid::Ifaces::DeviceInterface
 {
-Q_OBJECT
-Q_INTERFACES(Solid::Ifaces::DeviceInterface)
+    Q_OBJECT
+    Q_INTERFACES(Solid::Ifaces::DeviceInterface)
 
 public:
     WinInterface(WinDevice *device);
     virtual ~WinInterface();
-
 
 protected:
     WinDevice *m_device;

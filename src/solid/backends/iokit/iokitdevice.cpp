@@ -18,7 +18,6 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-
 #include "iokitdevice.h"
 #include "iokitgenericinterface.h"
 #include "iokitprocessor.h"
@@ -37,20 +36,29 @@
 // from cfhelper.cpp
 extern QMap<QString, QVariant> q_toVariantMap(const CFMutableDictionaryRef &dict);
 
-namespace Solid { namespace Backends { namespace IOKit {
+namespace Solid
+{
+namespace Backends
+{
+namespace IOKit
+{
 
 // returns a solid type from an entry and its properties
 static Solid::DeviceInterface::Type typeFromEntry(const io_registry_entry_t &entry,
         const QMap<QString, QVariant> &properties)
 {
-    if (IOObjectConformsTo(entry, kIOEthernetInterfaceClass))
+    if (IOObjectConformsTo(entry, kIOEthernetInterfaceClass)) {
         return Solid::DeviceInterface::NetworkInterface;
-    if (IOObjectConformsTo(entry, "AppleACPICPU"))
+    }
+    if (IOObjectConformsTo(entry, "AppleACPICPU")) {
         return Solid::DeviceInterface::Processor;
-    if (IOObjectConformsTo(entry, "IOSerialBSDClient"))
+    }
+    if (IOObjectConformsTo(entry, "IOSerialBSDClient")) {
         return Solid::DeviceInterface::SerialInterface;
-    if (IOObjectConformsTo(entry, "AppleSmartBattery"))
+    }
+    if (IOObjectConformsTo(entry, "AppleSmartBattery")) {
         return Solid::DeviceInterface::Battery;
+    }
 
     return Solid::DeviceInterface::Unknown;
 }
@@ -84,15 +92,15 @@ static QString getParentDeviceUdi(const io_registry_entry_t &entry)
     QString result;
     io_string_t pathName;
     ret = IORegistryEntryGetPath(parent, kIOServicePlane, pathName);
-    if (ret == KERN_SUCCESS)
+    if (ret == KERN_SUCCESS) {
         result = QString::fromUtf8(pathName);
+    }
 
     // now we can release the parent
     IOObjectRelease(parent);
 
     return result;
 }
-
 
 class IOKitDevicePrivate
 {
@@ -101,7 +109,7 @@ public:
         : type(Solid::DeviceInterface::Unknown)
     {}
 
-    void init(const QString &udiString, const io_registry_entry_t & entry);
+    void init(const QString &udiString, const io_registry_entry_t &entry);
 
     QString udi;
     QString parentUdi;
@@ -137,8 +145,8 @@ IOKitDevice::IOKitDevice(const QString &udi)
     : d(new IOKitDevicePrivate)
 {
     io_registry_entry_t entry = IORegistryEntryFromPath(
-            kIOMasterPortDefault,
-            udi.toLocal8Bit().constData());
+                                    kIOMasterPortDefault,
+                                    udi.toLocal8Bit().constData());
 
     if (entry == MACH_PORT_NULL) {
         qDebug() << Q_FUNC_INFO << "Tried to create Device from invalid UDI" << udi;
@@ -213,34 +221,37 @@ QObject *IOKitDevice::createDeviceInterface(const Solid::DeviceInterface::Type &
 {
     QObject *iface = 0;
 
-    switch (type)
-    {
+    switch (type) {
     case Solid::DeviceInterface::GenericInterface:
         iface = new GenericInterface(this);
         break;
     case Solid::DeviceInterface::Processor:
-        if (d->type == Solid::DeviceInterface::Processor)
+        if (d->type == Solid::DeviceInterface::Processor) {
             iface = new Processor(this);
+        }
         break;
     case Solid::DeviceInterface::NetworkInterface:
-        if (d->type == Solid::DeviceInterface::NetworkInterface)
+        if (d->type == Solid::DeviceInterface::NetworkInterface) {
             iface = new NetworkInterface(this);
+        }
         break;
     case Solid::DeviceInterface::SerialInterface:
-        if (d->type == Solid::DeviceInterface::SerialInterface)
+        if (d->type == Solid::DeviceInterface::SerialInterface) {
             iface = new SerialInterface(this);
+        }
         break;
     case Solid::DeviceInterface::Battery:
-        if (d->type == Solid::DeviceInterface::Battery)
+        if (d->type == Solid::DeviceInterface::Battery) {
             iface = new Battery(this);
+        }
         break;
-    // the rest is TODO
+        // the rest is TODO
     }
-
 
     return iface;
 }
 
-
-} } } // namespaces
+}
+}
+} // namespaces
 

@@ -26,7 +26,6 @@
 // Solid
 #include <solid/ifaces/device.h>
 
-
 namespace Solid
 {
 namespace Backends
@@ -40,13 +39,12 @@ public:
     virtual ~AbstractDeviceFactory();
 
 public:
-    virtual void addSupportedInterfaces( QSet<Solid::DeviceInterface::Type>& interfaces ) const;
+    virtual void addSupportedInterfaces(QSet<Solid::DeviceInterface::Type> &interfaces) const;
 //     virtual bool hasDeviceInterface( const Cagibi::Device& device,
 //                                      Solid::DeviceInterface::Type type ) const;
-    virtual QStringList typeNames( Solid::DeviceInterface::Type type ) const;
-    virtual QObject* tryCreateDevice( const Cagibi::Device& device ) const = 0;
+    virtual QStringList typeNames(Solid::DeviceInterface::Type type) const;
+    virtual QObject *tryCreateDevice(const Cagibi::Device &device) const = 0;
 };
-
 
 class DeviceFactory : public AbstractDeviceFactory
 {
@@ -54,16 +52,15 @@ public:
     DeviceFactory();
 
 public: // AbstractDeviceFactory API
-    virtual QObject* tryCreateDevice( const Cagibi::Device& device ) const;
+    virtual QObject *tryCreateDevice(const Cagibi::Device &device) const;
 };
-
 
 class KUPnPDevice : public Solid::Ifaces::Device
 {
     Q_OBJECT
 
 public:
-    explicit KUPnPDevice(const Cagibi::Device& device);
+    explicit KUPnPDevice(const Cagibi::Device &device);
     virtual ~KUPnPDevice();
 
 public: // Solid::Ifaces::Device API
@@ -76,20 +73,22 @@ public: // Solid::Ifaces::Device API
     virtual QStringList emblems() const;
     virtual QString description() const;
 
-    virtual bool queryDeviceInterface(const Solid::DeviceInterface::Type& type) const;
-    virtual QObject* createDeviceInterface(const Solid::DeviceInterface::Type& type);
+    virtual bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const;
+    virtual QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type);
 
 public:
-    const Cagibi::Device& device() const;
+    const Cagibi::Device &device() const;
 
 protected:
     Cagibi::Device mDevice;
 
-    KUPnPDevice* mParentDevice;
+    KUPnPDevice *mParentDevice;
 };
 
-
-inline const Cagibi::Device& KUPnPDevice::device() const { return mDevice; }
+inline const Cagibi::Device &KUPnPDevice::device() const
+{
+    return mDevice;
+}
 
 }
 }

@@ -52,9 +52,9 @@ UPowerManager::UPowerManager(QObject *parent)
     if (!serviceFound) {
         // find out whether it will be activated automatically
         QDBusMessage message = QDBusMessage::createMethodCall("org.freedesktop.DBus",
-                                                              "/org/freedesktop/DBus",
-                                                              "org.freedesktop.DBus",
-                                                              "ListActivatableNames");
+                               "/org/freedesktop/DBus",
+                               "org.freedesktop.DBus",
+                               "ListActivatableNames");
 
         QDBusReply<QStringList> reply = QDBusConnection::systemBus().call(message);
         if (reply.isValid() && reply.value().contains(UP_DBUS_SERVICE)) {
@@ -81,9 +81,9 @@ UPowerManager::~UPowerManager()
 {
 }
 
-QObject* UPowerManager::createDevice(const QString& udi)
+QObject *UPowerManager::createDevice(const QString &udi)
 {
-    if (udi==udiPrefix()) {
+    if (udi == udiPrefix()) {
         RootDevice *root = new RootDevice(udiPrefix());
 
         root->setProduct(tr("Power Management"));
@@ -100,41 +100,40 @@ QObject* UPowerManager::createDevice(const QString& udi)
     }
 }
 
-QStringList UPowerManager::devicesFromQuery(const QString& parentUdi, Solid::DeviceInterface::Type type)
+QStringList UPowerManager::devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type)
 {
     QStringList allDev = allDevices();
     QStringList result;
 
-    if (!parentUdi.isEmpty())
-    {
-        Q_FOREACH (const QString & udi, allDev)
-        {
-            if (udi==udiPrefix())
+    if (!parentUdi.isEmpty()) {
+        Q_FOREACH (const QString &udi, allDev) {
+            if (udi == udiPrefix()) {
                 continue;
+            }
 
             UPowerDevice device(udi);
-            if (device.queryDeviceInterface(type) && device.parentUdi() == parentUdi)
+            if (device.queryDeviceInterface(type) && device.parentUdi() == parentUdi) {
                 result << udi;
+            }
         }
 
         return result;
-    }
-    else if (type != Solid::DeviceInterface::Unknown)
-    {
-        Q_FOREACH (const QString & udi, allDev)
-        {
-            if (udi==udiPrefix())
+    } else if (type != Solid::DeviceInterface::Unknown) {
+        Q_FOREACH (const QString &udi, allDev) {
+            if (udi == udiPrefix()) {
                 continue;
+            }
 
             UPowerDevice device(udi);
-            if (device.queryDeviceInterface(type))
+            if (device.queryDeviceInterface(type)) {
                 result << udi;
+            }
         }
 
         return result;
-    }
-    else
+    } else {
         return allDev;
+    }
 }
 
 QStringList UPowerManager::allDevices()

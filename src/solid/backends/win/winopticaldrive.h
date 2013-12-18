@@ -74,9 +74,9 @@ public:
 
 private:
 
-    MediaProfiles(ulong profile,Solid::OpticalDrive::MediumTypes type,QString name = "");
+    MediaProfiles(ulong profile, Solid::OpticalDrive::MediumTypes type, QString name = "");
 
-    MediaProfiles(FEATURE_DATA_PROFILE_LIST_EX* feature);
+    MediaProfiles(FEATURE_DATA_PROFILE_LIST_EX *feature);
     bool isNull();
 
     static const MediaProfiles getProfile(ulong id);

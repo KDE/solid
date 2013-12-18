@@ -29,58 +29,58 @@ namespace Solid
 {
 namespace Ifaces
 {
+/**
+ * This device interface is available on Digital Video Broadcast (DVB) devices.
+ *
+ * A DVB device is a device implementing the open standards for digital
+ * television maintained by the DVB Project
+ * It is possible to interact with such a device using a special device
+ * file in the system.
+ */
+class DvbInterface : virtual public DeviceInterface
+{
+public:
     /**
-     * This device interface is available on Digital Video Broadcast (DVB) devices.
-     *
-     * A DVB device is a device implementing the open standards for digital
-     * television maintained by the DVB Project
-     * It is possible to interact with such a device using a special device
-     * file in the system.
+     * Destroys a DvbInterface object.
      */
-    class DvbInterface : virtual public DeviceInterface
-    {
-    public:
-        /**
-         * Destroys a DvbInterface object.
-         */
-        virtual ~DvbInterface();
+    virtual ~DvbInterface();
 
-        /**
-         * Retrieves the absolute path of the special file to interact
-         * with the device.
-         *
-         * @return the absolute path of the special file to interact with
-         * the device
-         */
-        virtual QString device() const = 0;
+    /**
+     * Retrieves the absolute path of the special file to interact
+     * with the device.
+     *
+     * @return the absolute path of the special file to interact with
+     * the device
+     */
+    virtual QString device() const = 0;
 
-        /**
-         * Retrieves the adapter number of this dvb device.
-         * Note that -1 is returned in the case the adapter couldn't be
-         * determined.
-         *
-         * @return the adapter number of this dvb device or -1
-         */
-        virtual int deviceAdapter() const = 0;
+    /**
+     * Retrieves the adapter number of this dvb device.
+     * Note that -1 is returned in the case the adapter couldn't be
+     * determined.
+     *
+     * @return the adapter number of this dvb device or -1
+     */
+    virtual int deviceAdapter() const = 0;
 
-        /**
-         * Retrieves the type of this dvb device.
-         *
-         * @return the device type of this dvb device
-         * @see Solid::DvbInterface::DeviceType
-         */
-        virtual Solid::DvbInterface::DeviceType deviceType() const = 0;
+    /**
+     * Retrieves the type of this dvb device.
+     *
+     * @return the device type of this dvb device
+     * @see Solid::DvbInterface::DeviceType
+     */
+    virtual Solid::DvbInterface::DeviceType deviceType() const = 0;
 
-        /**
-         * Retrieves the index of this dvb device.
-         * Note that -1 is returned in the case the device couldn't be
-         * identified (deviceType() == DvbUnknown).
-         *
-         * @return the index of this dvb device or -1
-         * @see Solid::Ifaces::DvbInterface::deviceType
-         */
-        virtual int deviceIndex() const = 0;
-    };
+    /**
+     * Retrieves the index of this dvb device.
+     * Note that -1 is returned in the case the device couldn't be
+     * identified (deviceType() == DvbUnknown).
+     *
+     * @return the index of this dvb device or -1
+     * @see Solid::Ifaces::DvbInterface::deviceType
+     */
+    virtual int deviceIndex() const = 0;
+};
 }
 }
 

@@ -27,61 +27,63 @@
 
 namespace Solid
 {
-    class AcAdapterPrivate;
-    class Device;
+class AcAdapterPrivate;
+class Device;
+
+/**
+ * This device interface is available on AC adapters.
+ */
+class SOLID_EXPORT AcAdapter : public DeviceInterface
+{
+    Q_OBJECT
+    Q_PROPERTY(bool plugged READ isPlugged)
+    Q_DECLARE_PRIVATE(AcAdapter)
+    friend class Device;
+
+private:
+    /**
+     * Creates a new AcAdapter object.
+     * You generally won't need this. It's created when necessary using
+     * Device::as().
+     *
+     * @param backendObject the device interface object provided by the backend
+     * @see Solid::Device::as()
+     */
+    explicit AcAdapter(QObject *backendObject);
+
+public:
+    /**
+     * Destroys an AcAdapter object.
+     */
+    virtual ~AcAdapter();
 
     /**
-     * This device interface is available on AC adapters.
+     * Get the Solid::DeviceInterface::Type of the AcAdapter device interface.
+     *
+     * @return the AcAdapter device interface type
+     * @see Solid::Ifaces::Enums::DeviceInterface::Type
      */
-    class SOLID_EXPORT AcAdapter : public DeviceInterface
+    static Type deviceInterfaceType()
     {
-        Q_OBJECT
-        Q_PROPERTY(bool plugged READ isPlugged)
-        Q_DECLARE_PRIVATE(AcAdapter)
-        friend class Device;
+        return DeviceInterface::AcAdapter;
+    }
 
-    private:
-        /**
-         * Creates a new AcAdapter object.
-         * You generally won't need this. It's created when necessary using
-         * Device::as().
-         *
-         * @param backendObject the device interface object provided by the backend
-         * @see Solid::Device::as()
-         */
-        explicit AcAdapter(QObject *backendObject);
+    /**
+     * Indicates if this AC adapter is plugged.
+     *
+     * @return true if the adapter is plugged, false otherwise
+     */
+    bool isPlugged() const;
 
-    public:
-        /**
-         * Destroys an AcAdapter object.
-         */
-        virtual ~AcAdapter();
-
-
-        /**
-         * Get the Solid::DeviceInterface::Type of the AcAdapter device interface.
-         *
-         * @return the AcAdapter device interface type
-         * @see Solid::Ifaces::Enums::DeviceInterface::Type
-         */
-        static Type deviceInterfaceType() { return DeviceInterface::AcAdapter; }
-
-        /**
-         * Indicates if this AC adapter is plugged.
-         *
-         * @return true if the adapter is plugged, false otherwise
-         */
-        bool isPlugged() const;
-
-    Q_SIGNALS:
-        /**
-         * This signal is emitted when the AC adapter is plugged or unplugged.
-         *
-         * @param newState true if the AC adapter is plugged, false otherwise
-         * @param udi the UDI of the AC adapter
-         */
-        void plugStateChanged(bool newState, const QString &udi);
-    };
+Q_SIGNALS:
+    /**
+     * This signal is emitted when the AC adapter is plugged or unplugged.
+     *
+     * @param newState true if the AC adapter is plugged, false otherwise
+     * @param udi the UDI of the AC adapter
+     */
+    void plugStateChanged(bool newState, const QString &udi);
+};
 }
 
 #endif

@@ -23,14 +23,13 @@
 
 #include <QtCore/QStringList>
 
-
 using namespace Solid::Backends::Wmi;
 
 Cdrom::Cdrom(WmiDevice *device)
     : Storage(device), m_ejectInProgress(false)
 {
     connect(device, SIGNAL(conditionRaised(QString,QString)),
-             this, SLOT(slotCondition(QString,QString)));
+            this, SLOT(slotCondition(QString,QString)));
 }
 
 Cdrom::~Cdrom()
@@ -38,27 +37,19 @@ Cdrom::~Cdrom()
 
 }
 
-
 Solid::OpticalDrive::MediumTypes Cdrom::supportedMedia() const
 {
     Solid::OpticalDrive::MediumTypes supported;
 
     QString type = m_device->property("MediaType").toString();
-    if (type == "CdRomOnly" || type == "CD-ROM")
-    {
+    if (type == "CdRomOnly" || type == "CD-ROM") {
         supported |= Solid::OpticalDrive::Cdr;
-    }
-    else if (type == "CdRomWrite")
-    {
-        supported |= Solid::OpticalDrive::Cdr|Solid::OpticalDrive::Cdrw;
-    }
-    else if (type == "DVDRomOnly")
-    {
+    } else if (type == "CdRomWrite") {
+        supported |= Solid::OpticalDrive::Cdr | Solid::OpticalDrive::Cdrw;
+    } else if (type == "DVDRomOnly") {
         supported |= Solid::OpticalDrive::Dvd;
-    }
-    else if (type == "DVDRomWrite" || type == "DVD Writer")
-    {
-        supported |= Solid::OpticalDrive::Dvd|Solid::OpticalDrive::Dvdr|Solid::OpticalDrive::Dvdrw;
+    } else if (type == "DVDRomWrite" || type == "DVD Writer") {
+        supported |= Solid::OpticalDrive::Dvd | Solid::OpticalDrive::Dvdr | Solid::OpticalDrive::Dvdrw;
     }
 
     return supported;
@@ -79,8 +70,7 @@ QList<int> Cdrom::writeSpeeds() const
     QList<int> speeds;
     QStringList speed_strlist = m_device->property("storage.cdrom.write_speeds").toStringList();
 
-    Q_FOREACH (const QString &speed_str, speed_strlist)
-    {
+    Q_FOREACH (const QString &speed_str, speed_strlist) {
         speeds << speed_str.toInt();
     }
 
@@ -89,8 +79,7 @@ QList<int> Cdrom::writeSpeeds() const
 
 void Cdrom::slotCondition(const QString &name, const QString &/*reason */)
 {
-    if (name == "EjectPressed")
-    {
+    if (name == "EjectPressed") {
         emit ejectPressed(m_device->udi());
     }
 }
@@ -113,33 +102,32 @@ bool Cdrom::callWmiDriveEject()
     // HACK: Eject doesn't work on cdrom drives when there's a mounted disc,
     // let's try to workaround this by calling a child volume...
     // if (m_device->property("storage.removable.media_available").toBool()) {
-        // QDBusInterface manager("org.freedesktop.Wmi",
-                               // "/org/freedesktop/Wmi/Manager",
-                               // "org.freedesktop.Wmi.Manager",
-                               // QDBusConnection::systemBus());
+    // QDBusInterface manager("org.freedesktop.Wmi",
+    // "/org/freedesktop/Wmi/Manager",
+    // "org.freedesktop.Wmi.Manager",
+    // QDBusConnection::systemBus());
 
-        // QDBusReply<QStringList> reply = manager.call("FindDeviceStringMatch", "info.parent", udi);
+    // QDBusReply<QStringList> reply = manager.call("FindDeviceStringMatch", "info.parent", udi);
 
-        // if (reply.isValid())
-        // {
-            // QStringList udis = reply;
-            // if (!udis.isEmpty()) {
-                // udi = udis[0];
-                // interface = "org.freedesktop.Wmi.Device.Volume";
-            // }
-        // }
+    // if (reply.isValid())
+    // {
+    // QStringList udis = reply;
+    // if (!udis.isEmpty()) {
+    // udi = udis[0];
+    // interface = "org.freedesktop.Wmi.Device.Volume";
+    // }
+    // }
     // }
 
     // QDBusConnection c = QDBusConnection::systemBus();
     // QDBusMessage msg = QDBusMessage::createMethodCall("org.freedesktop.Wmi", udi,
-                                                      // interface, "Eject");
+    // interface, "Eject");
 
     // msg << QStringList();
 
-
     // return c.callWithCallback(msg, this,
-                              // SLOT(slotDBusReply(QDBusMessage)),
-                              // SLOT(slotDBusError(QDBusError)));
+    // SLOT(slotDBusReply(QDBusMessage)),
+    // SLOT(slotDBusError(QDBusError)));
     return false;
 }
 
@@ -149,7 +137,7 @@ void Solid::Backends::Wmi::Cdrom::slotProcessFinished(int exitCode, QProcess::Ex
     if (m_ejectInProgress) {
         m_ejectInProgress = false;
 
-        if (exitCode==0) {
+        if (exitCode == 0) {
             emit ejectDone(Solid::NoError, QVariant(), m_device->udi());
         } else {
             emit ejectDone(Solid::UnauthorizedOperation,

@@ -37,28 +37,17 @@ Solid::StorageDrive::Bus FakeStorage::bus() const
 {
     QString bus = fakeDevice()->property("bus").toString();
 
-    if (bus=="ide")
-    {
+    if (bus == "ide") {
         return Solid::StorageDrive::Ide;
-    }
-    else if (bus=="usb")
-    {
+    } else if (bus == "usb") {
         return Solid::StorageDrive::Usb;
-    }
-    else if (bus=="ieee1394")
-    {
+    } else if (bus == "ieee1394") {
         return Solid::StorageDrive::Ieee1394;
-    }
-    else if (bus=="scsi")
-    {
+    } else if (bus == "scsi") {
         return Solid::StorageDrive::Scsi;
-    }
-    else if (bus=="sata")
-    {
+    } else if (bus == "sata") {
         return Solid::StorageDrive::Sata;
-    }
-    else
-    {
+    } else {
         return Solid::StorageDrive::Platform;
     }
 }
@@ -67,40 +56,23 @@ Solid::StorageDrive::DriveType FakeStorage::driveType() const
 {
     QString type = fakeDevice()->property("major").toString();
 
-    if (type=="disk")
-    {
+    if (type == "disk") {
         return Solid::StorageDrive::HardDisk;
-    }
-    else if (type=="cdrom")
-    {
+    } else if (type == "cdrom") {
         return Solid::StorageDrive::CdromDrive;
-    }
-    else if (type=="floppy")
-    {
+    } else if (type == "floppy") {
         return Solid::StorageDrive::Floppy;
-    }
-    else if (type=="tape")
-    {
+    } else if (type == "tape") {
         return Solid::StorageDrive::Tape;
-    }
-    else if (type=="compact_flash")
-    {
+    } else if (type == "compact_flash") {
         return Solid::StorageDrive::CompactFlash;
-    }
-    else if (type=="memory_stick")
-    {
+    } else if (type == "memory_stick") {
         return Solid::StorageDrive::MemoryStick;
-    }
-    else if (type=="smart_media")
-    {
+    } else if (type == "smart_media") {
         return Solid::StorageDrive::SmartMedia;
-    }
-    else if (type=="sd_mmc")
-    {
+    } else if (type == "sd_mmc") {
         return Solid::StorageDrive::SdMmc;
-    }
-    else
-    {
+    } else {
         return Solid::StorageDrive::HardDisk;
     }
 }

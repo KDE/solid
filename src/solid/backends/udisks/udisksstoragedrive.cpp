@@ -25,7 +25,7 @@
 
 using namespace Solid::Backends::UDisks;
 
-UDisksStorageDrive::UDisksStorageDrive(UDisksDevice* device)
+UDisksStorageDrive::UDisksStorageDrive(UDisksDevice *device)
     : Block(device)
 {
 
@@ -49,33 +49,25 @@ bool UDisksStorageDrive::isHotpluggable() const
 bool UDisksStorageDrive::isRemovable() const
 {
     return m_device->prop("DeviceIsRemovable").toBool() ||
-            !m_device->prop( "DeviceIsSystemInternal" ).toBool();
+           !m_device->prop("DeviceIsSystemInternal").toBool();
 }
 
 Solid::StorageDrive::DriveType UDisksStorageDrive::driveType() const
 {
     const QStringList mediaTypes = m_device->prop("DriveMediaCompatibility").toStringList();
-    bool isHardDisk = m_device->prop( "DeviceIsSystemInternal" ).toBool();
+    bool isHardDisk = m_device->prop("DeviceIsSystemInternal").toBool();
 
-    if ( isHardDisk )
-    {
+    if (isHardDisk) {
         return Solid::StorageDrive::HardDisk;
-    }
-    else if ( !mediaTypes.filter( "optical" ).isEmpty() ) // optical disks
-    {
+    } else if (!mediaTypes.filter("optical").isEmpty()) { // optical disks
         return Solid::StorageDrive::CdromDrive;
-    }
-    else if ( mediaTypes.contains( "floppy" ) )
-    {
+    } else if (mediaTypes.contains("floppy")) {
         return Solid::StorageDrive::Floppy;
     }
 #if 0 // TODO add to Solid
-    else if ( mediaTypes.contains( "floppy_jaz" ) )
-    {
+    else if (mediaTypes.contains("floppy_jaz")) {
         return Solid::StorageDrive::Jaz;
-    }
-    else if ( mediaTypes.contains( "floppy_zip" ) )
-    {
+    } else if (mediaTypes.contains("floppy_zip")) {
         return Solid::StorageDrive::Zip;
     }
 #endif
@@ -86,69 +78,49 @@ Solid::StorageDrive::DriveType UDisksStorageDrive::driveType() const
     }
     */
 #if 0 // TODO add to Solid
-    else if ( mediaTypes.contains( "flash" ) )
-    {
+    else if (mediaTypes.contains("flash")) {
         return Solid::StorageDrive::Flash;
     }
 #endif
-    else if ( mediaTypes.contains( "flash_cf" ) )
-    {
+    else if (mediaTypes.contains("flash_cf")) {
         return Solid::StorageDrive::CompactFlash;
-    }
-    else if ( mediaTypes.contains( "flash_ms" ) )
-    {
+    } else if (mediaTypes.contains("flash_ms")) {
         return Solid::StorageDrive::MemoryStick;
-    }
-    else if ( mediaTypes.contains( "flash_sm" ) )
-    {
+    } else if (mediaTypes.contains("flash_sm")) {
         return Solid::StorageDrive::SmartMedia;
-    }
-    else if ( mediaTypes.contains( "flash_sd" ) || mediaTypes.contains( "flash_sdhc" ) || mediaTypes.contains( "flash_mmc" ) )
-    {
+    } else if (mediaTypes.contains("flash_sd") || mediaTypes.contains("flash_sdhc") || mediaTypes.contains("flash_mmc")) {
         return Solid::StorageDrive::SdMmc;
     }
     // FIXME: DK doesn't know about xD cards either
-    else
-    {
+    else {
         return Solid::StorageDrive::HardDisk;
     }
 }
 
 Solid::StorageDrive::Bus UDisksStorageDrive::bus() const
 {
-    const QString bus = m_device->prop( "DriveConnectionInterface" ).toString();
+    const QString bus = m_device->prop("DriveConnectionInterface").toString();
 
-    if ( bus == "ata" || bus == "ata_parallel" ) // parallel (classical) ATA
-    {
+    if (bus == "ata" || bus == "ata_parallel") { // parallel (classical) ATA
         return Solid::StorageDrive::Ide;
-    }
-    else if ( bus == "usb" )
-    {
+    } else if (bus == "usb") {
         return Solid::StorageDrive::Usb;
-    }
-    else if ( bus == "firewire" )
-    {
+    } else if (bus == "firewire") {
         return Solid::StorageDrive::Ieee1394;
-    }
-    else if ( bus == "scsi" )
-    {
+    } else if (bus == "scsi") {
         return Solid::StorageDrive::Scsi;
-    }
-    else if ( bus == "ata_serial" || bus == "ata_serial_esata" ) // serial ATA
-    {
+    } else if (bus == "ata_serial" || bus == "ata_serial_esata") { // serial ATA
         return Solid::StorageDrive::Sata;
     }
 #if 0  // TODO add these to Solid
-    else if ( bus == "sdio" )
-    {
+    else if (bus == "sdio") {
         return Solid::StorageDrive::SDIO;
-    }
-    else if ( bus == "virtual" )
-    {
+    } else if (bus == "virtual") {
         return Solid::StorageDrive::Virtual;
     }
 #endif
-    else
+    else {
         return Solid::StorageDrive::Platform;
+    }
 }
 

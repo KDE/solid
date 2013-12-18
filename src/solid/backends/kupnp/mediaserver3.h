@@ -24,7 +24,6 @@
 // KUPnP
 #include "kupnpdevice.h"
 
-
 namespace Solid
 {
 namespace Backends
@@ -38,24 +37,23 @@ public:
     MediaServer3Factory();
 
 public: // AbstractDeviceFactory API
-    virtual void addSupportedInterfaces( QSet<Solid::DeviceInterface::Type>& interfaces ) const;
-    virtual QStringList typeNames( Solid::DeviceInterface::Type type ) const;
-    virtual QObject* tryCreateDevice( const Cagibi::Device& device ) const;
+    virtual void addSupportedInterfaces(QSet<Solid::DeviceInterface::Type> &interfaces) const;
+    virtual QStringList typeNames(Solid::DeviceInterface::Type type) const;
+    virtual QObject *tryCreateDevice(const Cagibi::Device &device) const;
 };
-
 
 class MediaServer3 : public KUPnPDevice
 {
 public:
-    explicit MediaServer3(const Cagibi::Device& device);
+    explicit MediaServer3(const Cagibi::Device &device);
     virtual ~MediaServer3();
 
 public: // Solid::Ifaces::Device API
     virtual QString icon() const;
     virtual QString description() const;
 
-    virtual bool queryDeviceInterface(const Solid::DeviceInterface::Type& type) const;
-    virtual QObject* createDeviceInterface(const Solid::DeviceInterface::Type& type);
+    virtual bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const;
+    virtual QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type);
 };
 
 }

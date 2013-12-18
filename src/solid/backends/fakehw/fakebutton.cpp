@@ -37,20 +37,13 @@ Solid::Button::ButtonType FakeButton::type() const
 {
     QString buttontype = fakeDevice()->property("type").toString();
 
-    if (buttontype=="LidButton")
-    {
+    if (buttontype == "LidButton") {
         return Solid::Button::LidButton;
-    }
-    else if (buttontype=="PowerButton")
-    {
+    } else if (buttontype == "PowerButton") {
         return Solid::Button::PowerButton;
-    }
-    else if (buttontype=="SleepButton")
-    {
+    } else if (buttontype == "SleepButton") {
         return Solid::Button::SleepButton;
-    }
-    else
-    {
+    } else {
         return Solid::Button::UnknownButtonType;
     }
 }
@@ -67,7 +60,9 @@ bool FakeButton::stateValue() const
 
 void FakeButton::press()
 {
-    if (hasState()) fakeDevice()->setProperty("stateValue", !stateValue());
+    if (hasState()) {
+        fakeDevice()->setProperty("stateValue", !stateValue());
+    }
     emit pressed(type(), fakeDevice()->udi());
 }
 

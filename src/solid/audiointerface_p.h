@@ -27,12 +27,12 @@
 
 namespace Solid
 {
-    class AudioInterfacePrivate : public DeviceInterfacePrivate
-    {
-    public:
-        AudioInterfacePrivate()
-            : DeviceInterfacePrivate() { }
-    };
+class AudioInterfacePrivate : public DeviceInterfacePrivate
+{
+public:
+    AudioInterfacePrivate()
+        : DeviceInterfacePrivate() { }
+};
 }
 
 #endif // SOLID_AUDIOINTERFACE_P_H

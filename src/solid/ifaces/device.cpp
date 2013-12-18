@@ -40,23 +40,23 @@ QString Solid::Ifaces::Device::parentUdi() const
 }
 
 void Solid::Ifaces::Device::registerAction(const QString &actionName,
-                                           QObject *dest,
-                                           const char *requestSlot,
-                                           const char *doneSlot) const
+        QObject *dest,
+        const char *requestSlot,
+        const char *doneSlot) const
 {
     QDBusConnection::sessionBus().connect(QString(), deviceDBusPath(),
-                                          "org.kde.Solid.Device", actionName+"Requested",
+                                          "org.kde.Solid.Device", actionName + "Requested",
                                           dest, requestSlot);
 
     QDBusConnection::sessionBus().connect(QString(), deviceDBusPath(),
-                                          "org.kde.Solid.Device", actionName+"Done",
+                                          "org.kde.Solid.Device", actionName + "Done",
                                           dest, doneSlot);
 }
 
 void Solid::Ifaces::Device::broadcastActionDone(const QString &actionName,
-                                                int error, const QString &errorString) const
+        int error, const QString &errorString) const
 {
-    QDBusMessage signal = QDBusMessage::createSignal(deviceDBusPath(), "org.kde.Solid.Device", actionName+"Done");
+    QDBusMessage signal = QDBusMessage::createSignal(deviceDBusPath(), "org.kde.Solid.Device", actionName + "Done");
     signal << error << errorString;
 
     QDBusConnection::sessionBus().send(signal);
@@ -64,7 +64,7 @@ void Solid::Ifaces::Device::broadcastActionDone(const QString &actionName,
 
 void Solid::Ifaces::Device::broadcastActionRequested(const QString &actionName) const
 {
-    QDBusMessage signal = QDBusMessage::createSignal(deviceDBusPath(), "org.kde.Solid.Device", actionName+"Requested");
+    QDBusMessage signal = QDBusMessage::createSignal(deviceDBusPath(), "org.kde.Solid.Device", actionName + "Requested");
     QDBusConnection::sessionBus().send(signal);
 }
 

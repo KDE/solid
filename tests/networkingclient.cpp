@@ -25,149 +25,147 @@
 
 #include "networkingclient.h"
 
-QString toString( Solid::Networking::Status st )
+QString toString(Solid::Networking::Status st)
 {
-  QString str;
-  switch ( st ) {
+    QString str;
+    switch (st) {
     case Solid::Networking::Unknown:
-      str = "Unknown";
-      break;
+        str = "Unknown";
+        break;
     case Solid::Networking::Unconnected:
-      str = "Unconnected";
-      break;
+        str = "Unconnected";
+        break;
     case Solid::Networking::Disconnecting:
-      str = "Disconnecting";
-      break;
+        str = "Disconnecting";
+        break;
     case Solid::Networking::Connecting:
-      str = "Connecting";
-      break;
+        str = "Connecting";
+        break;
     case Solid::Networking::Connected:
-      str = "Connected";
-      break;
-  }
-  return str;
+        str = "Connected";
+        break;
+    }
+    return str;
 }
 
 TestClient::TestClient()
-    : QMainWindow( 0 ),
-      m_status( AppDisconnected ), m_view( new QWidget( this ) )
+    : QMainWindow(0),
+      m_status(AppDisconnected), m_view(new QWidget(this))
 {
-    ui.setupUi( m_view );
+    ui.setupUi(m_view);
 
     setCentralWidget(m_view);
 
-    networkStatusChanged( Solid::Networking::status() );
+    networkStatusChanged(Solid::Networking::status());
     appDisconnected();
 
     qDebug() << "About to connect";
-    connect( Solid::Networking::notifier(), SIGNAL(statusChanged(Solid::Networking::Status)), SLOT(networkStatusChanged(Solid::Networking::Status)) );
+    connect(Solid::Networking::notifier(), SIGNAL(statusChanged(Solid::Networking::Status)), SLOT(networkStatusChanged(Solid::Networking::Status)));
     qDebug() << "Connected.";
-    connect( Solid::Networking::notifier(), SIGNAL(shouldConnect()), this, SLOT(doConnect()) );
-    connect( Solid::Networking::notifier(), SIGNAL(shouldDisconnect()), this, SLOT(doDisconnect()) );
+    connect(Solid::Networking::notifier(), SIGNAL(shouldConnect()), this, SLOT(doConnect()));
+    connect(Solid::Networking::notifier(), SIGNAL(shouldDisconnect()), this, SLOT(doDisconnect()));
 
-    connect( ui.connectButton, SIGNAL(clicked()), SLOT(connectButtonClicked()) );
+    connect(ui.connectButton, SIGNAL(clicked()), SLOT(connectButtonClicked()));
 }
 
 TestClient::~TestClient()
 {
 }
 
-void TestClient::networkStatusChanged( Solid::Networking::Status status )
+void TestClient::networkStatusChanged(Solid::Networking::Status status)
 {
     qDebug() << Q_FUNC_INFO;
-    qDebug() << "Networking is now: " << toString( status ) << " (" << status << ")";
-    ui.netStatusLabel->setText( toString( status ) );
+    qDebug() << "Networking is now: " << toString(status) << " (" << status << ")";
+    ui.netStatusLabel->setText(toString(status));
     QPalette palette;
-    palette.setColor( ui.netStatusLabel->backgroundRole(), toQColor( m_status ) );
-    ui.netStatusLabel->setPalette( palette );
+    palette.setColor(ui.netStatusLabel->backgroundRole(), toQColor(m_status));
+    ui.netStatusLabel->setPalette(palette);
 }
 
 void TestClient::doConnect()
 {
-  Q_ASSERT( Solid::Networking::status() == Solid::Networking::Connected );
-  if ( m_status != AppConnected ) {
-    appIsConnected();
-  }
+    Q_ASSERT(Solid::Networking::status() == Solid::Networking::Connected);
+    if (m_status != AppConnected) {
+        appIsConnected();
+    }
 }
 
 void TestClient::doDisconnect()
 {
-  Q_ASSERT( Solid::Networking::status() != Solid::Networking::Connected );
-  if ( m_status == AppConnected ) {
-    appDisconnected();
-  }
+    Q_ASSERT(Solid::Networking::status() != Solid::Networking::Connected);
+    if (m_status == AppConnected) {
+        appDisconnected();
+    }
 }
 
 void TestClient::connectButtonClicked()
 {
-  qDebug() << Q_FUNC_INFO;
-  if ( m_status == AppDisconnected ) {
-    switch ( Solid::Networking::status() )
-    {
-      case Solid::Networking::Unknown:
-      case Solid::Networking::Connected:
-        appIsConnected();
-        break;
-      default:
-        appWaiting();
-        break;
+    qDebug() << Q_FUNC_INFO;
+    if (m_status == AppDisconnected) {
+        switch (Solid::Networking::status()) {
+        case Solid::Networking::Unknown:
+        case Solid::Networking::Connected:
+            appIsConnected();
+            break;
+        default:
+            appWaiting();
+            break;
+        }
+    } else if (m_status == AppConnected || m_status == AppWaitingForConnect) {
+        appDisconnected();
     }
-  }
-  else if ( m_status == AppConnected || m_status == AppWaitingForConnect ) {
-    appDisconnected();
-  }
 }
 
 void TestClient::appWaiting()
 {
-  qDebug() << Q_FUNC_INFO;
-  //m_status = AppWaitingForConnect;
-  ui.appStatusLabel->setText( "Waiting" );
+    qDebug() << Q_FUNC_INFO;
+    //m_status = AppWaitingForConnect;
+    ui.appStatusLabel->setText("Waiting");
 }
 
 void TestClient::appIsConnected()
 {
-  qDebug() << Q_FUNC_INFO;
-  ui.connectButton->setEnabled( true );
-  ui.connectButton->setText( "Disconnect" );
-  ui.appStatusLabel->setText( "Connected" );
-  m_status = AppConnected;
+    qDebug() << Q_FUNC_INFO;
+    ui.connectButton->setEnabled(true);
+    ui.connectButton->setText("Disconnect");
+    ui.appStatusLabel->setText("Connected");
+    m_status = AppConnected;
 }
 
 void TestClient::appEstablishing()
 {
-  qDebug() << Q_FUNC_INFO;
-  ui.netStatusLabel->setText( "Establishing" );
-  ui.connectButton->setEnabled( false );
+    qDebug() << Q_FUNC_INFO;
+    ui.netStatusLabel->setText("Establishing");
+    ui.connectButton->setEnabled(false);
 }
 
-void TestClient::appDisestablishing( )
+void TestClient::appDisestablishing()
 {
-  qDebug() << Q_FUNC_INFO;
-  ui.connectButton->setEnabled( false );
-  ui.appStatusLabel->setText( "Disconnected" );
+    qDebug() << Q_FUNC_INFO;
+    ui.connectButton->setEnabled(false);
+    ui.appStatusLabel->setText("Disconnected");
 }
 
-void TestClient::appDisconnected( )
+void TestClient::appDisconnected()
 {
-  qDebug() << Q_FUNC_INFO;
-  ui.connectButton->setEnabled( true );
-  ui.connectButton->setText( "Start Connect" );
-  ui.appStatusLabel->setText( "Disconnected" );
-  m_status = AppDisconnected;
+    qDebug() << Q_FUNC_INFO;
+    ui.connectButton->setEnabled(true);
+    ui.connectButton->setText("Start Connect");
+    ui.appStatusLabel->setText("Disconnected");
+    m_status = AppDisconnected;
 }
 
-QColor TestClient::toQColor( TestClient::AppStatus st )
+QColor TestClient::toQColor(TestClient::AppStatus st)
 {
     QColor col;
-    switch ( st ) {
-      case TestClient::AppDisconnected:
+    switch (st) {
+    case TestClient::AppDisconnected:
         col = Qt::red;
         break;
-      case TestClient::AppWaitingForConnect:
+    case TestClient::AppWaitingForConnect:
         col = Qt::yellow;
         break;
-      case TestClient::AppConnected:
+    case TestClient::AppConnected:
         col = Qt::green;
         break;
     }
@@ -177,25 +175,21 @@ QColor TestClient::toQColor( TestClient::AppStatus st )
 //main
 int main(int argc, char **argv)
 {
-  QApplication app(argc, argv);
+    QApplication app(argc, argv);
 
-  if (app.arguments().count() == 0)
-  {
-    TestClient *widget = new TestClient;
-    widget->show();
-  }
-  else
-  {
-    int i = 0;
-    for (; i < app.arguments().count(); i++)
-    {
-      TestClient *widget = new TestClient;
-      widget->show();
+    if (app.arguments().count() == 0) {
+        TestClient *widget = new TestClient;
+        widget->show();
+    } else {
+        int i = 0;
+        for (; i < app.arguments().count(); i++) {
+            TestClient *widget = new TestClient;
+            widget->show();
+        }
     }
-  }
-  app.arguments().clear();
+    app.arguments().clear();
 
-  return app.exec();
+    return app.exec();
 }
 
 #include "moc_networkingclient.cpp"

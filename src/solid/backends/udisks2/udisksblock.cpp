@@ -39,7 +39,7 @@ Block::Block(Device *dev)
     if (m_devNum == 0 || m_devFile.isEmpty()) {
         const QString path = "/org/freedesktop/UDisks2/block_devices";
         QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, path,
-                                                           DBUS_INTERFACE_INTROSPECT, "Introspect");
+                            DBUS_INTERFACE_INTROSPECT, "Introspect");
         QDBusPendingReply<QString> reply = QDBusConnection::systemBus().asyncCall(call);
         reply.waitForFinished();
 
@@ -60,9 +60,9 @@ Block::Block(Device *dev)
                     }
                 }
             }
-        }
-        else
+        } else {
             qWarning() << "Failed enumerating UDisks2 objects:" << reply.error().name() << "\n" << reply.error().message();
+        }
     }
 
     //qDebug() << "devnum:" << m_devNum << "dev file:" << m_devFile;

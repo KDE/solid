@@ -30,7 +30,6 @@
 
 #include <solid/solid_export.h>
 
-
 #include <windows.h>
 #include <rpc.h>
 #include <comdef.h>
@@ -48,15 +47,16 @@ namespace Wmi
 class WmiQuery
 {
 public:
-    class Item {
+    class Item
+    {
     public:
         Item();
         Item(IWbemClassObject *p);
-        Item(const Item& other);
-        Item& operator=(const Item& other);
+        Item(const Item &other);
+        Item &operator=(const Item &other);
         ~Item();
 
-        IWbemClassObject* data() const;
+        IWbemClassObject *data() const;
         bool isNull() const;
         QVariant getProperty(const QString &property) const;
         QVariantMap getAllProperties();
@@ -66,7 +66,7 @@ public:
         static QVariant msVariantToQVariant(VARIANT msVariant, CIMTYPE variantType);
         QVariant getProperty(BSTR property) const;
         // QSharedPointer alone doesn't help because we need to call Release()
-        IWbemClassObject* m_p;
+        IWbemClassObject *m_p;
         QVariantMap m_properies;
     };
 
@@ -74,10 +74,10 @@ public:
 
     WmiQuery();
     ~WmiQuery();
-    ItemList sendQuery( const QString &wql );
+    ItemList sendQuery(const QString &wql);
     void addDeviceListeners(WmiManager::WmiEventSink *sink);
     bool isLegit() const;
-	static WmiQuery &instance();
+    static WmiQuery &instance();
 
 private:
     bool m_failed;

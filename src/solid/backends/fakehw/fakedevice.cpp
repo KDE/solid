@@ -66,8 +66,7 @@ FakeDevice::FakeDevice(const QString &udi, const QMap<QString, QVariant> &proper
     // this way they'll get exported on the bus
     // that means they'll be created twice, but that won't be
     // a problem for unit testing.
-    Q_FOREACH (const QString &interface, d->interfaceList)
-    {
+    Q_FOREACH (const QString &interface, d->interfaceList) {
         Solid::DeviceInterface::Type type = Solid::DeviceInterface::stringToType(interface);
         createDeviceInterface(type);
     }
@@ -78,7 +77,7 @@ FakeDevice::FakeDevice(const QString &udi, const QMap<QString, QVariant> &proper
             this, SIGNAL(conditionRaised(QString,QString)));
 }
 
-FakeDevice::FakeDevice(const FakeDevice& dev)
+FakeDevice::FakeDevice(const FakeDevice &dev)
     : Solid::Ifaces::Device(), d(dev.d)
 {
     connect(d.data(), SIGNAL(propertyChanged(QMap<QString,int>)),
@@ -114,7 +113,7 @@ QString FakeDevice::product() const
 
 QString FakeDevice::icon() const
 {
-    if(parentUdi().isEmpty()) {
+    if (parentUdi().isEmpty()) {
         return "system";
     } else if (queryDeviceInterface(Solid::DeviceInterface::OpticalDrive)) {
         return "cdrom-unmount";
@@ -122,7 +121,7 @@ QString FakeDevice::icon() const
         return "ipod-unmount";
     } else if (queryDeviceInterface(Solid::DeviceInterface::Camera)) {
         return "camera-unmount";
-    } else if(queryDeviceInterface(Solid::DeviceInterface::Processor)) {
+    } else if (queryDeviceInterface(Solid::DeviceInterface::Processor)) {
         return "cpu";
     } else if (queryDeviceInterface(Solid::DeviceInterface::StorageDrive)) {
         return "hdd-unmount";
@@ -170,18 +169,19 @@ bool FakeDevice::propertyExists(const QString &key) const
 
 bool FakeDevice::setProperty(const QString &key, const QVariant &value)
 {
-    if (d->broken) return false;
+    if (d->broken) {
+        return false;
+    }
 
     Solid::GenericInterface::PropertyChange change_type = Solid::GenericInterface::PropertyModified;
 
-    if (!d->propertyMap.contains(key))
-    {
+    if (!d->propertyMap.contains(key)) {
         change_type = Solid::GenericInterface::PropertyAdded;
     }
 
     d->propertyMap[key] = value;
 
-    QMap<QString,int> change;
+    QMap<QString, int> change;
     change[key] = change_type;
 
     emit d->propertyChanged(change);
@@ -191,11 +191,13 @@ bool FakeDevice::setProperty(const QString &key, const QVariant &value)
 
 bool FakeDevice::removeProperty(const QString &key)
 {
-    if (d->broken || !d->propertyMap.contains(key)) return false;
+    if (d->broken || !d->propertyMap.contains(key)) {
+        return false;
+    }
 
     d->propertyMap.remove(key);
 
-    QMap<QString,int> change;
+    QMap<QString, int> change;
     change[key] = Solid::GenericInterface::PropertyRemoved;
 
     emit d->propertyChanged(change);
@@ -215,7 +217,9 @@ bool FakeDevice::isBroken()
 
 bool FakeDevice::lock(const QString &reason)
 {
-    if (d->broken || d->locked) return false;
+    if (d->broken || d->locked) {
+        return false;
+    }
 
     d->locked = true;
     d->lockReason = reason;
@@ -225,7 +229,9 @@ bool FakeDevice::lock(const QString &reason)
 
 bool FakeDevice::unlock()
 {
-    if (d->broken || !d->locked) return false;
+    if (d->broken || !d->locked) {
+        return false;
+    }
 
     d->locked = false;
     d->lockReason.clear();
@@ -256,13 +262,13 @@ bool FakeDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type) 
 QObject *FakeDevice::createDeviceInterface(const Solid::DeviceInterface::Type &type)
 {
     // Do not try to cast with a unsupported device interface.
-    if (!queryDeviceInterface(type))
+    if (!queryDeviceInterface(type)) {
         return 0;
+    }
 
     FakeDeviceInterface *iface = 0;
 
-    switch(type)
-    {
+    switch (type) {
     case Solid::DeviceInterface::GenericInterface:
         iface = new FakeGenericInterface(this);
         break;
@@ -335,10 +341,9 @@ QObject *FakeDevice::createDeviceInterface(const Solid::DeviceInterface::Type &t
         break;
     }
 
-    if(iface)
-    {
-        QDBusConnection::sessionBus().registerObject(d->udi+'/'+Solid::DeviceInterface::typeToString(type), iface,
-                                                      QDBusConnection::ExportNonScriptableSlots);
+    if (iface) {
+        QDBusConnection::sessionBus().registerObject(d->udi + '/' + Solid::DeviceInterface::typeToString(type), iface,
+                QDBusConnection::ExportNonScriptableSlots);
     }
 
     return iface;

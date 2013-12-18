@@ -37,17 +37,14 @@ static const char InternetGatewayDevice1Udn[] =
 
 InternetGatewayDevice1Factory::InternetGatewayDevice1Factory() {}
 
-
-QObject* InternetGatewayDevice1Factory::tryCreateDevice( const Cagibi::Device& device ) const
+QObject *InternetGatewayDevice1Factory::tryCreateDevice(const Cagibi::Device &device) const
 {
-    return ( device.type() == QLatin1String(InternetGatewayDevice1Udn) ) ?
-        new InternetGatewayDevice1( device ) : 0;
+    return (device.type() == QLatin1String(InternetGatewayDevice1Udn)) ?
+           new InternetGatewayDevice1(device) : 0;
 }
 
-
-
-InternetGatewayDevice1::InternetGatewayDevice1(const Cagibi::Device& device)
-  : KUPnPDevice(device)
+InternetGatewayDevice1::InternetGatewayDevice1(const Cagibi::Device &device)
+    : KUPnPDevice(device)
 {
 }
 
@@ -60,27 +57,25 @@ QString InternetGatewayDevice1::icon() const
     return QString::fromLatin1("network-server");
 }
 
-
 QString InternetGatewayDevice1::description() const
 {
     return tr("UPnP Internet Gateway Device");
 }
 
-
 bool InternetGatewayDevice1::queryDeviceInterface(const Solid::DeviceInterface::Type &type) const
 {
-    Q_UNUSED( type );
+    Q_UNUSED(type);
 
     bool result = false;
 
     return result;
 }
 
-QObject* InternetGatewayDevice1::createDeviceInterface(const Solid::DeviceInterface::Type& type)
+QObject *InternetGatewayDevice1::createDeviceInterface(const Solid::DeviceInterface::Type &type)
 {
-    Q_UNUSED( type );
+    Q_UNUSED(type);
 
-    DeviceInterface* interface = 0;
+    DeviceInterface *interface = 0;
 
     return interface;
 }

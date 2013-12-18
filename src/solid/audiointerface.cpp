@@ -36,7 +36,6 @@ Solid::AudioInterface::~AudioInterface()
 
 }
 
-
 Solid::AudioInterface::AudioDriver Solid::AudioInterface::driver() const
 {
     Q_D(const AudioInterface);

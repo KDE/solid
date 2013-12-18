@@ -27,9 +27,9 @@
 
 #include <QtCore/QDebug>
 
-QDBusArgument& operator<<( QDBusArgument& argument, const Cagibi::Device& device )
+QDBusArgument &operator<<(QDBusArgument &argument, const Cagibi::Device &device)
 {
-    const Cagibi::DevicePrivate* devicePrivate = device.d.constData();
+    const Cagibi::DevicePrivate *devicePrivate = device.d.constData();
 
     argument.beginStructure();
 
@@ -53,20 +53,21 @@ QDBusArgument& operator<<( QDBusArgument& argument, const Cagibi::Device& device
     return argument;
 }
 
-const QDBusArgument& operator>>( const QDBusArgument& argument,
-                                 Cagibi::Device& device )
+const QDBusArgument &operator>>(const QDBusArgument &argument,
+                                Cagibi::Device &device)
 {
-    Cagibi::DevicePrivate* devicePrivate = device.d.data();
+    Cagibi::DevicePrivate *devicePrivate = device.d.data();
 
     argument.beginStructure();
 
     QString type;
     argument >> type;
-    const QStringList typeParts = type.split( ':' );
-qDebug()<<type;
-    if( typeParts.size() >=5 )
-    devicePrivate->mType = typeParts[3]+typeParts[4];
-devicePrivate->mType = type;
+    const QStringList typeParts = type.split(':');
+    qDebug() << type;
+    if (typeParts.size() >= 5) {
+        devicePrivate->mType = typeParts[3] + typeParts[4];
+    }
+    devicePrivate->mType = type;
     argument >> devicePrivate->mFriendlyName
              >> devicePrivate->mManufacturerName
 //     const QString& manufacturerUrl() const;

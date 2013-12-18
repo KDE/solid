@@ -25,12 +25,12 @@
 
 namespace Solid
 {
-    class SmartCardReaderPrivate : public DeviceInterfacePrivate
-    {
-    public:
-        SmartCardReaderPrivate()
-            : DeviceInterfacePrivate() { }
-    };
+class SmartCardReaderPrivate : public DeviceInterfacePrivate
+{
+public:
+    SmartCardReaderPrivate()
+        : DeviceInterfacePrivate() { }
+};
 }
 
 #endif

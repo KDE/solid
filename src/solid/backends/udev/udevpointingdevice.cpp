@@ -27,12 +27,12 @@ using namespace Solid::Backends::UDev;
 PointingDevice::PointingDevice(UDevDevice *device)
     : DeviceInterface(device)
     , m_type(
-          device->property("ID_INPUT_MOUSE").toInt()       == 1 ? Solid::PointingDevice::Mouse :
-          device->property("ID_INPUT_TOUCHPAD").toInt()    == 1 ? Solid::PointingDevice::Touchpad :
-          device->property("ID_INPUT_TABLET").toInt()      == 1 ? Solid::PointingDevice::Tablet :
-          device->property("ID_INPUT_TOUCHSCREEN").toInt() == 1 ? Solid::PointingDevice::Touchscreen :
-                                                                  Solid::PointingDevice::UnknownPointingDeviceType
-      )
+        device->property("ID_INPUT_MOUSE").toInt()       == 1 ? Solid::PointingDevice::Mouse :
+        device->property("ID_INPUT_TOUCHPAD").toInt()    == 1 ? Solid::PointingDevice::Touchpad :
+        device->property("ID_INPUT_TABLET").toInt()      == 1 ? Solid::PointingDevice::Tablet :
+        device->property("ID_INPUT_TOUCHSCREEN").toInt() == 1 ? Solid::PointingDevice::Touchscreen :
+        Solid::PointingDevice::UnknownPointingDeviceType
+    )
 {
 }
 

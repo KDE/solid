@@ -60,13 +60,13 @@ public:
     virtual QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type);
 
 Q_SIGNALS:
-    void propertyChanged(const QMap<QString,int> &changes);
+    void propertyChanged(const QMap<QString, int> &changes);
     void conditionRaised(const QString &condition, const QString &reason);
 
 private:
     friend class IOKitManager;
     IOKitDevice(const QString &udi, const io_registry_entry_t &entry);
-    IOKitDevicePrivate * const d;
+    IOKitDevicePrivate *const d;
 };
 }
 }

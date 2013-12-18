@@ -33,49 +33,49 @@ namespace Backends
 namespace Fstab
 {
 
-    class FstabDevice : public Solid::Ifaces::Device
-    {
-        Q_OBJECT
+class FstabDevice : public Solid::Ifaces::Device
+{
+    Q_OBJECT
 
-        public:
-            FstabDevice(QString uid);
+public:
+    FstabDevice(QString uid);
 
-            virtual ~FstabDevice();
+    virtual ~FstabDevice();
 
-            virtual QString udi() const;
+    virtual QString udi() const;
 
-            virtual QString parentUdi() const;
+    virtual QString parentUdi() const;
 
-            virtual QString vendor() const;
+    virtual QString vendor() const;
 
-            virtual QString product() const;
+    virtual QString product() const;
 
-            virtual QString icon() const;
+    virtual QString icon() const;
 
-            virtual QStringList emblems() const;
+    virtual QStringList emblems() const;
 
-            virtual QString description() const;
+    virtual QString description() const;
 
-            virtual bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const;
+    virtual bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const;
 
-            virtual QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type);
+    virtual QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type);
 
-            QString device() const;
+    QString device() const;
 
-        Q_SIGNALS:
-            void mtabChanged(const QString& device);
+Q_SIGNALS:
+    void mtabChanged(const QString &device);
 
-        private Q_SLOTS:
-            void onMtabChanged(const QString& device);
+private Q_SLOTS:
+    void onMtabChanged(const QString &device);
 
-        private:
-            QString m_uid;
-            QString m_device;
-            QString m_product;
-            QString m_vendor;
-            QString m_description;
-            QPointer<FstabStorageAccess> m_storageAccess;
-    };
+private:
+    QString m_uid;
+    QString m_device;
+    QString m_product;
+    QString m_vendor;
+    QString m_description;
+    QPointer<FstabStorageAccess> m_storageAccess;
+};
 
 }
 }

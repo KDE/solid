@@ -29,7 +29,7 @@ using namespace Solid::Backends::Fstab;
 using namespace Solid::Backends::Shared;
 
 FstabManager::FstabManager(QObject *parent)
-  : Solid::Ifaces::DeviceManager(parent)
+    : Solid::Ifaces::DeviceManager(parent)
 {
     m_supportedInterfaces << Solid::DeviceInterface::StorageAccess;
     m_supportedInterfaces << Solid::DeviceInterface::NetworkShare;
@@ -62,11 +62,11 @@ QStringList FstabManager::allDevices()
     return result;
 }
 
-QStringList FstabManager::devicesFromQuery( const QString &parentUdi,
-                                             Solid::DeviceInterface::Type type)
+QStringList FstabManager::devicesFromQuery(const QString &parentUdi,
+        Solid::DeviceInterface::Type type)
 {
     if (type == Solid::DeviceInterface::StorageAccess
-     || type == Solid::DeviceInterface::NetworkShare) {
+            || type == Solid::DeviceInterface::NetworkShare) {
         if (parentUdi.isEmpty() || parentUdi == udiPrefix()) {
             QStringList list = allDevices();
             list.removeFirst();
@@ -93,12 +93,13 @@ QObject *FstabManager::createDevice(const QString &udi)
 
     } else {
         // global device manager makes sure udi starts with udi prefix + '/'
-        QString internalName = udi.mid( udiPrefix().length()+1, -1 );
-        if (!m_deviceList.contains(internalName))
+        QString internalName = udi.mid(udiPrefix().length() + 1, -1);
+        if (!m_deviceList.contains(internalName)) {
             return 0;
+        }
 
-        QObject* device = new FstabDevice(udi);
-        connect (this, SIGNAL(mtabChanged(QString)), device, SLOT(onMtabChanged(QString)));
+        QObject *device = new FstabDevice(udi);
+        connect(this, SIGNAL(mtabChanged(QString)), device, SLOT(onMtabChanged(QString)));
         return device;
 
     }
@@ -116,20 +117,22 @@ void FstabManager::_k_updateDeviceList()
     QSet<QString> newlist = deviceList.toSet();
     QSet<QString> oldlist = m_deviceList.toSet();
 
-    Q_FOREACH(const QString &device, newlist) {
-        if ( !oldlist.contains(device) )
+    Q_FOREACH (const QString &device, newlist) {
+        if (!oldlist.contains(device)) {
             emit deviceAdded(udiPrefix() + "/" + device);
+        }
     }
 
-    Q_FOREACH(const QString &device, oldlist) {
-        if ( !newlist.contains(device) )
+    Q_FOREACH (const QString &device, oldlist) {
+        if (!newlist.contains(device)) {
             emit deviceRemoved(udiPrefix() + "/" + device);
+        }
     }
 
     m_deviceList = deviceList;
 
-    Q_FOREACH(const QString &device, newlist) {
-        if ( !oldlist.contains(device) ) {
+    Q_FOREACH (const QString &device, newlist) {
+        if (!oldlist.contains(device)) {
             emit deviceAdded(udiPrefix() + "/" + device);
         }
     }
@@ -141,7 +144,7 @@ void FstabManager::onMtabChanged()
 
     _k_updateDeviceList(); // devicelist is union of mtab and fstab
 
-    Q_FOREACH(const QString &device, m_deviceList) {
+    Q_FOREACH (const QString &device, m_deviceList) {
         // notify storageaccess objects via device ...
         emit mtabChanged(device);
     }

@@ -68,7 +68,7 @@ static QMap<QString, QString> makeTypeIconMap()
 
 static const QMap<QString, QString> typeIconMap = makeTypeIconMap();
 
-UPnPDevice::UPnPDevice(const Herqq::Upnp::HClientDevice* device) :
+UPnPDevice::UPnPDevice(const Herqq::Upnp::HClientDevice *device) :
     Solid::Ifaces::Device(),
     m_device(device),
     m_specVersion(device->info().deviceType().toString(Herqq::Upnp::HResourceType::Version)),
@@ -80,7 +80,7 @@ UPnPDevice::~UPnPDevice()
 {
 }
 
-const Herqq::Upnp::HClientDevice* UPnPDevice::device() const
+const Herqq::Upnp::HClientDevice *UPnPDevice::device() const
 {
     return m_device;
 }
@@ -89,8 +89,7 @@ QString UPnPDevice::udi() const
 {
     const Herqq::Upnp::HDeviceInfo deviceInfo = device()->info();
 
-    if (!deviceInfo.udn().isValid(Herqq::Upnp::LooseChecks))
-    {
+    if (!deviceInfo.udn().isValid(Herqq::Upnp::LooseChecks)) {
         qWarning("This device UDN is not a valid one!");
     }
 
@@ -101,13 +100,11 @@ QString UPnPDevice::udi() const
 
 QString UPnPDevice::parentUdi() const
 {
-    const Herqq::Upnp::HClientDevice* parent = device()->parentDevice();
-    if (parent)
-    {
+    const Herqq::Upnp::HClientDevice *parent = device()->parentDevice();
+    if (parent) {
         Herqq::Upnp::HDeviceInfo parentInfo = parent->info();
 
-        if (!parentInfo.udn().isValid(Herqq::Upnp::LooseChecks))
-        {
+        if (!parentInfo.udn().isValid(Herqq::Upnp::LooseChecks)) {
             qWarning("This device UDN is not a valid one!");
         }
 
@@ -137,8 +134,7 @@ QString UPnPDevice::icon() const
 {
     const Herqq::Upnp::HDeviceInfo deviceInfo = device()->info();
 
-    if (typeIconMap.contains(deviceType()))
-    {
+    if (typeIconMap.contains(deviceType())) {
         return typeIconMap[deviceType()];
     }
 
@@ -178,23 +174,16 @@ bool UPnPDevice::isInternetGatewayDevice() const
     return deviceType().startsWith(QString::fromLatin1("InternetGatewayDevice"));
 }
 
-bool UPnPDevice::queryDeviceInterface(const Solid::DeviceInterface::Type& type) const
+bool UPnPDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type) const
 {
-    if (type == Solid::DeviceInterface::StorageAccess)
-    {
-        if (isMediaServer())
-        {
+    if (type == Solid::DeviceInterface::StorageAccess) {
+        if (isMediaServer()) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
-    }
-    else if (type == Solid::DeviceInterface::InternetGateway)
-    {
-        if (isInternetGatewayDevice())
-        {
+    } else if (type == Solid::DeviceInterface::InternetGateway) {
+        if (isInternetGatewayDevice()) {
             return true;
         }
     }
@@ -202,23 +191,16 @@ bool UPnPDevice::queryDeviceInterface(const Solid::DeviceInterface::Type& type) 
     return false;
 }
 
-QObject* UPnPDevice::createDeviceInterface(const Solid::DeviceInterface::Type& type)
+QObject *UPnPDevice::createDeviceInterface(const Solid::DeviceInterface::Type &type)
 {
-    if (type == Solid::DeviceInterface::StorageAccess)
-    {
-        if (isMediaServer())
-        {
+    if (type == Solid::DeviceInterface::StorageAccess) {
+        if (isMediaServer()) {
             return new Solid::Backends::UPnP::UPnPMediaServer(this);
-        }
-        else
-        {
+        } else {
             return 0;
         }
-    }
-    else if (type == Solid::DeviceInterface::InternetGateway)
-    {
-        if (isInternetGatewayDevice())
-        {
+    } else if (type == Solid::DeviceInterface::InternetGateway) {
+        if (isInternetGatewayDevice()) {
             return new Solid::Backends::UPnP::UPnPInternetGateway(this);
         }
     }

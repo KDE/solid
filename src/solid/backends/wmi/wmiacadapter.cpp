@@ -39,7 +39,7 @@ bool AcAdapter::isPlugged() const
     return m_device->property("BatteryStatus").toUInt() == 2;
 }
 
-void AcAdapter::slotPropertyChanged(const QMap<QString,int> &changes)
+void AcAdapter::slotPropertyChanged(const QMap<QString, int> &changes)
 {
 }
 

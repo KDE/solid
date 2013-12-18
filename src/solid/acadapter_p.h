@@ -25,12 +25,12 @@
 
 namespace Solid
 {
-    class AcAdapterPrivate : public DeviceInterfacePrivate
-    {
-    public:
-        AcAdapterPrivate()
-            : DeviceInterfacePrivate() { }
-    };
+class AcAdapterPrivate : public DeviceInterfacePrivate
+{
+public:
+    AcAdapterPrivate()
+        : DeviceInterfacePrivate() { }
+};
 }
 
 #endif

@@ -34,28 +34,29 @@ namespace Backends
 namespace Fstab
 {
 
-    class FstabWatcher : public QObject {
-        Q_OBJECT
-    public:
-        FstabWatcher();
-        virtual ~FstabWatcher();
+class FstabWatcher : public QObject
+{
+    Q_OBJECT
+public:
+    FstabWatcher();
+    virtual ~FstabWatcher();
 
-        static FstabWatcher *instance();
+    static FstabWatcher *instance();
 
-    Q_SIGNALS:
-        void mtabChanged();
-        void fstabChanged();
+Q_SIGNALS:
+    void mtabChanged();
+    void fstabChanged();
 
-    private Q_SLOTS:
-        void onFileChanged(const QString &path);
-        void orphanFileSystemWatcher();
+private Q_SLOTS:
+    void onFileChanged(const QString &path);
+    void orphanFileSystemWatcher();
 
-    private:
-        bool m_isRoutineInstalled;
-        QFileSystemWatcher *m_fileSystemWatcher;
-        QSocketNotifier *m_mtabSocketNotifier;
-        QFile *m_mtabFile;
-    };
+private:
+    bool m_isRoutineInstalled;
+    QFileSystemWatcher *m_fileSystemWatcher;
+    QSocketNotifier *m_mtabSocketNotifier;
+    QFile *m_mtabFile;
+};
 }
 }
 }

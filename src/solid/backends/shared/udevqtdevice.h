@@ -33,40 +33,40 @@ namespace UdevQt
 class DevicePrivate;
 class Device
 {
-    public:
-        Device();
-        Device(const Device &other);
-        ~Device();
-        Device &operator= (const Device &other);
+public:
+    Device();
+    Device(const Device &other);
+    ~Device();
+    Device &operator= (const Device &other);
 
-        bool isValid() const;
-        QString subsystem() const;
-        QString devType() const;
-        QString name() const;
-        QString sysfsPath() const;
-        int sysfsNumber() const;
-        QString driver() const;
-        QString primaryDeviceFile() const;
-        QStringList alternateDeviceSymlinks() const;
-        QStringList deviceProperties() const;
+    bool isValid() const;
+    QString subsystem() const;
+    QString devType() const;
+    QString name() const;
+    QString sysfsPath() const;
+    int sysfsNumber() const;
+    QString driver() const;
+    QString primaryDeviceFile() const;
+    QStringList alternateDeviceSymlinks() const;
+    QStringList deviceProperties() const;
 #ifdef UDEV_HAVE_GET_SYSATTR_LIST_ENTRY
-        QStringList sysfsProperties() const;
+    QStringList sysfsProperties() const;
 #endif
-        Device parent() const;
+    Device parent() const;
 
-        // ### should this really be a QVariant? as far as udev knows, everything is a string...
-        // see also Client::devicesByProperty
-        QVariant deviceProperty(const QString &name) const;
-        QString decodedDeviceProperty(const QString &name) const;
-        QVariant sysfsProperty(const QString &name) const;
-        Device ancestorOfType(const QString &subsys, const QString &devtype) const;
+    // ### should this really be a QVariant? as far as udev knows, everything is a string...
+    // see also Client::devicesByProperty
+    QVariant deviceProperty(const QString &name) const;
+    QString decodedDeviceProperty(const QString &name) const;
+    QVariant sysfsProperty(const QString &name) const;
+    Device ancestorOfType(const QString &subsys, const QString &devtype) const;
 
-    private:
-        Device(DevicePrivate *devPrivate);
-        friend class Client;
-        friend class ClientPrivate;
+private:
+    Device(DevicePrivate *devPrivate);
+    friend class Client;
+    friend class ClientPrivate;
 
-        DevicePrivate *d;
+    DevicePrivate *d;
 };
 
 typedef QList<Device> DeviceList;

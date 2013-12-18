@@ -21,7 +21,6 @@
 
 #include "wmiopticaldisc.h"
 
-
 #include <QDir>
 
 using namespace Solid::Backends::Wmi;
@@ -37,7 +36,6 @@ OpticalDisc::~OpticalDisc()
 
 }
 
-
 Solid::OpticalDisc::ContentTypes OpticalDisc::availableContent() const
 {
     Solid::OpticalDisc::ContentTypes content;
@@ -47,13 +45,11 @@ Solid::OpticalDisc::ContentTypes OpticalDisc::availableContent() const
     map[Solid::OpticalDisc::Data] = "volume.disc.has_data";
     map[Solid::OpticalDisc::VideoCd] = "volume.disc.is_vcd";
     map[Solid::OpticalDisc::SuperVideoCd] = "volume.disc.is_svcd";
-    map[Solid::OpticalDisc::VideoDvd] ="volume.disc.is_videodvd";
+    map[Solid::OpticalDisc::VideoDvd] = "volume.disc.is_videodvd";
 
-    Q_FOREACH (const Solid::OpticalDisc::ContentType type, map.keys())
-    {
-        if (m_device->property(map[type]).toBool())
-        {
-            content|= type;
+    Q_FOREACH (const Solid::OpticalDisc::ContentType type, map.keys()) {
+        if (m_device->property(map[type]).toBool()) {
+            content |= type;
         }
     }
 
@@ -64,25 +60,22 @@ Solid::OpticalDisc::DiscType OpticalDisc::discType() const
 {
     QString type = m_logicalDisk.getProperty("FileSystem").toString();
 
-    if (type == "CDFS")
-    {
+    if (type == "CDFS") {
         return Solid::OpticalDisc::CdRom;
     }
 //    else if (type == "CdRomWrite")
 //    {
 //        return Solid::OpticalDisc::CdRecordable;
 //    }
-    else if (type == "UDF")
-    {
+    else if (type == "UDF") {
         return Solid::OpticalDisc::DvdRom;
     }
 //    else if (type == "DVDRomWrite")
 //    {
 //        return Solid::OpticalDisc::DvdRecordable;
 //    }
-    else
-    {
-        qDebug()<<"Solid::OpticalDisc::DiscType OpticalDisc::discType(): Unknown Type"<<type;
+    else {
+        qDebug() << "Solid::OpticalDisc::DiscType OpticalDisc::discType(): Unknown Type" << type;
         return Solid::OpticalDisc::UnknownDiscType;
     }
 }
@@ -95,15 +88,16 @@ bool OpticalDisc::isAppendable() const
 bool OpticalDisc::isBlank() const
 {
     ushort val = m_device->property("FileSystemFlagsEx").toUInt();
-    if(val == 0)
+    if (val == 0) {
         return true;
+    }
     return false;
 }
 
 bool OpticalDisc::isRewritable() const
 {
     //TODO:
-    return capacity()>0 && isWriteable();
+    return capacity() > 0 && isWriteable();
 }
 
 qulonglong OpticalDisc::capacity() const
@@ -114,8 +108,9 @@ qulonglong OpticalDisc::capacity() const
 bool OpticalDisc::isWriteable() const
 {
     ushort val = m_device->property("FileSystemFlagsEx").toUInt();
-    if(val == 0)
+    if (val == 0) {
         return true;
+    }
     return !val & 0x80001;//read only
 }
 

@@ -24,7 +24,6 @@
 // KUPnP
 #include "kupnpdevice.h"
 
-
 namespace Solid
 {
 namespace Backends
@@ -38,22 +37,21 @@ public:
     InternetGatewayDevice1Factory();
 
 public: // AbstractDeviceFactory API
-    virtual QObject* tryCreateDevice( const Cagibi::Device& device ) const;
+    virtual QObject *tryCreateDevice(const Cagibi::Device &device) const;
 };
-
 
 class InternetGatewayDevice1 : public KUPnPDevice
 {
 public:
-    explicit InternetGatewayDevice1(const Cagibi::Device& device);
+    explicit InternetGatewayDevice1(const Cagibi::Device &device);
     virtual ~InternetGatewayDevice1();
 
 public: // Solid::Ifaces::Device API
     virtual QString icon() const;
     virtual QString description() const;
 
-    virtual bool queryDeviceInterface(const Solid::DeviceInterface::Type& type) const;
-    virtual QObject* createDeviceInterface(const Solid::DeviceInterface::Type& type);
+    virtual bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const;
+    virtual QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type);
 };
 
 }

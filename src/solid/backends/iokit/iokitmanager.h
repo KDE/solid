@@ -43,7 +43,7 @@ public:
     IOKitManager(QObject *parent);
     virtual ~IOKitManager();
 
-    virtual QString udiPrefix() const ;
+    virtual QString udiPrefix() const;
     virtual QSet<Solid::DeviceInterface::Type> supportedInterfaces() const;
 
     virtual QStringList allDevices();

@@ -95,12 +95,12 @@ void RootDevice::setDescription(const QString &description)
     m_description = description;
 }
 
-bool RootDevice::queryDeviceInterface(const Solid::DeviceInterface::Type&) const
+bool RootDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &) const
 {
     return false;
 }
 
-QObject* RootDevice::createDeviceInterface(const Solid::DeviceInterface::Type&)
+QObject *RootDevice::createDeviceInterface(const Solid::DeviceInterface::Type &)
 {
     return 0;
 }

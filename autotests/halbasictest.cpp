@@ -62,7 +62,7 @@ void HalBasicTest::testBasic()
     QObject *interface = processor->createDeviceInterface(Solid::DeviceInterface::Processor);
     Solid::Ifaces::Processor *proc_iface = qobject_cast<Solid::Ifaces::Processor *>(interface);
 
-    QVERIFY(proc_iface!=0);
+    QVERIFY(proc_iface != 0);
 
 #if 0
     // HAL locking support being broken anyway...
@@ -85,9 +85,8 @@ void HalBasicTest::testProcessorList()
 {
     QList<Solid::Device> list = Solid::Device::listFromType(Solid::DeviceInterface::Processor, QString());
     qDebug() << "Number of processors:" << list.size();
-    if (list.size() > 0)
-    {
-        Solid::Processor* p = list[0].as<Solid::Processor>();
+    if (list.size() > 0) {
+        Solid::Processor *p = list[0].as<Solid::Processor>();
         QVERIFY(p);
         Solid::Processor::InstructionSets features = p->instructionSets();
         qDebug() << "features:" << features;
@@ -114,7 +113,7 @@ void HalBasicTest::testSignalHandling()
 
 #if 0
     connect(m_device, SIGNAL(propertyChanged(QMap<QString,int>)),
-             this, SLOT(slotPropertyChanged(QMap<QString,int>)));
+            this, SLOT(slotPropertyChanged(QMap<QString,int>)));
 
     // HAL locking support being broken anyway...
     QVERIFY(!m_device->isLocked());
@@ -128,7 +127,7 @@ void HalBasicTest::testSignalHandling()
     delete manager;
 }
 
-void HalBasicTest::slotPropertyChanged(const QMap<QString,int> &changes)
+void HalBasicTest::slotPropertyChanged(const QMap<QString, int> &changes)
 {
     Q_UNUSED(changes)
 #if 0

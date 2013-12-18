@@ -28,59 +28,59 @@ namespace Solid
 {
 namespace Ifaces
 {
+/**
+ * This device interface is available on button devices.
+ *
+ * A button is a device, like power button or lid switch, that can be pressed by user.
+ * Some buttons can have two states (Enabled/Disabled, On/Off ...), other buttons haven't state.
+ *
+ * @author Davide Bettio <davide.bettio@kdemail.net>
+ */
+class Button : virtual public DeviceInterface
+{
+public:
     /**
-     * This device interface is available on button devices.
-     *
-     * A button is a device, like power button or lid switch, that can be pressed by user.
-     * Some buttons can have two states (Enabled/Disabled, On/Off ...), other buttons haven't state.
-     *
-     * @author Davide Bettio <davide.bettio@kdemail.net>
+     * Destroys a Button object.
      */
-    class Button : virtual public DeviceInterface
-    {
-    public:
-        /**
-         * Destroys a Button object.
-         */
-        virtual ~Button();
+    virtual ~Button();
 
-        /**
-         * Retrieves the type of button device.
-         *
-         * @return the type of button device.
-         * @see Solid::Button::ButtonType
-         */
-        virtual Solid::Button::ButtonType type() const = 0;
+    /**
+     * Retrieves the type of button device.
+     *
+     * @return the type of button device.
+     * @see Solid::Button::ButtonType
+     */
+    virtual Solid::Button::ButtonType type() const = 0;
 
-        /**
-         * Indicates if the button mantains state (Can be toggled on/off).
-         *
-         * @return true if the button maintains state, false otherwise.
-         * @see stateValue()
-         */
-        virtual bool hasState() const = 0;
+    /**
+     * Indicates if the button mantains state (Can be toggled on/off).
+     *
+     * @return true if the button maintains state, false otherwise.
+     * @see stateValue()
+     */
+    virtual bool hasState() const = 0;
 
-        /**
-         * Retrieves the state of the button.
-         * A button can have two states (Enabled/Disabled, On/Off ...).
-         * Available only if hasState is true.
-         *
-         * @return true if the button is enabled, false otherwise.
-         * @see hasState()
-         */
-        virtual bool stateValue() const = 0;
+    /**
+     * Retrieves the state of the button.
+     * A button can have two states (Enabled/Disabled, On/Off ...).
+     * Available only if hasState is true.
+     *
+     * @return true if the button is enabled, false otherwise.
+     * @see hasState()
+     */
+    virtual bool stateValue() const = 0;
 
-    protected:
+protected:
     //Q_SIGNALS:
-        /**
-         * This signal is emitted when the button is pressed.
-         *
-         * @param type the type of button device, it's one of
-         * the type Solid::Button::ButtonType
-         * @see Solid::Button::ButtonType
-         */
-        virtual void pressed(Solid::Button::ButtonType type, const QString &udi) = 0;
-    };
+    /**
+     * This signal is emitted when the button is pressed.
+     *
+     * @param type the type of button device, it's one of
+     * the type Solid::Button::ButtonType
+     * @see Solid::Button::ButtonType
+     */
+    virtual void pressed(Solid::Button::ButtonType type, const QString &udi) = 0;
+};
 }
 }
 

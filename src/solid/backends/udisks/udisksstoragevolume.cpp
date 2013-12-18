@@ -34,8 +34,9 @@ UDisksStorageVolume::~UDisksStorageVolume()
 
 QString UDisksStorageVolume::encryptedContainerUdi() const
 {
-    if ( m_device->prop( "DeviceIsLuksCleartext" ).toBool() )
-        return m_device->prop( "LuksCleartextSlave" ).value<QDBusObjectPath>().path();
+    if (m_device->prop("DeviceIsLuksCleartext").toBool()) {
+        return m_device->prop("LuksCleartextSlave").value<QDBusObjectPath>().path();
+    }
 
     return QString();
 }
@@ -53,8 +54,9 @@ QString UDisksStorageVolume::uuid() const
 QString UDisksStorageVolume::label() const
 {
     QString label = m_device->prop("IdLabel").toString();
-    if (label.isEmpty())
+    if (label.isEmpty()) {
         label = m_device->prop("PartitionLabel").toString();
+    }
     return label;
 }
 
@@ -67,28 +69,17 @@ Solid::StorageVolume::UsageType UDisksStorageVolume::usage() const
 {
     QString usage = m_device->prop("IdUsage").toString();
 
-    if (usage == "filesystem")
-    {
+    if (usage == "filesystem") {
         return Solid::StorageVolume::FileSystem;
-    }
-    else if (usage == "partitiontable")
-    {
+    } else if (usage == "partitiontable") {
         return Solid::StorageVolume::PartitionTable;
-    }
-    else if (usage == "raid")
-    {
+    } else if (usage == "raid") {
         return Solid::StorageVolume::Raid;
-    }
-    else if (usage == "crypto")
-    {
+    } else if (usage == "crypto") {
         return Solid::StorageVolume::Encrypted;
-    }
-    else if (usage == "unused")
-    {
+    } else if (usage == "unused") {
         return Solid::StorageVolume::Unused;
-    }
-    else
-    {
+    } else {
         return Solid::StorageVolume::Other;
     }
 }

@@ -55,9 +55,9 @@ Manager::Manager(QObject *parent)
     if (!serviceFound) {
         // find out whether it will be activated automatically
         QDBusMessage message = QDBusMessage::createMethodCall("org.freedesktop.DBus",
-                                                              "/org/freedesktop/DBus",
-                                                              "org.freedesktop.DBus",
-                                                              "ListActivatableNames");
+                               "/org/freedesktop/DBus",
+                               "org.freedesktop.DBus",
+                               "ListActivatableNames");
 
         QDBusReply<QStringList> reply = QDBusConnection::systemBus().call(message);
         if (reply.isValid() && reply.value().contains(UD2_DBUS_SERVICE)) {
@@ -82,9 +82,9 @@ Manager::~Manager()
     }
 }
 
-QObject* Manager::createDevice(const QString& udi)
+QObject *Manager::createDevice(const QString &udi)
 {
-    if (udi==udiPrefix()) {
+    if (udi == udiPrefix()) {
         RootDevice *root = new RootDevice(udi);
 
         root->setProduct(tr("Storage"));
@@ -99,28 +99,25 @@ QObject* Manager::createDevice(const QString& udi)
     }
 }
 
-QStringList Manager::devicesFromQuery(const QString& parentUdi, Solid::DeviceInterface::Type type)
+QStringList Manager::devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type)
 {
     QStringList result;
 
-    if (!parentUdi.isEmpty())
-    {
-        Q_FOREACH (const QString &udi, deviceCache())
-        {
+    if (!parentUdi.isEmpty()) {
+        Q_FOREACH (const QString &udi, deviceCache()) {
             Device device(udi);
-            if (device.queryDeviceInterface(type) && device.parentUdi() == parentUdi)
+            if (device.queryDeviceInterface(type) && device.parentUdi() == parentUdi) {
                 result << udi;
+            }
         }
 
         return result;
-    }
-    else if (type != Solid::DeviceInterface::Unknown)
-    {
-        Q_FOREACH (const QString &udi, deviceCache())
-        {
+    } else if (type != Solid::DeviceInterface::Unknown) {
+        Q_FOREACH (const QString &udi, deviceCache()) {
             Device device(udi);
-            if (device.queryDeviceInterface(type))
+            if (device.queryDeviceInterface(type)) {
                 result << udi;
+            }
         }
 
         return result;
@@ -137,10 +134,10 @@ QStringList Manager::allDevices()
     return m_deviceCache;
 }
 
-void Manager::introspect(const QString & path, bool checkOptical)
+void Manager::introspect(const QString &path, bool checkOptical)
 {
     QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, path,
-                                                       DBUS_INTERFACE_INTROSPECT, "Introspect");
+                        DBUS_INTERFACE_INTROSPECT, "Introspect");
     QDBusPendingReply<QString> reply = QDBusConnection::systemBus().call(call);
 
     if (reply.isValid()) {
@@ -157,17 +154,18 @@ void Manager::introspect(const QString & path, bool checkOptical)
                     if (device.mightBeOpticalDisc()) {
                         QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE, udi, DBUS_INTERFACE_PROPS, "PropertiesChanged", this,
                                                              SLOT(slotMediaChanged(QDBusMessage)));
-                        if (!device.isOpticalDisc())  // skip empty CD disc
+                        if (!device.isOpticalDisc()) { // skip empty CD disc
                             continue;
+                        }
                     }
                 }
 
                 m_deviceCache.append(udi);
             }
         }
-    }
-    else
+    } else {
         qWarning() << "Failed enumerating UDisks2 objects:" << reply.error().name() << "\n" << reply.error().message();
+    }
 }
 
 QSet< Solid::DeviceInterface::Type > Manager::supportedInterfaces() const
@@ -226,12 +224,13 @@ void Manager::slotInterfacesRemoved(const QDBusObjectPath &object_path, const QS
     }
 }
 
-void Manager::slotMediaChanged(const QDBusMessage & msg)
+void Manager::slotMediaChanged(const QDBusMessage &msg)
 {
     const QVariantMap properties = qdbus_cast<QVariantMap>(msg.arguments().at(1));
 
-    if (!properties.contains("Size"))  // react only on Size changes
+    if (!properties.contains("Size")) { // react only on Size changes
         return;
+    }
 
     const QString udi = msg.path();
     updateBackend(udi);
@@ -250,31 +249,35 @@ void Manager::slotMediaChanged(const QDBusMessage & msg)
     }
 }
 
-const QStringList & Manager::deviceCache()
+const QStringList &Manager::deviceCache()
 {
-    if (m_deviceCache.isEmpty())
+    if (m_deviceCache.isEmpty()) {
         allDevices();
+    }
 
     return m_deviceCache;
 }
 
-void Manager::updateBackend(const QString & udi)
+void Manager::updateBackend(const QString &udi)
 {
     DeviceBackend *backend = DeviceBackend::backendForUDI(udi);
-    if (!backend)
+    if (!backend) {
         return;
+    }
 
     //This doesn't emit "changed" signals. Signals are emitted later by DeviceBackend's slots
     backend->allProperties();
 
     QVariant driveProp = backend->prop("Drive");
-    if (!driveProp.isValid())
+    if (!driveProp.isValid()) {
         return;
+    }
 
     QDBusObjectPath drivePath = qdbus_cast<QDBusObjectPath>(driveProp);
     DeviceBackend *driveBackend = DeviceBackend::backendForUDI(drivePath.path(), false);
-    if (!driveBackend)
+    if (!driveBackend) {
         return;
+    }
 
     driveBackend->invalidateProperties();
 }

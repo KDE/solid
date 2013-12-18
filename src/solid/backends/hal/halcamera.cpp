@@ -57,8 +57,8 @@ QStringList Camera::supportedDrivers(QString /*protocol*/) const
 
 QVariant Solid::Backends::Hal::Camera::driverHandle(const QString &driver) const
 {
-    if (driver=="gphoto"
-     && m_device->prop("info.subsystem").toString()=="usb") {
+    if (driver == "gphoto"
+            && m_device->prop("info.subsystem").toString() == "usb") {
         QVariantList list;
 
         list << "usb"

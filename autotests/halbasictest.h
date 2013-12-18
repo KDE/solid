@@ -38,7 +38,7 @@ private Q_SLOTS:
     void testDeviceCreation();
     void testSignalHandling();
 
-    void slotPropertyChanged(const QMap<QString,int> &changes);
+    void slotPropertyChanged(const QMap<QString, int> &changes);
 
 private:
     Solid::Backends::Hal::HalDevice *m_device;

@@ -24,14 +24,16 @@
 // Qt
 #include <QtCore/QExplicitlySharedDataPointer>
 
-namespace Cagibi { class Device; }
+namespace Cagibi
+{
+class Device;
+}
 class QString;
 class QDBusArgument;
-extern QDBusArgument& operator<<( QDBusArgument& argument,
-                                  const Cagibi::Device& device );
-extern const QDBusArgument& operator>>( const QDBusArgument& argument,
-                                        Cagibi::Device& device );
-
+extern QDBusArgument &operator<<(QDBusArgument &argument,
+                                 const Cagibi::Device &device);
+extern const QDBusArgument &operator>>(const QDBusArgument &argument,
+                                       Cagibi::Device &device);
 
 namespace Cagibi
 {
@@ -39,42 +41,42 @@ class DevicePrivate;
 
 class Device
 {
-  friend QDBusArgument& ::operator<<( QDBusArgument& argument,
-                                      const Cagibi::Device& device );
-  friend const QDBusArgument& ::operator>>( const QDBusArgument& argument,
-                                            Cagibi::Device& device );
+    friend QDBusArgument &::operator<<(QDBusArgument &argument,
+                                       const Cagibi::Device &device);
+    friend const QDBusArgument &::operator>>(const QDBusArgument &argument,
+            Cagibi::Device &device);
 
-  protected:
-    explicit Device( DevicePrivate* _d );
+protected:
+    explicit Device(DevicePrivate *_d);
 
-  public:
+public:
     Device();
-    Device( const Device& other );
+    Device(const Device &other);
 
     ~Device();
 
-  public:
-    Device& operator=( const Device& other );
+public:
+    Device &operator=(const Device &other);
 
-  public:
-    const QString& type() const;
-    const QString& friendlyName() const;
-    const QString& manufacturerName() const;
+public:
+    const QString &type() const;
+    const QString &friendlyName() const;
+    const QString &manufacturerName() const;
 //     QString manufacturerUrl() const;
-    const QString& modelDescription() const;
-    const QString& modelName() const;
-    const QString& modelNumber() const;
-    const QString& serialNumber() const;
-    const QString& udn() const;
+    const QString &modelDescription() const;
+    const QString &modelName() const;
+    const QString &modelNumber() const;
+    const QString &serialNumber() const;
+    const QString &udn() const;
 //     QString upc() const;
-    const QString& presentationUrl() const;
-    const QString& ipAddress() const;
+    const QString &presentationUrl() const;
+    const QString &ipAddress() const;
     int ipPortNumber() const;
 
     bool hasParentDevice() const;
-    const QString& parentDeviceUdn() const;
+    const QString &parentDeviceUdn() const;
 
-  protected:
+protected:
     QExplicitlySharedDataPointer<DevicePrivate> d;
 };
 

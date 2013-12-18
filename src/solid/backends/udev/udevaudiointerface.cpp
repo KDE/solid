@@ -31,7 +31,7 @@ using namespace Solid::Backends::UDev;
 
 AudioInterface::AudioInterface(UDevDevice *device)
     : DeviceInterface(device),
-    d(new UdevAudioInterfacePrivate(device))
+      d(new UdevAudioInterfacePrivate(device))
 {
 }
 
@@ -47,21 +47,18 @@ Solid::AudioInterface::AudioDriver AudioInterface::driver() const
 
 QVariant AudioInterface::driverHandle() const
 {
-    if (d->m_driver == Solid::AudioInterface::Alsa)
-    {
+    if (d->m_driver == Solid::AudioInterface::Alsa) {
         QList<QVariant> list;
         if (d->m_cardnum != -1) {
             QVariant card_id = d->m_cardnum;
             QVariant dev_id = d->m_devicenum != -1 ? d->m_devicenum : QVariant();
             QVariant subdev_id;
             list << card_id << dev_id << subdev_id;
-        } else if(!d->m_deviceFile.isEmpty()) {
+        } else if (!d->m_deviceFile.isEmpty()) {
             list << QVariant(d->m_deviceFile);
         }
         return list;
-    }
-    else if (d->m_driver == Solid::AudioInterface::OpenSoundSystem)
-    {
+    } else if (d->m_driver == Solid::AudioInterface::OpenSoundSystem) {
         if (!d->m_deviceFile.isEmpty()) {
             return QVariant(d->m_deviceFile);
         }
@@ -77,7 +74,7 @@ QString AudioInterface::name() const
 
 Solid::AudioInterface::AudioInterfaceTypes AudioInterface::deviceType() const
 {
-        return d->m_type;
+    return d->m_type;
 }
 
 Solid::AudioInterface::SoundcardType AudioInterface::soundcardType() const

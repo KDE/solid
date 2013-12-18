@@ -32,16 +32,16 @@ Solid::PowerManagementPrivate::PowerManagementPrivate()
     : managerIface("org.freedesktop.PowerManagement",
                    "/org/freedesktop/PowerManagement",
                    QDBusConnection::sessionBus()),
-      policyAgentIface("org.kde.Solid.PowerManagement.PolicyAgent",
-                       "/org/kde/Solid/PowerManagement/PolicyAgent",
-                       QDBusConnection::sessionBus()),
-      inhibitIface("org.freedesktop.PowerManagement.Inhibit",
-                   "/org/freedesktop/PowerManagement/Inhibit",
-                   QDBusConnection::sessionBus()),
-      serviceWatcher("org.kde.Solid.PowerManagement",
-                     QDBusConnection::sessionBus(),
-                     QDBusServiceWatcher::WatchForRegistration | QDBusServiceWatcher::WatchForUnregistration),
-      powerSaveStatus(false)
+    policyAgentIface("org.kde.Solid.PowerManagement.PolicyAgent",
+                     "/org/kde/Solid/PowerManagement/PolicyAgent",
+                     QDBusConnection::sessionBus()),
+    inhibitIface("org.freedesktop.PowerManagement.Inhibit",
+                 "/org/freedesktop/PowerManagement/Inhibit",
+                 QDBusConnection::sessionBus()),
+    serviceWatcher("org.kde.Solid.PowerManagement",
+                   QDBusConnection::sessionBus(),
+                   QDBusServiceWatcher::WatchForRegistration | QDBusServiceWatcher::WatchForUnregistration),
+    powerSaveStatus(false)
 {
     serviceWatcher.addWatchedService(QLatin1String("org.freedesktop.PowerManagement"));
 
@@ -94,8 +94,7 @@ void Solid::PowerManagement::requestSleep(SleepState state, QObject *receiver, c
         return;
     }
 
-    switch (state)
-    {
+    switch (state) {
     case StandbyState:
     case SuspendState:
         globalPowerManager->managerIface.Suspend();
@@ -111,17 +110,18 @@ int Solid::PowerManagement::beginSuppressingSleep(const QString &reason)
     QDBusReply<uint> reply;
     if (globalPowerManager->policyAgentIface.isValid()) {
         reply = globalPowerManager->policyAgentIface.AddInhibition(
-            (uint)PowerManagementPrivate::InterruptSession,
-            QCoreApplication::applicationName(), reason);
+                    (uint)PowerManagementPrivate::InterruptSession,
+                    QCoreApplication::applicationName(), reason);
     } else {
         // Fallback to the fd.o Inhibit interface
         reply = globalPowerManager->inhibitIface.Inhibit(QCoreApplication::applicationName(), reason);
     }
 
-    if (reply.isValid())
+    if (reply.isValid()) {
         return reply;
-    else
+    } else {
         return -1;
+    }
 }
 
 bool Solid::PowerManagement::stopSuppressingSleep(int cookie)
@@ -134,16 +134,16 @@ bool Solid::PowerManagement::stopSuppressingSleep(int cookie)
     }
 }
 
-int Solid::PowerManagement::beginSuppressingScreenPowerManagement(const QString& reason)
+int Solid::PowerManagement::beginSuppressingScreenPowerManagement(const QString &reason)
 {
     if (globalPowerManager->policyAgentIface.isValid()) {
         QDBusReply<uint> reply = globalPowerManager->policyAgentIface.AddInhibition(
-            (uint)PowerManagementPrivate::ChangeScreenSettings,
-            QCoreApplication::applicationName(), reason);
+                                     (uint)PowerManagementPrivate::ChangeScreenSettings,
+                                     QCoreApplication::applicationName(), reason);
 
         if (reply.isValid()) {
             QDBusMessage message = QDBusMessage::createMethodCall("org.freedesktop.ScreenSaver", "/ScreenSaver",
-                                                                  "org.freedesktop.ScreenSaver", "Inhibit");
+                                   "org.freedesktop.ScreenSaver", "Inhibit");
             message << QCoreApplication::applicationName();
             message << reason;
 
@@ -170,7 +170,7 @@ bool Solid::PowerManagement::stopSuppressingScreenPowerManagement(int cookie)
 
         if (globalPowerManager->screensaverCookiesForPowerDevilCookies.contains(cookie)) {
             QDBusMessage message = QDBusMessage::createMethodCall("org.freedesktop.ScreenSaver", "/ScreenSaver",
-                                                                  "org.freedesktop.ScreenSaver", "UnInhibit");
+                                   "org.freedesktop.ScreenSaver", "UnInhibit");
             message << globalPowerManager->screensaverCookiesForPowerDevilCookies.take(cookie);
             QDBusConnection::sessionBus().asyncCall(message);
         }
@@ -194,9 +194,9 @@ void Solid::PowerManagementPrivate::slotCanSuspendChanged(bool newState)
     }
 
     if (newState) {
-        supportedSleepStates+= Solid::PowerManagement::SuspendState;
+        supportedSleepStates += Solid::PowerManagement::SuspendState;
     } else {
-        supportedSleepStates-= Solid::PowerManagement::SuspendState;
+        supportedSleepStates -= Solid::PowerManagement::SuspendState;
     }
 }
 
@@ -207,9 +207,9 @@ void Solid::PowerManagementPrivate::slotCanHibernateChanged(bool newState)
     }
 
     if (newState) {
-        supportedSleepStates+= Solid::PowerManagement::HibernateState;
+        supportedSleepStates += Solid::PowerManagement::HibernateState;
     } else {
-        supportedSleepStates-= Solid::PowerManagement::HibernateState;
+        supportedSleepStates -= Solid::PowerManagement::HibernateState;
     }
 }
 
@@ -220,9 +220,9 @@ void Solid::PowerManagementPrivate::slotCanHybridSuspendChanged(bool newState)
     }
 
     if (newState) {
-        supportedSleepStates+= Solid::PowerManagement::HybridSuspendState;
+        supportedSleepStates += Solid::PowerManagement::HybridSuspendState;
     } else {
-        supportedSleepStates-= Solid::PowerManagement::HybridSuspendState;
+        supportedSleepStates -= Solid::PowerManagement::HybridSuspendState;
     }
 }
 
@@ -258,20 +258,20 @@ void Solid::PowerManagementPrivate::slotServiceRegistered(const QString &service
     } else {
         // Is the resume signal available?
         QDBusMessage call = QDBusMessage::createMethodCall("org.kde.Solid.PowerManagement",
-                                                           "/org/kde/Solid/PowerManagement",
-                                                           "org.kde.Solid.PowerManagement",
-                                                           "backendCapabilities");
+                            "/org/kde/Solid/PowerManagement",
+                            "org.kde.Solid.PowerManagement",
+                            "backendCapabilities");
         QDBusPendingReply< uint > reply = QDBusConnection::sessionBus().asyncCall(call);
         reply.waitForFinished();
 
         if (reply.isValid() && reply.value() > 0) {
-                // Connect the signal
-                QDBusConnection::sessionBus().connect(QLatin1String("org.kde.Solid.PowerManagement"),
-                                                      QLatin1String("/org/kde/Solid/PowerManagement/Actions/SuspendSession"),
-                                                      QLatin1String("org.kde.Solid.PowerManagement.Actions.SuspendSession"),
-                                                      QLatin1String("resumingFromSuspend"),
-                                                      this,
-                                                      SIGNAL(resumingFromSuspend()));
+            // Connect the signal
+            QDBusConnection::sessionBus().connect(QLatin1String("org.kde.Solid.PowerManagement"),
+                                                  QLatin1String("/org/kde/Solid/PowerManagement/Actions/SuspendSession"),
+                                                  QLatin1String("org.kde.Solid.PowerManagement.Actions.SuspendSession"),
+                                                  QLatin1String("resumingFromSuspend"),
+                                                  this,
+                                                  SIGNAL(resumingFromSuspend()));
         }
     }
 }
@@ -287,10 +287,10 @@ void Solid::PowerManagementPrivate::slotServiceUnregistered(const QString &servi
     } else {
         // Disconnect the signal
         QDBusConnection::sessionBus().disconnect(QLatin1String("org.kde.Solid.PowerManagement"),
-                                                 QLatin1String("/org/kde/Solid/PowerManagement"),
-                                                 QLatin1String("org.kde.Solid.PowerManagement"),
-                                                 QLatin1String("resumingFromSuspend"),
-                                                 this,
-                                                 SIGNAL(resumingFromSuspend()));
+                QLatin1String("/org/kde/Solid/PowerManagement"),
+                QLatin1String("org.kde.Solid.PowerManagement"),
+                QLatin1String("resumingFromSuspend"),
+                this,
+                SIGNAL(resumingFromSuspend()));
     }
 }

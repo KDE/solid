@@ -25,7 +25,7 @@
 using namespace Solid::Backends::Fake;
 
 FakeProcessor::FakeProcessor(FakeDevice *device)
- : FakeDeviceInterface(device)
+    : FakeDeviceInterface(device)
 {
 }
 
@@ -59,26 +59,20 @@ Solid::Processor::InstructionSets FakeProcessor::instructionSets() const
     Q_FOREACH (const QString &extension_str, extension_list) {
         if (extension_str == "mmx") {
             result |= Solid::Processor::IntelMmx;
-        }
-        else if (extension_str == "sse") {
+        } else if (extension_str == "sse") {
             result |= Solid::Processor::IntelSse;
-        }
-        else if (extension_str == "sse2") {
+        } else if (extension_str == "sse2") {
             result |= Solid::Processor::IntelSse2;
-        }
-        else if (extension_str == "sse3") {
+        } else if (extension_str == "sse3") {
             result |= Solid::Processor::IntelSse3;
-        }
-        else if (extension_str == "sse4") {
+        } else if (extension_str == "sse4") {
             result |= Solid::Processor::IntelSse4;
-        }
-        else if (extension_str == "3dnow") {
+        } else if (extension_str == "3dnow") {
             result |= Solid::Processor::Amd3DNow;
-        }
-        else if (extension_str == "altivec") {
+        } else if (extension_str == "altivec") {
             result |= Solid::Processor::AltiVec;
         }
-     }
+    }
 
     return result;
 

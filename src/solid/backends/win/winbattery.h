@@ -21,7 +21,6 @@
 #ifndef WINBATTERY_H
 #define WINBATTERY_H
 
-
 #include <solid/ifaces/battery.h>
 
 #include "wininterface.h"
@@ -38,7 +37,7 @@ class WinBattery : public WinInterface, virtual public Solid::Ifaces::Battery
     Q_INTERFACES(Solid::Ifaces::Battery)
 
 public:
-    typedef QPair<QString,ulong> Battery;
+    typedef QPair<QString, ulong> Battery;
 
     WinBattery(WinDevice *device);
 
@@ -69,7 +68,7 @@ public:
     double voltage() const;
 
 Q_SIGNALS:
-    void chargePercentChanged(int value, const QString &udi) ;
+    void chargePercentChanged(int value, const QString &udi);
     void capacityChanged(int value, const QString &udi);
     void chargeStateChanged(int newState, const QString &udi);
     void plugStateChanged(bool newState, const QString &udi);
@@ -82,7 +81,7 @@ private Q_SLOTS:
 
 private:
 
-    static QMap<QString,Battery> m_udiToGDI;
+    static QMap<QString, Battery> m_udiToGDI;
     bool m_pluggedIn;
     Solid::Battery::BatteryType m_type;
     int m_charge;
@@ -94,8 +93,6 @@ private:
     double m_energy;
     double m_energyRate;
     double m_voltage;
-
-    
 
 };
 }

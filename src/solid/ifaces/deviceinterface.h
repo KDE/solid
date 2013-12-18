@@ -23,27 +23,26 @@
 
 #include <QtCore/QObject>
 
-
 namespace Solid
 {
 namespace Ifaces
 {
+/**
+ * Base interface of all the device interfaces.
+ *
+ * A device interface describes what a device can do. A device generally has
+ * a set of device interfaces.
+ *
+ * @see Solid::Ifaces::AbstractDeviceInterface
+ */
+class DeviceInterface
+{
+public:
     /**
-     * Base interface of all the device interfaces.
-     *
-     * A device interface describes what a device can do. A device generally has
-     * a set of device interfaces.
-     *
-     * @see Solid::Ifaces::AbstractDeviceInterface
+     * Destroys a DeviceInterface object.
      */
-    class DeviceInterface
-    {
-    public:
-        /**
-         * Destroys a DeviceInterface object.
-         */
-        virtual ~DeviceInterface();
-    };
+    virtual ~DeviceInterface();
+};
 }
 }
 

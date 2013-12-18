@@ -30,11 +30,10 @@ namespace Backends
 namespace Win
 {
 
-
-class WinGenericInterface : public WinInterface,virtual public Solid::Ifaces::GenericInterface
+class WinGenericInterface : public WinInterface, virtual public Solid::Ifaces::GenericInterface
 {
     Q_OBJECT
-     Q_INTERFACES(Solid::Ifaces::GenericInterface)
+    Q_INTERFACES(Solid::Ifaces::GenericInterface)
 public:
     WinGenericInterface(WinDevice *device);
 
@@ -45,7 +44,7 @@ public:
     virtual bool propertyExists(const QString &key) const;
 
 Q_SIGNALS:
-    void propertyChanged(const QMap<QString,int> &changes);
+    void propertyChanged(const QMap<QString, int> &changes);
     void conditionRaised(const QString &condition, const QString &reason);
 };
 }

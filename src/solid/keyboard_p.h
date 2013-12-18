@@ -25,12 +25,12 @@
 
 namespace Solid
 {
-    class KeyboardPrivate : public DeviceInterfacePrivate
-    {
-    public:
-        KeyboardPrivate()
-            : DeviceInterfacePrivate() { }
-    };
+class KeyboardPrivate : public DeviceInterfacePrivate
+{
+public:
+    KeyboardPrivate()
+        : DeviceInterfacePrivate() { }
+};
 }
 
 #endif

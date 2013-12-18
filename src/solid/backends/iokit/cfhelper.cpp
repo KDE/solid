@@ -51,8 +51,9 @@ static QVariant q_toVariant(const CFTypeRef &obj)
 {
     const CFTypeID typeId = CFGetTypeID(obj);
 
-    if (typeId == CFStringGetTypeID())
+    if (typeId == CFStringGetTypeID()) {
         return QVariant(q_toString(static_cast<const CFStringRef>(obj)));
+    }
 
     if (typeId == CFNumberGetTypeID()) {
         const CFNumberRef num = static_cast<const CFNumberRef>(obj);
@@ -81,8 +82,9 @@ static QVariant q_toVariant(const CFTypeRef &obj)
         case kCFNumberDoubleType:
             return qVariantFromValue(convertCFNumber<double>(num, type));
         default:
-            if (CFNumberIsFloatType(num))
+            if (CFNumberIsFloatType(num)) {
                 return qVariantFromValue(convertCFNumber<double>(num, kCFNumberDoubleType));
+            }
             return qVariantFromValue(convertCFNumber<quint64>(num, kCFNumberLongLongType));
         }
     }
@@ -96,11 +98,12 @@ static QVariant q_toVariant(const CFTypeRef &obj)
     if (typeId == CFDataGetTypeID()) {
         const CFDataRef cfdata = static_cast<const CFDataRef>(obj);
         return QByteArray(reinterpret_cast<const char *>(CFDataGetBytePtr(cfdata)),
-                    CFDataGetLength(cfdata));
+                          CFDataGetLength(cfdata));
     }
 
-    if (typeId == CFBooleanGetTypeID())
+    if (typeId == CFBooleanGetTypeID()) {
         return QVariant(bool(CFBooleanGetValue(static_cast<const CFBooleanRef>(obj))));
+    }
 
     if (typeId == CFArrayGetTypeID()) {
         const CFArrayRef cfarray = static_cast<const CFArrayRef>(obj);
@@ -109,14 +112,16 @@ static QVariant q_toVariant(const CFTypeRef &obj)
         bool metNonString = false;
         for (CFIndex i = 0; i < size; ++i) {
             QVariant value = q_toVariant(CFArrayGetValueAtIndex(cfarray, i));
-            if (value.type() != QVariant::String)
+            if (value.type() != QVariant::String) {
                 metNonString = true;
+            }
             list << value;
         }
-        if (metNonString)
+        if (metNonString) {
             return list;
-        else
+        } else {
             return QVariant(list).toStringList();
+        }
     }
 
     if (typeId == CFDictionaryGetTypeID()) {
@@ -134,8 +139,9 @@ static QVariant q_toVariant(const CFTypeRef &obj)
             if (CFGetTypeID(values[i]) == arrayTypeId) {
                 const CFArrayRef cfarray = static_cast<const CFArrayRef>(values[i]);
                 CFIndex arraySize = CFArrayGetCount(cfarray);
-                for (CFIndex j = arraySize - 1; j >= 0; --j)
+                for (CFIndex j = arraySize - 1; j >= 0; --j) {
                     map.insert(key, q_toVariant(CFArrayGetValueAtIndex(cfarray, j)));
+                }
             } else {
                 map.insert(key, q_toVariant(values[i]));
             }
@@ -146,7 +152,7 @@ static QVariant q_toVariant(const CFTypeRef &obj)
     return QVariant();
 }
 
-QMap<QString, QVariant> q_toVariantMap (const CFMutableDictionaryRef &dict)
+QMap<QString, QVariant> q_toVariantMap(const CFMutableDictionaryRef &dict)
 {
     Q_ASSERT(dict);
 
@@ -157,8 +163,8 @@ QMap<QString, QVariant> q_toVariantMap (const CFMutableDictionaryRef &dict)
     QVarLengthArray<void *> values(count);
 
     CFDictionaryGetKeysAndValues(dict,
-            const_cast<const void **>(keys.data()),
-            const_cast<const void **>(values.data()));
+                                 const_cast<const void **>(keys.data()),
+                                 const_cast<const void **>(values.data()));
 
     for (int i = 0; i < count; ++i) {
         const QString key = q_toString((CFStringRef)keys[i]);

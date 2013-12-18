@@ -25,12 +25,12 @@
 
 namespace Solid
 {
-    class PointingDevicePrivate : public DeviceInterfacePrivate
-    {
-    public:
-        PointingDevicePrivate()
-            : DeviceInterfacePrivate() { }
-    };
+class PointingDevicePrivate : public DeviceInterfacePrivate
+{
+public:
+    PointingDevicePrivate()
+        : DeviceInterfacePrivate() { }
+};
 }
 
 #endif

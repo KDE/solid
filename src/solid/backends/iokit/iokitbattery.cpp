@@ -50,12 +50,14 @@ Solid::Battery::BatteryType Battery::type() const
 
 int Battery::chargePercent() const
 {
-    if (m_device->property(QLatin1String("FullyCharged")).toBool())
+    if (m_device->property(QLatin1String("FullyCharged")).toBool()) {
         return 100;
+    }
 
     int maxCapacity = m_device->property(QLatin1String("MaxCapacity")).toInt();
-    if (maxCapacity == 0)
-        return 0; // prevent divide by 0
+    if (maxCapacity == 0) {
+        return 0;    // prevent divide by 0
+    }
     return m_device->property(QLatin1String("CurrentCapacity")).toInt() / maxCapacity;
 }
 
@@ -78,10 +80,12 @@ bool Battery::isPowerSupply() const
 
 Solid::Battery::ChargeState Battery::chargeState() const
 {
-    if (m_device->property(QLatin1String("IsCharging")).toBool())
+    if (m_device->property(QLatin1String("IsCharging")).toBool()) {
         return Solid::Battery::Charging;
-    if (m_device->property(QLatin1String("FullyCharged")).toBool())
+    }
+    if (m_device->property(QLatin1String("FullyCharged")).toBool()) {
         return Solid::Battery::NoCharge;
+    }
     return Solid::Battery::Discharging;
 }
 

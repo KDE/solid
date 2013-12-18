@@ -26,7 +26,7 @@ AcAdapter::AcAdapter(HalDevice *device)
     : DeviceInterface(device)
 {
     connect(device, SIGNAL(propertyChanged(QMap<QString,int>)),
-             this, SLOT(slotPropertyChanged(QMap<QString,int>)));
+            this, SLOT(slotPropertyChanged(QMap<QString,int>)));
 }
 
 AcAdapter::~AcAdapter()
@@ -39,10 +39,9 @@ bool AcAdapter::isPlugged() const
     return m_device->prop("ac_adapter.present").toBool();
 }
 
-void AcAdapter::slotPropertyChanged(const QMap<QString,int> &changes)
+void AcAdapter::slotPropertyChanged(const QMap<QString, int> &changes)
 {
-    if (changes.contains("ac_adapter.present"))
-    {
+    if (changes.contains("ac_adapter.present")) {
         emit plugStateChanged(isPlugged(), m_device->udi());
     }
 }

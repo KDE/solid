@@ -30,7 +30,7 @@
 typedef QList<QByteArray> QByteArrayList;
 Q_DECLARE_METATYPE(QByteArrayList)
 
-typedef QMap<QString,QVariantMap> QVariantMapMap;
+typedef QMap<QString, QVariantMap> QVariantMapMap;
 Q_DECLARE_METATYPE(QVariantMapMap)
 
 typedef QMap<QDBusObjectPath, QVariantMapMap> DBUSManagerStruct;

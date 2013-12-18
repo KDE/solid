@@ -20,11 +20,9 @@
 #ifndef WINOPTICALDISC_H
 #define WINOPTICALDISC_H
 
-
 #include <solid/ifaces/opticaldisc.h>
 
 #include "winstoragevolume.h"
-
 
 namespace Solid
 {
@@ -40,7 +38,6 @@ class WinOpticalDisc : public WinStorageVolume, virtual public Solid::Ifaces::Op
 public:
     WinOpticalDisc(WinDevice *device);
     virtual ~WinOpticalDisc();
-
 
     virtual Solid::OpticalDisc::ContentTypes availableContent() const;
 

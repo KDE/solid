@@ -25,12 +25,12 @@
 
 namespace Solid
 {
-    class InternetGatewayPrivate : public DeviceInterfacePrivate
-    {
-    public:
-        InternetGatewayPrivate()
-            : DeviceInterfacePrivate() { }
-    };
+class InternetGatewayPrivate : public DeviceInterfacePrivate
+{
+public:
+    InternetGatewayPrivate()
+        : DeviceInterfacePrivate() { }
+};
 }
 
 #endif // SOLID_INTERNETGATEWAY_P_H

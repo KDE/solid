@@ -25,21 +25,21 @@
 
 namespace Solid
 {
-    class DeviceInterfacePrivate
-    {
-    public:
-        DeviceInterfacePrivate();
-        virtual ~DeviceInterfacePrivate();
+class DeviceInterfacePrivate
+{
+public:
+    DeviceInterfacePrivate();
+    virtual ~DeviceInterfacePrivate();
 
-        QObject *backendObject() const;
-        void setBackendObject(QObject *object);
-        DevicePrivate *devicePrivate() const;
-        void setDevicePrivate(DevicePrivate *devicePrivate);
+    QObject *backendObject() const;
+    void setBackendObject(QObject *object);
+    DevicePrivate *devicePrivate() const;
+    void setDevicePrivate(DevicePrivate *devicePrivate);
 
-    private:
-        QPointer<QObject> m_backendObject;
-        DevicePrivate* m_devicePrivate;
-    };
+private:
+    QPointer<QObject> m_backendObject;
+    DevicePrivate *m_devicePrivate;
+};
 }
 
 #endif

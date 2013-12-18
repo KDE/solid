@@ -25,12 +25,12 @@
 
 namespace Solid
 {
-    class StorageVolumePrivate : public DeviceInterfacePrivate
-    {
-    public:
-        StorageVolumePrivate()
-            : DeviceInterfacePrivate() { }
-    };
+class StorageVolumePrivate : public DeviceInterfacePrivate
+{
+public:
+    StorageVolumePrivate()
+        : DeviceInterfacePrivate() { }
+};
 }
 
 #endif // SOLID_STORAGEVOLUME_P_H

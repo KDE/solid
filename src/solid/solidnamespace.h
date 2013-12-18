@@ -24,15 +24,15 @@
 
 namespace Solid
 {
-    enum ErrorType {
-        NoError = 0,
-        UnauthorizedOperation,
-        DeviceBusy,
-        OperationFailed,
-        UserCanceled,
-        InvalidOption,
-        MissingDriver
-    };
+enum ErrorType {
+    NoError = 0,
+    UnauthorizedOperation,
+    DeviceBusy,
+    OperationFailed,
+    UserCanceled,
+    InvalidOption,
+    MissingDriver
+};
 }
 
 #include <QtCore/QMetaType>

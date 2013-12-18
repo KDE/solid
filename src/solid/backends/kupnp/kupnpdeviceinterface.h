@@ -26,7 +26,6 @@
 // Qt
 #include <QtCore/QObject>
 
-
 namespace Solid
 {
 namespace Backends
@@ -35,18 +34,17 @@ namespace KUPnP
 {
 class KUPnPDevice;
 
-
 class DeviceInterface : public QObject, virtual public Solid::Ifaces::DeviceInterface
 {
     Q_OBJECT
     Q_INTERFACES(Solid::Ifaces::DeviceInterface)
 
 public:
-    DeviceInterface(KUPnPDevice* device);
+    DeviceInterface(KUPnPDevice *device);
     virtual ~DeviceInterface();
 
 protected:
-    KUPnPDevice* mDevice;
+    KUPnPDevice *mDevice;
 };
 
 }

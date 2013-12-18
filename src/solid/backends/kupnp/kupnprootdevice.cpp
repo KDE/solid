@@ -32,7 +32,7 @@ namespace KUPnP
 {
 
 KUPnPRootDevice::KUPnPRootDevice()
-  : Solid::Ifaces::Device()
+    : Solid::Ifaces::Device()
 {
 }
 
@@ -45,8 +45,14 @@ QString KUPnPRootDevice::udi() const
     return QString::fromLatin1("/org/kde/KUPnP");
 }
 
-QString KUPnPRootDevice::parentUdi() const { return QString(); }
-QString KUPnPRootDevice::vendor() const { return QString(); }
+QString KUPnPRootDevice::parentUdi() const
+{
+    return QString();
+}
+QString KUPnPRootDevice::vendor() const
+{
+    return QString();
+}
 
 QString KUPnPRootDevice::product() const
 {
@@ -68,16 +74,15 @@ QString KUPnPRootDevice::description() const
     return QString();
 }
 
-
 bool KUPnPRootDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type) const
 {
-    Q_UNUSED( type );
+    Q_UNUSED(type);
     return false;
 }
 
-QObject* KUPnPRootDevice::createDeviceInterface(const Solid::DeviceInterface::Type& type)
+QObject *KUPnPRootDevice::createDeviceInterface(const Solid::DeviceInterface::Type &type)
 {
-    Q_UNUSED( type );
+    Q_UNUSED(type);
     return 0;
 }
 

@@ -78,7 +78,7 @@ QStringList FstabDevice::emblems() const
 {
     QStringList res;
     if (!m_storageAccess) {
-        FstabDevice* d = const_cast<FstabDevice *>(this);
+        FstabDevice *d = const_cast<FstabDevice *>(this);
         d->m_storageAccess = new FstabStorageAccess(d);
     }
     if (m_storageAccess->isAccessible()) {
@@ -98,17 +98,18 @@ QString FstabDevice::description() const
 bool FstabDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type) const
 {
     if (type == Solid::DeviceInterface::StorageAccess
-     || type == Solid::DeviceInterface::NetworkShare) {
+            || type == Solid::DeviceInterface::NetworkShare) {
         return true;
     }
     return false;
 }
 
-QObject* FstabDevice::createDeviceInterface(const Solid::DeviceInterface::Type &type)
+QObject *FstabDevice::createDeviceInterface(const Solid::DeviceInterface::Type &type)
 {
     if (type == Solid::DeviceInterface::StorageAccess) {
-        if (!m_storageAccess)
+        if (!m_storageAccess) {
             m_storageAccess = new FstabStorageAccess(this);
+        }
         return m_storageAccess;
     } else if (type == Solid::DeviceInterface::NetworkShare) {
         return new FstabNetworkShare(this);
@@ -121,8 +122,9 @@ QString FstabDevice::device() const
     return m_device;
 }
 
-void FstabDevice::onMtabChanged(const QString& device)
+void FstabDevice::onMtabChanged(const QString &device)
 {
-    if (m_device == device)
+    if (m_device == device) {
         emit mtabChanged(device);
+    }
 }

@@ -39,32 +39,32 @@ class Client : public QObject
 
     Q_PROPERTY(QStringList watchedSubsystems READ watchedSubsystems WRITE setWatchedSubsystems)
 
-    public:
-        Client(QObject *parent = 0);
-        Client(const QStringList &subsystemList, QObject *parent = 0);
-        ~Client();
+public:
+    Client(QObject *parent = 0);
+    Client(const QStringList &subsystemList, QObject *parent = 0);
+    ~Client();
 
-        QStringList watchedSubsystems() const;
-        void setWatchedSubsystems(const QStringList &subsystemList);
+    QStringList watchedSubsystems() const;
+    void setWatchedSubsystems(const QStringList &subsystemList);
 
-        DeviceList allDevices();
-        DeviceList devicesByProperty(const QString &property, const QVariant &value);
-        DeviceList devicesBySubsystem(const QString &subsystem);
-        Device deviceByDeviceFile(const QString &deviceFile);
-        Device deviceBySysfsPath(const QString &sysfsPath);
-        Device deviceBySubsystemAndName(const QString &subsystem, const QString &name);
+    DeviceList allDevices();
+    DeviceList devicesByProperty(const QString &property, const QVariant &value);
+    DeviceList devicesBySubsystem(const QString &subsystem);
+    Device deviceByDeviceFile(const QString &deviceFile);
+    Device deviceBySysfsPath(const QString &sysfsPath);
+    Device deviceBySubsystemAndName(const QString &subsystem, const QString &name);
 
-    Q_SIGNALS:
-        void deviceAdded(const UdevQt::Device &dev);
-        void deviceRemoved(const UdevQt::Device &dev);
-        void deviceChanged(const UdevQt::Device &dev);
-        void deviceOnlined(const UdevQt::Device &dev);
-        void deviceOfflined(const UdevQt::Device &dev);
+Q_SIGNALS:
+    void deviceAdded(const UdevQt::Device &dev);
+    void deviceRemoved(const UdevQt::Device &dev);
+    void deviceChanged(const UdevQt::Device &dev);
+    void deviceOnlined(const UdevQt::Device &dev);
+    void deviceOfflined(const UdevQt::Device &dev);
 
-    private:
-        friend class ClientPrivate;
-        Q_PRIVATE_SLOT(d, void _uq_monitorReadyRead(int fd))
-        ClientPrivate *d;
+private:
+    friend class ClientPrivate;
+    Q_PRIVATE_SLOT(d, void _uq_monitorReadyRead(int fd))
+    ClientPrivate *d;
 };
 
 }

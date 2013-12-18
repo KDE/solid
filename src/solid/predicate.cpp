@@ -27,27 +27,26 @@
 
 namespace Solid
 {
-    class Predicate::Private
-    {
-    public:
+class Predicate::Private
+{
+public:
 
-        Private() : isValid(false), type(PropertyCheck),
-                    compOperator(Predicate::Equals),
-                    operand1(0), operand2(0) {}
+    Private() : isValid(false), type(PropertyCheck),
+        compOperator(Predicate::Equals),
+        operand1(0), operand2(0) {}
 
-        bool isValid;
-        Type type;
+    bool isValid;
+    Type type;
 
-        DeviceInterface::Type ifaceType;
-        QString property;
-        QVariant value;
-        Predicate::ComparisonOperator compOperator;
+    DeviceInterface::Type ifaceType;
+    QString property;
+    QVariant value;
+    Predicate::ComparisonOperator compOperator;
 
-        Predicate *operand1;
-        Predicate *operand2;
-    };
+    Predicate *operand1;
+    Predicate *operand2;
+};
 }
-
 
 Solid::Predicate::Predicate()
     : d(new Private())
@@ -79,8 +78,7 @@ Solid::Predicate::Predicate(const QString &ifaceName,
 {
     DeviceInterface::Type ifaceType = DeviceInterface::stringToType(ifaceName);
 
-    if (((int)ifaceType)!=-1)
-    {
+    if (((int)ifaceType) != -1) {
         d->isValid = true;
         d->ifaceType = ifaceType;
         d->property = property;
@@ -102,8 +100,7 @@ Solid::Predicate::Predicate(const QString &ifaceName)
 {
     DeviceInterface::Type ifaceType = DeviceInterface::stringToType(ifaceName);
 
-    if (((int)ifaceType)!=-1)
-    {
+    if (((int)ifaceType) != -1) {
         d->isValid = true;
         d->type = InterfaceCheck;
         d->ifaceType = ifaceType;
@@ -112,7 +109,7 @@ Solid::Predicate::Predicate(const QString &ifaceName)
 
 Solid::Predicate::~Predicate()
 {
-    if (d->type!=PropertyCheck && d->type!=InterfaceCheck) {
+    if (d->type != PropertyCheck && d->type != InterfaceCheck) {
         delete d->operand1;
         delete d->operand2;
     }
@@ -125,17 +122,14 @@ Solid::Predicate &Solid::Predicate::operator=(const Predicate &other)
     d->isValid = other.d->isValid;
     d->type = other.d->type;
 
-    if (d->type!=PropertyCheck && d->type!=InterfaceCheck)
-    {
-        Predicate* operand1 = new Predicate(*(other.d->operand1));
+    if (d->type != PropertyCheck && d->type != InterfaceCheck) {
+        Predicate *operand1 = new Predicate(*(other.d->operand1));
         delete d->operand1;
         d->operand1 = operand1;
-        Predicate* operand2 = new Predicate(*(other.d->operand2));
+        Predicate *operand2 = new Predicate(*(other.d->operand2));
         delete d->operand2;
         d->operand2 = operand2;
-    }
-    else
-    {
+    } else {
         d->ifaceType = other.d->ifaceType;
         d->property = other.d->property;
         d->value = other.d->value;
@@ -188,44 +182,43 @@ bool Solid::Predicate::isValid() const
 
 bool Solid::Predicate::matches(const Device &device) const
 {
-    if (!d->isValid) return false;
+    if (!d->isValid) {
+        return false;
+    }
 
-    switch(d->type)
-    {
+    switch (d->type) {
     case Disjunction:
         return d->operand1->matches(device)
-            || d->operand2->matches(device);
+               || d->operand2->matches(device);
     case Conjunction:
         return d->operand1->matches(device)
-            && d->operand2->matches(device);
-    case PropertyCheck:
-    {
+               && d->operand2->matches(device);
+    case PropertyCheck: {
         const DeviceInterface *iface = device.asDeviceInterface(d->ifaceType);
 
-        if (iface!=0)
-        {
+        if (iface != 0) {
             const int index = iface->metaObject()->indexOfProperty(d->property.toLatin1());
             QMetaProperty metaProp = iface->metaObject()->property(index);
             QVariant value = metaProp.isReadable() ? metaProp.read(iface) : QVariant();
             QVariant expected = d->value;
 
-            if (metaProp.isEnumType() && expected.type()==QVariant::String) {
+            if (metaProp.isEnumType() && expected.type() == QVariant::String) {
                 QMetaEnum metaEnum = metaProp.enumerator();
                 int value = metaEnum.keysToValue(d->value.toString().toLatin1());
-                if (value>=0) { // No value found for these keys, resetting expected to invalid
+                if (value >= 0) { // No value found for these keys, resetting expected to invalid
                     expected = value;
                 } else {
                     expected = QVariant();
                 }
             }
 
-            if (d->compOperator==Mask) {
+            if (d->compOperator == Mask) {
                 bool v_ok;
                 int v = value.toInt(&v_ok);
                 bool e_ok;
                 int e = expected.toInt(&e_ok);
 
-                return (e_ok && v_ok && (v &e));
+                return (e_ok && v_ok && (v & e));
             } else {
                 return (value == expected);
             }
@@ -245,12 +238,11 @@ QSet<Solid::DeviceInterface::Type> Solid::Predicate::usedTypes() const
 
     if (d->isValid) {
 
-        switch(d->type)
-        {
+        switch (d->type) {
         case Disjunction:
         case Conjunction:
-            res+= d->operand1->usedTypes();
-            res+= d->operand2->usedTypes();
+            res += d->operand1->usedTypes();
+            res += d->operand2->usedTypes();
             break;
         case PropertyCheck:
         case InterfaceCheck:
@@ -263,34 +255,34 @@ QSet<Solid::DeviceInterface::Type> Solid::Predicate::usedTypes() const
     return res;
 }
 
-
 QString Solid::Predicate::toString() const
 {
-    if (!d->isValid) return "False";
-
-    if (d->type!=PropertyCheck && d->type!=InterfaceCheck)
-    {
-        QString op = " AND ";
-        if (d->type==Disjunction) op = " OR ";
-
-        return '['+d->operand1->toString()+op+d->operand2->toString()+']';
+    if (!d->isValid) {
+        return "False";
     }
-    else
-    {
+
+    if (d->type != PropertyCheck && d->type != InterfaceCheck) {
+        QString op = " AND ";
+        if (d->type == Disjunction) {
+            op = " OR ";
+        }
+
+        return '[' + d->operand1->toString() + op + d->operand2->toString() + ']';
+    } else {
         QString ifaceName = DeviceInterface::typeToString(d->ifaceType);
 
-        if (ifaceName.isEmpty()) ifaceName = "Unknown";
+        if (ifaceName.isEmpty()) {
+            ifaceName = "Unknown";
+        }
 
-        if (d->type==InterfaceCheck) {
-            return "IS "+ifaceName;
+        if (d->type == InterfaceCheck) {
+            return "IS " + ifaceName;
         }
 
         QString value;
 
-        switch (d->value.type())
-        {
-        case QVariant::StringList:
-        {
+        switch (d->value.type()) {
+        case QVariant::StringList: {
             value = '{';
 
             const QStringList list = d->value.toStringList();
@@ -298,21 +290,19 @@ QString Solid::Predicate::toString() const
             QStringList::ConstIterator it = list.begin();
             QStringList::ConstIterator end = list.end();
 
-            for (; it!=end; ++it)
-            {
-                value+= '\''+ *it+'\'';
+            for (; it != end; ++it) {
+                value += '\'' + *it + '\'';
 
-                if (it+1!=end)
-                {
-                    value+= ", ";
+                if (it + 1 != end) {
+                    value += ", ";
                 }
             }
 
-            value+= '}';
+            value += '}';
             break;
         }
         case QVariant::Bool:
-            value = (d->value.toBool()?"true":"false");
+            value = (d->value.toBool() ? "true" : "false");
             break;
         case QVariant::Int:
         case QVariant::UInt:
@@ -321,15 +311,16 @@ QString Solid::Predicate::toString() const
             value = d->value.toString();
             break;
         default:
-            value = '\''+d->value.toString()+'\'';
+            value = '\'' + d->value.toString() + '\'';
             break;
         }
 
         QString str_operator = "==";
-        if (d->compOperator!=Equals) str_operator = " &";
+        if (d->compOperator != Equals) {
+            str_operator = " &";
+        }
 
-
-        return ifaceName+'.'+d->property+' '+str_operator+' '+value;
+        return ifaceName + '.' + d->property + ' ' + str_operator + ' ' + value;
     }
 }
 
@@ -360,7 +351,7 @@ Solid::Predicate::ComparisonOperator Solid::Predicate::comparisonOperator() cons
 
 Solid::Predicate Solid::Predicate::firstOperand() const
 {
-    if( d->operand1 ) {
+    if (d->operand1) {
         return *d->operand1;
     }
     return Predicate();
@@ -368,7 +359,7 @@ Solid::Predicate Solid::Predicate::firstOperand() const
 
 Solid::Predicate Solid::Predicate::secondOperand() const
 {
-    if( d->operand2 ) {
+    if (d->operand2) {
         return *d->operand2;
     }
     return Predicate();

@@ -44,26 +44,24 @@ Solid::OpticalDrive::MediumTypes FakeCdrom::supportedMedia() const
     map[Solid::OpticalDrive::Cdrw] = "cdrw";
     map[Solid::OpticalDrive::Dvd] = "dvd";
     map[Solid::OpticalDrive::Dvdr] = "dvdr";
-    map[Solid::OpticalDrive::Dvdrw] ="dvdrw";
-    map[Solid::OpticalDrive::Dvdram] ="dvdram";
-    map[Solid::OpticalDrive::Dvdplusr] ="dvdplusr";
-    map[Solid::OpticalDrive::Dvdplusrw] ="dvdplusrw";
-    map[Solid::OpticalDrive::Dvdplusdl] ="dvdplusrdl";
-    map[Solid::OpticalDrive::Dvdplusdlrw] ="dvdplusrwdl";
-    map[Solid::OpticalDrive::Bd] ="bd";
-    map[Solid::OpticalDrive::Bdr] ="bdr";
-    map[Solid::OpticalDrive::Bdre] ="bdre";
-    map[Solid::OpticalDrive::HdDvd] ="hddvd";
-    map[Solid::OpticalDrive::HdDvdr] ="hddvdr";
-    map[Solid::OpticalDrive::HdDvdrw] ="hddvdrw";
+    map[Solid::OpticalDrive::Dvdrw] = "dvdrw";
+    map[Solid::OpticalDrive::Dvdram] = "dvdram";
+    map[Solid::OpticalDrive::Dvdplusr] = "dvdplusr";
+    map[Solid::OpticalDrive::Dvdplusrw] = "dvdplusrw";
+    map[Solid::OpticalDrive::Dvdplusdl] = "dvdplusrdl";
+    map[Solid::OpticalDrive::Dvdplusdlrw] = "dvdplusrwdl";
+    map[Solid::OpticalDrive::Bd] = "bd";
+    map[Solid::OpticalDrive::Bdr] = "bdr";
+    map[Solid::OpticalDrive::Bdre] = "bdre";
+    map[Solid::OpticalDrive::HdDvd] = "hddvd";
+    map[Solid::OpticalDrive::HdDvdr] = "hddvdr";
+    map[Solid::OpticalDrive::HdDvdrw] = "hddvdrw";
 
     QStringList supported_medialist = fakeDevice()->property("supportedMedia").toString().simplified().split(',');
 
-    Q_FOREACH (const Solid::OpticalDrive::MediumType type, map.keys())
-    {
-        if (supported_medialist.indexOf(map[type]) != -1)
-        {
-            supported|= type;
+    Q_FOREACH (const Solid::OpticalDrive::MediumType type, map.keys()) {
+        if (supported_medialist.indexOf(map[type]) != -1) {
+            supported |= type;
         }
     }
 
@@ -85,8 +83,7 @@ QList<int> FakeCdrom::writeSpeeds() const
     QList<int> speeds;
     QStringList speed_strlist = fakeDevice()->property("writeSpeeds").toString().simplified().split(',');
 
-    Q_FOREACH (const QString &speed_str, speed_strlist)
-    {
+    Q_FOREACH (const QString &speed_str, speed_strlist) {
         speeds << speed_str.toInt();
     }
 

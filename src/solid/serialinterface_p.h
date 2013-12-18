@@ -25,12 +25,12 @@
 
 namespace Solid
 {
-    class SerialInterfacePrivate : public DeviceInterfacePrivate
-    {
-    public:
-        SerialInterfacePrivate()
-            : DeviceInterfacePrivate() { }
-    };
+class SerialInterfacePrivate : public DeviceInterfacePrivate
+{
+public:
+    SerialInterfacePrivate()
+        : DeviceInterfacePrivate() { }
+};
 }
 
 #endif // SOLID_SERIALINTERFACE_P_H

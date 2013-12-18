@@ -31,38 +31,38 @@
 
 namespace Solid
 {
-    class PowerManagementPrivate : public PowerManagement::Notifier
-    {
-        Q_OBJECT
-    public:
-        enum RequiredPolicy {
-            None = 0,
-            InterruptSession = 1,
-            ChangeProfile = 2,
-            ChangeScreenSettings = 4
-        };
-
-        PowerManagementPrivate();
-        ~PowerManagementPrivate();
-
-    public Q_SLOTS:
-        void slotCanSuspendChanged(bool newState);
-        void slotCanHibernateChanged(bool newState);
-        void slotCanHybridSuspendChanged(bool newState);
-        void slotPowerSaveStatusChanged(bool newState);
-        void slotServiceRegistered(const QString &serviceName);
-        void slotServiceUnregistered(const QString &serviceName);
-
-    public:
-        OrgFreedesktopPowerManagementInterface managerIface;
-        OrgKdeSolidPowerManagementPolicyAgentInterface policyAgentIface;
-        OrgFreedesktopPowerManagementInhibitInterface inhibitIface;
-        QDBusServiceWatcher serviceWatcher;
-
-        bool powerSaveStatus;
-        QSet<Solid::PowerManagement::SleepState> supportedSleepStates;
-        QHash<uint, uint> screensaverCookiesForPowerDevilCookies;
+class PowerManagementPrivate : public PowerManagement::Notifier
+{
+    Q_OBJECT
+public:
+    enum RequiredPolicy {
+        None = 0,
+        InterruptSession = 1,
+        ChangeProfile = 2,
+        ChangeScreenSettings = 4
     };
+
+    PowerManagementPrivate();
+    ~PowerManagementPrivate();
+
+public Q_SLOTS:
+    void slotCanSuspendChanged(bool newState);
+    void slotCanHibernateChanged(bool newState);
+    void slotCanHybridSuspendChanged(bool newState);
+    void slotPowerSaveStatusChanged(bool newState);
+    void slotServiceRegistered(const QString &serviceName);
+    void slotServiceUnregistered(const QString &serviceName);
+
+public:
+    OrgFreedesktopPowerManagementInterface managerIface;
+    OrgKdeSolidPowerManagementPolicyAgentInterface policyAgentIface;
+    OrgFreedesktopPowerManagementInhibitInterface inhibitIface;
+    QDBusServiceWatcher serviceWatcher;
+
+    bool powerSaveStatus;
+    QSet<Solid::PowerManagement::SleepState> supportedSleepStates;
+    QHash<uint, uint> screensaverCookiesForPowerDevilCookies;
+};
 }
 
 #endif

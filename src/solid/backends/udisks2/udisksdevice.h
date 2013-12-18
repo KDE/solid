@@ -48,8 +48,8 @@ public:
     Device(const QString &udi);
     virtual ~Device();
 
-    virtual QObject* createDeviceInterface(const Solid::DeviceInterface::Type& type);
-    virtual bool queryDeviceInterface(const Solid::DeviceInterface::Type& type) const;
+    virtual QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type);
+    virtual bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const;
     virtual QString description() const;
     virtual QStringList emblems() const;
     virtual QString icon() const;
@@ -62,11 +62,11 @@ public:
     bool propertyExists(const QString &key) const;
     QVariantMap allProperties() const;
 
-    bool hasInterface(const QString & name) const;
+    bool hasInterface(const QString &name) const;
     QStringList interfaces() const;
 
-    QString errorToString(const QString & error) const;
-    Solid::ErrorType errorToSolidError(const QString & error) const;
+    QString errorToString(const QString &error) const;
+    Solid::ErrorType errorToSolidError(const QString &error) const;
 
     bool isBlock() const;
     bool isPartition() const;
@@ -87,7 +87,7 @@ public:
 
 Q_SIGNALS:
     void changed();
-    void propertyChanged(const QMap<QString,int> &changes);
+    void propertyChanged(const QMap<QString, int> &changes);
 
 protected:
     QPointer<DeviceBackend> m_backend;

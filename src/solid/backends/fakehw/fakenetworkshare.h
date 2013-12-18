@@ -30,20 +30,20 @@ namespace Backends
 {
 namespace Fake
 {
-    class FakeNetworkShare : public FakeDeviceInterface, public Solid::Ifaces::NetworkShare
-    {
-        Q_OBJECT
-        Q_INTERFACES(Solid::Ifaces::NetworkShare)
+class FakeNetworkShare : public FakeDeviceInterface, public Solid::Ifaces::NetworkShare
+{
+    Q_OBJECT
+    Q_INTERFACES(Solid::Ifaces::NetworkShare)
 
-        public:
-            explicit FakeNetworkShare(FakeDevice *device);
+public:
+    explicit FakeNetworkShare(FakeDevice *device);
 
-            virtual ~FakeNetworkShare();
+    virtual ~FakeNetworkShare();
 
-            virtual Solid::NetworkShare::ShareType type() const;
+    virtual Solid::NetworkShare::ShareType type() const;
 
-            virtual QUrl url() const;
-    };
+    virtual QUrl url() const;
+};
 
 }
 }

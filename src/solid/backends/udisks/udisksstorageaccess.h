@@ -57,12 +57,12 @@ Q_SIGNALS:
     void teardownRequested(const QString &udi);
 
 public Q_SLOTS:
-    Q_SCRIPTABLE Q_NOREPLY void passphraseReply( const QString & passphrase );
+    Q_SCRIPTABLE Q_NOREPLY void passphraseReply(const QString &passphrase);
 
 private Q_SLOTS:
     void slotChanged();
-    void slotDBusReply( const QDBusMessage & reply );
-    void slotDBusError( const QDBusError & error );
+    void slotDBusReply(const QDBusMessage &reply);
+    void slotDBusError(const QDBusError &error);
 
     void connectDBusSignals();
 
@@ -81,8 +81,8 @@ private:
     bool unmount();
 
     bool requestPassphrase();
-    void callCryptoSetup( const QString & passphrase );
-    bool callCryptoTeardown( bool actOnParent=false );
+    void callCryptoSetup(const QString &passphrase);
+    bool callCryptoTeardown(bool actOnParent = false);
 
     QString generateReturnObjectPath();
 

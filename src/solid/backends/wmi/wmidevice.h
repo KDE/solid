@@ -34,8 +34,7 @@ namespace Wmi
 class WmiManager;
 class WmiDevicePrivate;
 
-struct ChangeDescription
-{
+struct ChangeDescription {
     QString key;
     bool added;
     bool removed;
@@ -73,7 +72,6 @@ public:
     static bool exists(const QString &udi);
     const Solid::DeviceInterface::Type type() const;
 
-
     //TODO:rename the following methodes...
     static WmiQuery::Item win32LogicalDiskByDiskPartitionID(const QString &deviceID);
     static WmiQuery::Item win32DiskDriveByDiskPartitionID(const QString &deviceID);
@@ -81,16 +79,15 @@ public:
     static WmiQuery::Item win32DiskPartitionByDriveLetter(const QString &driveLetter);
     static WmiQuery::Item win32LogicalDiskByDriveLetter(const QString &driveLetter);
 
-
 Q_SIGNALS:
-    void propertyChanged(const QMap<QString,int> &changes);
+    void propertyChanged(const QMap<QString, int> &changes);
     void conditionRaised(const QString &condition, const QString &reason);
 
 private Q_SLOTS:
     void slotPropertyModified(int count, const QList<ChangeDescription> &changes);
     void slotCondition(const QString &condition, const QString &reason);
 
-private:    
+private:
     WmiDevicePrivate *d;
     friend class WmiDevicePrivate;
 };

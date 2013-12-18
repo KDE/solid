@@ -42,7 +42,6 @@ public:
 
     virtual bool isAccessible() const;
 
-
     virtual QString filePath() const;
 
     virtual bool isIgnored() const;
@@ -65,6 +64,5 @@ Q_SIGNALS:
 }
 }
 }
-
 
 #endif // WINSTORAGEACCESS_H

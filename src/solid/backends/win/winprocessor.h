@@ -30,7 +30,7 @@ namespace Backends
 namespace Win
 {
 
-class WinProcessor :public WinInterface, public Solid::Ifaces::Processor
+class WinProcessor : public WinInterface, public Solid::Ifaces::Processor
 {
     friend class WinDevice;
     Q_OBJECT
@@ -48,8 +48,6 @@ public:
     virtual Solid::Processor::InstructionSets instructionSets() const;
 
     static QSet<QString> getUdis();
-
-
 
 private:
     int m_number;

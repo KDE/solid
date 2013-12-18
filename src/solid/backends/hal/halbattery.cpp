@@ -27,14 +27,13 @@ Battery::Battery(HalDevice *device)
     : DeviceInterface(device)
 {
     connect(device, SIGNAL(propertyChanged(QMap<QString,int>)),
-             this, SLOT(slotPropertyChanged(QMap<QString,int>)));
+            this, SLOT(slotPropertyChanged(QMap<QString,int>)));
 }
 
 Battery::~Battery()
 {
 
 }
-
 
 bool Battery::isPlugged() const
 {
@@ -45,36 +44,21 @@ Solid::Battery::BatteryType Battery::type() const
 {
     QString name = m_device->prop("battery.type").toString();
 
-    if (name == "pda")
-    {
+    if (name == "pda") {
         return Solid::Battery::PdaBattery;
-    }
-    else if (name == "ups")
-    {
+    } else if (name == "ups") {
         return Solid::Battery::UpsBattery;
-    }
-    else if (name == "primary")
-    {
+    } else if (name == "primary") {
         return Solid::Battery::PrimaryBattery;
-    }
-    else if (name == "mouse")
-    {
+    } else if (name == "mouse") {
         return Solid::Battery::MouseBattery;
-    }
-    else if (name == "keyboard")
-    {
+    } else if (name == "keyboard") {
         return Solid::Battery::KeyboardBattery;
-    }
-    else if (name == "keyboard_mouse")
-    {
+    } else if (name == "keyboard_mouse") {
         return Solid::Battery::KeyboardMouseBattery;
-    }
-    else if (name == "camera")
-    {
+    } else if (name == "camera") {
         return Solid::Battery::CameraBattery;
-    }
-    else
-    {
+    } else {
         return Solid::Battery::UnknownBattery;
     }
 }
@@ -102,7 +86,7 @@ bool Battery::isPowerSupply() const
     // NOTE Hal doesn't support the is power supply property, so we're assuming that primary
     // and UPS batteries are power supply and all the others are not
     if (type() == Solid::Battery::PrimaryBattery || type() == Solid::Battery::UpsBattery) {
-      return true;
+        return true;
     }
 
     return false;
@@ -113,16 +97,11 @@ Solid::Battery::ChargeState Battery::chargeState() const
     bool charging = m_device->prop("battery.rechargeable.is_charging").toBool();
     bool discharging = m_device->prop("battery.rechargeable.is_discharging").toBool();
 
-    if (!charging && !discharging)
-    {
+    if (!charging && !discharging) {
         return Solid::Battery::NoCharge;
-    }
-    else if (charging)
-    {
+    } else if (charging) {
         return Solid::Battery::Charging;
-    }
-    else
-    {
+    } else {
         return Solid::Battery::Discharging;
     }
 }
@@ -131,16 +110,17 @@ Solid::Battery::Technology Battery::technology() const
 {
     const QString tech = m_device->prop("battery.technology").toString();
 
-    if (tech == "lithium-ion")
+    if (tech == "lithium-ion") {
         return Solid::Battery::LithiumIon;
-    else if (tech == "lead-acid")
+    } else if (tech == "lead-acid") {
         return Solid::Battery::LeadAcid;
-    else if (tech == "lithium-polymer")
+    } else if (tech == "lithium-polymer") {
         return Solid::Battery::LithiumPolymer;
-    else if (tech == "nickel-metal-hydride")
+    } else if (tech == "nickel-metal-hydride") {
         return Solid::Battery::NickelMetalHydride;
-    else if (tech == "lithium-iron-phosphate")
+    } else if (tech == "lithium-iron-phosphate") {
         return Solid::Battery::LithiumIronPhosphate;
+    }
 
     return Solid::Battery::UnknownTechnology;
 }
@@ -160,35 +140,31 @@ double Battery::voltage() const
     return m_device->prop("battery.voltage.current").toInt() / 1000;
 }
 
-void Battery::slotPropertyChanged(const QMap<QString,int> &changes)
+void Battery::slotPropertyChanged(const QMap<QString, int> &changes)
 {
-    if (changes.contains("battery.charge_level.percentage"))
-    {
+    if (changes.contains("battery.charge_level.percentage")) {
         emit chargePercentChanged(chargePercent(), m_device->udi());
     }
 
     if (changes.contains("battery.charge_level.last_full")
-           || changes.contains("battery.charge_level.design"))
-    {
+            || changes.contains("battery.charge_level.design")) {
         emit capacityChanged(capacity(), m_device->udi());
     }
 
     if (changes.contains("battery.rechargeable.is_charging")
-           || changes.contains("battery.rechargeable.is_discharging"))
-    {
+            || changes.contains("battery.rechargeable.is_discharging")) {
         emit chargeStateChanged(chargeState(), m_device->udi());
     }
 
-    if ( changes.contains( "battery.present" ) )
-    {
+    if (changes.contains("battery.present")) {
         emit plugStateChanged(isPlugged(), m_device->udi());
     }
 
-    if ( changes.contains( "battery.charge_level.current" ) ) {
+    if (changes.contains("battery.charge_level.current")) {
         emit energyChanged(energy(), m_device->udi());
     }
 
-    if ( changes.contains( "battery.charge_level.rate" ) ) {
+    if (changes.contains("battery.charge_level.rate")) {
         emit energyRateChanged(energyRate(), m_device->udi());
     }
 

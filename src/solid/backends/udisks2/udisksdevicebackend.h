@@ -31,16 +31,20 @@
 
 #include "udisks2.h"
 
-namespace Solid {
-namespace Backends {
-namespace UDisks2 {
+namespace Solid
+{
+namespace Backends
+{
+namespace UDisks2
+{
 
-class DeviceBackend: public QObject {
+class DeviceBackend: public QObject
+{
 
     Q_OBJECT
 
-  public:
-    static DeviceBackend* backendForUDI(const QString &udi, bool create = true);
+public:
+    static DeviceBackend *backendForUDI(const QString &udi, bool create = true);
     static void destroyBackend(const QString &udi);
 
     DeviceBackend(const QString &udi);
@@ -51,19 +55,19 @@ class DeviceBackend: public QObject {
     QVariantMap allProperties() const;
 
     QStringList interfaces() const;
-    const QString & udi() const;
+    const QString &udi() const;
 
     void invalidateProperties();
-  Q_SIGNALS:
+Q_SIGNALS:
     void propertyChanged(const QMap<QString, int> &changeMap);
     void changed();
 
-  private Q_SLOTS:
+private Q_SLOTS:
     void slotInterfacesAdded(const QDBusObjectPath &object_path, const QVariantMapMap &interfaces_and_properties);
     void slotInterfacesRemoved(const QDBusObjectPath &object_path, const QStringList &interfaces);
     void slotPropertiesChanged(const QString &ifaceName, const QVariantMap &changedProps, const QStringList &invalidatedProps);
 
-  private:
+private:
     void initInterfaces();
     QString introspect() const;
     void checkCache(const QString &key) const;
@@ -74,7 +78,7 @@ class DeviceBackend: public QObject {
     QStringList m_interfaces;
     QString m_udi;
 
-    static QMap<QString, DeviceBackend*> s_backends;
+    static QMap<QString, DeviceBackend *> s_backends;
 
 };
 
