@@ -21,6 +21,7 @@ endif()
 include(FeatureSummary)
 include(CMakePackageConfigHelpers)
 include(ECMSetupVersion)
+include(ECMGenerateHeaders)
 
 if(NOT APPLE)
   find_package(HUpnp 0.9)

@@ -454,6 +454,9 @@ target_include_directories(KF5Solid PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SO
 generate_export_header(KF5Solid BASE_NAME Solid)
 add_library(KF5::Solid ALIAS KF5Solid)
 
+# Apps must include <Solid/File> or <solid/file.h>
+target_include_directories(KF5Solid INTERFACE "$<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}>")
+
 target_link_libraries(KF5Solid PUBLIC Qt5::Core
                                PRIVATE Qt5::DBus
                                        Qt5::Xml
@@ -465,6 +468,42 @@ set_target_properties(KF5Solid PROPERTIES  VERSION ${SOLID_VERSION_STRING}
                                            SOVERSION ${SOLID_SOVERSION}
                                            EXPORT_NAME Solid
 )
+
+ecm_generate_headers(
+  Device
+  DeviceNotifier
+  DeviceInterface
+  GenericInterface
+  Processor
+  Block
+  StorageAccess
+  StorageDrive
+  OpticalDrive
+  StorageVolume
+  OpticalDisc
+  Camera
+  PortableMediaPlayer
+  PowerManagement
+  Networking
+  NetworkInterface
+  AcAdapter
+  Battery
+  Button
+  AudioInterface
+  DvbInterface
+  Predicate
+  Video
+  SerialInterface
+  SmartCardReader
+  InternetGateway
+  NetworkShare
+  Keyboard
+  PointingDevice
+
+  MODULE_NAME Solid
+  REQUIRED_HEADERS Solid_HEADERS
+)
+install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Solid DESTINATION ${INCLUDE_INSTALL_DIR} COMPONENT Devel)
 
 install(TARGETS KF5Solid EXPORT KF5SolidTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
 
@@ -485,14 +524,12 @@ target_include_directories(KF5Solid_static PUBLIC "$<BUILD_INTERFACE:${CMAKE_CUR
 
 ########### install files ###############
 
-install( FILES ${CMAKE_CURRENT_BINARY_DIR}/solid_export.h solidnamespace.h device.h
-               devicenotifier.h deviceinterface.h genericinterface.h processor.h block.h
-               storageaccess.h storagedrive.h opticaldrive.h storagevolume.h opticaldisc.h
-               camera.h portablemediaplayer.h networkinterface.h acadapter.h battery.h
-               button.h audiointerface.h dvbinterface.h predicate.h powermanagement.h
-               networking.h video.h serialinterface.h smartcardreader.h internetgateway.h
-               networkshare.h keyboard.h pointingdevice.h
-         DESTINATION ${INCLUDE_INSTALL_DIR}/solid COMPONENT Devel)
+install(FILES
+  ${CMAKE_CURRENT_BINARY_DIR}/solid_export.h
+  ${Solid_HEADERS}
+  solidnamespace.h
+  DESTINATION ${INCLUDE_INSTALL_DIR}/solid COMPONENT Devel
+)
 
 ########### parser build ###############
 
