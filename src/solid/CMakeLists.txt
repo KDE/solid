@@ -455,7 +455,7 @@ generate_export_header(KF5Solid BASE_NAME Solid)
 add_library(KF5::Solid ALIAS KF5Solid)
 
 # Apps must include <Solid/File> or <solid/file.h>
-target_include_directories(KF5Solid INTERFACE "$<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}>")
+target_include_directories(KF5Solid INTERFACE "$<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}>/Solid")
 
 target_link_libraries(KF5Solid PUBLIC Qt5::Core
                                PRIVATE Qt5::DBus
@@ -502,6 +502,7 @@ ecm_generate_headers(
 
   MODULE_NAME Solid
   REQUIRED_HEADERS Solid_HEADERS
+  PREFIX Solid
 )
 install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Solid DESTINATION ${INCLUDE_INSTALL_DIR} COMPONENT Devel)
 
@@ -528,7 +529,7 @@ install(FILES
   ${CMAKE_CURRENT_BINARY_DIR}/solid_export.h
   ${Solid_HEADERS}
   solidnamespace.h
-  DESTINATION ${INCLUDE_INSTALL_DIR}/solid COMPONENT Devel
+  DESTINATION ${INCLUDE_INSTALL_DIR}/Solid/solid COMPONENT Devel
 )
 
 ########### parser build ###############
