@@ -19,6 +19,7 @@ if(WIN32)
 endif()
 
 include(FeatureSummary)
+include(GenerateExportHeader)
 include(CMakePackageConfigHelpers)
 include(ECMSetupVersion)
 include(ECMGenerateHeaders)
