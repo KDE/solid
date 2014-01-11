@@ -1,5 +1,7 @@
 include(ECMMarkAsTest)
 
+find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Concurrent Test)
+
 ########### fakehardwaretest ###############
 
 set(fakehardwaretest_SRCS fakehardwaretest.cpp )
