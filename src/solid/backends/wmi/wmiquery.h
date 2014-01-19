@@ -30,7 +30,7 @@
 
 #include <solid/solid_export.h>
 
-#include <windows.h>
+#include <qt_windows.h>
 #include <rpc.h>
 #include <comdef.h>
 #include <Wbemidl.h>

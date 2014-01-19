@@ -22,7 +22,7 @@
 
 #include "windevicemanager.h"
 
-#include <windows.h>
+#include <qt_windows.h>
 
 #include <iostream>
 

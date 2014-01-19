@@ -26,7 +26,7 @@
 #include <QSet>
 #include <QDebug>
 
-#include <windows.h>
+#include <qt_windows.h>
 #include <winioctl.h>
 
 inline QString qGetLastError(ulong errorNummber = GetLastError())

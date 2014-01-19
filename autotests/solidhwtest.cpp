@@ -43,7 +43,7 @@
 QTEST_MAIN(SolidHwTest)
 
 #if defined(Q_OS_WIN)
-#include <windows.h>
+#include <qt_windows.h>
 #define setenv(x, y, z) SetEnvironmentVariableA(x, y)
 #endif
 

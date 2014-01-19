@@ -19,7 +19,7 @@
 */
 #include "winstoragedrive.h"
 
-#include <windows.h>
+#include <qt_windows.h>
 #include <winioctl.h>
 
 #if defined(__MINGW32__) && !defined(IOCTL_STORAGE_QUERY_PROPERTY)
