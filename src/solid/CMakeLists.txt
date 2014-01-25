@@ -567,3 +567,6 @@ else ()
                      COMMAND echo "flex and/or bison not found, so target UpdateSolidPredicateParser inactive")
 endif ()
 
+include(ECMGeneratePriFile)
+ecm_generate_pri_file(BASE_NAME Solid LIB_NAME KF5Solid DEPS "core" FILENAME_VAR PRI_FILENAME)
+install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})
