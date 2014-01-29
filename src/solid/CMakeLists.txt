@@ -509,10 +509,17 @@ install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Solid DESTINATION ${INCLUDE_INSTAL
 install(TARGETS KF5Solid EXPORT KF5SolidTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(FILES org.kde.Solid.Networking.Client.xml
-              org.kde.Solid.PowerManagement.PolicyAgent.xml
-              org.freedesktop.PowerManagement.xml
-              org.freedesktop.PowerManagement.Inhibit.xml
-        DESTINATION ${DBUS_INTERFACES_INSTALL_DIR})
+        DESTINATION ${DBUS_INTERFACES_INSTALL_DIR}
+        RENAME kf5_org.kde.Solid.Networking.Client.xml)
+install(FILES org.kde.Solid.PowerManagement.PolicyAgent.xml
+        DESTINATION ${DBUS_INTERFACES_INSTALL_DIR}
+        RENAME kf5_org.kde.Solid.PowerManagement.PolicyAgent.xml)
+install(FILES org.freedesktop.PowerManagement.xml
+        DESTINATION ${DBUS_INTERFACES_INSTALL_DIR}
+        RENAME kf5_org.freedesktop.PowerManagement.xml)
+install(FILES org.freedesktop.PowerManagement.Inhibit.xml
+        DESTINATION ${DBUS_INTERFACES_INSTALL_DIR}
+        RENAME kf5_org.freedesktop.PowerManagement.Inhibit.xml)
 
 ########### static lib for tests  ###############
 
