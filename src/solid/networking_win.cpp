@@ -113,3 +113,7 @@ void Solid::Networking::setDisconnectPolicy(Solid::Networking::ManagementPolicy 
     globalNetworkManager->disconnectPolicy = policy;
 }
 
+// CMake automoc only looks at <basename>.h and <basename>_p.h, therefore we have
+// to add theses include to make sure networking.h and networking_p.h are automoc'd
+#include "moc_networking.cpp"
+#include "moc_networking_p.cpp"
