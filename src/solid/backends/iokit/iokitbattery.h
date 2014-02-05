@@ -52,7 +52,15 @@ public:
 
     Solid::Battery::ChargeState chargeState() const;
 
+    // ### the ones below are TODO
+    Solid::Battery::Technology technology() const { return Solid::Battery::UnknownTechnology; }
+    double energy() const { return 0.0; }
+    double energyRate() const { return 0.0; }
+    double voltage() const { return 0.0; }
+
 Q_SIGNALS:
+    void energyChanged(double energy, const QString &udi);
+    void energyRateChanged(double energyRate, const QString &udi);
     void chargePercentChanged(int value, const QString &udi);
     void capacityChanged(int value, const QString &udi);
     void chargeStateChanged(int newState, const QString &udi);
