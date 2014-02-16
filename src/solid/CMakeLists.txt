@@ -469,7 +469,8 @@ set_target_properties(KF5Solid PROPERTIES  VERSION ${SOLID_VERSION_STRING}
                                            EXPORT_NAME Solid
 )
 
-ecm_generate_headers(
+ecm_generate_headers(Solid_CamelCase_HEADERS
+  HEADER_NAMES
   Device
   DeviceNotifier
   DeviceInterface
@@ -500,11 +501,10 @@ ecm_generate_headers(
   Keyboard
   PointingDevice
 
-  MODULE_NAME Solid
   REQUIRED_HEADERS Solid_HEADERS
   PREFIX Solid
 )
-install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Solid DESTINATION ${INCLUDE_INSTALL_DIR} COMPONENT Devel)
+install(FILES ${Solid_CamelCase_HEADERS} DESTINATION ${INCLUDE_INSTALL_DIR}/Solid/Solid COMPONENT Devel)
 
 install(TARGETS KF5Solid EXPORT KF5SolidTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
 
