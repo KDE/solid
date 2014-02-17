@@ -455,7 +455,7 @@ generate_export_header(KF5Solid BASE_NAME Solid)
 add_library(KF5::Solid ALIAS KF5Solid)
 
 # Apps must include <Solid/File> or <solid/file.h>
-target_include_directories(KF5Solid INTERFACE "$<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}>/Solid")
+target_include_directories(KF5Solid INTERFACE "$<INSTALL_INTERFACE:${INCLUDE_INSTALL_DIR}/Solid>")
 
 target_link_libraries(KF5Solid PUBLIC Qt5::Core
                                PRIVATE Qt5::DBus
