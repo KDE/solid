@@ -20,7 +20,7 @@ endif()
 
 include(FeatureSummary)
 include(GenerateExportHeader)
-include(CMakePackageConfigHelpers)
+include(ECMPackageConfigHelpers)
 include(ECMSetupVersion)
 include(ECMGenerateHeaders)
 
@@ -88,7 +88,7 @@ add_subdirectory(tests)
 # create a Config.cmake and a ConfigVersion.cmake file and install them
 set(CMAKECONFIG_INSTALL_DIR "${CMAKECONFIG_INSTALL_PREFIX}/KF5Solid")
 
-configure_package_config_file("${CMAKE_CURRENT_SOURCE_DIR}/KF5SolidConfig.cmake.in"
+ecm_configure_package_config_file("${CMAKE_CURRENT_SOURCE_DIR}/KF5SolidConfig.cmake.in"
                               "${CMAKE_CURRENT_BINARY_DIR}/KF5SolidConfig.cmake"
                               INSTALL_DESTINATION  ${CMAKECONFIG_INSTALL_DIR}
                               )
