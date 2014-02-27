@@ -47,8 +47,8 @@ Manager::Manager(QObject *parent)
 
     qDBusRegisterMetaType<QList<QDBusObjectPath> >();
     qDBusRegisterMetaType<QVariantMap>();
-    qDBusRegisterMetaType<QVariantMapMap>();
-    qDBusRegisterMetaType<QByteArrayList>();
+    qDBusRegisterMetaType<VariantMapMap>();
+    qDBusRegisterMetaType<ByteArrayList>();
     qDBusRegisterMetaType<DBUSManagerStruct>();
 
     bool serviceFound = m_manager.isValid();
@@ -67,8 +67,8 @@ Manager::Manager(QObject *parent)
     }
 
     if (serviceFound) {
-        connect(&m_manager, SIGNAL(InterfacesAdded(QDBusObjectPath,QVariantMapMap)),
-                this, SLOT(slotInterfacesAdded(QDBusObjectPath,QVariantMapMap)));
+        connect(&m_manager, SIGNAL(InterfacesAdded(QDBusObjectPath,VariantMapMap)),
+                this, SLOT(slotInterfacesAdded(QDBusObjectPath,VariantMapMap)));
         connect(&m_manager, SIGNAL(InterfacesRemoved(QDBusObjectPath,QStringList)),
                 this, SLOT(slotInterfacesRemoved(QDBusObjectPath,QStringList)));
     }
@@ -178,7 +178,7 @@ QString Manager::udiPrefix() const
     return UD2_UDI_DISKS_PREFIX;
 }
 
-void Manager::slotInterfacesAdded(const QDBusObjectPath &object_path, const QVariantMapMap &interfaces_and_properties)
+void Manager::slotInterfacesAdded(const QDBusObjectPath &object_path, const VariantMapMap &interfaces_and_properties)
 {
     const QString udi = object_path.path();
 

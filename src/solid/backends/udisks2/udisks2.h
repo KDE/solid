@@ -27,13 +27,13 @@
 #include <QMap>
 #include <QList>
 
-typedef QList<QByteArray> QByteArrayList;
-Q_DECLARE_METATYPE(QByteArrayList)
+typedef QList<QByteArray> ByteArrayList;
+Q_DECLARE_METATYPE(ByteArrayList)
 
-typedef QMap<QString, QVariantMap> QVariantMapMap;
-Q_DECLARE_METATYPE(QVariantMapMap)
+typedef QMap<QString, QVariantMap> VariantMapMap;
+Q_DECLARE_METATYPE(VariantMapMap)
 
-typedef QMap<QDBusObjectPath, QVariantMapMap> DBUSManagerStruct;
+typedef QMap<QDBusObjectPath, VariantMapMap> DBUSManagerStruct;
 Q_DECLARE_METATYPE(DBUSManagerStruct)
 
 /* UDisks2 */

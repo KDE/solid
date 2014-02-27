@@ -52,7 +52,7 @@ public:
     virtual ~Manager();
 
 private Q_SLOTS:
-    void slotInterfacesAdded(const QDBusObjectPath &object_path, const QVariantMapMap &interfaces_and_properties);
+    void slotInterfacesAdded(const QDBusObjectPath &object_path, const VariantMapMap &interfaces_and_properties);
     void slotInterfacesRemoved(const QDBusObjectPath &object_path, const QStringList &interfaces);
     void slotMediaChanged(const QDBusMessage &msg);
 

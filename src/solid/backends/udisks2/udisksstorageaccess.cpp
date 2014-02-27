@@ -77,7 +77,7 @@ bool StorageAccess::isAccessible() const
 
 QString StorageAccess::filePath() const
 {
-    QByteArrayList mntPoints;
+    ByteArrayList mntPoints;
 
     if (isLuksDevice()) {  // encrypted (and unlocked) device
         const QString path = clearTextPath();
@@ -85,7 +85,7 @@ QString StorageAccess::filePath() const
             return QString();
         }
         Device holderDevice(path);
-        mntPoints = qdbus_cast<QByteArrayList>(holderDevice.prop("MountPoints"));
+        mntPoints = qdbus_cast<ByteArrayList>(holderDevice.prop("MountPoints"));
         if (!mntPoints.isEmpty()) {
             return QFile::decodeName(mntPoints.first());    // FIXME Solid doesn't support multiple mount points
         } else {
@@ -93,7 +93,7 @@ QString StorageAccess::filePath() const
         }
     }
 
-    mntPoints = qdbus_cast<QByteArrayList>(m_device->prop("MountPoints"));
+    mntPoints = qdbus_cast<ByteArrayList>(m_device->prop("MountPoints"));
 
     if (!mntPoints.isEmpty()) {
         return QFile::decodeName(mntPoints.first());    // FIXME Solid doesn't support multiple mount points

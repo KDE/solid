@@ -63,7 +63,7 @@ Q_SIGNALS:
     void changed();
 
 private Q_SLOTS:
-    void slotInterfacesAdded(const QDBusObjectPath &object_path, const QVariantMapMap &interfaces_and_properties);
+    void slotInterfacesAdded(const QDBusObjectPath &object_path, const VariantMapMap &interfaces_and_properties);
     void slotInterfacesRemoved(const QDBusObjectPath &object_path, const QStringList &interfaces);
     void slotPropertiesChanged(const QString &ifaceName, const QVariantMap &changedProps, const QStringList &invalidatedProps);
 

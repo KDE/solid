@@ -72,7 +72,7 @@ DeviceBackend::DeviceBackend(const QString &udi)
         QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE, m_udi, DBUS_INTERFACE_PROPS, "PropertiesChanged", this,
                                              SLOT(slotPropertiesChanged(QString,QVariantMap,QStringList)));
         QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE, UD2_DBUS_PATH, DBUS_INTERFACE_MANAGER, "InterfacesAdded",
-                                             this, SLOT(slotInterfacesAdded(QDBusObjectPath,QVariantMapMap)));
+                                             this, SLOT(slotInterfacesAdded(QDBusObjectPath,VariantMapMap)));
         QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE, UD2_DBUS_PATH, DBUS_INTERFACE_MANAGER, "InterfacesRemoved",
                                              this, SLOT(slotInterfacesRemoved(QDBusObjectPath,QStringList)));
 
@@ -221,7 +221,7 @@ void DeviceBackend::slotPropertiesChanged(const QString &ifaceName, const QVaria
     emit changed();
 }
 
-void DeviceBackend::slotInterfacesAdded(const QDBusObjectPath &object_path, const QVariantMapMap &interfaces_and_properties)
+void DeviceBackend::slotInterfacesAdded(const QDBusObjectPath &object_path, const VariantMapMap &interfaces_and_properties)
 {
     if (object_path.path() != m_udi) {
         return;
