@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 2.8.12)
 
 project(Solid)
 
-find_package(ECM 0.0.10 REQUIRED NO_MODULE)
+find_package(ECM 0.0.11 REQUIRED NO_MODULE)
 
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
@@ -67,7 +67,7 @@ option(WITH_SOLID_UDISKS2 "Enable the udisks2 solid backend instead" "ON")
 ############### Give the user the option to build the deprecated WMI solid backend instead of the new win backend ###############
 option(WITH_SOLID_WMI "Enables the deprecated WMI backend on Windows")
 
-set(KF5_VERSION "4.96.0")
+set(KF5_VERSION "4.97.0")
 
 ecm_setup_version(${KF5_VERSION} VARIABLE_PREFIX SOLID
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/solid_version.h"
