@@ -6,12 +6,12 @@ include(ECMMarkAsTest)
 #   solidnettestdbusservice.cpp )
 
 
-#QT4_ADD_DBUS_ADAPTOR(solidnettestdbusservice_SRCS ../src/solid/org.kde.Solid.Networking.Client.xml
+#qt5_add_dbus_adaptor(solidnettestdbusservice_SRCS ../src/solid/org.kde.Solid.Networking.Client.xml
 #                         solidnettestdbusservice.h TestNetworkingService)
 
-#kde4_add_executable(solidnettestdbusservice TEST ${solidnettestdbusservice_SRCS})
-
-#target_link_libraries(solidnettestdbusservice Qt5::DBus Qt5::Xml Qt5::Test)
+#add_executable(solidnettestdbusservice ${solidnettestdbusservice_SRCS})
+#set_target_properties(solidnettestdbusservice PROPERTIES COMPILE_FLAGS -DSOLID_STATIC_DEFINE=1)
+#target_link_libraries(solidnettestdbusservice KF5Solid_static Qt5::DBus Qt5::Xml Qt5::Test)
 
 ########### networkingclient ###############
 
