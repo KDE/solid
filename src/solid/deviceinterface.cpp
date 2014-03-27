@@ -94,8 +94,6 @@ QString Solid::DeviceInterface::typeDescription(Type type)
         return tr("Video", "Video device type");
     case NetworkShare:
         return tr("Network Share", "Network Share device type");
-    case Keyboard:
-        return tr("Keyboard", "A keyboard");
     case PointingDevice:
         return tr("PointingDevice", "A pointing device");
     case Last:

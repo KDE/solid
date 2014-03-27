@@ -59,7 +59,6 @@ public:
      * - Camera : A digital camera
      * - PortableMediaPlayer: A portable media player
      * - NetworkShare: A network share interface
-     * - Keyboard: A keyboard
      * - PointingDevice: A mouse, touchpad, touchscreen or a tablet
      */
     enum Type { Unknown = 0, GenericInterface = 1, Processor = 2,
@@ -67,8 +66,8 @@ public:
                 OpticalDrive = 6, StorageVolume = 7, OpticalDisc = 8,
                 Camera = 9, PortableMediaPlayer = 10,
                 AcAdapter = 11, Battery = 12, DvbInterface = 13,
-                Video = 14, NetworkShare = 15, Keyboard = 16,
-                PointingDevice = 17, Last = 0xffff
+                Video = 14, NetworkShare = 15,
+                PointingDevice = 16, Last = 0xffff
               };
 
     /**

@@ -114,8 +114,7 @@ bool UDevManager::Private::checkOfInterest(const UdevQt::Device &device)
     }
 
     if (device.subsystem() == QLatin1String("input")) {
-        if (device.deviceProperty("ID_INPUT_KEYBOARD").toInt() == 1 ||
-                device.deviceProperty("ID_INPUT_MOUSE").toInt() == 1 ||
+        if (device.deviceProperty("ID_INPUT_MOUSE").toInt() == 1 ||
                 device.deviceProperty("ID_INPUT_TOUCHPAD").toInt() == 1 ||
                 device.deviceProperty("ID_INPUT_TABLET").toInt() == 1 ||
                 device.deviceProperty("ID_INPUT_TOUCHSCREEN").toInt() == 1) {
@@ -145,7 +144,6 @@ UDevManager::UDevManager(QObject *parent)
                              << Solid::DeviceInterface::DvbInterface
                              << Solid::DeviceInterface::Block
                              << Solid::DeviceInterface::Video
-                             << Solid::DeviceInterface::Keyboard
                              << Solid::DeviceInterface::PointingDevice
                              ;
 }

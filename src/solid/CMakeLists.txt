@@ -72,7 +72,6 @@ set(solid_LIB_SRCS
    networkshare.cpp
    acadapter.cpp
    battery.cpp
-   keyboard.cpp
    pointingdevice.cpp
    dvbinterface.cpp
    predicate.cpp
@@ -85,7 +84,6 @@ set(solid_LIB_SRCS
    ifaces/acadapter.cpp
    ifaces/battery.cpp
    ifaces/block.cpp
-   ifaces/keyboard.cpp
    ifaces/pointingdevice.cpp
    ifaces/camera.cpp
    ifaces/opticaldrive.cpp
@@ -106,7 +104,6 @@ set(solid_LIB_SRCS
    backends/fakehw/fakeacadapter.cpp
    backends/fakehw/fakebattery.cpp
    backends/fakehw/fakeblock.cpp
-   backends/fakehw/fakekeyboard.cpp
    backends/fakehw/fakepointingdevice.cpp
    backends/fakehw/fakecamera.cpp
    backends/fakehw/fakecdrom.cpp
@@ -143,7 +140,6 @@ if(NOT WIN32 AND NOT APPLE)
       backends/udev/udevportablemediaplayer.cpp
       backends/udev/udevdvbinterface.cpp
       backends/udev/udevblock.cpp
-      backends/udev/udevkeyboard.cpp
       backends/udev/udevpointingdevice.cpp
       backends/shared/udevqtclient.cpp
       backends/shared/udevqtdevice.cpp
@@ -418,7 +414,6 @@ ecm_generate_headers(Solid_CamelCase_HEADERS
   Predicate
   Video
   NetworkShare
-  Keyboard
   PointingDevice
 
   REQUIRED_HEADERS Solid_HEADERS
