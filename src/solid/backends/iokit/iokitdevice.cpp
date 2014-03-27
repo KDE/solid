@@ -23,7 +23,6 @@
 #include "iokitprocessor.h"
 #include "iokitbattery.h"
 #include "iokitnetworkinterface.h"
-#include "iokitserialinterface.h"
 
 #include <QtCore/qdebug.h>
 
@@ -52,9 +51,6 @@ static Solid::DeviceInterface::Type typeFromEntry(const io_registry_entry_t &ent
     }
     if (IOObjectConformsTo(entry, "AppleACPICPU")) {
         return Solid::DeviceInterface::Processor;
-    }
-    if (IOObjectConformsTo(entry, "IOSerialBSDClient")) {
-        return Solid::DeviceInterface::SerialInterface;
     }
     if (IOObjectConformsTo(entry, "AppleSmartBattery")) {
         return Solid::DeviceInterface::Battery;
@@ -233,11 +229,6 @@ QObject *IOKitDevice::createDeviceInterface(const Solid::DeviceInterface::Type &
     case Solid::DeviceInterface::NetworkInterface:
         if (d->type == Solid::DeviceInterface::NetworkInterface) {
             iface = new NetworkInterface(this);
-        }
-        break;
-    case Solid::DeviceInterface::SerialInterface:
-        if (d->type == Solid::DeviceInterface::SerialInterface) {
-            iface = new SerialInterface(this);
         }
         break;
     case Solid::DeviceInterface::Battery:

@@ -178,7 +178,6 @@ UDevManager::UDevManager(QObject *parent)
     d->m_supportedInterfaces << Solid::DeviceInterface::GenericInterface
                              << Solid::DeviceInterface::Processor
                              << Solid::DeviceInterface::NetworkInterface
-                             << Solid::DeviceInterface::SerialInterface
                              << Solid::DeviceInterface::Camera
                              << Solid::DeviceInterface::PortableMediaPlayer
                              << Solid::DeviceInterface::DvbInterface

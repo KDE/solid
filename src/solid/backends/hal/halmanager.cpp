@@ -74,8 +74,7 @@ HalManager::HalManager(QObject *parent)
                            << Solid::DeviceInterface::Battery
                            << Solid::DeviceInterface::Button
                            << Solid::DeviceInterface::DvbInterface
-                           << Solid::DeviceInterface::Video
-                           << Solid::DeviceInterface::SerialInterface;
+                           << Solid::DeviceInterface::Video;
 }
 
 HalManager::~HalManager()

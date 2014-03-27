@@ -99,9 +99,6 @@ public:
         case Solid::DeviceInterface::Video:
             // Doesn't exist with UDisks
             break;
-        case Solid::DeviceInterface::SerialInterface:
-            // Doesn't exist with UDisks
-            break;
         case Solid::DeviceInterface::InternetGateway:
             break;
         case Solid::DeviceInterface::NetworkShare:
@@ -154,8 +151,6 @@ public:
             return Solid::DeviceInterface::DvbInterface;
         } else if (capability == "video4linux") {
             return Solid::DeviceInterface::Video;
-        } else if (capability == "serial") {
-            return Solid::DeviceInterface::SerialInterface;
         } else if (capability == "networkshare") {
             return Solid::DeviceInterface::NetworkShare;
         } else {

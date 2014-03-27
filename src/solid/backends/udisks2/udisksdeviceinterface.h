@@ -81,7 +81,6 @@ public:
         case Solid::DeviceInterface::Button:
         case Solid::DeviceInterface::DvbInterface:
         case Solid::DeviceInterface::Video:
-        case Solid::DeviceInterface::SerialInterface:
         case Solid::DeviceInterface::InternetGateway:
         case Solid::DeviceInterface::NetworkShare:
         case Solid::DeviceInterface::Keyboard:

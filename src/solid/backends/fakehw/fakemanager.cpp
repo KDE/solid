@@ -68,7 +68,6 @@ FakeManager::FakeManager(QObject *parent, const QString &xmlFile)
                            << Solid::DeviceInterface::Button
                            << Solid::DeviceInterface::DvbInterface
                            << Solid::DeviceInterface::Video
-                           << Solid::DeviceInterface::SerialInterface
                            << Solid::DeviceInterface::NetworkShare;
 }
 

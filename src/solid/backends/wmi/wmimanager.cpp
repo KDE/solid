@@ -51,7 +51,6 @@ public:
                             //                           << Solid::DeviceInterface::Button
                             //                           << Solid::DeviceInterface::DvbInterface
                             //                           << Solid::DeviceInterface::Video
-                            //                           << Solid::DeviceInterface::SerialInterface
                             ;
 
         update();

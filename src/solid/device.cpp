@@ -66,8 +66,6 @@
 #include <solid/ifaces/dvbinterface.h>
 #include <solid/video.h>
 #include <solid/ifaces/video.h>
-#include <solid/serialinterface.h>
-#include <solid/ifaces/serialinterface.h>
 #include <solid/internetgateway.h>
 #include <solid/ifaces/internetgateway.h>
 
@@ -220,9 +218,6 @@ const Solid::DeviceInterface *Solid::Device::asDeviceInterface(const DeviceInter
                 break;
             case DeviceInterface::Video:
                 iface = deviceinterface_cast(Ifaces::Video, Video, dev_iface);
-                break;
-            case DeviceInterface::SerialInterface:
-                iface = deviceinterface_cast(Ifaces::SerialInterface, SerialInterface, dev_iface);
                 break;
             case DeviceInterface::InternetGateway:
                 iface = deviceinterface_cast(Ifaces::InternetGateway, InternetGateway, dev_iface);

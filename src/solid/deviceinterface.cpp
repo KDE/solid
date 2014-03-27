@@ -96,8 +96,6 @@ QString Solid::DeviceInterface::typeDescription(Type type)
         return tr("Dvb Interface", "Dvb Interface device type");
     case Video:
         return tr("Video", "Video device type");
-    case SerialInterface:
-        return tr("Serial Interface", "Serial Interface device type");
     case InternetGateway:
         return tr("Internet Gateway Device", "Internet Gateway device type");
     case NetworkShare:

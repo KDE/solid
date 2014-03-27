@@ -47,7 +47,6 @@
 #include "halbutton.h"
 #include "haldvbinterface.h"
 #include "halvideo.h"
-#include "halserialinterface.h"
 
 using namespace Solid::Backends::Hal;
 
@@ -470,9 +469,6 @@ QObject *HalDevice::createDeviceInterface(const Solid::DeviceInterface::Type &ty
         break;
     case Solid::DeviceInterface::Video:
         iface = new Video(this);
-        break;
-    case Solid::DeviceInterface::SerialInterface:
-        iface = new SerialInterface(this);
         break;
     case Solid::DeviceInterface::InternetGateway:
         break;

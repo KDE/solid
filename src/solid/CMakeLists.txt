@@ -71,7 +71,6 @@ set(solid_LIB_SRCS
    portablemediaplayer.cpp
    networkinterface.cpp
    networkshare.cpp
-   serialinterface.cpp
    acadapter.cpp
    battery.cpp
    button.cpp
@@ -101,7 +100,6 @@ set(solid_LIB_SRCS
    ifaces/genericinterface.cpp
    ifaces/networkinterface.cpp
    ifaces/networkshare.cpp
-   ifaces/serialinterface.cpp
    ifaces/opticaldisc.cpp
    ifaces/portablemediaplayer.cpp
    ifaces/processor.cpp
@@ -190,7 +188,6 @@ if(NOT WIN32 AND NOT APPLE)
       backends/udev/udevcamera.cpp
       backends/udev/udevvideo.cpp
       backends/udev/udevnetworkinterface.cpp
-      backends/udev/udevserialinterface.cpp
       backends/udev/udevportablemediaplayer.cpp
       backends/udev/udevdvbinterface.cpp
       backends/udev/udevblock.cpp
@@ -231,7 +228,6 @@ if(NOT WIN32 AND NOT APPLE)
       backends/hal/haldevice.cpp
       backends/hal/halmanager.cpp
       backends/hal/halnetworkinterface.cpp
-      backends/hal/halserialinterface.cpp
       backends/hal/halopticaldisc.cpp
       backends/hal/halportablemediaplayer.cpp
       backends/hal/halprocessor.cpp
@@ -337,7 +333,6 @@ if(APPLE)
       backends/iokit/iokitgenericinterface.cpp
       backends/iokit/iokitprocessor.cpp
       backends/iokit/iokitnetworkinterface.cpp
-      backends/iokit/iokitserialinterface.cpp
       backends/iokit/iokitbattery.cpp
    )
 endif()
@@ -482,7 +477,6 @@ ecm_generate_headers(Solid_CamelCase_HEADERS
   DvbInterface
   Predicate
   Video
-  SerialInterface
   InternetGateway
   NetworkShare
   Keyboard

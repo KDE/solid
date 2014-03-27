@@ -59,7 +59,6 @@ public:
      * - Camera : A digital camera
      * - PortableMediaPlayer: A portable media player
      * - NetworkInterface: A network interface
-     * - SerialInterface: A serial interface
      * - NetworkShare: A network share interface
      * - Keyboard: A keyboard
      * - PointingDevice: A mouse, touchpad, touchscreen or a tablet
@@ -70,9 +69,8 @@ public:
                 Camera = 9, PortableMediaPlayer = 10,
                 NetworkInterface = 11, AcAdapter = 12, Battery = 13,
                 Button = 14, DvbInterface = 15, Video = 16,
-                SerialInterface = 17, InternetGateway = 18,
-                NetworkShare = 19, Keyboard = 20, PointingDevice = 21,
-                Last = 0xffff
+                InternetGateway = 17, NetworkShare = 18, Keyboard = 19,
+                PointingDevice = 20, Last = 0xffff
               };
 
     /**

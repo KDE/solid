@@ -86,8 +86,6 @@ const char *IOKitManagerPrivate::typeToName(Solid::DeviceInterface::Type type)
         return kIOEthernetInterfaceClass;
     case Solid::DeviceInterface::Processor:
         return "AppleACPICPU";
-    case Solid::DeviceInterface::SerialInterface:
-        return "IOSerialBSDClient";
     case Solid::DeviceInterface::Battery:
         return "AppleSmartBattery";
 
@@ -142,8 +140,7 @@ IOKitManager::IOKitManager(QObject *parent)
                            << Solid::DeviceInterface::Battery
                            << Solid::DeviceInterface::Button
                            << Solid::DeviceInterface::DvbInterface
-                           << Solid::DeviceInterface::Video
-                           << Solid::DeviceInterface::SerialInterface
+                           << Solid::DeviceInterface::Video;
 }
 
 IOKitManager::~IOKitManager()

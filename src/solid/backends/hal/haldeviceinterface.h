@@ -99,9 +99,6 @@ public:
         case Solid::DeviceInterface::Video:
             list << "video4linux";
             break;
-        case Solid::DeviceInterface::SerialInterface:
-            list << "serial";
-            break;
         case Solid::DeviceInterface::InternetGateway:
             list << "internet_gateway";
         case Solid::DeviceInterface::NetworkShare:
@@ -152,8 +149,6 @@ public:
             return Solid::DeviceInterface::DvbInterface;
         } else if (capability == "video4linux") {
             return Solid::DeviceInterface::Video;
-        } else if (capability == "serial") {
-            return Solid::DeviceInterface::SerialInterface;
         } else if (capability == "networkshare") {
             return Solid::DeviceInterface::NetworkShare;
         } else {

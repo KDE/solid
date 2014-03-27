@@ -27,7 +27,6 @@
 #include "udevportablemediaplayer.h"
 #include "udevdvbinterface.h"
 #include "udevblock.h"
-#include "udevserialinterface.h"
 #include "udevnetworkinterface.h"
 #include "udevbutton.h"
 #include "udevkeyboard.h"
@@ -101,13 +100,6 @@ QString UDevDevice::product() const
                     product = m_device.deviceProperty("ID_MODEL_FROM_DATABASE").toString();
                 }
             }
-        } else if (queryDeviceInterface(Solid::DeviceInterface::SerialInterface)) {
-            const SerialInterface serialIface(const_cast<UDevDevice *>(this));
-            if (serialIface.serialType() == Solid::SerialInterface::Platform) {
-                product.append(QLatin1String("Platform serial"));
-            } else if (serialIface.serialType() == Solid::SerialInterface::Usb) {
-                product.append(QLatin1String("USB Serial Port"));
-            }
         }
 
         if (product.isEmpty()) {
@@ -132,10 +124,6 @@ QString UDevDevice::icon() const
         return QLatin1String("camera-photo");
     } else if (queryDeviceInterface(Solid::DeviceInterface::Video)) {
         return QLatin1String("camera-web");
-    } else if (queryDeviceInterface(Solid::DeviceInterface::SerialInterface)) {
-        // TODO - a serial device can be a modem, or just
-        // a COM port - need a new icon?
-        return QLatin1String("modem");
     }
 
     return QString();
@@ -208,9 +196,6 @@ bool UDevDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type) 
     case Solid::DeviceInterface::NetworkInterface:
         return m_device.subsystem() == QLatin1String("net");
 
-    case Solid::DeviceInterface::SerialInterface:
-        return m_device.subsystem() == QLatin1String("tty");
-
     case Solid::DeviceInterface::Button:
         return m_device.subsystem() == QLatin1String("input");
 
@@ -258,9 +243,6 @@ QObject *UDevDevice::createDeviceInterface(const Solid::DeviceInterface::Type &t
 
     case Solid::DeviceInterface::NetworkInterface:
         return new NetworkInterface(this);
-
-    case Solid::DeviceInterface::SerialInterface:
-        return new SerialInterface(this);
 
     case Solid::DeviceInterface::Button:
         return new Button(this);
