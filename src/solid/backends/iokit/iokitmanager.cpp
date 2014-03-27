@@ -82,8 +82,6 @@ const char *IOKitManagerPrivate::typeToName(Solid::DeviceInterface::Type type)
     switch (type) {
     case Solid::DeviceInterface::Unknown:
         return 0;
-    case Solid::DeviceInterface::NetworkInterface:
-        return kIOEthernetInterfaceClass;
     case Solid::DeviceInterface::Processor:
         return "AppleACPICPU";
     case Solid::DeviceInterface::Battery:
@@ -98,7 +96,6 @@ const char *IOKitManagerPrivate::typeToName(Solid::DeviceInterface::Type type)
         //Solid::DeviceInterface::OpticalDisc:
         //Solid::DeviceInterface::Camera:
         //Solid::DeviceInterface::PortableMediaPlayer:
-        //Solid::DeviceInterface::NetworkInterface:
         //Solid::DeviceInterface::AcAdapter:
         //Solid::DeviceInterface::Button:
         //Solid::DeviceInterface::DvbInterface:
@@ -135,7 +132,6 @@ IOKitManager::IOKitManager(QObject *parent)
                            << Solid::DeviceInterface::OpticalDisc
                            << Solid::DeviceInterface::Camera
                            << Solid::DeviceInterface::PortableMediaPlayer
-                           << Solid::DeviceInterface::NetworkInterface
                            << Solid::DeviceInterface::AcAdapter
                            << Solid::DeviceInterface::Battery
                            << Solid::DeviceInterface::Button

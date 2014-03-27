@@ -69,7 +69,6 @@ HalManager::HalManager(QObject *parent)
                            << Solid::DeviceInterface::OpticalDisc
                            << Solid::DeviceInterface::Camera
                            << Solid::DeviceInterface::PortableMediaPlayer
-                           << Solid::DeviceInterface::NetworkInterface
                            << Solid::DeviceInterface::AcAdapter
                            << Solid::DeviceInterface::Battery
                            << Solid::DeviceInterface::Button

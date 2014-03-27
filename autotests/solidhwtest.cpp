@@ -279,7 +279,6 @@ void SolidHwTest::testDeviceInterfaceIntrospection_data()
     QTest::newRow("DeviceInterface: OpticalDisc") << "OpticalDisc" << (int)Solid::DeviceInterface::OpticalDisc;
     QTest::newRow("DeviceInterface: Camera") << "Camera" << (int)Solid::DeviceInterface::Camera;
     QTest::newRow("DeviceInterface: PortableMediaPlayer") << "PortableMediaPlayer" << (int)Solid::DeviceInterface::PortableMediaPlayer;
-    QTest::newRow("DeviceInterface: NetworkInterface") << "NetworkInterface" << (int)Solid::DeviceInterface::NetworkInterface;
     QTest::newRow("DeviceInterface: AcAdapter") << "AcAdapter" << (int)Solid::DeviceInterface::AcAdapter;
     QTest::newRow("DeviceInterface: Battery") << "Battery" << (int)Solid::DeviceInterface::Battery;
     QTest::newRow("DeviceInterface: Button") << "Button" << (int)Solid::DeviceInterface::Button;

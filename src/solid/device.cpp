@@ -48,8 +48,6 @@
 #include <solid/ifaces/camera.h>
 #include <solid/portablemediaplayer.h>
 #include <solid/ifaces/portablemediaplayer.h>
-#include <solid/networkinterface.h>
-#include <solid/ifaces/networkinterface.h>
 #include <solid/networkshare.h>
 #include <solid/ifaces/networkshare.h>
 #include <solid/acadapter.h>
@@ -198,9 +196,6 @@ const Solid::DeviceInterface *Solid::Device::asDeviceInterface(const DeviceInter
                 break;
             case DeviceInterface::PortableMediaPlayer:
                 iface = deviceinterface_cast(Ifaces::PortableMediaPlayer, PortableMediaPlayer, dev_iface);
-                break;
-            case DeviceInterface::NetworkInterface:
-                iface = deviceinterface_cast(Ifaces::NetworkInterface, NetworkInterface, dev_iface);
                 break;
             case DeviceInterface::AcAdapter:
                 iface = deviceinterface_cast(Ifaces::AcAdapter, AcAdapter, dev_iface);

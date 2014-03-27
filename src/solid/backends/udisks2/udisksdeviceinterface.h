@@ -75,7 +75,6 @@ public:
         case Solid::DeviceInterface::Processor:
         case Solid::DeviceInterface::Camera:
         case Solid::DeviceInterface::PortableMediaPlayer:
-        case Solid::DeviceInterface::NetworkInterface:
         case Solid::DeviceInterface::AcAdapter:
         case Solid::DeviceInterface::Battery:
         case Solid::DeviceInterface::Button:

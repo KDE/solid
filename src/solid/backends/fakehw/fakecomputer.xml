@@ -544,16 +544,6 @@
                 <property key="vendor">Acme Corporation</property>
                 <property key="parent">/org/kde/solid/fakehw/pci_8086_2448</property>
             </device>
-                <!-- Wireless network interface -->
-                <device udi="/org/kde/solid/fakehw/net_00_1a_eb_c9_64_16">
-                    <property key="name">WLAN Interface</property>
-                    <property key="interfaces">NetworkInterface</property>
-                    <property key="parent">/org/kde/solid/fakehw/pci_3452_7890</property>
-                    <property key="ifaceName">wlan0</property>
-                    <property key="wireless">true</property>
-                    <property key="hwAddress">00:1A:EB:C9:64:16</property>
-                    <property key="macAddress">0x001AEBC96416</property>
-                </device>
 
             <!-- PCI device #2 -->
             <device udi="/org/kde/solid/fakehw/pci_8904_5e21">
@@ -561,16 +551,6 @@
                 <property key="vendor">ReallyChip Corporation</property>
                 <property key="parent">/org/kde/solid/fakehw/pci_8086_2448</property>
             </device>
-                <!-- Ethernet network interface -->
-                <device udi="/org/kde/solid/fakehw/net_00_1a_eb_c9_64_15">
-                    <property key="name">Networking Interface</property>
-                    <property key="interfaces">NetworkInterface</property>
-                    <property key="parent">/org/kde/solid/fakehw/pci_8904_5e21</property>
-                    <property key="ifaceName">eth0</property>
-                    <property key="wireless">false</property>
-                    <property key="hwAddress">00:1A:EB:C9:64:15</property>
-                    <property key="macAddress">0x001AEBC96415</property>
-                </device>
 
             <!-- PCI device #3 -->
             <device udi="/org/kde/solid/fakehw/pci_8843_6a11">

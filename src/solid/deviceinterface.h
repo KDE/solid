@@ -58,7 +58,6 @@ public:
      * - OpticalDisc : An optical disc
      * - Camera : A digital camera
      * - PortableMediaPlayer: A portable media player
-     * - NetworkInterface: A network interface
      * - NetworkShare: A network share interface
      * - Keyboard: A keyboard
      * - PointingDevice: A mouse, touchpad, touchscreen or a tablet
@@ -67,10 +66,9 @@ public:
                 Block = 3, StorageAccess = 4, StorageDrive = 5,
                 OpticalDrive = 6, StorageVolume = 7, OpticalDisc = 8,
                 Camera = 9, PortableMediaPlayer = 10,
-                NetworkInterface = 11, AcAdapter = 12, Battery = 13,
-                Button = 14, DvbInterface = 15, Video = 16,
-                NetworkShare = 17, Keyboard = 18,
-                PointingDevice = 19, Last = 0xffff
+                AcAdapter = 11, Battery = 12, Button = 13,
+                DvbInterface = 14, Video = 15, NetworkShare = 16,
+                Keyboard = 17, PointingDevice = 18, Last = 0xffff
               };
 
     /**

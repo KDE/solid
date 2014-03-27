@@ -22,7 +22,6 @@
 #include "iokitgenericinterface.h"
 #include "iokitprocessor.h"
 #include "iokitbattery.h"
-#include "iokitnetworkinterface.h"
 
 #include <QtCore/qdebug.h>
 
@@ -46,9 +45,6 @@ namespace IOKit
 static Solid::DeviceInterface::Type typeFromEntry(const io_registry_entry_t &entry,
         const QMap<QString, QVariant> &properties)
 {
-    if (IOObjectConformsTo(entry, kIOEthernetInterfaceClass)) {
-        return Solid::DeviceInterface::NetworkInterface;
-    }
     if (IOObjectConformsTo(entry, "AppleACPICPU")) {
         return Solid::DeviceInterface::Processor;
     }
@@ -224,11 +220,6 @@ QObject *IOKitDevice::createDeviceInterface(const Solid::DeviceInterface::Type &
     case Solid::DeviceInterface::Processor:
         if (d->type == Solid::DeviceInterface::Processor) {
             iface = new Processor(this);
-        }
-        break;
-    case Solid::DeviceInterface::NetworkInterface:
-        if (d->type == Solid::DeviceInterface::NetworkInterface) {
-            iface = new NetworkInterface(this);
         }
         break;
     case Solid::DeviceInterface::Battery:

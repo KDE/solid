@@ -69,7 +69,6 @@ set(solid_LIB_SRCS
    storageaccess.cpp
    camera.cpp
    portablemediaplayer.cpp
-   networkinterface.cpp
    networkshare.cpp
    acadapter.cpp
    battery.cpp
@@ -97,7 +96,6 @@ set(solid_LIB_SRCS
    ifaces/devicemanager.cpp
    ifaces/dvbinterface.cpp
    ifaces/genericinterface.cpp
-   ifaces/networkinterface.cpp
    ifaces/networkshare.cpp
    ifaces/opticaldisc.cpp
    ifaces/portablemediaplayer.cpp
@@ -121,7 +119,6 @@ set(solid_LIB_SRCS
    backends/fakehw/fakegenericinterface.cpp
    backends/fakehw/fakemanager.cpp
    backends/fakehw/fakenetworkshare.cpp
-   backends/fakehw/fakenetworkinterface.cpp
    backends/fakehw/fakeopticaldisc.cpp
    backends/fakehw/fakeportablemediaplayer.cpp
    backends/fakehw/fakeprocessor.cpp
@@ -183,7 +180,6 @@ if(NOT WIN32 AND NOT APPLE)
       backends/udev/udevprocessor.cpp
       backends/udev/udevcamera.cpp
       backends/udev/udevvideo.cpp
-      backends/udev/udevnetworkinterface.cpp
       backends/udev/udevportablemediaplayer.cpp
       backends/udev/udevdvbinterface.cpp
       backends/udev/udevblock.cpp
@@ -223,7 +219,6 @@ if(NOT WIN32 AND NOT APPLE)
       backends/hal/halgenericinterface.cpp
       backends/hal/haldevice.cpp
       backends/hal/halmanager.cpp
-      backends/hal/halnetworkinterface.cpp
       backends/hal/halopticaldisc.cpp
       backends/hal/halportablemediaplayer.cpp
       backends/hal/halprocessor.cpp
@@ -328,7 +323,6 @@ if(APPLE)
       backends/iokit/iokitdeviceinterface.cpp
       backends/iokit/iokitgenericinterface.cpp
       backends/iokit/iokitprocessor.cpp
-      backends/iokit/iokitnetworkinterface.cpp
       backends/iokit/iokitbattery.cpp
    )
 endif()
@@ -363,7 +357,6 @@ if(WIN32)
           backends/wmi/wmigenericinterface.cpp
           backends/wmi/wmidevice.cpp
           backends/wmi/wmimanager.cpp
-          backends/wmi/wminetworkinterface.cpp
           backends/wmi/wmiopticaldisc.cpp
           backends/wmi/wmiportablemediaplayer.cpp
           backends/wmi/wmiprocessor.cpp
@@ -466,7 +459,6 @@ ecm_generate_headers(Solid_CamelCase_HEADERS
   PortableMediaPlayer
   PowerManagement
   Networking
-  NetworkInterface
   AcAdapter
   Battery
   Button

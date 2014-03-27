@@ -41,7 +41,6 @@
 #include "halopticaldisc.h"
 #include "halcamera.h"
 #include "halportablemediaplayer.h"
-#include "halnetworkinterface.h"
 #include "halacadapter.h"
 #include "halbattery.h"
 #include "halbutton.h"
@@ -451,9 +450,6 @@ QObject *HalDevice::createDeviceInterface(const Solid::DeviceInterface::Type &ty
         break;
     case Solid::DeviceInterface::PortableMediaPlayer:
         iface = new PortableMediaPlayer(this);
-        break;
-    case Solid::DeviceInterface::NetworkInterface:
-        iface = new NetworkInterface(this);
         break;
     case Solid::DeviceInterface::AcAdapter:
         iface = new AcAdapter(this);

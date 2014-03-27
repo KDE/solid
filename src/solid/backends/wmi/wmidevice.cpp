@@ -36,7 +36,6 @@
 #include "wmiopticaldisc.h"
 #include "wmicamera.h"
 #include "wmiportablemediaplayer.h"
-#include "wminetworkinterface.h"
 #include "wmiacadapter.h"
 #include "wmibattery.h"
 #include "wmibutton.h"
@@ -162,8 +161,6 @@ public:
             break;
         case Solid::DeviceInterface::PortableMediaPlayer:
             break;
-        case Solid::DeviceInterface::NetworkInterface:
-            break;
         case Solid::DeviceInterface::AcAdapter:
             break;
         case Solid::DeviceInterface::Battery:
@@ -221,8 +218,6 @@ public:
         case Solid::DeviceInterface::Camera:
             break;
         case Solid::DeviceInterface::PortableMediaPlayer:
-            break;
-        case Solid::DeviceInterface::NetworkInterface:
             break;
         case Solid::DeviceInterface::AcAdapter:
         case Solid::DeviceInterface::Battery:
@@ -635,9 +630,6 @@ QObject *WmiDevice::createDeviceInterface(const Solid::DeviceInterface::Type &ty
         break;
     case Solid::DeviceInterface::PortableMediaPlayer:
         iface = new PortableMediaPlayer(this);
-        break;
-    case Solid::DeviceInterface::NetworkInterface:
-        iface = new NetworkInterface(this);
         break;
     case Solid::DeviceInterface::AcAdapter:
         iface = new AcAdapter(this);
