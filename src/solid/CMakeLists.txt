@@ -72,7 +72,6 @@ set(solid_LIB_SRCS
    networkshare.cpp
    acadapter.cpp
    battery.cpp
-   pointingdevice.cpp
    dvbinterface.cpp
    predicate.cpp
    predicateparse.cpp
@@ -84,7 +83,6 @@ set(solid_LIB_SRCS
    ifaces/acadapter.cpp
    ifaces/battery.cpp
    ifaces/block.cpp
-   ifaces/pointingdevice.cpp
    ifaces/camera.cpp
    ifaces/opticaldrive.cpp
    ifaces/device.cpp
@@ -104,7 +102,6 @@ set(solid_LIB_SRCS
    backends/fakehw/fakeacadapter.cpp
    backends/fakehw/fakebattery.cpp
    backends/fakehw/fakeblock.cpp
-   backends/fakehw/fakepointingdevice.cpp
    backends/fakehw/fakecamera.cpp
    backends/fakehw/fakecdrom.cpp
    backends/fakehw/fakedevice.cpp
@@ -140,7 +137,6 @@ if(NOT WIN32 AND NOT APPLE)
       backends/udev/udevportablemediaplayer.cpp
       backends/udev/udevdvbinterface.cpp
       backends/udev/udevblock.cpp
-      backends/udev/udevpointingdevice.cpp
       backends/shared/udevqtclient.cpp
       backends/shared/udevqtdevice.cpp
       )
@@ -414,7 +410,6 @@ ecm_generate_headers(Solid_CamelCase_HEADERS
   Predicate
   Video
   NetworkShare
-  PointingDevice
 
   REQUIRED_HEADERS Solid_HEADERS
   PREFIX Solid

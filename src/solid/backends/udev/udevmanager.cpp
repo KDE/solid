@@ -144,7 +144,6 @@ UDevManager::UDevManager(QObject *parent)
                              << Solid::DeviceInterface::DvbInterface
                              << Solid::DeviceInterface::Block
                              << Solid::DeviceInterface::Video
-                             << Solid::DeviceInterface::PointingDevice
                              ;
 }
 

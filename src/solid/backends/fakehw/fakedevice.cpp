@@ -34,7 +34,6 @@
 #include "fakeacadapter.h"
 #include "fakebattery.h"
 #include "fakedvbinterface.h"
-#include "fakepointingdevice.h"
 
 #include <QtCore/QStringList>
 #include <QtDBus/QDBusConnection>
@@ -307,9 +306,6 @@ QObject *FakeDevice::createDeviceInterface(const Solid::DeviceInterface::Type &t
         break;
     case Solid::DeviceInterface::NetworkShare:
         iface = new FakeNetworkShare(this);
-        break;
-    case Solid::DeviceInterface::PointingDevice:
-        iface = new FakePointingDevice(this);
         break;
     case Solid::DeviceInterface::Unknown:
         break;

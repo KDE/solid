@@ -96,9 +96,6 @@ public:
         case Solid::DeviceInterface::NetworkShare:
             list << "networkshare";
             break;
-        case Solid::DeviceInterface::PointingDevice:
-            // Is not supported by HAL backaned
-            break;
         case Solid::DeviceInterface::Unknown:
             break;
         case Solid::DeviceInterface::Last:

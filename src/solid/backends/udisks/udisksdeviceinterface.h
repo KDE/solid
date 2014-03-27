@@ -96,9 +96,6 @@ public:
         case Solid::DeviceInterface::NetworkShare:
             // Doesn't exist with UDisks
             break;
-        case Solid::DeviceInterface::PointingDevice:
-            // Doesn't exist with UDisks
-            break;
         case Solid::DeviceInterface::Unknown:
             break;
         case Solid::DeviceInterface::Last:

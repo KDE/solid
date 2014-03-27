@@ -80,9 +80,6 @@ public:
         case Solid::DeviceInterface::DvbInterface:
         case Solid::DeviceInterface::Video:
         case Solid::DeviceInterface::NetworkShare:
-        case Solid::DeviceInterface::PointingDevice:
-            // These do not exist with UDisks
-            break;
         case Solid::DeviceInterface::Unknown:
             break;
         case Solid::DeviceInterface::Last:

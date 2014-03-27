@@ -54,8 +54,6 @@
 #include <solid/ifaces/acadapter.h>
 #include <solid/battery.h>
 #include <solid/ifaces/battery.h>
-#include <solid/pointingdevice.h>
-#include <solid/ifaces/pointingdevice.h>
 #include <solid/dvbinterface.h>
 #include <solid/ifaces/dvbinterface.h>
 #include <solid/video.h>
@@ -207,9 +205,6 @@ const Solid::DeviceInterface *Solid::Device::asDeviceInterface(const DeviceInter
                 break;
             case DeviceInterface::NetworkShare:
                 iface = deviceinterface_cast(Ifaces::NetworkShare, NetworkShare, dev_iface);
-                break;
-            case DeviceInterface::PointingDevice:
-                iface = deviceinterface_cast(Ifaces::PointingDevice, PointingDevice, dev_iface);
                 break;
             case DeviceInterface::Unknown:
             case DeviceInterface::Last:

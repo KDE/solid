@@ -27,7 +27,6 @@
 #include "udevportablemediaplayer.h"
 #include "udevdvbinterface.h"
 #include "udevblock.h"
-#include "udevpointingdevice.h"
 #include "cpuinfo.h"
 
 #include <sys/socket.h>
@@ -172,12 +171,6 @@ bool UDevDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type) 
     case Solid::DeviceInterface::Video:
         return m_device.subsystem() == QLatin1String("video4linux");
 
-    case Solid::DeviceInterface::PointingDevice:
-        return m_device.deviceProperty("ID_INPUT_MOUSE").toInt() == 1 ||
-               m_device.deviceProperty("ID_INPUT_TOUCHPAD").toInt() == 1 ||
-               m_device.deviceProperty("ID_INPUT_TABLET").toInt() == 1 ||
-               m_device.deviceProperty("ID_INPUT_TOUCHSCREEN").toInt() == 1;
-
     default:
         return false;
     }
@@ -210,9 +203,6 @@ QObject *UDevDevice::createDeviceInterface(const Solid::DeviceInterface::Type &t
 
     case Solid::DeviceInterface::Video:
         return new Video(this);
-
-    case Solid::DeviceInterface::PointingDevice:
-        return new PointingDevice(this);
 
     default:
         qFatal("Shouldn't happen");
