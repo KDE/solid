@@ -46,14 +46,7 @@ if(WIN32)
     add_definitions(-DYY_NO_UNISTD_H)
 endif()
 
-if(WIN32)
-   set(solid_LIB_SRCS networking_win.cpp)
-else()
-   set(solid_LIB_SRCS networking.cpp)
-endif()
-
 set(solid_LIB_SRCS
-   ${solid_LIB_SRCS}
    solidnamespace.cpp
    managerbase.cpp
    device.cpp
@@ -76,7 +69,6 @@ set(solid_LIB_SRCS
    predicateparse.cpp
    predicate_lexer.c
    predicate_parser.c
-   powermanagement.cpp
 
    ifaces/acadapter.cpp
    ifaces/battery.cpp
@@ -324,18 +316,6 @@ if(WIN32)
     endif()
 endif()
 
-set_source_files_properties( org.freedesktop.PowerManagement.xml
-                             org.freedesktop.PowerManagement.Inhibit.xml
-                             org.kde.Solid.PowerManagement.PolicyAgent.xml
-                             PROPERTIES NO_NAMESPACE TRUE)
-
-qt5_add_dbus_interfaces(solid_LIB_SRCS org.freedesktop.PowerManagement.xml
-                        org.freedesktop.PowerManagement.Inhibit.xml
-                        org.kde.Solid.PowerManagement.PolicyAgent.xml)
-
-qt5_add_dbus_interface(solid_LIB_SRCS org.kde.Solid.Networking.Client.xml
-                       org_kde_solid_networking_client)
-
 set(solid_OPTIONAL_LIBS)
 
 if(WIN32)
@@ -390,8 +370,6 @@ ecm_generate_headers(Solid_CamelCase_HEADERS
   OpticalDisc
   Camera
   PortableMediaPlayer
-  PowerManagement
-  Networking
   AcAdapter
   Battery
   Predicate
@@ -403,19 +381,6 @@ ecm_generate_headers(Solid_CamelCase_HEADERS
 install(FILES ${Solid_CamelCase_HEADERS} DESTINATION ${INCLUDE_INSTALL_DIR}/Solid/Solid COMPONENT Devel)
 
 install(TARGETS KF5Solid EXPORT KF5SolidTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
-
-install(FILES org.kde.Solid.Networking.Client.xml
-        DESTINATION ${DBUS_INTERFACES_INSTALL_DIR}
-        RENAME kf5_org.kde.Solid.Networking.Client.xml)
-install(FILES org.kde.Solid.PowerManagement.PolicyAgent.xml
-        DESTINATION ${DBUS_INTERFACES_INSTALL_DIR}
-        RENAME kf5_org.kde.Solid.PowerManagement.PolicyAgent.xml)
-install(FILES org.freedesktop.PowerManagement.xml
-        DESTINATION ${DBUS_INTERFACES_INSTALL_DIR}
-        RENAME kf5_org.freedesktop.PowerManagement.xml)
-install(FILES org.freedesktop.PowerManagement.Inhibit.xml
-        DESTINATION ${DBUS_INTERFACES_INSTALL_DIR}
-        RENAME kf5_org.freedesktop.PowerManagement.Inhibit.xml)
 
 ########### static lib for tests  ###############
 
