@@ -131,43 +131,7 @@ set(solid_LIB_SRCS
    backends/shared/cpufeatures.cpp
 )
 
-if(NOT APPLE)
-  set(HUPNP_ENABLED FALSE CACHE BOOL "explicitly enable the compilation of the hupnp backend")
-  if (HUPNP_ENABLED AND HUPNP_FOUND AND ((HUPNP_VERSION_MAJOR EQUAL 0 AND HUPNP_VERSION_MINOR EQUAL 9) OR (HUPNP_VERSION_MAJOR EQUAL 1)))
-    include_directories( ${HUPNP_INCLUDE_DIR} )
-    message(STATUS "Building Solid UPnP backend." )
-    set(solid_LIB_SRCS ${solid_LIB_SRCS}
-       backends/upnp/upnpdevice.cpp
-       backends/upnp/upnpdevicemanager.cpp
-       backends/upnp/upnpdeviceinterface.cpp
-       backends/upnp/upnpmediaserver.cpp
-       backends/upnp/upnpcontrolpoint.cpp
-    )
-  else ()
-    if(NOT HUPNP_ENABLED)
-        message(STATUS "To have UPnP support, explicitly enable HUPNP_ENABLED in the cmake cache")
-    endif()
-    set(HUPNP_FOUND false)
-  endif ()
-endif()
-
 if(NOT WIN32 AND NOT APPLE)
-#   message(STATUS "Building Solid KUPnP backend." )
-#   set(solid_LIB_SRCS ${solid_LIB_SRCS}
-
-#   backends/kupnp/cagibidbuscodec.cpp
-#   backends/kupnp/cagibidevice.cpp
-#   backends/kupnp/kupnpstorageaccess.cpp
-#   backends/kupnp/kupnpdeviceinterface.cpp
-#   backends/kupnp/mediaserver1.cpp
-#   backends/kupnp/mediaserver2.cpp
-#   backends/kupnp/mediaserver3.cpp
-#   backends/kupnp/kupnpdevice.cpp
-#   backends/kupnp/kupnprootdevice.cpp
-#   backends/kupnp/kupnpmanager.cpp
-
-#   )
-
    if ( UDEV_FOUND )
       message(STATUS "Building Solid UDev backend." )
       set(solid_LIB_SRCS ${solid_LIB_SRCS}
@@ -412,10 +376,6 @@ endif()
 
 if(APPLE)
    set(solid_OPTIONAL_LIBS ${IOKIT_LIBRARY})
-endif()
-
-if ( HUPNP_FOUND )
-   set(solid_OPTIONAL_LIBS ${solid_OPTIONAL_LIBS} ${HUPNP_LIBS})
 endif()
 
 if ( UDEV_FOUND )
