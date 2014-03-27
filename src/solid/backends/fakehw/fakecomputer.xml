@@ -55,39 +55,6 @@
         </device>
 
 
-        <!-- So that it looks like a laptop,
-             provide this computer a few buttons:
-               - power button
-               - sleep button
-               - lid switch -->
-        <device udi="/org/kde/solid/fakehw/acpi_PWB">
-            <property key="name">Power Button</property>
-            <property key="interfaces">Button</property>
-            <property key="parent">/org/kde/solid/fakehw/computer</property>
-
-            <property key="type">PowerButton</property>
-            <property key="hasState">false</property>
-        </device>
-        <device udi="/org/kde/solid/fakehw/acpi_SLPB">
-            <property key="name">Sleep Button</property>
-            <property key="interfaces">Button</property>
-            <property key="parent">/org/kde/solid/fakehw/computer</property>
-
-            <property key="type">SleepButton</property>
-            <property key="hasState">false</property>
-        </device>
-        <device udi="/org/kde/solid/fakehw/acpi_LID0">
-            <property key="name">Lid Switch</property>
-            <property key="interfaces">Button</property>
-            <property key="parent">/org/kde/solid/fakehw/computer</property>
-
-            <property key="type">LidButton</property>
-            <property key="hasState">true</property>
-            <property key="stateValue">false</property>
-        </device>
-
-
-
         <!-- Two CPUs -->
         <device udi="/org/kde/solid/fakehw/acpi_CPU0">
             <property key="name">Solid Processor #0</property>

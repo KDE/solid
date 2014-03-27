@@ -72,7 +72,6 @@ set(solid_LIB_SRCS
    networkshare.cpp
    acadapter.cpp
    battery.cpp
-   button.cpp
    keyboard.cpp
    pointingdevice.cpp
    dvbinterface.cpp
@@ -86,7 +85,6 @@ set(solid_LIB_SRCS
    ifaces/acadapter.cpp
    ifaces/battery.cpp
    ifaces/block.cpp
-   ifaces/button.cpp
    ifaces/keyboard.cpp
    ifaces/pointingdevice.cpp
    ifaces/camera.cpp
@@ -108,7 +106,6 @@ set(solid_LIB_SRCS
    backends/fakehw/fakeacadapter.cpp
    backends/fakehw/fakebattery.cpp
    backends/fakehw/fakeblock.cpp
-   backends/fakehw/fakebutton.cpp
    backends/fakehw/fakekeyboard.cpp
    backends/fakehw/fakepointingdevice.cpp
    backends/fakehw/fakecamera.cpp
@@ -135,7 +132,6 @@ if(NOT WIN32 AND NOT APPLE)
    if ( UDEV_FOUND )
       message(STATUS "Building Solid UDev backend." )
       set(solid_LIB_SRCS ${solid_LIB_SRCS}
-      backends/udev/utils.cpp
       backends/udev/udevdevice.cpp
       backends/udev/udevmanager.cpp
       backends/udev/udevdeviceinterface.cpp
@@ -147,7 +143,6 @@ if(NOT WIN32 AND NOT APPLE)
       backends/udev/udevportablemediaplayer.cpp
       backends/udev/udevdvbinterface.cpp
       backends/udev/udevblock.cpp
-      backends/udev/udevbutton.cpp
       backends/udev/udevkeyboard.cpp
       backends/udev/udevpointingdevice.cpp
       backends/shared/udevqtclient.cpp
@@ -174,7 +169,6 @@ if(NOT WIN32 AND NOT APPLE)
       backends/hal/halacadapter.cpp
       backends/hal/halbattery.cpp
       backends/hal/halblock.cpp
-      backends/hal/halbutton.cpp
       backends/hal/halcamera.cpp
       backends/hal/halcdrom.cpp
       backends/hal/haldeviceinterface.cpp
@@ -313,7 +307,6 @@ if(WIN32)
           backends/wmi/wmiacadapter.cpp
           backends/wmi/wmibattery.cpp
           backends/wmi/wmiblock.cpp
-          backends/wmi/wmibutton.cpp
           backends/wmi/wmicamera.cpp
           backends/wmi/wmicdrom.cpp
           backends/wmi/wmideviceinterface.cpp
@@ -421,7 +414,6 @@ ecm_generate_headers(Solid_CamelCase_HEADERS
   Networking
   AcAdapter
   Battery
-  Button
   DvbInterface
   Predicate
   Video

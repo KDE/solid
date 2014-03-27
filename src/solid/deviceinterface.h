@@ -66,9 +66,9 @@ public:
                 Block = 3, StorageAccess = 4, StorageDrive = 5,
                 OpticalDrive = 6, StorageVolume = 7, OpticalDisc = 8,
                 Camera = 9, PortableMediaPlayer = 10,
-                AcAdapter = 11, Battery = 12, Button = 13,
-                DvbInterface = 14, Video = 15, NetworkShare = 16,
-                Keyboard = 17, PointingDevice = 18, Last = 0xffff
+                AcAdapter = 11, Battery = 12, DvbInterface = 13,
+                Video = 14, NetworkShare = 15, Keyboard = 16,
+                PointingDevice = 17, Last = 0xffff
               };
 
     /**

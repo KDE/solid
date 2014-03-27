@@ -97,7 +97,6 @@ const char *IOKitManagerPrivate::typeToName(Solid::DeviceInterface::Type type)
         //Solid::DeviceInterface::Camera:
         //Solid::DeviceInterface::PortableMediaPlayer:
         //Solid::DeviceInterface::AcAdapter:
-        //Solid::DeviceInterface::Button:
         //Solid::DeviceInterface::DvbInterface:
         //Solid::DeviceInterface::Video:
     }
@@ -134,7 +133,6 @@ IOKitManager::IOKitManager(QObject *parent)
                            << Solid::DeviceInterface::PortableMediaPlayer
                            << Solid::DeviceInterface::AcAdapter
                            << Solid::DeviceInterface::Battery
-                           << Solid::DeviceInterface::Button
                            << Solid::DeviceInterface::DvbInterface
                            << Solid::DeviceInterface::Video;
 }

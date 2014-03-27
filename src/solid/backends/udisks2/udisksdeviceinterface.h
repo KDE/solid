@@ -77,7 +77,6 @@ public:
         case Solid::DeviceInterface::PortableMediaPlayer:
         case Solid::DeviceInterface::AcAdapter:
         case Solid::DeviceInterface::Battery:
-        case Solid::DeviceInterface::Button:
         case Solid::DeviceInterface::DvbInterface:
         case Solid::DeviceInterface::Video:
         case Solid::DeviceInterface::NetworkShare:

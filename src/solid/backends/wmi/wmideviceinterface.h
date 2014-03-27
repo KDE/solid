@@ -88,9 +88,6 @@ public:
         case Solid::DeviceInterface::Battery:
             list << "battery";
             break;
-        case Solid::DeviceInterface::Button:
-            list << "button";
-            break;
         case Solid::DeviceInterface::DvbInterface:
             list << "dvb";
             break;
@@ -131,8 +128,6 @@ public:
             return Solid::DeviceInterface::AcAdapter;
         } else if (capability == "battery") {
             return Solid::DeviceInterface::Battery;
-        } else if (capability == "button") {
-            return Solid::DeviceInterface::Button;
         } else if (capability == "dvb") {
             return Solid::DeviceInterface::DvbInterface;
         } else if (capability == "video4linux") {

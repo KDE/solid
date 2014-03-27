@@ -54,8 +54,6 @@
 #include <solid/ifaces/acadapter.h>
 #include <solid/battery.h>
 #include <solid/ifaces/battery.h>
-#include <solid/button.h>
-#include <solid/ifaces/button.h>
 #include <solid/keyboard.h>
 #include <solid/ifaces/keyboard.h>
 #include <solid/pointingdevice.h>
@@ -202,9 +200,6 @@ const Solid::DeviceInterface *Solid::Device::asDeviceInterface(const DeviceInter
                 break;
             case DeviceInterface::Battery:
                 iface = deviceinterface_cast(Ifaces::Battery, Battery, dev_iface);
-                break;
-            case DeviceInterface::Button:
-                iface = deviceinterface_cast(Ifaces::Button, Button, dev_iface);
                 break;
             case DeviceInterface::DvbInterface:
                 iface = deviceinterface_cast(Ifaces::DvbInterface, DvbInterface, dev_iface);

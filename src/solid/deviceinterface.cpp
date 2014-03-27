@@ -88,8 +88,6 @@ QString Solid::DeviceInterface::typeDescription(Type type)
         return tr("Ac Adapter", "Ac Adapter device type");
     case Battery:
         return tr("Battery", "Battery device type");
-    case Button:
-        return tr("Button", "Button device type");
     case DvbInterface:
         return tr("Dvb Interface", "Dvb Interface device type");
     case Video:

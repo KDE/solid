@@ -43,7 +43,6 @@
 #include "halportablemediaplayer.h"
 #include "halacadapter.h"
 #include "halbattery.h"
-#include "halbutton.h"
 #include "haldvbinterface.h"
 #include "halvideo.h"
 
@@ -456,9 +455,6 @@ QObject *HalDevice::createDeviceInterface(const Solid::DeviceInterface::Type &ty
         break;
     case Solid::DeviceInterface::Battery:
         iface = new Battery(this);
-        break;
-    case Solid::DeviceInterface::Button:
-        iface = new Button(this);
         break;
     case Solid::DeviceInterface::DvbInterface:
         iface = new DvbInterface(this);
