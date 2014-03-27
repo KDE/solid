@@ -53,7 +53,6 @@ public:
                             //                           << Solid::DeviceInterface::DvbInterface
                             //                           << Solid::DeviceInterface::Video
                             //                           << Solid::DeviceInterface::SerialInterface
-                            //                           << Solid::DeviceInterface::SmartCardReader
                             ;
 
         update();

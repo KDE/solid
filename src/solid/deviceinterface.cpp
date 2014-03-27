@@ -100,8 +100,6 @@ QString Solid::DeviceInterface::typeDescription(Type type)
         return tr("Video", "Video device type");
     case SerialInterface:
         return tr("Serial Interface", "Serial Interface device type");
-    case SmartCardReader:
-        return tr("Smart Card Reader", "Smart Card Reader device type");
     case InternetGateway:
         return tr("Internet Gateway Device", "Internet Gateway device type");
     case NetworkShare:

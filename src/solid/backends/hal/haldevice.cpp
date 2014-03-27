@@ -49,7 +49,6 @@
 #include "haldvbinterface.h"
 #include "halvideo.h"
 #include "halserialinterface.h"
-#include "halsmartcardreader.h"
 
 using namespace Solid::Backends::Hal;
 
@@ -308,8 +307,6 @@ QString HalDevice::icon() const
         // TODO - a serial device can be a modem, or just
         // a COM port - need a new icon?
         return QLatin1String("modem");
-    } else if (category == "smart_card_reader") {
-        return QLatin1String("smart-card-reader");
     }
 
     return QString();
@@ -501,9 +498,6 @@ QObject *HalDevice::createDeviceInterface(const Solid::DeviceInterface::Type &ty
         break;
     case Solid::DeviceInterface::SerialInterface:
         iface = new SerialInterface(this);
-        break;
-    case Solid::DeviceInterface::SmartCardReader:
-        iface = new SmartCardReader(this);
         break;
     case Solid::DeviceInterface::InternetGateway:
         break;

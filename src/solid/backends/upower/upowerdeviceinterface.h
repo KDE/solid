@@ -109,9 +109,6 @@ public:
             break;
         case Solid::DeviceInterface::InternetGateway:
             break;
-        case Solid::DeviceInterface::SmartCardReader:
-            // Doesn't exist with UDisks
-            break;
         case Solid::DeviceInterface::NetworkShare:
             // Doesn't exist with UPower
             break;
@@ -166,8 +163,6 @@ public:
             return Solid::DeviceInterface::Video;
         } else if (capability == "serial") {
             return Solid::DeviceInterface::SerialInterface;
-        } else if (capability == "smart_card_reader") {
-            return Solid::DeviceInterface::SmartCardReader;
         } else if (capability == "networkshare") {
             return Solid::DeviceInterface::NetworkShare;
         } else {

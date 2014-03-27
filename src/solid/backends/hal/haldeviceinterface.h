@@ -105,8 +105,6 @@ public:
         case Solid::DeviceInterface::SerialInterface:
             list << "serial";
             break;
-        case Solid::DeviceInterface::SmartCardReader:
-            list << "smart_card_reader";
         case Solid::DeviceInterface::InternetGateway:
             list << "internet_gateway";
         case Solid::DeviceInterface::NetworkShare:
@@ -161,8 +159,6 @@ public:
             return Solid::DeviceInterface::Video;
         } else if (capability == "serial") {
             return Solid::DeviceInterface::SerialInterface;
-        } else if (capability == "smart_card_reader") {
-            return Solid::DeviceInterface::SmartCardReader;
         } else if (capability == "networkshare") {
             return Solid::DeviceInterface::NetworkShare;
         } else {

@@ -76,8 +76,7 @@ HalManager::HalManager(QObject *parent)
                            << Solid::DeviceInterface::AudioInterface
                            << Solid::DeviceInterface::DvbInterface
                            << Solid::DeviceInterface::Video
-                           << Solid::DeviceInterface::SerialInterface
-                           << Solid::DeviceInterface::SmartCardReader;
+                           << Solid::DeviceInterface::SerialInterface;
 }
 
 HalManager::~HalManager()

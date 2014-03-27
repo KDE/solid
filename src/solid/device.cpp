@@ -70,8 +70,6 @@
 #include <solid/ifaces/video.h>
 #include <solid/serialinterface.h>
 #include <solid/ifaces/serialinterface.h>
-#include <solid/smartcardreader.h>
-#include <solid/ifaces/smartcardreader.h>
 #include <solid/internetgateway.h>
 #include <solid/ifaces/internetgateway.h>
 
@@ -230,9 +228,6 @@ const Solid::DeviceInterface *Solid::Device::asDeviceInterface(const DeviceInter
                 break;
             case DeviceInterface::SerialInterface:
                 iface = deviceinterface_cast(Ifaces::SerialInterface, SerialInterface, dev_iface);
-                break;
-            case DeviceInterface::SmartCardReader:
-                iface = deviceinterface_cast(Ifaces::SmartCardReader, SmartCardReader, dev_iface);
                 break;
             case DeviceInterface::InternetGateway:
                 iface = deviceinterface_cast(Ifaces::InternetGateway, InternetGateway, dev_iface);

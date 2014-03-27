@@ -85,7 +85,6 @@ set(solid_LIB_SRCS
    predicate_parser.c
    powermanagement.cpp
    video.cpp
-   smartcardreader.cpp
    internetgateway.cpp
 
    ifaces/acadapter.cpp
@@ -112,7 +111,6 @@ set(solid_LIB_SRCS
    ifaces/storagevolume.cpp
    ifaces/storageaccess.cpp
    ifaces/video.cpp
-   ifaces/smartcardreader.cpp
    ifaces/internetgateway.cpp
 
    backends/fakehw/fakeacadapter.cpp
@@ -138,7 +136,6 @@ set(solid_LIB_SRCS
    backends/fakehw/fakestorageaccess.cpp
    backends/fakehw/fakevideo.cpp
    backends/fakehw/fakevolume.cpp
-   backends/fakehw/fakesmartcardreader.cpp
 
    backends/shared/rootdevice.cpp
    backends/shared/cpufeatures.cpp
@@ -248,7 +245,6 @@ if(NOT WIN32 AND NOT APPLE)
       backends/hal/halstorage.cpp
       backends/hal/halvideo.cpp
       backends/hal/halvolume.cpp
-      backends/hal/halsmartcardreader.cpp
    )
 
    message(STATUS "Building Solid UPower backend." )
@@ -495,7 +491,6 @@ ecm_generate_headers(Solid_CamelCase_HEADERS
   Predicate
   Video
   SerialInterface
-  SmartCardReader
   InternetGateway
   NetworkShare
   Keyboard
