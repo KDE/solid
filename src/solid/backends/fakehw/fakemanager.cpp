@@ -65,7 +65,6 @@ FakeManager::FakeManager(QObject *parent, const QString &xmlFile)
                            << Solid::DeviceInterface::AcAdapter
                            << Solid::DeviceInterface::Battery
                            << Solid::DeviceInterface::DvbInterface
-                           << Solid::DeviceInterface::Video
                            << Solid::DeviceInterface::NetworkShare;
 }
 

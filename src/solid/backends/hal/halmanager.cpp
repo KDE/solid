@@ -71,8 +71,7 @@ HalManager::HalManager(QObject *parent)
                            << Solid::DeviceInterface::PortableMediaPlayer
                            << Solid::DeviceInterface::AcAdapter
                            << Solid::DeviceInterface::Battery
-                           << Solid::DeviceInterface::DvbInterface
-                           << Solid::DeviceInterface::Video;
+                           << Solid::DeviceInterface::DvbInterface;
 }
 
 HalManager::~HalManager()

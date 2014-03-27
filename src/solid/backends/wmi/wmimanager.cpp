@@ -48,7 +48,6 @@ public:
                             << Solid::DeviceInterface::AcAdapter
                             << Solid::DeviceInterface::Battery
                             //                           << Solid::DeviceInterface::DvbInterface
-                            //                           << Solid::DeviceInterface::Video
                             ;
 
         update();

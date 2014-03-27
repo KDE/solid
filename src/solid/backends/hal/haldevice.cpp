@@ -44,7 +44,6 @@
 #include "halacadapter.h"
 #include "halbattery.h"
 #include "haldvbinterface.h"
-#include "halvideo.h"
 
 using namespace Solid::Backends::Hal;
 
@@ -276,8 +275,6 @@ QString HalDevice::icon() const
         return "battery";
     } else if (category == "processor") {
         return "cpu"; // FIXME: Doesn't follow icon spec
-    } else if (category == "video4linux") {
-        return "camera-web";
     } else if (category == "serial") {
         // TODO - a serial device can be a modem, or just
         // a COM port - need a new icon?
@@ -383,10 +380,6 @@ bool HalDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type) c
     } else if (type == Solid::DeviceInterface::StorageAccess) {
         return prop("org.freedesktop.Hal.Device.Volume.method_names").toStringList().contains("Mount")
                || prop("info.interfaces").toStringList().contains("org.freedesktop.Hal.Device.Volume.Crypto");
-    } else if (type == Solid::DeviceInterface::Video) {
-        if (!prop("video4linux.device").toString().contains("video")) {
-            return false;
-        }
     } else if (d->capListCache.contains(type)) {
         return d->capListCache.value(type);
     }
@@ -458,9 +451,6 @@ QObject *HalDevice::createDeviceInterface(const Solid::DeviceInterface::Type &ty
         break;
     case Solid::DeviceInterface::DvbInterface:
         iface = new DvbInterface(this);
-        break;
-    case Solid::DeviceInterface::Video:
-        iface = new Video(this);
         break;
     case Solid::DeviceInterface::NetworkShare:
         break;

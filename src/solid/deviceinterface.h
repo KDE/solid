@@ -65,7 +65,7 @@ public:
                 OpticalDrive = 6, StorageVolume = 7, OpticalDisc = 8,
                 Camera = 9, PortableMediaPlayer = 10,
                 AcAdapter = 11, Battery = 12, DvbInterface = 13,
-                Video = 14, NetworkShare = 15, Last = 0xffff
+                NetworkShare = 14, Last = 0xffff
               };
 
     /**

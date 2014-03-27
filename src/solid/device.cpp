@@ -56,8 +56,6 @@
 #include <solid/ifaces/battery.h>
 #include <solid/dvbinterface.h>
 #include <solid/ifaces/dvbinterface.h>
-#include <solid/video.h>
-#include <solid/ifaces/video.h>
 
 Solid::Device::Device(const QString &udi)
 {
@@ -199,9 +197,6 @@ const Solid::DeviceInterface *Solid::Device::asDeviceInterface(const DeviceInter
                 break;
             case DeviceInterface::DvbInterface:
                 iface = deviceinterface_cast(Ifaces::DvbInterface, DvbInterface, dev_iface);
-                break;
-            case DeviceInterface::Video:
-                iface = deviceinterface_cast(Ifaces::Video, Video, dev_iface);
                 break;
             case DeviceInterface::NetworkShare:
                 iface = deviceinterface_cast(Ifaces::NetworkShare, NetworkShare, dev_iface);

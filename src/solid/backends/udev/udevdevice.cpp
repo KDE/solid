@@ -23,7 +23,6 @@
 #include "udevgenericinterface.h"
 #include "udevprocessor.h"
 #include "udevcamera.h"
-#include "udevvideo.h"
 #include "udevportablemediaplayer.h"
 #include "udevdvbinterface.h"
 #include "udevblock.h"
@@ -64,8 +63,6 @@ QString UDevDevice::vendor() const
         if (queryDeviceInterface(Solid::DeviceInterface::Processor)) {
             // sysfs doesn't have anything useful here
             vendor = extractCpuInfoLine(deviceNumber(), "vendor_id\\s+:\\s+(\\S.+)");
-        } else if (queryDeviceInterface(Solid::DeviceInterface::Video)) {
-            vendor = m_device.deviceProperty("ID_VENDOR").toString().replace('_', " ");
         }
 
         if (vendor.isEmpty()) {
@@ -82,8 +79,6 @@ QString UDevDevice::product() const
         if (queryDeviceInterface(Solid::DeviceInterface::Processor)) {
             // sysfs doesn't have anything useful here
             product = extractCpuInfoLine(deviceNumber(), "model name\\s+:\\s+(\\S.+)");
-        } else if (queryDeviceInterface(Solid::DeviceInterface::Video)) {
-            product = m_device.deviceProperty("ID_V4L_PRODUCT").toString();
         }
 
         if (product.isEmpty()) {
@@ -106,8 +101,6 @@ QString UDevDevice::icon() const
         return QLatin1String("multimedia-player");
     } else if (queryDeviceInterface(Solid::DeviceInterface::Camera)) {
         return QLatin1String("camera-photo");
-    } else if (queryDeviceInterface(Solid::DeviceInterface::Video)) {
-        return QLatin1String("camera-web");
     }
 
     return QString();
@@ -140,8 +133,6 @@ QString UDevDevice::description() const
         }
     } else if (queryDeviceInterface(Solid::DeviceInterface::Camera)) {
         return tr("Camera");
-    } else if (queryDeviceInterface(Solid::DeviceInterface::Video)) {
-        return product();
     }
 
     return QString();
@@ -167,9 +158,6 @@ bool UDevDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type) 
 
     case Solid::DeviceInterface::Block:
         return !property("MAJOR").toString().isEmpty();
-
-    case Solid::DeviceInterface::Video:
-        return m_device.subsystem() == QLatin1String("video4linux");
 
     default:
         return false;
@@ -200,9 +188,6 @@ QObject *UDevDevice::createDeviceInterface(const Solid::DeviceInterface::Type &t
 
     case Solid::DeviceInterface::Block:
         return new Block(this);
-
-    case Solid::DeviceInterface::Video:
-        return new Video(this);
 
     default:
         qFatal("Shouldn't happen");

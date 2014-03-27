@@ -78,7 +78,6 @@ set(solid_LIB_SRCS
    predicate_lexer.c
    predicate_parser.c
    powermanagement.cpp
-   video.cpp
 
    ifaces/acadapter.cpp
    ifaces/battery.cpp
@@ -97,7 +96,6 @@ set(solid_LIB_SRCS
    ifaces/storagedrive.cpp
    ifaces/storagevolume.cpp
    ifaces/storageaccess.cpp
-   ifaces/video.cpp
 
    backends/fakehw/fakeacadapter.cpp
    backends/fakehw/fakebattery.cpp
@@ -115,7 +113,6 @@ set(solid_LIB_SRCS
    backends/fakehw/fakeprocessor.cpp
    backends/fakehw/fakestorage.cpp
    backends/fakehw/fakestorageaccess.cpp
-   backends/fakehw/fakevideo.cpp
    backends/fakehw/fakevolume.cpp
 
    backends/shared/rootdevice.cpp
@@ -133,7 +130,6 @@ if(NOT WIN32 AND NOT APPLE)
       backends/udev/cpuinfo.cpp
       backends/udev/udevprocessor.cpp
       backends/udev/udevcamera.cpp
-      backends/udev/udevvideo.cpp
       backends/udev/udevportablemediaplayer.cpp
       backends/udev/udevdvbinterface.cpp
       backends/udev/udevblock.cpp
@@ -174,7 +170,6 @@ if(NOT WIN32 AND NOT APPLE)
       backends/hal/halprocessor.cpp
       backends/hal/halstorageaccess.cpp
       backends/hal/halstorage.cpp
-      backends/hal/halvideo.cpp
       backends/hal/halvolume.cpp
    )
 
@@ -312,7 +307,6 @@ if(WIN32)
           backends/wmi/wmiquery.cpp
           backends/wmi/wmistorageaccess.cpp
           backends/wmi/wmistorage.cpp
-          backends/wmi/wmivideo.cpp
           backends/wmi/wmivolume.cpp
        )
     else()
@@ -408,7 +402,6 @@ ecm_generate_headers(Solid_CamelCase_HEADERS
   Battery
   DvbInterface
   Predicate
-  Video
   NetworkShare
 
   REQUIRED_HEADERS Solid_HEADERS

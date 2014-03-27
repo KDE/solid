@@ -91,9 +91,6 @@ public:
         case Solid::DeviceInterface::DvbInterface:
             list << "dvb";
             break;
-        case Solid::DeviceInterface::Video:
-            list << "video4linux";
-            break;
         case Solid::DeviceInterface::NetworkShare:
             list << "networkshare";
             break;
@@ -130,8 +127,6 @@ public:
             return Solid::DeviceInterface::Battery;
         } else if (capability == "dvb") {
             return Solid::DeviceInterface::DvbInterface;
-        } else if (capability == "video4linux") {
-            return Solid::DeviceInterface::Video;
         } else if (capability == "networkshare") {
             return Solid::DeviceInterface::NetworkShare;
         } else {

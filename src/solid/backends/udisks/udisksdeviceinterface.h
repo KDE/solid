@@ -90,9 +90,6 @@ public:
         case Solid::DeviceInterface::DvbInterface:
             // Doesn't exist with UDisks
             break;
-        case Solid::DeviceInterface::Video:
-            // Doesn't exist with UDisks
-            break;
         case Solid::DeviceInterface::NetworkShare:
             // Doesn't exist with UDisks
             break;
@@ -131,8 +128,6 @@ public:
             return Solid::DeviceInterface::Battery;
         } else if (capability == "dvb") {
             return Solid::DeviceInterface::DvbInterface;
-        } else if (capability == "video4linux") {
-            return Solid::DeviceInterface::Video;
         } else if (capability == "networkshare") {
             return Solid::DeviceInterface::NetworkShare;
         } else {

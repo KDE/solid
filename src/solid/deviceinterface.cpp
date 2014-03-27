@@ -90,8 +90,6 @@ QString Solid::DeviceInterface::typeDescription(Type type)
         return tr("Battery", "Battery device type");
     case DvbInterface:
         return tr("Dvb Interface", "Dvb Interface device type");
-    case Video:
-        return tr("Video", "Video device type");
     case NetworkShare:
         return tr("Network Share", "Network Share device type");
     case Last:
