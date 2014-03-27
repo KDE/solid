@@ -38,7 +38,6 @@
 #include "wmiportablemediaplayer.h"
 #include "wmiacadapter.h"
 #include "wmibattery.h"
-#include "wmidvbinterface.h"
 
 #include <QtCore/QDebug>
 
@@ -163,8 +162,6 @@ public:
             break;
         case Solid::DeviceInterface::Battery:
             break;
-        case Solid::DeviceInterface::DvbInterface:
-            break;
         case Solid::DeviceInterface::Unknown:
         case Solid::DeviceInterface::Last:
         default:
@@ -216,8 +213,6 @@ public:
         case Solid::DeviceInterface::AcAdapter:
         case Solid::DeviceInterface::Battery:
             wmiTable = "Win32_Battery";
-            break;
-        case Solid::DeviceInterface::DvbInterface:
             break;
         case Solid::DeviceInterface::Unknown:
         case Solid::DeviceInterface::Last:
@@ -626,9 +621,6 @@ QObject *WmiDevice::createDeviceInterface(const Solid::DeviceInterface::Type &ty
         break;
     case Solid::DeviceInterface::Battery:
         iface = new Battery(this);
-        break;
-    case Solid::DeviceInterface::DvbInterface:
-        iface = new DvbInterface(this);
         break;
     case Solid::DeviceInterface::Unknown:
     case Solid::DeviceInterface::Last:

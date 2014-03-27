@@ -139,7 +139,6 @@ UDevManager::UDevManager(QObject *parent)
                              << Solid::DeviceInterface::Processor
                              << Solid::DeviceInterface::Camera
                              << Solid::DeviceInterface::PortableMediaPlayer
-                             << Solid::DeviceInterface::DvbInterface
                              << Solid::DeviceInterface::Block
                              ;
 }

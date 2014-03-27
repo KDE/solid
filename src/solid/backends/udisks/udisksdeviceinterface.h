@@ -87,9 +87,6 @@ public:
         case Solid::DeviceInterface::Battery:
             // Doesn't exist with UDisks
             break;
-        case Solid::DeviceInterface::DvbInterface:
-            // Doesn't exist with UDisks
-            break;
         case Solid::DeviceInterface::NetworkShare:
             // Doesn't exist with UDisks
             break;
@@ -126,8 +123,6 @@ public:
             return Solid::DeviceInterface::AcAdapter;
         } else if (capability == "battery") {
             return Solid::DeviceInterface::Battery;
-        } else if (capability == "dvb") {
-            return Solid::DeviceInterface::DvbInterface;
         } else if (capability == "networkshare") {
             return Solid::DeviceInterface::NetworkShare;
         } else {

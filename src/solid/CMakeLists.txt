@@ -72,7 +72,6 @@ set(solid_LIB_SRCS
    networkshare.cpp
    acadapter.cpp
    battery.cpp
-   dvbinterface.cpp
    predicate.cpp
    predicateparse.cpp
    predicate_lexer.c
@@ -87,7 +86,6 @@ set(solid_LIB_SRCS
    ifaces/device.cpp
    ifaces/deviceinterface.cpp
    ifaces/devicemanager.cpp
-   ifaces/dvbinterface.cpp
    ifaces/genericinterface.cpp
    ifaces/networkshare.cpp
    ifaces/opticaldisc.cpp
@@ -104,7 +102,6 @@ set(solid_LIB_SRCS
    backends/fakehw/fakecdrom.cpp
    backends/fakehw/fakedevice.cpp
    backends/fakehw/fakedeviceinterface.cpp
-   backends/fakehw/fakedvbinterface.cpp
    backends/fakehw/fakegenericinterface.cpp
    backends/fakehw/fakemanager.cpp
    backends/fakehw/fakenetworkshare.cpp
@@ -131,7 +128,6 @@ if(NOT WIN32 AND NOT APPLE)
       backends/udev/udevprocessor.cpp
       backends/udev/udevcamera.cpp
       backends/udev/udevportablemediaplayer.cpp
-      backends/udev/udevdvbinterface.cpp
       backends/udev/udevblock.cpp
       backends/shared/udevqtclient.cpp
       backends/shared/udevqtdevice.cpp
@@ -160,7 +156,6 @@ if(NOT WIN32 AND NOT APPLE)
       backends/hal/halcamera.cpp
       backends/hal/halcdrom.cpp
       backends/hal/haldeviceinterface.cpp
-      backends/hal/haldvbinterface.cpp
       backends/hal/halfstabhandling.cpp
       backends/hal/halgenericinterface.cpp
       backends/hal/haldevice.cpp
@@ -297,7 +292,6 @@ if(WIN32)
           backends/wmi/wmicamera.cpp
           backends/wmi/wmicdrom.cpp
           backends/wmi/wmideviceinterface.cpp
-          backends/wmi/wmidvbinterface.cpp
           backends/wmi/wmigenericinterface.cpp
           backends/wmi/wmidevice.cpp
           backends/wmi/wmimanager.cpp
@@ -400,7 +394,6 @@ ecm_generate_headers(Solid_CamelCase_HEADERS
   Networking
   AcAdapter
   Battery
-  DvbInterface
   Predicate
   NetworkShare
 
