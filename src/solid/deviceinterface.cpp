@@ -92,8 +92,6 @@ QString Solid::DeviceInterface::typeDescription(Type type)
         return tr("Battery", "Battery device type");
     case Button:
         return tr("Button", "Button device type");
-    case AudioInterface:
-        return tr("Audio Interface", "Audio Interface device type");
     case DvbInterface:
         return tr("Dvb Interface", "Dvb Interface device type");
     case Video:

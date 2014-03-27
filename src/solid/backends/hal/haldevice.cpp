@@ -45,7 +45,6 @@
 #include "halacadapter.h"
 #include "halbattery.h"
 #include "halbutton.h"
-#include "halaudiointerface.h"
 #include "haldvbinterface.h"
 #include "halvideo.h"
 #include "halserialinterface.h"
@@ -282,27 +281,6 @@ QString HalDevice::icon() const
         return "cpu"; // FIXME: Doesn't follow icon spec
     } else if (category == "video4linux") {
         return "camera-web";
-    } else if (category == "alsa" || category == "oss") {
-        // Sorry about this const_cast, but it's the best way to not copy the code from
-        // AudioInterface.
-        const Hal::AudioInterface audioIface(const_cast<HalDevice *>(this));
-        switch (audioIface.soundcardType()) {
-        case Solid::AudioInterface::InternalSoundcard:
-            return QLatin1String("audio-card");
-        case Solid::AudioInterface::UsbSoundcard:
-            return QLatin1String("audio-card-usb");
-        case Solid::AudioInterface::FirewireSoundcard:
-            return QLatin1String("audio-card-firewire");
-        case Solid::AudioInterface::Headset:
-            if (udi().contains("usb", Qt::CaseInsensitive) ||
-                    audioIface.name().contains("usb", Qt::CaseInsensitive)) {
-                return QLatin1String("audio-headset-usb");
-            } else {
-                return QLatin1String("audio-headset");
-            }
-        case Solid::AudioInterface::Modem:
-            return QLatin1String("modem");
-        }
     } else if (category == "serial") {
         // TODO - a serial device can be a modem, or just
         // a COM port - need a new icon?
@@ -486,9 +464,6 @@ QObject *HalDevice::createDeviceInterface(const Solid::DeviceInterface::Type &ty
         break;
     case Solid::DeviceInterface::Button:
         iface = new Button(this);
-        break;
-    case Solid::DeviceInterface::AudioInterface:
-        iface = new AudioInterface(this);
         break;
     case Solid::DeviceInterface::DvbInterface:
         iface = new DvbInterface(this);

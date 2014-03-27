@@ -35,7 +35,6 @@
 #include "fakeacadapter.h"
 #include "fakebattery.h"
 #include "fakebutton.h"
-#include "fakeaudiointerface.h"
 #include "fakedvbinterface.h"
 #include "fakekeyboard.h"
 #include "fakepointingdevice.h"
@@ -309,9 +308,6 @@ QObject *FakeDevice::createDeviceInterface(const Solid::DeviceInterface::Type &t
         break;
     case Solid::DeviceInterface::Button:
         iface = new FakeButton(this);
-        break;
-    case Solid::DeviceInterface::AudioInterface:
-        iface = new FakeAudioInterface(this);
         break;
     case Solid::DeviceInterface::DvbInterface:
         iface = new FakeDvbInterface(this);

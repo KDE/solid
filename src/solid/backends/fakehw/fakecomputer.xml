@@ -589,51 +589,6 @@
                     <property key="deviceIndex">1</property>
                 </device>
 
-
-
-        <!-- Integrated Audio Controller -->
-        <device udi="/org/kde/solid/fakehw/pci_8086_266e">
-            <property key="name">99021 Audio Controller</property>
-            <property key="vendor">Acme Corporation</property>
-            <property key="parent">/org/kde/solid/fakehw/computer</property>
-        </device>
-            <device udi="/org/kde/solid/fakehw/pci_8086_266e_alsa_capture_0">
-                <property key="name">Acme ALSA Capture</property>
-                <property key="interfaces">AudioInterface</property>
-                <property key="parent">/org/kde/solid/fakehw/pci_8086_266e</property>
-                <property key="driver">alsa</property>
-                <property key="driverHandle">0,0</property>
-                <property key="type">input</property>
-                <property key="soundcardType">internal</property>
-            </device>
-            <device udi="/org/kde/solid/fakehw/pci_8086_266e_alsa_playback_0">
-                <property key="name">Acme ALSA Playback</property>
-                <property key="interfaces">AudioInterface</property>
-                <property key="parent">/org/kde/solid/fakehw/pci_8086_266e</property>
-                <property key="driver">alsa</property>
-                <property key="driverHandle">0,1</property>
-                <property key="type">output</property>
-                <property key="soundcardType">internal</property>
-            </device>
-            <device udi="/org/kde/solid/fakehw/pci_8086_266e_alsa_control_1">
-                <property key="name">Acme ALSA Control</property>
-                <property key="interfaces">AudioInterface</property>
-                <property key="parent">/org/kde/solid/fakehw/pci_8086_266e</property>
-                <property key="driver">alsa</property>
-                <property key="driverHandle">0</property>
-                <property key="type">control</property>
-                <property key="soundcardType">internal</property>
-            </device>
-            <device udi="/org/kde/solid/fakehw/pci_8086_266e_oss_pcm_0">
-                <property key="name">Acme OSS PCM Device</property>
-                <property key="interfaces">AudioInterface</property>
-                <property key="parent">/org/kde/solid/fakehw/pci_8086_266e</property>
-                <property key="driver">oss</property>
-                <property key="driverHandle">/dev/dsp</property>
-                <property key="type">input,output</property>
-                <property key="soundcardType">internal</property>
-            </device>
-
         <device udi="/org/kde/solid/fakehw/fstab">
             <property key="name">Network Shares</property>
             <property key="product">Network Shares</property>

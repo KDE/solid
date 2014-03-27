@@ -27,7 +27,6 @@
 #include "udevportablemediaplayer.h"
 #include "udevdvbinterface.h"
 #include "udevblock.h"
-#include "udevaudiointerface.h"
 #include "udevserialinterface.h"
 #include "udevnetworkinterface.h"
 #include "udevbutton.h"
@@ -74,10 +73,6 @@ QString UDevDevice::vendor() const
             vendor = m_device.deviceProperty("ID_VENDOR").toString().replace('_', " ");
         }  else if (queryDeviceInterface(Solid::DeviceInterface::NetworkInterface)) {
             vendor = m_device.deviceProperty("ID_VENDOR_FROM_DATABASE").toString();
-        } else if (queryDeviceInterface(Solid::DeviceInterface::AudioInterface)) {
-            if (m_device.parent().isValid()) {
-                vendor = m_device.parent().deviceProperty("ID_VENDOR_FROM_DATABASE").toString();
-            }
         }
 
         if (vendor.isEmpty()) {
@@ -96,9 +91,6 @@ QString UDevDevice::product() const
             product = extractCpuInfoLine(deviceNumber(), "model name\\s+:\\s+(\\S.+)");
         } else if (queryDeviceInterface(Solid::DeviceInterface::Video)) {
             product = m_device.deviceProperty("ID_V4L_PRODUCT").toString();
-        } else if (queryDeviceInterface(Solid::DeviceInterface::AudioInterface)) {
-            const AudioInterface audioIface(const_cast<UDevDevice *>(this));
-            product = audioIface.name();
         }  else if (queryDeviceInterface(Solid::DeviceInterface::NetworkInterface)) {
             QFile typeFile(deviceName() + "/type");
             if (typeFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -140,25 +132,6 @@ QString UDevDevice::icon() const
         return QLatin1String("camera-photo");
     } else if (queryDeviceInterface(Solid::DeviceInterface::Video)) {
         return QLatin1String("camera-web");
-    } else if (queryDeviceInterface(Solid::DeviceInterface::AudioInterface)) {
-        const AudioInterface audioIface(const_cast<UDevDevice *>(this));
-        switch (audioIface.soundcardType()) {
-        case Solid::AudioInterface::InternalSoundcard:
-            return QLatin1String("audio-card");
-        case Solid::AudioInterface::UsbSoundcard:
-            return QLatin1String("audio-card-usb");
-        case Solid::AudioInterface::FirewireSoundcard:
-            return QLatin1String("audio-card-firewire");
-        case Solid::AudioInterface::Headset:
-            if (udi().contains("usb", Qt::CaseInsensitive) ||
-                    audioIface.name().contains("usb", Qt::CaseInsensitive)) {
-                return QLatin1String("audio-headset-usb");
-            } else {
-                return QLatin1String("audio-headset");
-            }
-        case Solid::AudioInterface::Modem:
-            return QLatin1String("modem");
-        }
     } else if (queryDeviceInterface(Solid::DeviceInterface::SerialInterface)) {
         // TODO - a serial device can be a modem, or just
         // a COM port - need a new icon?
@@ -197,8 +170,6 @@ QString UDevDevice::description() const
         return tr("Camera");
     } else if (queryDeviceInterface(Solid::DeviceInterface::Video)) {
         return product();
-    } else if (queryDeviceInterface(Solid::DeviceInterface::AudioInterface)) {
-        return product();
     } else if (queryDeviceInterface(Solid::DeviceInterface::NetworkInterface)) {
         const NetworkInterface networkIface(const_cast<UDevDevice *>(this));
         if (networkIface.isWireless()) {
@@ -233,9 +204,6 @@ bool UDevDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type) 
 
     case Solid::DeviceInterface::Video:
         return m_device.subsystem() == QLatin1String("video4linux");
-
-    case Solid::DeviceInterface::AudioInterface:
-        return m_device.subsystem() == QLatin1String("sound");
 
     case Solid::DeviceInterface::NetworkInterface:
         return m_device.subsystem() == QLatin1String("net");
@@ -287,9 +255,6 @@ QObject *UDevDevice::createDeviceInterface(const Solid::DeviceInterface::Type &t
 
     case Solid::DeviceInterface::Video:
         return new Video(this);
-
-    case Solid::DeviceInterface::AudioInterface:
-        return new AudioInterface(this);
 
     case Solid::DeviceInterface::NetworkInterface:
         return new NetworkInterface(this);

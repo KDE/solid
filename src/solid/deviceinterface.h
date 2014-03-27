@@ -69,9 +69,9 @@ public:
                 OpticalDrive = 6, StorageVolume = 7, OpticalDisc = 8,
                 Camera = 9, PortableMediaPlayer = 10,
                 NetworkInterface = 11, AcAdapter = 12, Battery = 13,
-                Button = 14, AudioInterface = 15, DvbInterface = 16, Video = 17,
-                SerialInterface = 18, InternetGateway = 19,
-                NetworkShare = 20, Keyboard = 21, PointingDevice = 22,
+                Button = 14, DvbInterface = 15, Video = 16,
+                SerialInterface = 17, InternetGateway = 18,
+                NetworkShare = 19, Keyboard = 20, PointingDevice = 21,
                 Last = 0xffff
               };
 

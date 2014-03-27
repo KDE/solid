@@ -93,9 +93,6 @@ public:
         case Solid::DeviceInterface::Button:
             // Doesn't exist with UDisks
             break;
-        case Solid::DeviceInterface::AudioInterface:
-            // Doesn't exist with UDisks
-            break;
         case Solid::DeviceInterface::DvbInterface:
             // Doesn't exist with UDisks
             break;
@@ -153,8 +150,6 @@ public:
             return Solid::DeviceInterface::Battery;
         } else if (capability == "button") {
             return Solid::DeviceInterface::Button;
-        } else if (capability == "alsa" || capability == "oss") {
-            return Solid::DeviceInterface::AudioInterface;
         } else if (capability == "dvb") {
             return Solid::DeviceInterface::DvbInterface;
         } else if (capability == "video4linux") {

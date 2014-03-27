@@ -94,9 +94,6 @@ public:
         case Solid::DeviceInterface::Button:
             list << "button";
             break;
-        case Solid::DeviceInterface::AudioInterface:
-            list << "alsa" << "oss";
-            break;
         case Solid::DeviceInterface::DvbInterface:
             list << "dvb";
             break;
@@ -144,8 +141,6 @@ public:
             return Solid::DeviceInterface::Battery;
         } else if (capability == "button") {
             return Solid::DeviceInterface::Button;
-        } else if (capability == "alsa" || capability == "oss") {
-            return Solid::DeviceInterface::AudioInterface;
         } else if (capability == "dvb") {
             return Solid::DeviceInterface::DvbInterface;
         } else if (capability == "video4linux") {

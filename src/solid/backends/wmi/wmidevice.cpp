@@ -40,7 +40,6 @@
 #include "wmiacadapter.h"
 #include "wmibattery.h"
 #include "wmibutton.h"
-#include "wmiaudiointerface.h"
 #include "wmidvbinterface.h"
 #include "wmivideo.h"
 
@@ -171,8 +170,6 @@ public:
             break;
         case Solid::DeviceInterface::Button:
             break;
-        case Solid::DeviceInterface::AudioInterface:
-            break;
         case Solid::DeviceInterface::DvbInterface:
             break;
         case Solid::DeviceInterface::Video:
@@ -232,8 +229,6 @@ public:
             wmiTable = "Win32_Battery";
             break;
         case Solid::DeviceInterface::Button:
-            break;
-        case Solid::DeviceInterface::AudioInterface:
             break;
         case Solid::DeviceInterface::DvbInterface:
             break;
@@ -652,9 +647,6 @@ QObject *WmiDevice::createDeviceInterface(const Solid::DeviceInterface::Type &ty
         break;
     case Solid::DeviceInterface::Button:
         iface = new Button(this);
-        break;
-    case Solid::DeviceInterface::AudioInterface:
-        iface = new AudioInterface(this);
         break;
     case Solid::DeviceInterface::DvbInterface:
         iface = new DvbInterface(this);

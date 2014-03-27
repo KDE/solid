@@ -77,7 +77,6 @@ set(solid_LIB_SRCS
    button.cpp
    keyboard.cpp
    pointingdevice.cpp
-   audiointerface.cpp
    dvbinterface.cpp
    predicate.cpp
    predicateparse.cpp
@@ -88,7 +87,6 @@ set(solid_LIB_SRCS
    internetgateway.cpp
 
    ifaces/acadapter.cpp
-   ifaces/audiointerface.cpp
    ifaces/battery.cpp
    ifaces/block.cpp
    ifaces/button.cpp
@@ -114,7 +112,6 @@ set(solid_LIB_SRCS
    ifaces/internetgateway.cpp
 
    backends/fakehw/fakeacadapter.cpp
-   backends/fakehw/fakeaudiointerface.cpp
    backends/fakehw/fakebattery.cpp
    backends/fakehw/fakeblock.cpp
    backends/fakehw/fakebutton.cpp
@@ -192,10 +189,8 @@ if(NOT WIN32 AND NOT APPLE)
       backends/udev/udevprocessor.cpp
       backends/udev/udevcamera.cpp
       backends/udev/udevvideo.cpp
-      backends/udev/udevaudiointerface.cpp
       backends/udev/udevnetworkinterface.cpp
       backends/udev/udevserialinterface.cpp
-      backends/udev/udevaudiointerface_p.cpp
       backends/udev/udevportablemediaplayer.cpp
       backends/udev/udevdvbinterface.cpp
       backends/udev/udevblock.cpp
@@ -224,7 +219,6 @@ if(NOT WIN32 AND NOT APPLE)
    message(STATUS "Building Solid HAL backend." )
    set(solid_LIB_SRCS ${solid_LIB_SRCS}
       backends/hal/halacadapter.cpp
-      backends/hal/halaudiointerface.cpp
       backends/hal/halbattery.cpp
       backends/hal/halblock.cpp
       backends/hal/halbutton.cpp
@@ -368,7 +362,6 @@ if(WIN32)
 
        set(solid_LIB_SRCS ${solid_LIB_SRCS}
           backends/wmi/wmiacadapter.cpp
-          backends/wmi/wmiaudiointerface.cpp
           backends/wmi/wmibattery.cpp
           backends/wmi/wmiblock.cpp
           backends/wmi/wmibutton.cpp
@@ -486,7 +479,6 @@ ecm_generate_headers(Solid_CamelCase_HEADERS
   AcAdapter
   Battery
   Button
-  AudioInterface
   DvbInterface
   Predicate
   Video

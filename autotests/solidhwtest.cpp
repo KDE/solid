@@ -283,7 +283,6 @@ void SolidHwTest::testDeviceInterfaceIntrospection_data()
     QTest::newRow("DeviceInterface: AcAdapter") << "AcAdapter" << (int)Solid::DeviceInterface::AcAdapter;
     QTest::newRow("DeviceInterface: Battery") << "Battery" << (int)Solid::DeviceInterface::Battery;
     QTest::newRow("DeviceInterface: Button") << "Button" << (int)Solid::DeviceInterface::Button;
-    QTest::newRow("DeviceInterface: AudioInterface") << "AudioInterface" << (int)Solid::DeviceInterface::AudioInterface;
 }
 
 void SolidHwTest::testDeviceInterfaceIntrospection()
@@ -338,20 +337,6 @@ void SolidHwTest::testPredicate()
     dev = Solid::Device("/org/kde/solid/fakehw/volume_part2_size_1024");
     QVERIFY(p6.matches(dev));
     QVERIFY(p7.matches(dev));
-
-    Solid::Predicate p8 = Solid::Predicate::fromString("AudioInterface.deviceType == 'AudioInput|AudioOutput'");
-    Solid::Predicate p9 = Solid::Predicate::fromString("AudioInterface.deviceType == 'AudioInput'");
-    Solid::Predicate p10 = Solid::Predicate::fromString("AudioInterface.deviceType  & 'AudioInput'");
-    Solid::Predicate p11 = Solid::Predicate::fromString("AudioInterface.deviceType  & 'foobar'");
-    QVERIFY(!p8.matches(dev));
-    QVERIFY(!p9.matches(dev));
-    QVERIFY(!p10.matches(dev));
-    QVERIFY(!p11.matches(dev));
-    dev = Solid::Device("/org/kde/solid/fakehw/pci_8086_266e_oss_pcm_0");
-    QVERIFY(p8.matches(dev));
-    QVERIFY(!p9.matches(dev));
-    QVERIFY(p10.matches(dev));
-    QVERIFY(!p11.matches(dev));
 
     QString str_pred = "[[Processor.maxSpeed == 3201 AND Processor.canChangeFrequency == false] OR StorageVolume.mountPoint == '/media/blup']";
     // Since str_pred is canonicalized, fromString().toString() should be invariant
