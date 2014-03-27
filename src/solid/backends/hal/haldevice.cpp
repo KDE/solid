@@ -470,8 +470,6 @@ QObject *HalDevice::createDeviceInterface(const Solid::DeviceInterface::Type &ty
     case Solid::DeviceInterface::Video:
         iface = new Video(this);
         break;
-    case Solid::DeviceInterface::InternetGateway:
-        break;
     case Solid::DeviceInterface::NetworkShare:
         break;
     case Solid::DeviceInterface::Keyboard:

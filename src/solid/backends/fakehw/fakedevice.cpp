@@ -314,8 +314,6 @@ QObject *FakeDevice::createDeviceInterface(const Solid::DeviceInterface::Type &t
         break;
     case Solid::DeviceInterface::Video:
         break;
-    case Solid::DeviceInterface::InternetGateway:
-        break;
     case Solid::DeviceInterface::NetworkShare:
         iface = new FakeNetworkShare(this);
         break;

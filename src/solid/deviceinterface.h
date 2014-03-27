@@ -69,8 +69,8 @@ public:
                 Camera = 9, PortableMediaPlayer = 10,
                 NetworkInterface = 11, AcAdapter = 12, Battery = 13,
                 Button = 14, DvbInterface = 15, Video = 16,
-                InternetGateway = 17, NetworkShare = 18, Keyboard = 19,
-                PointingDevice = 20, Last = 0xffff
+                NetworkShare = 17, Keyboard = 18,
+                PointingDevice = 19, Last = 0xffff
               };
 
     /**

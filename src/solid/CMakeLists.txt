@@ -83,7 +83,6 @@ set(solid_LIB_SRCS
    predicate_parser.c
    powermanagement.cpp
    video.cpp
-   internetgateway.cpp
 
    ifaces/acadapter.cpp
    ifaces/battery.cpp
@@ -107,7 +106,6 @@ set(solid_LIB_SRCS
    ifaces/storagevolume.cpp
    ifaces/storageaccess.cpp
    ifaces/video.cpp
-   ifaces/internetgateway.cpp
 
    backends/fakehw/fakeacadapter.cpp
    backends/fakehw/fakebattery.cpp
@@ -146,7 +144,6 @@ if(NOT APPLE)
        backends/upnp/upnpdevicemanager.cpp
        backends/upnp/upnpdeviceinterface.cpp
        backends/upnp/upnpmediaserver.cpp
-       backends/upnp/upnpinternetgateway.cpp
        backends/upnp/upnpcontrolpoint.cpp
     )
   else ()
@@ -168,7 +165,6 @@ if(NOT WIN32 AND NOT APPLE)
 #   backends/kupnp/mediaserver1.cpp
 #   backends/kupnp/mediaserver2.cpp
 #   backends/kupnp/mediaserver3.cpp
-#   backends/kupnp/internetgatewaydevice1.cpp
 #   backends/kupnp/kupnpdevice.cpp
 #   backends/kupnp/kupnprootdevice.cpp
 #   backends/kupnp/kupnpmanager.cpp
@@ -477,7 +473,6 @@ ecm_generate_headers(Solid_CamelCase_HEADERS
   DvbInterface
   Predicate
   Video
-  InternetGateway
   NetworkShare
   Keyboard
   PointingDevice

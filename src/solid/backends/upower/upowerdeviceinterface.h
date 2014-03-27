@@ -101,8 +101,6 @@ public:
         case Solid::DeviceInterface::Video:
             // Doesn't exist with UDisks
             break;
-        case Solid::DeviceInterface::InternetGateway:
-            break;
         case Solid::DeviceInterface::NetworkShare:
             // Doesn't exist with UPower
             break;
