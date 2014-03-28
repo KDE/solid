@@ -23,6 +23,7 @@ include(GenerateExportHeader)
 include(ECMPackageConfigHelpers)
 include(ECMSetupVersion)
 include(ECMGenerateHeaders)
+include(ECMMarkNonGuiExecutable)
 
 if(NOT APPLE)
   find_package(HUpnp 0.9)

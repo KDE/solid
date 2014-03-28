@@ -157,7 +157,7 @@ std::ostream &operator<<(std::ostream &out, const Solid::Device &device)
 
 std::ostream &operator<<(std::ostream &out, const QMap<QString,QVariant> &properties)
 {
-    foreach (const QString &key, properties.keys())
+    Q_FOREACH (const QString &key, properties.keys())
     {
         out << "  " << key << " = " << properties[key] << endl;
     }
@@ -296,7 +296,7 @@ bool SolidHardware::hwList(bool interfaces, bool system)
 {
     const QList<Solid::Device> all = Solid::Device::allDevices();
 
-    foreach (const Solid::Device &device, all)
+    Q_FOREACH (const Solid::Device &device, all)
     {
         cout << "udi = '" << device.udi() << "'" << endl;
 
@@ -342,7 +342,7 @@ bool SolidHardware::hwQuery(const QString &parentUdi, const QString &query)
     const QList<Solid::Device> devices
         = Solid::Device::listFromQuery(query, parentUdi);
 
-    foreach (const Solid::Device &device, devices)
+    Q_FOREACH (const Solid::Device &device, devices)
     {
         cout << "udi = '" << device.udi() << "'" << endl;
     }

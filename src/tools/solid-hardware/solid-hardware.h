@@ -47,7 +47,7 @@ private:
     int m_error;
     QString m_errorString;
 
-private slots:
+private Q_SLOTS:
     void slotStorageResult(Solid::ErrorType error, const QVariant &errorData);
     void deviceAdded(const QString &udi);
     void deviceRemoved(const QString &udi);
