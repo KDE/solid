@@ -166,8 +166,7 @@ std::ostream &operator<<(std::ostream &out, const QMap<QString,QVariant> &proper
 
 void SolidHardware::checkArgumentCount(int min, int max)
 {
-    int count = m_args.count();
-
+    int count = 0;
     if (count < min)
     {
 //         KCmdLineArgs::usageError(i18n("Syntax Error: Not enough arguments"));
@@ -189,17 +188,10 @@ int main(int argc, char **argv)
     parser.setApplicationDescription(app.tr("KDE tool for querying your hardware from the command line"));
     parser.addHelpOption();
     parser.addVersionOption();
-
-//     parser.addPositionalArgument("command", );
+    parser.addPositionalArgument("command", app.tr("Command to execute"));
 
     QCommandLineOption commands("commands", app.tr("Show available commands"));
     parser.addOption(commands);
-
-//     options.add("commands", ki18n("Show available commands"));
-
-//     options.add("+command", ki18n("Command (see --commands)"));
-
-//     options.add("+[arg(s)]", ki18n("Arguments for command"));
 
     parser.process(app);
     if (parser.isSet(commands))
@@ -245,37 +237,46 @@ int main(int argc, char **argv)
         return 0;
     }
 
-  return app.doIt(parser.positionalArguments()) ? 0 : 1;
-}
+    QStringList args = parser.positionalArguments();
+    if (args.count() < 1) {
+        parser.showHelp(1);
+    }
 
-bool SolidHardware::doIt(const QStringList &args)
-{
-    m_args = args;
-    checkArgumentCount(1, 0);
+    parser.clearPositionalArguments();
 
     QString command(args.at(0));
 
     if (command == "list")
     {
-        checkArgumentCount(1, 2);
+        parser.addPositionalArgument("details", app.tr("Show device details"));
+        parser.addPositionalArgument("nonportableinfo", app.tr("Show non portable information"));
+        parser.process(app);
+        args = parser.positionalArguments();
         QByteArray extra(args.count() == 2 ? args.at(1).toLocal8Bit() : "");
-        return hwList(extra=="details", extra=="nonportableinfo");
-    }
-    else if (command == "details")
-    {
-        checkArgumentCount(2, 2);
+        return app.hwList(extra == "details", extra == "nonportableinfo");
+    } else if (command == "details") {
+        parser.addPositionalArgument("udi", app.tr("Device udi"));
+        parser.process(app);
+        if (parser.positionalArguments().count() < 2) {
+            parser.showHelp(1);
+        }
         QString udi(args.at(1));
-        return hwCapabilities(udi);
-    }
-    else if (command == "nonportableinfo")
-    {
-        checkArgumentCount(2, 2);
+        return app.hwCapabilities(udi);
+    } else if (command == "nonportableinfo") {
+        parser.addPositionalArgument("udi", app.tr("Device udi"));
+        parser.process(app);
+        if (parser.positionalArguments().count() < 2) {
+            parser.showHelp(1);
+        }
         QString udi(args.at(1));
-        return hwProperties(udi);
-    }
-    else if (command == "query")
-    {
-        checkArgumentCount(2, 3);
+        return app.hwProperties(udi);
+    } else if (command == "query") {
+        parser.addPositionalArgument("udi", app.tr("Device udi"));
+        parser.addPositionalArgument("parent", app.tr("Parent device udi"));
+        parser.process(app);
+        if (parser.positionalArguments().count() < 2 || parser.positionalArguments().count() > 3) {
+            parser.showHelp(1);
+        }
 
         QString query = args.at(1);
         QString parent;
@@ -285,36 +286,38 @@ bool SolidHardware::doIt(const QStringList &args)
             parent = args.at(2);
         }
 
-        return hwQuery(parent, query);
-    }
-    else if (command == "mount")
-    {
-        checkArgumentCount(2, 2);
+        return app.hwQuery(parent, query);
+    } else if (command == "mount") {
+        parser.addPositionalArgument("udi", app.tr("Device udi"));
+        parser.process(app);
+        if (parser.positionalArguments().count() < 2) {
+            parser.showHelp(1);
+        }
         QString udi(args.at(1));
-        return hwVolumeCall(Mount, udi);
-    }
-    else if (command == "unmount")
-    {
-        checkArgumentCount(2, 2);
+        return app.hwVolumeCall(SolidHardware::Mount, udi);
+    } else if (command == "unmount") {
+        parser.addPositionalArgument("udi", app.tr("Device udi"));
+        parser.process(app);
+        if (parser.positionalArguments().count() < 2) {
+            parser.showHelp(1);
+        }
         QString udi(args.at(1));
-        return hwVolumeCall(Unmount, udi);
-    }
-    else if (command == "eject")
-    {
-        checkArgumentCount(2, 2);
+        return app.hwVolumeCall(SolidHardware::Unmount, udi);
+    } else if (command == "eject") {
+        parser.addPositionalArgument("udi", app.tr("Device udi"));
+        parser.process(app);
+        if (parser.positionalArguments().count() < 2) {
+            parser.showHelp(1);
+        }
         QString udi(args.at(1));
-        return hwVolumeCall(Eject, udi);
-    }
-    else if (command == "listen")
-    {
-        return listen();
-    }
-    else
-    {
-        cerr << tr("Syntax Error: Unknown command '%1'").arg(command) << endl;
+        return app.hwVolumeCall(SolidHardware::Eject, udi);
+    } else if (command == "listen") {
+        return app.listen();
     }
 
-    return false;
+    cerr << app.tr("Syntax Error: Unknown command '%1'").arg(command) << endl;
+
+    return 1;
 }
 
 bool SolidHardware::hwList(bool interfaces, bool system)

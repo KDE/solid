@@ -40,8 +40,6 @@ class SolidHardware : public QCoreApplication
 public:
     SolidHardware(int &argc, char **argv) : QCoreApplication(argc, argv), m_error(0) {}
 
-    bool doIt(const QStringList &args);
-
     bool hwList(bool interfaces, bool system);
     bool hwCapabilities(const QString &udi);
     bool hwProperties(const QString &udi);
@@ -54,7 +52,6 @@ public:
 private:
     QEventLoop m_loop;
     int m_error;
-    QStringList m_args;
     QString m_errorString;
 
 private slots:
