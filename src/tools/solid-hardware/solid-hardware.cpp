@@ -26,9 +26,6 @@
 #include <QMetaEnum>
 #include <QTimer>
 
-#include <kcomponentdata.h>
-#include <kcmdlineargs.h>
-#include <kdebug.h>
 #include <kjob.h>
 #include <klocale.h>
 
