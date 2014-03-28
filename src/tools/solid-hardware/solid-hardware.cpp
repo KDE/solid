@@ -26,8 +26,6 @@
 #include <QMetaEnum>
 #include <QTimer>
 
-#include <klocale.h>
-
 #include <QCoreApplication>
 #include <QCommandLineParser>
 
@@ -42,8 +40,6 @@ using namespace std;
 
 static const char appName[] = "solid-hardware";
 static const char programName[] = I18N_NOOP("solid-hardware");
-
-static const char description[] = I18N_NOOP("KDE tool for querying your hardware from the command line");
 
 static const char version[] = "0.1a";
 
@@ -193,7 +189,7 @@ int main(int argc, char **argv)
     app.setApplicationVersion(version);
 
     QCommandLineParser parser;
-    parser.setApplicationDescription(description);
+    parser.setApplicationDescription(app.tr("KDE tool for querying your hardware from the command line"));
     parser.addHelpOption();
     parser.addVersionOption();
 
@@ -322,7 +318,7 @@ bool SolidHardware::doIt(const QStringList &args)
     }
     else
     {
-        cerr << i18n("Syntax Error: Unknown command '%1'" ,command) << endl;
+        cerr << shell.tr("Syntax Error: Unknown command '%1'").arg(command) << endl;
     }
 
     return false;
@@ -392,12 +388,12 @@ bool SolidHardware::hwVolumeCall(SolidHardware::VolumeCallType type, const QStri
 
     if (!device.is<Solid::StorageAccess>() && type!=Eject)
     {
-        cerr << i18n("Error: %1 does not have the interface StorageAccess." , udi) << endl;
+        cerr << tr("Error: %1 does not have the interface StorageAccess.").arg(udi) << endl;
         return false;
     }
     else if (!device.is<Solid::OpticalDrive>() && type==Eject)
     {
-        cerr << i18n("Error: %1 does not have the interface OpticalDrive." , udi) << endl;
+        cerr << tr("Error: %1 does not have the interface OpticalDrive.").arg(udi) << endl;
         return false;
     }
 
@@ -430,7 +426,7 @@ bool SolidHardware::hwVolumeCall(SolidHardware::VolumeCallType type, const QStri
 
     if (m_error)
     {
-        cerr << i18n("Error: %1" , m_errorString) << endl;
+        cerr << tr("Error: %1").arg(m_errorString) << endl;
         return false;
     }
 
