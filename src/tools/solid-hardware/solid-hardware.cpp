@@ -39,7 +39,6 @@
 using namespace std;
 
 static const char appName[] = "solid-hardware";
-static const char programName[] = I18N_NOOP("solid-hardware");
 
 static const char version[] = "0.1a";
 
