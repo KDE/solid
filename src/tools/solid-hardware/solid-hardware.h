@@ -34,6 +34,7 @@ namespace Control {
 }
 }
 
+class QCommandLineParser;
 class SolidHardware : public QCoreApplication
 {
     Q_OBJECT
@@ -48,7 +49,7 @@ public:
 
     enum VolumeCallType { Mount, Unmount, Eject };
     bool hwVolumeCall(VolumeCallType type, const QString &udi);
-    void checkArgumentCount(int min, int max);
+
 private:
     QEventLoop m_loop;
     int m_error;

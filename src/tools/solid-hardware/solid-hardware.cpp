@@ -164,18 +164,14 @@ std::ostream &operator<<(std::ostream &out, const QMap<QString,QVariant> &proper
     return out;
 }
 
-void SolidHardware::checkArgumentCount(int min, int max)
+QString getUdiFromArguments(QCoreApplication &app, QCommandLineParser &parser)
 {
-    int count = 0;
-    if (count < min)
-    {
-//         KCmdLineArgs::usageError(i18n("Syntax Error: Not enough arguments"));
+    parser.addPositionalArgument("udi", app.tr("Device udi"));
+    parser.process(app);
+    if (parser.positionalArguments().count() < 2) {
+        parser.showHelp(1);
     }
-
-    if ((max > 0) && (count > max))
-    {
-//         KCmdLineArgs::usageError(i18n("Syntax Error: Too many arguments"));
-    }
+    return parser.positionalArguments().at(1);
 }
 
 int main(int argc, char **argv)
@@ -255,20 +251,10 @@ int main(int argc, char **argv)
         QByteArray extra(args.count() == 2 ? args.at(1).toLocal8Bit() : "");
         return app.hwList(extra == "details", extra == "nonportableinfo");
     } else if (command == "details") {
-        parser.addPositionalArgument("udi", app.tr("Device udi"));
-        parser.process(app);
-        if (parser.positionalArguments().count() < 2) {
-            parser.showHelp(1);
-        }
-        QString udi(args.at(1));
+        const QString udi = getUdiFromArguments(app, parser);
         return app.hwCapabilities(udi);
     } else if (command == "nonportableinfo") {
-        parser.addPositionalArgument("udi", app.tr("Device udi"));
-        parser.process(app);
-        if (parser.positionalArguments().count() < 2) {
-            parser.showHelp(1);
-        }
-        QString udi(args.at(1));
+        const QString udi = getUdiFromArguments(app, parser);
         return app.hwProperties(udi);
     } else if (command == "query") {
         parser.addPositionalArgument("udi", app.tr("Device udi"));
@@ -288,28 +274,13 @@ int main(int argc, char **argv)
 
         return app.hwQuery(parent, query);
     } else if (command == "mount") {
-        parser.addPositionalArgument("udi", app.tr("Device udi"));
-        parser.process(app);
-        if (parser.positionalArguments().count() < 2) {
-            parser.showHelp(1);
-        }
-        QString udi(args.at(1));
+        const QString udi = getUdiFromArguments(app, parser);
         return app.hwVolumeCall(SolidHardware::Mount, udi);
     } else if (command == "unmount") {
-        parser.addPositionalArgument("udi", app.tr("Device udi"));
-        parser.process(app);
-        if (parser.positionalArguments().count() < 2) {
-            parser.showHelp(1);
-        }
-        QString udi(args.at(1));
+        const QString udi = getUdiFromArguments(app, parser);
         return app.hwVolumeCall(SolidHardware::Unmount, udi);
     } else if (command == "eject") {
-        parser.addPositionalArgument("udi", app.tr("Device udi"));
-        parser.process(app);
-        if (parser.positionalArguments().count() < 2) {
-            parser.showHelp(1);
-        }
-        QString udi(args.at(1));
+        const QString udi = getUdiFromArguments(app, parser);
         return app.hwVolumeCall(SolidHardware::Eject, udi);
     } else if (command == "listen") {
         return app.listen();
