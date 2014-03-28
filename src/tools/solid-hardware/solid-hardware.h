@@ -53,16 +53,12 @@ public:
     bool hwVolumeCall(VolumeCallType type, const QString &udi);
 
 private:
-    void connectJob(KJob *job);
-
     QEventLoop m_loop;
     int m_error;
     QString m_errorString;
+
 private slots:
     void slotStorageResult(Solid::ErrorType error, const QVariant &errorData);
-    void slotResult(KJob *job);
-    void slotPercent(KJob *job, unsigned long percent);
-    void slotInfoMessage(KJob *job, const QString &message);
     void deviceAdded(const QString &udi);
     void deviceRemoved(const QString &udi);
 };

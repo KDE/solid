@@ -26,7 +26,6 @@
 #include <QMetaEnum>
 #include <QTimer>
 
-#include <kjob.h>
 #include <klocale.h>
 
 #include <QCoreApplication>
@@ -453,28 +452,6 @@ bool SolidHardware::listen()
     return true;
 }
 
-void SolidHardware::connectJob(KJob *job)
-{
-    connect(job, SIGNAL(result(KJob *)),
-             this, SLOT(slotResult(KJob *)));
-    connect(job, SIGNAL(percent(KJob *, unsigned long)),
-             this, SLOT(slotPercent(KJob *, unsigned long)));
-    connect(job, SIGNAL(infoMessage(KJob *, const QString &, const QString &)),
-             this, SLOT(slotInfoMessage(KJob *, const QString &)));
-}
-
-void SolidHardware::slotPercent(KJob *job, unsigned long percent)
-{
-    Q_UNUSED(job)
-    cout << i18n("Progress: %1%" , percent) << endl;
-}
-
-void SolidHardware::slotInfoMessage(KJob *job, const QString &message)
-{
-    Q_UNUSED(job)
-    cout << i18n("Info: %1" , message) << endl;
-}
-
 void SolidHardware::deviceAdded(const QString &udi)
 {
     cout << "Device Added:" << endl;
@@ -485,20 +462,6 @@ void SolidHardware::deviceRemoved(const QString &udi)
 {
     cout << "Device Removed:" << endl;
     cout << "udi = '" << udi << "'" << endl;
-}
-
-
-void SolidHardware::slotResult(KJob *job)
-{
-    m_error = 0;
-
-    if (job->error())
-    {
-        m_error = job->error();
-        m_errorString = job->errorString();
-    }
-
-    m_loop.exit();
 }
 
 void SolidHardware::slotStorageResult(Solid::ErrorType error, const QVariant &errorData)
