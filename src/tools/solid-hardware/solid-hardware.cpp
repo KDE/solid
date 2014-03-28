@@ -183,7 +183,7 @@ void checkArgumentCount(int min, int max)
 
 int main(int argc, char **argv)
 {
-    QCoreApplication app(argc, argv);
+    SolidHardware app(argc, argv);
     app.setApplicationName(appName);
     app.setApplicationVersion(version);
 
@@ -247,7 +247,7 @@ int main(int argc, char **argv)
         return 0;
     }
 
-  return SolidHardware::doIt(parser.positionalArguments()) ? 0 : 1;
+  return app.doIt(parser.positionalArguments()) ? 0 : 1;
 }
 
 bool SolidHardware::doIt(const QStringList &args)
@@ -257,27 +257,23 @@ bool SolidHardware::doIt(const QStringList &args)
 
     QString command(args.at(0));
 
-    int fake_argc = 0;
-    char **fake_argv = 0;
-    SolidHardware shell(fake_argc, fake_argv);
-
     if (command == "list")
     {
         checkArgumentCount(1, 2);
         QByteArray extra(args.count() == 2 ? args.at(1).toLocal8Bit() : "");
-        return shell.hwList(extra=="details", extra=="nonportableinfo");
+        return hwList(extra=="details", extra=="nonportableinfo");
     }
     else if (command == "details")
     {
         checkArgumentCount(2, 2);
         QString udi(args.at(1));
-        return shell.hwCapabilities(udi);
+        return hwCapabilities(udi);
     }
     else if (command == "nonportableinfo")
     {
         checkArgumentCount(2, 2);
         QString udi(args.at(1));
-        return shell.hwProperties(udi);
+        return hwProperties(udi);
     }
     else if (command == "query")
     {
@@ -291,33 +287,33 @@ bool SolidHardware::doIt(const QStringList &args)
             parent = args.at(2);
         }
 
-        return shell.hwQuery(parent, query);
+        return hwQuery(parent, query);
     }
     else if (command == "mount")
     {
         checkArgumentCount(2, 2);
         QString udi(args.at(1));
-        return shell.hwVolumeCall(Mount, udi);
+        return hwVolumeCall(Mount, udi);
     }
     else if (command == "unmount")
     {
         checkArgumentCount(2, 2);
         QString udi(args.at(1));
-        return shell.hwVolumeCall(Unmount, udi);
+        return hwVolumeCall(Unmount, udi);
     }
     else if (command == "eject")
     {
         checkArgumentCount(2, 2);
         QString udi(args.at(1));
-        return shell.hwVolumeCall(Eject, udi);
+        return hwVolumeCall(Eject, udi);
     }
     else if (command == "listen")
     {
-        return shell.listen();
+        return listen();
     }
     else
     {
-        cerr << shell.tr("Syntax Error: Unknown command '%1'").arg(command) << endl;
+        cerr << tr("Syntax Error: Unknown command '%1'").arg(command) << endl;
     }
 
     return false;
