@@ -41,7 +41,6 @@ public:
     SolidHardware(int &argc, char **argv) : QCoreApplication(argc, argv), m_error(0) {}
 
     bool doIt(const QStringList &args);
-    static QStringList args;
 
     bool hwList(bool interfaces, bool system);
     bool hwCapabilities(const QString &udi);
@@ -51,10 +50,11 @@ public:
 
     enum VolumeCallType { Mount, Unmount, Eject };
     bool hwVolumeCall(VolumeCallType type, const QString &udi);
-
+    void checkArgumentCount(int min, int max);
 private:
     QEventLoop m_loop;
     int m_error;
+    QStringList m_args;
     QString m_errorString;
 
 private slots:

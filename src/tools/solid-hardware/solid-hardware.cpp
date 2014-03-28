@@ -42,8 +42,6 @@ static const char appName[] = "solid-hardware";
 
 static const char version[] = "0.1a";
 
-QStringList SolidHardware::args = QStringList();
-
 std::ostream &operator<<(std::ostream &out, const QString &msg)
 {
     return (out << msg.toLocal8Bit().constData());
@@ -166,9 +164,9 @@ std::ostream &operator<<(std::ostream &out, const QMap<QString,QVariant> &proper
     return out;
 }
 
-void checkArgumentCount(int min, int max)
+void SolidHardware::checkArgumentCount(int min, int max)
 {
-    int count = SolidHardware::args.count();
+    int count = m_args.count();
 
     if (count < min)
     {
@@ -252,7 +250,7 @@ int main(int argc, char **argv)
 
 bool SolidHardware::doIt(const QStringList &args)
 {
-    SolidHardware::args = args;
+    m_args = args;
     checkArgumentCount(1, 0);
 
     QString command(args.at(0));
