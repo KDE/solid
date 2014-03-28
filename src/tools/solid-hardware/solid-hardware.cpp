@@ -187,67 +187,67 @@ void checkArgumentCount(int min, int max)
 
 int main(int argc, char **argv)
 {
-  KCmdLineArgs::init(argc, argv, appName, 0, ki18n(programName), version, ki18n(description), KCmdLineArgs::CmdLineArgNone);
+    KCmdLineArgs::init(argc, argv, appName, 0, ki18n(programName), version, ki18n(description), KCmdLineArgs::CmdLineArgNone);
 
 
-  KCmdLineOptions options;
+    KCmdLineOptions options;
 
-  options.add("commands", ki18n("Show available commands"));
+    options.add("commands", ki18n("Show available commands"));
 
-  options.add("+command", ki18n("Command (see --commands)"));
+    options.add("+command", ki18n("Command (see --commands)"));
 
-  options.add("+[arg(s)]", ki18n("Arguments for command"));
+    options.add("+[arg(s)]", ki18n("Arguments for command"));
 
-  KCmdLineArgs::addCmdLineOptions(options);
+    KCmdLineArgs::addCmdLineOptions(options);
 
-  KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
+    KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
 
-  KComponentData componentData(appName);
+    KComponentData componentData(appName);
 
-  if (args->isSet("commands"))
-  {
-      KCmdLineArgs::enable_i18n();
+    if (args->isSet("commands"))
+    {
+        KCmdLineArgs::enable_i18n();
 
-      cout << endl << i18n("Syntax:") << endl << endl;
+        cout << endl << i18n("Syntax:") << endl << endl;
 
-      cout << "  solid-hardware list [details|nonportableinfo]" << endl;
-      cout << i18n("             # List the hardware available in the system.\n"
-                    "             # - If the 'nonportableinfo' option is specified, the device\n"
-                    "             # properties are listed (be careful, in this case property names\n"
-                    "             # are backend dependent),\n"
-                    "             # - If the 'details' option is specified, the device interfaces\n"
-                    "             # and the corresponding properties are listed in a platform\n"
-                    "             # neutral fashion,\n"
-                    "             # - Otherwise only device UDIs are listed.\n") << endl;
+        cout << "  solid-hardware list [details|nonportableinfo]" << endl;
+        cout << i18n("             # List the hardware available in the system.\n"
+                        "             # - If the 'nonportableinfo' option is specified, the device\n"
+                        "             # properties are listed (be careful, in this case property names\n"
+                        "             # are backend dependent),\n"
+                        "             # - If the 'details' option is specified, the device interfaces\n"
+                        "             # and the corresponding properties are listed in a platform\n"
+                        "             # neutral fashion,\n"
+                        "             # - Otherwise only device UDIs are listed.\n") << endl;
 
-      cout << "  solid-hardware details 'udi'" << endl;
-      cout << i18n("             # Display all the interfaces and properties of the device\n"
-                    "             # corresponding to 'udi' in a platform neutral fashion.\n") << endl;
+        cout << "  solid-hardware details 'udi'" << endl;
+        cout << i18n("             # Display all the interfaces and properties of the device\n"
+                        "             # corresponding to 'udi' in a platform neutral fashion.\n") << endl;
 
-      cout << "  solid-hardware nonportableinfo 'udi'" << endl;
-      cout << i18n("             # Display all the properties of the device corresponding to 'udi'\n"
-                    "             # (be careful, in this case property names are backend dependent).\n") << endl;
+        cout << "  solid-hardware nonportableinfo 'udi'" << endl;
+        cout << i18n("             # Display all the properties of the device corresponding to 'udi'\n"
+                        "             # (be careful, in this case property names are backend dependent).\n") << endl;
 
-      cout << "  solid-hardware query 'predicate' ['parentUdi']" << endl;
-      cout << i18n("             # List the UDI of devices corresponding to 'predicate'.\n"
-                    "             # - If 'parentUdi' is specified, the search is restricted to the\n"
-                    "             # branch of the corresponding device,\n"
-                    "             # - Otherwise the search is done on all the devices.\n") << endl;
+        cout << "  solid-hardware query 'predicate' ['parentUdi']" << endl;
+        cout << i18n("             # List the UDI of devices corresponding to 'predicate'.\n"
+                        "             # - If 'parentUdi' is specified, the search is restricted to the\n"
+                        "             # branch of the corresponding device,\n"
+                        "             # - Otherwise the search is done on all the devices.\n") << endl;
 
-      cout << "  solid-hardware mount 'udi'" << endl;
-      cout << i18n("             # If applicable, mount the device corresponding to 'udi'.\n") << endl;
+        cout << "  solid-hardware mount 'udi'" << endl;
+        cout << i18n("             # If applicable, mount the device corresponding to 'udi'.\n") << endl;
 
-      cout << "  solid-hardware unmount 'udi'" << endl;
-      cout << i18n("             # If applicable, unmount the device corresponding to 'udi'.\n") << endl;
+        cout << "  solid-hardware unmount 'udi'" << endl;
+        cout << i18n("             # If applicable, unmount the device corresponding to 'udi'.\n") << endl;
 
-      cout << "  solid-hardware eject 'udi'" << endl;
-      cout << i18n("             # If applicable, eject the device corresponding to 'udi'.\n") << endl;
+        cout << "  solid-hardware eject 'udi'" << endl;
+        cout << i18n("             # If applicable, eject the device corresponding to 'udi'.\n") << endl;
 
-      cout << "  solid-hardware listen" << endl;
-      cout << i18n("             # Listen to all add/remove events on supported hardware.") << endl;
+        cout << "  solid-hardware listen" << endl;
+        cout << i18n("             # Listen to all add/remove events on supported hardware.") << endl;
 
-      return 0;
-  }
+        return 0;
+    }
 
   return SolidHardware::doIt() ? 0 : 1;
 }
