@@ -1,5 +1,6 @@
 /*  This file is part of the KDE project
     Copyright (C) 2006 Kevin Ottens <ervin@kde.org>
+    Copyright (C) 2014 Alejandro Fiestas Olivares <afiestas@kde.org>
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Library General Public
@@ -24,15 +25,6 @@
 #include <QEventLoop>
 
 #include <solid/storageaccess.h>
-#include <solid/opticaldrive.h>
-
-class KJob;
-
-namespace Solid {
-namespace Control {
-    class Authentication;
-}
-}
 
 class QCommandLineParser;
 class SolidHardware : public QCoreApplication
