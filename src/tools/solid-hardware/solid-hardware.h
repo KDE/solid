@@ -40,7 +40,8 @@ class SolidHardware : public QCoreApplication
 public:
     SolidHardware(int &argc, char **argv) : QCoreApplication(argc, argv), m_error(0) {}
 
-    static bool doIt();
+    static bool doIt(const QStringList &args);
+    static QStringList args;
 
     bool hwList(bool interfaces, bool system);
     bool hwCapabilities(const QString &udi);

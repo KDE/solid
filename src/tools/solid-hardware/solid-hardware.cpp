@@ -32,6 +32,9 @@
 #include <kjob.h>
 #include <klocale.h>
 
+#include <QCoreApplication>
+#include <QCommandLineParser>
+
 #include <solid/device.h>
 #include <solid/genericinterface.h>
 #include <solid/storageaccess.h>
@@ -47,6 +50,8 @@ static const char programName[] = I18N_NOOP("solid-hardware");
 static const char description[] = I18N_NOOP("KDE tool for querying your hardware from the command line");
 
 static const char version[] = "0.1a";
+
+QStringList SolidHardware::args = QStringList();
 
 std::ostream &operator<<(std::ostream &out, const QString &msg)
 {
@@ -172,46 +177,48 @@ std::ostream &operator<<(std::ostream &out, const QMap<QString,QVariant> &proper
 
 void checkArgumentCount(int min, int max)
 {
-    int count = KCmdLineArgs::parsedArgs()->count();
+    int count = SolidHardware::args.count();
 
     if (count < min)
     {
-        KCmdLineArgs::usageError(i18n("Syntax Error: Not enough arguments"));
+//         KCmdLineArgs::usageError(i18n("Syntax Error: Not enough arguments"));
     }
 
     if ((max > 0) && (count > max))
     {
-        KCmdLineArgs::usageError(i18n("Syntax Error: Too many arguments"));
+//         KCmdLineArgs::usageError(i18n("Syntax Error: Too many arguments"));
     }
 }
 
 int main(int argc, char **argv)
 {
-    KCmdLineArgs::init(argc, argv, appName, 0, ki18n(programName), version, ki18n(description), KCmdLineArgs::CmdLineArgNone);
+    QCoreApplication app(argc, argv);
+    app.setApplicationName(appName);
+    app.setApplicationVersion(version);
 
+    QCommandLineParser parser;
+    parser.setApplicationDescription(description);
+    parser.addHelpOption();
+    parser.addVersionOption();
 
-    KCmdLineOptions options;
+//     parser.addPositionalArgument("command", );
 
-    options.add("commands", ki18n("Show available commands"));
+    QCommandLineOption commands("commands", app.tr("Show available commands"));
+    parser.addOption(commands);
 
-    options.add("+command", ki18n("Command (see --commands)"));
+//     options.add("commands", ki18n("Show available commands"));
 
-    options.add("+[arg(s)]", ki18n("Arguments for command"));
+//     options.add("+command", ki18n("Command (see --commands)"));
 
-    KCmdLineArgs::addCmdLineOptions(options);
+//     options.add("+[arg(s)]", ki18n("Arguments for command"));
 
-    KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
-
-    KComponentData componentData(appName);
-
-    if (args->isSet("commands"))
+    parser.process(app);
+    if (parser.isSet(commands))
     {
-        KCmdLineArgs::enable_i18n();
-
-        cout << endl << i18n("Syntax:") << endl << endl;
+        cout << endl << app.tr("Syntax:") << endl << endl;
 
         cout << "  solid-hardware list [details|nonportableinfo]" << endl;
-        cout << i18n("             # List the hardware available in the system.\n"
+        cout << app.tr("             # List the hardware available in the system.\n"
                         "             # - If the 'nonportableinfo' option is specified, the device\n"
                         "             # properties are listed (be careful, in this case property names\n"
                         "             # are backend dependent),\n"
@@ -221,43 +228,43 @@ int main(int argc, char **argv)
                         "             # - Otherwise only device UDIs are listed.\n") << endl;
 
         cout << "  solid-hardware details 'udi'" << endl;
-        cout << i18n("             # Display all the interfaces and properties of the device\n"
+        cout << app.tr("             # Display all the interfaces and properties of the device\n"
                         "             # corresponding to 'udi' in a platform neutral fashion.\n") << endl;
 
         cout << "  solid-hardware nonportableinfo 'udi'" << endl;
-        cout << i18n("             # Display all the properties of the device corresponding to 'udi'\n"
+        cout << app.tr("             # Display all the properties of the device corresponding to 'udi'\n"
                         "             # (be careful, in this case property names are backend dependent).\n") << endl;
 
         cout << "  solid-hardware query 'predicate' ['parentUdi']" << endl;
-        cout << i18n("             # List the UDI of devices corresponding to 'predicate'.\n"
+        cout << app.tr("             # List the UDI of devices corresponding to 'predicate'.\n"
                         "             # - If 'parentUdi' is specified, the search is restricted to the\n"
                         "             # branch of the corresponding device,\n"
                         "             # - Otherwise the search is done on all the devices.\n") << endl;
 
         cout << "  solid-hardware mount 'udi'" << endl;
-        cout << i18n("             # If applicable, mount the device corresponding to 'udi'.\n") << endl;
+        cout << app.tr("             # If applicable, mount the device corresponding to 'udi'.\n") << endl;
 
         cout << "  solid-hardware unmount 'udi'" << endl;
-        cout << i18n("             # If applicable, unmount the device corresponding to 'udi'.\n") << endl;
+        cout << app.tr("             # If applicable, unmount the device corresponding to 'udi'.\n") << endl;
 
         cout << "  solid-hardware eject 'udi'" << endl;
-        cout << i18n("             # If applicable, eject the device corresponding to 'udi'.\n") << endl;
+        cout << app.tr("             # If applicable, eject the device corresponding to 'udi'.\n") << endl;
 
         cout << "  solid-hardware listen" << endl;
-        cout << i18n("             # Listen to all add/remove events on supported hardware.") << endl;
+        cout << app.tr("             # Listen to all add/remove events on supported hardware.") << endl;
 
         return 0;
     }
 
-  return SolidHardware::doIt() ? 0 : 1;
+  return SolidHardware::doIt(parser.positionalArguments()) ? 0 : 1;
 }
 
-bool SolidHardware::doIt()
+bool SolidHardware::doIt(const QStringList &args)
 {
-    KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
+    SolidHardware::args = args;
     checkArgumentCount(1, 0);
 
-    QString command(args->arg(0));
+    QString command(args.at(0));
 
     int fake_argc = 0;
     char **fake_argv = 0;
@@ -266,31 +273,31 @@ bool SolidHardware::doIt()
     if (command == "list")
     {
         checkArgumentCount(1, 2);
-        QByteArray extra(args->count()==2 ? args->arg(1).toLocal8Bit() : "");
+        QByteArray extra(args.count() == 2 ? args.at(1).toLocal8Bit() : "");
         return shell.hwList(extra=="details", extra=="nonportableinfo");
     }
     else if (command == "details")
     {
         checkArgumentCount(2, 2);
-        QString udi(args->arg(1));
+        QString udi(args.at(1));
         return shell.hwCapabilities(udi);
     }
     else if (command == "nonportableinfo")
     {
         checkArgumentCount(2, 2);
-        QString udi(args->arg(1));
+        QString udi(args.at(1));
         return shell.hwProperties(udi);
     }
     else if (command == "query")
     {
         checkArgumentCount(2, 3);
 
-        QString query = args->arg(1);
+        QString query = args.at(1);
         QString parent;
 
-        if (args->count() == 3)
+        if (args.count() == 3)
         {
-            parent = args->arg(2);
+            parent = args.at(2);
         }
 
         return shell.hwQuery(parent, query);
@@ -298,19 +305,19 @@ bool SolidHardware::doIt()
     else if (command == "mount")
     {
         checkArgumentCount(2, 2);
-        QString udi(args->arg(1));
+        QString udi(args.at(1));
         return shell.hwVolumeCall(Mount, udi);
     }
     else if (command == "unmount")
     {
         checkArgumentCount(2, 2);
-        QString udi(args->arg(1));
+        QString udi(args.at(1));
         return shell.hwVolumeCall(Unmount, udi);
     }
     else if (command == "eject")
     {
         checkArgumentCount(2, 2);
-        QString udi(args->arg(1));
+        QString udi(args.at(1));
         return shell.hwVolumeCall(Eject, udi);
     }
     else if (command == "listen")
