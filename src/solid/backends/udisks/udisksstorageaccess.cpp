@@ -24,8 +24,11 @@
 
 #include <QtCore/QProcess>
 #include <QDBusConnection>
+#include <QDBusReply>
 #include <QApplication>
 #include <QWidget>
+#include <QTimer>
+#include <QDebug>
 
 using namespace Solid::Backends::UDisks;
 
