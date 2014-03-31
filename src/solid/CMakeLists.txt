@@ -142,6 +142,7 @@ set(solid_LIB_SRCS
 
    backends/shared/rootdevice.cpp
    backends/shared/cpufeatures.cpp
+   ${solid_QM_LOADER}
 )
 
 if(NOT APPLE)
