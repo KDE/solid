@@ -24,7 +24,6 @@
 #include "winprocessor.h"
 #include "winblock.h"
 #include "winbattery.h"
-#include "winacadapter.h"
 
 #include <dbt.h>
 
@@ -52,8 +51,7 @@ WinDeviceManager::WinDeviceManager(QObject *parent)
                           << Solid::DeviceInterface::StorageVolume
                           << Solid::DeviceInterface::OpticalDisc
                           << Solid::DeviceInterface::Processor
-                          << Solid::DeviceInterface::Battery
-                          << Solid::DeviceInterface::AcAdapter;
+                          << Solid::DeviceInterface::Battery;
 
     updateDeviceList();
 
@@ -145,7 +143,6 @@ void WinDeviceManager::updateDeviceList()
     QSet<QString> devices = WinProcessor::getUdis();
     devices += WinBlock::getUdis();
     devices += WinBattery::getUdis();
-    devices += WinAcadapter::getUdis();
 
     m_devices = devices;
     m_devicesList = m_devices.toList();

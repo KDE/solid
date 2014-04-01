@@ -31,7 +31,6 @@
 #include "fakecamera.h"
 #include "fakeportablemediaplayer.h"
 #include "fakenetworkshare.h"
-#include "fakeacadapter.h"
 #include "fakebattery.h"
 
 #include <QtCore/QStringList>
@@ -291,9 +290,6 @@ QObject *FakeDevice::createDeviceInterface(const Solid::DeviceInterface::Type &t
         break;
     case Solid::DeviceInterface::PortableMediaPlayer:
         iface = new FakePortableMediaPlayer(this);
-        break;
-    case Solid::DeviceInterface::AcAdapter:
-        iface = new FakeAcAdapter(this);
         break;
     case Solid::DeviceInterface::Battery:
         iface = new FakeBattery(this);

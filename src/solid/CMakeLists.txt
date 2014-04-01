@@ -63,14 +63,12 @@ set(solid_LIB_SRCS
    camera.cpp
    portablemediaplayer.cpp
    networkshare.cpp
-   acadapter.cpp
    battery.cpp
    predicate.cpp
    predicateparse.cpp
    predicate_lexer.c
    predicate_parser.c
 
-   ifaces/acadapter.cpp
    ifaces/battery.cpp
    ifaces/block.cpp
    ifaces/camera.cpp
@@ -87,7 +85,6 @@ set(solid_LIB_SRCS
    ifaces/storagevolume.cpp
    ifaces/storageaccess.cpp
 
-   backends/fakehw/fakeacadapter.cpp
    backends/fakehw/fakebattery.cpp
    backends/fakehw/fakeblock.cpp
    backends/fakehw/fakecamera.cpp
@@ -142,7 +139,6 @@ if(NOT WIN32 AND NOT APPLE)
 
    message(STATUS "Building Solid HAL backend." )
    set(solid_LIB_SRCS ${solid_LIB_SRCS}
-      backends/hal/halacadapter.cpp
       backends/hal/halbattery.cpp
       backends/hal/halblock.cpp
       backends/hal/halcamera.cpp
@@ -165,7 +161,6 @@ if(NOT WIN32 AND NOT APPLE)
       backends/upower/upowermanager.cpp
       backends/upower/upowerdevice.cpp
       backends/upower/upowerbattery.cpp
-      backends/upower/upoweracadapter.cpp
       backends/upower/upowerdeviceinterface.cpp
       backends/upower/upowergenericinterface.cpp
    )
@@ -278,7 +273,6 @@ if(WIN32)
        message(STATUS "-- Building Solid WMI backend." )
 
        set(solid_LIB_SRCS ${solid_LIB_SRCS}
-          backends/wmi/wmiacadapter.cpp
           backends/wmi/wmibattery.cpp
           backends/wmi/wmiblock.cpp
           backends/wmi/wmicamera.cpp
@@ -311,7 +305,6 @@ if(WIN32)
        backends/win/winstoragedrive.cpp
        backends/win/winstoragevolume.cpp
        backends/win/winbattery.cpp
-       backends/win/winacadapter.cpp
        )
     endif()
 endif()
@@ -370,7 +363,6 @@ ecm_generate_headers(Solid_CamelCase_HEADERS
   OpticalDisc
   Camera
   PortableMediaPlayer
-  AcAdapter
   Battery
   Predicate
   NetworkShare

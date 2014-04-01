@@ -42,7 +42,6 @@ UPowerManager::UPowerManager(QObject *parent)
 {
     m_supportedInterfaces
             << Solid::DeviceInterface::GenericInterface
-            << Solid::DeviceInterface::AcAdapter
             << Solid::DeviceInterface::Battery;
 
     qDBusRegisterMetaType<QList<QDBusObjectPath> >();

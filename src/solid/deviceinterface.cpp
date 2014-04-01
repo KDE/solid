@@ -84,8 +84,6 @@ QString Solid::DeviceInterface::typeDescription(Type type)
         return tr("Camera", "Camera device type");
     case PortableMediaPlayer:
         return tr("Portable Media Player", "Portable Media Player device type");
-    case AcAdapter:
-        return tr("Ac Adapter", "Ac Adapter device type");
     case Battery:
         return tr("Battery", "Battery device type");
     case NetworkShare:

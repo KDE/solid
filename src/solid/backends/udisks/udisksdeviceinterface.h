@@ -81,9 +81,6 @@ public:
         case Solid::DeviceInterface::PortableMediaPlayer:
             // Doesn't exist with UDisks
             break;
-        case Solid::DeviceInterface::AcAdapter:
-            // Doesn't exist with UDisks
-            break;
         case Solid::DeviceInterface::Battery:
             // Doesn't exist with UDisks
             break;
@@ -119,8 +116,6 @@ public:
             return Solid::DeviceInterface::Camera;
         } else if (capability == "portable_audio_player") {
             return Solid::DeviceInterface::PortableMediaPlayer;
-        } else if (capability == "ac_adapter") {
-            return Solid::DeviceInterface::AcAdapter;
         } else if (capability == "battery") {
             return Solid::DeviceInterface::Battery;
         } else if (capability == "networkshare") {

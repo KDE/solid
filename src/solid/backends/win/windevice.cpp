@@ -31,7 +31,6 @@
 #include "windevice.h"
 #include "winprocessor.h"
 #include "winbattery.h"
-#include "winacadapter.h"
 
 #include <batclass.h>
 
@@ -66,8 +65,6 @@ WinDevice::WinDevice(const QString &udi) :
         m_type = Solid::DeviceInterface::Processor;
     } else if (type == "power.battery") {
         m_type = Solid::DeviceInterface::Battery;
-    } else if (type == "power") {
-        m_type = Solid::DeviceInterface::AcAdapter;
     } else if (type == "volume.virtual") {
         m_type = Solid::DeviceInterface::StorageAccess;
     }
@@ -98,9 +95,6 @@ WinDevice::WinDevice(const QString &udi) :
         break;
     case Solid::DeviceInterface::Battery:
         initBatteryDevice();
-        break;
-    case Solid::DeviceInterface::AcAdapter:
-        m_description = tr("A/C Adapter");
         break;
     default:
         if (queryDeviceInterface(Solid::DeviceInterface::StorageAccess) || queryDeviceInterface(Solid::DeviceInterface::StorageDrive)) {
@@ -258,9 +252,6 @@ QString WinDevice::icon() const
     case Solid::DeviceInterface::Battery:
         icon = QLatin1String("battery");
         break;
-    case Solid::DeviceInterface::AcAdapter:
-        icon = QLatin1String("preferences-system-power-management");
-        break;
     case Solid::DeviceInterface::StorageAccess:
         icon = QLatin1String("drive-harddisk");
         break;
@@ -361,9 +352,6 @@ QObject *WinDevice::createDeviceInterface(const Solid::DeviceInterface::Type &ty
     //          break;
     case Solid::DeviceInterface::Battery:
         iface = new WinBattery(this);
-        break;
-    case Solid::DeviceInterface::AcAdapter:
-        iface = new WinAcadapter(this);
         break;
     case Solid::DeviceInterface::Unknown:
     case Solid::DeviceInterface::Last:

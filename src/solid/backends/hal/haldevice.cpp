@@ -41,7 +41,6 @@
 #include "halopticaldisc.h"
 #include "halcamera.h"
 #include "halportablemediaplayer.h"
-#include "halacadapter.h"
 #include "halbattery.h"
 
 using namespace Solid::Backends::Hal;
@@ -441,9 +440,6 @@ QObject *HalDevice::createDeviceInterface(const Solid::DeviceInterface::Type &ty
         break;
     case Solid::DeviceInterface::PortableMediaPlayer:
         iface = new PortableMediaPlayer(this);
-        break;
-    case Solid::DeviceInterface::AcAdapter:
-        iface = new AcAdapter(this);
         break;
     case Solid::DeviceInterface::Battery:
         iface = new Battery(this);

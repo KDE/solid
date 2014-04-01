@@ -62,7 +62,6 @@ FakeManager::FakeManager(QObject *parent, const QString &xmlFile)
                            << Solid::DeviceInterface::OpticalDisc
                            << Solid::DeviceInterface::Camera
                            << Solid::DeviceInterface::PortableMediaPlayer
-                           << Solid::DeviceInterface::AcAdapter
                            << Solid::DeviceInterface::Battery
                            << Solid::DeviceInterface::NetworkShare;
 }

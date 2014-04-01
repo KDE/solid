@@ -81,9 +81,6 @@ public:
         case Solid::DeviceInterface::PortableMediaPlayer:
             list << "portable_audio_player";
             break;
-        case Solid::DeviceInterface::AcAdapter:
-            list << "ac_adapter";
-            break;
         case Solid::DeviceInterface::Battery:
             list << "battery";
             break;
@@ -117,8 +114,6 @@ public:
             return Solid::DeviceInterface::Camera;
         } else if (capability == "portable_audio_player") {
             return Solid::DeviceInterface::PortableMediaPlayer;
-        } else if (capability == "ac_adapter") {
-            return Solid::DeviceInterface::AcAdapter;
         } else if (capability == "battery") {
             return Solid::DeviceInterface::Battery;
         } else if (capability == "networkshare") {

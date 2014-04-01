@@ -45,7 +45,6 @@ public:
                             << Solid::DeviceInterface::OpticalDisc
                             //                           << Solid::DeviceInterface::Camera
                             //                           << Solid::DeviceInterface::PortableMediaPlayer
-                            << Solid::DeviceInterface::AcAdapter
                             << Solid::DeviceInterface::Battery
                             ;
 
