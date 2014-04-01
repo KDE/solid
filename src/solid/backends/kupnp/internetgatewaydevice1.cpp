@@ -23,6 +23,7 @@
 // Solid
 #include "kupnpstorageaccess.h"
 // Qt
+#include <QtCore/QCoreApplication>
 #include <QtCore/QSet>
 
 namespace Solid
@@ -59,7 +60,7 @@ QString InternetGatewayDevice1::icon() const
 
 QString InternetGatewayDevice1::description() const
 {
-    return tr("UPnP Internet Gateway Device");
+    return QCoreApplication::translate("InternetGatewayDevice1", "UPnP Internet Gateway Device");
 }
 
 bool InternetGatewayDevice1::queryDeviceInterface(const Solid::DeviceInterface::Type &type) const

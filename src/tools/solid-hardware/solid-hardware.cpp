@@ -167,7 +167,7 @@ std::ostream &operator<<(std::ostream &out, const QMap<QString,QVariant> &proper
 
 QString getUdiFromArguments(QCoreApplication &app, QCommandLineParser &parser)
 {
-    parser.addPositionalArgument("udi", app.tr("Device udi"));
+    parser.addPositionalArgument("udi", QCoreApplication::translate("solid-hardware", "Device udi"));
     parser.process(app);
     if (parser.positionalArguments().count() < 2) {
         parser.showHelp(1);
@@ -182,54 +182,62 @@ int main(int argc, char **argv)
     app.setApplicationVersion(version);
 
     QCommandLineParser parser;
-    parser.setApplicationDescription(app.tr("KDE tool for querying your hardware from the command line"));
+    parser.setApplicationDescription(QCoreApplication::translate("solid-hardware", "KDE tool for querying your hardware from the command line"));
     parser.addHelpOption();
     parser.addVersionOption();
-    parser.addPositionalArgument("command", app.tr("Command to execute"));
+    parser.addPositionalArgument("command", QCoreApplication::translate("solid-hardware", "Command to execute"));
 
-    QCommandLineOption commands("commands", app.tr("Show available commands"));
+    QCommandLineOption commands("commands", QCoreApplication::translate("solid-hardware", "Show available commands"));
     parser.addOption(commands);
 
     parser.process(app);
     if (parser.isSet(commands))
     {
-        cout << endl << app.tr("Syntax:") << endl << endl;
+        cout << endl << QCoreApplication::translate("solid-hardware", "Syntax:") << endl << endl;
 
         cout << "  solid-hardware list [details|nonportableinfo]" << endl;
-        cout << app.tr("             # List the hardware available in the system.\n"
-                        "             # - If the 'nonportableinfo' option is specified, the device\n"
-                        "             # properties are listed (be careful, in this case property names\n"
-                        "             # are backend dependent),\n"
-                        "             # - If the 'details' option is specified, the device interfaces\n"
-                        "             # and the corresponding properties are listed in a platform\n"
-                        "             # neutral fashion,\n"
-                        "             # - Otherwise only device UDIs are listed.\n") << endl;
+        cout << QCoreApplication::translate("solid-hardware",
+                "             # List the hardware available in the system.\n"
+                "             # - If the 'nonportableinfo' option is specified, the device\n"
+                "             # properties are listed (be careful, in this case property names\n"
+                "             # are backend dependent),\n"
+                "             # - If the 'details' option is specified, the device interfaces\n"
+                "             # and the corresponding properties are listed in a platform\n"
+                "             # neutral fashion,\n"
+                "             # - Otherwise only device UDIs are listed.\n") << endl;
 
         cout << "  solid-hardware details 'udi'" << endl;
-        cout << app.tr("             # Display all the interfaces and properties of the device\n"
-                        "             # corresponding to 'udi' in a platform neutral fashion.\n") << endl;
+        cout << QCoreApplication::translate("solid-hardware",
+                "             # Display all the interfaces and properties of the device\n"
+                "             # corresponding to 'udi' in a platform neutral fashion.\n") << endl;
 
         cout << "  solid-hardware nonportableinfo 'udi'" << endl;
-        cout << app.tr("             # Display all the properties of the device corresponding to 'udi'\n"
-                        "             # (be careful, in this case property names are backend dependent).\n") << endl;
+        cout << QCoreApplication::translate("solid-hardware",
+                "             # Display all the properties of the device corresponding to 'udi'\n"
+                "             # (be careful, in this case property names are backend dependent).\n") << endl;
 
         cout << "  solid-hardware query 'predicate' ['parentUdi']" << endl;
-        cout << app.tr("             # List the UDI of devices corresponding to 'predicate'.\n"
-                        "             # - If 'parentUdi' is specified, the search is restricted to the\n"
-                        "             # branch of the corresponding device,\n"
-                        "             # - Otherwise the search is done on all the devices.\n") << endl;
+        cout << QCoreApplication::translate("solid-hardware",
+                "             # List the UDI of devices corresponding to 'predicate'.\n"
+                "             # - If 'parentUdi' is specified, the search is restricted to the\n"
+                "             # branch of the corresponding device,\n"
+                "             # - Otherwise the search is done on all the devices.\n") << endl;
 
         cout << "  solid-hardware mount 'udi'" << endl;
-        cout << app.tr("             # If applicable, mount the device corresponding to 'udi'.\n") << endl;
+        cout << QCoreApplication::translate("solid-hardware",
+                "             # If applicable, mount the device corresponding to 'udi'.\n") << endl;
 
         cout << "  solid-hardware unmount 'udi'" << endl;
-        cout << app.tr("             # If applicable, unmount the device corresponding to 'udi'.\n") << endl;
+        cout << QCoreApplication::translate("solid-hardware",
+                "             # If applicable, unmount the device corresponding to 'udi'.\n") << endl;
 
         cout << "  solid-hardware eject 'udi'" << endl;
-        cout << app.tr("             # If applicable, eject the device corresponding to 'udi'.\n") << endl;
+        cout << QCoreApplication::translate("solid-hardware",
+                "             # If applicable, eject the device corresponding to 'udi'.\n") << endl;
 
         cout << "  solid-hardware listen" << endl;
-        cout << app.tr("             # Listen to all add/remove events on supported hardware.") << endl;
+        cout << QCoreApplication::translate("solid-hardware",
+                "             # Listen to all add/remove events on supported hardware.") << endl;
 
         return 0;
     }
@@ -245,8 +253,8 @@ int main(int argc, char **argv)
 
     if (command == "list")
     {
-        parser.addPositionalArgument("details", app.tr("Show device details"));
-        parser.addPositionalArgument("nonportableinfo", app.tr("Show non portable information"));
+        parser.addPositionalArgument("details", QCoreApplication::translate("solid-hardware", "Show device details"));
+        parser.addPositionalArgument("nonportableinfo", QCoreApplication::translate("solid-hardware", "Show non portable information"));
         parser.process(app);
         args = parser.positionalArguments();
         QByteArray extra(args.count() == 2 ? args.at(1).toLocal8Bit() : "");
@@ -258,8 +266,8 @@ int main(int argc, char **argv)
         const QString udi = getUdiFromArguments(app, parser);
         return app.hwProperties(udi);
     } else if (command == "query") {
-        parser.addPositionalArgument("udi", app.tr("Device udi"));
-        parser.addPositionalArgument("parent", app.tr("Parent device udi"));
+        parser.addPositionalArgument("udi", QCoreApplication::translate("solid-hardware", "Device udi"));
+        parser.addPositionalArgument("parent", QCoreApplication::translate("solid-hardware", "Parent device udi"));
         parser.process(app);
         if (parser.positionalArguments().count() < 2 || parser.positionalArguments().count() > 3) {
             parser.showHelp(1);
@@ -287,7 +295,7 @@ int main(int argc, char **argv)
         return app.listen();
     }
 
-    cerr << app.tr("Syntax Error: Unknown command '%1'").arg(command) << endl;
+    cerr << QCoreApplication::translate("solid-hardware", "Syntax Error: Unknown command '%1'").arg(command) << endl;
 
     return 1;
 }

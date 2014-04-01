@@ -23,6 +23,7 @@
 // Solid
 #include "kupnpstorageaccess.h"
 // Qt
+#include <QtCore/QCoreApplication>
 #include <QtCore/QStringList>
 #include <QtCore/QSet>
 
@@ -75,7 +76,7 @@ QString MediaServer2::icon() const
 
 QString MediaServer2::description() const
 {
-    return tr("UPnP Media Server v2");
+    return QCoreApplication::translate("MediaServer2", "UPnP Media Server v2");
 }
 
 bool MediaServer2::queryDeviceInterface(const Solid::DeviceInterface::Type &type) const
