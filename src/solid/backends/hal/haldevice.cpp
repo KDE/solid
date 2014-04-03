@@ -599,16 +599,16 @@ QString HalDevice::storageDescription() const
         }
         if ((mediumTypes & Solid::OpticalDrive::Dvdr) && (mediumTypes & Solid::OpticalDrive::Dvdplusr)) {
             if (mediumTypes & Solid::OpticalDrive::Dvdplusdl) {
-                second = tr("/DVD±R DL", "Second item of %1%2 Drive sentence");
+                second = trUtf8("/DVD±R DL", "Second item of %1%2 Drive sentence");
             } else {
-                second = tr("/DVD±R", "Second item of %1%2 Drive sentence");
+                second = trUtf8("/DVD±R", "Second item of %1%2 Drive sentence");
             }
         }
         if ((mediumTypes & Solid::OpticalDrive::Dvdrw) && (mediumTypes & Solid::OpticalDrive::Dvdplusrw)) {
             if ((mediumTypes & Solid::OpticalDrive::Dvdplusdl) || (mediumTypes & Solid::OpticalDrive::Dvdplusdlrw)) {
-                second = tr("/DVD±RW DL", "Second item of %1%2 Drive sentence");
+                second = trUtf8("/DVD±RW DL", "Second item of %1%2 Drive sentence");
             } else {
-                second = tr("/DVD±RW", "Second item of %1%2 Drive sentence");
+                second = trUtf8("/DVD±RW", "Second item of %1%2 Drive sentence");
             }
         }
         if (mediumTypes & Solid::OpticalDrive::Bd) {
