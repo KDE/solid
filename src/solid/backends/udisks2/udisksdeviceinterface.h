@@ -75,21 +75,8 @@ public:
         case Solid::DeviceInterface::Processor:
         case Solid::DeviceInterface::Camera:
         case Solid::DeviceInterface::PortableMediaPlayer:
-        case Solid::DeviceInterface::NetworkInterface:
-        case Solid::DeviceInterface::AcAdapter:
         case Solid::DeviceInterface::Battery:
-        case Solid::DeviceInterface::Button:
-        case Solid::DeviceInterface::AudioInterface:
-        case Solid::DeviceInterface::DvbInterface:
-        case Solid::DeviceInterface::Video:
-        case Solid::DeviceInterface::SerialInterface:
-        case Solid::DeviceInterface::SmartCardReader:
-        case Solid::DeviceInterface::InternetGateway:
         case Solid::DeviceInterface::NetworkShare:
-        case Solid::DeviceInterface::Keyboard:
-        case Solid::DeviceInterface::PointingDevice:
-            // These do not exist with UDisks
-            break;
         case Solid::DeviceInterface::Unknown:
             break;
         case Solid::DeviceInterface::Last:

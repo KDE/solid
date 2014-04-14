@@ -23,7 +23,6 @@
 #include "upowerdevice.h"
 #include "upowerdeviceinterface.h"
 #include "upowergenericinterface.h"
-#include "upoweracadapter.h"
 #include "upowerbattery.h"
 
 #include <solid/genericinterface.h>
@@ -67,9 +66,6 @@ QObject *UPowerDevice::createDeviceInterface(const Solid::DeviceInterface::Type 
     case Solid::DeviceInterface::GenericInterface:
         iface = new GenericInterface(this);
         break;
-    case Solid::DeviceInterface::AcAdapter:
-        iface = new AcAdapter(this);
-        break;
     case Solid::DeviceInterface::Battery:
         iface = new Battery(this);
         break;
@@ -87,8 +83,6 @@ bool UPowerDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type
         return true;
     case Solid::DeviceInterface::Battery:
         return (uptype == 2 || uptype == 3 || uptype == 5 || uptype == 6 || uptype == 7 || uptype == 8);
-    case Solid::DeviceInterface::AcAdapter:
-        return (uptype == 1);
     default:
         return false;
     }
@@ -101,9 +95,7 @@ QStringList UPowerDevice::emblems() const
 
 QString UPowerDevice::description() const
 {
-    if (queryDeviceInterface(Solid::DeviceInterface::AcAdapter)) {
-        return tr("A/C Adapter");
-    } else if (queryDeviceInterface(Solid::DeviceInterface::Battery)) {
+    if (queryDeviceInterface(Solid::DeviceInterface::Battery)) {
         return tr("%1 Battery", "%1 is battery technology").arg(batteryTechnology());
     } else {
         QString result = prop("Model").toString();
@@ -137,12 +129,8 @@ QString UPowerDevice::batteryTechnology() const
 
 QString UPowerDevice::icon() const
 {
-    if (queryDeviceInterface(Solid::DeviceInterface::AcAdapter)) {
-        return "preferences-system-power-management";
-
-    } else if (queryDeviceInterface(Solid::DeviceInterface::Battery)) {
+    if (queryDeviceInterface(Solid::DeviceInterface::Battery)) {
         return "battery";
-
     } else {
         return QString();
     }

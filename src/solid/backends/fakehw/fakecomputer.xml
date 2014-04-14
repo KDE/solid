@@ -55,39 +55,6 @@
         </device>
 
 
-        <!-- So that it looks like a laptop,
-             provide this computer a few buttons:
-               - power button
-               - sleep button
-               - lid switch -->
-        <device udi="/org/kde/solid/fakehw/acpi_PWB">
-            <property key="name">Power Button</property>
-            <property key="interfaces">Button</property>
-            <property key="parent">/org/kde/solid/fakehw/computer</property>
-
-            <property key="type">PowerButton</property>
-            <property key="hasState">false</property>
-        </device>
-        <device udi="/org/kde/solid/fakehw/acpi_SLPB">
-            <property key="name">Sleep Button</property>
-            <property key="interfaces">Button</property>
-            <property key="parent">/org/kde/solid/fakehw/computer</property>
-
-            <property key="type">SleepButton</property>
-            <property key="hasState">false</property>
-        </device>
-        <device udi="/org/kde/solid/fakehw/acpi_LID0">
-            <property key="name">Lid Switch</property>
-            <property key="interfaces">Button</property>
-            <property key="parent">/org/kde/solid/fakehw/computer</property>
-
-            <property key="type">LidButton</property>
-            <property key="hasState">true</property>
-            <property key="stateValue">false</property>
-        </device>
-
-
-
         <!-- Two CPUs -->
         <device udi="/org/kde/solid/fakehw/acpi_CPU0">
             <property key="name">Solid Processor #0</property>
@@ -544,16 +511,6 @@
                 <property key="vendor">Acme Corporation</property>
                 <property key="parent">/org/kde/solid/fakehw/pci_8086_2448</property>
             </device>
-                <!-- Wireless network interface -->
-                <device udi="/org/kde/solid/fakehw/net_00_1a_eb_c9_64_16">
-                    <property key="name">WLAN Interface</property>
-                    <property key="interfaces">NetworkInterface</property>
-                    <property key="parent">/org/kde/solid/fakehw/pci_3452_7890</property>
-                    <property key="ifaceName">wlan0</property>
-                    <property key="wireless">true</property>
-                    <property key="hwAddress">00:1A:EB:C9:64:16</property>
-                    <property key="macAddress">0x001AEBC96416</property>
-                </device>
 
             <!-- PCI device #2 -->
             <device udi="/org/kde/solid/fakehw/pci_8904_5e21">
@@ -561,16 +518,6 @@
                 <property key="vendor">ReallyChip Corporation</property>
                 <property key="parent">/org/kde/solid/fakehw/pci_8086_2448</property>
             </device>
-                <!-- Ethernet network interface -->
-                <device udi="/org/kde/solid/fakehw/net_00_1a_eb_c9_64_15">
-                    <property key="name">Networking Interface</property>
-                    <property key="interfaces">NetworkInterface</property>
-                    <property key="parent">/org/kde/solid/fakehw/pci_8904_5e21</property>
-                    <property key="ifaceName">eth0</property>
-                    <property key="wireless">false</property>
-                    <property key="hwAddress">00:1A:EB:C9:64:15</property>
-                    <property key="macAddress">0x001AEBC96415</property>
-                </device>
 
             <!-- PCI device #3 -->
             <device udi="/org/kde/solid/fakehw/pci_8843_6a11">
@@ -588,51 +535,6 @@
                     <property key="deviceType">demux</property>
                     <property key="deviceIndex">1</property>
                 </device>
-
-
-
-        <!-- Integrated Audio Controller -->
-        <device udi="/org/kde/solid/fakehw/pci_8086_266e">
-            <property key="name">99021 Audio Controller</property>
-            <property key="vendor">Acme Corporation</property>
-            <property key="parent">/org/kde/solid/fakehw/computer</property>
-        </device>
-            <device udi="/org/kde/solid/fakehw/pci_8086_266e_alsa_capture_0">
-                <property key="name">Acme ALSA Capture</property>
-                <property key="interfaces">AudioInterface</property>
-                <property key="parent">/org/kde/solid/fakehw/pci_8086_266e</property>
-                <property key="driver">alsa</property>
-                <property key="driverHandle">0,0</property>
-                <property key="type">input</property>
-                <property key="soundcardType">internal</property>
-            </device>
-            <device udi="/org/kde/solid/fakehw/pci_8086_266e_alsa_playback_0">
-                <property key="name">Acme ALSA Playback</property>
-                <property key="interfaces">AudioInterface</property>
-                <property key="parent">/org/kde/solid/fakehw/pci_8086_266e</property>
-                <property key="driver">alsa</property>
-                <property key="driverHandle">0,1</property>
-                <property key="type">output</property>
-                <property key="soundcardType">internal</property>
-            </device>
-            <device udi="/org/kde/solid/fakehw/pci_8086_266e_alsa_control_1">
-                <property key="name">Acme ALSA Control</property>
-                <property key="interfaces">AudioInterface</property>
-                <property key="parent">/org/kde/solid/fakehw/pci_8086_266e</property>
-                <property key="driver">alsa</property>
-                <property key="driverHandle">0</property>
-                <property key="type">control</property>
-                <property key="soundcardType">internal</property>
-            </device>
-            <device udi="/org/kde/solid/fakehw/pci_8086_266e_oss_pcm_0">
-                <property key="name">Acme OSS PCM Device</property>
-                <property key="interfaces">AudioInterface</property>
-                <property key="parent">/org/kde/solid/fakehw/pci_8086_266e</property>
-                <property key="driver">oss</property>
-                <property key="driverHandle">/dev/dsp</property>
-                <property key="type">input,output</property>
-                <property key="soundcardType">internal</property>
-            </device>
 
         <device udi="/org/kde/solid/fakehw/fstab">
             <property key="name">Network Shares</property>

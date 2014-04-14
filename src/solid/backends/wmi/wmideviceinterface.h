@@ -82,29 +82,8 @@ public:
         case Solid::DeviceInterface::PortableMediaPlayer:
             list << "portable_audio_player";
             break;
-        case Solid::DeviceInterface::NetworkInterface:
-            list << "net";
-            break;
-        case Solid::DeviceInterface::AcAdapter:
-            list << "ac_adapter";
-            break;
         case Solid::DeviceInterface::Battery:
             list << "battery";
-            break;
-        case Solid::DeviceInterface::Button:
-            list << "button";
-            break;
-        case Solid::DeviceInterface::AudioInterface:
-            list << "alsa" << "oss";
-            break;
-        case Solid::DeviceInterface::DvbInterface:
-            list << "dvb";
-            break;
-        case Solid::DeviceInterface::Video:
-            list << "video4linux";
-            break;
-        case Solid::DeviceInterface::InternetGateway:
-            list << "internet_gateway";
             break;
         case Solid::DeviceInterface::NetworkShare:
             list << "networkshare";
@@ -136,20 +115,8 @@ public:
             return Solid::DeviceInterface::Camera;
         } else if (capability == "portable_audio_player") {
             return Solid::DeviceInterface::PortableMediaPlayer;
-        } else if (capability == "net") {
-            return Solid::DeviceInterface::NetworkInterface;
-        } else if (capability == "ac_adapter") {
-            return Solid::DeviceInterface::AcAdapter;
         } else if (capability == "battery") {
             return Solid::DeviceInterface::Battery;
-        } else if (capability == "button") {
-            return Solid::DeviceInterface::Button;
-        } else if (capability == "alsa" || capability == "oss") {
-            return Solid::DeviceInterface::AudioInterface;
-        } else if (capability == "dvb") {
-            return Solid::DeviceInterface::DvbInterface;
-        } else if (capability == "video4linux") {
-            return Solid::DeviceInterface::Video;
         } else if (capability == "networkshare") {
             return Solid::DeviceInterface::NetworkShare;
         } else {

@@ -48,32 +48,10 @@
 #include <solid/ifaces/camera.h>
 #include <solid/portablemediaplayer.h>
 #include <solid/ifaces/portablemediaplayer.h>
-#include <solid/networkinterface.h>
-#include <solid/ifaces/networkinterface.h>
 #include <solid/networkshare.h>
 #include <solid/ifaces/networkshare.h>
-#include <solid/acadapter.h>
-#include <solid/ifaces/acadapter.h>
 #include <solid/battery.h>
 #include <solid/ifaces/battery.h>
-#include <solid/button.h>
-#include <solid/ifaces/button.h>
-#include <solid/keyboard.h>
-#include <solid/ifaces/keyboard.h>
-#include <solid/pointingdevice.h>
-#include <solid/ifaces/pointingdevice.h>
-#include <solid/audiointerface.h>
-#include <solid/ifaces/audiointerface.h>
-#include <solid/dvbinterface.h>
-#include <solid/ifaces/dvbinterface.h>
-#include <solid/video.h>
-#include <solid/ifaces/video.h>
-#include <solid/serialinterface.h>
-#include <solid/ifaces/serialinterface.h>
-#include <solid/smartcardreader.h>
-#include <solid/ifaces/smartcardreader.h>
-#include <solid/internetgateway.h>
-#include <solid/ifaces/internetgateway.h>
 
 Solid::Device::Device(const QString &udi)
 {
@@ -207,44 +185,11 @@ const Solid::DeviceInterface *Solid::Device::asDeviceInterface(const DeviceInter
             case DeviceInterface::PortableMediaPlayer:
                 iface = deviceinterface_cast(Ifaces::PortableMediaPlayer, PortableMediaPlayer, dev_iface);
                 break;
-            case DeviceInterface::NetworkInterface:
-                iface = deviceinterface_cast(Ifaces::NetworkInterface, NetworkInterface, dev_iface);
-                break;
-            case DeviceInterface::AcAdapter:
-                iface = deviceinterface_cast(Ifaces::AcAdapter, AcAdapter, dev_iface);
-                break;
             case DeviceInterface::Battery:
                 iface = deviceinterface_cast(Ifaces::Battery, Battery, dev_iface);
                 break;
-            case DeviceInterface::Button:
-                iface = deviceinterface_cast(Ifaces::Button, Button, dev_iface);
-                break;
-            case DeviceInterface::AudioInterface:
-                iface = deviceinterface_cast(Ifaces::AudioInterface, AudioInterface, dev_iface);
-                break;
-            case DeviceInterface::DvbInterface:
-                iface = deviceinterface_cast(Ifaces::DvbInterface, DvbInterface, dev_iface);
-                break;
-            case DeviceInterface::Video:
-                iface = deviceinterface_cast(Ifaces::Video, Video, dev_iface);
-                break;
-            case DeviceInterface::SerialInterface:
-                iface = deviceinterface_cast(Ifaces::SerialInterface, SerialInterface, dev_iface);
-                break;
-            case DeviceInterface::SmartCardReader:
-                iface = deviceinterface_cast(Ifaces::SmartCardReader, SmartCardReader, dev_iface);
-                break;
-            case DeviceInterface::InternetGateway:
-                iface = deviceinterface_cast(Ifaces::InternetGateway, InternetGateway, dev_iface);
-                break;
             case DeviceInterface::NetworkShare:
                 iface = deviceinterface_cast(Ifaces::NetworkShare, NetworkShare, dev_iface);
-                break;
-            case DeviceInterface::Keyboard:
-                iface = deviceinterface_cast(Ifaces::Keyboard, Keyboard, dev_iface);
-                break;
-            case DeviceInterface::PointingDevice:
-                iface = deviceinterface_cast(Ifaces::PointingDevice, PointingDevice, dev_iface);
                 break;
             case DeviceInterface::Unknown:
             case DeviceInterface::Last:

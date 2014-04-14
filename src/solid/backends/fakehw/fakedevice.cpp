@@ -31,15 +31,7 @@
 #include "fakecamera.h"
 #include "fakeportablemediaplayer.h"
 #include "fakenetworkshare.h"
-#include "fakenetworkinterface.h"
-#include "fakeacadapter.h"
 #include "fakebattery.h"
-#include "fakebutton.h"
-#include "fakeaudiointerface.h"
-#include "fakedvbinterface.h"
-#include "fakesmartcardreader.h"
-#include "fakekeyboard.h"
-#include "fakepointingdevice.h"
 
 #include <QtCore/QStringList>
 #include <QtDBus/QDBusConnection>
@@ -299,41 +291,11 @@ QObject *FakeDevice::createDeviceInterface(const Solid::DeviceInterface::Type &t
     case Solid::DeviceInterface::PortableMediaPlayer:
         iface = new FakePortableMediaPlayer(this);
         break;
-    case Solid::DeviceInterface::NetworkInterface:
-        iface = new FakeNetworkInterface(this);
-        break;
-    case Solid::DeviceInterface::AcAdapter:
-        iface = new FakeAcAdapter(this);
-        break;
     case Solid::DeviceInterface::Battery:
         iface = new FakeBattery(this);
         break;
-    case Solid::DeviceInterface::Button:
-        iface = new FakeButton(this);
-        break;
-    case Solid::DeviceInterface::AudioInterface:
-        iface = new FakeAudioInterface(this);
-        break;
-    case Solid::DeviceInterface::DvbInterface:
-        iface = new FakeDvbInterface(this);
-        break;
-    case Solid::DeviceInterface::Video:
-        break;
-    case Solid::DeviceInterface::SmartCardReader:
-        iface = new FakeSmartCardReader(this);
-        break;
-    case Solid::DeviceInterface::SerialInterface:
-        break;
-    case Solid::DeviceInterface::InternetGateway:
-        break;
     case Solid::DeviceInterface::NetworkShare:
         iface = new FakeNetworkShare(this);
-        break;
-    case Solid::DeviceInterface::Keyboard:
-        iface = new FakeKeyboard(this);
-        break;
-    case Solid::DeviceInterface::PointingDevice:
-        iface = new FakePointingDevice(this);
         break;
     case Solid::DeviceInterface::Unknown:
         break;

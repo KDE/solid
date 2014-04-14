@@ -46,14 +46,7 @@ if(WIN32)
     add_definitions(-DYY_NO_UNISTD_H)
 endif()
 
-if(WIN32)
-   set(solid_LIB_SRCS networking_win.cpp)
-else()
-   set(solid_LIB_SRCS networking.cpp)
-endif()
-
 set(solid_LIB_SRCS
-   ${solid_LIB_SRCS}
    solidnamespace.cpp
    managerbase.cpp
    device.cpp
@@ -69,125 +62,54 @@ set(solid_LIB_SRCS
    storageaccess.cpp
    camera.cpp
    portablemediaplayer.cpp
-   networkinterface.cpp
    networkshare.cpp
-   serialinterface.cpp
-   acadapter.cpp
    battery.cpp
-   button.cpp
-   keyboard.cpp
-   pointingdevice.cpp
-   audiointerface.cpp
-   dvbinterface.cpp
    predicate.cpp
    predicateparse.cpp
    predicate_lexer.c
    predicate_parser.c
-   powermanagement.cpp
-   video.cpp
-   smartcardreader.cpp
-   internetgateway.cpp
 
-   ifaces/acadapter.cpp
-   ifaces/audiointerface.cpp
    ifaces/battery.cpp
    ifaces/block.cpp
-   ifaces/button.cpp
-   ifaces/keyboard.cpp
-   ifaces/pointingdevice.cpp
    ifaces/camera.cpp
    ifaces/opticaldrive.cpp
    ifaces/device.cpp
    ifaces/deviceinterface.cpp
    ifaces/devicemanager.cpp
-   ifaces/dvbinterface.cpp
    ifaces/genericinterface.cpp
-   ifaces/networkinterface.cpp
    ifaces/networkshare.cpp
-   ifaces/serialinterface.cpp
    ifaces/opticaldisc.cpp
    ifaces/portablemediaplayer.cpp
    ifaces/processor.cpp
    ifaces/storagedrive.cpp
    ifaces/storagevolume.cpp
    ifaces/storageaccess.cpp
-   ifaces/video.cpp
-   ifaces/smartcardreader.cpp
-   ifaces/internetgateway.cpp
 
-   backends/fakehw/fakeacadapter.cpp
-   backends/fakehw/fakeaudiointerface.cpp
    backends/fakehw/fakebattery.cpp
    backends/fakehw/fakeblock.cpp
-   backends/fakehw/fakebutton.cpp
-   backends/fakehw/fakekeyboard.cpp
-   backends/fakehw/fakepointingdevice.cpp
    backends/fakehw/fakecamera.cpp
    backends/fakehw/fakecdrom.cpp
    backends/fakehw/fakedevice.cpp
    backends/fakehw/fakedeviceinterface.cpp
-   backends/fakehw/fakedvbinterface.cpp
    backends/fakehw/fakegenericinterface.cpp
    backends/fakehw/fakemanager.cpp
    backends/fakehw/fakenetworkshare.cpp
-   backends/fakehw/fakenetworkinterface.cpp
    backends/fakehw/fakeopticaldisc.cpp
    backends/fakehw/fakeportablemediaplayer.cpp
    backends/fakehw/fakeprocessor.cpp
    backends/fakehw/fakestorage.cpp
    backends/fakehw/fakestorageaccess.cpp
-   backends/fakehw/fakevideo.cpp
    backends/fakehw/fakevolume.cpp
-   backends/fakehw/fakesmartcardreader.cpp
 
    backends/shared/rootdevice.cpp
    backends/shared/cpufeatures.cpp
    ${solid_QM_LOADER}
 )
 
-if(NOT APPLE)
-  set(HUPNP_ENABLED FALSE CACHE BOOL "explicitly enable the compilation of the hupnp backend")
-  if (HUPNP_ENABLED AND HUPNP_FOUND AND ((HUPNP_VERSION_MAJOR EQUAL 0 AND HUPNP_VERSION_MINOR EQUAL 9) OR (HUPNP_VERSION_MAJOR EQUAL 1)))
-    include_directories( ${HUPNP_INCLUDE_DIR} )
-    message(STATUS "Building Solid UPnP backend." )
-    set(solid_LIB_SRCS ${solid_LIB_SRCS}
-       backends/upnp/upnpdevice.cpp
-       backends/upnp/upnpdevicemanager.cpp
-       backends/upnp/upnpdeviceinterface.cpp
-       backends/upnp/upnpmediaserver.cpp
-       backends/upnp/upnpinternetgateway.cpp
-       backends/upnp/upnpcontrolpoint.cpp
-    )
-  else ()
-    if(NOT HUPNP_ENABLED)
-        message(STATUS "To have UPnP support, explicitly enable HUPNP_ENABLED in the cmake cache")
-    endif()
-    set(HUPNP_FOUND false)
-  endif ()
-endif()
-
 if(NOT WIN32 AND NOT APPLE)
-#   message(STATUS "Building Solid KUPnP backend." )
-#   set(solid_LIB_SRCS ${solid_LIB_SRCS}
-
-#   backends/kupnp/cagibidbuscodec.cpp
-#   backends/kupnp/cagibidevice.cpp
-#   backends/kupnp/kupnpstorageaccess.cpp
-#   backends/kupnp/kupnpdeviceinterface.cpp
-#   backends/kupnp/mediaserver1.cpp
-#   backends/kupnp/mediaserver2.cpp
-#   backends/kupnp/mediaserver3.cpp
-#   backends/kupnp/internetgatewaydevice1.cpp
-#   backends/kupnp/kupnpdevice.cpp
-#   backends/kupnp/kupnprootdevice.cpp
-#   backends/kupnp/kupnpmanager.cpp
-
-#   )
-
    if ( UDEV_FOUND )
       message(STATUS "Building Solid UDev backend." )
       set(solid_LIB_SRCS ${solid_LIB_SRCS}
-      backends/udev/utils.cpp
       backends/udev/udevdevice.cpp
       backends/udev/udevmanager.cpp
       backends/udev/udevdeviceinterface.cpp
@@ -195,17 +117,8 @@ if(NOT WIN32 AND NOT APPLE)
       backends/udev/cpuinfo.cpp
       backends/udev/udevprocessor.cpp
       backends/udev/udevcamera.cpp
-      backends/udev/udevvideo.cpp
-      backends/udev/udevaudiointerface.cpp
-      backends/udev/udevnetworkinterface.cpp
-      backends/udev/udevserialinterface.cpp
-      backends/udev/udevaudiointerface_p.cpp
       backends/udev/udevportablemediaplayer.cpp
-      backends/udev/udevdvbinterface.cpp
       backends/udev/udevblock.cpp
-      backends/udev/udevbutton.cpp
-      backends/udev/udevkeyboard.cpp
-      backends/udev/udevpointingdevice.cpp
       backends/shared/udevqtclient.cpp
       backends/shared/udevqtdevice.cpp
       )
@@ -227,29 +140,21 @@ if(NOT WIN32 AND NOT APPLE)
 
    message(STATUS "Building Solid HAL backend." )
    set(solid_LIB_SRCS ${solid_LIB_SRCS}
-      backends/hal/halacadapter.cpp
-      backends/hal/halaudiointerface.cpp
       backends/hal/halbattery.cpp
       backends/hal/halblock.cpp
-      backends/hal/halbutton.cpp
       backends/hal/halcamera.cpp
       backends/hal/halcdrom.cpp
       backends/hal/haldeviceinterface.cpp
-      backends/hal/haldvbinterface.cpp
       backends/hal/halfstabhandling.cpp
       backends/hal/halgenericinterface.cpp
       backends/hal/haldevice.cpp
       backends/hal/halmanager.cpp
-      backends/hal/halnetworkinterface.cpp
-      backends/hal/halserialinterface.cpp
       backends/hal/halopticaldisc.cpp
       backends/hal/halportablemediaplayer.cpp
       backends/hal/halprocessor.cpp
       backends/hal/halstorageaccess.cpp
       backends/hal/halstorage.cpp
-      backends/hal/halvideo.cpp
       backends/hal/halvolume.cpp
-      backends/hal/halsmartcardreader.cpp
    )
 
    message(STATUS "Building Solid UPower backend." )
@@ -257,7 +162,6 @@ if(NOT WIN32 AND NOT APPLE)
       backends/upower/upowermanager.cpp
       backends/upower/upowerdevice.cpp
       backends/upower/upowerbattery.cpp
-      backends/upower/upoweracadapter.cpp
       backends/upower/upowerdeviceinterface.cpp
       backends/upower/upowergenericinterface.cpp
    )
@@ -347,8 +251,6 @@ if(APPLE)
       backends/iokit/iokitdeviceinterface.cpp
       backends/iokit/iokitgenericinterface.cpp
       backends/iokit/iokitprocessor.cpp
-      backends/iokit/iokitnetworkinterface.cpp
-      backends/iokit/iokitserialinterface.cpp
       backends/iokit/iokitbattery.cpp
    )
 endif()
@@ -372,26 +274,20 @@ if(WIN32)
        message(STATUS "-- Building Solid WMI backend." )
 
        set(solid_LIB_SRCS ${solid_LIB_SRCS}
-          backends/wmi/wmiacadapter.cpp
-          backends/wmi/wmiaudiointerface.cpp
           backends/wmi/wmibattery.cpp
           backends/wmi/wmiblock.cpp
-          backends/wmi/wmibutton.cpp
           backends/wmi/wmicamera.cpp
           backends/wmi/wmicdrom.cpp
           backends/wmi/wmideviceinterface.cpp
-          backends/wmi/wmidvbinterface.cpp
           backends/wmi/wmigenericinterface.cpp
           backends/wmi/wmidevice.cpp
           backends/wmi/wmimanager.cpp
-          backends/wmi/wminetworkinterface.cpp
           backends/wmi/wmiopticaldisc.cpp
           backends/wmi/wmiportablemediaplayer.cpp
           backends/wmi/wmiprocessor.cpp
           backends/wmi/wmiquery.cpp
           backends/wmi/wmistorageaccess.cpp
           backends/wmi/wmistorage.cpp
-          backends/wmi/wmivideo.cpp
           backends/wmi/wmivolume.cpp
        )
     else()
@@ -410,22 +306,9 @@ if(WIN32)
        backends/win/winstoragedrive.cpp
        backends/win/winstoragevolume.cpp
        backends/win/winbattery.cpp
-       backends/win/winacadapter.cpp
        )
     endif()
 endif()
-
-set_source_files_properties( org.freedesktop.PowerManagement.xml
-                             org.freedesktop.PowerManagement.Inhibit.xml
-                             org.kde.Solid.PowerManagement.PolicyAgent.xml
-                             PROPERTIES NO_NAMESPACE TRUE)
-
-qt5_add_dbus_interfaces(solid_LIB_SRCS org.freedesktop.PowerManagement.xml
-                        org.freedesktop.PowerManagement.Inhibit.xml
-                        org.kde.Solid.PowerManagement.PolicyAgent.xml)
-
-qt5_add_dbus_interface(solid_LIB_SRCS org.kde.Solid.Networking.Client.xml
-                       org_kde_solid_networking_client)
 
 set(solid_OPTIONAL_LIBS)
 
@@ -440,10 +323,6 @@ endif()
 
 if(APPLE)
    set(solid_OPTIONAL_LIBS ${IOKIT_LIBRARY})
-endif()
-
-if ( HUPNP_FOUND )
-   set(solid_OPTIONAL_LIBS ${solid_OPTIONAL_LIBS} ${HUPNP_LIBS})
 endif()
 
 if ( UDEV_FOUND )
@@ -485,22 +364,9 @@ ecm_generate_headers(Solid_CamelCase_HEADERS
   OpticalDisc
   Camera
   PortableMediaPlayer
-  PowerManagement
-  Networking
-  NetworkInterface
-  AcAdapter
   Battery
-  Button
-  AudioInterface
-  DvbInterface
   Predicate
-  Video
-  SerialInterface
-  SmartCardReader
-  InternetGateway
   NetworkShare
-  Keyboard
-  PointingDevice
 
   REQUIRED_HEADERS Solid_HEADERS
   PREFIX Solid
@@ -508,19 +374,6 @@ ecm_generate_headers(Solid_CamelCase_HEADERS
 install(FILES ${Solid_CamelCase_HEADERS} DESTINATION ${INCLUDE_INSTALL_DIR}/Solid/Solid COMPONENT Devel)
 
 install(TARGETS KF5Solid EXPORT KF5SolidTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
-
-install(FILES org.kde.Solid.Networking.Client.xml
-        DESTINATION ${DBUS_INTERFACES_INSTALL_DIR}
-        RENAME kf5_org.kde.Solid.Networking.Client.xml)
-install(FILES org.kde.Solid.PowerManagement.PolicyAgent.xml
-        DESTINATION ${DBUS_INTERFACES_INSTALL_DIR}
-        RENAME kf5_org.kde.Solid.PowerManagement.PolicyAgent.xml)
-install(FILES org.freedesktop.PowerManagement.xml
-        DESTINATION ${DBUS_INTERFACES_INSTALL_DIR}
-        RENAME kf5_org.freedesktop.PowerManagement.xml)
-install(FILES org.freedesktop.PowerManagement.Inhibit.xml
-        DESTINATION ${DBUS_INTERFACES_INSTALL_DIR}
-        RENAME kf5_org.freedesktop.PowerManagement.Inhibit.xml)
 
 ########### static lib for tests  ###############
 

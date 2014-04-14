@@ -23,16 +23,8 @@
 #include "udevgenericinterface.h"
 #include "udevprocessor.h"
 #include "udevcamera.h"
-#include "udevvideo.h"
 #include "udevportablemediaplayer.h"
-#include "udevdvbinterface.h"
 #include "udevblock.h"
-#include "udevaudiointerface.h"
-#include "udevserialinterface.h"
-#include "udevnetworkinterface.h"
-#include "udevbutton.h"
-#include "udevkeyboard.h"
-#include "udevpointingdevice.h"
 #include "cpuinfo.h"
 
 #include <sys/socket.h>
@@ -70,14 +62,6 @@ QString UDevDevice::vendor() const
         if (queryDeviceInterface(Solid::DeviceInterface::Processor)) {
             // sysfs doesn't have anything useful here
             vendor = extractCpuInfoLine(deviceNumber(), "vendor_id\\s+:\\s+(\\S.+)");
-        } else if (queryDeviceInterface(Solid::DeviceInterface::Video)) {
-            vendor = m_device.deviceProperty("ID_VENDOR").toString().replace('_', " ");
-        }  else if (queryDeviceInterface(Solid::DeviceInterface::NetworkInterface)) {
-            vendor = m_device.deviceProperty("ID_VENDOR_FROM_DATABASE").toString();
-        } else if (queryDeviceInterface(Solid::DeviceInterface::AudioInterface)) {
-            if (m_device.parent().isValid()) {
-                vendor = m_device.parent().deviceProperty("ID_VENDOR_FROM_DATABASE").toString();
-            }
         }
 
         if (vendor.isEmpty()) {
@@ -94,28 +78,6 @@ QString UDevDevice::product() const
         if (queryDeviceInterface(Solid::DeviceInterface::Processor)) {
             // sysfs doesn't have anything useful here
             product = extractCpuInfoLine(deviceNumber(), "model name\\s+:\\s+(\\S.+)");
-        } else if (queryDeviceInterface(Solid::DeviceInterface::Video)) {
-            product = m_device.deviceProperty("ID_V4L_PRODUCT").toString();
-        } else if (queryDeviceInterface(Solid::DeviceInterface::AudioInterface)) {
-            const AudioInterface audioIface(const_cast<UDevDevice *>(this));
-            product = audioIface.name();
-        }  else if (queryDeviceInterface(Solid::DeviceInterface::NetworkInterface)) {
-            QFile typeFile(deviceName() + "/type");
-            if (typeFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
-                int mediaType = typeFile.readAll().trimmed().toInt();
-                if (mediaType == ARPHRD_LOOPBACK) {
-                    product = QLatin1String("Loopback device Interface");
-                } else  {
-                    product = m_device.deviceProperty("ID_MODEL_FROM_DATABASE").toString();
-                }
-            }
-        } else if (queryDeviceInterface(Solid::DeviceInterface::SerialInterface)) {
-            const SerialInterface serialIface(const_cast<UDevDevice *>(this));
-            if (serialIface.serialType() == Solid::SerialInterface::Platform) {
-                product.append(QLatin1String("Platform serial"));
-            } else if (serialIface.serialType() == Solid::SerialInterface::Usb) {
-                product.append(QLatin1String("USB Serial Port"));
-            }
         }
 
         if (product.isEmpty()) {
@@ -138,31 +100,6 @@ QString UDevDevice::icon() const
         return QLatin1String("multimedia-player");
     } else if (queryDeviceInterface(Solid::DeviceInterface::Camera)) {
         return QLatin1String("camera-photo");
-    } else if (queryDeviceInterface(Solid::DeviceInterface::Video)) {
-        return QLatin1String("camera-web");
-    } else if (queryDeviceInterface(Solid::DeviceInterface::AudioInterface)) {
-        const AudioInterface audioIface(const_cast<UDevDevice *>(this));
-        switch (audioIface.soundcardType()) {
-        case Solid::AudioInterface::InternalSoundcard:
-            return QLatin1String("audio-card");
-        case Solid::AudioInterface::UsbSoundcard:
-            return QLatin1String("audio-card-usb");
-        case Solid::AudioInterface::FirewireSoundcard:
-            return QLatin1String("audio-card-firewire");
-        case Solid::AudioInterface::Headset:
-            if (udi().contains("usb", Qt::CaseInsensitive) ||
-                    audioIface.name().contains("usb", Qt::CaseInsensitive)) {
-                return QLatin1String("audio-headset-usb");
-            } else {
-                return QLatin1String("audio-headset");
-            }
-        case Solid::AudioInterface::Modem:
-            return QLatin1String("modem");
-        }
-    } else if (queryDeviceInterface(Solid::DeviceInterface::SerialInterface)) {
-        // TODO - a serial device can be a modem, or just
-        // a COM port - need a new icon?
-        return QLatin1String("modem");
     }
 
     return QString();
@@ -195,16 +132,6 @@ QString UDevDevice::description() const
         }
     } else if (queryDeviceInterface(Solid::DeviceInterface::Camera)) {
         return tr("Camera");
-    } else if (queryDeviceInterface(Solid::DeviceInterface::Video)) {
-        return product();
-    } else if (queryDeviceInterface(Solid::DeviceInterface::AudioInterface)) {
-        return product();
-    } else if (queryDeviceInterface(Solid::DeviceInterface::NetworkInterface)) {
-        const NetworkInterface networkIface(const_cast<UDevDevice *>(this));
-        if (networkIface.isWireless()) {
-            return tr("WLAN Interface");
-        }
-        return tr("Networking Interface");
     }
 
     return QString();
@@ -225,35 +152,8 @@ bool UDevDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type) 
     case Solid::DeviceInterface::PortableMediaPlayer:
         return !property("ID_MEDIA_PLAYER").toString().isEmpty();
 
-    case Solid::DeviceInterface::DvbInterface:
-        return m_device.subsystem() ==  QLatin1String("dvb");
-
     case Solid::DeviceInterface::Block:
         return !property("MAJOR").toString().isEmpty();
-
-    case Solid::DeviceInterface::Video:
-        return m_device.subsystem() == QLatin1String("video4linux");
-
-    case Solid::DeviceInterface::AudioInterface:
-        return m_device.subsystem() == QLatin1String("sound");
-
-    case Solid::DeviceInterface::NetworkInterface:
-        return m_device.subsystem() == QLatin1String("net");
-
-    case Solid::DeviceInterface::SerialInterface:
-        return m_device.subsystem() == QLatin1String("tty");
-
-    case Solid::DeviceInterface::Button:
-        return m_device.subsystem() == QLatin1String("input");
-
-    case Solid::DeviceInterface::Keyboard:
-        return m_device.deviceProperty("ID_INPUT_KEYBOARD").toInt() == 1;
-
-    case Solid::DeviceInterface::PointingDevice:
-        return m_device.deviceProperty("ID_INPUT_MOUSE").toInt() == 1 ||
-               m_device.deviceProperty("ID_INPUT_TOUCHPAD").toInt() == 1 ||
-               m_device.deviceProperty("ID_INPUT_TABLET").toInt() == 1 ||
-               m_device.deviceProperty("ID_INPUT_TOUCHSCREEN").toInt() == 1;
 
     default:
         return false;
@@ -279,32 +179,8 @@ QObject *UDevDevice::createDeviceInterface(const Solid::DeviceInterface::Type &t
     case Solid::DeviceInterface::PortableMediaPlayer:
         return new PortableMediaPlayer(this);
 
-    case Solid::DeviceInterface::DvbInterface:
-        return new DvbInterface(this);
-
     case Solid::DeviceInterface::Block:
         return new Block(this);
-
-    case Solid::DeviceInterface::Video:
-        return new Video(this);
-
-    case Solid::DeviceInterface::AudioInterface:
-        return new AudioInterface(this);
-
-    case Solid::DeviceInterface::NetworkInterface:
-        return new NetworkInterface(this);
-
-    case Solid::DeviceInterface::SerialInterface:
-        return new SerialInterface(this);
-
-    case Solid::DeviceInterface::Button:
-        return new Button(this);
-
-    case Solid::DeviceInterface::Keyboard:
-        return new Keyboard(this);
-
-    case Solid::DeviceInterface::PointingDevice:
-        return new PointingDevice(this);
 
     default:
         qFatal("Shouldn't happen");

@@ -36,13 +36,7 @@
 #include "wmiopticaldisc.h"
 #include "wmicamera.h"
 #include "wmiportablemediaplayer.h"
-#include "wminetworkinterface.h"
-#include "wmiacadapter.h"
 #include "wmibattery.h"
-#include "wmibutton.h"
-#include "wmiaudiointerface.h"
-#include "wmidvbinterface.h"
-#include "wmivideo.h"
 
 #include <QtCore/QDebug>
 
@@ -163,19 +157,7 @@ public:
             break;
         case Solid::DeviceInterface::PortableMediaPlayer:
             break;
-        case Solid::DeviceInterface::NetworkInterface:
-            break;
-        case Solid::DeviceInterface::AcAdapter:
-            break;
         case Solid::DeviceInterface::Battery:
-            break;
-        case Solid::DeviceInterface::Button:
-            break;
-        case Solid::DeviceInterface::AudioInterface:
-            break;
-        case Solid::DeviceInterface::DvbInterface:
-            break;
-        case Solid::DeviceInterface::Video:
             break;
         case Solid::DeviceInterface::Unknown:
         case Solid::DeviceInterface::Last:
@@ -225,19 +207,8 @@ public:
             break;
         case Solid::DeviceInterface::PortableMediaPlayer:
             break;
-        case Solid::DeviceInterface::NetworkInterface:
-            break;
-        case Solid::DeviceInterface::AcAdapter:
         case Solid::DeviceInterface::Battery:
             wmiTable = "Win32_Battery";
-            break;
-        case Solid::DeviceInterface::Button:
-            break;
-        case Solid::DeviceInterface::AudioInterface:
-            break;
-        case Solid::DeviceInterface::DvbInterface:
-            break;
-        case Solid::DeviceInterface::Video:
             break;
         case Solid::DeviceInterface::Unknown:
         case Solid::DeviceInterface::Last:
@@ -409,8 +380,6 @@ QString WmiDevice::product() const
         return item.getProperty("VolumeName").toString();
     }
     break;
-    case Solid::DeviceInterface::AcAdapter:
-        return description();
     default:
         propertyName = "Caption";
     }
@@ -463,8 +432,6 @@ QString WmiDevice::description() const
     switch (type()) {
     case Solid::DeviceInterface::OpticalDisc:
         return property("VolumeName").toString();
-    case Solid::DeviceInterface::AcAdapter:
-        return tr("A/C Adapter");
     case Solid::DeviceInterface::Battery: {
         WmiDevice dev(udi());
         Battery bat(&dev);
@@ -641,26 +608,8 @@ QObject *WmiDevice::createDeviceInterface(const Solid::DeviceInterface::Type &ty
     case Solid::DeviceInterface::PortableMediaPlayer:
         iface = new PortableMediaPlayer(this);
         break;
-    case Solid::DeviceInterface::NetworkInterface:
-        iface = new NetworkInterface(this);
-        break;
-    case Solid::DeviceInterface::AcAdapter:
-        iface = new AcAdapter(this);
-        break;
     case Solid::DeviceInterface::Battery:
         iface = new Battery(this);
-        break;
-    case Solid::DeviceInterface::Button:
-        iface = new Button(this);
-        break;
-    case Solid::DeviceInterface::AudioInterface:
-        iface = new AudioInterface(this);
-        break;
-    case Solid::DeviceInterface::DvbInterface:
-        iface = new DvbInterface(this);
-        break;
-    case Solid::DeviceInterface::Video:
-        iface = new Video(this);
         break;
     case Solid::DeviceInterface::Unknown:
     case Solid::DeviceInterface::Last:

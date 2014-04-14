@@ -81,42 +81,11 @@ public:
         case Solid::DeviceInterface::PortableMediaPlayer:
             list << "portable_audio_player";
             break;
-        case Solid::DeviceInterface::NetworkInterface:
-            list << "net";
-            break;
-        case Solid::DeviceInterface::AcAdapter:
-            list << "ac_adapter";
-            break;
         case Solid::DeviceInterface::Battery:
             list << "battery";
             break;
-        case Solid::DeviceInterface::Button:
-            list << "button";
-            break;
-        case Solid::DeviceInterface::AudioInterface:
-            list << "alsa" << "oss";
-            break;
-        case Solid::DeviceInterface::DvbInterface:
-            list << "dvb";
-            break;
-        case Solid::DeviceInterface::Video:
-            list << "video4linux";
-            break;
-        case Solid::DeviceInterface::SerialInterface:
-            list << "serial";
-            break;
-        case Solid::DeviceInterface::SmartCardReader:
-            list << "smart_card_reader";
-        case Solid::DeviceInterface::InternetGateway:
-            list << "internet_gateway";
         case Solid::DeviceInterface::NetworkShare:
             list << "networkshare";
-            break;
-        case Solid::DeviceInterface::Keyboard:
-            // Is not supported by HAL backaned
-            break;
-        case Solid::DeviceInterface::PointingDevice:
-            // Is not supported by HAL backaned
             break;
         case Solid::DeviceInterface::Unknown:
             break;
@@ -145,24 +114,8 @@ public:
             return Solid::DeviceInterface::Camera;
         } else if (capability == "portable_audio_player") {
             return Solid::DeviceInterface::PortableMediaPlayer;
-        } else if (capability == "net") {
-            return Solid::DeviceInterface::NetworkInterface;
-        } else if (capability == "ac_adapter") {
-            return Solid::DeviceInterface::AcAdapter;
         } else if (capability == "battery") {
             return Solid::DeviceInterface::Battery;
-        } else if (capability == "button") {
-            return Solid::DeviceInterface::Button;
-        } else if (capability == "alsa" || capability == "oss") {
-            return Solid::DeviceInterface::AudioInterface;
-        } else if (capability == "dvb") {
-            return Solid::DeviceInterface::DvbInterface;
-        } else if (capability == "video4linux") {
-            return Solid::DeviceInterface::Video;
-        } else if (capability == "serial") {
-            return Solid::DeviceInterface::SerialInterface;
-        } else if (capability == "smart_card_reader") {
-            return Solid::DeviceInterface::SmartCardReader;
         } else if (capability == "networkshare") {
             return Solid::DeviceInterface::NetworkShare;
         } else {

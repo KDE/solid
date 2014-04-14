@@ -41,15 +41,7 @@
 #include "halopticaldisc.h"
 #include "halcamera.h"
 #include "halportablemediaplayer.h"
-#include "halnetworkinterface.h"
-#include "halacadapter.h"
 #include "halbattery.h"
-#include "halbutton.h"
-#include "halaudiointerface.h"
-#include "haldvbinterface.h"
-#include "halvideo.h"
-#include "halserialinterface.h"
-#include "halsmartcardreader.h"
 
 using namespace Solid::Backends::Hal;
 
@@ -281,35 +273,10 @@ QString HalDevice::icon() const
         return "battery";
     } else if (category == "processor") {
         return "cpu"; // FIXME: Doesn't follow icon spec
-    } else if (category == "video4linux") {
-        return "camera-web";
-    } else if (category == "alsa" || category == "oss") {
-        // Sorry about this const_cast, but it's the best way to not copy the code from
-        // AudioInterface.
-        const Hal::AudioInterface audioIface(const_cast<HalDevice *>(this));
-        switch (audioIface.soundcardType()) {
-        case Solid::AudioInterface::InternalSoundcard:
-            return QLatin1String("audio-card");
-        case Solid::AudioInterface::UsbSoundcard:
-            return QLatin1String("audio-card-usb");
-        case Solid::AudioInterface::FirewireSoundcard:
-            return QLatin1String("audio-card-firewire");
-        case Solid::AudioInterface::Headset:
-            if (udi().contains("usb", Qt::CaseInsensitive) ||
-                    audioIface.name().contains("usb", Qt::CaseInsensitive)) {
-                return QLatin1String("audio-headset-usb");
-            } else {
-                return QLatin1String("audio-headset");
-            }
-        case Solid::AudioInterface::Modem:
-            return QLatin1String("modem");
-        }
     } else if (category == "serial") {
         // TODO - a serial device can be a modem, or just
         // a COM port - need a new icon?
         return QLatin1String("modem");
-    } else if (category == "smart_card_reader") {
-        return QLatin1String("smart-card-reader");
     }
 
     return QString();
@@ -411,10 +378,6 @@ bool HalDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type) c
     } else if (type == Solid::DeviceInterface::StorageAccess) {
         return prop("org.freedesktop.Hal.Device.Volume.method_names").toStringList().contains("Mount")
                || prop("info.interfaces").toStringList().contains("org.freedesktop.Hal.Device.Volume.Crypto");
-    } else if (type == Solid::DeviceInterface::Video) {
-        if (!prop("video4linux.device").toString().contains("video")) {
-            return false;
-        }
     } else if (d->capListCache.contains(type)) {
         return d->capListCache.value(type);
     }
@@ -478,40 +441,10 @@ QObject *HalDevice::createDeviceInterface(const Solid::DeviceInterface::Type &ty
     case Solid::DeviceInterface::PortableMediaPlayer:
         iface = new PortableMediaPlayer(this);
         break;
-    case Solid::DeviceInterface::NetworkInterface:
-        iface = new NetworkInterface(this);
-        break;
-    case Solid::DeviceInterface::AcAdapter:
-        iface = new AcAdapter(this);
-        break;
     case Solid::DeviceInterface::Battery:
         iface = new Battery(this);
         break;
-    case Solid::DeviceInterface::Button:
-        iface = new Button(this);
-        break;
-    case Solid::DeviceInterface::AudioInterface:
-        iface = new AudioInterface(this);
-        break;
-    case Solid::DeviceInterface::DvbInterface:
-        iface = new DvbInterface(this);
-        break;
-    case Solid::DeviceInterface::Video:
-        iface = new Video(this);
-        break;
-    case Solid::DeviceInterface::SerialInterface:
-        iface = new SerialInterface(this);
-        break;
-    case Solid::DeviceInterface::SmartCardReader:
-        iface = new SmartCardReader(this);
-        break;
-    case Solid::DeviceInterface::InternetGateway:
-        break;
     case Solid::DeviceInterface::NetworkShare:
-        break;
-    case Solid::DeviceInterface::Keyboard:
-        break;
-    case Solid::DeviceInterface::PointingDevice:
         break;
     case Solid::DeviceInterface::Unknown:
     case Solid::DeviceInterface::Last:

@@ -83,42 +83,10 @@ public:
         case Solid::DeviceInterface::PortableMediaPlayer:
             // Doesn't exist with UDisks
             break;
-        case Solid::DeviceInterface::NetworkInterface:
-            // Doesn't exist with UDisks
-            break;
-        case Solid::DeviceInterface::AcAdapter:
-            list << "acadapter";
-            break;
         case Solid::DeviceInterface::Battery:
             list << "battery";
             break;
-        case Solid::DeviceInterface::Button:
-            // Doesn't exist with UDisks
-            break;
-        case Solid::DeviceInterface::AudioInterface:
-            // Doesn't exist with UDisks
-            break;
-        case Solid::DeviceInterface::DvbInterface:
-            // Doesn't exist with UDisks
-            break;
-        case Solid::DeviceInterface::Video:
-            // Doesn't exist with UDisks
-            break;
-        case Solid::DeviceInterface::SerialInterface:
-            // Doesn't exist with UDisks
-            break;
-        case Solid::DeviceInterface::InternetGateway:
-            break;
-        case Solid::DeviceInterface::SmartCardReader:
-            // Doesn't exist with UDisks
-            break;
         case Solid::DeviceInterface::NetworkShare:
-            // Doesn't exist with UPower
-            break;
-        case Solid::DeviceInterface::Keyboard:
-            // Doesn't exist with UPower
-            break;
-        case Solid::DeviceInterface::PointingDevice:
             // Doesn't exist with UPower
             break;
         case Solid::DeviceInterface::Unknown:
@@ -150,24 +118,8 @@ public:
             return Solid::DeviceInterface::Camera;
         } else if (capability == "portable_audio_player") {
             return Solid::DeviceInterface::PortableMediaPlayer;
-        } else if (capability == "net") {
-            return Solid::DeviceInterface::NetworkInterface;
-        } else if (capability == "ac_adapter") {
-            return Solid::DeviceInterface::AcAdapter;
         } else if (capability == "battery") {
             return Solid::DeviceInterface::Battery;
-        } else if (capability == "button") {
-            return Solid::DeviceInterface::Button;
-        } else if (capability == "alsa" || capability == "oss") {
-            return Solid::DeviceInterface::AudioInterface;
-        } else if (capability == "dvb") {
-            return Solid::DeviceInterface::DvbInterface;
-        } else if (capability == "video4linux") {
-            return Solid::DeviceInterface::Video;
-        } else if (capability == "serial") {
-            return Solid::DeviceInterface::SerialInterface;
-        } else if (capability == "smart_card_reader") {
-            return Solid::DeviceInterface::SmartCardReader;
         } else if (capability == "networkshare") {
             return Solid::DeviceInterface::NetworkShare;
         } else {

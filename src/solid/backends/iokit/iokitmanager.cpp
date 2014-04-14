@@ -82,12 +82,8 @@ const char *IOKitManagerPrivate::typeToName(Solid::DeviceInterface::Type type)
     switch (type) {
     case Solid::DeviceInterface::Unknown:
         return 0;
-    case Solid::DeviceInterface::NetworkInterface:
-        return kIOEthernetInterfaceClass;
     case Solid::DeviceInterface::Processor:
         return "AppleACPICPU";
-    case Solid::DeviceInterface::SerialInterface:
-        return "IOSerialBSDClient";
     case Solid::DeviceInterface::Battery:
         return "AppleSmartBattery";
 
@@ -100,12 +96,6 @@ const char *IOKitManagerPrivate::typeToName(Solid::DeviceInterface::Type type)
         //Solid::DeviceInterface::OpticalDisc:
         //Solid::DeviceInterface::Camera:
         //Solid::DeviceInterface::PortableMediaPlayer:
-        //Solid::DeviceInterface::NetworkInterface:
-        //Solid::DeviceInterface::AcAdapter:
-        //Solid::DeviceInterface::Button:
-        //Solid::DeviceInterface::AudioInterface:
-        //Solid::DeviceInterface::DvbInterface:
-        //Solid::DeviceInterface::Video:
     }
 
     return 0;
@@ -138,15 +128,7 @@ IOKitManager::IOKitManager(QObject *parent)
                            << Solid::DeviceInterface::OpticalDisc
                            << Solid::DeviceInterface::Camera
                            << Solid::DeviceInterface::PortableMediaPlayer
-                           << Solid::DeviceInterface::NetworkInterface
-                           << Solid::DeviceInterface::AcAdapter
-                           << Solid::DeviceInterface::Battery
-                           << Solid::DeviceInterface::Button
-                           << Solid::DeviceInterface::AudioInterface
-                           << Solid::DeviceInterface::DvbInterface
-                           << Solid::DeviceInterface::Video
-                           << Solid::DeviceInterface::SerialInterface
-                           << Solid::DeviceInterface::SmartCardReader;
+                           << Solid::DeviceInterface::Battery;
 }
 
 IOKitManager::~IOKitManager()

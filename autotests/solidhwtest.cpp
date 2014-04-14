@@ -158,16 +158,16 @@ void SolidHwTest::testManagerSignals()
 void SolidHwTest::testDeviceSignals()
 {
     // A button is a nice device for testing state changes, isn't it?
-    Solid::Backends::Fake::FakeDevice *fake = fakeManager->findDevice("/org/kde/solid/fakehw/acpi_LID0");
-    Solid::Device device("/org/kde/solid/fakehw/acpi_LID0");
+    Solid::Backends::Fake::FakeDevice *fake = fakeManager->findDevice("/org/kde/solid/fakehw/platform_floppy_0_storage_virt_volume");
+    Solid::Device device("/org/kde/solid/fakehw/platform_floppy_0_storage_virt_volume");
 
-    // We'll spy our button
+    // We'll spy our floppy
     connect(device.as<Solid::GenericInterface>(), SIGNAL(propertyChanged(QMap<QString,int>)),
             this, SLOT(slotPropertyChanged(QMap<QString,int>)));
     QSignalSpy condition_raised(device.as<Solid::GenericInterface>(), SIGNAL(conditionRaised(QString,QString)));
 
-    fake->setProperty("stateValue", true); // The button is now pressed (modified property)
-    fake->raiseCondition("Lid Closed", "Why not?"); // Since it's a LID we notify this change
+    fake->setProperty("mountPoint", "/tmp.foo"); // The button is now pressed (modified property)
+    fake->raiseCondition("Floppy Closed", "Why not?"); // Since it's a LID we notify this change
     fake->setProperty("hactar", 42); // We add a property
     fake->removeProperty("hactar"); // We remove a property
 
@@ -179,7 +179,7 @@ void SolidHwTest::testDeviceSignals()
     // First one is a "PropertyModified" for "button.state"
     changes = m_changesList.at(0);
     QCOMPARE(changes.count(), 1);
-    QVERIFY(changes.contains("stateValue"));
+    QVERIFY(changes.contains("mountPoint"));
     QCOMPARE(changes["stateValue"], (int)Solid::GenericInterface::PropertyModified);
 
     // Second one is a "PropertyAdded" for "hactar"
@@ -198,13 +198,13 @@ void SolidHwTest::testDeviceSignals()
     QCOMPARE(condition_raised.count(), 1);
 
     // It must be identical to the condition we raised by hand
-    QCOMPARE(condition_raised.at(0).at(0).toString(), QString("Lid Closed"));
+    QCOMPARE(condition_raised.at(0).at(0).toString(), QString("Floppy Closed"));
     QCOMPARE(condition_raised.at(0).at(1).toString(), QString("Why not?"));
 }
 
 void SolidHwTest::testDeviceExistence()
 {
-    QCOMPARE(Solid::Device("/org/kde/solid/fakehw/acpi_LID0").isValid(), true);
+    QCOMPARE(Solid::Device("/org/kde/solid/fakehw/platform_floppy_0_storage_virt_volume").isValid(), true);
     QCOMPARE(Solid::Device("/org/kde/solid/fakehw/volume_label_SOLIDMAN_BEGINS").isValid(), true);
 
     // Note the extra space
@@ -279,11 +279,7 @@ void SolidHwTest::testDeviceInterfaceIntrospection_data()
     QTest::newRow("DeviceInterface: OpticalDisc") << "OpticalDisc" << (int)Solid::DeviceInterface::OpticalDisc;
     QTest::newRow("DeviceInterface: Camera") << "Camera" << (int)Solid::DeviceInterface::Camera;
     QTest::newRow("DeviceInterface: PortableMediaPlayer") << "PortableMediaPlayer" << (int)Solid::DeviceInterface::PortableMediaPlayer;
-    QTest::newRow("DeviceInterface: NetworkInterface") << "NetworkInterface" << (int)Solid::DeviceInterface::NetworkInterface;
-    QTest::newRow("DeviceInterface: AcAdapter") << "AcAdapter" << (int)Solid::DeviceInterface::AcAdapter;
     QTest::newRow("DeviceInterface: Battery") << "Battery" << (int)Solid::DeviceInterface::Battery;
-    QTest::newRow("DeviceInterface: Button") << "Button" << (int)Solid::DeviceInterface::Button;
-    QTest::newRow("DeviceInterface: AudioInterface") << "AudioInterface" << (int)Solid::DeviceInterface::AudioInterface;
 }
 
 void SolidHwTest::testDeviceInterfaceIntrospection()
@@ -338,20 +334,6 @@ void SolidHwTest::testPredicate()
     dev = Solid::Device("/org/kde/solid/fakehw/volume_part2_size_1024");
     QVERIFY(p6.matches(dev));
     QVERIFY(p7.matches(dev));
-
-    Solid::Predicate p8 = Solid::Predicate::fromString("AudioInterface.deviceType == 'AudioInput|AudioOutput'");
-    Solid::Predicate p9 = Solid::Predicate::fromString("AudioInterface.deviceType == 'AudioInput'");
-    Solid::Predicate p10 = Solid::Predicate::fromString("AudioInterface.deviceType  & 'AudioInput'");
-    Solid::Predicate p11 = Solid::Predicate::fromString("AudioInterface.deviceType  & 'foobar'");
-    QVERIFY(!p8.matches(dev));
-    QVERIFY(!p9.matches(dev));
-    QVERIFY(!p10.matches(dev));
-    QVERIFY(!p11.matches(dev));
-    dev = Solid::Device("/org/kde/solid/fakehw/pci_8086_266e_oss_pcm_0");
-    QVERIFY(p8.matches(dev));
-    QVERIFY(!p9.matches(dev));
-    QVERIFY(p10.matches(dev));
-    QVERIFY(!p11.matches(dev));
 
     QString str_pred = "[[Processor.maxSpeed == 3201 AND Processor.canChangeFrequency == false] OR StorageVolume.mountPoint == '/media/blup']";
     // Since str_pred is canonicalized, fromString().toString() should be invariant

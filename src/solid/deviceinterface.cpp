@@ -84,32 +84,10 @@ QString Solid::DeviceInterface::typeDescription(Type type)
         return tr("Camera", "Camera device type");
     case PortableMediaPlayer:
         return tr("Portable Media Player", "Portable Media Player device type");
-    case NetworkInterface:
-        return tr("Network Interface", "Network Interface device type");
-    case AcAdapter:
-        return tr("Ac Adapter", "Ac Adapter device type");
     case Battery:
         return tr("Battery", "Battery device type");
-    case Button:
-        return tr("Button", "Button device type");
-    case AudioInterface:
-        return tr("Audio Interface", "Audio Interface device type");
-    case DvbInterface:
-        return tr("Dvb Interface", "Dvb Interface device type");
-    case Video:
-        return tr("Video", "Video device type");
-    case SerialInterface:
-        return tr("Serial Interface", "Serial Interface device type");
-    case SmartCardReader:
-        return tr("Smart Card Reader", "Smart Card Reader device type");
-    case InternetGateway:
-        return tr("Internet Gateway Device", "Internet Gateway device type");
     case NetworkShare:
         return tr("Network Share", "Network Share device type");
-    case Keyboard:
-        return tr("Keyboard", "A keyboard");
-    case PointingDevice:
-        return tr("PointingDevice", "A pointing device");
     case Last:
         return QString();
     }

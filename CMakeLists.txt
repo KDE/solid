@@ -25,16 +25,6 @@ include(ECMSetupVersion)
 include(ECMGenerateHeaders)
 include(ECMMarkNonGuiExecutable)
 
-if(NOT APPLE)
-  find_package(HUpnp 0.9)
-  set_package_properties(HUpnp PROPERTIES  URL "http://www.herqq.org"
-                                           DESCRIPTION "UPnP support for Solid"
-                                           TYPE OPTIONAL
-                                           PURPOSE "Allows Solid to provide information about UPnP devices on the network"
-                        )
-endif()
-
-
 if(NOT WIN32 AND NOT APPLE)
   find_package( UDev )
   if (NOT UDEV_HAVE_GET_SYSATTR_LIST_ENTRY) # udev_device_get_sysattr_list_entry() is used in udevqtdevice.cpp
@@ -94,7 +84,6 @@ if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/po)
 endif()
 add_subdirectory(src)
 add_subdirectory(autotests)
-add_subdirectory(tests)
 
 # create a Config.cmake and a ConfigVersion.cmake file and install them
 set(CMAKECONFIG_INSTALL_DIR "${CMAKECONFIG_INSTALL_PREFIX}/KF5Solid")
