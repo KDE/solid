@@ -46,6 +46,8 @@ if(WIN32)
     add_definitions(-DYY_NO_UNISTD_H)
 endif()
 
+ecm_create_qm_loader(solid_QM_LOADER solid5)
+
 set(solid_LIB_SRCS
    solidnamespace.cpp
    managerbase.cpp

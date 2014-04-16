@@ -58,6 +58,8 @@ option(WITH_SOLID_UDISKS2 "Enable the udisks2 solid backend instead" "ON")
 ############### Give the user the option to build the deprecated WMI solid backend instead of the new win backend ###############
 option(WITH_SOLID_WMI "Enables the deprecated WMI backend on Windows")
 
+include(ECMCreateQmFromPoFiles)
+
 set(KF5_VERSION "4.98.0")
 
 ecm_setup_version(${KF5_VERSION} VARIABLE_PREFIX SOLID
@@ -73,14 +75,9 @@ remove_definitions(-DQT_NO_CAST_FROM_BYTEARRAY)
 
 include_directories (${CMAKE_CURRENT_SOURCE_DIR}/src ${CMAKE_CURRENT_BINARY_DIR}/src)
 
-if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/po)
-  include(ECMCreateQmFromPoFiles)
-  ecm_create_qm_from_po_files(
-    PO_DIR po
-    POT_NAME solid5.pot
-    DATA_INSTALL_SUB_DIR solid
-    CREATE_LOADER solid_QM_LOADER
-  )
+file(GLOB PO_FILES "po/*.po")
+if (PO_FILES)
+  ecm_create_qm_from_po_files(PO_FILES ${PO_FILES} CATALOG_NAME solid5)
 endif()
 add_subdirectory(src)
 add_subdirectory(autotests)
