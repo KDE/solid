@@ -77,7 +77,7 @@ include_directories (${CMAKE_CURRENT_SOURCE_DIR}/src ${CMAKE_CURRENT_BINARY_DIR}
 
 file(GLOB PO_FILES "po/*.po")
 if (PO_FILES)
-  ecm_create_qm_from_po_files(PO_FILES ${PO_FILES} CATALOG_NAME solid5)
+  ecm_create_qm_from_po_files(PO_FILES ${PO_FILES} CATALOG_NAME solid5_qt)
 endif()
 add_subdirectory(src)
 add_subdirectory(autotests)
