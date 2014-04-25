@@ -38,10 +38,6 @@
 #endif
 #include "backends/upower/upowermanager.h"
 
-#if HUPNP_FOUND
-#include "backends/upnp/upnpdevicemanager.h"
-#endif
-
 #if UDEV_FOUND
 #include "backends/udev/udevmanager.h"
 #endif
@@ -98,10 +94,6 @@ void Solid::ManagerBasePrivate::loadBackends()
             m_backends << new Solid::Backends::UPower::UPowerManager(0)
                        << new Solid::Backends::Fstab::FstabManager(0);
         }
-#        endif
-
-#        if HUPNP_FOUND
-        m_backends << new Solid::Backends::UPnP::UPnPDeviceManager(0);
 #        endif
     }
 }

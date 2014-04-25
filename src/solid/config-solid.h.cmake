@@ -19,7 +19,6 @@
 */
 
 #cmakedefine01 UDEV_FOUND
-#cmakedefine01 HUPNP_FOUND
 
 #cmakedefine01 HAVE_SYS_TYPES_H
 #cmakedefine01 HAVE_SYS_PARAM_H

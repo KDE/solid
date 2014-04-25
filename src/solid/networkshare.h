@@ -73,10 +73,9 @@ public:
      * - Unknown : a unsupported network protocol
      * - Nfs : nfs protocol
      * - Cifs : samba protocol
-     * - Upnp : Upnp protocol
      */
 
-    enum ShareType { Unknown, Nfs, Cifs, Upnp };
+    enum ShareType { Unknown, Nfs, Cifs };
 
     /**
      * Get the Solid::DeviceInterface::Type of the NetworkShare device interface.
