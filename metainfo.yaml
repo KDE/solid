@@ -1,1 +1,9 @@
+maintainer: afiestas
+description: Hardware integration and detection
 tier: 1
+type: integration
+platforms:
+    - name: All
+portingAid: false
+deprecated: false
+release: true
