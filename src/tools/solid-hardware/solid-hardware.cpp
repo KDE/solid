@@ -86,7 +86,10 @@ std::ostream &operator<<(std::ostream &out, const QVariant &value)
     case QVariant::ULongLong:
         out << value.toString()
             << "  (0x" << QString::number(value.toULongLong(), 16) << ")  (" << QVariant::typeToName(value.type()) << ")";
-        break;        
+        break;
+    case QVariant::Double:
+        out << value.toString() << " (double)";
+        break;
     case QVariant::UserType:
     {
         //qDebug() << "got variant type:" << value.typeName();
