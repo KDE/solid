@@ -42,7 +42,6 @@ private Q_SLOTS:
 
 private:
     Solid::Backends::Hal::HalDevice *m_device;
-    bool m_signalProcessed;
 };
 
 #endif
