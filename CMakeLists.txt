@@ -60,7 +60,7 @@ option(WITH_SOLID_WMI "Enables the deprecated WMI backend on Windows")
 
 include(ECMCreateQmFromPoFiles)
 
-set(KF5_VERSION "4.98.0") # handled by release scripts
+set(KF5_VERSION "4.99.0") # handled by release scripts
 
 ecm_setup_version(${KF5_VERSION} VARIABLE_PREFIX SOLID
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/solid_version.h"
