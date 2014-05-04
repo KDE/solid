@@ -1,0 +1,2749 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Thanomsub Noppaburana <donga.nb@gmail.com>, 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-04-01 01:49+0000\n"
+"PO-Revision-Date: 2010-12-17 00:16+0700\n"
+"Last-Translator: Thanomsub Noppaburana <donga.nb@gmail.com>\n"
+"Language-Team: Thai <thai-l10n@googlegroups.com>\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Lokalize 1.1\n"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/fstab/fstabmanager.cpp:88
+#, fuzzy
+#| msgid "Network Shares"
+msgctxt "Solid::Backends::Fstab::FstabManager|"
+msgid "Network Shares"
+msgstr "ส่วนใช้งานร่วมกันบนเครือข่าย"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/fstab/fstabmanager.cpp:89
+#, fuzzy
+#| msgid "NFS and SMB shares declared in your system"
+msgctxt "Solid::Backends::Fstab::FstabManager|"
+msgid "NFS and SMB shares declared in your system"
+msgstr "มีการประกาศส่วนใช้งานร่วมกันประเภท NFS และ SMB ไว้บนระบบของคุณ"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:64
+#, fuzzy, qt-format
+#| msgid "%1 TiB"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 TiB"
+msgstr "%1 TiB"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:66
+#, fuzzy, qt-format
+#| msgid "%1 GiB"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 GiB"
+msgstr "%1 GiB"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:72
+#, fuzzy, qt-format
+#| msgid "%1 MiB"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 MiB"
+msgstr "%1 MiB"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:77
+#, fuzzy, qt-format
+#| msgid "%1 KiB"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 KiB"
+msgstr "%1 KiB"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:81
+#, fuzzy, qt-format
+#| msgid "%1 B"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 B"
+msgstr "%1 B"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:85
+#, fuzzy
+#| msgid "0 B"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "0 B"
+msgstr "0 B"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:320
+#, fuzzy
+#| msgid "WLAN Interface"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "WLAN Interface"
+msgstr "ส่วนเชื่อมต่อเครือข่ายไร้สาย (WLAN)"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:322
+#, fuzzy
+#| msgid "Networking Interface"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Networking Interface"
+msgstr "ส่วนเชื่อมต่อเครือข่าย"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:507
+#, fuzzy
+#| msgid "CD-ROM"
+msgctxt "Solid::Backends::Hal::HalDevice|First item of %1%2 Drive sentence"
+msgid "CD-ROM"
+msgstr "แผ่น CD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:509
+#, fuzzy
+#| msgid "CD-R"
+msgctxt "Solid::Backends::Hal::HalDevice|First item of %1%2 Drive sentence"
+msgid "CD-R"
+msgstr "แผ่น CD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:512
+#, fuzzy
+#| msgid "CD-RW"
+msgctxt "Solid::Backends::Hal::HalDevice|First item of %1%2 Drive sentence"
+msgid "CD-RW"
+msgstr "แผ่น CD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:516
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/DVD-ROM"
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-ROM"
+msgstr "/DVD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:519
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/DVD+R"
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD+R"
+msgstr "/DVD+R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:522
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/DVD+RW"
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD+RW"
+msgstr "/DVD+RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:525
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/DVD-R"
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-R"
+msgstr "/DVD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:528
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/DVD-RW"
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-RW"
+msgstr "/DVD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:531
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/DVD-RAM"
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-RAM"
+msgstr "/DVD-RAM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:535
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/DVD±R DL"
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±R DL"
+msgstr "/DVD±R DL"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:537
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/DVD±R"
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±R"
+msgstr "/DVD±R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:542
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/DVD±RW DL"
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±RW DL"
+msgstr "/DVD±RW DL"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:544
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/DVD±RW"
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±RW"
+msgstr "/DVD±RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:548
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/BD-ROM"
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/BD-ROM"
+msgstr "/BD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:551
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/BD-R"
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/BD-R"
+msgstr "/BD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:554
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/BD-RE"
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/BD-RE"
+msgstr "/BD-RE"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:557
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/HD DVD-ROM"
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-ROM"
+msgstr "/HD DVD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:560
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/HD DVD-R"
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-R"
+msgstr "/HD DVD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:563
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/HD DVD-RW"
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-RW"
+msgstr "/HD DVD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:567
+#, fuzzy, qt-format
+#| msgid "External %1%2 Drive"
+msgctxt ""
+"Solid::Backends::Hal::HalDevice|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
+"DVD-R'/etc (with leading slash)"
+msgid "External %1%2 Drive"
+msgstr "ไดรฟ์ภายนอก %1%2"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:569
+#, fuzzy, qt-format
+#| msgid "%1%2 Drive"
+msgctxt ""
+"Solid::Backends::Hal::HalDevice|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
+"DVD-R'/etc (with leading slash)"
+msgid "%1%2 Drive"
+msgstr "ไดรฟ์ %1%2"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:577
+#, fuzzy
+#| msgid "External Floppy Drive"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "External Floppy Drive"
+msgstr "ไดรฟ์ฟลอปปีภายนอก"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:579
+#, fuzzy
+#| msgid "Floppy Drive"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Floppy Drive"
+msgstr "ไดรฟ์ฟลอปปี"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:591
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:794
+#, fuzzy, qt-format
+#| msgctxt "%1 is the size"
+#| msgid "%1 External Hard Drive"
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 External Hard Drive"
+msgstr "ฮาร์ดไดรฟ์ภายนอก %1"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:593
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:796
+#, fuzzy, qt-format
+#| msgctxt "%1 is the size"
+#| msgid "%1 Hard Drive"
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 Hard Drive"
+msgstr "ฮาร์ดไดรฟ์ %1"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:597
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:800
+#, fuzzy
+#| msgid "External Hard Drive"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "External Hard Drive"
+msgstr "ฮาร์ดไดรฟ์ภายนอก "
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:599
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:802
+#, fuzzy
+#| msgid "Hard Drive"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Hard Drive"
+msgstr "ฮาร์ดไดรฟ์ "
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:618
+#, fuzzy, qt-format
+#| msgctxt "%1 is the vendor, %2 is the model of the device"
+#| msgid "%1 %2"
+msgctxt ""
+"Solid::Backends::Hal::HalDevice|%1 is the vendor, %2 is the model of the "
+"device"
+msgid "%1 %2"
+msgstr "%1 %2"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:623
+#, fuzzy
+#| msgid "Drive"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Drive"
+msgstr "ไดรฟ์"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:652
+#, fuzzy
+#| msgid "CD-ROM"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "CD-ROM"
+msgstr "แผ่น CD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:657
+#, fuzzy
+#| msgid "Blank CD-R"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank CD-R"
+msgstr "แผ่น CD-R เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:659
+#, fuzzy
+#| msgid "CD-R"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "CD-R"
+msgstr "แผ่น CD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:665
+#, fuzzy
+#| msgid "Blank CD-RW"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank CD-RW"
+msgstr "แผ่น CD-RW เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:667
+#, fuzzy
+#| msgid "CD-RW"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "CD-RW"
+msgstr "แผ่น CD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:672
+#, fuzzy
+#| msgid "DVD-ROM"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD-ROM"
+msgstr "แผ่น DVD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:677
+#, fuzzy
+#| msgid "Blank DVD-RAM"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD-RAM"
+msgstr "แผ่น DVD-RAM เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:679
+#, fuzzy
+#| msgid "DVD-RAM"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD-RAM"
+msgstr "แผ่น DVD-RAM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:685
+#, fuzzy
+#| msgid "Blank DVD-R"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD-R"
+msgstr "แผ่น DVD-R เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:687
+#, fuzzy
+#| msgid "DVD-R"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD-R"
+msgstr "แผ่น DVD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:693
+#, fuzzy
+#| msgid "Blank DVD+R Dual-Layer"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD+R Dual-Layer"
+msgstr "แผ่น DVD+R แบบดูอัลเลเยอร์เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:695
+#, fuzzy
+#| msgid "DVD+R Dual-Layer"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD+R Dual-Layer"
+msgstr "แผ่น DVD+R แบบดูอัลเลเยอร์"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:701
+#, fuzzy
+#| msgid "Blank DVD-RW"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD-RW"
+msgstr "แผ่น DVD-RW เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:703
+#, fuzzy
+#| msgid "DVD-RW"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD-RW"
+msgstr "แผ่น DVD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:709
+#, fuzzy
+#| msgid "Blank DVD+R"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD+R"
+msgstr "แผ่น DVD+R เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:711
+#, fuzzy
+#| msgid "DVD+R"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD+R"
+msgstr "แผ่น DVD+R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:717
+#, fuzzy
+#| msgid "Blank DVD+RW"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD+RW"
+msgstr "แผ่น DVD+RW เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:719
+#, fuzzy
+#| msgid "DVD+RW"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD+RW"
+msgstr "แผ่น DVD+RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:725
+#, fuzzy
+#| msgid "Blank DVD+RW Dual-Layer"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD+RW Dual-Layer"
+msgstr "แผ่น DVD+RW เปล่า แบบดูอัลเลเยอร์"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:727
+#, fuzzy
+#| msgid "DVD+RW Dual-Layer"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD+RW Dual-Layer"
+msgstr "แผ่น DVD+RW แบบดูอัลเลเยอร์"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:732
+#, fuzzy
+#| msgid "BD-ROM"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "BD-ROM"
+msgstr "แผ่น BD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:737
+#, fuzzy
+#| msgid "Blank BD-R"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank BD-R"
+msgstr "แผ่น BD-R เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:739
+#, fuzzy
+#| msgid "BD-R"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "BD-R"
+msgstr "แผ่น BD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:745
+#, fuzzy
+#| msgid "Blank BD-RE"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank BD-RE"
+msgstr "แผ่น BD-RE เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:747
+#, fuzzy
+#| msgid "BD-RE"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "BD-RE"
+msgstr "แผ่น BD-RE"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:752
+#, fuzzy
+#| msgid "HD DVD-ROM"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "HD DVD-ROM"
+msgstr "แผ่น HD DVD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:757
+#, fuzzy
+#| msgid "Blank HD DVD-R"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank HD DVD-R"
+msgstr "แผ่น HD DVD-R เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:759
+#, fuzzy
+#| msgid "HD DVD-R"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "HD DVD-R"
+msgstr "แผ่น HD DVD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:765
+#, fuzzy
+#| msgid "Blank HD DVD-RW"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank HD DVD-RW"
+msgstr "แผ่น HD DVD-RW เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:767
+#, fuzzy
+#| msgid "HD DVD-RW"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "HD DVD-RW"
+msgstr "แผ่น HD DVD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:774
+#, fuzzy
+#| msgid "Audio CD"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Audio CD"
+msgstr "แผ่น CD เสียง"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:787
+#, fuzzy, qt-format
+#| msgctxt "%1 is the size"
+#| msgid "%1 Encrypted Container"
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 Encrypted Container"
+msgstr "ส่วนบรรจุข้อมูลแบบเข้ารหัส %1"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:789
+#, fuzzy
+#| msgid "Encrypted Container"
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Encrypted Container"
+msgstr "ส่วนบรรจุข้อมูลแบบเข้ารหัส"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:807
+#, fuzzy, qt-format
+#| msgctxt "%1 is the size"
+#| msgid "%1 Removable Media"
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 Removable Media"
+msgstr "สื่อแบบถอดเสียบ %1"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:809
+#, fuzzy, qt-format
+#| msgctxt "%1 is the size"
+#| msgid "%1 Media"
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 Media"
+msgstr "สื่อ %1"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udev/udevdevice.cpp:116
+#, fuzzy
+#| msgid "Computer"
+msgctxt "Solid::Backends::UDev::UDevDevice|"
+msgid "Computer"
+msgstr "คอมพิวเตอร์"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udev/udevdevice.cpp:120
+#, fuzzy
+#| msgid "Processor"
+msgctxt "Solid::Backends::UDev::UDevDevice|"
+msgid "Processor"
+msgstr "ตัวประมวลผล"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udev/udevdevice.cpp:131
+#, fuzzy
+#| msgid "Portable Media Player"
+msgctxt "Solid::Backends::UDev::UDevDevice|"
+msgid "Portable Media Player"
+msgstr "เครื่องเล่นสื่อแบบพกพา"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udev/udevdevice.cpp:134
+#, fuzzy
+#| msgid "Camera"
+msgctxt "Solid::Backends::UDev::UDevDevice|"
+msgid "Camera"
+msgstr "กล้อง"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udev/udevmanager.cpp:206
+#, fuzzy
+#| msgid "Devices"
+msgctxt "Solid::Backends::UDev::UDevManager|"
+msgid "Devices"
+msgstr "อุปกรณ์ต่าง ๆ"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udev/udevmanager.cpp:207
+#, fuzzy
+#| msgid "Devices declared in your system"
+msgctxt "Solid::Backends::UDev::UDevManager|"
+msgid "Devices declared in your system"
+msgstr "อุปกรณ์ต่าง ๆ ที่มีบนระบบของคุณ"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:60
+#, fuzzy, qt-format
+#| msgid "%1 TiB"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "%1 TiB"
+msgstr "%1 TiB"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:62
+#, fuzzy, qt-format
+#| msgid "%1 GiB"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "%1 GiB"
+msgstr "%1 GiB"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:68
+#, fuzzy, qt-format
+#| msgid "%1 MiB"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "%1 MiB"
+msgstr "%1 MiB"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:73
+#, fuzzy, qt-format
+#| msgid "%1 KiB"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "%1 KiB"
+msgstr "%1 KiB"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:77
+#, fuzzy, qt-format
+#| msgid "%1 B"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "%1 B"
+msgstr "%1 B"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:81
+#, fuzzy
+#| msgid "0 B"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "0 B"
+msgstr "0 B"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:238
+#, fuzzy
+#| msgid "CD-ROM"
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|First item of %1%2 Drive sentence"
+msgid "CD-ROM"
+msgstr "แผ่น CD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:240
+#, fuzzy
+#| msgid "CD-R"
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|First item of %1%2 Drive sentence"
+msgid "CD-R"
+msgstr "แผ่น CD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:243
+#, fuzzy
+#| msgid "CD-RW"
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|First item of %1%2 Drive sentence"
+msgid "CD-RW"
+msgstr "แผ่น CD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:247
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/DVD-ROM"
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-ROM"
+msgstr "/DVD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:250
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/DVD+R"
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD+R"
+msgstr "/DVD+R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:253
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/DVD+RW"
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD+RW"
+msgstr "/DVD+RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:256
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/DVD-R"
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-R"
+msgstr "/DVD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:259
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/DVD-RW"
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-RW"
+msgstr "/DVD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:262
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/DVD-RAM"
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-RAM"
+msgstr "/DVD-RAM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:266
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/DVD±R DL"
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±R DL"
+msgstr "/DVD±R DL"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:268
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/DVD±R"
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±R"
+msgstr "/DVD±R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:273
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/DVD±RW DL"
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±RW DL"
+msgstr "/DVD±RW DL"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:275
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/DVD±RW"
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±RW"
+msgstr "/DVD±RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:279
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/BD-ROM"
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|Second item of %1%2 Drive sentence"
+msgid "/BD-ROM"
+msgstr "/BD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:282
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/BD-R"
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|Second item of %1%2 Drive sentence"
+msgid "/BD-R"
+msgstr "/BD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:285
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/BD-RE"
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|Second item of %1%2 Drive sentence"
+msgid "/BD-RE"
+msgstr "/BD-RE"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:288
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/HD DVD-ROM"
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-ROM"
+msgstr "/HD DVD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:291
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/HD DVD-R"
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-R"
+msgstr "/HD DVD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:294
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/HD DVD-RW"
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-RW"
+msgstr "/HD DVD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:298
+#, fuzzy, qt-format
+#| msgid "External %1%2 Drive"
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-"
+"ROM'/'/DVD-R'/etc (with leading slash)"
+msgid "External %1%2 Drive"
+msgstr "ไดรฟ์ภายนอก %1%2"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:300
+#, fuzzy, qt-format
+#| msgid "%1%2 Drive"
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-"
+"ROM'/'/DVD-R'/etc (with leading slash)"
+msgid "%1%2 Drive"
+msgstr "ไดรฟ์ %1%2"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:308
+#, fuzzy
+#| msgid "External Floppy Drive"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "External Floppy Drive"
+msgstr "ไดรฟ์ฟลอปปีภายนอก"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:310
+#, fuzzy
+#| msgid "Floppy Drive"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Floppy Drive"
+msgstr "ไดรฟ์ฟลอปปี"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:322
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:530
+#, fuzzy, qt-format
+#| msgctxt "%1 is the size"
+#| msgid "%1 External Hard Drive"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|%1 is the size"
+msgid "%1 External Hard Drive"
+msgstr "ฮาร์ดไดรฟ์ภายนอก %1"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:324
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:532
+#, fuzzy, qt-format
+#| msgctxt "%1 is the size"
+#| msgid "%1 Hard Drive"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|%1 is the size"
+msgid "%1 Hard Drive"
+msgstr "ฮาร์ดไดรฟ์ %1"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:328
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:536
+#, fuzzy
+#| msgid "External Hard Drive"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "External Hard Drive"
+msgstr "ฮาร์ดไดรฟ์ภายนอก "
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:330
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:538
+#, fuzzy
+#| msgid "Hard Drive"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Hard Drive"
+msgstr "ฮาร์ดไดรฟ์ "
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:353
+#, fuzzy, qt-format
+#| msgctxt "%1 is the vendor, %2 is the model of the device"
+#| msgid "%1 %2"
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|%1 is the vendor, %2 is the model of "
+"the device"
+msgid "%1 %2"
+msgstr "%1 %2"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:359
+#, fuzzy
+#| msgid "Drive"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Drive"
+msgstr "ไดรฟ์"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:388
+#, fuzzy
+#| msgid "CD-ROM"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "CD-ROM"
+msgstr "แผ่น CD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:393
+#, fuzzy
+#| msgid "Blank CD-R"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Blank CD-R"
+msgstr "แผ่น CD-R เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:395
+#, fuzzy
+#| msgid "CD-R"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "CD-R"
+msgstr "แผ่น CD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:401
+#, fuzzy
+#| msgid "Blank CD-RW"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Blank CD-RW"
+msgstr "แผ่น CD-RW เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:403
+#, fuzzy
+#| msgid "CD-RW"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "CD-RW"
+msgstr "แผ่น CD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:408
+#, fuzzy
+#| msgid "DVD-ROM"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "DVD-ROM"
+msgstr "แผ่น DVD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:413
+#, fuzzy
+#| msgid "Blank DVD-RAM"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Blank DVD-RAM"
+msgstr "แผ่น DVD-RAM เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:415
+#, fuzzy
+#| msgid "DVD-RAM"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "DVD-RAM"
+msgstr "แผ่น DVD-RAM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:421
+#, fuzzy
+#| msgid "Blank DVD-R"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Blank DVD-R"
+msgstr "แผ่น DVD-R เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:423
+#, fuzzy
+#| msgid "DVD-R"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "DVD-R"
+msgstr "แผ่น DVD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:429
+#, fuzzy
+#| msgid "Blank DVD+R Dual-Layer"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Blank DVD+R Dual-Layer"
+msgstr "แผ่น DVD+R แบบดูอัลเลเยอร์เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:431
+#, fuzzy
+#| msgid "DVD+R Dual-Layer"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "DVD+R Dual-Layer"
+msgstr "แผ่น DVD+R แบบดูอัลเลเยอร์"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:437
+#, fuzzy
+#| msgid "Blank DVD-RW"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Blank DVD-RW"
+msgstr "แผ่น DVD-RW เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:439
+#, fuzzy
+#| msgid "DVD-RW"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "DVD-RW"
+msgstr "แผ่น DVD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:445
+#, fuzzy
+#| msgid "Blank DVD+R"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Blank DVD+R"
+msgstr "แผ่น DVD+R เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:447
+#, fuzzy
+#| msgid "DVD+R"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "DVD+R"
+msgstr "แผ่น DVD+R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:453
+#, fuzzy
+#| msgid "Blank DVD+RW"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Blank DVD+RW"
+msgstr "แผ่น DVD+RW เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:455
+#, fuzzy
+#| msgid "DVD+RW"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "DVD+RW"
+msgstr "แผ่น DVD+RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:461
+#, fuzzy
+#| msgid "Blank DVD+RW Dual-Layer"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Blank DVD+RW Dual-Layer"
+msgstr "แผ่น DVD+RW เปล่า แบบดูอัลเลเยอร์"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:463
+#, fuzzy
+#| msgid "DVD+RW Dual-Layer"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "DVD+RW Dual-Layer"
+msgstr "แผ่น DVD+RW แบบดูอัลเลเยอร์"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:468
+#, fuzzy
+#| msgid "BD-ROM"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "BD-ROM"
+msgstr "แผ่น BD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:473
+#, fuzzy
+#| msgid "Blank BD-R"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Blank BD-R"
+msgstr "แผ่น BD-R เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:475
+#, fuzzy
+#| msgid "BD-R"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "BD-R"
+msgstr "แผ่น BD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:481
+#, fuzzy
+#| msgid "Blank BD-RE"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Blank BD-RE"
+msgstr "แผ่น BD-RE เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:483
+#, fuzzy
+#| msgid "BD-RE"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "BD-RE"
+msgstr "แผ่น BD-RE"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:488
+#, fuzzy
+#| msgid "HD DVD-ROM"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "HD DVD-ROM"
+msgstr "แผ่น HD DVD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:493
+#, fuzzy
+#| msgid "Blank HD DVD-R"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Blank HD DVD-R"
+msgstr "แผ่น HD DVD-R เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:495
+#, fuzzy
+#| msgid "HD DVD-R"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "HD DVD-R"
+msgstr "แผ่น HD DVD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:501
+#, fuzzy
+#| msgid "Blank HD DVD-RW"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Blank HD DVD-RW"
+msgstr "แผ่น HD DVD-RW เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:503
+#, fuzzy
+#| msgid "HD DVD-RW"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "HD DVD-RW"
+msgstr "แผ่น HD DVD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:510
+#, fuzzy
+#| msgid "Audio CD"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Audio CD"
+msgstr "แผ่น CD เสียง"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:523
+#, fuzzy, qt-format
+#| msgctxt "%1 is the size"
+#| msgid "%1 Encrypted Container"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|%1 is the size"
+msgid "%1 Encrypted Container"
+msgstr "ส่วนบรรจุข้อมูลแบบเข้ารหัส %1"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:525
+#, fuzzy
+#| msgid "Encrypted Container"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Encrypted Container"
+msgstr "ส่วนบรรจุข้อมูลแบบเข้ารหัส"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:543
+#, fuzzy, qt-format
+#| msgctxt "%1 is the size"
+#| msgid "%1 Removable Media"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|%1 is the size"
+msgid "%1 Removable Media"
+msgstr "สื่อแบบถอดเสียบ %1"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:545
+#, fuzzy, qt-format
+#| msgctxt "%1 is the size"
+#| msgid "%1 Media"
+msgctxt "Solid::Backends::UDisks::UDisksDevice|%1 is the size"
+msgid "%1 Media"
+msgstr "สื่อ %1"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:756
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "You are not authorized to perform this operation."
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:758
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "The device is currently busy."
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:760
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "The requested operation has failed."
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:762
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "The requested operation has been canceled."
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:764
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "An invalid or malformed option has been given."
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:766
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "The kernel driver for this filesystem type is not available."
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:768
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "An unspecified error has occurred."
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksmanager.cpp:89
+#, fuzzy
+#| msgid "Storage"
+msgctxt "Solid::Backends::UDisks::UDisksManager|"
+msgid "Storage"
+msgstr "สื่อจัดเก็บข้อมูล"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksmanager.cpp:90
+#, fuzzy
+#| msgid "Storage devices"
+msgctxt "Solid::Backends::UDisks::UDisksManager|"
+msgid "Storage devices"
+msgstr "อุปกรณ์สื่อจัดเก็บข้อมูล"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:63
+#, fuzzy, qt-format
+#| msgid "%1 TiB"
+msgctxt "udisksdevice|"
+msgid "%1 TiB"
+msgstr "%1 TiB"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:65
+#, fuzzy, qt-format
+#| msgid "%1 GiB"
+msgctxt "udisksdevice|"
+msgid "%1 GiB"
+msgstr "%1 GiB"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:71
+#, fuzzy, qt-format
+#| msgid "%1 MiB"
+msgctxt "udisksdevice|"
+msgid "%1 MiB"
+msgstr "%1 MiB"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:76
+#, fuzzy, qt-format
+#| msgid "%1 KiB"
+msgctxt "udisksdevice|"
+msgid "%1 KiB"
+msgstr "%1 KiB"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:80
+#, fuzzy, qt-format
+#| msgid "%1 B"
+msgctxt "udisksdevice|"
+msgid "%1 B"
+msgstr "%1 B"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:84
+#, fuzzy
+#| msgid "0 B"
+msgctxt "udisksdevice|"
+msgid "0 B"
+msgstr "0 B"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:248
+#, fuzzy
+#| msgid "Devices"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Loop Device"
+msgstr "อุปกรณ์ต่าง ๆ"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:250
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Swap Space"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:273
+#, fuzzy
+#| msgid "CD-ROM"
+msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
+msgid "CD-ROM"
+msgstr "แผ่น CD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:275
+#, fuzzy
+#| msgid "CD-R"
+msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
+msgid "CD-R"
+msgstr "แผ่น CD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:278
+#, fuzzy
+#| msgid "CD-RW"
+msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
+msgid "CD-RW"
+msgstr "แผ่น CD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:282
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/DVD-ROM"
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD-ROM"
+msgstr "/DVD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:285
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/DVD+R"
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD+R"
+msgstr "/DVD+R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:288
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/DVD+RW"
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD+RW"
+msgstr "/DVD+RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:291
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/DVD-R"
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD-R"
+msgstr "/DVD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:294
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/DVD-RW"
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD-RW"
+msgstr "/DVD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:297
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/DVD-RAM"
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD-RAM"
+msgstr "/DVD-RAM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:301
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/DVD±R DL"
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD±R DL"
+msgstr "/DVD±R DL"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:303
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/DVD±R"
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD±R"
+msgstr "/DVD±R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:308
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/DVD±RW DL"
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD±RW DL"
+msgstr "/DVD±RW DL"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:310
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/DVD±RW"
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD±RW"
+msgstr "/DVD±RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:314
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/BD-ROM"
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/BD-ROM"
+msgstr "/BD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:317
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/BD-R"
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/BD-R"
+msgstr "/BD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:320
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/BD-RE"
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/BD-RE"
+msgstr "/BD-RE"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:323
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/HD DVD-ROM"
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-ROM"
+msgstr "/HD DVD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:326
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/HD DVD-R"
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-R"
+msgstr "/HD DVD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:329
+#, fuzzy
+#| msgctxt "Second item of %1%2 Drive sentence"
+#| msgid "/HD DVD-RW"
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-RW"
+msgstr "/HD DVD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:333
+#, fuzzy, qt-format
+#| msgid "External %1%2 Drive"
+msgctxt ""
+"Solid::Backends::UDisks2::Device|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
+"DVD-R'/etc (with leading slash)"
+msgid "External %1%2 Drive"
+msgstr "ไดรฟ์ภายนอก %1%2"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:335
+#, fuzzy, qt-format
+#| msgid "%1%2 Drive"
+msgctxt ""
+"Solid::Backends::UDisks2::Device|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
+"DVD-R'/etc (with leading slash)"
+msgid "%1%2 Drive"
+msgstr "ไดรฟ์ %1%2"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:343
+#, fuzzy
+#| msgid "External Floppy Drive"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "External Floppy Drive"
+msgstr "ไดรฟ์ฟลอปปีภายนอก"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:345
+#, fuzzy
+#| msgid "Floppy Drive"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Floppy Drive"
+msgstr "ไดรฟ์ฟลอปปี"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:357
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:565
+#, fuzzy, qt-format
+#| msgctxt "%1 is the size"
+#| msgid "%1 External Hard Drive"
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 External Hard Drive"
+msgstr "ฮาร์ดไดรฟ์ภายนอก %1"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:359
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:567
+#, fuzzy, qt-format
+#| msgctxt "%1 is the size"
+#| msgid "%1 Hard Drive"
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 Hard Drive"
+msgstr "ฮาร์ดไดรฟ์ %1"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:363
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:571
+#, fuzzy
+#| msgid "External Hard Drive"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "External Hard Drive"
+msgstr "ฮาร์ดไดรฟ์ภายนอก "
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:365
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:573
+#, fuzzy
+#| msgid "Hard Drive"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Hard Drive"
+msgstr "ฮาร์ดไดรฟ์ "
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:388
+#, fuzzy, qt-format
+#| msgctxt "%1 is the vendor, %2 is the model of the device"
+#| msgid "%1 %2"
+msgctxt ""
+"Solid::Backends::UDisks2::Device|%1 is the vendor, %2 is the model of the "
+"device"
+msgid "%1 %2"
+msgstr "%1 %2"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:394
+#, fuzzy
+#| msgid "Drive"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Drive"
+msgstr "ไดรฟ์"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:424
+#, fuzzy
+#| msgid "CD-ROM"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "CD-ROM"
+msgstr "แผ่น CD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:429
+#, fuzzy
+#| msgid "Blank CD-R"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank CD-R"
+msgstr "แผ่น CD-R เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:431
+#, fuzzy
+#| msgid "CD-R"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "CD-R"
+msgstr "แผ่น CD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:437
+#, fuzzy
+#| msgid "Blank CD-RW"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank CD-RW"
+msgstr "แผ่น CD-RW เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:439
+#, fuzzy
+#| msgid "CD-RW"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "CD-RW"
+msgstr "แผ่น CD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:444
+#, fuzzy
+#| msgid "DVD-ROM"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD-ROM"
+msgstr "แผ่น DVD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:449
+#, fuzzy
+#| msgid "Blank DVD-RAM"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD-RAM"
+msgstr "แผ่น DVD-RAM เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:451
+#, fuzzy
+#| msgid "DVD-RAM"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD-RAM"
+msgstr "แผ่น DVD-RAM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:457
+#, fuzzy
+#| msgid "Blank DVD-R"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD-R"
+msgstr "แผ่น DVD-R เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:459
+#, fuzzy
+#| msgid "DVD-R"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD-R"
+msgstr "แผ่น DVD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:465
+#, fuzzy
+#| msgid "Blank DVD+R Dual-Layer"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD+R Dual-Layer"
+msgstr "แผ่น DVD+R แบบดูอัลเลเยอร์เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:467
+#, fuzzy
+#| msgid "DVD+R Dual-Layer"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD+R Dual-Layer"
+msgstr "แผ่น DVD+R แบบดูอัลเลเยอร์"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:473
+#, fuzzy
+#| msgid "Blank DVD-RW"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD-RW"
+msgstr "แผ่น DVD-RW เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:475
+#, fuzzy
+#| msgid "DVD-RW"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD-RW"
+msgstr "แผ่น DVD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:481
+#, fuzzy
+#| msgid "Blank DVD+R"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD+R"
+msgstr "แผ่น DVD+R เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:483
+#, fuzzy
+#| msgid "DVD+R"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD+R"
+msgstr "แผ่น DVD+R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:489
+#, fuzzy
+#| msgid "Blank DVD+RW"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD+RW"
+msgstr "แผ่น DVD+RW เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:491
+#, fuzzy
+#| msgid "DVD+RW"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD+RW"
+msgstr "แผ่น DVD+RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:497
+#, fuzzy
+#| msgid "Blank DVD+RW Dual-Layer"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD+RW Dual-Layer"
+msgstr "แผ่น DVD+RW เปล่า แบบดูอัลเลเยอร์"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:499
+#, fuzzy
+#| msgid "DVD+RW Dual-Layer"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD+RW Dual-Layer"
+msgstr "แผ่น DVD+RW แบบดูอัลเลเยอร์"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:504
+#, fuzzy
+#| msgid "BD-ROM"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "BD-ROM"
+msgstr "แผ่น BD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:509
+#, fuzzy
+#| msgid "Blank BD-R"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank BD-R"
+msgstr "แผ่น BD-R เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:511
+#, fuzzy
+#| msgid "BD-R"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "BD-R"
+msgstr "แผ่น BD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:517
+#, fuzzy
+#| msgid "Blank BD-RE"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank BD-RE"
+msgstr "แผ่น BD-RE เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:519
+#, fuzzy
+#| msgid "BD-RE"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "BD-RE"
+msgstr "แผ่น BD-RE"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:524
+#, fuzzy
+#| msgid "HD DVD-ROM"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "HD DVD-ROM"
+msgstr "แผ่น HD DVD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:529
+#, fuzzy
+#| msgid "Blank HD DVD-R"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank HD DVD-R"
+msgstr "แผ่น HD DVD-R เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:531
+#, fuzzy
+#| msgid "HD DVD-R"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "HD DVD-R"
+msgstr "แผ่น HD DVD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:537
+#, fuzzy
+#| msgid "Blank HD DVD-RW"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank HD DVD-RW"
+msgstr "แผ่น HD DVD-RW เปล่า"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:539
+#, fuzzy
+#| msgid "HD DVD-RW"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "HD DVD-RW"
+msgstr "แผ่น HD DVD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:546
+#, fuzzy
+#| msgid "Audio CD"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Audio CD"
+msgstr "แผ่น CD เสียง"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:558
+#, fuzzy, qt-format
+#| msgctxt "%1 is the size"
+#| msgid "%1 Encrypted Container"
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 Encrypted Drive"
+msgstr "ส่วนบรรจุข้อมูลแบบเข้ารหัส %1"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:560
+#, fuzzy
+#| msgid "Encrypted Container"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Encrypted Drive"
+msgstr "ส่วนบรรจุข้อมูลแบบเข้ารหัส"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:578
+#, fuzzy, qt-format
+#| msgctxt "%1 is the size"
+#| msgid "%1 Removable Media"
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 Removable Media"
+msgstr "สื่อแบบถอดเสียบ %1"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:580
+#, fuzzy, qt-format
+#| msgctxt "%1 is the size"
+#| msgid "%1 Media"
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 Media"
+msgstr "สื่อ %1"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:712
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "You are not authorized to perform this operation"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:714
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is currently busy"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:716
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The requested operation has failed"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:718
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The requested operation has been canceled"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:720
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "An invalid or malformed option has been given"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:722
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The kernel driver for this filesystem type is not available"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:724
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is already mounted"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:726
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is not mounted"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:728
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is mounted by another user"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:730
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is already unmounting"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:732
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The operation timed out"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:734
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The operation would wake up a disk that is in a deep-sleep state"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:736
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The operation has already been canceled"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:738
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "An unspecified error has occurred"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksmanager.cpp:90
+#, fuzzy
+#| msgid "Storage"
+msgctxt "Solid::Backends::UDisks2::Manager|"
+msgid "Storage"
+msgstr "สื่อจัดเก็บข้อมูล"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksmanager.cpp:91
+#, fuzzy
+#| msgid "Storage devices"
+msgctxt "Solid::Backends::UDisks2::Manager|"
+msgid "Storage devices"
+msgstr "อุปกรณ์สื่อจัดเก็บข้อมูล"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/upower/upowerdevice.cpp:99
+#, fuzzy, qt-format
+#| msgctxt "%1 is battery technology"
+#| msgid "%1 Battery"
+msgctxt "Solid::Backends::UPower::UPowerDevice|%1 is battery technology"
+msgid "%1 Battery"
+msgstr "แบตเตอรี่แบบ %1"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/upower/upowerdevice.cpp:114
+#, fuzzy
+#| msgctxt "battery technology"
+#| msgid "Lithium Ion"
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Lithium Ion"
+msgstr "ลิเธียมไอออน"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/upower/upowerdevice.cpp:116
+#, fuzzy
+#| msgctxt "battery technology"
+#| msgid "Lithium Polymer"
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Lithium Polymer"
+msgstr "ลิเธียมโพลิเมอร์"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/upower/upowerdevice.cpp:118
+#, fuzzy
+#| msgctxt "battery technology"
+#| msgid "Lithium Iron Phosphate"
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Lithium Iron Phosphate"
+msgstr "ลิเธียมไอออนฟอสเฟต"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/upower/upowerdevice.cpp:120
+#, fuzzy
+#| msgctxt "battery technology"
+#| msgid "Lead Acid"
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Lead Acid"
+msgstr "ตะกั่วและกรด"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/upower/upowerdevice.cpp:122
+#, fuzzy
+#| msgctxt "battery technology"
+#| msgid "Nickel Cadmium"
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Nickel Cadmium"
+msgstr "นิกเกิลแคดเมียม"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/upower/upowerdevice.cpp:124
+#, fuzzy
+#| msgctxt "battery technology"
+#| msgid "Nickel Metal Hydride"
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Nickel Metal Hydride"
+msgstr "นิกเกิลเมทัลไฮไดรด์"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/upower/upowerdevice.cpp:126
+#, fuzzy
+#| msgctxt "battery technology"
+#| msgid "Unknown"
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Unknown"
+msgstr "ไม่ทราบ"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/upower/upowermanager.cpp:88
+#, fuzzy
+#| msgid "Power Management"
+msgctxt "Solid::Backends::UPower::UPowerManager|"
+msgid "Power Management"
+msgstr "การจัดการพลังงาน"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/upower/upowermanager.cpp:89
+#, fuzzy
+#| msgid "Batteries and other sources of power"
+msgctxt "Solid::Backends::UPower::UPowerManager|"
+msgid "Batteries and other sources of power"
+msgstr "แบตเตอรี่และแหล่งพลังงานอื่น ๆ"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/win/winbattery.cpp:173
+#, fuzzy
+#| msgctxt "battery technology"
+#| msgid "Unknown"
+msgctxt "Solid::Backends::Win::WinBattery|battery technology"
+msgid "Unknown"
+msgstr "ไม่ทราบ"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/win/windevice.cpp:169
+#, fuzzy
+#| msgctxt "battery technology"
+#| msgid "Lithium Ion"
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Lithium Ion"
+msgstr "ลิเธียมไอออน"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/win/windevice.cpp:172
+#, fuzzy
+#| msgctxt "battery technology"
+#| msgid "Lead Acid"
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Lead Acid"
+msgstr "ตะกั่วและกรด"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/win/windevice.cpp:175
+#, fuzzy
+#| msgctxt "battery technology"
+#| msgid "Nickel Cadmium"
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Nickel Cadmium"
+msgstr "นิกเกิลแคดเมียม"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/win/windevice.cpp:178
+#, fuzzy
+#| msgctxt "battery technology"
+#| msgid "Nickel Metal Hydride"
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Nickel Metal Hydride"
+msgstr "นิกเกิลเมทัลไฮไดรด์"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/win/windevice.cpp:181
+#, fuzzy
+#| msgctxt "battery technology"
+#| msgid "Unknown"
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Unknown"
+msgstr "ไม่ทราบ"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/wmi/wmibattery.cpp:89
+#, fuzzy
+#| msgctxt "battery technology"
+#| msgid "Lead Acid"
+msgctxt "Solid::Backends::Wmi::Battery|battery technology"
+msgid "Lead Acid"
+msgstr "ตะกั่วและกรด"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/wmi/wmibattery.cpp:91
+#, fuzzy
+#| msgctxt "battery technology"
+#| msgid "Nickel Cadmium"
+msgctxt "Solid::Backends::Wmi::Battery|battery technology"
+msgid "Nickel Cadmium"
+msgstr "นิกเกิลแคดเมียม"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/wmi/wmibattery.cpp:93
+#, fuzzy
+#| msgctxt "battery technology"
+#| msgid "Nickel Metal Hydride"
+msgctxt "Solid::Backends::Wmi::Battery|battery technology"
+msgid "Nickel Metal Hydride"
+msgstr "นิกเกิลเมทัลไฮไดรด์"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/wmi/wmibattery.cpp:95
+#, fuzzy
+#| msgctxt "battery technology"
+#| msgid "Lithium Ion"
+msgctxt "Solid::Backends::Wmi::Battery|battery technology"
+msgid "Lithium Ion"
+msgstr "ลิเธียมไอออน"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/wmi/wmibattery.cpp:97
+#, fuzzy
+#| msgctxt "battery technology"
+#| msgid "Lithium Polymer"
+msgctxt "Solid::Backends::Wmi::Battery|battery technology"
+msgid "Lithium Polymer"
+msgstr "ลิเธียมโพลิเมอร์"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/wmi/wmibattery.cpp:99
+#, fuzzy
+#| msgctxt "battery technology"
+#| msgid "Unknown"
+msgctxt "Solid::Backends::Wmi::Battery|battery technology"
+msgid "Unknown"
+msgstr "ไม่ทราบ"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/wmi/wmidevice.cpp:438
+#, fuzzy, qt-format
+#| msgctxt "%1 is battery technology"
+#| msgid "%1 Battery"
+msgctxt "Solid::Backends::Wmi::WmiDevice|%1 is battery technology"
+msgid "%1 Battery"
+msgstr "แบตเตอรี่แบบ %1"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/deviceinterface.cpp:66
+#, fuzzy
+#| msgctxt "battery technology"
+#| msgid "Unknown"
+msgctxt "Solid::DeviceInterface|Unknown device type"
+msgid "Unknown"
+msgstr "ไม่ทราบ"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/deviceinterface.cpp:68
+#, fuzzy
+#| msgctxt "Generic Interface device type"
+#| msgid "Generic Interface"
+msgctxt "Solid::DeviceInterface|Generic Interface device type"
+msgid "Generic Interface"
+msgstr "ส่วนเชื่อมต่อทั่วไป"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/deviceinterface.cpp:70
+#, fuzzy
+#| msgid "Processor"
+msgctxt "Solid::DeviceInterface|Processor device type"
+msgid "Processor"
+msgstr "ตัวประมวลผล"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/deviceinterface.cpp:72
+#, fuzzy
+#| msgctxt "Block device type"
+#| msgid "Block"
+msgctxt "Solid::DeviceInterface|Block device type"
+msgid "Block"
+msgstr "บล็อก"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/deviceinterface.cpp:74
+#, fuzzy
+#| msgctxt "Storage Access device type"
+#| msgid "Storage Access"
+msgctxt "Solid::DeviceInterface|Storage Access device type"
+msgid "Storage Access"
+msgstr "อุปกรณ์จัดเก็บข้อมูลที่เข้าถึงได้"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/deviceinterface.cpp:76
+#, fuzzy
+#| msgctxt "Storage Drive device type"
+#| msgid "Storage Drive"
+msgctxt "Solid::DeviceInterface|Storage Drive device type"
+msgid "Storage Drive"
+msgstr "ไดรฟ์เก็บข้อมูล"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/deviceinterface.cpp:78
+#, fuzzy
+#| msgctxt "Optical Drive device type"
+#| msgid "Optical Drive"
+msgctxt "Solid::DeviceInterface|Optical Drive device type"
+msgid "Optical Drive"
+msgstr "ไดรฟ์ออปติคัล"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/deviceinterface.cpp:80
+#, fuzzy
+#| msgctxt "Storage Volume device type"
+#| msgid "Storage Volume"
+msgctxt "Solid::DeviceInterface|Storage Volume device type"
+msgid "Storage Volume"
+msgstr "โวลุมจัดเก็บข้อมูล"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/deviceinterface.cpp:82
+#, fuzzy
+#| msgctxt "Optical Disc device type"
+#| msgid "Optical Disc"
+msgctxt "Solid::DeviceInterface|Optical Disc device type"
+msgid "Optical Disc"
+msgstr "ดิสก์ออปติคัล"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/deviceinterface.cpp:84
+#, fuzzy
+#| msgid "Camera"
+msgctxt "Solid::DeviceInterface|Camera device type"
+msgid "Camera"
+msgstr "กล้อง"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/deviceinterface.cpp:86
+#, fuzzy
+#| msgid "Portable Media Player"
+msgctxt "Solid::DeviceInterface|Portable Media Player device type"
+msgid "Portable Media Player"
+msgstr "เครื่องเล่นสื่อแบบพกพา"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/deviceinterface.cpp:88
+#, fuzzy
+#| msgctxt "Battery device type"
+#| msgid "Battery"
+msgctxt "Solid::DeviceInterface|Battery device type"
+msgid "Battery"
+msgstr "แบตเตอรี่"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/deviceinterface.cpp:90
+#, fuzzy
+#| msgid "Network Shares"
+msgctxt "Solid::DeviceInterface|Network Share device type"
+msgid "Network Share"
+msgstr "ส่วนใช้งานร่วมกันบนเครือข่าย"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:173
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:272
+#, fuzzy
+#| msgid "Devices"
+msgctxt "solid-hardware|"
+msgid "Device udi"
+msgstr "อุปกรณ์ต่าง ๆ"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:188
+msgctxt "solid-hardware|"
+msgid "KDE tool for querying your hardware from the command line"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:191
+msgctxt "solid-hardware|"
+msgid "Command to execute"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:193
+msgctxt "solid-hardware|"
+msgid "Show available commands"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:199
+msgctxt "solid-hardware|"
+msgid "Syntax:"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:202
+msgctxt "solid-hardware|"
+msgid ""
+"             # List the hardware available in the system.\n"
+"             # - If the 'nonportableinfo' option is specified, the device\n"
+"             # properties are listed (be careful, in this case property "
+"names\n"
+"             # are backend dependent),\n"
+"             # - If the 'details' option is specified, the device "
+"interfaces\n"
+"             # and the corresponding properties are listed in a platform\n"
+"             # neutral fashion,\n"
+"             # - Otherwise only device UDIs are listed.\n"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:213
+msgctxt "solid-hardware|"
+msgid ""
+"             # Display all the interfaces and properties of the device\n"
+"             # corresponding to 'udi' in a platform neutral fashion.\n"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:218
+msgctxt "solid-hardware|"
+msgid ""
+"             # Display all the properties of the device corresponding to "
+"'udi'\n"
+"             # (be careful, in this case property names are backend "
+"dependent).\n"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:223
+msgctxt "solid-hardware|"
+msgid ""
+"             # List the UDI of devices corresponding to 'predicate'.\n"
+"             # - If 'parentUdi' is specified, the search is restricted to "
+"the\n"
+"             # branch of the corresponding device,\n"
+"             # - Otherwise the search is done on all the devices.\n"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:230
+msgctxt "solid-hardware|"
+msgid ""
+"             # If applicable, mount the device corresponding to 'udi'.\n"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:234
+msgctxt "solid-hardware|"
+msgid ""
+"             # If applicable, unmount the device corresponding to 'udi'.\n"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:238
+msgctxt "solid-hardware|"
+msgid ""
+"             # If applicable, eject the device corresponding to 'udi'.\n"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:242
+msgctxt "solid-hardware|"
+msgid "             # Listen to all add/remove events on supported hardware."
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:259
+msgctxt "solid-hardware|"
+msgid "Show device details"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:260
+msgctxt "solid-hardware|"
+msgid "Show non portable information"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:273
+#, fuzzy
+#| msgid "UPnP devices"
+msgctxt "solid-hardware|"
+msgid "Parent device udi"
+msgstr "อุปกรณ์แบบ UPnP"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:301
+#, qt-format
+msgctxt "solid-hardware|"
+msgid "Syntax Error: Unknown command '%1'"
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:370
+#, qt-format
+msgctxt "SolidHardware|"
+msgid "Error: %1 does not have the interface StorageAccess."
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:375
+#, qt-format
+msgctxt "SolidHardware|"
+msgid "Error: %1 does not have the interface OpticalDrive."
+msgstr ""
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:408
+#, qt-format
+msgctxt "SolidHardware|"
+msgid "Error: %1"
+msgstr ""
+
+#, fuzzy
+#~| msgid "UPnP Internet Gateway Device"
+#~ msgctxt "InternetGatewayDevice1|"
+#~ msgid "UPnP Internet Gateway Device"
+#~ msgstr "อุปกรณ์เกตเวย์อินเทอร์เน็ตแบบ UPnP"
+
+#, fuzzy
+#~| msgid "UPnP devices"
+#~ msgctxt "Solid::Backends::KUPnP::KUPnPRootDevice|"
+#~ msgid "UPnP devices"
+#~ msgstr "อุปกรณ์แบบ UPnP"
+
+#, fuzzy
+#~| msgid "UPnP Media Server v1"
+#~ msgctxt "MediaServer1|"
+#~ msgid "UPnP Media Server v1"
+#~ msgstr "แม่ข่ายบริการสื่อแบบ UPnP v1"
+
+#, fuzzy
+#~| msgid "UPnP Media Server v2"
+#~ msgctxt "MediaServer2|"
+#~ msgid "UPnP Media Server v2"
+#~ msgstr "แม่ข่ายบริการสื่อแบบ UPnP v2"
+
+#, fuzzy
+#~| msgid "UPnP Media Server v3"
+#~ msgctxt "MediaServer3|"
+#~ msgid "UPnP Media Server v3"
+#~ msgstr "แม่ข่ายบริการสื่อแบบ UPnP v3"
+
+#, fuzzy
+#~| msgid "WLAN Interface"
+#~ msgctxt "Solid::Backends::UDev::UDevDevice|"
+#~ msgid "WLAN Interface"
+#~ msgstr "ส่วนเชื่อมต่อเครือข่ายไร้สาย (WLAN)"
+
+#, fuzzy
+#~| msgid "Networking Interface"
+#~ msgctxt "Solid::Backends::UDev::UDevDevice|"
+#~ msgid "Networking Interface"
+#~ msgstr "ส่วนเชื่อมต่อเครือข่าย"
+
+#, fuzzy
+#~| msgid "UPnP Devices"
+#~ msgctxt "Solid::Backends::UPnP::UPnPDeviceManager|"
+#~ msgid "UPnP Devices"
+#~ msgstr "อุปกรณ์แบบ UPnP"
+
+#, fuzzy
+#~| msgid "UPnP devices detected on your network"
+#~ msgctxt "Solid::Backends::UPnP::UPnPDeviceManager|"
+#~ msgid "UPnP devices detected on your network"
+#~ msgstr "ตรวจพบอุปกรณ์แบบ UPnP บนเครือข่ายของคุณ"
+
+#, fuzzy
+#~| msgid "A/C Adapter"
+#~ msgctxt "Solid::Backends::UPower::UPowerDevice|"
+#~ msgid "A/C Adapter"
+#~ msgstr "ตัวแปลงไฟกระแสสลับ"
+
+#, fuzzy
+#~| msgid "A/C Adapter"
+#~ msgctxt "Solid::Backends::Win::WinDevice|"
+#~ msgid "A/C Adapter"
+#~ msgstr "ตัวแปลงไฟกระแสสลับ"
+
+#, fuzzy
+#~| msgid "A/C Adapter"
+#~ msgctxt "Solid::Backends::Wmi::WmiDevice|"
+#~ msgid "A/C Adapter"
+#~ msgstr "ตัวแปลงไฟกระแสสลับ"
+
+#, fuzzy
+#~| msgctxt "Network Interface device type"
+#~| msgid "Network Interface"
+#~ msgctxt "Solid::DeviceInterface|Network Interface device type"
+#~ msgid "Network Interface"
+#~ msgstr "แผงวงจรเครือข่าย"
+
+#, fuzzy
+#~| msgctxt "Ac Adapter device type"
+#~| msgid "Ac Adapter"
+#~ msgctxt "Solid::DeviceInterface|Ac Adapter device type"
+#~ msgid "Ac Adapter"
+#~ msgstr "ตัวแปลงไฟกระแสสลับ"
+
+#, fuzzy
+#~| msgctxt "Button device type"
+#~| msgid "Button"
+#~ msgctxt "Solid::DeviceInterface|Button device type"
+#~ msgid "Button"
+#~ msgstr "ปุ่ม"
+
+#, fuzzy
+#~| msgctxt "Audio Interface device type"
+#~| msgid "Audio Interface"
+#~ msgctxt "Solid::DeviceInterface|Audio Interface device type"
+#~ msgid "Audio Interface"
+#~ msgstr "แผงวงจรเสียง"
+
+#, fuzzy
+#~| msgctxt "Dvb Interface device type"
+#~| msgid "Dvb Interface"
+#~ msgctxt "Solid::DeviceInterface|Dvb Interface device type"
+#~ msgid "Dvb Interface"
+#~ msgstr "ส่วนเชื่อมต่ออุปกรณ์ Dvb"
+
+#, fuzzy
+#~| msgctxt "Video device type"
+#~| msgid "Video"
+#~ msgctxt "Solid::DeviceInterface|Video device type"
+#~ msgid "Video"
+#~ msgstr "วีดิทัศน์"
+
+#, fuzzy
+#~| msgctxt "Serial Interface device type"
+#~| msgid "Serial Interface"
+#~ msgctxt "Solid::DeviceInterface|Serial Interface device type"
+#~ msgid "Serial Interface"
+#~ msgstr "ส่วนเชื่อมต่อผ่านพอร์ตอนุกรม"
+
+#, fuzzy
+#~| msgctxt "Smart Card Reader device type"
+#~| msgid "Smart Card Reader"
+#~ msgctxt "Solid::DeviceInterface|Smart Card Reader device type"
+#~ msgid "Smart Card Reader"
+#~ msgstr "ตัวอ่านสมาร์ทการ์ด"
+
+#, fuzzy
+#~| msgctxt "Internet Gateway device type"
+#~| msgid "Internet Gateway Device"
+#~ msgctxt "Solid::DeviceInterface|Internet Gateway device type"
+#~ msgid "Internet Gateway Device"
+#~ msgstr "อุปกรณ์เกตเวย์อินเทอร์เน็ต"
+
+#, fuzzy
+#~| msgid "UPnP Devices"
+#~ msgctxt "Solid::DeviceInterface|A pointing device"
+#~ msgid "PointingDevice"
+#~ msgstr "อุปกรณ์แบบ UPnP"
+
+#, fuzzy
+#~| msgctxt "Second item of %1%2 Drive sentence"
+#~| msgid "/DVD±R DL"
+#~ msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+#~ msgid "/DVDÂ±R DL"
+#~ msgstr "/DVD±R DL"
+
+#, fuzzy
+#~| msgctxt "Second item of %1%2 Drive sentence"
+#~| msgid "/DVD±R"
+#~ msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+#~ msgid "/DVDÂ±R"
+#~ msgstr "/DVD±R"
+
+#, fuzzy
+#~| msgctxt "Second item of %1%2 Drive sentence"
+#~| msgid "/DVD±RW DL"
+#~ msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+#~ msgid "/DVDÂ±RW DL"
+#~ msgstr "/DVD±RW DL"
+
+#, fuzzy
+#~| msgctxt "Second item of %1%2 Drive sentence"
+#~| msgid "/DVD±RW"
+#~ msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+#~ msgid "/DVDÂ±RW"
+#~ msgstr "/DVD±RW"
+
+#~ msgctxt "First item of %1%2 Drive sentence"
+#~ msgid "CD-ROM"
+#~ msgstr "CD-ROM"
+
+#~ msgctxt "First item of %1%2 Drive sentence"
+#~ msgid "CD-R"
+#~ msgstr "CD-R"
+
+#~ msgctxt "First item of %1%2 Drive sentence"
+#~ msgid "CD-RW"
+#~ msgstr "CD-RW"
+
+#, fuzzy
+#~| msgid "%1 TiB"
+#~ msgctxt "udisksdevice"
+#~ msgid "%1 TiB"
+#~ msgstr "%1 TiB"
+
+#, fuzzy
+#~| msgid "%1 GiB"
+#~ msgctxt "udisksdevice"
+#~ msgid "%1 GiB"
+#~ msgstr "%1 GiB"
+
+#, fuzzy
+#~| msgid "%1 MiB"
+#~ msgctxt "udisksdevice"
+#~ msgid "%1 MiB"
+#~ msgstr "%1 MiB"
+
+#, fuzzy
+#~| msgid "%1 KiB"
+#~ msgctxt "udisksdevice"
+#~ msgid "%1 KiB"
+#~ msgstr "%1 KiB"
+
+#, fuzzy
+#~| msgid "%1 B"
+#~ msgctxt "udisksdevice"
+#~ msgid "%1 B"
+#~ msgstr "%1 B"
+
+#, fuzzy
+#~| msgid "0 B"
+#~ msgctxt "udisksdevice"
+#~ msgid "0 B"
+#~ msgstr "0 B"
+
+#~ msgctxt "Unknown device type"
+#~ msgid "Unknown"
+#~ msgstr "ไม่ทราบ"
+
+#~ msgctxt "Processor device type"
+#~ msgid "Processor"
+#~ msgstr "ตัวประมวลผล"
+
+#~ msgctxt "Camera device type"
+#~ msgid "Camera"
+#~ msgstr "กล้อง"
+
+#~ msgctxt "Portable Media Player device type"
+#~ msgid "Portable Media Player"
+#~ msgstr "เครื่องเล่นสื่อแบบพกพา"
+
+#, fuzzy
+#~| msgid "%1 TiB"
+#~ msgctxt ""
+#~ msgid "%1 TiB"
+#~ msgstr "%1 TiB"
+
+#, fuzzy
+#~| msgid "%1 GiB"
+#~ msgctxt ""
+#~ msgid "%1 GiB"
+#~ msgstr "%1 GiB"
+
+#, fuzzy
+#~| msgid "%1 MiB"
+#~ msgctxt ""
+#~ msgid "%1 MiB"
+#~ msgstr "%1 MiB"
+
+#, fuzzy
+#~| msgid "%1 KiB"
+#~ msgctxt ""
+#~ msgid "%1 KiB"
+#~ msgstr "%1 KiB"
+
+#, fuzzy
+#~| msgid "%1 B"
+#~ msgctxt ""
+#~ msgid "%1 B"
+#~ msgstr "%1 B"
+
+#, fuzzy
+#~| msgid "0 B"
+#~ msgctxt ""
+#~ msgid "0 B"
+#~ msgstr "0 B"
+
+#, fuzzy
+#~| msgid "External Floppy Drive"
+#~ msgctxt ""
+#~ msgid "External Floppy Drive"
+#~ msgstr "ไดรฟ์ฟลอปปีภายนอก"
+
+#, fuzzy
+#~| msgid "Floppy Drive"
+#~ msgctxt ""
+#~ msgid "Floppy Drive"
+#~ msgstr "ไดรฟ์ฟลอปปี"
+
+#, fuzzy
+#~| msgid "External Hard Drive"
+#~ msgctxt ""
+#~ msgid "External Hard Drive"
+#~ msgstr "ฮาร์ดไดรฟ์ภายนอก "
+
+#, fuzzy
+#~| msgid "Hard Drive"
+#~ msgctxt ""
+#~ msgid "Hard Drive"
+#~ msgstr "ฮาร์ดไดรฟ์ "
+
+#, fuzzy
+#~| msgid "Drive"
+#~ msgctxt ""
+#~ msgid "Drive"
+#~ msgstr "ไดรฟ์"
+
+#, fuzzy
+#~| msgid "CD-ROM"
+#~ msgctxt ""
+#~ msgid "CD-ROM"
+#~ msgstr "แผ่น CD-ROM"
+
+#, fuzzy
+#~| msgid "Blank CD-R"
+#~ msgctxt ""
+#~ msgid "Blank CD-R"
+#~ msgstr "แผ่น CD-R เปล่า"
+
+#, fuzzy
+#~| msgid "CD-R"
+#~ msgctxt ""
+#~ msgid "CD-R"
+#~ msgstr "แผ่น CD-R"
+
+#, fuzzy
+#~| msgid "Blank CD-RW"
+#~ msgctxt ""
+#~ msgid "Blank CD-RW"
+#~ msgstr "แผ่น CD-RW เปล่า"
+
+#, fuzzy
+#~| msgid "CD-RW"
+#~ msgctxt ""
+#~ msgid "CD-RW"
+#~ msgstr "แผ่น CD-RW"
+
+#, fuzzy
+#~| msgid "DVD-ROM"
+#~ msgctxt ""
+#~ msgid "DVD-ROM"
+#~ msgstr "แผ่น DVD-ROM"
+
+#, fuzzy
+#~| msgid "Blank DVD-RAM"
+#~ msgctxt ""
+#~ msgid "Blank DVD-RAM"
+#~ msgstr "แผ่น DVD-RAM เปล่า"
+
+#, fuzzy
+#~| msgid "DVD-RAM"
+#~ msgctxt ""
+#~ msgid "DVD-RAM"
+#~ msgstr "แผ่น DVD-RAM"
+
+#, fuzzy
+#~| msgid "Blank DVD-R"
+#~ msgctxt ""
+#~ msgid "Blank DVD-R"
+#~ msgstr "แผ่น DVD-R เปล่า"
+
+#, fuzzy
+#~| msgid "DVD-R"
+#~ msgctxt ""
+#~ msgid "DVD-R"
+#~ msgstr "แผ่น DVD-R"
+
+#, fuzzy
+#~| msgid "Blank DVD+R Dual-Layer"
+#~ msgctxt ""
+#~ msgid "Blank DVD+R Dual-Layer"
+#~ msgstr "แผ่น DVD+R แบบดูอัลเลเยอร์เปล่า"
+
+#, fuzzy
+#~| msgid "DVD+R Dual-Layer"
+#~ msgctxt ""
+#~ msgid "DVD+R Dual-Layer"
+#~ msgstr "แผ่น DVD+R แบบดูอัลเลเยอร์"
+
+#, fuzzy
+#~| msgid "Blank DVD-RW"
+#~ msgctxt ""
+#~ msgid "Blank DVD-RW"
+#~ msgstr "แผ่น DVD-RW เปล่า"
+
+#, fuzzy
+#~| msgid "DVD-RW"
+#~ msgctxt ""
+#~ msgid "DVD-RW"
+#~ msgstr "แผ่น DVD-RW"
+
+#, fuzzy
+#~| msgid "Blank DVD+R"
+#~ msgctxt ""
+#~ msgid "Blank DVD+R"
+#~ msgstr "แผ่น DVD+R เปล่า"
+
+#, fuzzy
+#~| msgid "DVD+R"
+#~ msgctxt ""
+#~ msgid "DVD+R"
+#~ msgstr "แผ่น DVD+R"
+
+#, fuzzy
+#~| msgid "Blank DVD+RW"
+#~ msgctxt ""
+#~ msgid "Blank DVD+RW"
+#~ msgstr "แผ่น DVD+RW เปล่า"
+
+#, fuzzy
+#~| msgid "DVD+RW"
+#~ msgctxt ""
+#~ msgid "DVD+RW"
+#~ msgstr "แผ่น DVD+RW"
+
+#, fuzzy
+#~| msgid "Blank DVD+RW Dual-Layer"
+#~ msgctxt ""
+#~ msgid "Blank DVD+RW Dual-Layer"
+#~ msgstr "แผ่น DVD+RW เปล่า แบบดูอัลเลเยอร์"
+
+#, fuzzy
+#~| msgid "DVD+RW Dual-Layer"
+#~ msgctxt ""
+#~ msgid "DVD+RW Dual-Layer"
+#~ msgstr "แผ่น DVD+RW แบบดูอัลเลเยอร์"
+
+#, fuzzy
+#~| msgid "BD-ROM"
+#~ msgctxt ""
+#~ msgid "BD-ROM"
+#~ msgstr "แผ่น BD-ROM"
+
+#, fuzzy
+#~| msgid "Blank BD-R"
+#~ msgctxt ""
+#~ msgid "Blank BD-R"
+#~ msgstr "แผ่น BD-R เปล่า"
+
+#, fuzzy
+#~| msgid "BD-R"
+#~ msgctxt ""
+#~ msgid "BD-R"
+#~ msgstr "แผ่น BD-R"
+
+#, fuzzy
+#~| msgid "Blank BD-RE"
+#~ msgctxt ""
+#~ msgid "Blank BD-RE"
+#~ msgstr "แผ่น BD-RE เปล่า"
+
+#, fuzzy
+#~| msgid "BD-RE"
+#~ msgctxt ""
+#~ msgid "BD-RE"
+#~ msgstr "แผ่น BD-RE"
+
+#, fuzzy
+#~| msgid "HD DVD-ROM"
+#~ msgctxt ""
+#~ msgid "HD DVD-ROM"
+#~ msgstr "แผ่น HD DVD-ROM"
+
+#, fuzzy
+#~| msgid "Blank HD DVD-R"
+#~ msgctxt ""
+#~ msgid "Blank HD DVD-R"
+#~ msgstr "แผ่น HD DVD-R เปล่า"
+
+#, fuzzy
+#~| msgid "HD DVD-R"
+#~ msgctxt ""
+#~ msgid "HD DVD-R"
+#~ msgstr "แผ่น HD DVD-R"
+
+#, fuzzy
+#~| msgid "Blank HD DVD-RW"
+#~ msgctxt ""
+#~ msgid "Blank HD DVD-RW"
+#~ msgstr "แผ่น HD DVD-RW เปล่า"
+
+#, fuzzy
+#~| msgid "HD DVD-RW"
+#~ msgctxt ""
+#~ msgid "HD DVD-RW"
+#~ msgstr "แผ่น HD DVD-RW"
+
+#, fuzzy
+#~| msgid "Audio CD"
+#~ msgctxt ""
+#~ msgid "Audio CD"
+#~ msgstr "แผ่น CD เสียง"
+
+#, fuzzy
+#~| msgid "Storage"
+#~ msgctxt ""
+#~ msgid "Storage"
+#~ msgstr "สื่อจัดเก็บข้อมูล"
+
+#, fuzzy
+#~| msgid "Storage devices"
+#~ msgctxt ""
+#~ msgid "Storage devices"
+#~ msgstr "อุปกรณ์สื่อจัดเก็บข้อมูล"
+
+#, fuzzy
+#~| msgctxt "battery technology"
+#~| msgid "Nickel Cadmium"
+#~ msgctxt "battery technology"
+#~ msgid "Nickel  Zinc"
+#~ msgstr "นิกเกิลแคดเมียม"
+
+#, fuzzy
+#~| msgid "Encrypted Container"
+#~ msgctxt ""
+#~ msgid "Encrypted Container"
+#~ msgstr "ส่วนบรรจุข้อมูลแบบเข้ารหัส"
+
+#~ msgid "Blank DVD-R Dual-Layer"
+#~ msgstr "แผ่น DVD-R แบบดูอัลเลเยอร์เปล่า"
+
+#~ msgid "DVD-R Dual-Layer"
+#~ msgstr "แผ่น DVD-R แบบดูอัลเลเยอร์"
