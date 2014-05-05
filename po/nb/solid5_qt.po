@@ -1,0 +1,1674 @@
+# Translation of solid_qt to Norwegian Bokmål
+#
+# Bjørn Steensrud <bjornst@skogkatt.homelinux.org>, 2009, 2010, 2011, 2012, 2013, 2014.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-01-24 18:50+0000\n"
+"PO-Revision-Date: 2014-04-25 17:07+0200\n"
+"Last-Translator: Bjørn Steensrud <bjornst@skogkatt.homelinux.org>\n"
+"Language-Team: Norwegian Bokmål <i18n-nb@lister.ping.uio.no>\n"
+"Language: nb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.5\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Environment: kde\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: qtrich\n"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/fstab/fstabmanager.cpp:88
+msgctxt "Solid::Backends::Fstab::FstabManager|"
+msgid "Network Shares"
+msgstr "Delte nettverksressurser"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/fstab/fstabmanager.cpp:89
+msgctxt "Solid::Backends::Fstab::FstabManager|"
+msgid "NFS and SMB shares declared in your system"
+msgstr "NFS og SMB-ressurser deklarert i systemet ditt"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:64
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 TiB"
+msgstr "%1 TiB"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:66
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 GiB"
+msgstr "%1 GiB"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:72
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 MiB"
+msgstr "|%1 MiB"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:77
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 KiB"
+msgstr "%1 KiB"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:81
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 B"
+msgstr "%1 B"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:85
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "0 B"
+msgstr "0 B"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:320
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "WLAN Interface"
+msgstr "WLAN grensesnitt"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:322
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Networking Interface"
+msgstr "Nettverksgrensesnitt"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:507
+msgctxt "Solid::Backends::Hal::HalDevice|First item of %1%2 Drive sentence"
+msgid "CD-ROM"
+msgstr "CD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:509
+msgctxt "Solid::Backends::Hal::HalDevice|First item of %1%2 Drive sentence"
+msgid "CD-R"
+msgstr " CD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:512
+msgctxt "Solid::Backends::Hal::HalDevice|First item of %1%2 Drive sentence"
+msgid "CD-RW"
+msgstr "CD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:516
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-ROM"
+msgstr "/DVD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:519
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD+R"
+msgstr "/DVD+R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:522
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD+RW"
+msgstr "/DVD+RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:525
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-R"
+msgstr "/DVD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:528
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-RW"
+msgstr "/DVD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:531
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-RAM"
+msgstr "/DVD-RAM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:535
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±R DL"
+msgstr "/DVD±R DL"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:537
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±R"
+msgstr "/DVD±R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:542
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±RW DL"
+msgstr "/DVD±RW DL"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:544
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±RW"
+msgstr "/DVD±RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:548
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/BD-ROM"
+msgstr "/BD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:551
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/BD-R"
+msgstr "/BD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:554
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/BD-RE"
+msgstr "/BD-RE"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:557
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-ROM"
+msgstr "/HD DVD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:560
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-R"
+msgstr "/HD DVD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:563
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-RW"
+msgstr "/HD DVD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:567
+#, qt-format
+msgctxt ""
+"Solid::Backends::Hal::HalDevice|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
+"DVD-R'/etc (with leading slash)"
+msgid "External %1%2 Drive"
+msgstr "Eksternt %1%2-drev"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:569
+#, qt-format
+msgctxt ""
+"Solid::Backends::Hal::HalDevice|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
+"DVD-R'/etc (with leading slash)"
+msgid "%1%2 Drive"
+msgstr "%1%2 drev"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:577
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "External Floppy Drive"
+msgstr "Eksternt diskettdrev"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:579
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Floppy Drive"
+msgstr "Diskettdrev"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:591
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:794
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 External Hard Drive"
+msgstr "%1 Ekstern harddisk"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:593
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:796
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 Hard Drive"
+msgstr "%1 Harddisk"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:597
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:800
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "External Hard Drive"
+msgstr "Ekstern harddisk"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:599
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:802
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Hard Drive"
+msgstr "Harddisk"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:618
+#, qt-format
+msgctxt ""
+"Solid::Backends::Hal::HalDevice|%1 is the vendor, %2 is the model of the "
+"device"
+msgid "%1 %2"
+msgstr "%1 %2"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:623
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Drive"
+msgstr "Drev"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:652
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "CD-ROM"
+msgstr "CD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:657
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank CD-R"
+msgstr "Tom CD--R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:659
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "CD-R"
+msgstr " CD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:665
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank CD-RW"
+msgstr "Tom CD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:667
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "CD-RW"
+msgstr "CD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:672
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD-ROM"
+msgstr "DVD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:677
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD-RAM"
+msgstr "Tom DVD-RAM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:679
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD-RAM"
+msgstr "DVD-RAM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:685
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD-R"
+msgstr "Tom DVD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:687
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD-R"
+msgstr "DVD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:693
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD+R Dual-Layer"
+msgstr "Tom tolags DVD+R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:695
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD+R Dual-Layer"
+msgstr "Tolags DVD+R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:701
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD-RW"
+msgstr "Tom DVD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:703
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD-RW"
+msgstr "DVD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:709
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD+R"
+msgstr "Tom DVD+R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:711
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD+R"
+msgstr "DVD+R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:717
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD+RW"
+msgstr "Tom DVD+RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:719
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD+RW"
+msgstr "DVD+RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:725
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD+RW Dual-Layer"
+msgstr "Tom tolags DVD+RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:727
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD+RW Dual-Layer"
+msgstr "Tolags DVD+RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:732
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "BD-ROM"
+msgstr "BD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:737
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank BD-R"
+msgstr "Tom BD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:739
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "BD-R"
+msgstr "BD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:745
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank BD-RE"
+msgstr "Tom BD-RE"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:747
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "BD-RE"
+msgstr "BD-RE"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:752
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "HD DVD-ROM"
+msgstr "HD DVD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:757
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank HD DVD-R"
+msgstr "Tom HD DVD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:759
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "HD DVD-R"
+msgstr "HD DVD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:765
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank HD DVD-RW"
+msgstr "Tom HD DVD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:767
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "HD DVD-RW"
+msgstr "HD DVD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:774
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Audio CD"
+msgstr "Lyd-CD"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:787
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 Encrypted Container"
+msgstr "%1 kryptert beholder"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:789
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Encrypted Container"
+msgstr "Kryptert beholder"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:807
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 Removable Media"
+msgstr "%1 Flyttbart medium"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/hal/haldevice.cpp:809
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 Media"
+msgstr "%1 medium"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udev/udevdevice.cpp:116
+msgctxt "Solid::Backends::UDev::UDevDevice|"
+msgid "Computer"
+msgstr "Datamaskin"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udev/udevdevice.cpp:120
+msgctxt "Solid::Backends::UDev::UDevDevice|"
+msgid "Processor"
+msgstr "Prosessor"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udev/udevdevice.cpp:131
+msgctxt "Solid::Backends::UDev::UDevDevice|"
+msgid "Portable Media Player"
+msgstr "Portabel mediaspiller"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udev/udevdevice.cpp:134
+msgctxt "Solid::Backends::UDev::UDevDevice|"
+msgid "Camera"
+msgstr "Kamera"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udev/udevmanager.cpp:206
+msgctxt "Solid::Backends::UDev::UDevManager|"
+msgid "Devices"
+msgstr "Enheter"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udev/udevmanager.cpp:207
+msgctxt "Solid::Backends::UDev::UDevManager|"
+msgid "Devices declared in your system"
+msgstr "Enheter deklarert i systemet ditt"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:60
+#, qt-format
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "%1 TiB"
+msgstr "%1 TiB"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:62
+#, qt-format
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "%1 GiB"
+msgstr "%1 GiB"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:68
+#, qt-format
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "%1 MiB"
+msgstr "%1 MiB"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:73
+#, qt-format
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "%1 KiB"
+msgstr "%1 KiB"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:77
+#, qt-format
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "%1 B"
+msgstr "%1 B"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:81
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "0 B"
+msgstr "0 B"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:238
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|First item of %1%2 Drive sentence"
+msgid "CD-ROM"
+msgstr "CD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:240
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|First item of %1%2 Drive sentence"
+msgid "CD-R"
+msgstr " CD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:243
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|First item of %1%2 Drive sentence"
+msgid "CD-RW"
+msgstr "CD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:247
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-ROM"
+msgstr "/DVD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:250
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD+R"
+msgstr "/DVD+R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:253
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD+RW"
+msgstr "/DVD+RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:256
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-R"
+msgstr "/DVD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:259
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-RW"
+msgstr "/DVD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:262
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-RAM"
+msgstr "/DVD-RAM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:266
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±R DL"
+msgstr "/DVD±R DL"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:268
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±R"
+msgstr "/DVD±R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:273
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±RW DL"
+msgstr "/DVD±RW DL"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:275
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±RW"
+msgstr "/DVD±RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:279
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|Second item of %1%2 Drive sentence"
+msgid "/BD-ROM"
+msgstr "/BD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:282
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|Second item of %1%2 Drive sentence"
+msgid "/BD-R"
+msgstr "/BD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:285
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|Second item of %1%2 Drive sentence"
+msgid "/BD-RE"
+msgstr "/BD-RE"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:288
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-ROM"
+msgstr "/HD DVD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:291
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-R"
+msgstr "/HD DVD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:294
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-RW"
+msgstr "/HD DVD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:298
+#, qt-format
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-"
+"ROM'/'/DVD-R'/etc (with leading slash)"
+msgid "External %1%2 Drive"
+msgstr "Eksternt %1%2-drev"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:300
+#, qt-format
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-"
+"ROM'/'/DVD-R'/etc (with leading slash)"
+msgid "%1%2 Drive"
+msgstr "%1%2 drev"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:308
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "External Floppy Drive"
+msgstr "Eksternt diskettdrev"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:310
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Floppy Drive"
+msgstr "Diskettdrev"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:322
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:530
+#, qt-format
+msgctxt "Solid::Backends::UDisks::UDisksDevice|%1 is the size"
+msgid "%1 External Hard Drive"
+msgstr "%1 Ekstern harddisk"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:324
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:532
+#, qt-format
+msgctxt "Solid::Backends::UDisks::UDisksDevice|%1 is the size"
+msgid "%1 Hard Drive"
+msgstr "%1 Harddisk"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:328
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:536
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "External Hard Drive"
+msgstr "Ekstern harddisk"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:330
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:538
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Hard Drive"
+msgstr "Harddisk"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:353
+#, qt-format
+msgctxt ""
+"Solid::Backends::UDisks::UDisksDevice|%1 is the vendor, %2 is the model of "
+"the device"
+msgid "%1 %2"
+msgstr "%1 %2"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:359
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Drive"
+msgstr "Drev"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:388
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "CD-ROM"
+msgstr "CD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:393
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Blank CD-R"
+msgstr "Tom CD--R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:395
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "CD-R"
+msgstr " CD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:401
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Blank CD-RW"
+msgstr "Tom CD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:403
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "CD-RW"
+msgstr "CD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:408
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "DVD-ROM"
+msgstr "DVD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:413
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Blank DVD-RAM"
+msgstr "Tom DVD-RAM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:415
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "DVD-RAM"
+msgstr "DVD-RAM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:421
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Blank DVD-R"
+msgstr "Tom DVD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:423
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "DVD-R"
+msgstr "DVD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:429
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Blank DVD+R Dual-Layer"
+msgstr "Tom tolags DVD+R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:431
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "DVD+R Dual-Layer"
+msgstr "Tolags DVD+R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:437
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Blank DVD-RW"
+msgstr "Tom DVD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:439
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "DVD-RW"
+msgstr "DVD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:445
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Blank DVD+R"
+msgstr "Tom DVD+R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:447
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "DVD+R"
+msgstr "DVD+R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:453
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Blank DVD+RW"
+msgstr "Tom DVD+RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:455
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "DVD+RW"
+msgstr "DVD+RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:461
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Blank DVD+RW Dual-Layer"
+msgstr "Tom tolags DVD+RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:463
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "DVD+RW Dual-Layer"
+msgstr "Tolags DVD+RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:468
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "BD-ROM"
+msgstr "BD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:473
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Blank BD-R"
+msgstr "Tom BD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:475
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "BD-R"
+msgstr "BD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:481
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Blank BD-RE"
+msgstr "Tom BD-RE"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:483
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "BD-RE"
+msgstr "BD-RE"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:488
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "HD DVD-ROM"
+msgstr "HD DVD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:493
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Blank HD DVD-R"
+msgstr "Tom HD DVD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:495
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "HD DVD-R"
+msgstr "HD DVD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:501
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Blank HD DVD-RW"
+msgstr "Tom HD DVD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:503
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "HD DVD-RW"
+msgstr "HD DVD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:510
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Audio CD"
+msgstr "Lyd-CD"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:523
+#, qt-format
+msgctxt "Solid::Backends::UDisks::UDisksDevice|%1 is the size"
+msgid "%1 Encrypted Container"
+msgstr "%1 kryptert beholder"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:525
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "Encrypted Container"
+msgstr "Kryptert beholder"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:543
+#, qt-format
+msgctxt "Solid::Backends::UDisks::UDisksDevice|%1 is the size"
+msgid "%1 Removable Media"
+msgstr "%1 Flyttbart medium"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:545
+#, qt-format
+msgctxt "Solid::Backends::UDisks::UDisksDevice|%1 is the size"
+msgid "%1 Media"
+msgstr "%1 medium"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:756
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "You are not authorized to perform this operation."
+msgstr "Du er ikke autorisert til å utføre denne handlingen."
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:758
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "The device is currently busy."
+msgstr "Enheten er nå opptatt."
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:760
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "The requested operation has failed."
+msgstr "Den ønskede handlingen mislyktes."
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:762
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "The requested operation has been canceled."
+msgstr "Den ønskede handlingen er blitt avbrutt."
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:764
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "An invalid or malformed option has been given."
+msgstr "Det ble oppgitt et ugyldig eller feilskrevet valg."
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:766
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "The kernel driver for this filesystem type is not available."
+msgstr "Kjernedriveren for denne filsystemtypen er ikke tilgjengelig."
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksdevice.cpp:768
+msgctxt "Solid::Backends::UDisks::UDisksDevice|"
+msgid "An unspecified error has occurred."
+msgstr "Det oppsto en uspesifisert feil."
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksmanager.cpp:89
+msgctxt "Solid::Backends::UDisks::UDisksManager|"
+msgid "Storage"
+msgstr "Lagring"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks/udisksmanager.cpp:90
+msgctxt "Solid::Backends::UDisks::UDisksManager|"
+msgid "Storage devices"
+msgstr "Lagringsenheter"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:63
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 TiB"
+msgstr "%1 TiB"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:65
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 GiB"
+msgstr "%1 GiB"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:71
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 MiB"
+msgstr "%1 MiB"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:76
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 KiB"
+msgstr "%1 KiB"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:80
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 B"
+msgstr "%1 B"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:84
+msgctxt "udisksdevice|"
+msgid "0 B"
+msgstr "0 B"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:248
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Loop Device"
+msgstr "Loop-enhet"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:250
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Swap Space"
+msgstr "Veksleminne"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:273
+msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
+msgid "CD-ROM"
+msgstr "CD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:275
+msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
+msgid "CD-R"
+msgstr " CD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:278
+msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
+msgid "CD-RW"
+msgstr "CD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:282
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD-ROM"
+msgstr "/DVD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:285
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD+R"
+msgstr "/DVD+R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:288
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD+RW"
+msgstr "/DVD+RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:291
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD-R"
+msgstr "/DVD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:294
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD-RW"
+msgstr "/DVD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:297
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD-RAM"
+msgstr "/DVD-RAM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:301
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD±R DL"
+msgstr "/DVD±R DL"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:303
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD±R"
+msgstr "/DVD±R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:308
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD±RW DL"
+msgstr "/DVD±RW DL"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:310
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD±RW"
+msgstr "/DVD±RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:314
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/BD-ROM"
+msgstr "/BD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:317
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/BD-R"
+msgstr "/BD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:320
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/BD-RE"
+msgstr "/BD-RE"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:323
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-ROM"
+msgstr "/HD DVD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:326
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-R"
+msgstr "/HD DVD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:329
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-RW"
+msgstr "/HD DVD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:333
+#, qt-format
+msgctxt ""
+"Solid::Backends::UDisks2::Device|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
+"DVD-R'/etc (with leading slash)"
+msgid "External %1%2 Drive"
+msgstr "Eksternt %1%2-drev"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:335
+#, qt-format
+msgctxt ""
+"Solid::Backends::UDisks2::Device|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
+"DVD-R'/etc (with leading slash)"
+msgid "%1%2 Drive"
+msgstr "%1%2 drev"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:343
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "External Floppy Drive"
+msgstr "Eksternt diskettdrev"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:345
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Floppy Drive"
+msgstr "Diskettdrev"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:357
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:565
+#, qt-format
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 External Hard Drive"
+msgstr "%1 Ekstern harddisk"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:359
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:567
+#, qt-format
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 Hard Drive"
+msgstr "%1 Harddisk"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:363
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:571
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "External Hard Drive"
+msgstr "Ekstern harddisk"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:365
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:573
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Hard Drive"
+msgstr "Harddisk"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:388
+#, qt-format
+msgctxt ""
+"Solid::Backends::UDisks2::Device|%1 is the vendor, %2 is the model of the "
+"device"
+msgid "%1 %2"
+msgstr "%1 %2"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:394
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Drive"
+msgstr "Drev"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:424
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "CD-ROM"
+msgstr "CD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:429
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank CD-R"
+msgstr "Tom CD--R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:431
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "CD-R"
+msgstr "CD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:437
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank CD-RW"
+msgstr "Tom CD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:439
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "CD-RW"
+msgstr "CD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:444
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD-ROM"
+msgstr "DVD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:449
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD-RAM"
+msgstr "Tom DVD-RAM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:451
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD-RAM"
+msgstr "DVD-RAM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:457
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD-R"
+msgstr "Tom DVD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:459
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD-R"
+msgstr "DVD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:465
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD+R Dual-Layer"
+msgstr "Tom tolags DVD+R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:467
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD+R Dual-Layer"
+msgstr "Tolags DVD+R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:473
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD-RW"
+msgstr "Tom DVD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:475
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD-RW"
+msgstr "DVD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:481
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD+R"
+msgstr "Tom DVD+R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:483
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD+R"
+msgstr "DVD+R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:489
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD+RW"
+msgstr "Tom DVD+RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:491
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD+RW"
+msgstr "DVD+RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:497
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD+RW Dual-Layer"
+msgstr "Tom tolags DVD+RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:499
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD+RW Dual-Layer"
+msgstr "Tolags DVD+RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:504
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "BD-ROM"
+msgstr "BD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:509
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank BD-R"
+msgstr "Tom BD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:511
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "BD-R"
+msgstr "BD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:517
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank BD-RE"
+msgstr "Tom BD-RE"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:519
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "BD-RE"
+msgstr "BD-RE"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:524
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "HD DVD-ROM"
+msgstr "HD DVD-ROM"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:529
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank HD DVD-R"
+msgstr "Tom HD DVD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:531
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "HD DVD-R"
+msgstr "HD DVD-R"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:537
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank HD DVD-RW"
+msgstr "Tom HD DVD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:539
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "HD DVD-RW"
+msgstr "HD DVD-RW"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:546
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Audio CD"
+msgstr "Lyd-CD"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:558
+#, qt-format
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 Encrypted Drive"
+msgstr "%1 kryptert drev"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:560
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Encrypted Drive"
+msgstr "Kryptert drev"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:578
+#, qt-format
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 Removable Media"
+msgstr "%1 Flyttbart medium"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:580
+#, qt-format
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 Media"
+msgstr "%1 medium"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:712
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "You are not authorized to perform this operation"
+msgstr "Du er ikke autorisert til å utføre denne handlingen."
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:714
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is currently busy"
+msgstr "Enheten er nå opptatt."
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:716
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The requested operation has failed"
+msgstr "Den ønskede handlingen mislyktes"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:718
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The requested operation has been canceled"
+msgstr "Den ønskede handlingen er blitt avbrutt"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:720
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "An invalid or malformed option has been given"
+msgstr "Det ble oppgitt et ugyldig eller feilskrevet valg"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:722
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The kernel driver for this filesystem type is not available"
+msgstr "Kjernedriveren for denne filsystemtypen er ikke tilgjengelig"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:724
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is already mounted"
+msgstr "Denne enheten er allerede montert"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:726
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is not mounted"
+msgstr "Denne enheten er ikke montert"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:728
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is mounted by another user"
+msgstr "Enheten er montert av en annen bruker"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:730
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is already unmounting"
+msgstr "Enheten er i ferd med å bli avmontert"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:732
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The operation timed out"
+msgstr "Handlingen fikk tidsavbrudd"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:734
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The operation would wake up a disk that is in a deep-sleep state"
+msgstr "Handlingen ville vekke en disk som er i dyp-søvn-tilstand"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:736
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The operation has already been canceled"
+msgstr "Den ønskede handlingen er allerede avbrutt"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksdevice.cpp:738
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "An unspecified error has occurred"
+msgstr "Det oppsto en uspesifisert feil"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksmanager.cpp:90
+msgctxt "Solid::Backends::UDisks2::Manager|"
+msgid "Storage"
+msgstr "Lagring"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/udisks2/udisksmanager.cpp:91
+msgctxt "Solid::Backends::UDisks2::Manager|"
+msgid "Storage devices"
+msgstr "Lagringsenheter"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/upower/upowerdevice.cpp:99
+#, qt-format
+msgctxt "Solid::Backends::UPower::UPowerDevice|%1 is battery technology"
+msgid "%1 Battery"
+msgstr "%1 batteri"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/upower/upowerdevice.cpp:114
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Lithium Ion"
+msgstr "Litium ion"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/upower/upowerdevice.cpp:116
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Lithium Polymer"
+msgstr "Litium polymer"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/upower/upowerdevice.cpp:118
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Lithium Iron Phosphate"
+msgstr "Litium jernfosfat"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/upower/upowerdevice.cpp:120
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Lead Acid"
+msgstr "Bly-syre"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/upower/upowerdevice.cpp:122
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Nickel Cadmium"
+msgstr "Nikkel-kadmium"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/upower/upowerdevice.cpp:124
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Nickel Metal Hydride"
+msgstr "Nikkel-metallhydrid"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/upower/upowerdevice.cpp:126
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Unknown"
+msgstr "Ukjent"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/upower/upowermanager.cpp:88
+msgctxt "Solid::Backends::UPower::UPowerManager|"
+msgid "Power Management"
+msgstr "Strømstyring"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/upower/upowermanager.cpp:89
+msgctxt "Solid::Backends::UPower::UPowerManager|"
+msgid "Batteries and other sources of power"
+msgstr "Batterier og andre strømkilder"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/win/winbattery.cpp:173
+msgctxt "Solid::Backends::Win::WinBattery|battery technology"
+msgid "Unknown"
+msgstr "Ukjent"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/win/windevice.cpp:169
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Lithium Ion"
+msgstr "Litium ion"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/win/windevice.cpp:172
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Lead Acid"
+msgstr "Bly-syre"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/win/windevice.cpp:175
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Nickel Cadmium"
+msgstr "Nikkel-kadmium"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/win/windevice.cpp:178
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Nickel Metal Hydride"
+msgstr "Nikkel-metallhydrid"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/win/windevice.cpp:181
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Unknown"
+msgstr "Ukjent"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/wmi/wmibattery.cpp:89
+msgctxt "Solid::Backends::Wmi::Battery|battery technology"
+msgid "Lead Acid"
+msgstr "Bly-syre"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/wmi/wmibattery.cpp:91
+msgctxt "Solid::Backends::Wmi::Battery|battery technology"
+msgid "Nickel Cadmium"
+msgstr "Nikkel-kadmium"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/wmi/wmibattery.cpp:93
+msgctxt "Solid::Backends::Wmi::Battery|battery technology"
+msgid "Nickel Metal Hydride"
+msgstr "Nikkel-metallhydrid"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/wmi/wmibattery.cpp:95
+msgctxt "Solid::Backends::Wmi::Battery|battery technology"
+msgid "Lithium Ion"
+msgstr "Litium ion"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/wmi/wmibattery.cpp:97
+msgctxt "Solid::Backends::Wmi::Battery|battery technology"
+msgid "Lithium Polymer"
+msgstr "Litium polymer"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/wmi/wmibattery.cpp:99
+msgctxt "Solid::Backends::Wmi::Battery|battery technology"
+msgid "Unknown"
+msgstr "Ukjent"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/backends/wmi/wmidevice.cpp:438
+#, qt-format
+msgctxt "Solid::Backends::Wmi::WmiDevice|%1 is battery technology"
+msgid "%1 Battery"
+msgstr "%1 batteri"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/deviceinterface.cpp:66
+msgctxt "Solid::DeviceInterface|Unknown device type"
+msgid "Unknown"
+msgstr "Ukjent"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/deviceinterface.cpp:68
+msgctxt "Solid::DeviceInterface|Generic Interface device type"
+msgid "Generic Interface"
+msgstr "Generisk grensesnitt"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/deviceinterface.cpp:70
+msgctxt "Solid::DeviceInterface|Processor device type"
+msgid "Processor"
+msgstr "Prosessor"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/deviceinterface.cpp:72
+msgctxt "Solid::DeviceInterface|Block device type"
+msgid "Block"
+msgstr "Blokk"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/deviceinterface.cpp:74
+msgctxt "Solid::DeviceInterface|Storage Access device type"
+msgid "Storage Access"
+msgstr "Lagringstilgang"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/deviceinterface.cpp:76
+msgctxt "Solid::DeviceInterface|Storage Drive device type"
+msgid "Storage Drive"
+msgstr "Lagerdrev"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/deviceinterface.cpp:78
+msgctxt "Solid::DeviceInterface|Optical Drive device type"
+msgid "Optical Drive"
+msgstr "Optisk drev"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/deviceinterface.cpp:80
+msgctxt "Solid::DeviceInterface|Storage Volume device type"
+msgid "Storage Volume"
+msgstr "Lagervolum"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/deviceinterface.cpp:82
+msgctxt "Solid::DeviceInterface|Optical Disc device type"
+msgid "Optical Disc"
+msgstr "Optisk plate"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/deviceinterface.cpp:84
+msgctxt "Solid::DeviceInterface|Camera device type"
+msgid "Camera"
+msgstr "Kamera"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/deviceinterface.cpp:86
+msgctxt "Solid::DeviceInterface|Portable Media Player device type"
+msgid "Portable Media Player"
+msgstr "Portabel mediaspiller"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/deviceinterface.cpp:88
+msgctxt "Solid::DeviceInterface|Battery device type"
+msgid "Battery"
+msgstr "Batteri"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/solid/deviceinterface.cpp:90
+msgctxt "Solid::DeviceInterface|Network Share device type"
+msgid "Network Share"
+msgstr "Delt nettverksressurs"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:173
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:272
+msgctxt "solid-hardware|"
+msgid "Device udi"
+msgstr "UDI for enhet"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:188
+msgctxt "solid-hardware|"
+msgid "KDE tool for querying your hardware from the command line"
+msgstr "KDE-verktøy for å undersøke maskinvaren fra kommandolinja"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:191
+msgctxt "solid-hardware|"
+msgid "Command to execute"
+msgstr "Kommando som skal kjøres"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:193
+msgctxt "solid-hardware|"
+msgid "Show available commands"
+msgstr "Vis tilgjengelige kommandoer"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:199
+msgctxt "solid-hardware|"
+msgid "Syntax:"
+msgstr "Syntaks:"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:202
+msgctxt "solid-hardware|"
+msgid ""
+"             # List the hardware available in the system.\n"
+"             # - If the 'nonportableinfo' option is specified, the device\n"
+"             # properties are listed (be careful, in this case property "
+"names\n"
+"             # are backend dependent),\n"
+"             # - If the 'details' option is specified, the device "
+"interfaces\n"
+"             # and the corresponding properties are listed in a platform\n"
+"             # neutral fashion,\n"
+"             # - Otherwise only device UDIs are listed.\n"
+msgstr ""
+"             # List maskinvaren som finnes i systemet.\n"
+"             # – Hvis valget \"nonportableinfo\" er gitt, så blir enheters\n"
+"             # egenskaper listet. (forsiktig, i dette tilfellet er navn på "
+"enheter\n"
+"             # avhengige av bakgrunnsmotoren),\n"
+"             # – Hvis valget «details» er gitt blir enheters grensesnitt\n"
+"             # og tilsvarende egenskaper listet opp på en plattform-\n"
+"             # nøytral måte,\n"
+"             # – Ellers listes bare enheters UDI.\n"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:213
+msgctxt "solid-hardware|"
+msgid ""
+"             # Display all the interfaces and properties of the device\n"
+"             # corresponding to 'udi' in a platform neutral fashion.\n"
+msgstr ""
+"             # Vis alle grensesnitt og egenskaper for enheten som \n"
+"             # tilsvarer «udi» på en plattform-nøytral måte.\n"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:218
+msgctxt "solid-hardware|"
+msgid ""
+"             # Display all the properties of the device corresponding to "
+"'udi'\n"
+"             # (be careful, in this case property names are backend "
+"dependent).\n"
+msgstr ""
+"             # Vis alle egenskaper for enheten som tilsvarer «udi»\n"
+"              # (forsiktig, i dette tilfelle er egenskapsnavnene avhengige  "
+"av bakgrunnsmotoren).\n"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:223
+msgctxt "solid-hardware|"
+msgid ""
+"             # List the UDI of devices corresponding to 'predicate'.\n"
+"             # - If 'parentUdi' is specified, the search is restricted to "
+"the\n"
+"             # branch of the corresponding device,\n"
+"             # - Otherwise the search is done on all the devices.\n"
+msgstr ""
+"             # List UDI for enheter som tilsvarer «predicate».\n"
+"             # – Hvis 'parentUdi' er oppgitt, begrenses søket til \n"
+"             # grenen for den tilsvarende enheten,\n"
+"             # – Ellers gjøres søket på alle enheter.\n"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:230
+msgctxt "solid-hardware|"
+msgid ""
+"             # If applicable, mount the device corresponding to 'udi'.\n"
+msgstr "             # Om det går an, monter enheten som tilsvarer «udi».\n"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:234
+msgctxt "solid-hardware|"
+msgid ""
+"             # If applicable, unmount the device corresponding to 'udi'.\n"
+msgstr "             # Om det går an, avmonter enheten som tilsvarer «udi».\n"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:238
+msgctxt "solid-hardware|"
+msgid ""
+"             # If applicable, eject the device corresponding to 'udi'.\n"
+msgstr "             # Om det går an løs ut enheten som tilsvarer «udi».\n"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:242
+msgctxt "solid-hardware|"
+msgid "             # Listen to all add/remove events on supported hardware."
+msgstr ""
+"             # Lytt etter alle legg til/fjern-hendelser på støttet "
+"maskinvare."
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:259
+msgctxt "solid-hardware|"
+msgid "Show device details"
+msgstr "Vis enhetsdetaljer"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:260
+msgctxt "solid-hardware|"
+msgid "Show non portable information"
+msgstr "Vis ikke-portabel informasjon"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:273
+msgctxt "solid-hardware|"
+msgid "Parent device udi"
+msgstr "UDI for forelderenhet"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:301
+#, qt-format
+msgctxt "solid-hardware|"
+msgid "Syntax Error: Unknown command '%1'"
+msgstr "Syntaksfeil: ukjent kommando «%1»"
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:370
+#, qt-format
+msgctxt "SolidHardware|"
+msgid "Error: %1 does not have the interface StorageAccess."
+msgstr "Feil: %1 har ikke grensesnittet StorageAccess."
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:375
+#, qt-format
+msgctxt "SolidHardware|"
+msgid "Error: %1 does not have the interface OpticalDrive."
+msgstr "Feil: %1 har ikke grensesnittet OpticalDrive."
+
+#: ../../home/scripty/prod/git-unstable/frameworks_solid/src/tools/solid-hardware/solid-hardware.cpp:408
+#, qt-format
+msgctxt "SolidHardware|"
+msgid "Error: %1"
+msgstr "Feil: %1"
