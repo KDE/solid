@@ -25,14 +25,14 @@ include(ECMSetupVersion)
 include(ECMGenerateHeaders)
 include(ECMMarkNonGuiExecutable)
 
-if(NOT WIN32 AND NOT APPLE)
-  find_package( UDev )
+if (CMAKE_SYSTEM_NAME MATCHES Linux)
+    find_package( UDev )
 
-  set_package_properties(UDev PROPERTIES  URL "http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html"
-                                          DESCRIPTION "UDev support for Solid"
-                                          TYPE OPTIONAL
-                                          PURPOSE "Allows Solid to use UDev to provide information about devices on Linux"
-                         )
+    set_package_properties(UDev PROPERTIES  URL "http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html"
+                                            DESCRIPTION "UDev support for Solid"
+                                            TYPE REQUIRED
+                                            PURPOSE "Allows Solid to use UDev to provide information about devices on Linux"
+                            )
 endif()
 
 
