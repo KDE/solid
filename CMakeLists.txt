@@ -69,7 +69,6 @@ ecm_setup_version(${KF5_VERSION} VARIABLE_PREFIX SOLID
 
 # TODO: Remove these
 remove_definitions(-DQT_NO_CAST_FROM_ASCII)
-remove_definitions(-DQT_NO_URL_CAST_FROM_STRING)
 remove_definitions(-DQT_NO_CAST_FROM_BYTEARRAY)
 
 include_directories (${CMAKE_CURRENT_SOURCE_DIR}/src ${CMAKE_CURRENT_BINARY_DIR}/src)
