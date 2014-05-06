@@ -34,14 +34,6 @@ configure_file(config-processor.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-proce
 
 ########### next target ###############
 
-file(MAKE_DIRECTORY
-   ${CMAKE_CURRENT_BINARY_DIR}/backends/fakehw
-   ${CMAKE_CURRENT_BINARY_DIR}/backends/hal
-   ${CMAKE_CURRENT_BINARY_DIR}/backends/udev
-   ${CMAKE_CURRENT_BINARY_DIR}/backends/wmi
-   ${CMAKE_CURRENT_BINARY_DIR}/backends/win
-)
-
 if(WIN32)
     add_definitions(-DYY_NO_UNISTD_H)
 endif()
