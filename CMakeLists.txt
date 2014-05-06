@@ -68,7 +68,6 @@ ecm_setup_version(${KF5_VERSION} VARIABLE_PREFIX SOLID
                         SOVERSION 5)
 
 # TODO: Remove these
-remove_definitions(-DQT_NO_CAST_TO_ASCII)
 remove_definitions(-DQT_NO_CAST_FROM_ASCII)
 remove_definitions(-DQT_NO_URL_CAST_FROM_STRING)
 remove_definitions(-DQT_NO_CAST_FROM_BYTEARRAY)
