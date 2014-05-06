@@ -134,13 +134,7 @@ if(NOT WIN32 AND NOT APPLE)
    )
 
    message(STATUS "Building Solid UPower backend." )
-   set(solid_LIB_SRCS ${solid_LIB_SRCS}
-      backends/upower/upowermanager.cpp
-      backends/upower/upowerdevice.cpp
-      backends/upower/upowerbattery.cpp
-      backends/upower/upowerdeviceinterface.cpp
-      backends/upower/upowergenericinterface.cpp
-   )
+   include(backends/upower/CMakeLists.txt)
 
    # FIXME: this should work on more Unix systems
    if (CMAKE_SYSTEM_NAME MATCHES Linux AND UDEV_FOUND)
