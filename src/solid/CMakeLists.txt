@@ -115,23 +115,7 @@ if(NOT WIN32 AND NOT APPLE)
 
 
    message(STATUS "Building Solid HAL backend." )
-   set(solid_LIB_SRCS ${solid_LIB_SRCS}
-      backends/hal/halbattery.cpp
-      backends/hal/halblock.cpp
-      backends/hal/halcamera.cpp
-      backends/hal/halcdrom.cpp
-      backends/hal/haldeviceinterface.cpp
-      backends/hal/halfstabhandling.cpp
-      backends/hal/halgenericinterface.cpp
-      backends/hal/haldevice.cpp
-      backends/hal/halmanager.cpp
-      backends/hal/halopticaldisc.cpp
-      backends/hal/halportablemediaplayer.cpp
-      backends/hal/halprocessor.cpp
-      backends/hal/halstorageaccess.cpp
-      backends/hal/halstorage.cpp
-      backends/hal/halvolume.cpp
-   )
+   include(backends/hal/CMakeLists.txt)
 
    message(STATUS "Building Solid UPower backend." )
    include(backends/upower/CMakeLists.txt)
@@ -194,15 +178,7 @@ if(APPLE)
    find_package(IOKit REQUIRED)
 
    message(STATUS "-- Building Solid IOKit backend." )
-   set(solid_LIB_SRCS ${solid_LIB_SRCS}
-      backends/iokit/iokitmanager.cpp
-      backends/iokit/iokitdevice.cpp
-      backends/iokit/cfhelper.cpp
-      backends/iokit/iokitdeviceinterface.cpp
-      backends/iokit/iokitgenericinterface.cpp
-      backends/iokit/iokitprocessor.cpp
-      backends/iokit/iokitbattery.cpp
-   )
+   include(backends/iokit/CMakeLists.txt)
 endif()
 
 if(WIN32)
@@ -222,41 +198,10 @@ if(WIN32)
    if(WITH_SOLID_WMI)
        add_definitions(-DWITH_SOLID_WMI)
        message(STATUS "-- Building Solid WMI backend." )
-
-       set(solid_LIB_SRCS ${solid_LIB_SRCS}
-          backends/wmi/wmibattery.cpp
-          backends/wmi/wmiblock.cpp
-          backends/wmi/wmicamera.cpp
-          backends/wmi/wmicdrom.cpp
-          backends/wmi/wmideviceinterface.cpp
-          backends/wmi/wmigenericinterface.cpp
-          backends/wmi/wmidevice.cpp
-          backends/wmi/wmimanager.cpp
-          backends/wmi/wmiopticaldisc.cpp
-          backends/wmi/wmiportablemediaplayer.cpp
-          backends/wmi/wmiprocessor.cpp
-          backends/wmi/wmiquery.cpp
-          backends/wmi/wmistorageaccess.cpp
-          backends/wmi/wmistorage.cpp
-          backends/wmi/wmivolume.cpp
-       )
+       include(backends/wmi/CMakeLists.txt)
     else()
        message(STATUS "-- Building Solid Windows backend." )
-       set(solid_LIB_SRCS ${solid_LIB_SRCS}
-       backends/win/winblock.cpp
-       backends/win/winopticaldrive.cpp
-       backends/win/wininterface.cpp
-       backends/win/wingenericinterface.cpp
-       backends/win/windevice.cpp
-       backends/win/windevicemanager.cpp
-       backends/win/winopticaldisc.cpp
-       backends/win/winprocessor.cpp
-       #backends/win/wmiportablemediaplayer.cpp
-       backends/win/winstorageaccess.cpp
-       backends/win/winstoragedrive.cpp
-       backends/win/winstoragevolume.cpp
-       backends/win/winbattery.cpp
-       )
+       include(backends/win/CMakeLists.txt)
     endif()
 endif()
 
