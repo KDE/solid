@@ -18,7 +18,7 @@ set_target_properties(fakehardwaretest PROPERTIES COMPILE_FLAGS -DTEST_DATA="\\"
 
 ########### halbasictest ###############
 
-if(NOT WIN32 AND NOT APPLE)
+if(NOT WIN32 AND NOT APPLE AND NOT CMAKE_SYSTEM_NAME MATCHES Linux)
    set(halbasictest_SRCS halbasictest.cpp )
 
    add_executable(halbasictest ${halbasictest_SRCS})
