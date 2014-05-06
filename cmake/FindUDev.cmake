@@ -4,8 +4,6 @@
 #  UDEV_FOUND - system has UDev
 #  UDEV_INCLUDE_DIR - the libudev include directory
 #  UDEV_LIBS - The libudev libraries
-#  UDEV_HAVE_GET_SYSATTR_LIST_ENTRY - TRUE if the udev library has the function
-#              udev_device_get_sysattr_list_entry(), added in version 167 of libudev
 
 # Copyright (c) 2010, Rafael Fernández López, <ereslibre@kde.org>
 #
@@ -20,7 +18,6 @@ if(UDEV_INCLUDE_DIR AND UDEV_LIBS)
    include(CMakePushCheckState)
    cmake_push_check_state()
    set(CMAKE_REQUIRED_LIBRARIES ${UDEV_LIBS} )
-   check_function_exists(udev_device_get_sysattr_list_entry  UDEV_HAVE_GET_SYSATTR_LIST_ENTRY )
 
    cmake_pop_check_state()
 
