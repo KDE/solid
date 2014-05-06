@@ -92,9 +92,6 @@ if(NOT WIN32 AND NOT APPLE)
       include(backends/udev/CMakeLists.txt)
    endif()
 
-   message(STATUS "Building Solid HAL backend." )
-   include(backends/hal/CMakeLists.txt)
-
    message(STATUS "Building Solid UPower backend." )
    include(backends/upower/CMakeLists.txt)
 
@@ -107,6 +104,10 @@ if(NOT WIN32 AND NOT APPLE)
    message(STATUS "Building Solid fstab backend." )
    include(backends/fstab/CMakeLists.txt)
 
+    if (NOT CMAKE_SYSTEM_NAME MATCHES Linux)
+        message(STATUS "Building Solid HAL backend." )
+        include(backends/hal/CMakeLists.txt)
+    endif()
 endif()
 
 include(CheckIncludeFiles)
