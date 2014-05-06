@@ -36,21 +36,6 @@ if (CMAKE_SYSTEM_NAME MATCHES Linux)
 endif()
 
 
-set(WBEM_FOUND FALSE)
-if(WIN32)
-  include(CheckIncludeFileCXX)
-  check_include_file_cxx(wbemidl.h HAVE_WBEM)
-  find_library(WBEM_LIBRARIES NAMES wbemuuid wbemuuidd)
-  if(HAVE_WBEM AND WBEM_LIBRARIES)
-    set(HAVE_WBEM TRUE)
-    set(WBEM_FOUND TRUE)
-    message(STATUS "Found wbemuuid library: ${WBEM_LIBRARIES}")
-  endif()
-endif()
-
-############### Give the user the option to build the deprecated WMI solid backend instead of the new win backend ###############
-option(WITH_SOLID_WMI "Enables the deprecated WMI backend on Windows")
-
 include(ECMPoQmTools)
 
 set(KF5_VERSION "4.99.0") # handled by release scripts
