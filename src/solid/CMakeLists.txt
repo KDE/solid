@@ -114,6 +114,7 @@ include(CheckIncludeFiles)
 include(CheckFunctionExists)
 include(CheckCXXSourceCompiles)
 
+#Needed for the fstab backend
 check_include_files(mntent.h      HAVE_MNTENT_H)
 check_include_files(sys/types.h   HAVE_SYS_TYPES_H)
 check_include_files(sys/param.h   HAVE_SYS_PARAM_H)
