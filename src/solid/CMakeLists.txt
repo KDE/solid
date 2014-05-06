@@ -87,26 +87,12 @@ set(solid_LIB_SRCS
    ifaces/storagevolume.cpp
    ifaces/storageaccess.cpp
 
-   backends/fakehw/fakebattery.cpp
-   backends/fakehw/fakeblock.cpp
-   backends/fakehw/fakecamera.cpp
-   backends/fakehw/fakecdrom.cpp
-   backends/fakehw/fakedevice.cpp
-   backends/fakehw/fakedeviceinterface.cpp
-   backends/fakehw/fakegenericinterface.cpp
-   backends/fakehw/fakemanager.cpp
-   backends/fakehw/fakenetworkshare.cpp
-   backends/fakehw/fakeopticaldisc.cpp
-   backends/fakehw/fakeportablemediaplayer.cpp
-   backends/fakehw/fakeprocessor.cpp
-   backends/fakehw/fakestorage.cpp
-   backends/fakehw/fakestorageaccess.cpp
-   backends/fakehw/fakevolume.cpp
-
    backends/shared/rootdevice.cpp
    backends/shared/cpufeatures.cpp
    ${solid_QM_LOADER}
 )
+
+include(backends/fakehw/CMakeLists.txt)
 
 if(NOT WIN32 AND NOT APPLE)
    if ( UDEV_FOUND )
