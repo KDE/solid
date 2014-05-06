@@ -179,14 +179,7 @@ if(NOT WIN32 AND NOT APPLE)
    endif ()
 
    message(STATUS "Building Solid fstab backend." )
-   set(solid_LIB_SRCS ${solid_LIB_SRCS}
-      backends/fstab/fstabmanager.cpp
-      backends/fstab/fstabdevice.cpp
-      backends/fstab/fstabnetworkshare.cpp
-      backends/fstab/fstabstorageaccess.cpp
-      backends/fstab/fstabhandling.cpp
-      backends/fstab/fstabwatcher.cpp
-   )
+   include(backends/fstab/CMakeLists.txt)
 
 endif()
 
