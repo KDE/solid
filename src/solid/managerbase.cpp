@@ -31,11 +31,7 @@
 #include "backends/iokit/iokitmanager.h"
 #elif defined (Q_OS_UNIX)
 #include "backends/hal/halmanager.h"
-#if defined (WITH_SOLID_UDISKS2)
 #include "backends/udisks2/udisksmanager.h"
-#else
-#include "backends/udisks/udisksmanager.h"
-#endif
 #include "backends/upower/upowermanager.h"
 
 #if UDEV_FOUND
@@ -85,11 +81,7 @@ void Solid::ManagerBasePrivate::loadBackends()
         } else {
 #               if UDEV_FOUND
             m_backends << new Solid::Backends::UDev::UDevManager(0);
-#       if defined(WITH_SOLID_UDISKS2)
             m_backends << new Solid::Backends::UDisks2::Manager(0);
-#       else
-            m_backends << new Solid::Backends::UDisks::UDisksManager(0);
-#       endif
 #               endif
             m_backends << new Solid::Backends::UPower::UPowerManager(0)
                        << new Solid::Backends::Fstab::FstabManager(0);

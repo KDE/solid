@@ -29,5 +29,3 @@ set(Solid_HAVE_WINDOWS_WBEM @WBEM_FOUND@ )
 
 set(Solid_HAVE_UDev @UDEV_FOUND@ )
 
-set(Solid_USE_UDisk2 @WITH_SOLID_UDISKS2@ )
-
