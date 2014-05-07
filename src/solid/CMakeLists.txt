@@ -40,28 +40,30 @@ endif()
 
 ecm_create_qm_loader(solid_QM_LOADER solid5_qt)
 
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/frontend)
 set(solid_LIB_SRCS
-   solidnamespace.cpp
    managerbase.cpp
-   device.cpp
-   devicemanager.cpp
-   deviceinterface.cpp
-   genericinterface.cpp
-   processor.cpp
-   block.cpp
-   storagedrive.cpp
-   opticaldrive.cpp
-   storagevolume.cpp
-   opticaldisc.cpp
-   storageaccess.cpp
-   camera.cpp
-   portablemediaplayer.cpp
-   networkshare.cpp
-   battery.cpp
-   predicate.cpp
+   solidnamespace.cpp
    predicateparse.cpp
    predicate_lexer.c
    predicate_parser.c
+
+   frontend/device.cpp
+   frontend/devicemanager.cpp
+   frontend/deviceinterface.cpp
+   frontend/genericinterface.cpp
+   frontend/processor.cpp
+   frontend/block.cpp
+   frontend/storagedrive.cpp
+   frontend/opticaldrive.cpp
+   frontend/storagevolume.cpp
+   frontend/opticaldisc.cpp
+   frontend/storageaccess.cpp
+   frontend/camera.cpp
+   frontend/portablemediaplayer.cpp
+   frontend/networkshare.cpp
+   frontend/battery.cpp
+   frontend/predicate.cpp
 
    ifaces/battery.cpp
    ifaces/block.cpp
@@ -203,9 +205,11 @@ ecm_generate_headers(Solid_CamelCase_HEADERS
   Predicate
   NetworkShare
 
+  RELATIVE frontend
   REQUIRED_HEADERS Solid_HEADERS
   PREFIX Solid
 )
+
 install(FILES ${Solid_CamelCase_HEADERS} DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/Solid/Solid COMPONENT Devel)
 
 install(TARGETS KF5Solid EXPORT KF5SolidTargets ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
