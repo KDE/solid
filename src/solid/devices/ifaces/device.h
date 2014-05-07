@@ -28,7 +28,7 @@
 
 #include <solid/deviceinterface.h>
 #include <solid/device.h>
-#include <solid/devices/solidnamespace.h>
+#include <solid/solidnamespace.h>
 
 namespace Solid
 {

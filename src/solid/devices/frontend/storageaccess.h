@@ -23,7 +23,7 @@
 
 #include <solid/solid_export.h>
 
-#include <solid/devices/solidnamespace.h>
+#include <solid/solidnamespace.h>
 #include <solid/deviceinterface.h>
 #include <QtCore/QVariant>
 

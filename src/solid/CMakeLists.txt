@@ -42,6 +42,7 @@ ecm_generate_headers(Solid_CamelCase_HEADERS
   Battery
   Predicate
   NetworkShare
+  SolidNamespace
 
   RELATIVE devices/frontend
   REQUIRED_HEADERS Solid_HEADERS
@@ -66,7 +67,6 @@ target_include_directories(KF5Solid_static PUBLIC "$<BUILD_INTERFACE:${CMAKE_CUR
 install(FILES
   ${CMAKE_CURRENT_BINARY_DIR}/solid_export.h
   ${Solid_HEADERS}
-  devices/solidnamespace.h
   DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/Solid/solid COMPONENT Devel
 )
 

@@ -26,7 +26,7 @@
 
 #include <ifaces/device.h>
 #include <solid/deviceinterface.h>
-#include <solid/devices/solidnamespace.h>
+#include <solid/solidnamespace.h>
 
 #include <QtDBus/QDBusInterface>
 #include <QtDBus/QDBusObjectPath>
