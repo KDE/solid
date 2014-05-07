@@ -20,7 +20,7 @@
 
 #include "winprocessor.h"
 
-#include <solid/backends/shared/cpufeatures.h>
+#include <solid/devices/backends/shared/cpufeatures.h>
 
 #include <QSettings>
 
