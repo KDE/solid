@@ -39,7 +39,7 @@ add_test(solidhwtest solidhwtest)
 ecm_mark_as_test(solidhwtest)
 set_target_properties(solidhwtest PROPERTIES COMPILE_FLAGS -DSOLID_STATIC_DEFINE=1\ -DFAKE_COMPUTER_XML="\\"${CMAKE_CURRENT_SOURCE_DIR}/../src/solid/backends/fakehw/fakecomputer.xml\\"")
 
-include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/../src/solid/backends/fakehw )
+include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/../src/solid/devices/backends/fakehw )
 
 target_link_libraries(solidhwtest Qt5::DBus Qt5::Xml Qt5::Test ${LIBS} KF5Solid_static)
 

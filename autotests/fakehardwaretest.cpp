@@ -24,13 +24,13 @@
 #include <QtCore/QStringList>
 
 // Solid includes
-#include <solid/ifaces/device.h>
-#include <solid/ifaces/deviceinterface.h>
-#include <solid/ifaces/processor.h>
+#include <solid/devices/ifaces/device.h>
+#include <solid/devices/ifaces/deviceinterface.h>
+#include <solid/devices/ifaces/processor.h>
 
 // Local includes
-#include "solid/backends/fakehw/fakemanager.h"
-#include "solid/backends/fakehw/fakedevice.h"
+#include "solid/devices/backends/fakehw/fakemanager.h"
+#include "solid/devices/backends/fakehw/fakedevice.h"
 
 QTEST_MAIN(FakeHardwareTest)
 

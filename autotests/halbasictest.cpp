@@ -25,9 +25,9 @@
 #include "solid/backends/hal/halmanager.h"
 
 #include <solid/device.h>
-#include <solid/ifaces/device.h>
-#include <solid/ifaces/deviceinterface.h>
-#include <solid/ifaces/processor.h>
+#include <solid/devices/ifaces/device.h>
+#include <solid/devices/ifaces/deviceinterface.h>
+#include <solid/devices/ifaces/processor.h>
 #include "solid/backends/hal/halprocessor.h"
 
 QTEST_MAIN(HalBasicTest)

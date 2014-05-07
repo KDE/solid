@@ -29,7 +29,7 @@
 #include <solid/storageaccess.h>
 #include <solid/storagevolume.h>
 #include <solid/predicate.h>
-#include "solid/managerbase_p.h"
+#include "solid/devices/managerbase_p.h"
 
 #include <fakemanager.h>
 #include <fakedevice.h>
