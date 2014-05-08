@@ -25,6 +25,8 @@
 #include <QtCore/QVariant>
 #include <QtCore/QObject>
 
+#include "fakedevice.h"
+
 namespace Solid
 {
 namespace Backends
