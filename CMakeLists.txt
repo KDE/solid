@@ -54,6 +54,10 @@ include_directories (${CMAKE_CURRENT_SOURCE_DIR}/src ${CMAKE_CURRENT_BINARY_DIR}
 if (IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/po")
     ecm_install_po_files_as_qm(po)
 endif()
+
+option(WITH_NEW_SOLID_JOB "WIP: base Job class" Off)
+add_feature_info(Solid::Job WITH_NEW_SOLID_JOB "WIP: Base class for Solid Asynchronous apis")
+
 add_subdirectory(src)
 add_subdirectory(autotests)
 

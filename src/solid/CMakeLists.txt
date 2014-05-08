@@ -2,6 +2,10 @@ ecm_create_qm_loader(solid_QM_LOADER solid5_qt)
 
 include(devices/CMakeLists.txt)
 
+if (WITH_NEW_SOLID_JOB)
+    include(power/CMakeLists.txt)
+endif()
+
 set(solid_LIB_SRCS ${solid_LIB_SRCS} ${solid_QM_LOADER})
 
 add_library(KF5Solid  ${solid_LIB_SRCS})
@@ -49,6 +53,16 @@ ecm_generate_headers(Solid_CamelCase_HEADERS
   PREFIX Solid
 )
 
+if (WITH_NEW_SOLID_JOB)
+    ecm_generate_headers(Solid_CamelCase_HEADERS
+    HEADER_NAMES
+    Job
+
+    RELATIVE power/
+    REQUIRED_HEADERS Solid_HEADERS
+    PREFIX Solid
+    )
+endif()
 install(FILES ${Solid_CamelCase_HEADERS} DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/Solid/Solid COMPONENT Devel)
 
 install(TARGETS KF5Solid EXPORT KF5SolidTargets ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
