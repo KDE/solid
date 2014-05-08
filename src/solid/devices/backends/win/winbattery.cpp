@@ -18,6 +18,7 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "winbattery.h"
+#include "windevicemanager_p.h"
 
 #include <setupapi.h>
 #include <batclass.h>
@@ -32,7 +33,7 @@ WinBattery::WinBattery(WinDevice *device) :
     m_state(Solid::Battery::NoCharge)
 {
     powerChanged();
-    connect(WinDeviceManager::instance(), SIGNAL(powerChanged()), this, SLOT(powerChanged()));
+    connect(SolidWinEventFilter::instance(), SIGNAL(powerChanged()), this, SLOT(powerChanged()));
 }
 
 bool WinBattery::isPlugged() const

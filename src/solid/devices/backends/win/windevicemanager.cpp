@@ -24,6 +24,7 @@
 #include "winprocessor.h"
 #include "winblock.h"
 #include "winbattery.h"
+#include "windevicemanager_p.h"
 
 #include <dbt.h>
 
@@ -34,17 +35,115 @@
 
 using namespace Solid::Backends::Win;
 
-WinDeviceManager *WinDeviceManager::m_instance = NULL;
+Q_GLOBAL_STATIC(SolidWinEventFilter,solidWineventFilter)
+
+SolidWinEventFilter *SolidWinEventFilter::instance()
+{
+    return solidWineventFilter;
+}
+
+
+SolidWinEventFilter::SolidWinEventFilter():
+    QObject()
+    {
+        wchar_t title[] = L"KDEWinDeviceManager";
+
+        WNDCLASSEX wcex;
+        ZeroMemory(&wcex, sizeof(wcex));
+        wcex.cbSize = sizeof(WNDCLASSEX);
+        wcex.lpfnWndProc    = SolidWinEventFilter::WndProc;
+        wcex.hInstance      = (HINSTANCE)::GetModuleHandle(NULL);
+        wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW);
+        wcex.lpszClassName  = title;
+        if (RegisterClassEx(&wcex) == 0) {
+            qWarning() << "Failed to initialize KDEWinDeviceManager we will be unable to detect device changes";
+            return;
+        }
+
+        m_windowID = CreateWindow(title, title, WS_ICONIC, 0, 0,
+                                  CW_USEDEFAULT, 0, NULL, NULL, wcex.hInstance, NULL);
+        if (m_windowID == NULL) {
+            qWarning() << "Failed to initialize KDEWinDeviceManager we will be unable to detect device changes";
+            return;
+        }
+        ShowWindow(m_windowID, SW_HIDE);
+    }
+
+    SolidWinEventFilter::~SolidWinEventFilter()
+    {
+        PostMessage(m_windowID, WM_CLOSE, 0, 0);
+    }
+
+    void SolidWinEventFilter::promoteAddedDevice(const QSet<QString> &udi)
+    {
+        emit deviceAdded(udi);
+    }
+
+    void SolidWinEventFilter::promoteRemovedDevice(const QSet<QString> &udi)
+    {
+        emit deviceRemoved(udi);
+    }
+
+    void SolidWinEventFilter::promotePowerChange()
+    {
+        emit powerChanged();
+    }
+
+    LRESULT CALLBACK SolidWinEventFilter::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+    {
+        //some parts of the code are based on http://www.codeproject.com/Articles/119168/Hardware-Change-Detection
+        switch (message) {
+        case WM_DEVICECHANGE: {
+
+            if ((wParam == DBT_DEVICEARRIVAL) || (wParam == DBT_DEVICEREMOVECOMPLETE)) {
+                DEV_BROADCAST_HDR *header = reinterpret_cast<DEV_BROADCAST_HDR *>(lParam);
+                if (header->dbch_devicetype == DBT_DEVTYP_VOLUME) {
+
+                    DEV_BROADCAST_VOLUME *devNot = reinterpret_cast<DEV_BROADCAST_VOLUME *>(lParam);
+                    switch (wParam) {
+
+                    case DBT_DEVICEREMOVECOMPLETE: {
+                        QSet<QString> udis = WinBlock::getFromBitMask(devNot->dbcv_unitmask);
+                        solidWineventFilter->promoteRemovedDevice(udis);
+                    }
+                        break;
+                    case DBT_DEVICEARRIVAL: {
+                        QSet<QString> udis = WinBlock::updateUdiFromBitMask(devNot->dbcv_unitmask);
+                        solidWineventFilter->promoteAddedDevice(udis);
+                    }
+                        break;
+                    }
+                    break;
+                }
+            }
+        }
+            break;
+        case WM_POWERBROADCAST: {
+            solidWineventFilter->promotePowerChange();
+        }
+            break;
+        case WM_DESTROY: {
+            PostQuitMessage(0);
+        }
+            break;
+        default:
+            return DefWindowProc(hWnd, message, wParam, lParam);
+        }
+        return 0;
+    }
+
+
+
 
 WinDeviceManager::WinDeviceManager(QObject *parent)
     : DeviceManager(parent)
 {
-    if (m_instance) {
-        qFatal("There are multiple WinDeviceManager instances");
-    }
-    m_instance = this;
+
+    connect(solidWineventFilter, SIGNAL(deviceAdded(const QSet<QString> &)),this, SLOT(slotDeviceAdded(QSet<QString>)));
+    connect(solidWineventFilter, SIGNAL(deviceRemoved(const QSet<QString> &)),this, SLOT(slotDeviceRemoved(QSet<QString>)));
+
     m_supportedInterfaces << Solid::DeviceInterface::GenericInterface
-                          //                          << Solid::DeviceInterface::Block
+                             //                          << Solid::DeviceInterface::Block
                           << Solid::DeviceInterface::StorageAccess
                           << Solid::DeviceInterface::StorageDrive
                           << Solid::DeviceInterface::OpticalDrive
@@ -54,34 +153,11 @@ WinDeviceManager::WinDeviceManager(QObject *parent)
                           << Solid::DeviceInterface::Battery;
 
     updateDeviceList();
-
-    wchar_t title[] = L"KDEWinDeviceManager";
-
-    WNDCLASSEX wcex;
-    ZeroMemory(&wcex, sizeof(wcex));
-    wcex.cbSize = sizeof(WNDCLASSEX);
-    wcex.lpfnWndProc    = WinDeviceManager::WndProc;
-    wcex.hInstance      = (HINSTANCE)::GetModuleHandle(NULL);
-    wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW);
-    wcex.lpszClassName  = title;
-    if (RegisterClassEx(&wcex) == 0) {
-        qWarning() << "Failed to initialize KDEWinDeviceManager we will be unable to detect device changes";
-        return;
-    }
-
-    m_windowID = CreateWindow(title, title, WS_ICONIC, 0, 0,
-                              CW_USEDEFAULT, 0, NULL, NULL, wcex.hInstance, NULL);
-    if (m_windowID == NULL) {
-        qWarning() << "Failed to initialize KDEWinDeviceManager we will be unable to detect device changes";
-        return;
-    }
-    ShowWindow(m_windowID, SW_HIDE);
 }
 
 WinDeviceManager::~WinDeviceManager()
 {
-    PostMessage(m_windowID, WM_CLOSE, 0, 0);
-    m_instance = NULL;
+
 }
 
 QString WinDeviceManager::udiPrefix() const
@@ -133,9 +209,26 @@ QObject *Solid::Backends::Win::WinDeviceManager::createDevice(const QString &udi
     }
 }
 
-const WinDeviceManager *WinDeviceManager::instance()
+void WinDeviceManager::slotDeviceAdded(const QSet<QString> &udi)
 {
-    return m_instance;
+    QSet<QString> tmp = udi - m_devices;//dont report devices that are already known(cd drive)
+    m_devices += tmp;
+    m_devicesList = m_devices.toList();
+    qSort(m_devicesList);
+    foreach (const QString &s, tmp) {
+
+        emit deviceAdded(s);
+    }
+}
+
+void WinDeviceManager::slotDeviceRemoved(const QSet<QString> &udi)
+{
+    m_devices -= udi;
+    m_devicesList = m_devices.toList();
+    qSort(m_devicesList);
+    foreach (const QString &s, udi) {
+        emit deviceRemoved(s);
+    }
 }
 
 void WinDeviceManager::updateDeviceList()
@@ -149,72 +242,5 @@ void WinDeviceManager::updateDeviceList()
     qSort(m_devicesList);
 }
 
-LRESULT WinDeviceManager::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
-{
-    //some parts of the code are based on http://www.codeproject.com/Articles/119168/Hardware-Change-Detection
-    switch (message) {
-    case WM_DEVICECHANGE: {
 
-        if ((wParam == DBT_DEVICEARRIVAL) || (wParam == DBT_DEVICEREMOVECOMPLETE)) {
-            DEV_BROADCAST_HDR *header = reinterpret_cast<DEV_BROADCAST_HDR *>(lParam);
-            if (header->dbch_devicetype == DBT_DEVTYP_VOLUME) {
-
-                DEV_BROADCAST_VOLUME *devNot = reinterpret_cast<DEV_BROADCAST_VOLUME *>(lParam);
-                switch (wParam) {
-
-                case DBT_DEVICEREMOVECOMPLETE: {
-                    QSet<QString> udis = WinBlock::getFromBitMask(devNot->dbcv_unitmask);
-                    m_instance->promoteRemovedDevice(udis);
-                }
-                break;
-                case DBT_DEVICEARRIVAL: {
-                    QSet<QString> udis = WinBlock::updateUdiFromBitMask(devNot->dbcv_unitmask);
-                    m_instance->promoteAddedDevice(udis);
-                }
-                break;
-                }
-                break;
-            }
-        }
-    }
-    break;
-    case WM_POWERBROADCAST: {
-        m_instance->promotePowerChange();
-    }
-    break;
-    case WM_DESTROY: {
-        PostQuitMessage(0);
-    }
-    break;
-    default:
-        return DefWindowProc(hWnd, message, wParam, lParam);
-    }
-    return 0;
-}
-
-void WinDeviceManager::promoteAddedDevice(const QSet<QString> &udi)
-{
-    QSet<QString> tmp = udi - m_devices;//dont report devices that are already known(cd drive)
-    m_devices += tmp;
-    m_devicesList = m_devices.toList();
-    qSort(m_devicesList);
-    foreach (const QString &s, tmp) {
-
-        emit deviceAdded(s);
-    }
-}
-
-void WinDeviceManager::promoteRemovedDevice(const QSet<QString> &udi)
-{
-    m_devices -= udi;
-    m_devicesList = m_devices.toList();
-    qSort(m_devicesList);
-    foreach (const QString &s, udi) {
-        emit deviceRemoved(s);
-    }
-}
-
-void WinDeviceManager::promotePowerChange()
-{
-    emit powerChanged();
-}
+#include "windevicemanager.moc"

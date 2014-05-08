@@ -52,6 +52,7 @@ namespace Backends
 namespace Win
 {
 
+
 class WinDeviceManager : public Solid::Ifaces::DeviceManager
 {
     Q_OBJECT
@@ -102,22 +103,19 @@ public:
 Q_SIGNALS:
     void powerChanged();
 
+
 private Q_SLOTS:
     void updateDeviceList();
+    void slotDeviceAdded(const QSet<QString> &udi);
+    void slotDeviceRemoved(const QSet<QString> &udi);
 
 private:
-    static WinDeviceManager *m_instance;
-    HWND m_windowID;
+    friend class SolidWinEventFilter;
+
+
     QSet<QString> m_devices;
     QStringList m_devicesList;
     QSet<Solid::DeviceInterface::Type> m_supportedInterfaces;
-
-    static LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
-
-    void promoteAddedDevice(const QSet<QString> &udi);
-    void promoteRemovedDevice(const QSet<QString> &udi);
-
-    void promotePowerChange();
 
     template< class INFO, class QUERY>
     static void getDeviceInfoPrivate(const QString &devName, int code, INFO *info, size_t size, QUERY *query = NULL)
