@@ -18,29 +18,23 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <QTest>
-#include <Solid/Power>
-#include <Solid/AcPluggedJob>
+#ifndef SOLID_PWOER_H
+#define SOLID_POWER_H
 
-using namespace Solid;
-class solidPowerTest : public QObject
+#include <QObject>
+namespace Solid
 {
-    Q_OBJECT
-private Q_SLOTS:
-    void testAcPluggedJob();
+class AcPluggedJob;
+class Power
+{
+public:
+    /**
+     * Returns an AcPluggedJob
+     *
+     * The returned AcPluggedJob has to be started, when finished
+     * the Job::result() signal will be emitted.
+     */
+    static AcPluggedJob* isAcPlugged(QObject *parent = 0);
 };
-
-void solidPowerTest::testAcPluggedJob()
-{
-    AcPluggedJob *job = new AcPluggedJob();
-    QVERIFY(job->exec());
-    QVERIFY(job->isPlugged());
-
-    job = Power::isAcPlugged();
-    QVERIFY(job->exec());
-    QVERIFY(job->isPlugged());
 }
-
-QTEST_MAIN(solidPowerTest)
-
-#include "solidpowertest.moc"
+#endif //SOLID_POWER_H
