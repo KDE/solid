@@ -34,9 +34,10 @@ class AcPluggedJob : public Job
 public:
     explicit AcPluggedJob(QObject *parent = 0);
 
-    virtual void doStart() Q_DECL_OVERRIDE;
-
     bool isPlugged() const;
+
+protected Q_SLOTS:
+    virtual void doStart() Q_DECL_OVERRIDE;
 
 Q_SIGNALS:
     void result(Solid::Job *);

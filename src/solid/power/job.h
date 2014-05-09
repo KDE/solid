@@ -116,7 +116,7 @@ public Q_SLOTS:
      */
     void start();
 
-
+protected Q_SLOTS:
     /**
      * Implementation fo start() that will be executed in next loop
      *
