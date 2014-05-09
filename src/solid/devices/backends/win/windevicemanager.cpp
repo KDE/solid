@@ -243,4 +243,3 @@ void WinDeviceManager::updateDeviceList()
 }
 
 
-#include "windevicemanager.moc"
