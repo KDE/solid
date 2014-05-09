@@ -31,3 +31,8 @@ target_compile_definitions(solidmttest PRIVATE SOLID_STATIC_DEFINE=1)
 if (WITH_NEW_SOLID_JOB)
     ecm_add_test(solidjobtest.cpp LINK_LIBRARIES Qt5::Test ${LIBS} KF5Solid_static)
 endif()
+
+########### solidpowertest ###############
+if (WITH_NEW_SOLID_JOB AND WITH_NEW_POWER_ASYNC_API)
+    ecm_add_test(solidpowertest.cpp LINK_LIBRARIES Qt5::Test ${LIBS} KF5Solid_static)
+endif()

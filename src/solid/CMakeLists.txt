@@ -63,6 +63,18 @@ if (WITH_NEW_SOLID_JOB)
     PREFIX Solid
     )
 endif()
+
+if(WITH_NEW_SOLID_JOB AND WITH_NEW_POWER_ASYNC_API)
+    ecm_generate_headers(Solid_CamelCase_HEADERS
+        HEADER_NAMES
+        AcPluggedJob
+
+        RELATIVE power/
+        REQUIRED_HEADERS Solid_HEADERS
+        PREFIX Solid
+    )
+endif()
+
 install(FILES ${Solid_CamelCase_HEADERS} DESTINATION ${KF5_INCLUDE_INSTALL_DIR}/Solid/Solid COMPONENT Devel)
 
 install(TARGETS KF5Solid EXPORT KF5SolidTargets ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})

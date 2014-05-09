@@ -58,6 +58,9 @@ endif()
 option(WITH_NEW_SOLID_JOB "WIP: base Job class" Off)
 add_feature_info(Solid::Job WITH_NEW_SOLID_JOB "WIP: Base class for Solid Asynchronous apis")
 
+option(WITH_NEW_POWER_ASYNC_API "WIP: Asynchronous API for power management" Off)
+add_feature_info(Solid::PowerManagement WITH_NEW_POWER_ASYNC_API "WIP: Asynchronous API for power management")
+
 add_subdirectory(src)
 add_subdirectory(autotests)
 
