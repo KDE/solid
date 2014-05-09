@@ -11,6 +11,8 @@ if(WITH_NEW_POWER_ASYNC_API)
         power/powerbackendloader.cpp
 
         power/backends/abstractacpluggedjob.h
+        power/backends/powernotifier.h
         power/backends/dummy/dummyacpluggedjob.cpp
+        power/backends/dummy/dummypowernotifier.cpp
     )
 endif()

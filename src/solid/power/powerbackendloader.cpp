@@ -21,10 +21,16 @@
 #include "powerbackendloader.h"
 #include "backends/abstractacpluggedjob.h"
 #include "backends/dummy/dummyacpluggedjob.h"
+#include "backends/dummy/dummypowernotifier.h"
 
 using namespace Solid;
 
 AbstractAcPluggedJob* PowerBackendLoader::AcPluggedJob()
 {
     return new DummyAcPluggedJob();
+}
+
+PowerNotifier* PowerBackendLoader::notifier()
+{
+    return new DummyPowerNotifier();
 }

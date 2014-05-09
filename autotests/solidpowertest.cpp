@@ -19,6 +19,7 @@
 */
 
 #include <QTest>
+#include <QSignalSpy>
 #include <Solid/Power>
 #include <Solid/AcPluggedJob>
 
@@ -28,6 +29,7 @@ class solidPowerTest : public QObject
     Q_OBJECT
 private Q_SLOTS:
     void testAcPluggedJob();
+    void testAcPluggedChanged();
 };
 
 void solidPowerTest::testAcPluggedJob()
@@ -40,6 +42,16 @@ void solidPowerTest::testAcPluggedJob()
     QVERIFY(job->exec());
     QVERIFY(job->isPlugged());
 }
+
+void solidPowerTest::testAcPluggedChanged()
+{
+    Power *power = Power::self();
+    QSignalSpy spy(power, SIGNAL(acPluggedChanged(bool)));
+
+    QVERIFY(spy.wait());
+    QVERIFY(spy.takeFirst().first().toBool());
+}
+
 
 QTEST_MAIN(solidPowerTest)
 

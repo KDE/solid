@@ -25,9 +25,18 @@
 namespace Solid
 {
 class AcPluggedJob;
-class Power
+class Power : public QObject
 {
+    Q_OBJECT
 public:
+    static Power* self()
+    {
+        static Power* s_instance = 0;
+        if (!s_instance) {
+            s_instance = new Power();
+        }
+        return s_instance;
+    }
     /**
      * Returns an AcPluggedJob
      *
@@ -35,6 +44,14 @@ public:
      * the Job::result() signal will be emitted.
      */
     static AcPluggedJob* isAcPlugged(QObject *parent = 0);
+
+Q_SIGNALS:
+    void acPluggedChanged(bool plugged);
+private:
+    explicit Power(QObject* parent = 0);
+
+    class Private;
+    Private *d;
 };
 }
 #endif //SOLID_POWER_H

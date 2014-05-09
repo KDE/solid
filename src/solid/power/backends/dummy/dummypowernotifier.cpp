@@ -18,27 +18,15 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "power.h"
-#include "acpluggedjob.h"
-#include "powerbackendloader.h"
-
-#include "backends/powernotifier.h"
+#include "dummypowernotifier.h"
 
 using namespace Solid;
-
-class Power::Private
+DummyPowerNotifier::DummyPowerNotifier(QObject* parent) : PowerNotifier(parent)
 {
-public:
-    PowerNotifier *notifier;
-};
-
-Power::Power(QObject* parent) : QObject(parent), d(new Private)
-{
-    d->notifier = PowerBackendLoader::notifier();
-    connect(d->notifier, &PowerNotifier::acPluggedChanged, this, &Power::acPluggedChanged);
+    QMetaObject::invokeMethod(this, "emitEverythingChanged", Qt::QueuedConnection);
 }
 
-AcPluggedJob* Power::isAcPlugged(QObject* parent)
+void DummyPowerNotifier::emitEverythingChanged()
 {
-    return new AcPluggedJob(parent);
+    Q_EMIT acPluggedChanged(true);
 }

@@ -18,27 +18,22 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "power.h"
-#include "acpluggedjob.h"
-#include "powerbackendloader.h"
+#ifndef SOLID_DUMMY_POWER_NOTIFIER_H
+#define SOLID_DUMMY_POWER_NOTIFIER_H
 
 #include "backends/powernotifier.h"
 
-using namespace Solid;
-
-class Power::Private
+namespace Solid
 {
+class DummyPowerNotifier : public PowerNotifier
+{
+    Q_OBJECT
 public:
-    PowerNotifier *notifier;
+    explicit DummyPowerNotifier(QObject* parent = 0);
+
+private Q_SLOTS:
+    void emitEverythingChanged();
 };
-
-Power::Power(QObject* parent) : QObject(parent), d(new Private)
-{
-    d->notifier = PowerBackendLoader::notifier();
-    connect(d->notifier, &PowerNotifier::acPluggedChanged, this, &Power::acPluggedChanged);
 }
 
-AcPluggedJob* Power::isAcPlugged(QObject* parent)
-{
-    return new AcPluggedJob(parent);
-}
+#endif //SOLID_DUMMY_POWER_NOTIFIER_H

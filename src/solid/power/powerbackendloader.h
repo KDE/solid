@@ -24,10 +24,12 @@
 namespace Solid
 {
 class AbstractAcPluggedJob;
+class PowerNotifier;
 class PowerBackendLoader
 {
 public:
     static AbstractAcPluggedJob* AcPluggedJob();
+    static PowerNotifier* notifier();
 };
 };
 
