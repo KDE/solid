@@ -37,7 +37,7 @@ Job::Job(QObject* parent) : QObject(parent), d_ptr(new JobPrivate)
 
 Job::~Job()
 {
-
+    delete d_ptr;
 }
 
 void Job::start()
