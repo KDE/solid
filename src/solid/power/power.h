@@ -18,7 +18,7 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef SOLID_PWOER_H
+#ifndef SOLID_POWER_H
 #define SOLID_POWER_H
 
 #include <QObject>
