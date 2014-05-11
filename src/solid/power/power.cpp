@@ -24,6 +24,8 @@
 
 #include "backends/powernotifier.h"
 
+Q_GLOBAL_STATIC(Solid::Power, globalPowerObject)
+
 using namespace Solid;
 
 class Power::Private
@@ -31,6 +33,11 @@ class Power::Private
 public:
     PowerNotifier *notifier;
 };
+
+Power* Power::self()
+{
+    return globalPowerObject;
+}
 
 Power::Power(QObject* parent) : QObject(parent), d(new Private)
 {

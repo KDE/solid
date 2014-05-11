@@ -29,14 +29,19 @@ class Power : public QObject
 {
     Q_OBJECT
 public:
-    static Power* self()
-    {
-        static Power* s_instance = 0;
-        if (!s_instance) {
-            s_instance = new Power();
-        }
-        return s_instance;
-    }
+    /**
+     * Returns an instance of Power
+     *
+     * Having an instance of Power is useful to monitor any changes
+     * in the power management system by connecting to its signals, like
+     * acPluggedChanged().
+     *
+     * If you are interested on Power during the entire live cycle of your
+     * application, then you want to use this singlethon. If instead you are
+     * only intested for a short period of time, consider instancing your own
+     * Solid::Power so you can free the memory at any point.
+     */
+    static Power* self();
     /**
      * Returns an AcPluggedJob
      *
@@ -45,10 +50,19 @@ public:
      */
     static AcPluggedJob* isAcPlugged(QObject *parent = 0);
 
+
+    /**
+     * If you are not going to destroy this object for the entire
+     * application live cycle, you might want to use self() singlethon.
+     *
+     * The only reason to instance your own Power object is for when an
+     * application is only interested in power management during a small
+     * period of time and you want to free the memory after using it.
+     */
+    explicit Power(QObject* parent = 0);
 Q_SIGNALS:
     void acPluggedChanged(bool plugged);
 private:
-    explicit Power(QObject* parent = 0);
 
     class Private;
     Private *d;
