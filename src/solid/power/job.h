@@ -23,6 +23,8 @@
 
 #include <QObject>
 
+#include "solid_export.h"
+
 namespace Solid
 {
 class JobPrivate;
@@ -45,7 +47,7 @@ class JobPrivate;
  * @note: Even given their asynchronous nature, Jobs are still executed in the
  * main thread, so any blocking code executed in it will block the app calling it.
  */
-class Job : public QObject
+class SOLID_EXPORT Job : public QObject
 {
     Q_OBJECT
     Q_ENUMS(Error)

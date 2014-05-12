@@ -25,11 +25,13 @@
 
 #include <solid/job.h>
 
+#include "solid_export.h"
+
 namespace Solid
 {
 class InhibitionHolder;
 class AddInhibitionJobPrivate;
-class AddInhibitionJob : public Job
+class SOLID_EXPORT AddInhibitionJob : public Job
 {
     Q_OBJECT
     Q_ENUMS(Error)

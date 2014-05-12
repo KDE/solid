@@ -22,11 +22,13 @@
 #define SOLID_POWER_H
 
 #include <QObject>
+#include "solid_export.h"
+
 namespace Solid
 {
 class AcPluggedJob;
 class AddInhibitionJob;
-class Power : public QObject
+class SOLID_EXPORT Power : public QObject
 {
     Q_OBJECT
     Q_FLAGS(Inhibitions)

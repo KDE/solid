@@ -23,6 +23,8 @@
 
 #include <QObject>
 
+#include "solid_export.h"
+
 namespace Solid
 {
 class InhibitionHolderPrivate;
@@ -34,7 +36,7 @@ class InhibitionHolderPrivate;
  *
  * Delete this object to release the inhibition
  */
-class InhibitionHolder : public QObject
+class SOLID_EXPORT InhibitionHolder : public QObject
 {
     Q_OBJECT
 public:

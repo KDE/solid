@@ -23,10 +23,12 @@
 
 #include <Solid/Job>
 
+#include "solid_export.h"
+
 namespace Solid
 {
 class AcPluggedJobPrivate;
-class AcPluggedJob : public Job
+class SOLID_EXPORT AcPluggedJob : public Job
 {
     Q_OBJECT
     Q_PROPERTY(bool plugged READ isPlugged NOTIFY result)
