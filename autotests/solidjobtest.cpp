@@ -36,7 +36,7 @@ public:
     };
     bool execWithError();
     void startWithError();
-public Q_SLOTS:
+private Q_SLOTS:
     virtual void doStart();
     void emitQueued() {
         emitResult();

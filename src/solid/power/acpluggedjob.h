@@ -36,7 +36,7 @@ public:
 
     bool isPlugged() const;
 
-protected Q_SLOTS:
+private Q_SLOTS:
     virtual void doStart() Q_DECL_OVERRIDE;
 
 Q_SIGNALS:
