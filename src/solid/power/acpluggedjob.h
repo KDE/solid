@@ -39,6 +39,10 @@ public:
 private Q_SLOTS:
     virtual void doStart() Q_DECL_OVERRIDE;
 
+/**
+ * We have to re-declare the signal because
+ * if not, Q_PROPERTY wouldn't work.
+ */
 Q_SIGNALS:
     void result(Solid::Job *);
 
