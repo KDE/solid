@@ -18,21 +18,30 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef POWER_BACKEND_LOADER_H
-#define POWER_BACKEND_LOADER_H
+#ifndef SOLID_INHIBITION_HOLDER_H
+#define SOLID_INHIBITION_HOLDER_H
+
+#include <QObject>
 
 namespace Solid
 {
-class AbstractAcPluggedJob;
-class AbstractAddInhibitionJob;
-class PowerNotifier;
-class PowerBackendLoader
+class InhibitionHolderPrivate;
+/**
+ * Holds an inhibition
+ *
+ * This object is returned by Power::AddInhibitionJob::inhibition and it
+ * hols a reference to the inhibition that has been performed.
+ *
+ * Delete this object to release the inhibition
+ */
+class InhibitionHolder : public QObject
 {
+    Q_OBJECT
 public:
-    static AbstractAcPluggedJob* AcPluggedJob();
-    static AbstractAddInhibitionJob* addInhibitionJob();
-    static PowerNotifier* notifier();
+    virtual ~InhibitionHolder() {};
+protected:
+    explicit InhibitionHolder(QObject *parent = 0) : QObject(parent) {};
 };
-};
+}
 
-#endif //POWER_BACKEND_LOADER_H
+#endif //SOLID_INHIBITION_HOLDER_H

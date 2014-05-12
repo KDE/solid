@@ -22,6 +22,8 @@
 #include <QSignalSpy>
 #include <Solid/Power>
 #include <Solid/AcPluggedJob>
+#include <Solid/InhibitionHolder>
+#include <Solid/AddInhibitionJob>
 
 using namespace Solid;
 class solidPowerTest : public QObject
@@ -30,6 +32,7 @@ class solidPowerTest : public QObject
 private Q_SLOTS:
     void testAcPluggedJob();
     void testAcPluggedChanged();
+    void testAddInhibition();
 };
 
 void solidPowerTest::testAcPluggedJob()
@@ -52,6 +55,24 @@ void solidPowerTest::testAcPluggedChanged()
     QVERIFY(spy.takeFirst().first().toBool());
 }
 
+void solidPowerTest::testAddInhibition()
+{
+    AddInhibitionJob *job = new AddInhibitionJob();
+    QVERIFY(!job->exec());
+
+    QCOMPARE((int) AddInhibitionJob::InvalidInhibitions, job->error());
+
+    job = new AddInhibitionJob();
+    job->setInhibitions(Power::Sleep);
+    QVERIFY(!job->exec());
+    QCOMPARE((int) AddInhibitionJob::EmptyDescription, job->error());
+
+    job = Power::inhibit(Power::Sleep, QLatin1Literal("Running a test, we don't want to suspend now"));
+    QVERIFY(job->exec());
+
+    InhibitionHolder *holder = job->inhibition();
+    delete holder;//Release the inhibition
+}
 
 QTEST_MAIN(solidPowerTest)
 

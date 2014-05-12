@@ -25,10 +25,21 @@
 namespace Solid
 {
 class AcPluggedJob;
+class AddInhibitionJob;
 class Power : public QObject
 {
     Q_OBJECT
+    Q_FLAGS(Inhibitions)
 public:
+    /**
+     * Type of inhibition
+     */
+    enum Inhibition {
+        None = 0,
+        Sleep = 1,
+        Screen = 2
+    };
+    Q_DECLARE_FLAGS(Inhibitions, Inhibition)
     /**
      * Returns an instance of Power
      *
@@ -50,6 +61,13 @@ public:
      */
     static AcPluggedJob* isAcPlugged(QObject *parent = 0);
 
+    /*
+     * Returns an AddInhibitionJob
+     *
+     * The returned jon is initialized with the given @inhibitions and @description
+     */
+    static AddInhibitionJob* inhibit(Power::Inhibitions inhibitions, const QString &description, QObject *parent = 0);
+
 
     /**
      * If you are not going to destroy this object for the entire
@@ -60,6 +78,7 @@ public:
      * period of time and you want to free the memory after using it.
      */
     explicit Power(QObject* parent = 0);
+
 Q_SIGNALS:
     void acPluggedChanged(bool plugged);
 private:
@@ -68,4 +87,5 @@ private:
     Private *d;
 };
 }
+Q_DECLARE_OPERATORS_FOR_FLAGS(Solid::Power::Inhibitions);
 #endif //SOLID_POWER_H

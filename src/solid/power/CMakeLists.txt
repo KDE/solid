@@ -8,11 +8,16 @@ if(WITH_NEW_POWER_ASYNC_API)
         ${solid_LIB_SRCS}
         power/power.cpp
         power/acpluggedjob.cpp
+        power/addinhibitionjob.cpp
+        power/inhibitionholder.h
         power/powerbackendloader.cpp
 
         power/backends/abstractacpluggedjob.h
+        power/backends/abstractaddinhibitionjob.h
         power/backends/powernotifier.h
         power/backends/dummy/dummyacpluggedjob.cpp
         power/backends/dummy/dummypowernotifier.cpp
+        power/backends/dummy/dummyaddinhibitionjob.cpp
+        power/backends/dummy/dummyinhibitionholder.cpp
     )
 endif()

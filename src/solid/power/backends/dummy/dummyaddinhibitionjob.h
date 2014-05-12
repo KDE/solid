@@ -18,21 +18,23 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef POWER_BACKEND_LOADER_H
-#define POWER_BACKEND_LOADER_H
+#ifndef SOLID_DUMMY_ADD_INHIBITION_JOB_H
+#define SOLID_DUMMY_ADD_INHIBITION_JOB_H
+
+#include "backends/abstractaddinhibitionjob.h"
 
 namespace Solid
 {
-class AbstractAcPluggedJob;
-class AbstractAddInhibitionJob;
-class PowerNotifier;
-class PowerBackendLoader
+class InhibitionHolder;
+class DummyAddInhibitionJob : public AbstractAddInhibitionJob
 {
+    Q_OBJECT
 public:
-    static AbstractAcPluggedJob* AcPluggedJob();
-    static AbstractAddInhibitionJob* addInhibitionJob();
-    static PowerNotifier* notifier();
-};
-};
+    explicit DummyAddInhibitionJob(QObject* parent = 0);
 
-#endif //POWER_BACKEND_LOADER_H
+    virtual InhibitionHolder* inhibition() Q_DECL_OVERRIDE;
+private Q_SLOTS:
+    virtual void doStart() Q_DECL_OVERRIDE;
+};
+}
+#endif //SOLID_DUMMY_ADD_INHIBITION_JOB_H
