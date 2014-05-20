@@ -22,7 +22,7 @@
 #include "backends/abstractacpluggedjob.h"
 #include "backends/dummy/dummyacpluggedjob.h"
 #include "backends/dummy/dummypowernotifier.h"
-#include "backends/dummy/dummyaddinhibitionjob.h"
+#include "backends/dummy/dummyinhibitionjob.h"
 
 using namespace Solid;
 
@@ -31,9 +31,9 @@ AbstractAcPluggedJob* PowerBackendLoader::AcPluggedJob()
     return new DummyAcPluggedJob();
 }
 
-AbstractAddInhibitionJob* PowerBackendLoader::addInhibitionJob()
+AbstractInhibitionJob* PowerBackendLoader::addInhibitionJob()
 {
-    return new DummyAddInhibitionJob();
+    return new DummyInhibitionJob();
 }
 
 

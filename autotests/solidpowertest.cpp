@@ -23,7 +23,7 @@
 #include <Solid/Power>
 #include <Solid/AcPluggedJob>
 #include <Solid/InhibitionHolder>
-#include <Solid/AddInhibitionJob>
+#include <Solid/InhibitionJob>
 
 using namespace Solid;
 class solidPowerTest : public QObject
@@ -57,15 +57,15 @@ void solidPowerTest::testAcPluggedChanged()
 
 void solidPowerTest::testAddInhibition()
 {
-    AddInhibitionJob *job = new AddInhibitionJob();
+    InhibitionJob *job = new InhibitionJob();
     QVERIFY(!job->exec());
 
-    QCOMPARE((int) AddInhibitionJob::InvalidInhibitions, job->error());
+    QCOMPARE((int) InhibitionJob::InvalidInhibitions, job->error());
 
-    job = new AddInhibitionJob();
+    job = new InhibitionJob();
     job->setInhibitions(Power::Sleep);
     QVERIFY(!job->exec());
-    QCOMPARE((int) AddInhibitionJob::EmptyDescription, job->error());
+    QCOMPARE((int) InhibitionJob::EmptyDescription, job->error());
 
     job = Power::inhibit(Power::Sleep, QLatin1Literal("Running a test, we don't want to suspend now"));
     QVERIFY(job->exec());

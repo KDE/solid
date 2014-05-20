@@ -30,8 +30,8 @@
 namespace Solid
 {
 class InhibitionHolder;
-class AddInhibitionJobPrivate;
-class SOLID_EXPORT AddInhibitionJob : public Job
+class InhibitionJobPrivate;
+class SOLID_EXPORT InhibitionJob : public Job
 {
     Q_OBJECT
     Q_ENUMS(Error)
@@ -42,7 +42,7 @@ public:
     };
 
     /**
-     * Instance AddInhibitionJob
+     * Instance InhibitionJob
      *
      * When this job emits result(Solid::Job*) and in case no
      * error has happened an InhibitionHolder object will be
@@ -52,7 +52,7 @@ public:
      * At least one action to inhibit and description should be
      * added.
      */
-    explicit AddInhibitionJob(QObject* parent = 0);
+    explicit InhibitionJob(QObject* parent = 0);
 
 
     /**
@@ -103,7 +103,7 @@ Q_SIGNALS:
     void result(Solid::Job *);
 
 private:
-    Q_DECLARE_PRIVATE(AddInhibitionJob)
+    Q_DECLARE_PRIVATE(InhibitionJob)
 };
 }
 #endif //SOLID_ADD_INHIBITION_JOB

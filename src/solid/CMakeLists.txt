@@ -68,7 +68,7 @@ if(WITH_NEW_SOLID_JOB AND WITH_NEW_POWER_ASYNC_API)
     ecm_generate_headers(Solid_CamelCase_HEADERS
         HEADER_NAMES
         AcPluggedJob
-        AddInhibitionJob
+        InhibitionJob
         InhibitionHolder
         Power
 

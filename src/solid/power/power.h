@@ -27,7 +27,7 @@
 namespace Solid
 {
 class AcPluggedJob;
-class AddInhibitionJob;
+class InhibitionJob;
 class SOLID_EXPORT Power : public QObject
 {
     Q_OBJECT
@@ -64,11 +64,11 @@ public:
     static AcPluggedJob* isAcPlugged(QObject *parent = 0);
 
     /*
-     * Returns an AddInhibitionJob
+     * Returns an InhibitionJob
      *
      * The returned jon is initialized with the given @inhibitions and @description
      */
-    static AddInhibitionJob* inhibit(Power::Inhibitions inhibitions, const QString &description, QObject *parent = 0);
+    static InhibitionJob* inhibit(Power::Inhibitions inhibitions, const QString &description, QObject *parent = 0);
 
 
     /**

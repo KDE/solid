@@ -20,7 +20,7 @@
 
 #include "power.h"
 #include "acpluggedjob.h"
-#include "addinhibitionjob.h"
+#include "inhibitionjob.h"
 #include "powerbackendloader.h"
 
 #include "backends/powernotifier.h"
@@ -51,9 +51,9 @@ AcPluggedJob* Power::isAcPlugged(QObject* parent)
     return new AcPluggedJob(parent);
 }
 
-AddInhibitionJob* Power::inhibit(Power::Inhibitions inhibitions, const QString& description, QObject* parent)
+InhibitionJob* Power::inhibit(Power::Inhibitions inhibitions, const QString& description, QObject* parent)
 {
-    AddInhibitionJob *job = new AddInhibitionJob(parent);
+    InhibitionJob *job = new InhibitionJob(parent);
     job->setInhibitions(inhibitions);
     job->setDescription(description);
 

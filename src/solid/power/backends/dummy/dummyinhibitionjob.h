@@ -21,16 +21,16 @@
 #ifndef SOLID_DUMMY_ADD_INHIBITION_JOB_H
 #define SOLID_DUMMY_ADD_INHIBITION_JOB_H
 
-#include "backends/abstractaddinhibitionjob.h"
+#include "backends/abstractinhibitionjob.h"
 
 namespace Solid
 {
 class InhibitionHolder;
-class DummyAddInhibitionJob : public AbstractAddInhibitionJob
+class DummyInhibitionJob : public AbstractInhibitionJob
 {
     Q_OBJECT
 public:
-    explicit DummyAddInhibitionJob(QObject* parent = 0);
+    explicit DummyInhibitionJob(QObject* parent = 0);
 
     virtual InhibitionHolder* inhibition() Q_DECL_OVERRIDE;
 private Q_SLOTS:

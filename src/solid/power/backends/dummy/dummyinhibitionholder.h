@@ -26,7 +26,7 @@
 
 namespace Solid
 {
-class DummyAddInhibitionJob;
+class DummyInhibitionJob;
 class DummyInhibitionHolder : public InhibitionHolder
 {
     Q_OBJECT
@@ -36,7 +36,7 @@ public:
 protected:
     explicit DummyInhibitionHolder(QObject* parent = 0);
 
-    friend class DummyAddInhibitionJob;
+    friend class DummyInhibitionJob;
 };
 }
 

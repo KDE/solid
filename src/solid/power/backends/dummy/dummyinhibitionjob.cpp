@@ -18,23 +18,22 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef ABSTRACT_ADD_INHIBITION_JOB_H
-#define ABSTRACT_ADD_INHIBITION_JOB_H
+#include "dummyinhibitionjob.h"
+#include "dummyinhibitionholder.h"
 
-#include <solid/job.h>
+using namespace Solid;
 
-namespace Solid
+DummyInhibitionJob::DummyInhibitionJob(QObject* parent) : AbstractInhibitionJob(parent)
 {
-class InhibitionHolder;
-class AbstractAddInhibitionJob : public Job
-{
-    Q_OBJECT
-public:
-    explicit AbstractAddInhibitionJob(QObject* parent = 0) : Job(parent) { }
-    virtual ~AbstractAddInhibitionJob() {}
 
-    virtual InhibitionHolder* inhibition() = 0 ;
-};
 }
 
-#endif //ABSTRACT_ADD_INHIBITION_JOB_H
+void DummyInhibitionJob::doStart()
+{
+    emitResult();
+}
+
+InhibitionHolder* DummyInhibitionJob::inhibition()
+{
+    return new DummyInhibitionHolder();
+}

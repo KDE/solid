@@ -18,10 +18,10 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "addinhibitionjob.h"
-#include "addinhibitionjob_p.h"
+#include "inhibitionjob.h"
+#include "inhibitionjob_p.h"
 #include "powerbackendloader.h"
-#include "backends/abstractaddinhibitionjob.h"
+#include "backends/abstractinhibitionjob.h"
 
 #include "inhibitionholder.h"
 
@@ -29,19 +29,19 @@
 
 using namespace Solid;
 
-AddInhibitionJobPrivate::AddInhibitionJobPrivate()
+InhibitionJobPrivate::InhibitionJobPrivate()
     : inhibitions(Power::None)
     , backendJob(Q_NULLPTR)
 {
 
 }
 
-AddInhibitionJob::AddInhibitionJob(QObject* parent) : Job(*new AddInhibitionJobPrivate(), parent)
+InhibitionJob::InhibitionJob(QObject* parent) : Job(*new InhibitionJobPrivate(), parent)
 {
 
 }
 
-InhibitionHolder* AddInhibitionJob::inhibition() const
+InhibitionHolder* InhibitionJob::inhibition() const
 {
     Q_ASSERT_X(!d_func()->backendJob, "addInhibitionJob", "::inhibition() called before result() has been emitted");
 
@@ -52,9 +52,9 @@ InhibitionHolder* AddInhibitionJob::inhibition() const
     return Q_NULLPTR;
 }
 
-void AddInhibitionJob::doStart()
+void InhibitionJob::doStart()
 {
-    Q_D(AddInhibitionJob);
+    Q_D(InhibitionJob);
 
     if (!d->inhibitions) {
         setError(InvalidInhibitions);
@@ -68,31 +68,31 @@ void AddInhibitionJob::doStart()
     }
 
     d->backendJob = PowerBackendLoader::addInhibitionJob();
-    connect(d->backendJob, &AbstractAddInhibitionJob::result, [this]() {
+    connect(d->backendJob, &AbstractInhibitionJob::result, [this]() {
         emitResult();
     });
 
     d->backendJob->start();
 }
 
-void AddInhibitionJob::setInhibitions(Power::Inhibitions inhibitions)
+void InhibitionJob::setInhibitions(Power::Inhibitions inhibitions)
 {
-    Q_D(AddInhibitionJob);
+    Q_D(InhibitionJob);
     d->inhibitions = inhibitions;
 }
 
-Power::Inhibitions AddInhibitionJob::inhibitions() const
+Power::Inhibitions InhibitionJob::inhibitions() const
 {
     return d_func()->inhibitions;
 }
 
-void AddInhibitionJob::setDescription(const QString& description)
+void InhibitionJob::setDescription(const QString& description)
 {
-    Q_D(AddInhibitionJob);
+    Q_D(InhibitionJob);
     d->description = description;
 }
 
-QString AddInhibitionJob::description() const
+QString InhibitionJob::description() const
 {
     return d_func()->description;
 }

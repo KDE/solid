@@ -27,11 +27,15 @@
 
 namespace Solid
 {
-class InhibitionHolderPrivate;
+
+class InhibitionHolderPrivate
+{
+
+};
 /**
  * Holds an inhibition
  *
- * This object is returned by Power::AddInhibitionJob::inhibition and it
+ * This object is returned by Power::InhibitionJob::inhibition and it
  * hols a reference to the inhibition that has been performed.
  *
  * Delete this object to release the inhibition
@@ -40,9 +44,11 @@ class SOLID_EXPORT InhibitionHolder : public QObject
 {
     Q_OBJECT
 public:
-    virtual ~InhibitionHolder() {};
+    virtual ~InhibitionHolder() {delete d_ptr;};
 protected:
-    explicit InhibitionHolder(QObject *parent = 0) : QObject(parent) {};
+    explicit InhibitionHolder(QObject *parent = 0) : QObject(parent), d_ptr(new InhibitionHolderPrivate) {};
+
+    InhibitionHolderPrivate *const d_ptr;
 };
 }
 
