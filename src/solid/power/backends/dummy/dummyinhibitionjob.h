@@ -25,14 +25,14 @@
 
 namespace Solid
 {
-class InhibitionHolder;
+class Inhibition;
 class DummyInhibitionJob : public AbstractInhibitionJob
 {
     Q_OBJECT
 public:
     explicit DummyInhibitionJob(QObject* parent = 0);
 
-    virtual InhibitionHolder* inhibition() Q_DECL_OVERRIDE;
+    virtual Inhibition* inhibition() Q_DECL_OVERRIDE;
 private Q_SLOTS:
     virtual void doStart() Q_DECL_OVERRIDE;
 };

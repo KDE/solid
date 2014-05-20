@@ -25,7 +25,7 @@
 
 namespace Solid
 {
-class InhibitionHolder;
+class Inhibition;
 class AbstractInhibitionJob : public Job
 {
     Q_OBJECT
@@ -33,7 +33,7 @@ public:
     explicit AbstractInhibitionJob(QObject* parent = 0) : Job(parent) { }
     virtual ~AbstractInhibitionJob() {}
 
-    virtual InhibitionHolder* inhibition() = 0 ;
+    virtual Inhibition* inhibition() = 0 ;
 };
 }
 

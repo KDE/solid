@@ -9,7 +9,7 @@ if(WITH_NEW_POWER_ASYNC_API)
         power/power.cpp
         power/acpluggedjob.cpp
         power/inhibitionjob.cpp
-        power/inhibitionholder.h
+        power/inhibition.h
         power/powerbackendloader.cpp
 
         power/backends/abstractacpluggedjob.h
@@ -18,6 +18,6 @@ if(WITH_NEW_POWER_ASYNC_API)
         power/backends/dummy/dummyacpluggedjob.cpp
         power/backends/dummy/dummypowernotifier.cpp
         power/backends/dummy/dummyinhibitionjob.cpp
-        power/backends/dummy/dummyinhibitionholder.cpp
+        power/backends/dummy/dummyinhibition.cpp
     )
 endif()

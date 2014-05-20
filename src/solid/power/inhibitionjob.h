@@ -29,7 +29,7 @@
 
 namespace Solid
 {
-class InhibitionHolder;
+class Inhibition;
 class InhibitionJobPrivate;
 class SOLID_EXPORT InhibitionJob : public Job
 {
@@ -45,7 +45,7 @@ public:
      * Instance InhibitionJob
      *
      * When this job emits result(Solid::Job*) and in case no
-     * error has happened an InhibitionHolder object will be
+     * error has happened an Inhibition object will be
      * return using inhibition(). Delete the returned object
      * as soon as the inhibition should be released.
      *
@@ -82,15 +82,15 @@ public:
     QString description() const;
 
     /**
-     * Returns the Inhibitionholder
+     * Returns the inhibition
      *
-     * The result of this job is an object called InhibitionHolder
+     * The result of this job is an object called Inhibition
      * which should be kept as long as the inhibition is desired.
      *
      * If this method is called before result(Solid::Job*) is emitted
      * it will return nullptr.
      */
-    InhibitionHolder* inhibition() const;
+    Inhibition* inhibition() const;
 
 private Q_SLOTS:
     virtual void doStart() Q_DECL_OVERRIDE;

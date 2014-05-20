@@ -18,26 +18,15 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include "dummyinhibition.h"
 
-#ifndef SOLID_DUMMY_INHIBITION_HOLDER_H
-#define SOLID_DUMMY_INHIBITION_HOLDER_H
+using namespace Solid;
 
-#include "inhibitionholder.h"
-
-namespace Solid
+DummyInhibition::DummyInhibition(QObject* parent): Inhibition(parent)
 {
-class DummyInhibitionJob;
-class DummyInhibitionHolder : public InhibitionHolder
-{
-    Q_OBJECT
-public:
-    virtual ~DummyInhibitionHolder();
 
-protected:
-    explicit DummyInhibitionHolder(QObject* parent = 0);
-
-    friend class DummyInhibitionJob;
-};
 }
 
-#endif //SOLID_DUMMY_INHIBITION_HOLDER_H
+DummyInhibition::~DummyInhibition()
+{
+}

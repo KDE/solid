@@ -23,7 +23,7 @@
 #include "powerbackendloader.h"
 #include "backends/abstractinhibitionjob.h"
 
-#include "inhibitionholder.h"
+#include "inhibition.h"
 
 #include <QDebug>
 
@@ -41,7 +41,7 @@ InhibitionJob::InhibitionJob(QObject* parent) : Job(*new InhibitionJobPrivate(),
 
 }
 
-InhibitionHolder* InhibitionJob::inhibition() const
+Inhibition* InhibitionJob::inhibition() const
 {
     Q_ASSERT_X(!d_func()->backendJob, "addInhibitionJob", "::inhibition() called before result() has been emitted");
 

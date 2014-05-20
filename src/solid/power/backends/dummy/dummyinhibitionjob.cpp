@@ -19,7 +19,7 @@
 */
 
 #include "dummyinhibitionjob.h"
-#include "dummyinhibitionholder.h"
+#include "dummyinhibition.h"
 
 using namespace Solid;
 
@@ -33,7 +33,7 @@ void DummyInhibitionJob::doStart()
     emitResult();
 }
 
-InhibitionHolder* DummyInhibitionJob::inhibition()
+Inhibition* DummyInhibitionJob::inhibition()
 {
-    return new DummyInhibitionHolder();
+    return new DummyInhibition();
 }

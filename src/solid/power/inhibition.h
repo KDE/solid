@@ -18,8 +18,8 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef SOLID_INHIBITION_HOLDER_H
-#define SOLID_INHIBITION_HOLDER_H
+#ifndef SOLID_INHIBITION_H
+#define SOLID_INHIBITION_H
 
 #include <QObject>
 
@@ -40,13 +40,13 @@ class InhibitionHolderPrivate
  *
  * Delete this object to release the inhibition
  */
-class SOLID_EXPORT InhibitionHolder : public QObject
+class SOLID_EXPORT Inhibition : public QObject
 {
     Q_OBJECT
 public:
-    virtual ~InhibitionHolder() {delete d_ptr;};
+    virtual ~Inhibition() {delete d_ptr;};
 protected:
-    explicit InhibitionHolder(QObject *parent = 0) : QObject(parent), d_ptr(new InhibitionHolderPrivate) {};
+    explicit Inhibition(QObject *parent = 0) : QObject(parent), d_ptr(new InhibitionHolderPrivate) {};
 
     InhibitionHolderPrivate *const d_ptr;
 };

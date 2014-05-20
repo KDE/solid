@@ -22,7 +22,7 @@
 #include <QSignalSpy>
 #include <Solid/Power>
 #include <Solid/AcPluggedJob>
-#include <Solid/InhibitionHolder>
+#include <Solid/Inhibition>
 #include <Solid/InhibitionJob>
 
 using namespace Solid;
@@ -70,7 +70,7 @@ void solidPowerTest::testAddInhibition()
     job = Power::inhibit(Power::Sleep, QLatin1Literal("Running a test, we don't want to suspend now"));
     QVERIFY(job->exec());
 
-    InhibitionHolder *holder = job->inhibition();
+    Inhibition *holder = job->inhibition();
     delete holder;//Release the inhibition
 }
 

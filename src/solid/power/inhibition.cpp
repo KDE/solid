@@ -18,27 +18,15 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef SOLID_INHIBITION_JOB_PRIVATE_H
-#define SOLID_INHIBITION_JOB_PRIVATE_H
+#include "inhibition.h"
 
-#include "job_p.h"
-#include "power.h"
-
-namespace Solid
-{
-class Inhibition;
-class AbstractInhibitionJob;
-class InhibitionJobPrivate : public JobPrivate
+using namespace Solid;
+class InhibitionPrivate
 {
 public:
-    InhibitionJobPrivate();
 
-
-    QString description;
-    Power::Inhibitions inhibitions;
-    AbstractInhibitionJob *backendJob;
-    Q_DECLARE_PUBLIC(InhibitionJob)
 };
-}//Solid namespace
+Inhibition::Inhibition(QObject* parent) : QObject(parent), d_ptr(new InhibitionPrivate)
+{
 
-#endif //SOLID_ADD_INHIBITION_JOB_PRIVATE_H
+}
