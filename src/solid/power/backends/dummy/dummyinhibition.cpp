@@ -22,11 +22,37 @@
 
 using namespace Solid;
 
-DummyInhibition::DummyInhibition(QObject* parent): Inhibition(parent)
+DummyInhibition::DummyInhibition(QObject* parent): AbstractInhibition(parent)
 {
-
+    m_state = Inhibition::Started;
 }
 
 DummyInhibition::~DummyInhibition()
 {
+    stop();
+}
+
+void DummyInhibition::start()
+{
+    if (m_state == Inhibition::Started) {
+        return;
+    }
+
+    m_state = Inhibition::Started;
+    Q_EMIT stateChanged(m_state);
+}
+
+void DummyInhibition::stop()
+{
+    if (m_state == Inhibition::Stopped) {
+        return;
+    }
+
+    m_state = Inhibition::Stopped;
+    Q_EMIT stateChanged(m_state);
+}
+
+Inhibition::State DummyInhibition::state() const
+{
+    return m_state;
 }

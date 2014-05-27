@@ -72,8 +72,12 @@ void solidPowerTest::testAddInhibition()
     job = Power::inhibit(Power::Sleep, QLatin1Literal("Running a test, we don't want to suspend now"));
     QVERIFY(job->exec());
 
-    Inhibition *holder = job->inhibition();
-    delete holder;//Release the inhibition
+    auto inhibition = job->inhibition();
+    QSignalSpy spy(inhibition, SIGNAL(stateChanged(Inhibition::State)));
+    inhibition->deleteLater();
+
+    QVERIFY(spy.wait());
+    QCOMPARE(spy.takeFirst().first().toInt(), (int) Inhibition::Stopped);
 }
 
 QTEST_MAIN(solidPowerTest)

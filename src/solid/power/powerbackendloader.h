@@ -21,6 +21,8 @@
 #ifndef POWER_BACKEND_LOADER_H
 #define POWER_BACKEND_LOADER_H
 
+#include <solid/power.h>
+
 namespace Solid
 {
 class AbstractAcPluggedJob;
@@ -30,7 +32,7 @@ class PowerBackendLoader
 {
 public:
     static AbstractAcPluggedJob* AcPluggedJob();
-    static AbstractInhibitionJob* addInhibitionJob();
+    static AbstractInhibitionJob* addInhibitionJob(Power::Inhibitions inhibitions, const QString &description);
     static PowerNotifier* notifier();
 };
 };

@@ -26,6 +26,7 @@
 #include "inhibition.h"
 
 #include <QDebug>
+#include <qglobal.h>
 
 using namespace Solid;
 
@@ -43,7 +44,7 @@ InhibitionJob::InhibitionJob(QObject* parent) : Job(*new InhibitionJobPrivate(),
 
 Inhibition* InhibitionJob::inhibition() const
 {
-    Q_ASSERT_X(!d_func()->backendJob, "addInhibitionJob", "::inhibition() called before result() has been emitted");
+    Q_ASSERT_X(d_func()->backendJob, "addInhibitionJob", "::inhibition() called before result() has been emitted");
 
     if(d_func()->backendJob) {
         return d_func()->backendJob->inhibition();
@@ -67,7 +68,7 @@ void InhibitionJob::doStart()
         return;
     }
 
-    d->backendJob = PowerBackendLoader::addInhibitionJob();
+    d->backendJob = PowerBackendLoader::addInhibitionJob(d->inhibitions, d->description);
     connect(d->backendJob, &AbstractInhibitionJob::result, [this]() {
         emitResult();
     });

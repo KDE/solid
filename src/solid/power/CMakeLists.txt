@@ -9,11 +9,12 @@ if(WITH_NEW_POWER_ASYNC_API)
         power/power.cpp
         power/acpluggedjob.cpp
         power/inhibitionjob.cpp
-        power/inhibition.h
+        power/inhibition.cpp
         power/powerbackendloader.cpp
 
         power/backends/abstractacpluggedjob.h
         power/backends/abstractinhibitionjob.h
+        power/backends/abstractinhibition.h
         power/backends/powernotifier.h
         power/backends/dummy/dummyacpluggedjob.cpp
         power/backends/dummy/dummypowernotifier.cpp

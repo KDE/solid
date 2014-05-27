@@ -18,44 +18,35 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "inhibition.h"
-#include "backends/abstractinhibition.h"
+#ifndef ABSTRACT_INHIBITION_H
+#define ABSTRACT_INHIBITION_H
 
-using namespace Solid;
+#include <QObject>
 
-class Solid::InhibitionPrivate
+#include <solid/power/inhibition.h>
+
+namespace Solid
 {
+/**
+ * Represents an inhibition, allows to stop and start it
+ *
+ * When implementing this class take into account that the
+ * inhibition should be stopped upon object deletion, so
+ * stateChanged should be emitted on it
+ */
+class AbstractInhibition : public QObject
+{
+    Q_OBJECT
 public:
-    AbstractInhibition *backendObject;
+    explicit AbstractInhibition(QObject *parent = 0) : QObject(parent) {}
+    virtual ~AbstractInhibition(){}
+
+    virtual void start() = 0;
+    virtual void stop() = 0;
+    virtual Inhibition::State state() const = 0;
+
+Q_SIGNALS:
+    void stateChanged(Inhibition::State state);
 };
-
-Inhibition::Inhibition(AbstractInhibition* backend, QObject* parent)
-    : QObject(parent)
-    , d_ptr(new InhibitionPrivate)
-{
-    d_ptr->backendObject = backend;
-    connect(d_ptr->backendObject, &AbstractInhibition::stateChanged, this, &Inhibition::stateChanged);
-}
-
-Inhibition::~Inhibition()
-{
-    delete d_ptr->backendObject;
-    delete d_ptr;
-};
-
-void Inhibition::start()
-{
-    d_ptr->backendObject->start();
-}
-
-void Inhibition::stop()
-{
-    d_ptr->backendObject->stop();
-}
-
-Inhibition::State Inhibition::state() const
-{
-    return d_ptr->backendObject->state();
-}
-
-#include "inhibition.moc"
+} //Solid nanmespace
+#endif //ABSTRACT_INHIBITION_H

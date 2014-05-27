@@ -22,6 +22,7 @@
 #define SOLID_DUMMY_ADD_INHIBITION_JOB_H
 
 #include "backends/abstractinhibitionjob.h"
+#include "solid/power.h"
 
 namespace Solid
 {
@@ -30,11 +31,15 @@ class DummyInhibitionJob : public AbstractInhibitionJob
 {
     Q_OBJECT
 public:
-    explicit DummyInhibitionJob(QObject* parent = 0);
+    explicit DummyInhibitionJob(Power::Inhibitions inhibitions, const QString &description, QObject* parent = 0);
 
     virtual Inhibition* inhibition() Q_DECL_OVERRIDE;
 private Q_SLOTS:
     virtual void doStart() Q_DECL_OVERRIDE;
+
+private:
+    Power::Inhibitions m_inhibitions;
+    QString m_description;
 };
 }
 #endif //SOLID_DUMMY_ADD_INHIBITION_JOB_H

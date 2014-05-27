@@ -28,28 +28,70 @@
 namespace Solid
 {
 
-class InhibitionHolderPrivate
-{
-
-};
+class InhibitionPrivate;
+class AbstractInhibition;
 /**
  * Holds an inhibition
  *
  * This object is returned by Power::InhibitionJob::inhibition and it
  * hols a reference to the inhibition that has been performed.
  *
- * Delete this object to release the inhibition
+ * When this object is deleted the inhibition will be released
  */
 class SOLID_EXPORT Inhibition : public QObject
 {
     Q_OBJECT
+    Q_ENUMS(State)
+    Q_PROPERTY(State state READ state NOTIFY stateChanged)
 public:
-    virtual ~Inhibition() {delete d_ptr;};
-protected:
-    explicit Inhibition(QObject *parent = 0) : QObject(parent), d_ptr(new InhibitionHolderPrivate) {};
+    enum State {
+        Stopped = 0,
+        Started = 1
+    };
 
-    InhibitionHolderPrivate *const d_ptr;
+    /**
+     * This is meant to be instantiate by backends only
+     *
+     * AbstractInhibition is not part of Solid public api so this
+     * constructor is thought to be used only by backends.
+     */
+    explicit Inhibition(AbstractInhibition *backend, QObject *parent=0);
+    virtual ~Inhibition();
+
+    /**
+     * Returns the current state of the object
+     *
+     * The initial value is Started since that is how InhibitionJob will
+     * return it. The state can be modified by calling stop() and start().
+     * Also stateChanged signal is available.
+     */
+    State state() const;
+
+public Q_SLOTS:
+    /**
+     * Stops the inhibition
+     *
+     * In case the state() is Started, it will stop the inhibition.
+     * This happens asynchronously so connect to stateChanged signal to know
+     * when stop() has changed the state.
+     */
+    void stop();
+
+    /*
+     * Starts the inhibition
+     *
+     * In case state() is Stopped, it will resume the inhibition.
+     * This happens asynchronously so connect to stateChanged signal to
+     * know when start() has changed the state.
+     */
+    void start();
+
+protected:
+    InhibitionPrivate *const d_ptr;
+
+Q_SIGNALS:
+    void stateChanged(Inhibition::State newState);
 };
 }
-
-#endif //SOLID_INHIBITION_HOLDER_H
+Q_DECLARE_METATYPE(Solid::Inhibition::State)
+#endif //SOLID_INHIBITION_H

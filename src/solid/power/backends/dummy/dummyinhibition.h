@@ -22,21 +22,29 @@
 #ifndef SOLID_DUMMY_INHIBITION_H
 #define SOLID_DUMMY_INHIBITION_H
 
+#include "backends/abstractinhibition.h"
 #include "inhibition.h"
+#include "solid/power.h"
+
+#include <qglobal.h>
 
 namespace Solid
 {
 class DummyInhibitionJob;
-class DummyInhibition : public Inhibition
+class DummyInhibition : public AbstractInhibition
 {
     Q_OBJECT
 public:
+    explicit DummyInhibition(QObject* parent = 0);
     virtual ~DummyInhibition();
 
-protected:
-    explicit DummyInhibition(QObject* parent = 0);
+    virtual void start() Q_DECL_OVERRIDE;
+    virtual void stop() Q_DECL_OVERRIDE;
+    virtual Inhibition::State state() const Q_DECL_OVERRIDE;
 
-    friend class DummyInhibitionJob;
+    Power::Inhibitions inhibitions;
+    QString description;
+    Inhibition::State m_state;
 };
 }
 

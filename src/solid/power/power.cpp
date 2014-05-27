@@ -21,6 +21,7 @@
 #include "power.h"
 #include "acpluggedjob.h"
 #include "inhibitionjob.h"
+#include "inhibition.h"
 #include "powerbackendloader.h"
 
 #include "backends/powernotifier.h"
@@ -42,6 +43,7 @@ Power* Power::self()
 
 Power::Power(QObject* parent) : QObject(parent), d(new Private)
 {
+    qRegisterMetaType<Solid::Inhibition::State>("Inhibition::State");
     d->notifier = PowerBackendLoader::notifier();
     connect(d->notifier, &PowerNotifier::acPluggedChanged, this, &Power::acPluggedChanged);
 }

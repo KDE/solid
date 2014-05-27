@@ -41,7 +41,7 @@ public:
         Sleep = 1,
         Screen = 2
     };
-    Q_DECLARE_FLAGS(Inhibitions, Inhibition)
+    Q_DECLARE_FLAGS(Inhibitions, Inhibition);
     /**
      * Returns an instance of Power
      *
