@@ -26,6 +26,7 @@
 
 namespace Solid
 {
+class StatesJob;
 class AcPluggedJob;
 class InhibitionJob;
 class SOLID_EXPORT Power : public QObject
@@ -63,6 +64,7 @@ public:
      * Solid::Power so you can free the memory at any point.
      */
     static Power* self();
+
     /**
      * Returns an AcPluggedJob
      *
@@ -79,6 +81,7 @@ public:
     static InhibitionJob* inhibit(Power::States states, const QString &description, QObject *parent = 0);
 
 
+    static StatesJob* states(QObject *parent = 0);
     /**
      * If you are not going to destroy this object for the entire
      * application live cycle, you might want to use self() singlethon.

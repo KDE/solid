@@ -24,6 +24,7 @@
 #include <Solid/AcPluggedJob>
 #include <Solid/Inhibition>
 #include <Solid/InhibitionJob>
+#include <Solid/StatesJob>
 
 using namespace Solid;
 class solidPowerTest : public QObject
@@ -33,6 +34,7 @@ private Q_SLOTS:
     void testAcPluggedJob();
     void testAcPluggedChanged();
     void testAddInhibition();
+    void testSupportedStates();
 };
 
 void solidPowerTest::testAcPluggedJob()
@@ -78,6 +80,19 @@ void solidPowerTest::testAddInhibition()
 
     QVERIFY(spy.wait());
     QCOMPARE(spy.takeFirst().first().toInt(), (int) Inhibition::Stopped);
+}
+
+void solidPowerTest::testSupportedStates()
+{
+    auto job = new StatesJob();
+    QVERIFY(job->exec());
+
+    QCOMPARE(job->states(), Power::Brightness | Power::Sleep);
+
+    job = Power::states();
+    QVERIFY(job->exec());
+
+    QCOMPARE(job->states(), Power::Brightness | Power::Sleep);
 }
 
 QTEST_MAIN(solidPowerTest)

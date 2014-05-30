@@ -22,6 +22,7 @@
 #include "acpluggedjob.h"
 #include "inhibitionjob.h"
 #include "inhibition.h"
+#include "statesjob.h"
 #include "powerbackendloader.h"
 
 #include "backends/powernotifier.h"
@@ -60,4 +61,9 @@ InhibitionJob* Power::inhibit(Power::States inhibitions, const QString& descript
     job->setDescription(description);
 
     return job;
+}
+
+StatesJob* Power::states(QObject* parent)
+{
+    return new StatesJob(parent);
 }

@@ -18,31 +18,48 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "powerbackendloader.h"
-#include "backends/abstractacpluggedjob.h"
-#include "backends/dummy/dummyacpluggedjob.h"
-#include "backends/dummy/dummypowernotifier.h"
-#include "backends/dummy/dummyinhibitionjob.h"
-#include "backends/dummy/dummystatesjob.h"
+#ifndef SOLID_STATES_JOB_H
+#define SOLID_STATES_JOB_H
 
-using namespace Solid;
+#include "solid_export.h"
+#include "power.h"
 
-AbstractAcPluggedJob* PowerBackendLoader::AcPluggedJob()
+#include <Solid/Job>
+
+namespace Solid
 {
-    return new DummyAcPluggedJob();
-}
-
-AbstractInhibitionJob* PowerBackendLoader::addInhibitionJob(Power::States inhibitions, const QString &description)
+class StatesJobPrivate;
+/*
+ * Returns the states supported on the device
+ *
+ * Different devices and different operating systems support
+ * a different set of states such Sleep or Hibernation.
+ *
+ */
+class SOLID_EXPORT StatesJob : public Job
 {
-    return new DummyInhibitionJob(inhibitions, description);
-}
+    Q_OBJECT
 
-AbstractStatesJob* PowerBackendLoader::statesJob()
-{
-    return new DummyStatesJob();
-}
+public:
+    explicit StatesJob(QObject *parent = 0);
 
-PowerNotifier* PowerBackendLoader::notifier()
-{
-    return new DummyPowerNotifier();
-}
+    /**
+     * Once the job is finished, returns the supported Power::States
+     */
+    Power::States states() const;
+
+private Q_SLOTS:
+    virtual void doStart() Q_DECL_OVERRIDE;
+
+/**
+ * We have to re-declare the signal because
+ * if not, Q_PROPERTY wouldn't work.
+ */
+Q_SIGNALS:
+    void result(Solid::Job *job);
+
+private:
+    Q_DECLARE_PRIVATE(StatesJob)
+};
+} //Solid namespace
+#endif //SOLID_STATES_JOB_H

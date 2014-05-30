@@ -31,7 +31,7 @@ class JobPrivate;
 /**
  * This class represents an asynchronous job performed by Solid,
  * it is usually not used directly but instead it is inherit by some
- * other class, for example \See AcPluggedJob or \See SleepStatesJob
+ * other class, for example \See AcPluggedJob or \See StatesJob
  *
  * There are two ways of using this class, one is via exec() which will block
  * the thread until a result is fetched, the other is via connecting to the

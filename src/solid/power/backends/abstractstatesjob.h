@@ -18,31 +18,23 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "powerbackendloader.h"
-#include "backends/abstractacpluggedjob.h"
-#include "backends/dummy/dummyacpluggedjob.h"
-#include "backends/dummy/dummypowernotifier.h"
-#include "backends/dummy/dummyinhibitionjob.h"
-#include "backends/dummy/dummystatesjob.h"
+#ifndef ABSTRACT_STATES_JOB_H
+#define ABSTRACT_STATES_JOB_H
 
-using namespace Solid;
+#include "power.h"
+#include <solid/job.h>
 
-AbstractAcPluggedJob* PowerBackendLoader::AcPluggedJob()
+namespace Solid
 {
-    return new DummyAcPluggedJob();
+class AbstractStatesJob : public Job
+{
+    Q_OBJECT
+public:
+    explicit AbstractStatesJob(QObject* parent = 0) : Job(parent) { }
+    virtual ~AbstractStatesJob() {}
+
+    virtual Power::States states() const = 0;
+};
 }
 
-AbstractInhibitionJob* PowerBackendLoader::addInhibitionJob(Power::States inhibitions, const QString &description)
-{
-    return new DummyInhibitionJob(inhibitions, description);
-}
-
-AbstractStatesJob* PowerBackendLoader::statesJob()
-{
-    return new DummyStatesJob();
-}
-
-PowerNotifier* PowerBackendLoader::notifier()
-{
-    return new DummyPowerNotifier();
-}
+#endif //ABSTRACT_STATES_JOB_H

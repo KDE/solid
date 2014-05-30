@@ -18,31 +18,40 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include "statesjob.h"
+#include "statesjob_p.h"
 #include "powerbackendloader.h"
-#include "backends/abstractacpluggedjob.h"
-#include "backends/dummy/dummyacpluggedjob.h"
-#include "backends/dummy/dummypowernotifier.h"
-#include "backends/dummy/dummyinhibitionjob.h"
-#include "backends/dummy/dummystatesjob.h"
+#include "backends/abstractstatesjob.h"
+
+#include <QDebug>
 
 using namespace Solid;
 
-AbstractAcPluggedJob* PowerBackendLoader::AcPluggedJob()
+StatesJobPrivate::StatesJobPrivate()
 {
-    return new DummyAcPluggedJob();
+    backendJob = Q_NULLPTR;
 }
 
-AbstractInhibitionJob* PowerBackendLoader::addInhibitionJob(Power::States inhibitions, const QString &description)
+StatesJob::StatesJob(QObject* parent) : Job(*new StatesJobPrivate(), parent)
 {
-    return new DummyInhibitionJob(inhibitions, description);
 }
 
-AbstractStatesJob* PowerBackendLoader::statesJob()
+void StatesJob::doStart()
 {
-    return new DummyStatesJob();
+    Q_D(StatesJob);
+    d->backendJob = PowerBackendLoader::statesJob();
+    connect(d->backendJob, &AbstractStatesJob::result, [this]() {
+        emitResult();
+    });
+
+    d->backendJob->start();
 }
 
-PowerNotifier* PowerBackendLoader::notifier()
+Power::States StatesJob::states() const
 {
-    return new DummyPowerNotifier();
+    if(d_func()->backendJob) {
+        return d_func()->backendJob->states();
+    }
+    qWarning() << "statesJob called without having called start";
+    return Power::None;
 }

@@ -71,6 +71,7 @@ if(WITH_NEW_SOLID_JOB AND WITH_NEW_POWER_ASYNC_API)
         InhibitionJob
         Inhibition
         Power
+        StatesJob
 
         RELATIVE power/
         REQUIRED_HEADERS Solid_HEADERS
