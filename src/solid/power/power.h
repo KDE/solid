@@ -31,17 +31,25 @@ class InhibitionJob;
 class SOLID_EXPORT Power : public QObject
 {
     Q_OBJECT
-    Q_FLAGS(Inhibitions)
+    Q_FLAGS(States)
 public:
     /**
-     * Type of inhibition
+     * List of states a device and be into
+     *
+     * This list of states can be used to either put the device
+     * running the code into a specific state (for example put a
+     * laptop to sleep) or to avoid (inhibit) that state to happen,
+     * for example to prevent the brightness to be modified automatically
      */
-    enum Inhibition {
+    enum State {
         None = 0,
-        Sleep = 1,
-        Screen = 2
+        Sleep = 1 << 0,
+        Hibernation = 1 << 1,
+        HybridSleep = 1 << 2,
+        Screen = 1 << 3,
+        Brightness = 1 << 4
     };
-    Q_DECLARE_FLAGS(Inhibitions, Inhibition);
+    Q_DECLARE_FLAGS(States, State);
     /**
      * Returns an instance of Power
      *
@@ -68,7 +76,7 @@ public:
      *
      * The returned jon is initialized with the given @inhibitions and @description
      */
-    static InhibitionJob* inhibit(Power::Inhibitions inhibitions, const QString &description, QObject *parent = 0);
+    static InhibitionJob* inhibit(Power::States states, const QString &description, QObject *parent = 0);
 
 
     /**
@@ -89,5 +97,5 @@ private:
     Private *d;
 };
 }
-Q_DECLARE_OPERATORS_FOR_FLAGS(Solid::Power::Inhibitions);
+Q_DECLARE_OPERATORS_FOR_FLAGS(Solid::Power::States);
 #endif //SOLID_POWER_H

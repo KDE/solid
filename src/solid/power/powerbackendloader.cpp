@@ -31,7 +31,7 @@ AbstractAcPluggedJob* PowerBackendLoader::AcPluggedJob()
     return new DummyAcPluggedJob();
 }
 
-AbstractInhibitionJob* PowerBackendLoader::addInhibitionJob(Power::Inhibitions inhibitions, const QString &description)
+AbstractInhibitionJob* PowerBackendLoader::addInhibitionJob(Power::States inhibitions, const QString &description)
 {
     return new DummyInhibitionJob(inhibitions, description);
 }

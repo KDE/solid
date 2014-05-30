@@ -35,7 +35,7 @@ public:
 
 
     QString description;
-    Power::Inhibitions inhibitions;
+    Power::States inhibitions;
     AbstractInhibitionJob *backendJob;
     Q_DECLARE_PUBLIC(InhibitionJob)
 };

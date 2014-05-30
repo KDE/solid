@@ -76,13 +76,13 @@ void InhibitionJob::doStart()
     d->backendJob->start();
 }
 
-void InhibitionJob::setInhibitions(Power::Inhibitions inhibitions)
+void InhibitionJob::setInhibitions(Power::States inhibitions)
 {
     Q_D(InhibitionJob);
     d->inhibitions = inhibitions;
 }
 
-Power::Inhibitions InhibitionJob::inhibitions() const
+Power::States InhibitionJob::inhibitions() const
 {
     return d_func()->inhibitions;
 }

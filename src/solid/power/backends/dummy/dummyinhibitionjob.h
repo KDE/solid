@@ -31,14 +31,14 @@ class DummyInhibitionJob : public AbstractInhibitionJob
 {
     Q_OBJECT
 public:
-    explicit DummyInhibitionJob(Power::Inhibitions inhibitions, const QString &description, QObject* parent = 0);
+    explicit DummyInhibitionJob(Power::States inhibitions, const QString &description, QObject* parent = 0);
 
     virtual Inhibition* inhibition() Q_DECL_OVERRIDE;
 private Q_SLOTS:
     virtual void doStart() Q_DECL_OVERRIDE;
 
 private:
-    Power::Inhibitions m_inhibitions;
+    Power::States m_inhibitions;
     QString m_description;
 };
 }

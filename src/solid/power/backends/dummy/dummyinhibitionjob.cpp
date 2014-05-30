@@ -23,7 +23,7 @@
 
 using namespace Solid;
 
-DummyInhibitionJob::DummyInhibitionJob(Power::Inhibitions inhibitions, const QString &description, QObject* parent)
+DummyInhibitionJob::DummyInhibitionJob(Power::States inhibitions, const QString &description, QObject* parent)
     : AbstractInhibitionJob(parent)
     , m_inhibitions(inhibitions)
     , m_description(description)

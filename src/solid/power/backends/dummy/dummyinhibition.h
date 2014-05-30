@@ -42,7 +42,7 @@ public:
     virtual void stop() Q_DECL_OVERRIDE;
     virtual Inhibition::State state() const Q_DECL_OVERRIDE;
 
-    Power::Inhibitions inhibitions;
+    Power::States inhibitions;
     QString description;
     Inhibition::State m_state;
 };

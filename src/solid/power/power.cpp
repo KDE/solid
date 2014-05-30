@@ -53,7 +53,7 @@ AcPluggedJob* Power::isAcPlugged(QObject* parent)
     return new AcPluggedJob(parent);
 }
 
-InhibitionJob* Power::inhibit(Power::Inhibitions inhibitions, const QString& description, QObject* parent)
+InhibitionJob* Power::inhibit(Power::States inhibitions, const QString& description, QObject* parent)
 {
     InhibitionJob *job = new InhibitionJob(parent);
     job->setInhibitions(inhibitions);
