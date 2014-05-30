@@ -25,6 +25,7 @@
 #include <Solid/Inhibition>
 #include <Solid/InhibitionJob>
 #include <Solid/StatesJob>
+#include <Solid/RequestStateJob>
 
 using namespace Solid;
 class solidPowerTest : public QObject
@@ -35,6 +36,7 @@ private Q_SLOTS:
     void testAcPluggedChanged();
     void testAddInhibition();
     void testSupportedStates();
+    void testRequestState();
 };
 
 void solidPowerTest::testAcPluggedJob()
@@ -93,6 +95,22 @@ void solidPowerTest::testSupportedStates()
     QVERIFY(job->exec());
 
     QCOMPARE(job->states(), Power::Brightness | Power::Sleep);
+}
+
+void solidPowerTest::testRequestState()
+{
+    auto job = new RequestStateJob();
+    job->setState(Power::Sleep);
+    QVERIFY(job->exec());
+
+    job = Power::requestState(Power::Sleep);
+    QVERIFY(job->exec());
+
+    job = Power::requestState(Power::Brightness);
+    QVERIFY(!job->exec());
+
+    QCOMPARE(job->error(), (int) RequestStateJob::Unsupported);
+    QCOMPARE(job->errorText(), QLatin1Literal(QLatin1Literal("State Brightness is unsupported")));
 }
 
 QTEST_MAIN(solidPowerTest)

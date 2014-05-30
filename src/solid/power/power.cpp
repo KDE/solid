@@ -23,6 +23,7 @@
 #include "inhibitionjob.h"
 #include "inhibition.h"
 #include "statesjob.h"
+#include "requeststatejob.h"
 #include "powerbackendloader.h"
 
 #include "backends/powernotifier.h"
@@ -66,4 +67,12 @@ InhibitionJob* Power::inhibit(Power::States inhibitions, const QString& descript
 StatesJob* Power::states(QObject* parent)
 {
     return new StatesJob(parent);
+}
+
+RequestStateJob* Power::requestState(Power::State state, QObject* parent)
+{
+    auto job = new RequestStateJob(parent);
+    job->setState(state);
+
+    return job;
 }

@@ -28,6 +28,7 @@ namespace Solid
 class AbstractAcPluggedJob;
 class AbstractInhibitionJob;
 class AbstractStatesJob;
+class AbstractRequestStateJob;
 class PowerNotifier;
 class PowerBackendLoader
 {
@@ -35,6 +36,7 @@ public:
     static AbstractAcPluggedJob* AcPluggedJob();
     static AbstractInhibitionJob* addInhibitionJob(Power::States inhibitions, const QString &description);
     static AbstractStatesJob* statesJob();
+    static AbstractRequestStateJob* requestState();
     static PowerNotifier* notifier();
 };
 };

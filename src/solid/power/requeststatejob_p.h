@@ -18,37 +18,25 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "powerbackendloader.h"
-#include "backends/abstractacpluggedjob.h"
-#include "backends/dummy/dummyacpluggedjob.h"
-#include "backends/dummy/dummypowernotifier.h"
-#include "backends/dummy/dummyinhibitionjob.h"
-#include "backends/dummy/dummystatesjob.h"
-#include "backends/dummy/dummyrequeststatejob.h"
+#ifndef SOLID_REQUEST_STATE_JOB_PRIVATE_H
+#define SOLID_REQUEST_STATE_JOB_PRIVATE_H
 
-using namespace Solid;
+#include "job_p.h"
+#include "power.h"
 
-AbstractAcPluggedJob* PowerBackendLoader::AcPluggedJob()
+namespace Solid
 {
-    return new DummyAcPluggedJob();
-}
-
-AbstractInhibitionJob* PowerBackendLoader::addInhibitionJob(Power::States inhibitions, const QString &description)
+class AbstractRequestStateJob;
+class RequestStateJobPrivate : public JobPrivate
 {
-    return new DummyInhibitionJob(inhibitions, description);
-}
+public:
+    RequestStateJobPrivate();
 
-AbstractStatesJob* PowerBackendLoader::statesJob()
-{
-    return new DummyStatesJob();
-}
+    Power::State state;
 
-AbstractRequestStateJob* PowerBackendLoader::requestState()
-{
-    return new DummyRequestStateJob();
-}
+    AbstractRequestStateJob *backendJob;
+    Q_DECLARE_PUBLIC(RequestStateJob)
+};
+}//Solid namespace
 
-PowerNotifier* PowerBackendLoader::notifier()
-{
-    return new DummyPowerNotifier();
-}
+#endif //SOLID_REQUEST_STATE_JOB_PRIVATE_H

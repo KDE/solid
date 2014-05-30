@@ -18,37 +18,17 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "powerbackendloader.h"
-#include "backends/abstractacpluggedjob.h"
-#include "backends/dummy/dummyacpluggedjob.h"
-#include "backends/dummy/dummypowernotifier.h"
-#include "backends/dummy/dummyinhibitionjob.h"
-#include "backends/dummy/dummystatesjob.h"
-#include "backends/dummy/dummyrequeststatejob.h"
+#include "dummyrequeststatejob.h"
+
+#include <Solid/RequestStateJob>
 
 using namespace Solid;
 
-AbstractAcPluggedJob* PowerBackendLoader::AcPluggedJob()
+void DummyRequestStateJob::doStart()
 {
-    return new DummyAcPluggedJob();
-}
-
-AbstractInhibitionJob* PowerBackendLoader::addInhibitionJob(Power::States inhibitions, const QString &description)
-{
-    return new DummyInhibitionJob(inhibitions, description);
-}
-
-AbstractStatesJob* PowerBackendLoader::statesJob()
-{
-    return new DummyStatesJob();
-}
-
-AbstractRequestStateJob* PowerBackendLoader::requestState()
-{
-    return new DummyRequestStateJob();
-}
-
-PowerNotifier* PowerBackendLoader::notifier()
-{
-    return new DummyPowerNotifier();
+    if (state == Power::Brightness) {
+        setError(RequestStateJob::Unsupported);
+        setErrorText(QLatin1Literal("State Brightness is unsupported"));
+    }
+    emitResult();
 }

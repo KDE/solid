@@ -18,37 +18,44 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include "requeststatejob.h"
+#include "requeststatejob_p.h"
 #include "powerbackendloader.h"
-#include "backends/abstractacpluggedjob.h"
-#include "backends/dummy/dummyacpluggedjob.h"
-#include "backends/dummy/dummypowernotifier.h"
-#include "backends/dummy/dummyinhibitionjob.h"
-#include "backends/dummy/dummystatesjob.h"
-#include "backends/dummy/dummyrequeststatejob.h"
+#include "backends/abstractrequeststatejob.h"
+
+#include <QDebug>
 
 using namespace Solid;
 
-AbstractAcPluggedJob* PowerBackendLoader::AcPluggedJob()
+RequestStateJobPrivate::RequestStateJobPrivate()
 {
-    return new DummyAcPluggedJob();
+    backendJob = Q_NULLPTR;
+    state = Power::None;
 }
 
-AbstractInhibitionJob* PowerBackendLoader::addInhibitionJob(Power::States inhibitions, const QString &description)
+RequestStateJob::RequestStateJob(QObject* parent) : Job(*new RequestStateJobPrivate(), parent)
 {
-    return new DummyInhibitionJob(inhibitions, description);
 }
 
-AbstractStatesJob* PowerBackendLoader::statesJob()
+void RequestStateJob::setState(Power::State state)
 {
-    return new DummyStatesJob();
+    Q_D(RequestStateJob);
+    d->state = state;
 }
 
-AbstractRequestStateJob* PowerBackendLoader::requestState()
+void RequestStateJob::doStart()
 {
-    return new DummyRequestStateJob();
-}
+    Q_D(RequestStateJob);
+    d->backendJob = PowerBackendLoader::requestState();
+    d->backendJob->state = d->state;
 
-PowerNotifier* PowerBackendLoader::notifier()
-{
-    return new DummyPowerNotifier();
+    connect(d->backendJob, &AbstractRequestStateJob::result, [this](Job *job) {
+        if (job->error()) {
+            setError(job->error());
+            setErrorText(job->errorText());
+        }
+        emitResult();
+    });
+
+    d->backendJob->start();
 }
