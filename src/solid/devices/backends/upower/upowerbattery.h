@@ -1,6 +1,7 @@
 /*
     Copyright 2009 Pino Toscano <pino@kde.org>
     Copyright 2010, 2012 Lukas Tinkl <ltinkl@redhat.com>
+    Copyright 2014 Kai Uwe Broulik <kde@privat.broulik.de>
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -40,7 +41,7 @@ public:
     Battery(UPowerDevice *device);
     virtual ~Battery();
 
-    virtual bool isPlugged() const;
+    virtual bool isPresent() const;
 
     virtual Solid::Battery::BatteryType type() const;
 
@@ -54,6 +55,10 @@ public:
 
     virtual Solid::Battery::ChargeState chargeState() const;
 
+    virtual qlonglong timeToEmpty() const;
+
+    virtual qlonglong timeToFull() const;
+
     virtual Solid::Battery::Technology technology() const;
 
     virtual double energy() const;
@@ -62,16 +67,28 @@ public:
 
     virtual double voltage() const;
 
-    // TODO report stuff like time-to-full, vendor, etc.
+    virtual double temperature() const;
+
+    virtual bool isRecalled() const;
+
+    virtual QString recallVendor() const;
+
+    virtual QString recallUrl() const;
+
+    virtual QString serial() const;
 
 Q_SIGNALS:
-    void chargePercentChanged(int value, const QString &udi);
+    void presentStateChanged(bool newState, const QString &udi);
+    void chargePercentChanged(int value, const QString &udi = QString());
     void capacityChanged(int value, const QString &udi);
-    void chargeStateChanged(int newState, const QString &udi);
-    void plugStateChanged(bool newState, const QString &udi);
+    void powerSupplyStateChanged(bool newState, const QString &udi);
+    void chargeStateChanged(int newState, const QString &udi = QString());
+    void timeToEmptyChanged(qlonglong time, const QString &udi);
+    void timeToFullChanged(qlonglong time, const QString &udi);
     void energyChanged(double energy, const QString &udi);
     void energyRateChanged(double energyRate, const QString &udi);
-    void powerSupplyStateChanged(bool newState, const QString &udi);
+    void voltageChanged(double voltage, const QString &udi);
+    void temperatureChanged(double temperature, const QString &udi);
 
 private Q_SLOTS:
     void slotChanged();
@@ -79,13 +96,17 @@ private Q_SLOTS:
 private:
     void updateCache();
 
-    bool m_isPlugged;
+    bool m_isPresent;
     int m_chargePercent;
     int m_capacity;
+    bool m_isPowerSupply;
     Solid::Battery::ChargeState m_chargeState;
+    qlonglong m_timeToEmpty;
+    qlonglong m_timeToFull;
     double m_energy;
     double m_energyRate;
-    bool m_isPowerSupply;
+    double m_voltage;
+    double m_temperature;
 };
 }
 }

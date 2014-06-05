@@ -1,6 +1,7 @@
 /*
     Copyright 2006-2007 Kevin Ottens <ervin@kde.org>
     Copyright 2012 Lukas Tinkl <ltinkl@redhat.com>
+    Copyright 2014 Kai Uwe Broulik <kde@privat.broulik.de>
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -28,17 +29,26 @@
 Solid::Battery::Battery(QObject *backendObject)
     : DeviceInterface(*new BatteryPrivate(), backendObject)
 {
+    connect(backendObject, SIGNAL(presentStateChanged(bool,QString)),
+            this, SIGNAL(presentStateChanged(bool,QString)));
+
     connect(backendObject, SIGNAL(chargePercentChanged(int,QString)),
             this, SIGNAL(chargePercentChanged(int,QString)));
 
     connect(backendObject, SIGNAL(capacityChanged(int,QString)),
             this, SIGNAL(capacityChanged(int,QString)));
 
+    connect(backendObject, SIGNAL(powerSupplyStateChanged(bool,QString)),
+            this, SIGNAL(powerSupplyStateChanged(bool,QString)));
+
     connect(backendObject, SIGNAL(chargeStateChanged(int,QString)),
             this, SIGNAL(chargeStateChanged(int,QString)));
 
-    connect(backendObject, SIGNAL(plugStateChanged(bool,QString)),
-            this, SIGNAL(plugStateChanged(bool,QString)));
+    connect(backendObject, SIGNAL(timeToEmptyChanged(qlonglong,QString)),
+            this, SIGNAL(timeToEmptyChanged(qlonglong,QString)));
+
+    connect(backendObject, SIGNAL(timeToFullChanged(qlonglong,QString)),
+            this, SIGNAL(timeToFullChanged(qlonglong,QString)));
 
     connect(backendObject, SIGNAL(energyChanged(double,QString)),
             this, SIGNAL(energyChanged(double,QString)));
@@ -46,8 +56,12 @@ Solid::Battery::Battery(QObject *backendObject)
     connect(backendObject, SIGNAL(energyRateChanged(double,QString)),
             this, SIGNAL(energyRateChanged(double,QString)));
 
-    connect(backendObject, SIGNAL(powerSupplyStateChanged(bool,QString)),
-            this, SIGNAL(powerSupplyStateChanged(bool,QString)));
+    connect(backendObject, SIGNAL(voltageChanged(double,QString)),
+            this, SIGNAL(voltageChanged(double,QString)));
+
+    connect(backendObject, SIGNAL(temperatureChanged(double,QString)),
+            this, SIGNAL(temperatureChanged(double,QString)));
+
 }
 
 Solid::Battery::~Battery()
@@ -55,16 +69,10 @@ Solid::Battery::~Battery()
 
 }
 
-bool Solid::Battery::isPlugged() const
+bool Solid::Battery::isPresent() const
 {
     Q_D(const Battery);
-    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), false, isPlugged());
-}
-
-bool Solid::Battery::isPowerSupply() const
-{
-    Q_D(const Battery);
-    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), true, isPowerSupply());
+    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), false, isPresent());
 }
 
 Solid::Battery::BatteryType Solid::Battery::type() const
@@ -91,10 +99,28 @@ bool Solid::Battery::isRechargeable() const
     return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), false, isRechargeable());
 }
 
+bool Solid::Battery::isPowerSupply() const
+{
+    Q_D(const Battery);
+    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), true, isPowerSupply());
+}
+
 Solid::Battery::ChargeState Solid::Battery::chargeState() const
 {
     Q_D(const Battery);
     return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), NoCharge, chargeState());
+}
+
+qlonglong Solid::Battery::timeToEmpty() const
+{
+    Q_D(const Battery);
+    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), 0, timeToEmpty());
+}
+
+qlonglong Solid::Battery::timeToFull() const
+{
+    Q_D(const Battery);
+    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), 0, timeToFull());
 }
 
 Solid::Battery::Technology Solid::Battery::technology() const
@@ -119,4 +145,34 @@ double Solid::Battery::voltage() const
 {
     Q_D(const Battery);
     return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), 0.0, voltage());
+}
+
+double Solid::Battery::temperature() const
+{
+    Q_D(const Battery);
+    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), 0.0, temperature());
+}
+
+bool Solid::Battery::isRecalled() const
+{
+    Q_D(const Battery);
+    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), false, isRecalled());
+}
+
+QString Solid::Battery::recallVendor() const
+{
+    Q_D(const Battery);
+    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), QString(), recallVendor());
+}
+
+QString Solid::Battery::recallUrl() const
+{
+    Q_D(const Battery);
+    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), QString(), recallUrl());
+}
+
+QString Solid::Battery::serial() const
+{
+    Q_D(const Battery);
+    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), QString(), serial());
 }

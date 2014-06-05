@@ -1,6 +1,7 @@
 /*
     Copyright 2006 Kevin Ottens <ervin@kde.org>
     Copyright 2012 Lukas Tinkl <ltinkl@redhat.com>
+    Copyright 2014 Kai Uwe Broulik <kde@privat.broulik.de>
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -41,11 +42,11 @@ public:
     virtual ~Battery();
 
     /**
-     * Indicates if this battery is plugged.
+     * Indicates if this battery is currently present in its bay.
      *
-     * @return true if the battery is plugged, false otherwise
+     * @return true if the battery is present, false otherwise
      */
-    virtual bool isPlugged() const = 0;
+    virtual bool isPresent() const = 0;
 
     /**
      * Retrieves the type of device holding this battery.
@@ -98,6 +99,22 @@ public:
     virtual Solid::Battery::ChargeState chargeState() const = 0;
 
     /**
+     * Time (in seconds) until the battery is empty.
+     *
+     * @return time until the battery is empty
+     * @since 5.0
+     */
+    virtual qlonglong timeToEmpty() const = 0;
+
+    /**
+     * Time (in seconds) until the battery is full.
+     *
+     * @return time until the battery is full
+     * @since 5.0
+     */
+    virtual qlonglong timeToFull() const = 0;
+
+    /**
       * Retrieves the technology used to manufacture the battery.
       *
       * @return the battery technology
@@ -128,8 +145,57 @@ public:
       */
     virtual double voltage() const = 0;
 
+    /**
+     * The temperature of the battery in degrees Celsius.
+     *
+     * @return the battery temperature in degrees Celsius
+     * @since 5.0
+     */
+    virtual double temperature() const = 0;
+
+    /**
+     * The battery may have been recalled by the vendor due to a suspected fault.
+     *
+     * @return true if the battery has been recalled, false otherwise
+     * @since 5.0
+     */
+    virtual bool isRecalled() const = 0;
+
+    /**
+     * The vendor that has recalled the battery.
+     *
+     * @return the vendor name that has recalled the battery
+     * @since 5.0
+     */
+    virtual QString recallVendor() const = 0;
+
+    /**
+     * The website URL of the vendor that has recalled the battery.
+     *
+     * @return the website URL of the vendor that has recalled the battery
+     * @since 5.0
+     */
+    virtual QString recallUrl() const = 0;
+
+    /**
+     * The serial number of the battery
+     *
+     * @return the serial number of the battery
+     * @since 5.0
+     */
+    virtual QString serial() const = 0;
+
 protected:
     //Q_SIGNALS:
+    /**
+     * This signal is emitted if the battery get plugged in/out of the
+     * battery bay.
+     *
+     * @param newState the new plugging state of the battery, type is boolean
+     * @param udi the UDI of the battery with thew new plugging state
+     */
+    virtual void presentStateChanged(bool newState, const QString &udi) = 0;
+
     /**
      * This signal is emitted when the charge percent value of this
      * battery has changed.
@@ -149,6 +215,16 @@ protected:
     virtual void capacityChanged(int value, const QString &udi) = 0;
 
     /**
+     * This signal is emitted when the power supply state of the battery
+     * changes.
+     *
+     * @param newState the new power supply state, type is boolean
+     * @param udi the UDI of the battery with the new power supply state
+     * @since 4.11
+     */
+    virtual void powerSupplyStateChanged(bool newState, const QString &udi) = 0;
+
+    /**
      * This signal is emitted when the charge state of this battery
      * has changed.
      *
@@ -157,16 +233,27 @@ protected:
      * @see Solid::Battery::ChargeState
      * @param udi the UDI of the battery with the new charge state
      */
-    virtual void chargeStateChanged(int newState, const QString &udi) = 0;
+    virtual void chargeStateChanged(int newState, const QString &udi = QString()) = 0;
 
     /**
-     * This signal is emitted if the battery get plugged in/out of the
-     * battery bay.
+     * This signal is emitted when the time until the battery is empty
+     * has changed.
      *
-     * @param newState the new plugging state of the battery, type is boolean
-     * @param udi the UDI of the battery with thew new plugging state
+     * @param time the new remaining time
+     * @param udi the UDI of the battery with the new remaining time
+     * @since 5.0
      */
-    virtual void plugStateChanged(bool newState, const QString &udi) = 0;
+    virtual void timeToEmptyChanged(qlonglong time, const QString &udi) = 0;
+
+    /**
+     * This signal is emitted when the time until the battery is full
+     * has changed.
+     *
+     * @param time the new remaining time
+     * @param udi the UDI of the battery with the new remaining time
+     * @since 5.0
+     */
+    virtual void timeToFullChanged(qlonglong time, const QString &udi) = 0;
 
     /**
      * This signal is emitted when the energy value of this
@@ -189,14 +276,23 @@ protected:
     virtual void energyRateChanged(double energyRate, const QString &udi) = 0;
 
     /**
-     * This signal is emitted when the power supply state of the battery
-     * changes.
+     * This signal is emitted when the voltage in the cell has changed.
      *
-     * @param newState the new power supply state, type is boolean
-     * @param udi the UDI of the battery with the new power supply state
-     * @since 4.11
+     * @param voltage the new voltage of the cell
+     * @param udi the UDI of the battery with the new voltage
+     * @since 5.0
      */
-    virtual void powerSupplyStateChanged(bool newState, const QString &udi) = 0;
+    virtual void voltageChanged(double voltage, const QString &udi) = 0;
+
+    /**
+     * This signal is emitted when the battery temperature has changed.
+     *
+     * @param temperature the new temperature of the battery in degrees Celsius
+     * @param udi the UDI of the battery with the new temperature
+     * @since 5.0
+     */
+    virtual void temperatureChanged(double temperature, const QString &udi) = 0;
+
 };
 }
 }

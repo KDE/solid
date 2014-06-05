@@ -1,6 +1,7 @@
 /*
     Copyright 2006 Kevin Ottens <ervin@kde.org>
     Copyright 2012 Lukas Tinkl <ltinkl@redhat.com>
+    Copyright 2014 Kai Uwe Broulik <kde@privat.broulik.de>
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -32,9 +33,9 @@ FakeBattery::~FakeBattery()
 {
 }
 
-bool FakeBattery::isPlugged() const
+bool FakeBattery::isPresent() const
 {
-    return fakeDevice()->property("isPlugged").toBool();
+    return fakeDevice()->property("isPresent").toBool();
 }
 
 Solid::Battery::BatteryType FakeBattery::type() const
@@ -93,9 +94,21 @@ Solid::Battery::ChargeState FakeBattery::chargeState() const
         return Solid::Battery::Charging;
     } else if (state == "discharging") {
         return Solid::Battery::Discharging;
+    } else if (state == "fullyCharged") {
+        return Solid::Battery::FullyCharged;
     } else {
         return Solid::Battery::NoCharge;
     }
+}
+
+qlonglong FakeBattery::timeToEmpty() const
+{
+    return fakeDevice()->property("timeToEmpty").toLongLong();
+}
+
+qlonglong FakeBattery::timeToFull() const
+{
+    return fakeDevice()->property("timeToFull").toLongLong();
 }
 
 void FakeBattery::setChargeState(Solid::Battery::ChargeState newState)
@@ -111,6 +124,9 @@ void FakeBattery::setChargeState(Solid::Battery::ChargeState newState)
         break;
     case Solid::Battery::NoCharge:
         name = "noCharge";
+        break;
+    case Solid::Battery::FullyCharged:
+        name = "fullyCharged";
         break;
     }
 
@@ -142,4 +158,29 @@ double FakeBattery::energyRate() const
 double FakeBattery::voltage() const
 {
     return fakeDevice()->property("voltage").toDouble();
+}
+
+double FakeBattery::temperature() const
+{
+    return fakeDevice()->property("temperature").toDouble();
+}
+
+bool FakeBattery::isRecalled() const
+{
+    return fakeDevice()->property("isRecalled").toBool();
+}
+
+QString FakeBattery::recallVendor() const
+{
+    return fakeDevice()->property("recallVendor").toString();
+}
+
+QString FakeBattery::recallUrl() const
+{
+    return fakeDevice()->property("recallUrl").toString();
+}
+
+QString FakeBattery::serial() const
+{
+    return fakeDevice()->property("serial").toString();
 }

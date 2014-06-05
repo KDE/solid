@@ -1,6 +1,7 @@
 /*
     Copyright 2009 Pino Toscano <pino@kde.org>
     Copyright 2010, 2012 Lukas Tinkl <ltinkl@redhat.com>
+    Copyright 2014 Kai Uwe Broulik <kde@privat.broulik.de>
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -35,7 +36,7 @@ Battery::~Battery()
 {
 }
 
-bool Battery::isPlugged() const
+bool Battery::isPresent() const
 {
     return m_device.data()->prop("IsPresent").toBool();
 }
@@ -108,7 +109,8 @@ Solid::Battery::ChargeState Battery::chargeState() const
         break;
     case 3: // TODO "Empty"
         break;
-    case 4: // TODO "Fully charged"
+    case 4:
+        result = Solid::Battery::FullyCharged;
         break;
     case 5: // TODO "Pending charge"
         break;
@@ -116,6 +118,16 @@ Solid::Battery::ChargeState Battery::chargeState() const
         break;
     }
     return result;
+}
+
+qlonglong Battery::timeToEmpty() const
+{
+    return m_device.data()->prop("TimeToEmpty").toLongLong();
+}
+
+qlonglong Battery::timeToFull() const
+{
+    return m_device.data()->prop("TimeToFull").toLongLong();
 }
 
 Solid::Battery::Technology Battery::technology() const
@@ -154,36 +166,73 @@ double Battery::voltage() const
     return m_device.data()->prop("Voltage").toDouble();
 }
 
+double Battery::temperature() const
+{
+    return m_device.data()->prop("Temperature").toDouble();
+}
+
+bool Battery::isRecalled() const
+{
+    return m_device.data()->prop("RecallNotice").toBool();
+}
+
+QString Battery::recallVendor() const
+{
+    return m_device.data()->prop("RecallVendor").toString();
+}
+
+QString Battery::recallUrl() const
+{
+    return m_device.data()->prop("RecallUrl").toString();
+}
+
+QString Battery::serial() const
+{
+    return m_device.data()->prop("Serial").toString();
+}
+
 void Battery::slotChanged()
 {
     if (m_device) {
+        const bool old_isPresent = m_isPresent;
         const int old_chargePercent = m_chargePercent;
         const int old_capacity = m_capacity;
+        const bool old_isPowerSupply = m_isPowerSupply;
         const Solid::Battery::ChargeState old_chargeState = m_chargeState;
+        const qlonglong old_timeToEmpty = m_timeToEmpty;
+        const qlonglong old_timeToFull = m_timeToFull;
         const double old_energy = m_energy;
         const double old_energyRate = m_energyRate;
-        const bool old_isPlugged = m_isPlugged;
-        const bool old_isPowerSupply = m_isPowerSupply;
+        const double old_voltage = m_voltage;
+        const double old_temperature = m_temperature;
         updateCache();
+
+        if (old_isPresent != m_isPresent) {
+            emit presentStateChanged(m_isPresent, m_device.data()->udi());
+        }
 
         if (old_chargePercent != m_chargePercent) {
             emit chargePercentChanged(m_chargePercent, m_device.data()->udi());
-        }
-
-        if (old_chargeState != m_chargeState) {
-            emit chargeStateChanged(m_chargeState, m_device.data()->udi());
         }
 
         if (old_capacity != m_capacity) {
             emit capacityChanged(m_capacity, m_device.data()->udi());
         }
 
+        if (old_isPowerSupply != m_isPowerSupply) {
+            emit powerSupplyStateChanged(m_isPowerSupply, m_device.data()->udi());
+        }
+
         if (old_chargeState != m_chargeState) {
             emit chargeStateChanged(m_chargeState, m_device.data()->udi());
         }
 
-        if (old_isPlugged != m_isPlugged) {
-            emit plugStateChanged(m_isPlugged, m_device.data()->udi());
+        if (old_timeToEmpty != m_timeToEmpty) {
+            emit timeToEmptyChanged(m_timeToEmpty, m_device.data()->udi());
+        }
+
+        if (old_timeToFull != m_timeToFull) {
+            emit timeToFullChanged(m_timeToFull, m_device.data()->udi());
         }
 
         if (old_energy != m_energy) {
@@ -194,19 +243,27 @@ void Battery::slotChanged()
             emit energyRateChanged(m_energyRate, m_device.data()->udi());
         }
 
-        if (old_isPowerSupply != m_isPowerSupply) {
-            emit powerSupplyStateChanged(m_isPowerSupply, m_device.data()->udi());
+        if (old_voltage != m_voltage) {
+            emit voltageChanged(m_voltage, m_device.data()->udi());
+        }
+
+        if (old_temperature != m_temperature) {
+            emit temperatureChanged(m_temperature, m_device.data()->udi());
         }
     }
 }
 
 void Battery::updateCache()
 {
-    m_isPlugged = isPlugged();
+    m_isPresent = isPresent();
     m_chargePercent = chargePercent();
     m_capacity = capacity();
+    m_isPowerSupply = isPowerSupply();
     m_chargeState = chargeState();
+    m_timeToEmpty = timeToEmpty();
+    m_timeToFull = timeToFull();
     m_energy = energy();
     m_energyRate = energyRate();
-    m_isPowerSupply = isPowerSupply();
+    m_voltage = voltage();
+    m_temperature = temperature();
 }

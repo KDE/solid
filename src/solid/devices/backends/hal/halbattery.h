@@ -39,7 +39,7 @@ public:
     Battery(HalDevice *device);
     virtual ~Battery();
 
-    virtual bool isPlugged() const;
+    virtual bool isPresent() const;
     virtual Solid::Battery::BatteryType type() const;
 
     virtual int chargePercent() const;
@@ -47,7 +47,10 @@ public:
 
     virtual bool isRechargeable() const;
     virtual bool isPowerSupply() const;
+
     virtual Solid::Battery::ChargeState chargeState() const;
+    virtual qlonglong timeToEmpty() const;
+    virtual qlonglong timeToFull() const;
 
     virtual Solid::Battery::Technology technology() const;
 
@@ -56,15 +59,26 @@ public:
     virtual double energyRate() const;
 
     virtual double voltage() const;
+    virtual double temperature() const;
+
+    virtual bool isRecalled() const;
+    virtual QString recallVendor() const;
+    virtual QString recallUrl() const;
+
+    virtual QString serial() const;
 
 Q_SIGNALS:
+    void presentStateChanged(bool newState, const QString &udi);
     void chargePercentChanged(int value, const QString &udi);
     void capacityChanged(int value, const QString &udi);
+    void powerSupplyStateChanged(bool newState, const QString &udi); // dummy
     void chargeStateChanged(int newState, const QString &udi);
-    void plugStateChanged(bool newState, const QString &udi);
+    void timeToEmptyChanged(qlonglong time, const QString &udi);
+    void timeToFullChanged(qlonglong time, const QString &udi);
     void energyChanged(double energy, const QString &udi);
     void energyRateChanged(double energyRate, const QString &udi);
-    void powerSupplyStateChanged(bool newState, const QString &udi); // dummy
+    void voltageChanged(double voltage, const QString &udi);
+    void temperatureChanged(double temperature, const QString &udi); // dummy
 
 private Q_SLOTS:
     void slotPropertyChanged(const QMap<QString, int> &changes);

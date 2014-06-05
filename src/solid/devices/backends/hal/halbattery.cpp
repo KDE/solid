@@ -1,6 +1,7 @@
 /*
     Copyright 2006 Kevin Ottens <ervin@kde.org>
     Copyright 2012 Lukas Tinkl <ltinkl@redhat.com>
+    Copyright 2014 Kai Uwe Broulik <kde@privat.broulik.de>
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -35,14 +36,14 @@ Battery::~Battery()
 
 }
 
-bool Battery::isPlugged() const
+bool Battery::isPresent() const
 {
-    return m_device->prop("battery.present").toBool();
+    return static_cast<HalDevice *>(m_device)->prop("battery.present").toBool();
 }
 
 Solid::Battery::BatteryType Battery::type() const
 {
-    QString name = m_device->prop("battery.type").toString();
+    QString name = static_cast<HalDevice *>(m_device)->prop("battery.type").toString();
 
     if (name == "pda") {
         return Solid::Battery::PdaBattery;
@@ -65,20 +66,20 @@ Solid::Battery::BatteryType Battery::type() const
 
 int Battery::chargePercent() const
 {
-    return m_device->prop("battery.charge_level.percentage").toInt();
+    return static_cast<HalDevice *>(m_device)->prop("battery.charge_level.percentage").toInt();
 }
 
 int Battery::capacity() const
 {
-    const qreal lastFull = m_device->prop("battery.charge_level.last_full").toDouble();
-    const qreal designFull = m_device->prop("battery.charge_level.design").toDouble();
+    const qreal lastFull = static_cast<HalDevice *>(m_device)->prop("battery.charge_level.last_full").toDouble();
+    const qreal designFull = static_cast<HalDevice *>(m_device)->prop("battery.charge_level.design").toDouble();
 
     return lastFull / designFull * 100;
 }
 
 bool Battery::isRechargeable() const
 {
-    return m_device->prop("battery.is_rechargeable").toBool();
+    return static_cast<HalDevice *>(m_device)->prop("battery.is_rechargeable").toBool();
 }
 
 bool Battery::isPowerSupply() const
@@ -94,8 +95,8 @@ bool Battery::isPowerSupply() const
 
 Solid::Battery::ChargeState Battery::chargeState() const
 {
-    bool charging = m_device->prop("battery.rechargeable.is_charging").toBool();
-    bool discharging = m_device->prop("battery.rechargeable.is_discharging").toBool();
+    bool charging = static_cast<HalDevice *>(m_device)->prop("battery.rechargeable.is_charging").toBool();
+    bool discharging = static_cast<HalDevice *>(m_device)->prop("battery.rechargeable.is_discharging").toBool();
 
     if (!charging && !discharging) {
         return Solid::Battery::NoCharge;
@@ -106,9 +107,20 @@ Solid::Battery::ChargeState Battery::chargeState() const
     }
 }
 
+qlonglong Battery::timeToEmpty() const
+{
+    // NOTE Hal doesn't differentiate between time to empty and full
+    return static_cast<HalDevice *>(m_device)->prop("battery.remaining_time").toLongLong();
+}
+
+qlonglong Battery::timeToFull() const
+{
+    return static_cast<HalDevice *>(m_device)->prop("battery.remaining_time").toLongLong();
+}
+
 Solid::Battery::Technology Battery::technology() const
 {
-    const QString tech = m_device->prop("battery.technology").toString();
+    const QString tech = static_cast<HalDevice *>(m_device)->prop("battery.technology").toString();
 
     if (tech == "lithium-ion") {
         return Solid::Battery::LithiumIon;
@@ -127,21 +139,50 @@ Solid::Battery::Technology Battery::technology() const
 
 double Battery::energy() const
 {
-    return m_device->prop("battery.charge_level.current").toInt() / 1000;
+    return static_cast<HalDevice *>(m_device)->prop("battery.charge_level.current").toInt() / 1000;
 }
 
 double Battery::energyRate() const
 {
-    return m_device->prop("battery.charge_level.rate").toInt() / 1000;
+    return static_cast<HalDevice *>(m_device)->prop("battery.charge_level.rate").toInt() / 1000;
 }
 
 double Battery::voltage() const
 {
-    return m_device->prop("battery.voltage.current").toInt() / 1000;
+    return static_cast<HalDevice *>(m_device)->prop("battery.voltage.current").toInt() / 1000;
+}
+
+double Battery::temperature() const
+{
+    return 0; // not supported by HAL
+}
+
+bool Battery::isRecalled() const
+{
+    return static_cast<HalDevice *>(m_device)->prop("info.is_recalled").toBool();
+}
+
+QString Battery::recallVendor() const
+{
+    return static_cast<HalDevice *>(m_device)->prop("info.recall.vendor").toString();
+}
+
+QString Battery::recallUrl() const
+{
+    return static_cast<HalDevice *>(m_device)->prop("info.recall.website_url").toString();
+}
+
+QString Battery::serial() const
+{
+    return static_cast<HalDevice *>(m_device)->prop("system.hardware.serial").toString();
 }
 
 void Battery::slotPropertyChanged(const QMap<QString, int> &changes)
 {
+    if (changes.contains("battery.present")) {
+        emit presentStateChanged(isPresent(), m_device->udi());
+    }
+
     if (changes.contains("battery.charge_level.percentage")) {
         emit chargePercentChanged(chargePercent(), m_device->udi());
     }
@@ -156,8 +197,9 @@ void Battery::slotPropertyChanged(const QMap<QString, int> &changes)
         emit chargeStateChanged(chargeState(), m_device->udi());
     }
 
-    if (changes.contains("battery.present")) {
-        emit plugStateChanged(isPlugged(), m_device->udi());
+    if (changes.contains("battery.remaining_time")) {
+        emit timeToEmptyChanged(timeToEmpty(), m_device->udi());
+        emit timeToFullChanged(timeToFull(), m_device->udi());
     }
 
     if (changes.contains("battery.charge_level.current")) {
@@ -166,6 +208,10 @@ void Battery::slotPropertyChanged(const QMap<QString, int> &changes)
 
     if (changes.contains("battery.charge_level.rate")) {
         emit energyRateChanged(energyRate(), m_device->udi());
+    }
+
+    if (changes.contains("battery.voltage.current")) {
+        emit voltageChanged(voltage(), m_device->udi());
     }
 
 }
