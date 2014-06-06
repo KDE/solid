@@ -143,6 +143,13 @@ public:
     bool isPresent() const;
 
     /**
+     * Indicates if this battery is currently present in its bay.
+     *
+     * @deprecated since Solid 5.0. Use isPresent instead.
+     */
+    SOLID_DEPRECATED bool isPlugged() const { return isPresent(); }
+
+    /**
      * Retrieves the type of device holding this battery.
      *
      * @return the type of device holding this battery
