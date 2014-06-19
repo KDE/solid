@@ -45,7 +45,7 @@
             <!-- Battery properties beyond charge percentage are only reported by UPower
                  for primary batteries, not for other batteries like this mouse -->
             <property key="isRechargeable">true</property>
-            <property key="isPowerSupply">true</property>
+            <property key="isPowerSupply">false</property>
             <property key="chargeState">discharging</property>
             <property key="capacity">85</property>
             <property key="technology">1</property>
