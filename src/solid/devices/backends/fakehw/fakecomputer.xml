@@ -21,7 +21,7 @@
             <property key="vendor">Acme Corporation</property>
             <property key="interfaces">Battery</property>
             <property key="parent">/org/kde/solid/fakehw/computer</property>
-            <property key="isPlugged">true</property>
+            <property key="isPresent">true</property>
             <property key="batteryType">primary</property>
             <property key="chargeLevelUnit">mWh</property>
             <property key="maxLevel">43200000</property>
@@ -40,7 +40,7 @@
             <property key="vendor">Orange Inc.</property>
             <property key="interfaces">Battery</property>
             <property key="parent">/org/kde/solid/fakehw/computer</property>
-            <property key="isPluged">false</property>
+            <property key="isPresent">false</property>
             <property key="batteryType">mouse</property>
             <!-- Battery properties beyond charge percentage are only reported by UPower
                  for primary batteries, not for other batteries like this mouse -->
@@ -452,7 +452,8 @@
                     <property key="parent">/org/kde/solid/fakehw/usb_device_0_0_1d_2</property>
                     <property key="interfaces">Battery</property>
 
-                    <property key="isPlugged">true</property>
+                    <property key="isPresent">true</property>
+                    <property key="isPowerSupply">false</property>
                     <property key="batteryType">mouse</property>
                     <property key="chargeLevelUnit">mWh</property>
                     <property key="maxLevel">432000</property>
