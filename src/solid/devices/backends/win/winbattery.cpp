@@ -36,11 +36,6 @@ WinBattery::WinBattery(WinDevice *device) :
     connect(SolidWinEventFilter::instance(), SIGNAL(powerChanged()), this, SLOT(powerChanged()));
 }
 
-bool WinBattery::isPlugged() const
-{
-    return m_pluggedIn;
-}
-
 Solid::Battery::BatteryType WinBattery::type() const
 {
     return m_type;
@@ -75,10 +70,10 @@ QSet<QString> WinBattery::getUdis()
 {
     QSet<QString> udis;
     HDEVINFO hdev =
-        SetupDiGetClassDevs(&GUID_DEVCLASS_BATTERY,
-                            0,
-                            0,
-                            DIGCF_PRESENT | DIGCF_DEVICEINTERFACE);
+            SetupDiGetClassDevs(&GUID_DEVCLASS_BATTERY,
+                                0,
+                                0,
+                                DIGCF_PRESENT | DIGCF_DEVICEINTERFACE);
 
     if (INVALID_HANDLE_VALUE != hdev) {
         // Limit search to 100 batteries max
@@ -139,10 +134,10 @@ void WinBattery::powerChanged()
     const int old_charge  = m_charge;
     const int old_capacity = m_capacity;
     const Solid::Battery::ChargeState old_state = m_state;
-    const bool old_pluggedIn = m_pluggedIn;
     const bool old_isPowerSupply = m_isPowerSupply;
     const double old_energy = m_energy;
     const double old_energyRate = m_energyRate;
+    const double old_voltage = m_voltage;
 
     BATTERY_WAIT_STATUS batteryStatusQuery;
     ZeroMemory(&batteryStatusQuery, sizeof(batteryStatusQuery));
@@ -156,9 +151,11 @@ void WinBattery::powerChanged()
     batteryInformationQuery.InformationLevel = BatteryInformation;
     BATTERY_INFORMATION info = WinDeviceManager::getDeviceInfo<BATTERY_INFORMATION, BATTERY_QUERY_INFORMATION>(b.first, IOCTL_BATTERY_QUERY_INFORMATION, &batteryInformationQuery);
 
-    m_pluggedIn = status.PowerState & BATTERY_POWER_ON_LINE;
+    initSerial(b);
+    updateBatteryTemp(b);
+    updateTimeToEmpty(b);
 
-    m_isPowerSupply = true;//TODO: is there a wy to implement this
+    m_isPowerSupply = !(status.PowerState & BATTERY_POWER_ON_LINE);
 
     QString tech = QString::fromUtf8((const char *)info.Chemistry, 4);
 
@@ -171,13 +168,12 @@ void WinBattery::powerChanged()
     } else if (tech == "NIMH") {
         m_technology = Solid::Battery::NickelMetalHydride;
     } else {
-        qDebug() << tech << tr("Unknown", "battery technology");
         m_technology = Solid::Battery::UnknownTechnology;
     }
 
-    m_energy = status.Capacity;
-    m_energyRate = status.Rate;
-    m_voltage = status.Voltage;
+    m_energy = status.Capacity / 1000.0;//provided in mWh
+    m_energyRate = status.Rate / 1000.0;//provided in mW
+    m_voltage = status.Voltage / 1000.0;//provided in mV
 
     if (info.FullChargedCapacity != 0) {
         m_charge = m_energy / info.FullChargedCapacity * 100.0;
@@ -219,10 +215,6 @@ void WinBattery::powerChanged()
         emit chargeStateChanged(m_state, m_device->udi());
     }
 
-    if (old_pluggedIn != m_pluggedIn) {
-        emit plugStateChanged(m_pluggedIn, m_device->udi());
-    }
-
     if (old_isPowerSupply != m_isPowerSupply) {
         emit powerSupplyStateChanged(m_isPowerSupply, m_device->udi());
     }
@@ -234,6 +226,60 @@ void WinBattery::powerChanged()
     if (old_energyRate != m_energyRate) {
         emit energyRateChanged(m_energyRate, m_device->udi());
     }
+
+    if(old_voltage != m_voltage)
+    {
+        emit voltageChanged(m_voltage, m_device->udi());
+    }
+}
+
+void WinBattery::initSerial(const Battery &b)
+{
+    wchar_t buffer[1024];
+    BATTERY_QUERY_INFORMATION batteryInformationQuery;
+    ZeroMemory(&batteryInformationQuery, sizeof(batteryInformationQuery));
+    batteryInformationQuery.BatteryTag = b.second;
+    batteryInformationQuery.InformationLevel = BatterySerialNumber;
+    WinDeviceManager::getDeviceInfo<wchar_t, BATTERY_QUERY_INFORMATION>(b.first, IOCTL_BATTERY_QUERY_INFORMATION, buffer, 1024, &batteryInformationQuery);
+
+    m_serial = QString::fromWCharArray(buffer);
+}
+
+void WinBattery::updateTimeToEmpty(const WinBattery::Battery &b)
+{
+    BATTERY_QUERY_INFORMATION batteryInformationQuery;
+    ZeroMemory(&batteryInformationQuery, sizeof(batteryInformationQuery));
+    batteryInformationQuery.BatteryTag = b.second;
+    batteryInformationQuery.InformationLevel = BatteryEstimatedTime;
+    ulong time = WinDeviceManager::getDeviceInfo<ulong, BATTERY_QUERY_INFORMATION>(b.first, IOCTL_BATTERY_QUERY_INFORMATION, &batteryInformationQuery);
+
+    if(time == BATTERY_UNKNOWN_TIME)
+    {
+        time = 0;
+    }
+
+    if(time != m_timeUntilEmpty)
+    {
+        m_timeUntilEmpty = time;
+        emit timeToEmptyChanged(time, m_device->udi());
+    }
+
+}
+
+void WinBattery::updateBatteryTemp(const WinBattery::Battery &b)
+{
+    BATTERY_QUERY_INFORMATION batteryInformationQuery;
+    ZeroMemory(&batteryInformationQuery, sizeof(batteryInformationQuery));
+    batteryInformationQuery.BatteryTag = b.second;
+    batteryInformationQuery.InformationLevel = BatteryTemperature;
+    ulong batteryTemp = WinDeviceManager::getDeviceInfo<ulong, BATTERY_QUERY_INFORMATION>(b.first, IOCTL_BATTERY_QUERY_INFORMATION, &batteryInformationQuery);
+
+    if(batteryTemp != m_temperature)
+    {
+        m_temperature = batteryTemp;
+        emit temperatureChanged(batteryTemp, m_device->udi());
+    }
+
 }
 
 Solid::Battery::Technology WinBattery::technology() const
@@ -254,4 +300,44 @@ double WinBattery::energyRate() const
 double WinBattery::voltage() const
 {
     return m_voltage;
+}
+
+bool WinBattery::isPresent() const
+{
+    return true;
+}
+
+qlonglong WinBattery::timeToEmpty() const
+{
+    return m_timeUntilEmpty;
+}
+
+qlonglong WinBattery::timeToFull() const
+{
+    return 0;
+}
+
+double WinBattery::temperature() const
+{
+    return m_temperature;
+}
+
+bool WinBattery::isRecalled() const
+{
+    return false;
+}
+
+QString WinBattery::recallVendor() const
+{
+    return QString();
+}
+
+QString WinBattery::recallUrl() const
+{
+    return QString();
+}
+
+QString WinBattery::serial() const
+{
+    return m_serial;
 }

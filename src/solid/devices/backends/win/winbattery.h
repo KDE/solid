@@ -41,8 +41,6 @@ public:
 
     WinBattery(WinDevice *device);
 
-    virtual bool isPlugged() const;
-
     virtual Solid::Battery::BatteryType type() const;
 
     virtual int chargePercent() const;
@@ -55,10 +53,6 @@ public:
 
     virtual Solid::Battery::ChargeState chargeState() const;
 
-    static QSet<QString> getUdis();
-
-    static const Battery batteryInfoFromUdi(const QString &udi);
-
     Solid::Battery::Technology technology() const;
 
     double energy() const;
@@ -67,22 +61,57 @@ public:
 
     double voltage() const;
 
+    virtual qlonglong timeToEmpty() const;
+
+    virtual qlonglong timeToFull() const;
+
+    virtual double temperature() const;
+
+
+
+    virtual QString serial() const;
+
+    // not yet implemented
+    // ------------
+    virtual bool isPresent() const;
+
+    virtual bool isRecalled() const;
+
+    virtual QString recallVendor() const;
+
+    virtual QString recallUrl() const;
+    // ------------
+
+    static QSet<QString> getUdis();
+
+    static const Battery batteryInfoFromUdi(const QString &udi);
+
 Q_SIGNALS:
     void chargePercentChanged(int value, const QString &udi);
     void capacityChanged(int value, const QString &udi);
     void chargeStateChanged(int newState, const QString &udi);
-    void plugStateChanged(bool newState, const QString &udi);
     void powerSupplyStateChanged(bool newState, const QString &udi);
     void energyChanged(double energy, const QString &udi);
     void energyRateChanged(double energyRate, const QString &udi);
+    void timeToEmptyChanged(qlonglong time, const QString &udi);
+    void temperatureChanged(double temperature, const QString &udi);
+    void voltageChanged(double voltage, const QString &udi);
+
+    // not yet implemented
+    // ------------
+    void presentStateChanged(bool newState, const QString &udi);
+    void timeToFullChanged(qlonglong time, const QString &udi);
+    // ------------
 
 private Q_SLOTS:
     void powerChanged();
 
 private:
+    void initSerial(const Battery &b);
+    void updateTimeToEmpty(const Battery &b);
+    void updateBatteryTemp(const Battery &b);
 
     static QMap<QString, Battery> m_udiToGDI;
-    bool m_pluggedIn;
     Solid::Battery::BatteryType m_type;
     int m_charge;
     int m_capacity;
@@ -93,6 +122,11 @@ private:
     double m_energy;
     double m_energyRate;
     double m_voltage;
+
+    QString m_serial;
+    ulong m_temperature;
+    ulong m_timeUntilEmpty;
+
 
 };
 }

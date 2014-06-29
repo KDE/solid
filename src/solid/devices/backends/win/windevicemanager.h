@@ -156,19 +156,18 @@ private:
         }
 
         err = GetLastError();
-        if (err == ERROR_NOT_READY) {
+        switch(err)
+        {
+        case ERROR_NOT_READY:
             //the drive is a cd drive with no disk
-            ::CloseHandle(handle);
-            return;
+            break;
+        case ERROR_INVALID_FUNCTION:
+            //in most cases this means that the device doesn't support this method, like temperature for some batteries
+            break;
+        default:
+            qWarning() << "Failed to query" << dev << "reason:" << qGetLastError(err);
+            //DebugBreak();
         }
-
-#if 0
-        ::CloseHandle(handle);
-        qFatal("Failed to query %s reason: %s", qPrintable(dev), qPrintable(qGetLastError(err)));
-#else
-        qWarning() << "Failed to query" << dev << "reason:" << qGetLastError(err);
-#endif
-
         ::CloseHandle(handle);
     }
 
