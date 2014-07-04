@@ -53,7 +53,7 @@ int WinBattery::capacity() const
 
 bool WinBattery::isRechargeable() const
 {
-    return m_rechargabel;
+    return m_rechargeable;
 }
 
 bool WinBattery::isPowerSupply() const
@@ -201,7 +201,7 @@ void WinBattery::powerChanged()
         m_type = Solid::Battery::UnknownBattery;
     }
 
-    m_rechargabel = info.Technology == 1;
+    m_rechargeable = info.Technology == 1;
 
     if (m_charge != old_charge) {
         emit chargePercentChanged(m_charge, m_device->udi());

@@ -115,7 +115,7 @@ private:
     Solid::Battery::BatteryType m_type;
     int m_charge;
     int m_capacity;
-    bool m_rechargabel;
+    bool m_rechargeable;
     bool m_isPowerSupply;
     Solid::Battery::ChargeState m_state;
     Solid::Battery::Technology m_technology;
