@@ -41,7 +41,7 @@ public:
     Battery(IOKitDevice *device);
     virtual ~Battery();
 
-    bool isPlugged() const;
+    bool isPresent() const;
     Solid::Battery::BatteryType type() const;
 
     int chargePercent() const;
@@ -53,10 +53,18 @@ public:
     Solid::Battery::ChargeState chargeState() const;
 
     // ### the ones below are TODO
+    qlonglong timeToEmpty() const { return 0; }
+    qlonglong timeToFull() const { return 0; }
     Solid::Battery::Technology technology() const { return Solid::Battery::UnknownTechnology; }
     double energy() const { return 0.0; }
     double energyRate() const { return 0.0; }
     double voltage() const { return 0.0; }
+    double temperature() const { return 0.0; }
+
+    bool isRecalled() const { return false; }
+    QString recallVendor() const { return QString(); }
+    QString recallUrl() const { return QString(); }
+    QString serial() const { return QString(); }
 
 Q_SIGNALS:
     void energyChanged(double energy, const QString &udi);
@@ -64,8 +72,12 @@ Q_SIGNALS:
     void chargePercentChanged(int value, const QString &udi);
     void capacityChanged(int value, const QString &udi);
     void chargeStateChanged(int newState, const QString &udi);
-    void plugStateChanged(bool newState, const QString &udi);
+    void presentStateChanged(bool newState, const QString &udi);
     void powerSupplyStateChanged(bool newState, const QString &udi);
+    void timeToEmptyChanged(qlonglong time, const QString &udi);
+    void timeToFullChanged(qlonglong time, const QString &udi);
+    void temperatureChanged(double temperature, const QString &udi);
+    void voltageChanged(double voltage, const QString &udi);
 };
 }
 }

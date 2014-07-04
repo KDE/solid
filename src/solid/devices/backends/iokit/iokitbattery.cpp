@@ -37,7 +37,7 @@ Battery::~Battery()
 
 }
 
-bool Battery::isPlugged() const
+bool Battery::isPresent() const
 {
     return m_device->property(QLatin1String("ExternalConnected")).toBool();
 }
