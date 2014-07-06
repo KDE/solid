@@ -176,7 +176,7 @@ void WinBattery::powerChanged()
     m_voltage = status.Voltage / 1000.0;//provided in mV
 
     if (info.FullChargedCapacity != 0) {
-        m_charge = m_energy / info.FullChargedCapacity * 100.0;
+        m_charge = (float)status.Capacity / info.FullChargedCapacity * 100.0;
     }
 
     if (info.DesignedCapacity != 0) {
