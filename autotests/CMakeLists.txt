@@ -24,7 +24,6 @@ target_include_directories(solidhwtest PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../sr
 ########### solidmttest ###############
 
 ecm_add_test(solidmttest.cpp LINK_LIBRARIES Qt5::DBus Qt5::Xml Qt5::Test ${LIBS} KF5Solid_static Qt5::Concurrent)
-target_include_directories(solidmttest PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../src/solid/backends/fakehw)
 target_compile_definitions(solidmttest PRIVATE SOLID_STATIC_DEFINE=1)
 
 ########### solidmttest ###############
@@ -36,3 +35,4 @@ endif()
 if (WITH_NEW_SOLID_JOB AND WITH_NEW_POWER_ASYNC_API)
     ecm_add_test(solidpowertest.cpp LINK_LIBRARIES Qt5::Test ${LIBS} KF5Solid_static)
 endif()
+
