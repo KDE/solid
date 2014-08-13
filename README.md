@@ -27,13 +27,6 @@ TechBase][tutorials].
 
 
 
-## Links
-
-- Home page: <http://solid.kde.org>
-- Mailing list: <https://mail.kde.org/mailman/listinfo/kde-frameworks-devel>
-- IRC channel: \#kde-devel on Freenode
-- Git repository: <https://projects.kde.org/projects/frameworks/solid/repository>
-
 There is also a [Solid song](@ref song).
 
 [tutorials]: http://techbase.kde.org/Development/Tutorials/Solid_Tutorials
