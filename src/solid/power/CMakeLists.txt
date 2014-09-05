@@ -28,3 +28,7 @@ if(WITH_NEW_POWER_ASYNC_API)
         power/backends/dummy/dummyrequeststatejob.cpp
     )
 endif()
+
+if(WITH_NEW_POWER_ASYNC_API AND WITH_NEW_POWER_ASYNC_FREEDESKTOP)
+    include(power/backends/freedesktop/CMakeLists.txt)
+endif()

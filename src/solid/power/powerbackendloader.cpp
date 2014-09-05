@@ -25,11 +25,15 @@
 #include "backends/dummy/dummyinhibitionjob.h"
 #include "backends/dummy/dummystatesjob.h"
 #include "backends/dummy/dummyrequeststatejob.h"
+#include "backends/freedesktop/fdacpluggedjob.h"
 
 using namespace Solid;
 
 AbstractAcPluggedJob* PowerBackendLoader::AcPluggedJob()
 {
+    if (qgetenv("SOLID_POWER_BACKEND") == "FREE_DESKTOP") {
+        return new FDAcPluggedJob();
+    }
     return new DummyAcPluggedJob();
 }
 

@@ -36,3 +36,8 @@ if (WITH_NEW_SOLID_JOB AND WITH_NEW_POWER_ASYNC_API)
     ecm_add_test(solidpowertest.cpp LINK_LIBRARIES Qt5::Test ${LIBS} KF5Solid_static)
 endif()
 
+########### solidpowertest ###############
+if(WITH_NEW_POWER_ASYNC_API AND WITH_NEW_POWER_ASYNC_FREEDESKTOP)
+    set(solidFreedesktopTest_SRCS solidfreedesktoptest.cpp fakeUpower.cpp)
+    ecm_add_test(${solidFreedesktopTest_SRCS} TEST_NAME "solidfreedesktopbackend" LINK_LIBRARIES Qt5::Test Qt5::DBus ${LIBS} KF5Solid_static)
+endif()
