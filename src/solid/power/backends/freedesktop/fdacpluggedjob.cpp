@@ -54,7 +54,6 @@ void FDAcPluggedJob::doStart()
 
 void FDAcPluggedJob::slotDBusReply(const QDBusMessage& msg)
 {
-    QDBusInterface inter("org.kde.kded5", "/org/kde/kded5");
     Q_ASSERT(!msg.arguments().isEmpty());
 
     m_isPlugged = !msg.arguments().first().value<QDBusVariant>().variant().toBool();
