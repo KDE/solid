@@ -70,7 +70,7 @@ void FakeUpower::setOnBattery(bool onBattery)
 {
     m_onBattery = onBattery;
 
-    emitPropertiesChanged(QStringLiteral("onBattery"), m_onBattery);
+    emitPropertiesChanged(QStringLiteral("OnBattery"), m_onBattery);
 }
 
 void FakeUpower::emitPropertiesChanged(const QString& name, const QVariant& value)

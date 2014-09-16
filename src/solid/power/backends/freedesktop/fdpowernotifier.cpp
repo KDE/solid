@@ -39,12 +39,13 @@ Solid::FDPowerNotifier::FDPowerNotifier(QObject* parent): PowerNotifier(parent)
 
 void Solid::FDPowerNotifier::propertiesChanged(const QString &interface, const QVariantMap &changedProperties, const QStringList &invalidated)
 {
+
     if (interface != QStringLiteral("org.freedesktop.UPower")) {
         return;
     }
 
-    if (changedProperties.contains(QStringLiteral("onBattery"))) {
-        Q_EMIT acPluggedChanged(!changedProperties.value(QStringLiteral("onBattery")).toBool());
+    if (changedProperties.contains(QStringLiteral("OnBattery"))) {
+        Q_EMIT acPluggedChanged(!changedProperties.value(QStringLiteral("OnBattery")).toBool());
     }
 
     //Just for debug purposes
