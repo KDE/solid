@@ -53,8 +53,8 @@ void solidFreedesktopTest::initTestCase()
     qputenv("SOLID_POWER_BACKEND", "FREE_DESKTOP");
 
     m_fakeUPower = new FakeUpower(this);
-    QDBusConnection::systemBus().registerService("org.freedesktop.UPower");
-    QDBusConnection::systemBus().registerObject("/org/freedesktop/UPower", m_fakeUPower, QDBusConnection::ExportAllContents);
+    QDBusConnection::systemBus().registerService(QStringLiteral("org.freedesktop.UPower"));
+    QDBusConnection::systemBus().registerObject(QStringLiteral("/org/freedesktop/UPower"), m_fakeUPower, QDBusConnection::ExportAllContents);
 }
 
 void solidFreedesktopTest::testAcPluggedJob()
