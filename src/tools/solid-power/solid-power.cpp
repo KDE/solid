@@ -45,3 +45,14 @@ void SolidPower::show()
 
     sCout << "is AC plugged:\t" << status << endl;
 }
+
+void SolidPower::listen()
+{
+    auto power = Power::self();
+
+    connect(power, &Power::acPluggedChanged, [](bool plugged){
+        QTextStream lOut(stdout);
+        QString status = plugged ? "yes" : "no";
+        lOut << "\tAC plugged changed:\t" << status << endl;
+    });
+}

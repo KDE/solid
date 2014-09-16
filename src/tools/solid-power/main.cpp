@@ -67,5 +67,11 @@ int main(int argc, char **argv)
 
     if (command == QLatin1String("show")) {
         power.show();
+    } else if(command == QLatin1String("listen")) {
+        sOut << "Listening to events:" << endl;
+        power.listen();
+        app.exec();
+    } else {
+        sOut << "Not recognized command" << endl;
     }
 }

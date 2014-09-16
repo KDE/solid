@@ -31,6 +31,7 @@ public:
     explicit SolidPower(QObject *parent = 0);
 
     void show();
+    void listen();
 };
 
 #endif //SOLID_POWER_TOOL_H
