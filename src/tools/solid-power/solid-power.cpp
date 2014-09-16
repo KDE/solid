@@ -30,9 +30,10 @@
 using namespace Solid;
 using namespace std;
 
+static QTextStream sCout(stdout);
+
 SolidPower::SolidPower(QObject* parent) : QObject(parent)
 {
-    mCout = new QTextStream(stdout);
 }
 
 void SolidPower::show()
@@ -42,6 +43,5 @@ void SolidPower::show()
 
     QString status = job->isPlugged() ? "yes" : "no";
 
-    QTextStream sOut(stdout);
-    sOut << "is AC plugged:\t" << status << endl;
+    sCout << "is AC plugged:\t" << status << endl;
 }

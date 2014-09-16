@@ -24,6 +24,7 @@
 #include <QtCore/QCommandLineParser>
 #include <QTextStream>
 
+static QTextStream sOut(stdout);
 int main(int argc, char **argv)
 {
     qputenv("SOLID_POWER_BACKEND", "FREE_DESKTOP");
@@ -43,7 +44,6 @@ int main(int argc, char **argv)
 
     if (parser.isSet(commands))
     {
-        QTextStream sOut(stdout);
         sOut << endl << QCoreApplication::translate("solid-hardware", "Syntax:") << endl << endl;
 
         sOut << "  solid-power show" << endl;
