@@ -62,12 +62,12 @@ void solidFreedesktopTest::testAcPluggedJob()
     m_fakeUPower->m_onBattery = true;
     auto job = new AcPluggedJob(this);
     QVERIFY(job->exec());
-    QCOMPARE(job->isPlugged(), m_fakeUPower->m_onBattery);
+    QCOMPARE(job->isPlugged(), false);
 
     m_fakeUPower->m_onBattery = false;
     job = Solid::Power::isAcPlugged();
     QVERIFY(job->exec());
-    QCOMPARE(job->isPlugged(), m_fakeUPower->m_onBattery);
+    QCOMPARE(job->isPlugged(), true);
 }
 
 void solidFreedesktopTest::testAcPluggedChanged()
