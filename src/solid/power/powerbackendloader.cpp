@@ -26,6 +26,7 @@
 #include "backends/dummy/dummystatesjob.h"
 #include "backends/dummy/dummyrequeststatejob.h"
 #include "backends/freedesktop/fdacpluggedjob.h"
+#include "backends/freedesktop/fdpowernotifier.h"
 
 using namespace Solid;
 
@@ -54,5 +55,8 @@ AbstractRequestStateJob* PowerBackendLoader::requestState()
 
 PowerNotifier* PowerBackendLoader::notifier()
 {
+    if (qgetenv("SOLID_POWER_BACKEND") == "FREE_DESKTOP") {
+        return new FDPowerNotifier();
+    }
     return new DummyPowerNotifier();
 }

@@ -21,8 +21,11 @@
 #include "fakeUpower.h"
 
 #include <QDebug>
+#include <QDBusPendingCall>
+#include <QDBusConnection>
+#include <qdbusmessage.h>
 
-FakeUpower::FakeUpower(QObject* parent) : QDBusAbstractAdaptor(parent),
+FakeUpower::FakeUpower(QObject* parent) : QObject(parent),
 m_onBattery(false)
 {
 
@@ -61,6 +64,32 @@ bool FakeUpower::lidIsPresent() const
 bool FakeUpower::onBattery() const
 {
     return m_onBattery;
+}
+
+void FakeUpower::setOnBattery(bool onBattery)
+{
+    m_onBattery = onBattery;
+
+    emitPropertiesChanged(QStringLiteral("onBattery"), m_onBattery);
+}
+
+void FakeUpower::emitPropertiesChanged(const QString& name, const QVariant& value)
+{
+    auto msg = QDBusMessage::createSignal(
+        QStringLiteral("/org/freedesktop/UPower"),
+        QStringLiteral("org.freedesktop.DBus.Properties"),
+        QStringLiteral("PropertiesChanged"));
+
+    QVariantMap map;
+    map.insert(name, value);
+    QList<QVariant> args;
+    args << QString("org.freedesktop.UPower");
+    args << map;
+    args << QStringList();
+
+    msg.setArguments(args);
+
+    QDBusConnection::systemBus().asyncCall(msg);
 }
 
 QList< QDBusObjectPath > FakeUpower::EnumerateDevices()

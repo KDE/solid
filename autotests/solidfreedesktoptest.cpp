@@ -72,7 +72,17 @@ void solidFreedesktopTest::testAcPluggedJob()
 
 void solidFreedesktopTest::testAcPluggedChanged()
 {
+    auto power = Solid::Power::self();
+    QSignalSpy spy(power, SIGNAL(acPluggedChanged(bool)));
 
+    m_fakeUPower->setOnBattery(true);
+    m_fakeUPower->setOnBattery(false);
+    spy.wait(10000);
+
+    QCOMPARE(spy.count(), 2);
+
+    QCOMPARE(spy.first().first().toBool(), false);
+    QCOMPARE(spy.at(1).first().toBool(), true);
 }
 
 void solidFreedesktopTest::testAddInhibition()

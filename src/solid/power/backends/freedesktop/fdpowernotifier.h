@@ -18,37 +18,23 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef SOLID_FAKE_UPOWER_H
-#define SOLID_FAKE_UPOWER_H
+#ifndef SOLID_FD_POWER_NOTIFIER_H
+#define SOLID_FD_POWER_NOTIFIER_H
 
-#include <QList>
-#include <QString>
-#include <QDBusAbstractAdaptor>
-#include <QDBusObjectPath>
+#include "backends/powernotifier.h"
+#include <QStringList>
 
-class FakeUpower : public QObject
+namespace Solid
+{
+class FDPowerNotifier : public PowerNotifier
 {
     Q_OBJECT
-    Q_PROPERTY(bool IsDocked READ isDocked)
-    Q_PROPERTY(bool OnBattery READ onBattery)
-    Q_CLASSINFO("D-Bus Interface", "org.freedesktop.UPower")
 public:
-    explicit FakeUpower(QObject* parent);
+    explicit FDPowerNotifier(QObject* parent = 0);
 
-    QString daemonVersion() const;
-    bool isDocked() const;
-    bool lidIsClosed() const;
-    bool lidIsPresent() const;
-    bool onBattery() const;
-    void setOnBattery(bool onBattery);
-
-    bool m_onBattery;
-
-    void emitPropertiesChanged(const QString &name, const QVariant &value);
 public Q_SLOTS:
-    QList<QDBusObjectPath> EnumerateDevices();
-    QString GetCriticalAction();
-    QDBusObjectPath GetDisplayDevice();
+    void propertiesChanged(const QString& interface, const QVariantMap& changedProperties, const QStringList& invalidated);
 };
+}
 
-#endif //SOLID_FAKE_UPOWER_H
+#endif //SOLID_FD_POWER_NOTIFIER_H
