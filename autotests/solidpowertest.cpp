@@ -32,12 +32,18 @@ class solidPowerTest : public QObject
 {
     Q_OBJECT
 private Q_SLOTS:
+    void initTestCase();
     void testAcPluggedJob();
     void testAcPluggedChanged();
     void testAddInhibition();
     void testSupportedStates();
     void testRequestState();
 };
+
+void solidPowerTest::initTestCase()
+{
+    qputenv("SOLID_POWER_BACKEND", "DUMMY");
+}
 
 void solidPowerTest::testAcPluggedJob()
 {

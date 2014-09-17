@@ -32,10 +32,10 @@ using namespace Solid;
 
 AbstractAcPluggedJob* PowerBackendLoader::AcPluggedJob()
 {
-    if (qgetenv("SOLID_POWER_BACKEND") == "FREE_DESKTOP") {
-        return new FDAcPluggedJob();
+    if (qgetenv("SOLID_POWER_BACKEND") == "DUMMY") {
+        return new DummyAcPluggedJob();
     }
-    return new DummyAcPluggedJob();
+    return new FDAcPluggedJob();
 }
 
 AbstractInhibitionJob* PowerBackendLoader::addInhibitionJob(Power::States inhibitions, const QString &description)
@@ -55,8 +55,8 @@ AbstractRequestStateJob* PowerBackendLoader::requestState()
 
 PowerNotifier* PowerBackendLoader::notifier()
 {
-    if (qgetenv("SOLID_POWER_BACKEND") == "FREE_DESKTOP") {
-        return new FDPowerNotifier();
+    if (qgetenv("SOLID_POWER_BACKEND") == "DUMMY") {
+        return new DummyPowerNotifier();
     }
-    return new DummyPowerNotifier();
+    return new FDPowerNotifier();
 }
