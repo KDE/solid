@@ -49,7 +49,7 @@ int main(int argc, char **argv)
         sOut << "  solid-power show" << endl;
         sOut << QCoreApplication::translate("solid-power",
                 "             # Show all the power management information from the system.\n"
-                "             # - acPlugged: wether the device is connected to the AC or not\n") << endl;
+                "             # - acPlugged: whether the device is connected to the AC or not\n") << endl;
         return 1;
     }
 
