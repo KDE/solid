@@ -42,7 +42,7 @@ public:
     };
 
     /**
-     * Instance InhibitionJob
+     * Instantiate InhibitionJob
      *
      * When this job emits result(Solid::Job*) and in case no
      * error has happened, an Inhibition object will be

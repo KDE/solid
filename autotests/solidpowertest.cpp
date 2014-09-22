@@ -91,7 +91,7 @@ void solidPowerTest::testSupportedStates()
 
     QCOMPARE(job->states(), Power::Brightness | Power::Sleep);
 
-    job = Power::states();
+    job = Power::supportedStates();
     QVERIFY(job->exec());
 
     QCOMPARE(job->states(), Power::Brightness | Power::Sleep);

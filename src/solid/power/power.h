@@ -49,7 +49,9 @@ public:
         Hibernation = 1 << 1,
         HybridSleep = 1 << 2,
         Screen = 1 << 3,
-        Brightness = 1 << 4
+        Brightness = 1 << 4,
+        Reboot = 1 << 5,
+        Poweroff = 1 << 6
     };
     Q_DECLARE_FLAGS(States, State)
     /**
@@ -85,7 +87,7 @@ public:
      * Query the supported states (like Sleep or Hibernation)
      * @return a StatesJob
      */
-    static StatesJob* states(QObject *parent = 0);
+    static StatesJob* supportedStates(QObject *parent = 0);
 
     /**
      * Set the computer in a desired @p state (like Sleep or Hibernation)
