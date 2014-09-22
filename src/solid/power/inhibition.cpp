@@ -41,7 +41,7 @@ Inhibition::~Inhibition()
 {
     delete d_ptr->backendObject;
     delete d_ptr;
-};
+}
 
 void Inhibition::start()
 {

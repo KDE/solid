@@ -104,14 +104,19 @@ public:
     explicit Power(QObject* parent = 0);
 
 Q_SIGNALS:
+    /**
+     * Emitted when the system changes the power source
+     * @param plugged whether the system runs on AC
+     */
     void acPluggedChanged(bool plugged);
-private:
 
+private:
     class Private;
-    Private *d;
+    Private * const d;
 };
 }
 
+Q_DECLARE_METATYPE(Solid::Power::State)
 Q_DECLARE_OPERATORS_FOR_FLAGS(Solid::Power::States)
 
 #endif //SOLID_POWER_H
