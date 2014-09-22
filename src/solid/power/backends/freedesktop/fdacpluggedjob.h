@@ -42,8 +42,6 @@ private Q_SLOTS:
     void slotDBusError(const QDBusError &error);
 
 private:
-    void dbusFinished(QDBusPendingCallWatcher* watcher);
-
     bool m_isPlugged;
 };
 }
