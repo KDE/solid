@@ -28,7 +28,7 @@ class QDBusMessage;
 class QDBusPendingCallWatcher;
 namespace Solid
 {
-class   FDAcPluggedJob : public AbstractAcPluggedJob
+class FDAcPluggedJob : public AbstractAcPluggedJob
 {
     Q_OBJECT
 public:
@@ -38,7 +38,7 @@ public:
 private Q_SLOTS:
     virtual void doStart() Q_DECL_OVERRIDE;
 
-    void slotDBusReply(const QDBusMessage &msg);
+    void slotDBusReply(const QVariant &reply);
     void slotDBusError(const QDBusError &error);
 
 private:

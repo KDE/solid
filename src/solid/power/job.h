@@ -30,7 +30,7 @@ namespace Solid
 class JobPrivate;
 /**
  * This class represents an asynchronous job performed by Solid,
- * it is usually not used directly but instead it is inherit by some
+ * it is usually not used directly but instead it is inherited by some
  * other class, for example \See AcPluggedJob or \See StatesJob
  *
  * There are two ways of using this class, one is via exec() which will block
@@ -59,9 +59,9 @@ public:
     virtual ~Job();
 
     enum Error {
-        /*** Indicates there is no error */
+        /** Indicates there is no error */
         NoError = 0,
-        /*** Subclasses should define error codes starting at this value */
+        /** Subclasses should define error codes starting at this value */
         UserDefinedError = 100
     };
 
@@ -77,7 +77,7 @@ public:
      * called, which usually wreaks havoc.
      *
      * Note that the event loop started by this method does not process user input events, which means
-     * your user interface will effectivly be blocked. Other events like paint or network events are
+     * your user interface will effectively be blocked. Other events like paint or network events are
      * still being processed. The advantage of not processing user input events is that the chance of
      * accidental reentrancy is greatly reduced. Still you should avoid calling this function.
      *
@@ -100,7 +100,7 @@ public:
      * Only call if error is not 0.
      *
      * This is usually some extra data associated with the error,
-     * such as a URL.  Use errorString() to get a human-readable,
+     * such as a URL. Use errorString() to get a human-readable,
      * translated message.
      *
      * @return a string to help understand the error
@@ -124,7 +124,7 @@ private Q_SLOTS:
      *
      * This slot is always called in the next loop, triggered by start().
      *
-     * When implementing this method is important to remember that jobs
+     * When implementing this method it is important to remember that jobs
      * are not executed on a different thread (unless done that way), so any
      * blocking task has to be done in a different thread or process.
      */

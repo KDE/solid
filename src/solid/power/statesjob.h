@@ -29,7 +29,7 @@
 namespace Solid
 {
 class StatesJobPrivate;
-/*
+/**
  * Returns the states supported on the device
  *
  * Different devices and different operating systems support

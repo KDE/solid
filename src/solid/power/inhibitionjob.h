@@ -45,8 +45,8 @@ public:
      * Instance InhibitionJob
      *
      * When this job emits result(Solid::Job*) and in case no
-     * error has happened an Inhibition object will be
-     * return using inhibition(). Delete the returned object
+     * error has happened, an Inhibition object will be
+     * returned using inhibition(). Delete the returned object
      * as soon as the inhibition should be released.
      *
      * At least one action to inhibit and description should be
@@ -87,7 +87,7 @@ public:
      * The result of this job is an object called Inhibition
      * which should be kept as long as the inhibition is desired.
      *
-     * If this method is called before result(Solid::Job*) is emitted
+     * If this method is called before result(Solid::Job*) is emitted,
      * it will return nullptr.
      */
     Inhibition* inhibition() const;

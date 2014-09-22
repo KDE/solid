@@ -39,7 +39,6 @@ Solid::FDPowerNotifier::FDPowerNotifier(QObject* parent): PowerNotifier(parent)
 
 void Solid::FDPowerNotifier::propertiesChanged(const QString &interface, const QVariantMap &changedProperties, const QStringList &invalidated)
 {
-
     if (interface != QStringLiteral("org.freedesktop.UPower")) {
         return;
     }

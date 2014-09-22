@@ -49,14 +49,14 @@ void FDAcPluggedJob::doStart()
          << QStringLiteral("OnBattery");
     msg.setArguments(args);
 
-   QDBusConnection::systemBus().callWithCallback(msg, this, SLOT(slotDBusReply(QDBusMessage)), SLOT(slotDBusError(QDBusError)));
+    QDBusConnection::systemBus().callWithCallback(msg, this, SLOT(slotDBusReply(QVariant)), SLOT(slotDBusError(QDBusError)));
 }
 
-void FDAcPluggedJob::slotDBusReply(const QDBusMessage& msg)
+void FDAcPluggedJob::slotDBusReply(const QVariant & reply)
 {
-    Q_ASSERT(!msg.arguments().isEmpty());
+    Q_ASSERT(reply.isValid());
 
-    m_isPlugged = !msg.arguments().first().value<QDBusVariant>().variant().toBool();
+    m_isPlugged = !reply.toBool();
     emitResult();
 }
 

@@ -34,7 +34,7 @@ class AbstractInhibition;
  * Holds an inhibition
  *
  * This object is returned by Power::InhibitionJob::inhibition and it
- * hols a reference to the inhibition that has been performed.
+ * holds a reference to the inhibition that has been performed.
  *
  * When this object is deleted the inhibition will be released
  */
@@ -50,10 +50,10 @@ public:
     };
 
     /**
-     * This is meant to be instantiate by backends only
+     * This is meant to be instantiated by backends only
      *
-     * AbstractInhibition is not part of Solid public api so this
-     * constructor is thought to be used only by backends.
+     * AbstractInhibition is not part of Solid public API so this
+     * constructor is meant to be used only by backends.
      */
     explicit Inhibition(AbstractInhibition *backend, QObject *parent=0);
     virtual ~Inhibition();
@@ -63,7 +63,7 @@ public:
      *
      * The initial value is Started since that is how InhibitionJob will
      * return it. The state can be modified by calling stop() and start().
-     * Also stateChanged signal is available.
+     * Also stateChanged() signal is available.
      */
     State state() const;
 
@@ -72,16 +72,16 @@ public Q_SLOTS:
      * Stops the inhibition
      *
      * In case the state() is Started, it will stop the inhibition.
-     * This happens asynchronously so connect to stateChanged signal to know
+     * This happens asynchronously so connect to stateChanged() signal to know
      * when stop() has changed the state.
      */
     void stop();
 
-    /*
+    /**
      * Starts the inhibition
      *
      * In case state() is Stopped, it will resume the inhibition.
-     * This happens asynchronously so connect to stateChanged signal to
+     * This happens asynchronously so connect to stateChanged() signal to
      * know when start() has changed the state.
      */
     void start();

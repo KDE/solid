@@ -39,6 +39,6 @@ public:
     static AbstractRequestStateJob* requestState();
     static PowerNotifier* notifier();
 };
-};
+}
 
 #endif //POWER_BACKEND_LOADER_H

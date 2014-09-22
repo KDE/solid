@@ -30,7 +30,7 @@ namespace Solid
 {
 class RequestStateJobPrivate;
 /**
- * Tries to set the device under the state indicate via setState
+ * Tries to set the device under the state indicated via setState()
  *
  * On success this job will contain no error and the device will
  * be set to the desired state (for example Sleep). On error

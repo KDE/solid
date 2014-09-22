@@ -36,12 +36,12 @@ class SOLID_EXPORT Power : public QObject
     Q_FLAGS(States)
 public:
     /**
-     * List of states a device and be into
+     * List of states a device can be in
      *
      * This list of states can be used to either put the device
      * running the code into a specific state (for example put a
      * laptop to sleep) or to avoid (inhibit) that state to happen,
-     * for example to prevent the brightness to be modified automatically
+     * for example to prevent the brightness from being modified automatically
      */
     enum State {
         None = 0,
@@ -51,7 +51,7 @@ public:
         Screen = 1 << 3,
         Brightness = 1 << 4
     };
-    Q_DECLARE_FLAGS(States, State);
+    Q_DECLARE_FLAGS(States, State)
     /**
      * Returns an instance of Power
      *
@@ -59,9 +59,9 @@ public:
      * in the power management system by connecting to its signals, like
      * acPluggedChanged().
      *
-     * If you are interested on Power during the entire live cycle of your
-     * application, then you want to use this singlethon. If instead you are
-     * only intested for a short period of time, consider instancing your own
+     * If you are interested in Power during the entire life cycle of your
+     * application, then you want to use this singleton. If instead you are
+     * only interested for a short period of time, consider instantiating your own
      * Solid::Power so you can free the memory at any point.
      */
     static Power* self();
@@ -74,21 +74,30 @@ public:
      */
     static AcPluggedJob* isAcPlugged(QObject *parent = 0);
 
-    /*
+    /**
      * Returns an InhibitionJob
      *
-     * The returned job is initialized with the given @inhibitions and @description
+     * The returned job is initialized with the given @p states and @p description
      */
     static InhibitionJob* inhibit(Power::States states, const QString &description, QObject *parent = 0);
 
+    /**
+     * Query the supported states (like Sleep or Hibernation)
+     * @return a StatesJob
+     */
     static StatesJob* states(QObject *parent = 0);
 
+    /**
+     * Set the computer in a desired @p state (like Sleep or Hibernation)
+     * @return a RequestStateJob
+     */
     static RequestStateJob* requestState(Power::State state, QObject *parent = 0);
+
     /**
      * If you are not going to destroy this object for the entire
-     * application live cycle, you might want to use self() singlethon.
+     * application life cycle, you might want to use self() singleton.
      *
-     * The only reason to instance your own Power object is for when an
+     * The only reason to instantiate your own Power object is for when an
      * application is only interested in power management during a small
      * period of time and you want to free the memory after using it.
      */
@@ -102,5 +111,7 @@ private:
     Private *d;
 };
 }
-Q_DECLARE_OPERATORS_FOR_FLAGS(Solid::Power::States);
+
+Q_DECLARE_OPERATORS_FOR_FLAGS(Solid::Power::States)
+
 #endif //SOLID_POWER_H
