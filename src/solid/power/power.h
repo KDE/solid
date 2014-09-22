@@ -112,6 +112,11 @@ Q_SIGNALS:
      */
     void acPluggedChanged(bool plugged);
 
+    /**
+     * Emitted when the system has just resumed from being suspended/hibernated
+     */
+    void resumeFromSuspend();
+
 private:
     class Private;
     Private * const d;

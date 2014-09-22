@@ -45,8 +45,10 @@ Power* Power::self()
 
 Power::Power(QObject* parent) : QObject(parent), d(new Private)
 {
+    qRegisterMetaType<Solid::Inhibition::State>("Inhibition::State");
     d->notifier = PowerBackendLoader::notifier();
     connect(d->notifier, &PowerNotifier::acPluggedChanged, this, &Power::acPluggedChanged);
+    connect(d->notifier, &PowerNotifier::resumeFromSuspend, this, &Power::resumeFromSuspend);
 }
 
 AcPluggedJob* Power::isAcPlugged(QObject* parent)

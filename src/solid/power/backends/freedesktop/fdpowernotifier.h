@@ -32,8 +32,9 @@ class FDPowerNotifier : public PowerNotifier
 public:
     explicit FDPowerNotifier(QObject* parent = 0);
 
-public Q_SLOTS:
-    void propertiesChanged(const QString& interface, const QVariantMap& changedProperties, const QStringList& invalidated);
+private Q_SLOTS:
+    void upowerPropertiesChanged(const QString& interface, const QVariantMap& changedProperties, const QStringList& invalidated);
+    void login1Resuming(bool active);
 };
 }
 

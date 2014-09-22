@@ -1,5 +1,6 @@
 /*
     Copyright 2014 Alejandro Fiestas Olivares <afiestas@kde.org>
+    Copyright 2014 Lukáš Tinkl <ltinkl@redhat.com>
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -23,21 +24,27 @@
 #include <QDebug>
 #include <QDBusConnection>
 
-#include <QtDBus/QDBusConnection>
-
 Solid::FDPowerNotifier::FDPowerNotifier(QObject* parent): PowerNotifier(parent)
 {
     auto conn = QDBusConnection::systemBus();
     conn.connect(QStringLiteral("org.freedesktop.UPower"),
-        QStringLiteral("/org/freedesktop/UPower"),
-        QStringLiteral("org.freedesktop.DBus.Properties"),
-        QStringLiteral("PropertiesChanged"),
-        this,
-        SLOT(propertiesChanged(QString, QVariantMap, QStringList))
-    );
+                 QStringLiteral("/org/freedesktop/UPower"),
+                 QStringLiteral("org.freedesktop.DBus.Properties"),
+                 QStringLiteral("PropertiesChanged"),
+                 this,
+                 SLOT(upowerPropertiesChanged(QString, QVariantMap, QStringList))
+                 );
+
+    conn.connect(QStringLiteral("org.freedesktop.login1"),
+                 QStringLiteral("/org/freedesktop/login1"),
+                 QStringLiteral("org.freedesktop.login1.Manager"),
+                 QStringLiteral("PrepareForSleep"),
+                 this,
+                 SLOT(login1Resuming(bool))
+                 );
 }
 
-void Solid::FDPowerNotifier::propertiesChanged(const QString &interface, const QVariantMap &changedProperties, const QStringList &invalidated)
+void Solid::FDPowerNotifier::upowerPropertiesChanged(const QString &interface, const QVariantMap &changedProperties, const QStringList &invalidated)
 {
     if (interface != QStringLiteral("org.freedesktop.UPower")) {
         return;
@@ -50,5 +57,12 @@ void Solid::FDPowerNotifier::propertiesChanged(const QString &interface, const Q
     //Just for debug purposes
     if (!invalidated.isEmpty()) {
         qDebug() << "Invalidated" << invalidated;
+    }
+}
+
+void Solid::FDPowerNotifier::login1Resuming(bool active)
+{
+    if (!active) {
+        Q_EMIT resumeFromSuspend();
     }
 }
