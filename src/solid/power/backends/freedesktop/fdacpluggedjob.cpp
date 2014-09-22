@@ -26,8 +26,8 @@
 #include <QDBusMessage>
 #include <QDBusPendingCall>
 #include <QDBusPendingReply>
-
 #include <QDBusInterface>
+
 using namespace Solid;
 
 FDAcPluggedJob::FDAcPluggedJob(QObject* parent)
@@ -44,19 +44,17 @@ void FDAcPluggedJob::doStart()
             QStringLiteral("org.freedesktop.DBus.Properties"),
             QStringLiteral("Get"));
 
-    QList<QVariant> args;
-    args << QStringLiteral("org.freedesktop.UPower")
-         << QStringLiteral("OnBattery");
-    msg.setArguments(args);
+    msg << QStringLiteral("org.freedesktop.UPower");
+    msg << QStringLiteral("OnBattery");
 
-    QDBusConnection::systemBus().callWithCallback(msg, this, SLOT(slotDBusReply(QVariant)), SLOT(slotDBusError(QDBusError)));
+    QDBusConnection::systemBus().callWithCallback(msg, this, SLOT(slotDBusReply(QDBusMessage)), SLOT(slotDBusError(QDBusError)));
 }
 
-void FDAcPluggedJob::slotDBusReply(const QVariant & reply)
+void FDAcPluggedJob::slotDBusReply(const QDBusMessage & msg)
 {
-    Q_ASSERT(reply.isValid());
+    Q_ASSERT(!msg.arguments().isEmpty());
 
-    m_isPlugged = !reply.toBool();
+    m_isPlugged = !msg.arguments().first().value<QDBusVariant>().variant().toBool();
     emitResult();
 }
 

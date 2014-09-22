@@ -38,7 +38,7 @@ public:
 private Q_SLOTS:
     virtual void doStart() Q_DECL_OVERRIDE;
 
-    void slotDBusReply(const QVariant &reply);
+    void slotDBusReply(const QDBusMessage &msg);
     void slotDBusError(const QDBusError &error);
 
 private:
