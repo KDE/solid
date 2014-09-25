@@ -20,6 +20,7 @@
 
 #include "qtest_dbus.h"
 #include "fakeUpower.h"
+#include "fakelogind.h"
 
 #include <QTest>
 #include <QDebug>
@@ -46,6 +47,7 @@ private Q_SLOTS:
 
 private:
     FakeUpower *m_fakeUPower;
+    FakeLogind *m_fakeLogind;
 };
 
 void solidFreedesktopTest::initTestCase()
@@ -55,6 +57,10 @@ void solidFreedesktopTest::initTestCase()
     m_fakeUPower = new FakeUpower(this);
     QDBusConnection::systemBus().registerService(QStringLiteral("org.freedesktop.UPower"));
     QDBusConnection::systemBus().registerObject(QStringLiteral("/org/freedesktop/UPower"), m_fakeUPower, QDBusConnection::ExportAllContents);
+
+    m_fakeLogind = new FakeLogind(this);
+    QDBusConnection::systemBus().registerService(QStringLiteral("org.freedesktop.login1"));
+    QDBusConnection::systemBus().registerObject(QStringLiteral("/org/freedesktop/login1"), m_fakeLogind, QDBusConnection::ExportAllContents);
 }
 
 void solidFreedesktopTest::testAcPluggedJob()
@@ -87,7 +93,15 @@ void solidFreedesktopTest::testAcPluggedChanged()
 
 void solidFreedesktopTest::testAddInhibition()
 {
+    QSignalSpy spy(m_fakeLogind, SIGNAL(newInhibition(QString, QString, QString, QString)));
+    auto job = new InhibitionJob(this);
+    job->setDescription(QStringLiteral("Foo! I am inhibing!"));
+    job->setInhibitions(Power::Hibernation | Power::Sleep);
 
+    job->exec();
+    spy.wait(100);
+
+    QCOMPARE(spy.count(), 1);
 }
 
 void solidFreedesktopTest::testSupportedStates()

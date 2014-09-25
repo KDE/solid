@@ -27,6 +27,7 @@
 #include "backends/dummy/dummyrequeststatejob.h"
 #include "backends/freedesktop/fdacpluggedjob.h"
 #include "backends/freedesktop/fdpowernotifier.h"
+#include "backends/freedesktop/fdinhibitionjob.h"
 
 using namespace Solid;
 
@@ -40,7 +41,10 @@ AbstractAcPluggedJob* PowerBackendLoader::AcPluggedJob()
 
 AbstractInhibitionJob* PowerBackendLoader::addInhibitionJob(Power::States inhibitions, const QString &description)
 {
-    return new DummyInhibitionJob(inhibitions, description);
+    if (qgetenv("SOLID_POWER_BACKEND") == "DUMMY") {
+        return new DummyInhibitionJob(inhibitions, description);
+    }
+    return new FdInhibitionJob(inhibitions, description);
 }
 
 AbstractStatesJob* PowerBackendLoader::statesJob()
