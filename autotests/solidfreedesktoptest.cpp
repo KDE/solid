@@ -99,9 +99,25 @@ void solidFreedesktopTest::testAddInhibition()
     job->setInhibitions(Power::Hibernation | Power::Sleep);
 
     job->exec();
-    spy.wait(100);
 
     QCOMPARE(spy.count(), 1);
+
+    QSignalSpy spyRemoved(m_fakeLogind, SIGNAL(inhibitionRemoved()));
+    auto inhibition = job->inhibition();
+    inhibition->stop();
+
+    spyRemoved.wait(100);
+    QCOMPARE(spy.count(), 1);
+
+    QSignalSpy spyStatusChanged(inhibition, SIGNAL(stateChanged(Inhibition::State)));
+    inhibition->start();
+    spyStatusChanged.wait(100);
+
+    QCOMPARE(spyStatusChanged.count(), 1);
+
+    delete inhibition;
+    spyRemoved.wait(100);
+    QCOMPARE(spyRemoved.count(), 2);
 }
 
 void solidFreedesktopTest::testSupportedStates()

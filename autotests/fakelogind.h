@@ -39,7 +39,7 @@ public Q_SLOTS:
     void checkFd();
 
 Q_SIGNALS:
-    void fdClosed();
+    void inhibitionRemoved();
     void newInhibition(const QString &what, const QString &who, const QString &why, const QString &mode);
 
 private:

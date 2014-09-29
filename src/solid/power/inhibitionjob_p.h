@@ -33,9 +33,9 @@ class InhibitionJobPrivate : public JobPrivate
 public:
     InhibitionJobPrivate();
 
-
     QString description;
     Power::States inhibitions;
+    Inhibition *inhibition;
     AbstractInhibitionJob *backendJob;
     Q_DECLARE_PUBLIC(InhibitionJob)
 };

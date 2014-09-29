@@ -23,9 +23,11 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <QtCore/qtemporaryfile.h>
 
 #include <QDebug>
-#include <qtimer.h>
+#include <QTimer>
+#include <QTemporaryFile>
 
 FakeLogind::FakeLogind(QObject* parent) : QObject(parent)
 {
@@ -36,24 +38,33 @@ QDBusUnixFileDescriptor FakeLogind::Inhibit(const QString& what, const QString& 
 {
     Q_EMIT newInhibition(what, who, why, mode);
 
-//     m_fd = open("/tmp/rolf", O_WRONLY|O_CLOEXEC|O_NDELAY);
-//     qDebug() << "Sending" << m_fd;
     QDBusUnixFileDescriptor foo;
-    foo.giveFileDescriptor(33);
-/*
+    foo.setFileDescriptor(-1);
+
+    QTemporaryFile file;
+    if (!file.open()) {
+        qDebug() << "Could not open a temporary file";
+        return foo;
+    }
+
+    m_fd = file.handle();
+    foo.giveFileDescriptor(m_fd);
+
+    //We could use epoll for this, but it will make the code harder to read for a test.
     auto t = new QTimer();
     t->setInterval(100);
     connect(t, SIGNAL(timeout()), SLOT(checkFd()));
-    t->start();*/
+    t->start();
+
     return foo;
 }
-
 
 void FakeLogind::checkFd()
 {
     int e = fcntl(m_fd, F_GETFD) != -1 || errno != EBADF;
 
     if (e == 0) {
+        Q_EMIT inhibitionRemoved();
         delete sender();
     }
 }

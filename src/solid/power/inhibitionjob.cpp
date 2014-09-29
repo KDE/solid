@@ -32,6 +32,7 @@ using namespace Solid;
 
 InhibitionJobPrivate::InhibitionJobPrivate()
     : inhibitions(Power::None)
+    , inhibition(Q_NULLPTR)
     , backendJob(Q_NULLPTR)
 {
 
@@ -44,11 +45,12 @@ InhibitionJob::InhibitionJob(QObject* parent) : Job(*new InhibitionJobPrivate(),
 
 Inhibition* InhibitionJob::inhibition() const
 {
-    Q_ASSERT_X(d_func()->backendJob, "addInhibitionJob", "::inhibition() called before result() has been emitted");
+    Q_ASSERT_X(d_func()->inhibition, "addInhibitionJob", "::inhibition() called before result() has been emitted");
 
-    if(d_func()->backendJob) {
-        return d_func()->backendJob->inhibition();
+    if(d_func()->inhibition) {
+        return d_func()->inhibition;
     }
+
     qWarning() << "result() has not been emitted yet, job not finished";
     return Q_NULLPTR;
 }
@@ -69,7 +71,8 @@ void InhibitionJob::doStart()
     }
 
     d->backendJob = PowerBackendLoader::addInhibitionJob(d->inhibitions, d->description);
-    connect(d->backendJob, &AbstractInhibitionJob::result, [this]() {
+    connect(d->backendJob, &AbstractInhibitionJob::result, [this, d]() {
+        d_func()->inhibition = d->backendJob->inhibition();
         emitResult();
     });
 
