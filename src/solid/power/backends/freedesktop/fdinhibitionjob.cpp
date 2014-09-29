@@ -49,7 +49,7 @@ void FdInhibitionJob::stateChanged(Inhibition::State state)
 {
     Q_UNUSED(state);
 
-    disconnect(this, SLOT(stateChanged(Inhibition::State)));
+    disconnect(m_inhibition, 0, this, 0);
     emitResult();
 }
 
