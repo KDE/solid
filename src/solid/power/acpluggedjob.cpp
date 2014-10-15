@@ -30,6 +30,8 @@ using namespace Solid;
 AcPluggedJobPrivate::AcPluggedJobPrivate()
 {
     backendJob = Q_NULLPTR;
+    plugged = false;
+    backendJobFinished = false;
 }
 
 AcPluggedJob::AcPluggedJob(QObject* parent) : Job(*new AcPluggedJobPrivate(), parent)
@@ -40,7 +42,9 @@ void AcPluggedJob::doStart()
 {
     Q_D(AcPluggedJob);
     d->backendJob = PowerBackendLoader::AcPluggedJob();
-    connect(d->backendJob, &AbstractAcPluggedJob::result, [this]() {
+    connect(d->backendJob, &AbstractAcPluggedJob::result, [this, d]() {
+        d->backendJobFinished = true;
+        d->plugged = d->backendJob->isPlugged();
         emitResult();
     });
 
@@ -49,8 +53,8 @@ void AcPluggedJob::doStart()
 
 bool AcPluggedJob::isPlugged() const
 {
-    if(d_func()->backendJob) {
-        return d_func()->backendJob->isPlugged();
+    if(d_func()->backendJobFinished) {
+        return d_func()->plugged;
     }
     qWarning() << "isPlugged called without having called start";
     return false;

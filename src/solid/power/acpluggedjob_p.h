@@ -32,6 +32,7 @@ public:
     AcPluggedJobPrivate();
 
     bool plugged;
+    bool backendJobFinished;
     AbstractAcPluggedJob *backendJob;
     Q_DECLARE_PUBLIC(AcPluggedJob)
 };
