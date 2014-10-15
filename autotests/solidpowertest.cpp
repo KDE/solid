@@ -95,12 +95,12 @@ void solidPowerTest::testSupportedStates()
     auto job = new StatesJob();
     QVERIFY(job->exec());
 
-    QCOMPARE(job->states(), Power::Brightness | Power::Sleep);
+    QCOMPARE(job->states(), Power::PowerOff | Power::Sleep);
 
     job = Power::supportedStates();
     QVERIFY(job->exec());
 
-    QCOMPARE(job->states(), Power::Brightness | Power::Sleep);
+    QCOMPARE(job->states(), Power::PowerOff | Power::Sleep);
 }
 
 void solidPowerTest::testRequestState()
@@ -112,7 +112,7 @@ void solidPowerTest::testRequestState()
     job = Power::requestState(Power::Sleep);
     QVERIFY(job->exec());
 
-    job = Power::requestState(Power::Brightness);
+    job = Power::requestState(Power::PowerOff);
     QVERIFY(!job->exec());
 
     QCOMPARE(job->error(), (int) RequestStateJob::Unsupported);

@@ -41,17 +41,21 @@ public:
      * This list of states can be used to either put the device
      * running the code into a specific state (for example put a
      * laptop to sleep) or to avoid (inhibit) that state to happen,
-     * for example to prevent the brightness from being modified automatically
+     * for example to prevent the screen to be dimed automatically
+     *
+     * Since this is quite specific to each platform some backends might
+     * not support all states.
+     *
+     * Some States are more complex or contain sub-states, those are usually
+     * set using a specific job (for example Sleep can be done either using suspend to ram,
+     * suspend to disk or an hybrid approach).
      */
     enum State {
         None = 0,
         Sleep = 1 << 0,
-        Hibernation = 1 << 1,
-        HybridSleep = 1 << 2,
-        Screen = 1 << 3,
-        Brightness = 1 << 4,
-        Reboot = 1 << 5,
-        Poweroff = 1 << 6
+        Screen = 1 << 1,
+        Reboot = 1 << 2,
+        PowerOff = 1 << 3
     };
     Q_DECLARE_FLAGS(States, State)
     /**
