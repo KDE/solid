@@ -6,4 +6,5 @@ set(solid_LIB_SRCS
     power/backends/freedesktop/fdpowernotifier.cpp
     power/backends/freedesktop/fdinhibitionjob.cpp
     power/backends/freedesktop/fdinhibition.cpp
+    power/backends/freedesktop/logindinhibitionargument.cpp
 )

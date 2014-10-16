@@ -19,6 +19,7 @@
 */
 
 #include "fdinhibition.h"
+#include "logindinhibitionargument.h"
 
 #include <unistd.h>
 
@@ -53,7 +54,7 @@ void FdInhibition::start()
             QStringLiteral("Inhibit"));
 
     QList<QVariant> args;
-    args << QStringLiteral("shutdown")
+    args << LogindInhibitionArgument::fromPowerState(m_inhibitions)
          << qApp->applicationName()
          << m_description
          << QStringLiteral("block");
