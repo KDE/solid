@@ -54,8 +54,7 @@ public:
         None = 0,
         Sleep = 1 << 0,
         Screen = 1 << 1,
-        Reboot = 1 << 2,
-        PowerOff = 1 << 3
+        Shutdown = 1 << 3
     };
     Q_DECLARE_FLAGS(States, State)
     /**

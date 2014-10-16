@@ -31,7 +31,7 @@ private Q_SLOTS:
 
 void LoginInhibitionArgumentTest::testFromPowerStates()
 {
-    QString arg = LogindInhibitionArgument::fromPowerState(Power::PowerOff & Power::Sleep);
+    QString arg = LogindInhibitionArgument::fromPowerState(Power::Shutdown & Power::Sleep);
     QCOMPARE(arg, QStringLiteral("sleep:shutdown"));
 }
 

@@ -96,7 +96,7 @@ void solidFreedesktopTest::testAddInhibition()
     QSignalSpy spy(m_fakeLogind, SIGNAL(newInhibition(QString, QString, QString, QString)));
     auto job = new InhibitionJob(this);
     job->setDescription(QStringLiteral("Foo! I am inhibing!"));
-    job->setInhibitions(Power::PowerOff | Power::Sleep);
+    job->setInhibitions(Power::Shutdown | Power::Sleep);
 
     job->exec();
 

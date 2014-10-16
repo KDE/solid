@@ -30,7 +30,7 @@ QString LogindInhibitionArgument::fromPowerState(Power::States states)
     if (states | Power::Sleep) {
         args << QStringLiteral("sleep");
     }
-    if (states | Power::PowerOff) {
+    if (states | Power::Shutdown) {
         args << QStringLiteral("shutdown");
     }
     return args.join(QChar(':'));

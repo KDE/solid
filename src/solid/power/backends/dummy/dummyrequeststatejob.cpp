@@ -26,7 +26,7 @@ using namespace Solid;
 
 void DummyRequestStateJob::doStart()
 {
-    if (state == Power::PowerOff) {
+    if (state == Power::Shutdown) {
         setError(RequestStateJob::Unsupported);
         setErrorText(QLatin1Literal("State Brightness is unsupported"));
     }

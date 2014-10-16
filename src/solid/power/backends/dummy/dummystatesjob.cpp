@@ -30,7 +30,7 @@ void DummyStatesJob::doStart()
 
 Power::States DummyStatesJob::states() const
 {
-    return Power::PowerOff | Power::Sleep;
+    return Power::Shutdown | Power::Sleep;
 }
 
 #include "dummystatesjob.moc"
