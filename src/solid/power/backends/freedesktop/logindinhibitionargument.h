@@ -22,7 +22,7 @@
 #ifndef LOGIND_INHIBITION_ARGUMENT_H
 #define LOGIND_INHIBITION_ARGUMENT_H
 
-#include "solid/power.h"
+#include "solid/power/power.h"
 /**
  * The single responsability of this class is to create arguments valid for
  * logind Inhibit call.
