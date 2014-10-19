@@ -29,7 +29,7 @@
 
 using namespace Solid;
 
-FdInhibitionJob::FdInhibitionJob(Power::States inhibitions, const QString &description, QObject* parent)
+FdInhibitionJob::FdInhibitionJob(Power::InhibitionTypes inhibitions, const QString &description, QObject* parent)
     : AbstractInhibitionJob(parent)
     , m_inhibition(new FdInhibition(inhibitions, description))
 {

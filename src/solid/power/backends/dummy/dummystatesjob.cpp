@@ -28,7 +28,7 @@ void DummyStatesJob::doStart()
     emitResult();
 }
 
-Power::States DummyStatesJob::states() const
+Power::InhibitionTypes DummyStatesJob::states() const
 {
     return Power::Shutdown | Power::Sleep;
 }

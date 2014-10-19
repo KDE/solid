@@ -47,7 +47,7 @@ void StatesJob::doStart()
     d->backendJob->start();
 }
 
-Power::States StatesJob::states() const
+Power::InhibitionTypes StatesJob::states() const
 {
     if(d_func()->backendJob) {
         return d_func()->backendJob->states();

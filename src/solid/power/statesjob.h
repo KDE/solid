@@ -44,9 +44,9 @@ public:
     explicit StatesJob(QObject *parent = 0);
 
     /**
-     * Once the job is finished, returns the supported Power::States
+     * Once the job is finished, returns the supported Power::InhibitionTypes
      */
-    Power::States states() const;
+    Power::InhibitionTypes states() const;
 
 private Q_SLOTS:
     virtual void doStart() Q_DECL_OVERRIDE;

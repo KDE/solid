@@ -32,7 +32,7 @@ namespace Solid
 class LogindInhibitionArgument
 {
 public:
-    static QString fromPowerState(Power::States states);
+    static QString fromPowerState(Power::InhibitionTypes states);
 };
 }
 #endif //LOGIND_INHIBITION_ARGUMENT_H

@@ -60,14 +60,14 @@ public:
      *
      * @param inhibitions list of actions to inhibit
      */
-    void setInhibitions(Power::States inhibitions);
+    void setInhibitions(Power::InhibitionTypes inhibitions);
 
     /**
      * Returns the list of actions this job will inhibit
      *
      * @return List of Power::Imhibitions
      */
-    Power::States inhibitions() const;
+    Power::InhibitionTypes inhibitions() const;
 
     /**
      * Sets the description of this inhibition

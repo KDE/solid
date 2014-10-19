@@ -33,7 +33,7 @@ public:
     explicit AbstractRequestStateJob(QObject* parent = 0) : Job(parent) { }
     virtual ~AbstractRequestStateJob() {}
 
-    Power::State state;
+    Power::InhibitionType state;
 };
 }
 

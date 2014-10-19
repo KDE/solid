@@ -39,7 +39,7 @@ AbstractAcPluggedJob* PowerBackendLoader::AcPluggedJob()
     return new FDAcPluggedJob();
 }
 
-AbstractInhibitionJob* PowerBackendLoader::addInhibitionJob(Power::States inhibitions, const QString &description)
+AbstractInhibitionJob* PowerBackendLoader::addInhibitionJob(Power::InhibitionTypes inhibitions, const QString &description)
 {
     if (qgetenv("SOLID_POWER_BACKEND") == "DUMMY") {
         return new DummyInhibitionJob(inhibitions, description);

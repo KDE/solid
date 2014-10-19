@@ -51,7 +51,7 @@ public:
 
     explicit RequestStateJob(QObject *parent = 0);
 
-    void setState(Power::State state);
+    void setState(Power::InhibitionType state);
 
 private Q_SLOTS:
     virtual void doStart() Q_DECL_OVERRIDE;

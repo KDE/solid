@@ -37,7 +37,7 @@ RequestStateJob::RequestStateJob(QObject* parent) : Job(*new RequestStateJobPriv
 {
 }
 
-void RequestStateJob::setState(Power::State state)
+void RequestStateJob::setState(Power::InhibitionType state)
 {
     Q_D(RequestStateJob);
     d->state = state;

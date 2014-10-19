@@ -24,7 +24,7 @@
 
 using namespace Solid;
 
-QString LogindInhibitionArgument::fromPowerState(Power::States states)
+QString LogindInhibitionArgument::fromPowerState(Power::InhibitionTypes states)
 {
     QStringList args;
     if (states | Power::Sleep) {

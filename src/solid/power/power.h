@@ -50,13 +50,13 @@ public:
      * set using a specific job (for example Sleep can be done either using suspend to ram,
      * suspend to disk or an hybrid approach).
      */
-    enum State {
+    enum InhibitionType {
         None = 0,
         Sleep = 1 << 0,
         Screen = 1 << 1,
         Shutdown = 1 << 3
     };
-    Q_DECLARE_FLAGS(States, State)
+    Q_DECLARE_FLAGS(InhibitionTypes, InhibitionType)
     /**
      * Returns an instance of Power
      *
@@ -84,7 +84,7 @@ public:
      *
      * The returned job is initialized with the given @p states and @p description
      */
-    static InhibitionJob* inhibit(Power::States states, const QString &description, QObject *parent = 0);
+    static InhibitionJob* inhibit(Power::InhibitionTypes states, const QString &description, QObject *parent = 0);
 
     /**
      * Query the supported states (like Sleep or Hibernation)
@@ -96,7 +96,7 @@ public:
      * Set the computer in a desired @p state (like Sleep or Hibernation)
      * @return a RequestStateJob
      */
-    static RequestStateJob* requestState(Power::State state, QObject *parent = 0);
+    static RequestStateJob* requestState(Power::InhibitionType state, QObject *parent = 0);
 
     /**
      * If you are not going to destroy this object for the entire
@@ -126,7 +126,7 @@ private:
 };
 }
 
-Q_DECLARE_METATYPE(Solid::Power::State)
-Q_DECLARE_OPERATORS_FOR_FLAGS(Solid::Power::States)
+Q_DECLARE_METATYPE(Solid::Power::InhibitionType)
+Q_DECLARE_OPERATORS_FOR_FLAGS(Solid::Power::InhibitionTypes)
 
 #endif //SOLID_POWER_H

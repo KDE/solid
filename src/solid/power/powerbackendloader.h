@@ -34,7 +34,7 @@ class PowerBackendLoader
 {
 public:
     static AbstractAcPluggedJob* AcPluggedJob();
-    static AbstractInhibitionJob* addInhibitionJob(Power::States inhibitions, const QString &description);
+    static AbstractInhibitionJob* addInhibitionJob(Power::InhibitionTypes inhibitions, const QString &description);
     static AbstractStatesJob* statesJob();
     static AbstractRequestStateJob* requestState();
     static PowerNotifier* notifier();

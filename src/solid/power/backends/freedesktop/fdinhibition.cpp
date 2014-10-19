@@ -31,7 +31,7 @@
 
 using namespace Solid;
 
-FdInhibition::FdInhibition(Power::States inhibitions, const QString &description, QObject* parent)
+FdInhibition::FdInhibition(Power::InhibitionTypes inhibitions, const QString &description, QObject* parent)
     : AbstractInhibition(parent)
     , m_state(Inhibition::Stopped)
     , m_description(description)

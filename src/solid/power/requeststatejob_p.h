@@ -32,7 +32,7 @@ class RequestStateJobPrivate : public JobPrivate
 public:
     RequestStateJobPrivate();
 
-    Power::State state;
+    Power::InhibitionType state;
 
     AbstractRequestStateJob *backendJob;
     Q_DECLARE_PUBLIC(RequestStateJob)

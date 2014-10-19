@@ -33,7 +33,7 @@ public:
     explicit AbstractStatesJob(QObject* parent = 0) : Job(parent) { }
     virtual ~AbstractStatesJob() {}
 
-    virtual Power::States states() const = 0;
+    virtual Power::InhibitionTypes states() const = 0;
 };
 }
 
