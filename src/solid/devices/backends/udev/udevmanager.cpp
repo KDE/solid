@@ -125,7 +125,7 @@ bool UDevManager::Private::checkOfInterest(const UdevQt::Device &device)
     return device.subsystem() == QLatin1String("dvb") ||
            device.subsystem() == QLatin1String("net") ||
            device.deviceProperty("ID_MEDIA_PLAYER").toString().isEmpty() == false || // media-player-info recognized devices
-           device.deviceProperty("ID_GPHOTO2").toInt() == 1; // GPhoto2 cameras
+           (device.deviceProperty("ID_GPHOTO2").toInt() == 1 && device.parent().deviceProperty("ID_GPHOTO2").toInt() != 1); // GPhoto2 cameras
 }
 
 UDevManager::UDevManager(QObject *parent)
