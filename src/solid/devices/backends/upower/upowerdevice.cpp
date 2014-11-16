@@ -43,11 +43,13 @@ UPowerDevice::UPowerDevice(const QString &udi)
     , m_udi(udi)
 {
     if (m_device.isValid()) {
-        connect(&m_device, SIGNAL(Changed()), this, SLOT(slotChanged()));
-
-        // for UPower >= 0.99.0, missing Changed() signal
-        QDBusConnection::systemBus().connect(UP_DBUS_SERVICE, m_udi, "org.freedesktop.DBus.Properties", "PropertiesChanged", this,
-                                             SLOT(onPropertiesChanged(QString,QVariantMap,QStringList)));
+        if (m_device.metaObject()->indexOfSignal("Changed()") != -1) {
+            connect(&m_device, SIGNAL(Changed()), this, SLOT(slotChanged()));
+        } else {
+            // for UPower >= 0.99.0, missing Changed() signal
+            QDBusConnection::systemBus().connect(UP_DBUS_SERVICE, m_udi, "org.freedesktop.DBus.Properties", "PropertiesChanged", this,
+                                                 SLOT(onPropertiesChanged(QString,QVariantMap,QStringList)));
+        }
     }
 }
 
