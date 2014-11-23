@@ -43,8 +43,10 @@ if(WITH_NEW_POWER_ASYNC_API AND WITH_NEW_POWER_ASYNC_FREEDESKTOP)
 endif()
 
 ########### logindinhibitionargument ###########
+if(WITH_NEW_POWER_ASYNC_API AND WITH_NEW_POWER_ASYNC_FREEDESKTOP)
 set(solidLogindInhibitionArgument_SRCS
     logindinhibitionargumenttest.cpp
     ../src/solid/power/backends/freedesktop/logindinhibitionargument.cpp
 )
 ecm_add_test(${solidLogindInhibitionArgument_SRCS} TEST_NAME "logindinhibitionargument" LINK_LIBRARIES Qt5::Test KF5Solid_static)
+endif()
