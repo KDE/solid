@@ -27,7 +27,7 @@
 #include <QtCore/QTextStream>
 #include <QtCore/QTime>
 
-#include <solid/soliddefs_p.h>
+#include <soliddefs_p.h>
 #include <config-solid.h>
 
 #if HAVE_MNTENT_H
@@ -86,7 +86,7 @@ void _k_updateMountPointsCache()
 
     globalMountPointsCache->clear();
 
-#ifdef HAVE_SETMNTENT
+#if HAVE_SETMNTENT
 
     FILE *fstab;
     if ((fstab = setmntent(FSTAB, "r")) == 0) {

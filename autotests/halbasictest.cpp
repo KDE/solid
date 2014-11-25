@@ -22,13 +22,13 @@
 
 #include <QtTest/QtTest>
 
-#include "solid/backends/hal/halmanager.h"
+#include "solid/devices/backends/hal/halmanager.h"
 
 #include <solid/device.h>
 #include <solid/devices/ifaces/device.h>
 #include <solid/devices/ifaces/deviceinterface.h>
 #include <solid/devices/ifaces/processor.h>
-#include "solid/backends/hal/halprocessor.h"
+#include "solid/devices/backends/hal/halprocessor.h"
 
 QTEST_MAIN(HalBasicTest)
 

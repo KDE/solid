@@ -25,7 +25,7 @@
 #include <QtCore/QMap>
 #include <QtCore/QString>
 
-#include "solid/backends/hal/haldevice.h"
+#include "solid/devices/backends/hal/haldevice.h"
 
 class HalBasicTest : public QObject
 {

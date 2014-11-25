@@ -21,7 +21,7 @@
 #include "halstorageaccess.h"
 
 #include "halfstabhandling.h"
-#include "../../genericinterface.h"
+#include "halgenericinterface.h"
 
 #include <QtCore/QLocale>
 #include <QtCore/QDebug>
@@ -152,10 +152,11 @@ bool StorageAccess::isIgnored() const
      * the volumes mounted to make the system (/, /boot, /var, etc.)
      * are useless to him.
      */
-    Solid::Device drive(m_device->prop("block.storage_device").toString());
+    HalDevice drive(m_device->prop("block.storage_device").toString());
+    Hal::GenericInterface gif(&drive);
 
-    const bool removable = drive.as<Solid::GenericInterface>()->property("storage.removable").toBool();
-    const bool hotpluggable = drive.as<Solid::GenericInterface>()->property("storage.hotpluggable").toBool();
+    const bool removable = gif.property("storage.removable").toBool();
+    const bool hotpluggable = gif.property("storage.hotpluggable").toBool();
 
     return !removable && !hotpluggable;
 }
