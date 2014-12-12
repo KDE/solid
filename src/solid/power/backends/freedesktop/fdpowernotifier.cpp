@@ -62,7 +62,9 @@ void Solid::FDPowerNotifier::upowerPropertiesChanged(const QString &interface, c
 
 void Solid::FDPowerNotifier::login1Resuming(bool active)
 {
-    if (!active) {
+    if (active) {
+        Q_EMIT aboutToSuspend();
+    } else {
         Q_EMIT resumeFromSuspend();
     }
 }

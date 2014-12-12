@@ -48,6 +48,7 @@ Power::Power(QObject* parent) : QObject(parent), d(new Private)
     qRegisterMetaType<Solid::Inhibition::State>("Inhibition::State");
     d->notifier = PowerBackendLoader::notifier();
     connect(d->notifier, &PowerNotifier::acPluggedChanged, this, &Power::acPluggedChanged);
+    connect(d->notifier, &PowerNotifier::aboutToSuspend, this, &Power::aboutToSuspend);
     connect(d->notifier, &PowerNotifier::resumeFromSuspend, this, &Power::resumeFromSuspend);
 }
 

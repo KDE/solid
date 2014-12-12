@@ -116,6 +116,13 @@ Q_SIGNALS:
     void acPluggedChanged(bool plugged);
 
     /**
+     * Emitted when the system is about to suspend/hibernate
+     *
+     * @since 5.6
+     */
+    void aboutToSuspend();
+
+    /**
      * Emitted when the system has just resumed from being suspended/hibernated
      */
     void resumeFromSuspend();

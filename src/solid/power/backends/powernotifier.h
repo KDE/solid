@@ -33,6 +33,7 @@ public:
 
 Q_SIGNALS:
     void acPluggedChanged(bool plugged);
+    void aboutToSuspend();
     void resumeFromSuspend();
 };
 }

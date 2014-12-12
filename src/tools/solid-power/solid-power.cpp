@@ -55,4 +55,14 @@ void SolidPower::listen()
         QString status = plugged ? "yes" : "no";
         lOut << "\tAC plugged changed:\t" << status << endl;
     });
+
+    connect(power, &Power::aboutToSuspend, [](){
+        QTextStream lOut(stdout);
+        lOut << "\tAbout to suspend" << endl;
+    });
+
+    connect(power, &Power::resumeFromSuspend, [](){
+        QTextStream lOut(stdout);
+        lOut << "\tResume from suspend" << endl;
+    });
 }
