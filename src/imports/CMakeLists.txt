@@ -27,6 +27,6 @@ target_link_libraries(
     Qt5::Qml
 )
 
-install(TARGETS solidextensionplugin DESTINATION ${QML_INSTALL_DIR}/org/kde/solid)
-install(FILES qmldir DESTINATION ${QML_INSTALL_DIR}/org/kde/solid)
+install(TARGETS solidextensionplugin DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/solid)
+install(FILES qmldir DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/solid)
 
