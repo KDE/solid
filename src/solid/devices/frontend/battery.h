@@ -49,6 +49,8 @@ class SOLID_EXPORT Battery : public DeviceInterface
     Q_PROPERTY(qlonglong timeToEmpty READ timeToEmpty NOTIFY timeToEmptyChanged)
     Q_PROPERTY(qlonglong timeToFull READ timeToFull NOTIFY timeToFullChanged)
     Q_PROPERTY(double energy READ energy NOTIFY energyChanged)
+    Q_PROPERTY(double energyFull READ energyFull NOTIFY energyFullChanged)
+    Q_PROPERTY(double energyFullDesign READ energyFullDesign NOTIFY energyFullDesignChanged)
     Q_PROPERTY(double energyRate READ energyRate NOTIFY energyRateChanged)
     Q_PROPERTY(double voltage READ voltage NOTIFY voltageChanged)
     Q_PROPERTY(double temperature READ temperature NOTIFY temperatureChanged)
@@ -231,6 +233,22 @@ public:
     double energy() const;
 
     /**
+     * Amount of energy (measured in Wh) the battery has when it is full.
+     *
+     * @return amount of battery energy when full in Wh
+     * @since 5.7
+     */
+    double energyFull() const;
+
+    /**
+     * Amount of energy (measured in Wh) the battery should have by design hen it is full.
+     *
+     * @return amount of battery energy when full by design in Wh
+     * @since 5.7
+     */
+    double energyFullDesign() const;
+
+    /**
       * Amount of energy being drained from the source, measured in W.
       * If positive, the source is being discharged, if negative it's being charged.
       *
@@ -360,9 +378,27 @@ Q_SIGNALS:
      * battery has changed.
      *
      * @param energy the new energy value of the battery
-     * @param udi the UDI of the battery with the new charge percent
+     * @param udi the UDI of the battery with the new energy value
      */
     void energyChanged(double energy, const QString &udi);
+
+    /**
+     * This signal is emitted when the energy full value of this
+     * battery has changed.
+     *
+     * @param energy the new energy full value of the battery
+     * @param udi the UDI of the battery with the new energy full value
+     */
+    void energyFullChanged(double energy, const QString &udi);
+
+    /**
+     * This signal is emitted when the energy full design value of this
+     * battery has changed.
+     *
+     * @param energy the new energy full design value of the battery
+     * @param udi the UDI of the battery with the new energy full design value
+     */
+    void energyFullDesignChanged(double energy, const QString &udi);
 
     /**
      * This signal is emitted when the energy rate value of this

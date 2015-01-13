@@ -130,6 +130,22 @@ public:
     virtual double energy() const = 0;
 
     /**
+     * Amount of energy (measured in Wh) the battery has when it is full.
+     *
+     * @return amount of battery energy when full in Wh
+     * @since 5.7
+     */
+    virtual double energyFull() const = 0;
+
+    /**
+     * Amount of energy (measured in Wh) the battery should have by design hen it is full.
+     *
+     * @return amount of battery energy when full by design in Wh
+     * @since 5.7
+     */
+    virtual double energyFullDesign() const = 0;
+
+    /**
       * Amount of energy being drained from the source, measured in W.
       * If positive, the source is being discharged, if negative it's being charged.
       *
@@ -260,9 +276,27 @@ protected:
      * battery has changed.
      *
      * @param energy the new energy value of the battery
-     * @param udi the UDI of the battery with the new charge percent
+     * @param udi the UDI of the battery with the new energy value
      */
     virtual void energyChanged(double energy, const QString &udi) = 0;
+
+    /**
+     * This signal is emitted when the energy full value of this
+     * battery has changed.
+     *
+     * @param energy the new energy full value of the battery
+     * @param udi the UDI of the battery with the new energy full value
+     */
+    virtual void energyFullChanged(double energy, const QString &udi) = 0;
+
+    /**
+     * This signal is emitted when the energy full design value of this
+     * battery has changed.
+     *
+     * @param energy the new energy full design value of the battery
+     * @param udi the UDI of the battery with the new energy full design value
+     */
+    virtual void energyFullDesignChanged(double energy, const QString &udi) = 0;
 
     /**
      * This signal is emitted when the energy rate value of this

@@ -56,7 +56,8 @@ public:
     Solid::Battery::Technology technology() const;
 
     double energy() const;
-
+    double energyFull() const;
+    double energyFullDesign() const;
     double energyRate() const;
 
     double voltage() const;
@@ -92,6 +93,8 @@ Q_SIGNALS:
     void chargeStateChanged(int newState, const QString &udi);
     void powerSupplyStateChanged(bool newState, const QString &udi);
     void energyChanged(double energy, const QString &udi);
+    void energyFullChanged(double energyFull, const QString &udi);
+    void energyFullDesignChanged(double energyFullDesign, const QString &udi);
     void energyRateChanged(double energyRate, const QString &udi);
     void timeToEmptyChanged(qlonglong time, const QString &udi);
     void temperatureChanged(double temperature, const QString &udi);
@@ -120,6 +123,8 @@ private:
     Solid::Battery::ChargeState m_state;
     Solid::Battery::Technology m_technology;
     double m_energy;
+    double m_energyFull;
+    double m_energyFullDesign;
     double m_energyRate;
     double m_voltage;
 

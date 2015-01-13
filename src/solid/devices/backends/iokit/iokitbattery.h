@@ -57,6 +57,8 @@ public:
     qlonglong timeToFull() const { return 0; }
     Solid::Battery::Technology technology() const { return Solid::Battery::UnknownTechnology; }
     double energy() const { return 0.0; }
+    double energyFull() const { return 0.0; }
+    double energyFullDesign() const { return 0.0; }
     double energyRate() const { return 0.0; }
     double voltage() const { return 0.0; }
     double temperature() const { return 0.0; }
@@ -68,6 +70,8 @@ public:
 
 Q_SIGNALS:
     void energyChanged(double energy, const QString &udi);
+    void energyFullChanged(double energyFull, const QString &udi);
+    void energyFullDesignChanged(double energyFullDesign, const QString &udi);
     void energyRateChanged(double energyRate, const QString &udi);
     void chargePercentChanged(int value, const QString &udi);
     void capacityChanged(int value, const QString &udi);

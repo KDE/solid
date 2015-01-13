@@ -142,6 +142,16 @@ double Battery::energy() const
     return static_cast<HalDevice *>(m_device)->prop("battery.charge_level.current").toInt() / 1000;
 }
 
+double Battery::energyFull() const
+{
+    return static_cast<HalDevice *>(m_device)->prop("battery.charge_level.last_full").toInt() / 1000;
+}
+
+double Battery::energyFullDesign() const
+{
+    return static_cast<HalDevice *>(m_device)->prop("battery.charge_level.design").toInt() / 1000;
+}
+
 double Battery::energyRate() const
 {
     return static_cast<HalDevice *>(m_device)->prop("battery.charge_level.rate").toInt() / 1000;
@@ -204,6 +214,14 @@ void Battery::slotPropertyChanged(const QMap<QString, int> &changes)
 
     if (changes.contains("battery.charge_level.current")) {
         emit energyChanged(energy(), m_device->udi());
+    }
+
+    if (changes.contains("battery.charge_level.last_full")) {
+        emit energyFullChanged(energyFull(), m_device->udi());
+    }
+
+    if (changes.contains("battery.charge_level.design")) {
+        emit energyFullDesignChanged(energyFullDesign(), m_device->udi());
     }
 
     if (changes.contains("battery.charge_level.rate")) {

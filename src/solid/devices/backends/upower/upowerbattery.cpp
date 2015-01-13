@@ -156,6 +156,16 @@ double Battery::energy() const
     return m_device.data()->prop("Energy").toDouble();
 }
 
+double Battery::energyFull() const
+{
+    return m_device.data()->prop("EnergyFull").toDouble();
+}
+
+double Battery::energyFullDesign() const
+{
+    return m_device.data()->prop("EnergyFullDesign").toDouble();
+}
+
 double Battery::energyRate() const
 {
     return m_device.data()->prop("EnergyRate").toDouble();
@@ -202,6 +212,8 @@ void Battery::slotChanged()
         const qlonglong old_timeToEmpty = m_timeToEmpty;
         const qlonglong old_timeToFull = m_timeToFull;
         const double old_energy = m_energy;
+        const double old_energyFull = m_energyFull;
+        const double old_energyFullDesign = m_energyFullDesign;
         const double old_energyRate = m_energyRate;
         const double old_voltage = m_voltage;
         const double old_temperature = m_temperature;
@@ -239,6 +251,14 @@ void Battery::slotChanged()
             emit energyChanged(m_energy, m_device.data()->udi());
         }
 
+        if (old_energyFull != m_energyFull) {
+            emit energyFullChanged(m_energyFull, m_device.data()->udi());
+        }
+
+        if (old_energyFullDesign != m_energyFullDesign) {
+            emit energyFullChanged(m_energyFullDesign, m_device.data()->udi());
+        }
+
         if (old_energyRate != m_energyRate) {
             emit energyRateChanged(m_energyRate, m_device.data()->udi());
         }
@@ -263,6 +283,8 @@ void Battery::updateCache()
     m_timeToEmpty = timeToEmpty();
     m_timeToFull = timeToFull();
     m_energy = energy();
+    m_energyFull = energyFull();
+    m_energyFullDesign = energyFullDesign();
     m_energyRate = energyRate();
     m_voltage = voltage();
     m_temperature = temperature();

@@ -150,6 +150,16 @@ double FakeBattery::energy() const
     return fakeDevice()->property("energy").toDouble();
 }
 
+double FakeBattery::energyFull() const
+{
+    return fakeDevice()->property("energyFull").toDouble();
+}
+
+double FakeBattery::energyFullDesign() const
+{
+    return fakeDevice()->property("energyFullDesign").toDouble();
+}
+
 double FakeBattery::energyRate() const
 {
     return fakeDevice()->property("energyRate").toDouble();

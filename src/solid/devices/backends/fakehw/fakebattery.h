@@ -61,7 +61,8 @@ public Q_SLOTS:
     virtual Solid::Battery::Technology technology() const;
 
     virtual double energy() const;
-
+    virtual double energyFull() const;
+    virtual double energyFullDesign() const;
     virtual double energyRate() const;
 
     virtual double voltage() const;
@@ -82,6 +83,8 @@ Q_SIGNALS:
     void timeToEmptyChanged(qlonglong time, const QString &udi);
     void timeToFullChanged(qlonglong time, const QString &udi);
     void energyChanged(double energy, const QString &udi);
+    void energyFullChanged(double energyFull, const QString &udi);
+    void energyFullDesignChanged(double energyFullDesign, const QString &udi);
     void energyRateChanged(double energyRate, const QString &udi);
     void voltageChanged(double voltage, const QString &udi);
     void temperatureChanged(double temperature, const QString &udi);

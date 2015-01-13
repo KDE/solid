@@ -136,6 +136,8 @@ void WinBattery::powerChanged()
     const Solid::Battery::ChargeState old_state = m_state;
     const bool old_isPowerSupply = m_isPowerSupply;
     const double old_energy = m_energy;
+    const double old_energyFull = m_energyFull;
+    const double old_energyFullDesign = m_energyFullDesign;
     const double old_energyRate = m_energyRate;
     const double old_voltage = m_voltage;
 
@@ -172,6 +174,8 @@ void WinBattery::powerChanged()
     }
 
     m_energy = status.Capacity / 1000.0;//provided in mWh
+    m_energyFull = info.FullChargedCapacity / 1000.0; // provided in mWh
+    m_energyFullDesign = info.DesignedCapacity / 1000.0; // provided in mWh
     m_energyRate = status.Rate / 1000.0;//provided in mW
     m_voltage = status.Voltage / 1000.0;//provided in mV
 
@@ -221,6 +225,14 @@ void WinBattery::powerChanged()
 
     if (old_energy != m_energy) {
         emit energyChanged(m_energy, m_device->udi());
+    }
+
+    if (old_energyFull != m_energyFull) {
+        emit energyFullChanged(m_energyFull, m_device->udi());
+    }
+
+    if (old_energyFullDesign != m_energyFullDesign) {
+        emit energyFullDesignChanged(m_energyFullDesign, m_device->udi());
     }
 
     if (old_energyRate != m_energyRate) {
@@ -290,6 +302,16 @@ Solid::Battery::Technology WinBattery::technology() const
 double WinBattery::energy() const
 {
     return m_energy;
+}
+
+double WinBattery::energyFull() const
+{
+    return m_energyFull;
+}
+
+double WinBattery::energyFullDesign() const
+{
+    return m_energyFullDesign;
 }
 
 double WinBattery::energyRate() const

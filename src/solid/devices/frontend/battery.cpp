@@ -53,6 +53,12 @@ Solid::Battery::Battery(QObject *backendObject)
     connect(backendObject, SIGNAL(energyChanged(double,QString)),
             this, SIGNAL(energyChanged(double,QString)));
 
+    connect(backendObject, SIGNAL(energyFullChanged(double,QString)),
+            this, SIGNAL(energyFullChanged(double,QString)));
+
+    connect(backendObject, SIGNAL(energyFullDesignChanged(double,QString)),
+            this, SIGNAL(energyFullDesignChanged(double,QString)));
+
     connect(backendObject, SIGNAL(energyRateChanged(double,QString)),
             this, SIGNAL(energyRateChanged(double,QString)));
 
@@ -133,6 +139,18 @@ double Solid::Battery::energy() const
 {
     Q_D(const Battery);
     return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), 0.0, energy());
+}
+
+double Solid::Battery::energyFull() const
+{
+    Q_D(const Battery);
+    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), 0.0, energyFull());
+}
+
+double Solid::Battery::energyFullDesign() const
+{
+    Q_D(const Battery);
+    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), 0.0, energyFullDesign());
 }
 
 double Solid::Battery::energyRate() const
