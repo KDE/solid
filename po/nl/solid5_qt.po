@@ -1,0 +1,1237 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Freek de Kruijf <freekdekruijf@kde.nl>, 2014.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-01-24 18:50+0000\n"
+"PO-Revision-Date: 2014-09-18 12:28+0200\n"
+"Last-Translator: Freek de Kruijf <freek@opensuse.org>\n"
+"Language-Team: Dutch <kde-i18n-nl@kde.org>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 1.5\n"
+"X-Qt-Contexts: true\n"
+
+#: solid/devices/backends/fstab/fstabmanager.cpp:88
+msgctxt "Solid::Backends::Fstab::FstabManager|"
+msgid "Network Shares"
+msgstr "Netwerk-shares"
+
+#: solid/devices/backends/fstab/fstabmanager.cpp:89
+msgctxt "Solid::Backends::Fstab::FstabManager|"
+msgid "NFS and SMB shares declared in your system"
+msgstr "In uw systeem gedefinieerde NFS- en SMB-shares"
+
+#: solid/devices/backends/hal/haldevice.cpp:64
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 TiB"
+msgstr "%1 TiB"
+
+#: solid/devices/backends/hal/haldevice.cpp:66
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 GiB"
+msgstr "%1 GiB"
+
+#: solid/devices/backends/hal/haldevice.cpp:72
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 MiB"
+msgstr "%1 MiB"
+
+#: solid/devices/backends/hal/haldevice.cpp:77
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 KiB"
+msgstr "%1 KiB"
+
+#: solid/devices/backends/hal/haldevice.cpp:81
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 B"
+msgstr "%1 B"
+
+#: solid/devices/backends/hal/haldevice.cpp:85
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "0 B"
+msgstr "0 B"
+
+#: solid/devices/backends/hal/haldevice.cpp:320
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "WLAN Interface"
+msgstr "WLAN-interface"
+
+#: solid/devices/backends/hal/haldevice.cpp:322
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Networking Interface"
+msgstr "Netwerkinterface"
+
+#: solid/devices/backends/hal/haldevice.cpp:507
+msgctxt "Solid::Backends::Hal::HalDevice|First item of %1%2 Drive sentence"
+msgid "CD-ROM"
+msgstr "cd-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:509
+msgctxt "Solid::Backends::Hal::HalDevice|First item of %1%2 Drive sentence"
+msgid "CD-R"
+msgstr "cd-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:512
+msgctxt "Solid::Backends::Hal::HalDevice|First item of %1%2 Drive sentence"
+msgid "CD-RW"
+msgstr "cd-RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:516
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-ROM"
+msgstr "/dvd-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:519
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD+R"
+msgstr "/dvd+R"
+
+#: solid/devices/backends/hal/haldevice.cpp:522
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD+RW"
+msgstr "/dvd+RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:525
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-R"
+msgstr "/dvd-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:528
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-RW"
+msgstr "/dvd-RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:531
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-RAM"
+msgstr "/dvdRAM"
+
+#: solid/devices/backends/hal/haldevice.cpp:535
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±R DL"
+msgstr "/dvd±R DL"
+
+#: solid/devices/backends/hal/haldevice.cpp:537
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±R"
+msgstr "/dvd±R"
+
+#: solid/devices/backends/hal/haldevice.cpp:542
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±RW DL"
+msgstr "/dvd±RW DL"
+
+#: solid/devices/backends/hal/haldevice.cpp:544
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±RW"
+msgstr "/dvd±RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:548
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/BD-ROM"
+msgstr "/BD-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:551
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/BD-R"
+msgstr "/BD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:554
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/BD-RE"
+msgstr "/BD-RE"
+
+#: solid/devices/backends/hal/haldevice.cpp:557
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-ROM"
+msgstr "/HD-dvd-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:560
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-R"
+msgstr "/HD-dvd-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:563
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-RW"
+msgstr "/HD-dvd-RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:567
+#, qt-format
+msgctxt ""
+"Solid::Backends::Hal::HalDevice|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
+"DVD-R'/etc (with leading slash)"
+msgid "External %1%2 Drive"
+msgstr "Extern %1%2-apparaat"
+
+#: solid/devices/backends/hal/haldevice.cpp:569
+#, qt-format
+msgctxt ""
+"Solid::Backends::Hal::HalDevice|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
+"DVD-R'/etc (with leading slash)"
+msgid "%1%2 Drive"
+msgstr "%1%2-apparaat"
+
+#: solid/devices/backends/hal/haldevice.cpp:577
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "External Floppy Drive"
+msgstr "Extern floppystation"
+
+#: solid/devices/backends/hal/haldevice.cpp:579
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Floppy Drive"
+msgstr "Diskettestation"
+
+#: solid/devices/backends/hal/haldevice.cpp:591
+#: solid/devices/backends/hal/haldevice.cpp:794
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 External Hard Drive"
+msgstr "%1 externe harde schijf"
+
+#: solid/devices/backends/hal/haldevice.cpp:593
+#: solid/devices/backends/hal/haldevice.cpp:796
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 Hard Drive"
+msgstr "%1 harde schijf"
+
+#: solid/devices/backends/hal/haldevice.cpp:597
+#: solid/devices/backends/hal/haldevice.cpp:800
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "External Hard Drive"
+msgstr "Externe hard schijf"
+
+#: solid/devices/backends/hal/haldevice.cpp:599
+#: solid/devices/backends/hal/haldevice.cpp:802
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Hard Drive"
+msgstr "Harde schijf"
+
+#: solid/devices/backends/hal/haldevice.cpp:618
+#, qt-format
+msgctxt ""
+"Solid::Backends::Hal::HalDevice|%1 is the vendor, %2 is the model of the "
+"device"
+msgid "%1 %2"
+msgstr "%1 %2"
+
+#: solid/devices/backends/hal/haldevice.cpp:623
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Drive"
+msgstr "Station"
+
+#: solid/devices/backends/hal/haldevice.cpp:652
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "CD-ROM"
+msgstr "cd-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:657
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank CD-R"
+msgstr "Blanco cd-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:659
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "CD-R"
+msgstr "cd-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:665
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank CD-RW"
+msgstr "Blanco cd-RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:667
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "CD-RW"
+msgstr "cd-RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:672
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD-ROM"
+msgstr "dvd-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:677
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD-RAM"
+msgstr "Blanco dvd-RAM"
+
+#: solid/devices/backends/hal/haldevice.cpp:679
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD-RAM"
+msgstr "dvd-RAM"
+
+#: solid/devices/backends/hal/haldevice.cpp:685
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD-R"
+msgstr "Blanco dvd-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:687
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD-R"
+msgstr "dvd-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:693
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD+R Dual-Layer"
+msgstr "Blanco dvd+R dual-layer"
+
+#: solid/devices/backends/hal/haldevice.cpp:695
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD+R Dual-Layer"
+msgstr "dvd+R dual-layer"
+
+#: solid/devices/backends/hal/haldevice.cpp:701
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD-RW"
+msgstr "Blanco dvd-RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:703
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD-RW"
+msgstr "dvd-RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:709
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD+R"
+msgstr "Blanco dvd+R"
+
+#: solid/devices/backends/hal/haldevice.cpp:711
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD+R"
+msgstr "dvd+R"
+
+#: solid/devices/backends/hal/haldevice.cpp:717
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD+RW"
+msgstr "Blanco dvd+RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:719
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD+RW"
+msgstr "dvd+RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:725
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD+RW Dual-Layer"
+msgstr "Blanco dvd+RW dual-layer"
+
+#: solid/devices/backends/hal/haldevice.cpp:727
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD+RW Dual-Layer"
+msgstr "dvd+RW dual-layer"
+
+#: solid/devices/backends/hal/haldevice.cpp:732
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "BD-ROM"
+msgstr "bd-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:737
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank BD-R"
+msgstr "Blanco bd-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:739
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "BD-R"
+msgstr "bd-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:745
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank BD-RE"
+msgstr "Blanco bd-RE"
+
+#: solid/devices/backends/hal/haldevice.cpp:747
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "BD-RE"
+msgstr "bd-RE"
+
+#: solid/devices/backends/hal/haldevice.cpp:752
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "HD DVD-ROM"
+msgstr "HD DVD-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:757
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank HD DVD-R"
+msgstr "Blanco HD-dvd-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:759
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "HD DVD-R"
+msgstr "HD DVD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:765
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank HD DVD-RW"
+msgstr "Blanco HD-dvd-RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:767
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "HD DVD-RW"
+msgstr "HD-dvd-RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:774
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Audio CD"
+msgstr "Audio-cd"
+
+#: solid/devices/backends/hal/haldevice.cpp:787
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 Encrypted Container"
+msgstr "%1 versleutelde container"
+
+#: solid/devices/backends/hal/haldevice.cpp:789
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Encrypted Container"
+msgstr "Versleutelde container"
+
+#: solid/devices/backends/hal/haldevice.cpp:807
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 Removable Media"
+msgstr "%1 verwijderbaar medium"
+
+#: solid/devices/backends/hal/haldevice.cpp:809
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 Media"
+msgstr "%1 medium"
+
+#: solid/devices/backends/udev/udevdevice.cpp:116
+msgctxt "Solid::Backends::UDev::UDevDevice|"
+msgid "Computer"
+msgstr "Computer"
+
+#: solid/devices/backends/udev/udevdevice.cpp:120
+msgctxt "Solid::Backends::UDev::UDevDevice|"
+msgid "Processor"
+msgstr "Processor"
+
+#: solid/devices/backends/udev/udevdevice.cpp:131
+msgctxt "Solid::Backends::UDev::UDevDevice|"
+msgid "Portable Media Player"
+msgstr "Draagbare mediaspeler"
+
+#: solid/devices/backends/udev/udevdevice.cpp:134
+msgctxt "Solid::Backends::UDev::UDevDevice|"
+msgid "Camera"
+msgstr "Camera"
+
+#: solid/devices/backends/udev/udevmanager.cpp:206
+msgctxt "Solid::Backends::UDev::UDevManager|"
+msgid "Devices"
+msgstr "Apparaten"
+
+#: solid/devices/backends/udev/udevmanager.cpp:207
+msgctxt "Solid::Backends::UDev::UDevManager|"
+msgid "Devices declared in your system"
+msgstr "In uw systeem gedefinieerde apparaten"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:63
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 TiB"
+msgstr "%1 TiB"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:65
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 GiB"
+msgstr "%1 GiB"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:71
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 MiB"
+msgstr "%1 MiB"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:76
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 KiB"
+msgstr "%1 KiB"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:80
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 B"
+msgstr "%1 B"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:84
+msgctxt "udisksdevice|"
+msgid "0 B"
+msgstr "0 B"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:248
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Loop Device"
+msgstr "Loop-apparaat"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:250
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Swap Space"
+msgstr "Wisselruimte"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:273
+msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
+msgid "CD-ROM"
+msgstr "cd-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:275
+msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
+msgid "CD-R"
+msgstr "cd-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:278
+msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
+msgid "CD-RW"
+msgstr "cd-RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:282
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD-ROM"
+msgstr "/dvd-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:285
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD+R"
+msgstr "/dvd+R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:288
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD+RW"
+msgstr "/dvd+RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:291
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD-R"
+msgstr "/dvd-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:294
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD-RW"
+msgstr "/dvd-RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:297
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD-RAM"
+msgstr "/dvdRAM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:301
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD±R DL"
+msgstr "/dvd±R DL"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:303
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD±R"
+msgstr "/dvd±R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:308
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD±RW DL"
+msgstr "/dvd±RW DL"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:310
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD±RW"
+msgstr "/dvd±RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:314
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/BD-ROM"
+msgstr "/BD-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:317
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/BD-R"
+msgstr "/BD-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:320
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/BD-RE"
+msgstr "/BD-RE"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:323
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-ROM"
+msgstr "/HD-dvd-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:326
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-R"
+msgstr "/HD-dvd-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:329
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-RW"
+msgstr "/HD-dvd-RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:333
+#, qt-format
+msgctxt ""
+"Solid::Backends::UDisks2::Device|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
+"DVD-R'/etc (with leading slash)"
+msgid "External %1%2 Drive"
+msgstr "Extern %1%2-apparaat"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:335
+#, qt-format
+msgctxt ""
+"Solid::Backends::UDisks2::Device|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
+"DVD-R'/etc (with leading slash)"
+msgid "%1%2 Drive"
+msgstr "%1%2-apparaat"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:343
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "External Floppy Drive"
+msgstr "Extern floppystation"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:345
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Floppy Drive"
+msgstr "Diskettestation"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:357
+#: solid/devices/backends/udisks2/udisksdevice.cpp:565
+#, qt-format
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 External Hard Drive"
+msgstr "%1 externe harde schijf"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:359
+#: solid/devices/backends/udisks2/udisksdevice.cpp:567
+#, qt-format
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 Hard Drive"
+msgstr "%1 harde schijf"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:363
+#: solid/devices/backends/udisks2/udisksdevice.cpp:571
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "External Hard Drive"
+msgstr "Externe hard schijf"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:365
+#: solid/devices/backends/udisks2/udisksdevice.cpp:573
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Hard Drive"
+msgstr "Harde schijf"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:388
+#, qt-format
+msgctxt ""
+"Solid::Backends::UDisks2::Device|%1 is the vendor, %2 is the model of the "
+"device"
+msgid "%1 %2"
+msgstr "%1 %2"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:394
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Drive"
+msgstr "Station"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:424
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "CD-ROM"
+msgstr "cd-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:429
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank CD-R"
+msgstr "Blanco cd-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:431
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "CD-R"
+msgstr "cd-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:437
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank CD-RW"
+msgstr "Blanco cd-RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:439
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "CD-RW"
+msgstr "cd-RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:444
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD-ROM"
+msgstr "dvd-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:449
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD-RAM"
+msgstr "Blanco dvd-RAM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:451
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD-RAM"
+msgstr "dvd-RAM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:457
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD-R"
+msgstr "Blanco dvd-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:459
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD-R"
+msgstr "dvd-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:465
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD+R Dual-Layer"
+msgstr "Blanco dvd+R dual-layer"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:467
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD+R Dual-Layer"
+msgstr "dvd+R dual-layer"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:473
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD-RW"
+msgstr "Blanco dvd-RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:475
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD-RW"
+msgstr "dvd-RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:481
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD+R"
+msgstr "Blanco dvd+R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:483
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD+R"
+msgstr "dvd+R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:489
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD+RW"
+msgstr "Blanco dvd+RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:491
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD+RW"
+msgstr "dvd+RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:497
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD+RW Dual-Layer"
+msgstr "Blanco dvd+RW dual-layer"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:499
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD+RW Dual-Layer"
+msgstr "dvd+RW dual-layer"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:504
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "BD-ROM"
+msgstr "bd-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:509
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank BD-R"
+msgstr "Blanco bd-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:511
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "BD-R"
+msgstr "bd-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:517
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank BD-RE"
+msgstr "Blanco bd-RE"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:519
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "BD-RE"
+msgstr "bd-RE"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:524
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "HD DVD-ROM"
+msgstr "HD DVD-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:529
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank HD DVD-R"
+msgstr "Blanco HD-dvd-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:531
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "HD DVD-R"
+msgstr "HD-dvd-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:537
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank HD DVD-RW"
+msgstr "Blanco HD-dvd-RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:539
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "HD DVD-RW"
+msgstr "HD-dvd-RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:546
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Audio CD"
+msgstr "Audio-cd"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:558
+#, qt-format
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 Encrypted Drive"
+msgstr "%1 versleuteld station"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:560
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Encrypted Drive"
+msgstr "Versleuteld station"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:578
+#, qt-format
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 Removable Media"
+msgstr "%1 verwijderbaar medium"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:580
+#, qt-format
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 Media"
+msgstr "%1 medium"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:712
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "You are not authorized to perform this operation"
+msgstr "Het is u niet toegestaan om deze bewerking uit te voeren"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:714
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is currently busy"
+msgstr "Het apparaat is nu bezig"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:716
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The requested operation has failed"
+msgstr "De gevraagde bewerking is mislukt"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:718
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The requested operation has been canceled"
+msgstr "De gevraagde bewerking is geannuleerd"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:720
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "An invalid or malformed option has been given"
+msgstr "Er is een ongeldige of misvormde optie ingegeven"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:722
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The kernel driver for this filesystem type is not available"
+msgstr "Het stuurprogramma voor dit type bestandssysteem is niet beschikbaar"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:724
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is already mounted"
+msgstr "Het apparaat is al aangekoppeld"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:726
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is not mounted"
+msgstr "Het apparaat is niet aangekoppeld"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:728
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is mounted by another user"
+msgstr "Het apparaat is aangekoppeld door een andere gebruiker"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:730
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is already unmounting"
+msgstr "Het apparaat is al bezig zich af te koppelen"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:732
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The operation timed out"
+msgstr "De tijdslimiet voor deze handeling is verstreken"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:734
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The operation would wake up a disk that is in a deep-sleep state"
+msgstr ""
+"De bewerking zou een schijf laten ontwaken die in de status diepe-slaap is"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:736
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The operation has already been canceled"
+msgstr "De bewerking is al geannuleerd"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:738
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "An unspecified error has occurred"
+msgstr "Er is een niet gespecificeerde fout opgetreden"
+
+#: solid/devices/backends/udisks2/udisksmanager.cpp:90
+msgctxt "Solid::Backends::UDisks2::Manager|"
+msgid "Storage"
+msgstr "Opslag"
+
+#: solid/devices/backends/udisks2/udisksmanager.cpp:91
+msgctxt "Solid::Backends::UDisks2::Manager|"
+msgid "Storage devices"
+msgstr "Opslagapparaten"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:101
+#, qt-format
+msgctxt "Solid::Backends::UPower::UPowerDevice|%1 is battery technology"
+msgid "%1 Battery"
+msgstr "%1 batterij"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:116
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Lithium Ion"
+msgstr "Lithium-ion"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:118
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Lithium Polymer"
+msgstr "Lithium-polymeer"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:120
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Lithium Iron Phosphate"
+msgstr "Lithium-ijzer-fosfaat"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:122
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Lead Acid"
+msgstr "Loodaccu"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:124
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Nickel Cadmium"
+msgstr "Nikkel-Cadmium"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:126
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Nickel Metal Hydride"
+msgstr "Nikkel-metaalhydride"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:128
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Unknown"
+msgstr "Onbekend"
+
+#: solid/devices/backends/upower/upowermanager.cpp:90
+msgctxt "Solid::Backends::UPower::UPowerManager|"
+msgid "Power Management"
+msgstr "Energiebeheer"
+
+#: solid/devices/backends/upower/upowermanager.cpp:91
+msgctxt "Solid::Backends::UPower::UPowerManager|"
+msgid "Batteries and other sources of power"
+msgstr "Batterijen en andere bronnen van energie"
+
+#: solid/devices/backends/win/windevice.cpp:169
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Lithium Ion"
+msgstr "Lithium-ion"
+
+#: solid/devices/backends/win/windevice.cpp:172
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Lead Acid"
+msgstr "Loodaccu"
+
+#: solid/devices/backends/win/windevice.cpp:175
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Nickel Cadmium"
+msgstr "Nikkel-Cadmium"
+
+#: solid/devices/backends/win/windevice.cpp:178
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Nickel Metal Hydride"
+msgstr "Nikkel-metaalhydride"
+
+#: solid/devices/backends/win/windevice.cpp:181
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Unknown"
+msgstr "Onbekend"
+
+#: solid/devices/frontend/deviceinterface.cpp:66
+msgctxt "Solid::DeviceInterface|Unknown device type"
+msgid "Unknown"
+msgstr "Onbekend"
+
+#: solid/devices/frontend/deviceinterface.cpp:68
+msgctxt "Solid::DeviceInterface|Generic Interface device type"
+msgid "Generic Interface"
+msgstr "Algemeen interface"
+
+#: solid/devices/frontend/deviceinterface.cpp:70
+msgctxt "Solid::DeviceInterface|Processor device type"
+msgid "Processor"
+msgstr "Processor"
+
+#: solid/devices/frontend/deviceinterface.cpp:72
+msgctxt "Solid::DeviceInterface|Block device type"
+msgid "Block"
+msgstr "Blok"
+
+#: solid/devices/frontend/deviceinterface.cpp:74
+msgctxt "Solid::DeviceInterface|Storage Access device type"
+msgid "Storage Access"
+msgstr "Toegang tot opslag"
+
+#: solid/devices/frontend/deviceinterface.cpp:76
+msgctxt "Solid::DeviceInterface|Storage Drive device type"
+msgid "Storage Drive"
+msgstr "Opslagapparaat"
+
+#: solid/devices/frontend/deviceinterface.cpp:78
+msgctxt "Solid::DeviceInterface|Optical Drive device type"
+msgid "Optical Drive"
+msgstr "Optisch apparaat"
+
+#: solid/devices/frontend/deviceinterface.cpp:80
+msgctxt "Solid::DeviceInterface|Storage Volume device type"
+msgid "Storage Volume"
+msgstr "Opslagvolume"
+
+#: solid/devices/frontend/deviceinterface.cpp:82
+msgctxt "Solid::DeviceInterface|Optical Disc device type"
+msgid "Optical Disc"
+msgstr "Optische schijf"
+
+#: solid/devices/frontend/deviceinterface.cpp:84
+msgctxt "Solid::DeviceInterface|Camera device type"
+msgid "Camera"
+msgstr "Camera"
+
+#: solid/devices/frontend/deviceinterface.cpp:86
+msgctxt "Solid::DeviceInterface|Portable Media Player device type"
+msgid "Portable Media Player"
+msgstr "Draagbare mediaspeler"
+
+#: solid/devices/frontend/deviceinterface.cpp:88
+msgctxt "Solid::DeviceInterface|Battery device type"
+msgid "Battery"
+msgstr "Batterij"
+
+#: solid/devices/frontend/deviceinterface.cpp:90
+msgctxt "Solid::DeviceInterface|Network Share device type"
+msgid "Network Share"
+msgstr "Netwerk-share"
+
+#: tools/solid-hardware/solid-hardware.cpp:173
+#: tools/solid-hardware/solid-hardware.cpp:272
+msgctxt "solid-hardware|"
+msgid "Device udi"
+msgstr "Apparaat-UDI"
+
+#: tools/solid-hardware/solid-hardware.cpp:188
+msgctxt "solid-hardware|"
+msgid "KDE tool for querying your hardware from the command line"
+msgstr ""
+"KDE-hulpprogramma voor het  aansturen van uw hardware vanaf de commandoregel"
+
+#: tools/solid-hardware/solid-hardware.cpp:191
+msgctxt "solid-hardware|"
+msgid "Command to execute"
+msgstr "Uit te voeren commando"
+
+#: tools/solid-hardware/solid-hardware.cpp:193
+msgctxt "solid-hardware|"
+msgid "Show available commands"
+msgstr "Beschikbare commando's tonen"
+
+#: tools/solid-hardware/solid-hardware.cpp:199 tools/solid-power/main.cpp:47
+msgctxt "solid-hardware|"
+msgid "Syntax:"
+msgstr "Gebruik:"
+
+#: tools/solid-hardware/solid-hardware.cpp:202
+msgctxt "solid-hardware|"
+msgid ""
+"             # List the hardware available in the system.\n"
+"             # - If the 'nonportableinfo' option is specified, the device\n"
+"             # properties are listed (be careful, in this case property "
+"names\n"
+"             # are backend dependent),\n"
+"             # - If the 'details' option is specified, the device "
+"interfaces\n"
+"             # and the corresponding properties are listed in a platform\n"
+"             # neutral fashion,\n"
+"             # - Otherwise only device UDIs are listed.\n"
+msgstr ""
+"             # Som de beschikbare hardware in het systeem op.\n"
+"             # - als de optie 'nonportableinfo' is opgegeven, worden\n"
+"             # de apparaateigenschappen opgesomd (wees voorzicht, in dit "
+"geval zijn eigenschapnamen\n"
+"             # backend-afhankelijk),\n"
+"             # - als de optie 'details' is opgegeven, worden de "
+"apparaatinterfaces\n"
+"             # en de bijhorende eigenschappen opgesomd op een "
+"platformneutrale\n"
+"             # wijze,\n"
+"             # - anders worden alleen de apparaat-UDI's opgesomd.\n"
+
+#: tools/solid-hardware/solid-hardware.cpp:213
+msgctxt "solid-hardware|"
+msgid ""
+"             # Display all the interfaces and properties of the device\n"
+"             # corresponding to 'udi' in a platform neutral fashion.\n"
+msgstr ""
+"             # Som alle interfaces en de eigenschappen van het apparaat\n"
+"             # dat correspondeert met de 'udi' op een platformneutrale "
+"manier op.\n"
+
+#: tools/solid-hardware/solid-hardware.cpp:218
+msgctxt "solid-hardware|"
+msgid ""
+"             # Display all the properties of the device corresponding to "
+"'udi'\n"
+"             # (be careful, in this case property names are backend "
+"dependent).\n"
+msgstr ""
+"             # Som alle eigenschappen op van het apparaat dat correspondeert "
+"met 'udi'\n"
+"             # (wees voorzichtig, in dit geval zijn eigenschapnamen backend-"
+"afhankelijk).\n"
+
+#: tools/solid-hardware/solid-hardware.cpp:223
+msgctxt "solid-hardware|"
+msgid ""
+"             # List the UDI of devices corresponding to 'predicate'.\n"
+"             # - If 'parentUdi' is specified, the search is restricted to "
+"the\n"
+"             # branch of the corresponding device,\n"
+"             # - Otherwise the search is done on all the devices.\n"
+msgstr ""
+"             # Som de UDI van apparaten op die overeenkomen met "
+"'predicate'.\n"
+"             # - Als 'parentUdi' is opgegeven, dan zal de zoekactie worden "
+"beperkt tot de\n"
+"             # tak van het corresponderende apparaat,\n"
+"             # - anders zal de zoekactie worden gedaan op alle apparaten.\n"
+
+#: tools/solid-hardware/solid-hardware.cpp:230
+msgctxt "solid-hardware|"
+msgid ""
+"             # If applicable, mount the device corresponding to 'udi'.\n"
+msgstr ""
+"             # Wanneer van toepassing, koppel het apparaat aan dat "
+"correspondeert met 'udi'\n"
+
+#: tools/solid-hardware/solid-hardware.cpp:234
+msgctxt "solid-hardware|"
+msgid ""
+"             # If applicable, unmount the device corresponding to 'udi'.\n"
+msgstr ""
+"             # Indien van toepassing, koppel het apparaat af dat "
+"correspondeert met 'udi'\n"
+
+#: tools/solid-hardware/solid-hardware.cpp:238
+msgctxt "solid-hardware|"
+msgid ""
+"             # If applicable, eject the device corresponding to 'udi'.\n"
+msgstr ""
+"             # Indien van toepassing, werp het apparaat uit dat overeenkomt "
+"met 'udi'.\n"
+
+#: tools/solid-hardware/solid-hardware.cpp:242
+msgctxt "solid-hardware|"
+msgid "             # Listen to all add/remove events on supported hardware."
+msgstr ""
+"             # Luister naar alle gebeurtenissen van toevoegen/verwijderen op "
+"ondersteunde hardware."
+
+#: tools/solid-hardware/solid-hardware.cpp:259
+msgctxt "solid-hardware|"
+msgid "Show device details"
+msgstr "Apparaatdetails tonen"
+
+#: tools/solid-hardware/solid-hardware.cpp:260
+msgctxt "solid-hardware|"
+msgid "Show non portable information"
+msgstr "Niet overdraagbare informatie tonen"
+
+#: tools/solid-hardware/solid-hardware.cpp:273
+msgctxt "solid-hardware|"
+msgid "Parent device udi"
+msgstr "Ouderapparaat-udi"
+
+#: tools/solid-hardware/solid-hardware.cpp:301
+#, qt-format
+msgctxt "solid-hardware|"
+msgid "Syntax Error: Unknown command '%1'"
+msgstr "Syntaxisfout: onbekend commando '%1'"
+
+#: tools/solid-hardware/solid-hardware.cpp:370
+#, qt-format
+msgctxt "SolidHardware|"
+msgid "Error: %1 does not have the interface StorageAccess."
+msgstr "Fout: %1 blijkt de interface StorageAccess niet te bevatten."
+
+#: tools/solid-hardware/solid-hardware.cpp:375
+#, qt-format
+msgctxt "SolidHardware|"
+msgid "Error: %1 does not have the interface OpticalDrive."
+msgstr "Fout: %1 blijkt de interface OpticalDrive niet te bevatten."
+
+#: tools/solid-hardware/solid-hardware.cpp:408
+#, qt-format
+msgctxt "SolidHardware|"
+msgid "Error: %1"
+msgstr "Fout: %1"
+
+#: tools/solid-power/main.cpp:36
+msgctxt "solid-power|"
+msgid "Tool to know and set the power management state of your device"
+msgstr ""
+"Hulpmiddel om te weten wat de status van het energiebeheer van uw apparaat "
+"is en om deze in te stellen"
+
+#: tools/solid-power/main.cpp:38
+msgctxt "solid-power|"
+msgid "Command to execute"
+msgstr "Uit te voeren commando"
+
+#: tools/solid-power/main.cpp:40
+msgctxt "solid-power|"
+msgid "Show available commands"
+msgstr "Beschikbare commando's tonen"
+
+#: tools/solid-power/main.cpp:50
+msgctxt "solid-power|"
+msgid ""
+"             # Show all the power management information from the system.\n"
+"             # - acPlugged: whether the device is connected to the AC or "
+"not\n"
+msgstr ""
+"             # Alle informatie over energiebeheer van het systeem tonen.\n"
+"             # - acPlugged: of het apparaat verbonden is met het energienet "
+"of niet\n"
