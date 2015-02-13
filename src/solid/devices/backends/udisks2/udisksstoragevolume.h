@@ -40,13 +40,13 @@ public:
     StorageVolume(Device *device);
     virtual ~StorageVolume();
 
-    virtual QString encryptedContainerUdi() const;
-    virtual qulonglong size() const;
-    virtual QString uuid() const;
-    virtual QString label() const;
-    virtual QString fsType() const;
-    virtual Solid::StorageVolume::UsageType usage() const;
-    virtual bool isIgnored() const;
+    QString encryptedContainerUdi() const Q_DECL_OVERRIDE;
+    qulonglong size() const Q_DECL_OVERRIDE;
+    QString uuid() const Q_DECL_OVERRIDE;
+    QString label() const Q_DECL_OVERRIDE;
+    QString fsType() const Q_DECL_OVERRIDE;
+    Solid::StorageVolume::UsageType usage() const Q_DECL_OVERRIDE;
+    bool isIgnored() const Q_DECL_OVERRIDE;
 };
 
 }

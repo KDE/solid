@@ -40,13 +40,13 @@ public:
     ~FakeDevice();
 
 public Q_SLOTS:
-    virtual QString udi() const;
-    virtual QString parentUdi() const;
-    virtual QString vendor() const;
-    virtual QString product() const;
-    virtual QString icon() const;
-    virtual QStringList emblems() const;
-    virtual QString description() const;
+    QString udi() const Q_DECL_OVERRIDE;
+    QString parentUdi() const Q_DECL_OVERRIDE;
+    QString vendor() const Q_DECL_OVERRIDE;
+    QString product() const Q_DECL_OVERRIDE;
+    QString icon() const Q_DECL_OVERRIDE;
+    QStringList emblems() const Q_DECL_OVERRIDE;
+    QString description() const Q_DECL_OVERRIDE;
 
     virtual QVariant property(const QString &key) const;
     virtual QMap<QString, QVariant> allProperties() const;
@@ -64,8 +64,8 @@ public Q_SLOTS:
     void raiseCondition(const QString &condition, const QString &reason);
 
 public:
-    virtual bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const;
-    virtual QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type);
+    bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const Q_DECL_OVERRIDE;
+    QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type) Q_DECL_OVERRIDE;
 
 Q_SIGNALS:
     void propertyChanged(const QMap<QString, int> &changes);

@@ -42,13 +42,13 @@ public:
     GenericInterface(Device *device);
     virtual ~GenericInterface();
 
-    virtual QVariant property(const QString &key) const;
-    virtual QVariantMap allProperties() const;
-    virtual bool propertyExists(const QString &key) const;
+    QVariant property(const QString &key) const Q_DECL_OVERRIDE;
+    QVariantMap allProperties() const Q_DECL_OVERRIDE;
+    bool propertyExists(const QString &key) const Q_DECL_OVERRIDE;
 
 Q_SIGNALS:
-    void propertyChanged(const QMap<QString, int> &changes);
-    void conditionRaised(const QString &condition, const QString &reason);
+    void propertyChanged(const QMap<QString, int> &changes) Q_DECL_OVERRIDE;
+    void conditionRaised(const QString &condition, const QString &reason) Q_DECL_OVERRIDE;
 };
 }
 }

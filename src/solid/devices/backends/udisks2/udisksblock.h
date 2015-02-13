@@ -41,9 +41,9 @@ public:
     Block(Device *dev);
     virtual ~Block();
 
-    virtual QString device() const;
-    virtual int deviceMinor() const;
-    virtual int deviceMajor() const;
+    QString device() const Q_DECL_OVERRIDE;
+    int deviceMinor() const Q_DECL_OVERRIDE;
+    int deviceMajor() const Q_DECL_OVERRIDE;
 private:
     dev_t m_devNum;
     QString m_devFile;

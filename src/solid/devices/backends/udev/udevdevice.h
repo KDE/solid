@@ -41,23 +41,23 @@ public:
     UDevDevice(const UdevQt::Device device);
     virtual ~UDevDevice();
 
-    virtual QString udi() const;
+    QString udi() const Q_DECL_OVERRIDE;
 
-    virtual QString parentUdi() const;
+    QString parentUdi() const Q_DECL_OVERRIDE;
 
-    virtual QString vendor() const;
+    QString vendor() const Q_DECL_OVERRIDE;
 
-    virtual QString product() const;
+    QString product() const Q_DECL_OVERRIDE;
 
-    virtual QString icon() const;
+    QString icon() const Q_DECL_OVERRIDE;
 
-    virtual QStringList emblems() const;
+    QStringList emblems() const Q_DECL_OVERRIDE;
 
-    virtual QString description() const;
+    QString description() const Q_DECL_OVERRIDE;
 
-    virtual bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const;
+    bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const Q_DECL_OVERRIDE;
 
-    virtual QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type);
+    QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type) Q_DECL_OVERRIDE;
 
     QString device() const;
 

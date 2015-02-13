@@ -42,11 +42,11 @@ public:
     explicit FstabManager(QObject *parent);
     virtual ~FstabManager();
 
-    virtual QString udiPrefix() const;
-    virtual QSet<Solid::DeviceInterface::Type> supportedInterfaces() const;
-    virtual QStringList allDevices();
-    virtual QStringList devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type);
-    virtual QObject *createDevice(const QString &udi);
+    QString udiPrefix() const Q_DECL_OVERRIDE;
+    QSet<Solid::DeviceInterface::Type> supportedInterfaces() const Q_DECL_OVERRIDE;
+    QStringList allDevices() Q_DECL_OVERRIDE;
+    QStringList devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type) Q_DECL_OVERRIDE;
+    QObject *createDevice(const QString &udi) Q_DECL_OVERRIDE;
 
 Q_SIGNALS:
     void mtabChanged(const QString &device);

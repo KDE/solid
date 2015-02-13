@@ -42,11 +42,11 @@ class UPowerManager : public Solid::Ifaces::DeviceManager
 public:
     UPowerManager(QObject *parent);
     virtual ~UPowerManager();
-    virtual QObject *createDevice(const QString &udi);
-    virtual QStringList devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type);
-    virtual QStringList allDevices();
-    virtual QSet< Solid::DeviceInterface::Type > supportedInterfaces() const;
-    virtual QString udiPrefix() const;
+    QObject *createDevice(const QString &udi) Q_DECL_OVERRIDE;
+    QStringList devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type) Q_DECL_OVERRIDE;
+    QStringList allDevices() Q_DECL_OVERRIDE;
+    QSet< Solid::DeviceInterface::Type > supportedInterfaces() const Q_DECL_OVERRIDE;
+    QString udiPrefix() const Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
     void onDeviceAdded(const QDBusObjectPath &path);

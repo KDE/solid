@@ -40,10 +40,10 @@ public:
     ~FakeProcessor();
 
 public Q_SLOTS:
-    virtual int number() const;
-    virtual int maxSpeed() const;
-    virtual bool canChangeFrequency() const;
-    virtual Solid::Processor::InstructionSets instructionSets() const;
+    int number() const Q_DECL_OVERRIDE;
+    int maxSpeed() const Q_DECL_OVERRIDE;
+    bool canChangeFrequency() const Q_DECL_OVERRIDE;
+    Solid::Processor::InstructionSets instructionSets() const Q_DECL_OVERRIDE;
 };
 }
 }

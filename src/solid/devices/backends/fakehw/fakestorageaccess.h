@@ -39,19 +39,19 @@ public:
     FakeStorageAccess(FakeDevice *device);
     virtual ~FakeStorageAccess();
 
-    virtual bool isAccessible() const;
-    virtual QString filePath() const;
-    virtual bool isIgnored() const;
+    bool isAccessible() const Q_DECL_OVERRIDE;
+    QString filePath() const Q_DECL_OVERRIDE;
+    bool isIgnored() const Q_DECL_OVERRIDE;
 public Q_SLOTS:
-    virtual bool setup();
-    virtual bool teardown();
+    bool setup() Q_DECL_OVERRIDE;
+    bool teardown() Q_DECL_OVERRIDE;
 
 Q_SIGNALS:
-    void accessibilityChanged(bool accessible, const QString &udi);
-    void setupDone(Solid::ErrorType error, QVariant errorData, const QString &udi);
-    void teardownDone(Solid::ErrorType error, QVariant errorData, const QString &udi);
-    void setupRequested(const QString &udi);
-    void teardownRequested(const QString &udi);
+    void accessibilityChanged(bool accessible, const QString &udi) Q_DECL_OVERRIDE;
+    void setupDone(Solid::ErrorType error, QVariant errorData, const QString &udi) Q_DECL_OVERRIDE;
+    void teardownDone(Solid::ErrorType error, QVariant errorData, const QString &udi) Q_DECL_OVERRIDE;
+    void setupRequested(const QString &udi) Q_DECL_OVERRIDE;
+    void teardownRequested(const QString &udi) Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
     void onPropertyChanged(const QMap<QString, int> &changes);

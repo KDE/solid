@@ -40,9 +40,9 @@ public:
 
     virtual ~FakeNetworkShare();
 
-    virtual Solid::NetworkShare::ShareType type() const;
+    Solid::NetworkShare::ShareType type() const Q_DECL_OVERRIDE;
 
-    virtual QUrl url() const;
+    QUrl url() const Q_DECL_OVERRIDE;
 };
 
 }

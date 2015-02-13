@@ -44,11 +44,11 @@ public:
     StorageDrive(Device *dev);
     virtual ~StorageDrive();
 
-    virtual qulonglong size() const;
-    virtual bool isHotpluggable() const;
-    virtual bool isRemovable() const;
-    virtual Solid::StorageDrive::DriveType driveType() const;
-    virtual Solid::StorageDrive::Bus bus() const;
+    qulonglong size() const Q_DECL_OVERRIDE;
+    bool isHotpluggable() const Q_DECL_OVERRIDE;
+    bool isRemovable() const Q_DECL_OVERRIDE;
+    Solid::StorageDrive::DriveType driveType() const Q_DECL_OVERRIDE;
+    Solid::StorageDrive::Bus bus() const Q_DECL_OVERRIDE;
 
 private:
     UdevQt::Device m_udevDevice;

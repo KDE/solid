@@ -48,15 +48,15 @@ public:
     Device(const QString &udi);
     virtual ~Device();
 
-    virtual QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type);
-    virtual bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const;
-    virtual QString description() const;
-    virtual QStringList emblems() const;
-    virtual QString icon() const;
-    virtual QString product() const;
-    virtual QString vendor() const;
-    virtual QString udi() const;
-    virtual QString parentUdi() const;
+    QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type) Q_DECL_OVERRIDE;
+    bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const Q_DECL_OVERRIDE;
+    QString description() const Q_DECL_OVERRIDE;
+    QStringList emblems() const Q_DECL_OVERRIDE;
+    QString icon() const Q_DECL_OVERRIDE;
+    QString product() const Q_DECL_OVERRIDE;
+    QString vendor() const Q_DECL_OVERRIDE;
+    QString udi() const Q_DECL_OVERRIDE;
+    QString parentUdi() const Q_DECL_OVERRIDE;
 
     QVariant prop(const QString &key) const;
     bool propertyExists(const QString &key) const;

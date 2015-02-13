@@ -48,17 +48,17 @@ public:
     FakeManager(QObject *parent, const QString &xmlFile);
     virtual ~FakeManager();
 
-    virtual QString udiPrefix() const;
-    virtual QSet<Solid::DeviceInterface::Type> supportedInterfaces() const;
+    QString udiPrefix() const Q_DECL_OVERRIDE;
+    QSet<Solid::DeviceInterface::Type> supportedInterfaces() const Q_DECL_OVERRIDE;
 
     /**
      * Return the list of UDI of all available devices.
      */
-    virtual QStringList allDevices();
+    QStringList allDevices() Q_DECL_OVERRIDE;
 
-    virtual QStringList devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type);
+    QStringList devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type) Q_DECL_OVERRIDE;
 
-    virtual QObject *createDevice(const QString &udi);
+    QObject *createDevice(const QString &udi) Q_DECL_OVERRIDE;
     virtual FakeDevice *findDevice(const QString &udi);
 
 public Q_SLOTS:

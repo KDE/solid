@@ -43,18 +43,18 @@ public:
     StorageAccess(Device *device);
     virtual ~StorageAccess();
 
-    virtual bool isAccessible() const;
-    virtual QString filePath() const;
-    virtual bool isIgnored() const;
-    virtual bool setup();
-    virtual bool teardown();
+    bool isAccessible() const Q_DECL_OVERRIDE;
+    QString filePath() const Q_DECL_OVERRIDE;
+    bool isIgnored() const Q_DECL_OVERRIDE;
+    bool setup() Q_DECL_OVERRIDE;
+    bool teardown() Q_DECL_OVERRIDE;
 
 Q_SIGNALS:
-    void accessibilityChanged(bool accessible, const QString &udi);
-    void setupDone(Solid::ErrorType error, QVariant errorData, const QString &udi);
-    void teardownDone(Solid::ErrorType error, QVariant errorData, const QString &udi);
-    void setupRequested(const QString &udi);
-    void teardownRequested(const QString &udi);
+    void accessibilityChanged(bool accessible, const QString &udi) Q_DECL_OVERRIDE;
+    void setupDone(Solid::ErrorType error, QVariant errorData, const QString &udi) Q_DECL_OVERRIDE;
+    void teardownDone(Solid::ErrorType error, QVariant errorData, const QString &udi) Q_DECL_OVERRIDE;
+    void setupRequested(const QString &udi) Q_DECL_OVERRIDE;
+    void teardownRequested(const QString &udi) Q_DECL_OVERRIDE;
 
 public Q_SLOTS:
     Q_SCRIPTABLE Q_NOREPLY void passphraseReply(const QString &passphrase);

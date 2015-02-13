@@ -43,29 +43,29 @@ public:
 
     virtual ~FstabStorageAccess();
 
-    virtual bool isAccessible() const;
+    bool isAccessible() const Q_DECL_OVERRIDE;
 
-    virtual QString filePath() const;
+    QString filePath() const Q_DECL_OVERRIDE;
 
-    virtual bool isIgnored() const;
+    bool isIgnored() const Q_DECL_OVERRIDE;
 
-    virtual bool setup();
+    bool setup() Q_DECL_OVERRIDE;
 
-    virtual bool teardown();
+    bool teardown() Q_DECL_OVERRIDE;
 
 public:
     const Solid::Backends::Fstab::FstabDevice *fstabDevice() const;
 
 Q_SIGNALS:
-    void accessibilityChanged(bool accessible, const QString &udi);
+    void accessibilityChanged(bool accessible, const QString &udi) Q_DECL_OVERRIDE;
 
-    void setupDone(Solid::ErrorType error, QVariant data, const QString &udi);
+    void setupDone(Solid::ErrorType error, QVariant data, const QString &udi) Q_DECL_OVERRIDE;
 
-    void teardownDone(Solid::ErrorType error, QVariant data, const QString &udi);
+    void teardownDone(Solid::ErrorType error, QVariant data, const QString &udi) Q_DECL_OVERRIDE;
 
-    void setupRequested(const QString &udi);
+    void setupRequested(const QString &udi) Q_DECL_OVERRIDE;
 
-    void teardownRequested(const QString &udi);
+    void teardownRequested(const QString &udi) Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
     void slotSetupFinished(int exitCode, QProcess::ExitStatus exitStatus);

@@ -41,27 +41,27 @@ public:
 
     virtual ~RootDevice();
 
-    virtual QString udi() const;
-    virtual QString parentUdi() const;
+    QString udi() const Q_DECL_OVERRIDE;
+    QString parentUdi() const Q_DECL_OVERRIDE;
 
-    virtual QString vendor() const;
+    QString vendor() const Q_DECL_OVERRIDE;
     void setVendor(const QString &vendor);
 
-    virtual QString product() const;
+    QString product() const Q_DECL_OVERRIDE;
     void setProduct(const QString &product);
 
-    virtual QString icon() const;
+    QString icon() const Q_DECL_OVERRIDE;
     void setIcon(const QString &icon);
 
-    virtual QStringList emblems() const;
+    QStringList emblems() const Q_DECL_OVERRIDE;
     void setEmblems(const QStringList &emblems);
 
-    virtual QString description() const;
+    QString description() const Q_DECL_OVERRIDE;
     void setDescription(const QString &description);
 
-    virtual bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const;
+    bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const Q_DECL_OVERRIDE;
 
-    virtual QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type);
+    QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type) Q_DECL_OVERRIDE;
 private:
     QString m_udi;
     QString m_parentUdi;
