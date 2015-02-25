@@ -33,10 +33,10 @@ class FDAcPluggedJob : public AbstractAcPluggedJob
     Q_OBJECT
 public:
     explicit FDAcPluggedJob(QObject* parent = 0);
-    virtual bool isPlugged() const Q_DECL_OVERRIDE;
+    bool isPlugged() const Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
-    virtual void doStart() Q_DECL_OVERRIDE;
+    void doStart() Q_DECL_OVERRIDE;
 
     void slotDBusReply(const QDBusMessage &msg);
     void slotDBusError(const QDBusError &error);

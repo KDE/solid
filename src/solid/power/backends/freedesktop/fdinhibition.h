@@ -38,9 +38,9 @@ public:
     explicit FdInhibition(Power::InhibitionTypes inhibitions, const QString &description, QObject* parent = 0);
     virtual ~FdInhibition();
 
-    virtual void start() Q_DECL_OVERRIDE;
-    virtual void stop() Q_DECL_OVERRIDE;
-    virtual Inhibition::State state() const Q_DECL_OVERRIDE;
+    void start() Q_DECL_OVERRIDE;
+    void stop() Q_DECL_OVERRIDE;
+    Inhibition::State state() const Q_DECL_OVERRIDE;
 
     void setDescription(const QString &description);
 

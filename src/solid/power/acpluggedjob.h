@@ -39,7 +39,7 @@ public:
     bool isPlugged() const;
 
 private Q_SLOTS:
-    virtual void doStart() Q_DECL_OVERRIDE;
+    void doStart() Q_DECL_OVERRIDE;
 
 /**
  * We have to re-declare the signal because
