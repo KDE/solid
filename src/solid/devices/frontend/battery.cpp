@@ -68,6 +68,8 @@ Solid::Battery::Battery(QObject *backendObject)
     connect(backendObject, SIGNAL(temperatureChanged(double,QString)),
             this, SIGNAL(temperatureChanged(double,QString)));
 
+    connect(backendObject, SIGNAL(remainingTimeChanged(qlonglong,QString)),
+            this, SIGNAL(remainingTimeChanged(qlonglong,QString)));
 }
 
 Solid::Battery::~Battery()
