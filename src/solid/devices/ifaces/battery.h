@@ -201,10 +201,18 @@ public:
      */
     virtual QString serial() const = 0;
 
+    /**
+     * Retrieves the current estimated remaining time of the system batteries
+     *
+     * @return the current global estimated remaining time in seconds
+     * @since 5.8
+     */
+    virtual qlonglong remainingTime() const = 0;
+
 protected:
     //Q_SIGNALS:
     /**
-     * This signal is emitted if the battery get plugged in/out of the
+     * This signal is emitted if the battery gets plugged in/out of the
      * battery bay.
      *
      * @param newState the new plugging state of the battery, type is boolean
@@ -327,10 +335,18 @@ protected:
      */
     virtual void temperatureChanged(double temperature, const QString &udi) = 0;
 
+    /**
+      * This signal is emitted when the estimated battery remaining time changes.
+      *
+      * @param time the new remaining time
+      * @param udi the UDI of the battery with the new remaining time
+      * @since 5.8
+      */
+     virtual void remainingTimeChanged(qlonglong time, const QString &udi) = 0;
 };
 }
 }
 
-Q_DECLARE_INTERFACE(Solid::Ifaces::Battery, "org.kde.Solid.Ifaces.Battery/0.2")
+Q_DECLARE_INTERFACE(Solid::Ifaces::Battery, "org.kde.Solid.Ifaces.Battery/0.3")
 
 #endif

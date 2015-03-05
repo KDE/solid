@@ -1,6 +1,6 @@
 /*
     Copyright 2009 Pino Toscano <pino@kde.org>
-    Copyright 2010, 2012 Lukas Tinkl <ltinkl@redhat.com>
+    Copyright 2010, 2012, 2015 Lukáš Tinkl <ltinkl@redhat.com>
     Copyright 2014 Kai Uwe Broulik <kde@privat.broulik.de>
 
     This library is free software; you can redistribute it and/or
@@ -201,6 +201,17 @@ QString Battery::serial() const
     return m_device.data()->prop("Serial").toString();
 }
 
+qlonglong Battery::remainingTime() const
+{
+    if (chargeState() == Solid::Battery::Charging) {
+        return timeToFull();
+    } else if (chargeState() == Solid::Battery::Discharging) {
+        return timeToEmpty();
+    }
+
+    return -1;
+}
+
 void Battery::slotChanged()
 {
     if (m_device) {
@@ -269,6 +280,10 @@ void Battery::slotChanged()
 
         if (old_temperature != m_temperature) {
             emit temperatureChanged(m_temperature, m_device.data()->udi());
+        }
+
+        if (old_timeToFull != m_timeToFull || old_timeToEmpty != m_timeToEmpty) {
+            emit remainingTimeChanged(remainingTime(), m_device.data()->udi());
         }
     }
 }

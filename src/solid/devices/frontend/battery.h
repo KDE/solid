@@ -58,6 +58,7 @@ class SOLID_EXPORT Battery : public DeviceInterface
     Q_PROPERTY(QString recallVendor READ recallVendor)
     Q_PROPERTY(QString recallUrl READ recallUrl)
     Q_PROPERTY(QString serial READ serial)
+    Q_PROPERTY(qlonglong remainingTime READ remainingTime NOTIFY remainingTimeChanged)
     Q_DECLARE_PRIVATE(Battery)
     friend class Device;
 
@@ -304,9 +305,17 @@ public:
      */
     QString serial() const;
 
+    /**
+     * Retrieves the current estimated remaining time of the system batteries
+     *
+     * @return the current global estimated remaining time in seconds
+     * @since 5.8
+     */
+    qlonglong remainingTime() const;
+
 Q_SIGNALS:
     /**
-     * This signal is emitted if the battery get plugged in/out of the
+     * This signal is emitted if the battery gets plugged in/out of the
      * battery bay.
      *
      * @param newState the new plugging state of the battery, type is boolean
@@ -429,6 +438,14 @@ Q_SIGNALS:
      */
     void temperatureChanged(double temperature, const QString &udi);
 
+    /**
+      * This signal is emitted when the estimated battery remaining time changes.
+      *
+      * @param time the new remaining time
+      * @param udi the UDI of the battery with the new remaining time
+      * @since 5.8
+      */
+     void remainingTimeChanged(qlonglong time, const QString &udi);
 };
 }
 

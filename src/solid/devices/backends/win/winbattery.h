@@ -81,6 +81,9 @@ public:
     virtual QString recallVendor() const;
 
     virtual QString recallUrl() const;
+
+    virtual qlonglong remainingTime() const;
+
     // ------------
 
     static QSet<QString> getUdis();
@@ -104,6 +107,7 @@ Q_SIGNALS:
     // ------------
     void presentStateChanged(bool newState, const QString &udi);
     void timeToFullChanged(qlonglong time, const QString &udi);
+    void remainingTimeChanged(qlonglong time, const QString &udi);
     // ------------
 
 private Q_SLOTS:

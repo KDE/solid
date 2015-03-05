@@ -68,6 +68,8 @@ public:
     QString recallUrl() const { return QString(); }
     QString serial() const { return QString(); }
 
+    qlonglong remainingTime() const { return -1; }
+
 Q_SIGNALS:
     void energyChanged(double energy, const QString &udi);
     void energyFullChanged(double energyFull, const QString &udi);
@@ -82,6 +84,7 @@ Q_SIGNALS:
     void timeToFullChanged(qlonglong time, const QString &udi);
     void temperatureChanged(double temperature, const QString &udi);
     void voltageChanged(double voltage, const QString &udi);
+    void remainingTimeChanged(qlonglong time, const QString &udi);
 };
 }
 }

@@ -194,3 +194,9 @@ QString Solid::Battery::serial() const
     Q_D(const Battery);
     return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), QString(), serial());
 }
+
+qlonglong Solid::Battery::remainingTime() const
+{
+    Q_D(const Battery);
+    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), -1, remainingTime());
+}

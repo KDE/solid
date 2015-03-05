@@ -275,7 +275,6 @@ void WinBattery::updateTimeToEmpty(const WinBattery::Battery &b)
         m_timeUntilEmpty = time;
         emit timeToEmptyChanged(time, m_device->udi());
     }
-
 }
 
 void WinBattery::updateBatteryTemp(const WinBattery::Battery &b)
@@ -291,7 +290,6 @@ void WinBattery::updateBatteryTemp(const WinBattery::Battery &b)
         m_temperature = batteryTemp;
         emit temperatureChanged(batteryTemp, m_device->udi());
     }
-
 }
 
 Solid::Battery::Technology WinBattery::technology() const
@@ -357,6 +355,11 @@ QString WinBattery::recallVendor() const
 QString WinBattery::recallUrl() const
 {
     return QString();
+}
+
+qlonglong WinBattery::remainingTime() const
+{
+    return m_timeUntilEmpty; // FIXME
 }
 
 QString WinBattery::serial() const

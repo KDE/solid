@@ -81,6 +81,8 @@ public:
 
     QString serial() const Q_DECL_OVERRIDE;
 
+    qlonglong remainingTime() const Q_DECL_OVERRIDE;
+
 Q_SIGNALS:
     void presentStateChanged(bool newState, const QString &udi) Q_DECL_OVERRIDE;
     void chargePercentChanged(int value, const QString &udi = QString()) Q_DECL_OVERRIDE;
@@ -95,6 +97,7 @@ Q_SIGNALS:
     void energyRateChanged(double energyRate, const QString &udi) Q_DECL_OVERRIDE;
     void voltageChanged(double voltage, const QString &udi) Q_DECL_OVERRIDE;
     void temperatureChanged(double temperature, const QString &udi) Q_DECL_OVERRIDE;
+    void remainingTimeChanged(qlonglong time, const QString &udi) Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
     void slotChanged();

@@ -110,12 +110,13 @@ Solid::Battery::ChargeState Battery::chargeState() const
 qlonglong Battery::timeToEmpty() const
 {
     // NOTE Hal doesn't differentiate between time to empty and full
-    return static_cast<HalDevice *>(m_device)->prop("battery.remaining_time").toLongLong();
+    return remainingTime();
 }
 
 qlonglong Battery::timeToFull() const
 {
-    return static_cast<HalDevice *>(m_device)->prop("battery.remaining_time").toLongLong();
+    // NOTE Hal doesn't differentiate between time to empty and full
+    return remainingTime();
 }
 
 Solid::Battery::Technology Battery::technology() const
@@ -187,6 +188,11 @@ QString Battery::serial() const
     return static_cast<HalDevice *>(m_device)->prop("system.hardware.serial").toString();
 }
 
+qlonglong Battery::remainingTime() const
+{
+    return static_cast<HalDevice *>(m_device)->prop("battery.remaining_time").toLongLong();
+}
+
 void Battery::slotPropertyChanged(const QMap<QString, int> &changes)
 {
     if (changes.contains("battery.present")) {
@@ -210,6 +216,7 @@ void Battery::slotPropertyChanged(const QMap<QString, int> &changes)
     if (changes.contains("battery.remaining_time")) {
         emit timeToEmptyChanged(timeToEmpty(), m_device->udi());
         emit timeToFullChanged(timeToFull(), m_device->udi());
+        emit remainingTimeChanged(remainingTime(), m_device->udi());
     }
 
     if (changes.contains("battery.charge_level.current")) {

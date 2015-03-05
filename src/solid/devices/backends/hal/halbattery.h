@@ -68,6 +68,8 @@ public:
 
     virtual QString serial() const;
 
+    virtual qlonglong remainingTime() const;
+
 Q_SIGNALS:
     void presentStateChanged(bool newState, const QString &udi);
     void chargePercentChanged(int value, const QString &udi);

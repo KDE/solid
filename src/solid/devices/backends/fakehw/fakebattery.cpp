@@ -194,3 +194,8 @@ QString FakeBattery::serial() const
 {
     return fakeDevice()->property("serial").toString();
 }
+
+qlonglong FakeBattery::remainingTime() const
+{
+    return fakeDevice()->property("remainingTime").toLongLong();
+}
