@@ -84,6 +84,7 @@ Q_SIGNALS:
     void energyRateChanged(double energyRate, const QString &udi);
     void voltageChanged(double voltage, const QString &udi);
     void temperatureChanged(double temperature, const QString &udi); // dummy
+    void remainingTimeChanged(qlonglong time, const QString &udi) Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
     void slotPropertyChanged(const QMap<QString, int> &changes);
