@@ -28,9 +28,9 @@
 #include <solid/genericinterface.h>
 #include <solid/device.h>
 
-#include <QtCore/QStringList>
-#include <QtCore/QDebug>
-#include <QtDBus/QDBusPendingReply>
+#include <QStringList>
+#include <QDebug>
+#include <QDBusReply>
 
 using namespace Solid::Backends::UPower;
 
@@ -50,6 +50,11 @@ UPowerDevice::UPowerDevice(const QString &udi)
             QDBusConnection::systemBus().connect(UP_DBUS_SERVICE, m_udi, "org.freedesktop.DBus.Properties", "PropertiesChanged", this,
                                                  SLOT(onPropertiesChanged(QString,QVariantMap,QStringList)));
         }
+
+        // TODO port this to Solid::Power, we can't link against kdelibs4support for this signal
+        // older upower versions not affected
+        QDBusConnection::systemBus().connect("org.freedesktop.login1", "/org/freedesktop/login1", "org.freedesktop.login1.Manager", "PrepareForSleep",
+                                             this, SLOT(login1Resuming(bool)));
     }
 }
 
@@ -227,4 +232,14 @@ void UPowerDevice::slotChanged()
     // given we cannot know which property/ies changed, clear the cache
     m_cache.clear();
     emit changed();
+}
+
+void UPowerDevice::login1Resuming(bool active)
+{
+    if (!active) {
+        QDBusReply<void> refreshCall = m_device.asyncCall("Refresh");
+        if (refreshCall.isValid()) {
+            slotChanged();
+        }
+    }
 }

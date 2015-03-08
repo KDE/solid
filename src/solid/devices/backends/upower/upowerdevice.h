@@ -63,6 +63,7 @@ Q_SIGNALS:
 private Q_SLOTS:
     void onPropertiesChanged(const QString &ifaceName, const QVariantMap &changedProps, const QStringList &invalidatedProps);
     void slotChanged();
+    void login1Resuming(bool active);
 
 private:
     QString batteryTechnology() const;
