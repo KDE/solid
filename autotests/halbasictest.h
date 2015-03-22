@@ -33,6 +33,7 @@ class HalBasicTest : public QObject
 public:
     HalBasicTest(QObject *parent = 0);
 private Q_SLOTS:
+    void initTestCase();
     void testBasic();
     void testProcessorList();
     void testDeviceCreation();

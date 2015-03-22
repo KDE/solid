@@ -30,12 +30,20 @@
 #include <solid/devices/ifaces/processor.h>
 #include "solid/devices/backends/hal/halprocessor.h"
 
+#include <QtDBus/QDBusConnection>
+
 QTEST_MAIN(HalBasicTest)
 
 HalBasicTest::HalBasicTest(QObject *parent)
     : QObject(parent)
 {
     qputenv("SOLID_HAL_LEGACY", "1");
+}
+
+void HalBasicTest::initTestCase()
+{
+    if (!QDBusConnection::systemBus().isConnected())
+        QSKIP("D-Bus not running");
 }
 
 void HalBasicTest::testBasic()
