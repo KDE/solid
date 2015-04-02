@@ -59,8 +59,8 @@ add_feature_info(Solid::Job WITH_NEW_SOLID_JOB "WIP: Base class for Solid Asynch
 option(WITH_NEW_POWER_ASYNC_API "WIP: Asynchronous API for power management" Off)
 add_feature_info(Solid::PowerManagement WITH_NEW_POWER_ASYNC_API "WIP: Asynchronous API for power management")
 
-option(WITH_NEW_POWER_ASYNC_FREEDESKTOP "WIP: Freedesktop backend for the asyncrhonous api" Off)
-add_feature_info(Solid::PowerManagement WITH_NEW_POWER_ASYNC_FREEDESKTOP "WIP: Freedesktop backend for the asyncrhonous api")
+option(WITH_NEW_POWER_ASYNC_FREEDESKTOP "WIP: Freedesktop backend for the asynchronous api" Off)
+add_feature_info(Solid::PowerManagement WITH_NEW_POWER_ASYNC_FREEDESKTOP "WIP: Freedesktop backend for the asynchronous api")
 
 add_subdirectory(src)
 add_subdirectory(autotests)
