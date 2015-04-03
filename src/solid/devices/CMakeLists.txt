@@ -104,6 +104,9 @@ if(NOT WIN32 AND NOT APPLE)
         message(STATUS "Building Solid HAL backend." )
         include(devices/backends/hal/CMakeLists.txt)
     endif()
+
+    message(STATUS "Building KDE Connect backend." )
+    include(devices/backends/kdeconnect/CMakeLists.txt)
 endif()
 
 include(CheckIncludeFiles)
