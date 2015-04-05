@@ -20,15 +20,13 @@
 
 #include "kdeconnectdeviceinterface.h"
 
-#include <QDebug>
-
 using namespace Solid::Backends::KdeConnect;
 
 DeviceInterface::DeviceInterface(KdeConnectDevice *device)
     : QObject(device)
     , m_device(device)
 {
-    qDebug() << "kdeconnect device iface";
+
 }
 
 DeviceInterface::~DeviceInterface()

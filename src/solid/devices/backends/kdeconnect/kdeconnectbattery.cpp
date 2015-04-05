@@ -86,7 +86,7 @@ bool Battery::isRechargeable() const
 
 bool Battery::isPowerSupply() const
 {
-    return false; // USB 3.1 anyone? ;)
+    return false;
 }
 
 Solid::Battery::ChargeState Battery::chargeState() const

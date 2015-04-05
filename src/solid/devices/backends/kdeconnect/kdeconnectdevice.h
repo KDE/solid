@@ -58,9 +58,6 @@ public:
 Q_SIGNALS:
     void changed();
 
-private Q_SLOTS:
-    void onChanged();
-
 private:
     mutable QDBusInterface m_device;
     QString m_udi;

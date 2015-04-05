@@ -22,7 +22,6 @@
 #include "kdeconnectdevice.h"
 
 #include <QtDBus/QDBusReply>
-#include <QtCore/QDebug>
 #include <QtDBus/QDBusMetaType>
 #include <QtDBus/QDBusConnectionInterface>
 #include <QDBusServiceWatcher>
@@ -70,8 +69,6 @@ QObject *KdeConnectManager::createDevice(const QString &udi)
         return Q_NULLPTR;
     }
 
-    qDebug() << "createDevice" << udi;
-
     if (udi == udiPrefix()) {
         RootDevice *root = new RootDevice(udiPrefix());
 
@@ -90,20 +87,16 @@ QObject *KdeConnectManager::createDevice(const QString &udi)
 
 QStringList KdeConnectManager::devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type)
 {
-    qDebug() << "DEVICES FROM QUERY";
     if (!m_ready) {
-        qDebug() << "NOT READY";
         return QStringList();
     }
 
     if (type != Solid::DeviceInterface::Battery
         && type != Solid::DeviceInterface::PortableMediaPlayer) {
-        qDebug() << "neither battery nor portable media player";
         return QStringList();
     }
 
     if (!parentUdi.isEmpty() && parentUdi != udiPrefix()) {
-        qDebug() << "parent udi" << parentUdi << "is" << udiPrefix();
         return QStringList();
     }
 
@@ -112,7 +105,6 @@ QStringList KdeConnectManager::devicesFromQuery(const QString &parentUdi, Solid:
 
 QStringList KdeConnectManager::allDevices()
 {
-    qDebug() << "all devices";
     if (!m_ready) {
         return QStringList();
     }
@@ -131,8 +123,6 @@ QStringList KdeConnectManager::allDevices()
         udis.append(prefixedId(device));
         m_devices.append(device);
     }
-
-    qDebug() << "telling it" << udis;
 
     return udis;
 }
@@ -169,9 +159,7 @@ void KdeConnectManager::onServiceUnregistered(const QString &service)
 
 void KdeConnectManager::onDeviceAdded(const QString &id)
 {
-    qDebug() << "Device added" << id;
-    if (m_devices.contains(id)) {
-        qDebug() << "But we already know that one";
+    if (m_devices.contains(id)) { // we already know that one
         return;
     }
 
@@ -181,9 +169,7 @@ void KdeConnectManager::onDeviceAdded(const QString &id)
 
 void KdeConnectManager::onDeviceRemoved(const QString &id)
 {
-    qDebug() << "device removed" << id;
-    if (!m_devices.contains(id)) {
-        qDebug() << "we don't know that one";
+    if (!m_devices.contains(id)) { // we don't know that one
         return;
     }
 
@@ -193,7 +179,6 @@ void KdeConnectManager::onDeviceRemoved(const QString &id)
 
 void KdeConnectManager::onDeviceVisibilityChanged(const QString &id, bool visible)
 {
-    qDebug() << "device" << id << "visiblity changed to" << visible;
     if (visible) {
         onDeviceAdded(id);
     } else {
@@ -205,5 +190,3 @@ QString KdeConnectManager::prefixedId(const QString &id) const
 {
     return udiPrefix() + QLatin1Char('/') + id;
 }
-
-#include "backends/kdeconnectmanager/kdeconnectmanager.moc"

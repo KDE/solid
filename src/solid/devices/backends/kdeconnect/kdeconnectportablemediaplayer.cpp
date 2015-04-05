@@ -22,15 +22,13 @@
 
 #include "kdeconnectdevice.h"
 
-#include <QDebug>
-
 using namespace Solid::Backends::KdeConnect;
 
 PortableMediaPlayer::PortableMediaPlayer(KdeConnectDevice *device)
     : DeviceInterface(device)
     , m_id(device->deviceId())
 {
-    qDebug() << "give me portable media player" << m_id;
+
 }
 
 PortableMediaPlayer::~PortableMediaPlayer()
@@ -45,14 +43,12 @@ QStringList PortableMediaPlayer::supportedProtocols() const
 
 QStringList PortableMediaPlayer::supportedDrivers(QString protocol) const
 {
+    Q_UNUSED(protocol);
     return QStringList();
 }
 
 QVariant PortableMediaPlayer::driverHandle(const QString &driver) const
 {
-    qDebug() << "driver handle giving it" << m_id;
     Q_UNUSED(driver);
     return m_id;
 }
-
-//#include "backends/udev/udevportablemediaplayer.moc"

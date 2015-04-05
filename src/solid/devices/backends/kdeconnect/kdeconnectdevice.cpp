@@ -28,7 +28,6 @@
 #include <solid/device.h>
 
 #include <QtCore/QStringList>
-#include <QtCore/QDebug>
 #include <QtDBus/QDBusPendingReply>
 
 using namespace Solid::Backends::KdeConnect;
@@ -42,7 +41,7 @@ KdeConnectDevice::KdeConnectDevice(const QString &udi, const QString &id)
     , m_udi(udi)
     , m_id(id)
 {
-    qDebug() << "created kde connect device" << id;
+
 }
 
 KdeConnectDevice::~KdeConnectDevice()
@@ -115,10 +114,4 @@ QString KdeConnectDevice::parentUdi() const
 QString KdeConnectDevice::deviceId() const
 {
     return m_id;
-}
-
-void KdeConnectDevice::onChanged() // TODO
-{
-    qDebug() << "charge information changed" << m_udi;
-    emit changed();
 }
