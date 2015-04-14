@@ -230,7 +230,7 @@ void DeviceBackend::slotInterfacesAdded(const QDBusObjectPath &object_path, cons
     Q_FOREACH (const QString &iface, interfaces_and_properties.keys()) {
         /* Don't store generic DBus interfaces */
         if (iface.startsWith(UD2_DBUS_SERVICE)) {
-            m_interfaces.append(interfaces_and_properties.keys());
+            m_interfaces.append(iface);
         }
     }
 }
