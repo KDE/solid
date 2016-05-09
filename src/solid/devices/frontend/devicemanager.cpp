@@ -136,7 +136,7 @@ QList<Solid::Device> Solid::Device::listFromQuery(const Predicate &predicate,
             continue;
         }
 
-        QSet<QString> udis;
+        QStringList udis;
         if (predicate.isValid()) {
             QSet<DeviceInterface::Type> supportedTypes = backend->supportedInterfaces();
             if (supportedTypes.intersect(usedTypes).isEmpty()) {
@@ -144,13 +144,18 @@ QList<Solid::Device> Solid::Device::listFromQuery(const Predicate &predicate,
             }
 
             Q_FOREACH (DeviceInterface::Type type, supportedTypes) {
-                udis += QSet<QString>::fromList(backend->devicesFromQuery(parentUdi, type));
+                udis += backend->devicesFromQuery(parentUdi, type);
             }
         } else {
-            udis += QSet<QString>::fromList(backend->allDevices());
+            udis += backend->allDevices();
         }
 
+        QSet<QString> seen;
         Q_FOREACH (const QString &udi, udis) {
+            if (seen.contains(udi)) {
+                continue;
+            }
+            seen.insert(udi);
             Device dev(udi);
 
             bool matches = false;
