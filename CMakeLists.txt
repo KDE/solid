@@ -29,6 +29,22 @@ include(ECMSetupVersion)
 include(ECMGenerateHeaders)
 include(ECMMarkNonGuiExecutable)
 
+find_package(FLEX REQUIRED)
+set_package_properties(FLEX PROPERTIES
+    URL "http://flex.sourceforge.net"
+    DESCRIPTION "Fast Lexical Analyzer"
+    TYPE REQUIRED
+    PURPOSE "Required for the Predicate parser"
+)
+
+find_package(BISON REQUIRED)
+set_package_properties(BISON PROPERTIES
+    URL "http://www.gnu.org/software/bison"
+    DESCRIPTION "general-purpose parser generator"
+    TYPE REQUIRED
+    PURPOSE "Required for the Predicate parser"
+)
+
 if (CMAKE_SYSTEM_NAME MATCHES Linux)
     find_package( UDev )
 

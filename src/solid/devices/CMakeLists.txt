@@ -40,8 +40,6 @@ set(solid_LIB_SRCS
     devices/managerbase.cpp
     devices/solidnamespace.cpp
     devices/predicateparse.cpp
-    devices/predicate_lexer.c
-    devices/predicate_parser.c
 
     devices/frontend/device.cpp
     devices/frontend/devicemanager.cpp
@@ -79,6 +77,19 @@ set(solid_LIB_SRCS
     devices/backends/shared/rootdevice.cpp
     devices/backends/shared/cpufeatures.cpp
 )
+
+bison_target(SolidParser
+             devices/predicate_parser.y
+             ${CMAKE_CURRENT_BINARY_DIR}/predicate_parser.c
+             COMPILE_FLAGS "-p Solid -d -b predicate_parser"
+)
+flex_target(SolidLexer
+            devices/predicate_lexer.l
+            ${CMAKE_CURRENT_BINARY_DIR}/predicate_lexer.c
+            COMPILE_FLAGS "-P Solid"
+)
+add_flex_bison_dependency(SolidLexer SolidParser)
+list(APPEND solid_LIB_SRCS ${BISON_SolidParser_OUTPUTS} ${FLEX_SolidLexer_OUTPUTS})
 
 include(devices/backends/fakehw/CMakeLists.txt)
 
