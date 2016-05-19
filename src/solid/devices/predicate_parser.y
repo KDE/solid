@@ -6,10 +6,7 @@
 
 #define YYLTYPE_IS_TRIVIAL 0
 #define YYENABLE_NLS 0
-#define YYLEX_PARAM scanner
-#define YYPARSE_PARAM scanner
-typedef void* yyscan_t;
-void Soliderror(const char *s);
+void Soliderror(yyscan_t scanner, const char *s);
 int Solidlex( YYSTYPE *yylval, yyscan_t scanner );
 int Solidlex_init( yyscan_t *scanner );
 int Solidlex_destroy( yyscan_t *scanner );
@@ -17,6 +14,13 @@ void PredicateParse_initLexer( const char *s, yyscan_t scanner );
 void PredicateParse_mainParse( const char *_code );
 
 %}
+
+%code requires{
+#ifndef YY_TYPEDEF_YY_SCANNER_T
+#define YY_TYPEDEF_YY_SCANNER_T
+typedef void *yyscan_t;
+#endif
+}
 
 %union
 {
@@ -55,6 +59,9 @@ void PredicateParse_mainParse( const char *_code );
 
 %pure-parser
 
+%lex-param   { yyscan_t scanner }
+%parse-param { yyscan_t scanner }
+
 %%
 
 predicate: predicate_atom { PredicateParse_setResult( $<ptr>1 ); $$ = $<ptr>1; }
@@ -83,7 +90,7 @@ string_list_rec: /* empty */ { $$ = PredicateParse_newEmptyStringListValue(); }
 
 %%
 
-void Soliderror ( const char *s )  /* Called by Solidparse on error */
+void Soliderror ( yyscan_t scanner, const char *s )  /* Called by Solidparse on error */
 {
     PredicateParse_errorDetected(s);
 }
