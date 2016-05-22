@@ -11,3 +11,7 @@ libraries:
  - qmake: Solid
    cmake: "KF5::Solid"
 cmakename: KF5Solid
+
+public_lib: true
+group: Frameworks
+subgroup: Tier 1
