@@ -61,7 +61,7 @@ int Processor::maxSpeed() const
         }
         if (m_maxSpeed <= 0) {
             // couldn't get the info from /sys, try /proc instead
-            m_maxSpeed = extractCpuInfoLine(number(), "cpu MHz\\s+:\\s+(\\d+).*").toInt();
+            m_maxSpeed = extractCurrentCpuSpeed(number());
         }
     }
     return m_maxSpeed;

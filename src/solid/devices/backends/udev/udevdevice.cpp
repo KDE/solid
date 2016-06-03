@@ -61,7 +61,7 @@ QString UDevDevice::vendor() const
     if (vendor.isEmpty()) {
         if (queryDeviceInterface(Solid::DeviceInterface::Processor)) {
             // sysfs doesn't have anything useful here
-            vendor = extractCpuInfoLine(deviceNumber(), "vendor_id\\s+:\\s+(\\S.+)");
+            vendor = extractCpuVendor(deviceNumber());
         }
 
         if (vendor.isEmpty()) {
@@ -77,7 +77,7 @@ QString UDevDevice::product() const
     if (product.isEmpty()) {
         if (queryDeviceInterface(Solid::DeviceInterface::Processor)) {
             // sysfs doesn't have anything useful here
-            product = extractCpuInfoLine(deviceNumber(), "model name\\s+:\\s+(\\S.+)");
+            product = extractCpuModel(deviceNumber());
         }
 
         if (product.isEmpty()) {

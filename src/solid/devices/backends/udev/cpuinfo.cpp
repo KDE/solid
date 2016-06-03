@@ -32,19 +32,56 @@ namespace Backends
 namespace UDev
 {
 
-QString extractCpuInfoLine(int processorNumber, const QString &regExpStr)
+class CpuInfo
 {
-    if (processorNumber == -1) {
-        return QString();
+public:
+    CpuInfo();
+    QString extractCpuInfoLine(int processorNumber, const QString &regExpStr);
+    QString extractInfoLine(const QString &regExpStr);
+
+private:
+    QStringList cpuInfo;
+};
+
+QString extractCpuVendor(int processorNumber) {
+    CpuInfo info;
+    QString vendor = info.extractCpuInfoLine(processorNumber, "vendor_id\\s+:\\s+(\\S.+)");
+
+    if (vendor.isEmpty()) {
+        vendor = info.extractInfoLine("Hardware\\s+:\\s+(\\S.+)");
     }
 
+    return vendor;
+}
+
+QString extractCpuModel(int processorNumber) {
+    CpuInfo info;
+    QString model = info.extractCpuInfoLine(processorNumber, "model name\\s+:\\s+(\\S.+)");
+
+    if (model.isEmpty()) {
+        model = info.extractInfoLine("Processor\\s+:\\s+(\\S.+)");
+    }
+
+    return model;
+}
+
+int extractCurrentCpuSpeed(int processorNumber) {
+    CpuInfo info;
+    int speed = info.extractCpuInfoLine(processorNumber, "cpu MHz\\s+:\\s+(\\d+).*").toInt();
+    return speed;
+}
+
+
+CpuInfo::CpuInfo() {
     QFile cpuInfoFile("/proc/cpuinfo");
     if (!cpuInfoFile.open(QIODevice::ReadOnly)) {
-        return QString();
+        return;
     }
-    QStringList cpuInfo = QString(cpuInfoFile.readAll()).split('\n', QString::SkipEmptyParts);
-    cpuInfoFile.close();
+    cpuInfo = QString(cpuInfoFile.readAll()).split('\n', QString::SkipEmptyParts);
+}
 
+QString CpuInfo::extractCpuInfoLine(int processorNumber, const QString &regExpStr)
+{
     const QRegExp processorRegExp("processor\\s+:\\s+(\\d+)");
     const QRegExp regExp(regExpStr);
 
@@ -67,6 +104,19 @@ QString extractCpuInfoLine(int processorNumber, const QString &regExpStr)
 
     return QString();
 }
+
+QString CpuInfo::extractInfoLine(const QString &regExpStr)
+{
+    const QRegExp regExp(regExpStr);
+
+    foreach (const QString &line, cpuInfo) {
+        if (regExp.exactMatch(line)) {
+            return regExp.capturedTexts()[1];
+        }
+    }
+    return QString();
+}
+
 
 }
 }

@@ -31,12 +31,17 @@ namespace UDev
 {
 
 /**
- * Extracts a line from /proc/cpuinfo for a given processor
- *
- * The regexp should have exactly one capture, which should match the
- * value of the field.
+ * Extracts vendor from /proc/cpuinfo for a given processor
  */
-QString extractCpuInfoLine(int processorNumber, const QString &regExp);
+QString extractCpuVendor(int processorNumber);
+/**
+ * Extracts model from /proc/cpuinfo for a given processor
+ */
+QString extractCpuModel(int processorNumber);
+/**
+ * Extracts speed from /proc/cpuinfo for a given processor
+ */
+int extractCurrentCpuSpeed(int processorNumber);
 
 }
 }
