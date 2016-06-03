@@ -94,7 +94,7 @@ bool UDevManager::Private::checkOfInterest(const UdevQt::Device &device)
     if (device.subsystem() == QLatin1String("cpu")) {
         // Linux ACPI reports processor slots, rather than processors.
         // Empty slots will not have a system device associated with them.
-        return QFile::exists(device.sysfsPath() + "/sysdev") || QFile::exists(device.sysfsPath() + "/cpufreq");
+        return QFile::exists(device.sysfsPath() + "/sysdev") || QFile::exists(device.sysfsPath() + "/cpufreq") || QFile::exists(device.sysfsPath() + "/topology/core_id");
     }
     if (device.subsystem() == QLatin1String("sound") &&
             device.deviceProperty("SOUND_FORM_FACTOR").toString() != "internal") {
