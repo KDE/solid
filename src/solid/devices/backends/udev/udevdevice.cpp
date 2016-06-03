@@ -144,7 +144,7 @@ bool UDevDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type) 
         return true;
 
     case Solid::DeviceInterface::Processor:
-        return property("DRIVER").toString() == "processor";
+        return m_device.subsystem() == QLatin1String("cpu");
 
     case Solid::DeviceInterface::Camera:
         return property("ID_GPHOTO2").toInt() == 1;
