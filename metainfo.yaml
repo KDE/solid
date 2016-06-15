@@ -3,7 +3,9 @@ description: Hardware integration and detection
 tier: 1
 type: integration
 platforms:
-    - name: All
+    - name: Linux
+    - name: Windows
+    - name: MacOSX
 portingAid: false
 deprecated: false
 release: true
