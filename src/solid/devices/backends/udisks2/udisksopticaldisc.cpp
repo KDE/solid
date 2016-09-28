@@ -321,10 +321,12 @@ bool OpticalDisc::Identity::operator ==(const OpticalDisc::Identity &b) const
 OpticalDisc::OpticalDisc(Device *dev)
     : StorageVolume(dev)
 {
+#if UDEV_FOUND
     UdevQt::Client client(this);
     m_udevDevice = client.deviceByDeviceFile(device());
     //qDebug() << "udev device:" << m_udevDevice.name() << "valid:" << m_udevDevice.isValid();
     /*qDebug() << "\tProperties:" << */ m_udevDevice.deviceProperties(); // initialize the properties DB so that it doesn't crash further down, #298416
+#endif
 
     m_drive = new Device(m_device->drivePath());
 }
@@ -356,7 +358,13 @@ bool OpticalDisc::isBlank() const
 bool OpticalDisc::isAppendable() const
 {
     //qDebug() << "appendable prop" << m_udevDevice.deviceProperty("ID_CDROM_MEDIA_STATE");
+#if UDEV_FOUND
     return m_udevDevice.deviceProperty("ID_CDROM_MEDIA_STATE").toString() == QLatin1String("appendable");
+#elif defined(Q_OS_FREEBSD)
+    return m_device->prop("bsdisks_IsAppendable").toBool();
+#else
+#error Implement this or stub this out for your platform
+#endif
 }
 
 Solid::OpticalDisc::DiscType OpticalDisc::discType() const

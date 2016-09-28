@@ -103,7 +103,7 @@ if(NOT WIN32 AND NOT APPLE)
    include(devices/backends/upower/CMakeLists.txt)
 
    # FIXME: this should work on more Unix systems
-   if (CMAKE_SYSTEM_NAME MATCHES Linux AND UDEV_FOUND)
+   if ((CMAKE_SYSTEM_NAME MATCHES Linux AND UDEV_FOUND) OR CMAKE_SYSTEM_NAME MATCHES FreeBSD)
         message(STATUS "Building Solid UDisks2 backend." )
         include(devices/backends/udisks2/CMakeLists.txt)
    endif ()

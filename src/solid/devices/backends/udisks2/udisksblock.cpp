@@ -18,7 +18,15 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
+#if defined(Q_OS_LINUX)
 #include <linux/kdev_t.h>
+#else
+// taken from linux/kdev_t.h
+#define MINORBITS       20
+#define MINORMASK       ((1U << MINORBITS) - 1)
+#define MAJOR(dev)      ((unsigned int) ((dev) >> MINORBITS))
+#define MINOR(dev)      ((unsigned int) ((dev) & MINORMASK))
+#endif
 
 #include <QFile>
 #include <QtDBus/QDBusConnection>

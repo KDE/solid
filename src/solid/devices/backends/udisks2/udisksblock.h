@@ -24,6 +24,10 @@
 #include <solid/devices/ifaces/block.h>
 #include "udisksdeviceinterface.h"
 
+#ifdef Q_OS_FREEBSD
+#include <sys/types.h>
+#endif
+
 namespace Solid
 {
 namespace Backends

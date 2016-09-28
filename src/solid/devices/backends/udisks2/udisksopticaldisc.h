@@ -24,6 +24,7 @@
 
 #include <solid/devices/ifaces/opticaldisc.h>
 
+#include "config-solid.h"
 #include "../shared/udevqt.h"
 
 #include "udisksstoragevolume.h"
@@ -71,7 +72,9 @@ private:
     QString media() const;
     mutable Solid::OpticalDisc::ContentTypes m_cachedContent;
     Device *m_drive;
+#if UDEV_FOUND
     UdevQt::Device m_udevDevice;
+#endif
 };
 
 }

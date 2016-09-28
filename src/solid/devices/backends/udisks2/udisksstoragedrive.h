@@ -24,6 +24,7 @@
 
 #include <ifaces/storagedrive.h>
 
+#include "config-solid.h"
 #include "../shared/udevqt.h"
 
 #include "udisksblock.h"
@@ -51,7 +52,9 @@ public:
     Solid::StorageDrive::Bus bus() const Q_DECL_OVERRIDE;
 
 private:
+#if UDEV_FOUND
     UdevQt::Device m_udevDevice;
+#endif
 };
 
 }

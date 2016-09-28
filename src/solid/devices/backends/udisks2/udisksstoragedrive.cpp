@@ -31,9 +31,11 @@ using namespace Solid::Backends::UDisks2;
 StorageDrive::StorageDrive(Device *dev)
     : Block(dev)
 {
+#if UDEV_FOUND
     UdevQt::Client client(this);
     m_udevDevice = client.deviceByDeviceFile(device());
     m_udevDevice.deviceProperties();
+#endif
 }
 
 StorageDrive::~StorageDrive()
@@ -48,8 +50,14 @@ qulonglong StorageDrive::size() const
 bool StorageDrive::isHotpluggable() const
 {
     const Solid::StorageDrive::Bus _bus = bus();
+#if UDEV_FOUND
     return _bus == Solid::StorageDrive::Usb || _bus == Solid::StorageDrive::Ieee1394 ||
            (m_udevDevice.deviceProperty("UDISKS_SYSTEM").isValid() && !m_udevDevice.deviceProperty("UDISKS_SYSTEM").toBool());
+#elif defined(Q_OS_FREEBSD)
+    return m_device->prop("bsdisks_IsHotpluggable").toBool();
+#else
+#error Implement this or stub this out for your platform
+#endif
 }
 
 bool StorageDrive::isRemovable() const
@@ -94,16 +102,33 @@ Solid::StorageDrive::DriveType StorageDrive::driveType() const
 Solid::StorageDrive::Bus StorageDrive::bus() const
 {
     const QString bus = m_device->prop("ConnectionBus").toString();
-    const QString udevBus = m_udevDevice.deviceProperty("ID_BUS").toString();
+    const QString udevBus = 
+#if UDEV_FOUND
+        m_udevDevice.deviceProperty("ID_BUS").toString();
+#elif defined(Q_OS_FREEBSD)
+        m_device->prop("bsdisks_ConnectionBus").toString();
+#else
+#error Implement this or stub this out for your platform
+#endif
 
     //qDebug() << "bus:" << bus << "udev bus:" << udevBus;
 
     if (udevBus == "ata") {
+#if UDEV_FOUND
         if (m_udevDevice.deviceProperty("ID_ATA_SATA").toInt() == 1) { // serial ATA
             return Solid::StorageDrive::Sata;
         } else { // parallel (classical) ATA
             return Solid::StorageDrive::Ide;
         }
+#elif defined(Q_OS_FREEBSD)
+        if (m_device->prop("bsdisks_AtaSata").toString() == "sata") { // serial ATA
+            return Solid::StorageDrive::Sata;
+        } else { // parallel (classical) ATA
+            return Solid::StorageDrive::Ide;
+        }
+#else
+#error Implement this or stub this out for your platform
+#endif
     } else if (bus == "usb") {
         return Solid::StorageDrive::Usb;
     } else if (bus == "ieee1394") {
