@@ -105,7 +105,7 @@ QMap<ulong, MediaProfiles> MediaProfiles::profiles(const QString &drive)
     //thx to http://www.adras.com/Determine-optical-drive-type-and-capabilities.t6826-144-1.html
 
     QMap<ulong, MediaProfiles> out;
-    size_t buffSize = 1024;
+    DWORD buffSize = 1024;
     char buffer[1024];
     GET_CONFIGURATION_IOCTL_INPUT input;
     ZeroMemory(&input, sizeof(GET_CONFIGURATION_IOCTL_INPUT));

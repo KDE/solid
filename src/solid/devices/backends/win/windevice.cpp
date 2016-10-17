@@ -153,7 +153,7 @@ void WinDevice::initBatteryDevice()
     ZeroMemory(&query, sizeof(query));
     query.BatteryTag = battery.second;
 
-    size_t size = 1024;
+    DWORD size = 1024;
     wchar_t buff[1024];
 
     query.InformationLevel = BatteryDeviceName;

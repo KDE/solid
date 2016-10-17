@@ -40,7 +40,7 @@ inline QString qGetLastError(ulong errorNummber = GetLastError())
                                MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
                                (LPWSTR) &error,
                                0, NULL);
-    QString out = QString::fromWCharArray((wchar_t *)error, len).trimmed().append(" %1").arg(errorNummber);
+    QString out = QString::fromWCharArray((wchar_t *)error, (int)len).trimmed().append(" %1").arg(errorNummber);
     LocalFree(error);
     return out;
 }
@@ -89,7 +89,7 @@ public:
     }
 
     template<class BUFFER_TYPE, class QUERY>
-    static void getDeviceInfo(const QString &devName, int code, BUFFER_TYPE *out, size_t outSize, QUERY *query = NULL)
+    static void getDeviceInfo(const QString &devName, int code, BUFFER_TYPE *out, DWORD outSize, QUERY *query = NULL)
     {
         ZeroMemory(out, sizeof(BUFFER_TYPE)*outSize);
         getDeviceInfoPrivate(devName, code, out, outSize, query);
@@ -118,7 +118,7 @@ private:
     QSet<Solid::DeviceInterface::Type> m_supportedInterfaces;
 
     template< class INFO, class QUERY>
-    static void getDeviceInfoPrivate(const QString &devName, int code, INFO *info, size_t size, QUERY *query = NULL)
+    static void getDeviceInfoPrivate(const QString &devName, int code, INFO *info, DWORD size, QUERY *query = NULL)
     {
         Q_ASSERT(!devName.isNull());
         wchar_t deviceNameBuffer[MAX_PATH];
