@@ -21,6 +21,7 @@
 #include "winstoragevolume.h"
 
 #include "windevicemanager.h"
+#include "winutils_p.h"
 
 #include <qt_windows.h>
 
@@ -60,6 +61,9 @@ void WinStorageVolume::updateCache()
     int dLetterSize = WinBlock::driveLetterFromUdi(m_device->udi()).toWCharArray(dLetter);
     dLetter[dLetterSize] = (wchar_t)'\\';
     dLetter[dLetterSize + 1] = 0;
+
+    // block error dialogs from GetDiskFreeSpaceEx & other WinAPI, see bug 371012
+    WinErrorBlocker block;
 
     if (GetVolumeInformation(dLetter, label, MAX_PATH, &serial, NULL, &flags, fs, MAX_PATH)) {
         m_label = QString::fromWCharArray(label);
