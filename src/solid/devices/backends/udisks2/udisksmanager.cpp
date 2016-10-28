@@ -48,7 +48,6 @@ Manager::Manager(QObject *parent)
     qDBusRegisterMetaType<QList<QDBusObjectPath> >();
     qDBusRegisterMetaType<QVariantMap>();
     qDBusRegisterMetaType<VariantMapMap>();
-    qDBusRegisterMetaType<ByteArrayList>();
     qDBusRegisterMetaType<DBUSManagerStruct>();
 
     bool serviceFound = m_manager.isValid();

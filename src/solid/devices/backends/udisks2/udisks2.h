@@ -27,9 +27,6 @@
 #include <QMap>
 #include <QList>
 
-typedef QList<QByteArray> ByteArrayList;
-Q_DECLARE_METATYPE(ByteArrayList)
-
 typedef QMap<QString, QVariantMap> VariantMapMap;
 Q_DECLARE_METATYPE(VariantMapMap)
 

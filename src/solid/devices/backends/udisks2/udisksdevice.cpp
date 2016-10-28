@@ -815,7 +815,7 @@ bool Device::mightBeOpticalDisc() const
 
 bool Device::isMounted() const
 {
-    return propertyExists("MountPoints") && !qdbus_cast<ByteArrayList>(prop("MountPoints")).isEmpty();
+    return propertyExists("MountPoints") && !qdbus_cast<QByteArrayList>(prop("MountPoints")).isEmpty();
 }
 
 bool Device::isEncryptedContainer() const
