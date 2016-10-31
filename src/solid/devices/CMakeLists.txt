@@ -94,6 +94,10 @@ list(APPEND solid_LIB_SRCS ${BISON_SolidParser_OUTPUTS} ${FLEX_SolidLexer_OUTPUT
 include(devices/backends/fakehw/CMakeLists.txt)
 
 if(NOT WIN32 AND NOT APPLE)
+   if (CMAKE_SYSTEM_NAME MATCHES FreeBSD)
+      option(EXPERIMENTAL_BSDISKS "Use UDisks2/bsdisks backend instead of HAL to manage disk devices" OFF)
+   endif()
+
    if ( UDEV_FOUND )
       message(STATUS "Building Solid UDev backend." )
       include(devices/backends/udev/CMakeLists.txt)

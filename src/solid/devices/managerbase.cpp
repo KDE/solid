@@ -65,7 +65,11 @@ void Solid::ManagerBasePrivate::loadBackends()
 
 #        elif defined(Q_OS_FREEBSD)
         m_backends << new Solid::Backends::UPower::UPowerManager(0)
+#               if EXPERIMENTAL_BSDISKS
+                   << new Solid::Backends::UDisks2::Manager(0)
+#               else
                    << new Solid::Backends::Hal::HalManager(0)
+#               endif
                    << new Solid::Backends::Fstab::FstabManager(0);
 
 #        elif defined(Q_OS_WIN) && !defined(_WIN32_WCE)
