@@ -49,7 +49,11 @@ private Q_SLOTS:
     void testDeviceInterfaceIntrospection();
     void testDeviceInterfaceIntrospectionCornerCases();
     void testDeviceInterfaces();
+    void testInvalidPredicate();
     void testPredicate();
+    void testQueryWithParentUdi();
+    void testListFromTypeProcessor();
+    void testListFromTypeInvalid();
     void testSetupTeardown();
 
     void slotPropertyChanged(const QMap<QString, int> &changes);

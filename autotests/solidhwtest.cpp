@@ -307,6 +307,17 @@ static QStringList to_string_list(const QList<Solid::Device> &list)
     return res;
 }
 
+void SolidHwTest::testInvalidPredicate()
+{
+    QString str_pred = "[[Processor.maxSpeed == 3201 AND Processor.canChangeFrequency == false] OR StorageVolume.mountPoint == '/media/blup']";
+    // Since str_pred is canonicalized, fromString().toString() should be invariant
+    QCOMPARE(Solid::Predicate::fromString(str_pred).toString(), str_pred);
+
+    // Invalid predicate
+    str_pred = "[StorageVolume.ignored == false AND OpticalDisc.isBlank == true AND OpticalDisc.discType & 'CdRecordable|CdRewritable']";
+    QVERIFY(!Solid::Predicate::fromString(str_pred).isValid());
+}
+
 void SolidHwTest::testPredicate()
 {
     Solid::Device dev("/org/kde/solid/fakehw/acpi_CPU0");
@@ -334,67 +345,36 @@ void SolidHwTest::testPredicate()
     QVERIFY(p6.matches(dev));
     QVERIFY(p7.matches(dev));
 
-    QString str_pred = "[[Processor.maxSpeed == 3201 AND Processor.canChangeFrequency == false] OR StorageVolume.mountPoint == '/media/blup']";
-    // Since str_pred is canonicalized, fromString().toString() should be invariant
-    QCOMPARE(Solid::Predicate::fromString(str_pred).toString(), str_pred);
-
-    // Invalid predicate
-    str_pred = "[StorageVolume.ignored == false AND OpticalDisc.isBlank == true AND OpticalDisc.discType & 'CdRecordable|CdRewritable']";
-    QVERIFY(!Solid::Predicate::fromString(str_pred).isValid());
-
-    QString parentUdi = "/org/kde/solid/fakehw/storage_model_solid_reader";
-    Solid::DeviceInterface::Type ifaceType = Solid::DeviceInterface::Unknown;
-    QCOMPARE(fakeManager->devicesFromQuery(parentUdi, ifaceType).size(), 1);
-    QCOMPARE(fakeManager->devicesFromQuery(parentUdi, ifaceType).at(0),
-             QString("/org/kde/solid/fakehw/volume_label_SOLIDMAN_BEGINS"));
-
-    ifaceType = Solid::DeviceInterface::Processor;
-    QCOMPARE(fakeManager->devicesFromQuery(parentUdi, ifaceType).size(), 0);
-
-    parentUdi = "/org/kde/solid/fakehw/computer";
-    QCOMPARE(fakeManager->devicesFromQuery(parentUdi, ifaceType).size(), 2);
-    QCOMPARE(fakeManager->devicesFromQuery(parentUdi, ifaceType).at(0),
-             QString("/org/kde/solid/fakehw/acpi_CPU0"));
-    QCOMPARE(fakeManager->devicesFromQuery(parentUdi, ifaceType).at(1),
-             QString("/org/kde/solid/fakehw/acpi_CPU1"));
-
-    parentUdi.clear();
-    ifaceType = Solid::DeviceInterface::Unknown;
     QList<Solid::Device> list;
 
     QStringList cpuSet;
     cpuSet << QString("/org/kde/solid/fakehw/acpi_CPU0")
            << QString("/org/kde/solid/fakehw/acpi_CPU1");
 
-    list = Solid::Device::listFromQuery(p1, parentUdi);
+    list = Solid::Device::listFromQuery(p1);
     QCOMPARE(list.size(), 2);
     QCOMPARE(to_string_list(list), cpuSet);
 
-    list = Solid::Device::listFromQuery(p2, parentUdi);
+    list = Solid::Device::listFromQuery(p2);
     QCOMPARE(list.size(), 0);
 
-    list = Solid::Device::listFromQuery(p3, parentUdi);
+    list = Solid::Device::listFromQuery(p3);
     QCOMPARE(list.size(), 2);
     QCOMPARE(to_string_list(list), cpuSet);
 
-    list = Solid::Device::listFromQuery(p4, parentUdi);
+    list = Solid::Device::listFromQuery(p4);
     QCOMPARE(list.size(), 0);
 
-    list = Solid::Device::listFromQuery("[Processor.canChangeFrequency==true AND Processor.number==1]",
-                                        parentUdi);
+    list = Solid::Device::listFromQuery("[Processor.canChangeFrequency==true AND Processor.number==1]");
     QCOMPARE(list.size(), 1);
     QCOMPARE(list.at(0).udi(), QString("/org/kde/solid/fakehw/acpi_CPU1"));
 
-    list = Solid::Device::listFromQuery("[Processor.number==1 OR IS StorageVolume]",
-                                        parentUdi);
-    QCOMPARE(list.size(), 10);
+    list = Solid::Device::listFromQuery("[Processor.number==1 OR IS StorageVolume]");
 
     //make sure predicate case-insensitiveness is sane
-    list = Solid::Device::listFromQuery("[Processor.number==1 or is StorageVolume]",
-                                        parentUdi);
+    list = Solid::Device::listFromQuery("[Processor.number==1 or is StorageVolume]");
     QCOMPARE(list.size(), 10);
-    list = Solid::Device::listFromQuery("[Processor.number==1 oR Is StorageVolume]",
-                                        parentUdi);
+    list = Solid::Device::listFromQuery("[Processor.number==1 oR Is StorageVolume]");
     QCOMPARE(list.size(), 10);
 
     QStringList expected;
@@ -410,20 +390,50 @@ void SolidHwTest::testPredicate()
         << "/org/kde/solid/fakehw/volume_uuid_feedface";
     QCOMPARE(to_string_list(list), expected);
 
-    list = Solid::Device::listFromQuery("[IS Processor OR IS StorageVolume]",
-                                        parentUdi);
+    list = Solid::Device::listFromQuery("[IS Processor OR IS StorageVolume]");
     QCOMPARE(list.size(), 11);
     expected.prepend("/org/kde/solid/fakehw/acpi_CPU0");
     QCOMPARE(to_string_list(list), expected);
 
+    // closer to what kfileplacesmodel does
+    list = Solid::Device::listFromQuery("[IS StorageVolume OR [ IS StorageAccess AND StorageAccess.ignored == false ]]");
+    expected.removeAt(0);
+    expected.removeAt(0);
+    expected.prepend("/org/kde/solid/fakehw/fstab/thehost/solidpath");
+    QCOMPARE(to_string_list(list), expected);
+}
+
+void SolidHwTest::testQueryWithParentUdi()
+{
+    QString parentUdi = "/org/kde/solid/fakehw/storage_model_solid_reader";
+    Solid::DeviceInterface::Type ifaceType = Solid::DeviceInterface::Unknown;
+    QCOMPARE(fakeManager->devicesFromQuery(parentUdi, ifaceType).size(), 1);
+    QCOMPARE(fakeManager->devicesFromQuery(parentUdi, ifaceType).at(0),
+             QString("/org/kde/solid/fakehw/volume_label_SOLIDMAN_BEGINS"));
+
     ifaceType = Solid::DeviceInterface::Processor;
-    list = Solid::Device::listFromType(ifaceType, parentUdi);
+    QCOMPARE(fakeManager->devicesFromQuery(parentUdi, ifaceType).size(), 0);
+
+    parentUdi = "/org/kde/solid/fakehw/computer";
+    QCOMPARE(fakeManager->devicesFromQuery(parentUdi, ifaceType).size(), 2);
+    QCOMPARE(fakeManager->devicesFromQuery(parentUdi, ifaceType).at(0),
+             QString("/org/kde/solid/fakehw/acpi_CPU0"));
+    QCOMPARE(fakeManager->devicesFromQuery(parentUdi, ifaceType).at(1),
+             QString("/org/kde/solid/fakehw/acpi_CPU1"));
+}
+
+void SolidHwTest::testListFromTypeProcessor()
+{
+    const auto ifaceType = Solid::DeviceInterface::Processor;
+    const auto list = Solid::Device::listFromType(ifaceType, QString());
     QCOMPARE(list.size(), 2);
     QCOMPARE(list.at(0).udi(), QString("/org/kde/solid/fakehw/acpi_CPU0"));
     QCOMPARE(list.at(1).udi(), QString("/org/kde/solid/fakehw/acpi_CPU1"));
+}
 
-    ifaceType = Solid::DeviceInterface::Unknown;
-    list = Solid::Device::listFromQuery("blup", parentUdi);
+void SolidHwTest::testListFromTypeInvalid()
+{
+    const auto list = Solid::Device::listFromQuery("blup", QString());
     QCOMPARE(list.size(), 0);
 }
 
