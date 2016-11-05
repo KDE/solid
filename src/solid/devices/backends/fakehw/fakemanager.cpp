@@ -135,11 +135,7 @@ QObject *FakeManager::createDevice(const QString &udi)
 
 FakeDevice *FakeManager::findDevice(const QString &udi)
 {
-    if (d->loadedDevices.contains(udi)) {
-        return d->loadedDevices[udi];
-    }
-
-    return 0;
+    return d->loadedDevices.value(udi);
 }
 
 QStringList FakeManager::findDeviceStringMatch(const QString &key, const QString &value)
