@@ -51,6 +51,8 @@ private Q_SLOTS:
     void testDeviceInterfaces();
     void testInvalidPredicate();
     void testPredicate();
+    void testQueryStorageVolumeOrProcessor();
+    void testQueryStorageVolumeOrStorageAccess();
     void testQueryWithParentUdi();
     void testListFromTypeProcessor();
     void testListFromTypeInvalid();

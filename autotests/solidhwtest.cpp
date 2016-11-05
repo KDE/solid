@@ -369,37 +369,53 @@ void SolidHwTest::testPredicate()
     QCOMPARE(list.size(), 1);
     QCOMPARE(list.at(0).udi(), QString("/org/kde/solid/fakehw/acpi_CPU1"));
 
-    list = Solid::Device::listFromQuery("[Processor.number==1 OR IS StorageVolume]");
+}
+
+void SolidHwTest::testQueryStorageVolumeOrProcessor()
+{
+    auto list = Solid::Device::listFromQuery("[Processor.number==1 OR IS StorageVolume]");
+    QCOMPARE(list.size(), 10);
 
     //make sure predicate case-insensitiveness is sane
     list = Solid::Device::listFromQuery("[Processor.number==1 or is StorageVolume]");
     QCOMPARE(list.size(), 10);
     list = Solid::Device::listFromQuery("[Processor.number==1 oR Is StorageVolume]");
     QCOMPARE(list.size(), 10);
-
-    QStringList expected;
-    expected << "/org/kde/solid/fakehw/acpi_CPU1"
-        << "/org/kde/solid/fakehw/platform_floppy_0_storage_virt_volume"
-        << "/org/kde/solid/fakehw/volume_label_SOLIDMAN_BEGINS"
-        << "/org/kde/solid/fakehw/volume_part1_size_993284096"
-        << "/org/kde/solid/fakehw/volume_part2_size_1024"
-        << "/org/kde/solid/fakehw/volume_part5_size_1048576"
-        << "/org/kde/solid/fakehw/volume_uuid_5011"
-        << "/org/kde/solid/fakehw/volume_uuid_c0ffee"
-        << "/org/kde/solid/fakehw/volume_uuid_f00ba7"
-        << "/org/kde/solid/fakehw/volume_uuid_feedface";
+    QStringList expected{
+        "/org/kde/solid/fakehw/acpi_CPU1",
+        "/org/kde/solid/fakehw/platform_floppy_0_storage_virt_volume",
+        "/org/kde/solid/fakehw/volume_label_SOLIDMAN_BEGINS",
+        "/org/kde/solid/fakehw/volume_part1_size_993284096",
+        "/org/kde/solid/fakehw/volume_part2_size_1024",
+        "/org/kde/solid/fakehw/volume_part5_size_1048576",
+        "/org/kde/solid/fakehw/volume_uuid_5011",
+        "/org/kde/solid/fakehw/volume_uuid_c0ffee",
+        "/org/kde/solid/fakehw/volume_uuid_f00ba7",
+        "/org/kde/solid/fakehw/volume_uuid_feedface"};
     QCOMPARE(to_string_list(list), expected);
 
     list = Solid::Device::listFromQuery("[IS Processor OR IS StorageVolume]");
     QCOMPARE(list.size(), 11);
     expected.prepend("/org/kde/solid/fakehw/acpi_CPU0");
     QCOMPARE(to_string_list(list), expected);
+}
 
-    // closer to what kfileplacesmodel does
-    list = Solid::Device::listFromQuery("[IS StorageVolume OR [ IS StorageAccess AND StorageAccess.ignored == false ]]");
-    expected.removeAt(0);
-    expected.removeAt(0);
-    expected.prepend("/org/kde/solid/fakehw/fstab/thehost/solidpath");
+void SolidHwTest::testQueryStorageVolumeOrStorageAccess()
+{
+    // the query from KFilePlacesModel
+    const auto list = Solid::Device::listFromQuery("[[[[ StorageVolume.ignored == false AND [ StorageVolume.usage == 'FileSystem' OR StorageVolume.usage == 'Encrypted' ]]"
+            " OR "
+            "[ IS StorageAccess AND StorageDrive.driveType == 'Floppy' ]]"
+            " OR "
+            "OpticalDisc.availableContent & 'Audio' ]"
+            " OR "
+            "StorageAccess.ignored == false ]");
+    const QStringList expected{
+            "/org/kde/solid/fakehw/fstab/thehost/solidpath",
+            "/org/kde/solid/fakehw/platform_floppy_0_storage_virt_volume",
+            "/org/kde/solid/fakehw/volume_part1_size_993284096",
+            "/org/kde/solid/fakehw/volume_uuid_5011",
+            "/org/kde/solid/fakehw/volume_uuid_f00ba7"};
     QCOMPARE(to_string_list(list), expected);
 }
 
