@@ -48,20 +48,34 @@ class WinErrorBlocker
 public:
     WinErrorBlocker()
     {
+        // SetThreadErrorMode only available since Windows 7
+        // see: https://msdn.microsoft.com/en-us/library/windows/desktop/ms680621(v=vs.85).aspx
+#if _WIN32_WINNT < 0x0601
+        m_oldmode = ::SetErrorMode(SEM_FAILCRITICALERRORS | SEM_NOOPENFILEERRORBOX);
+#else
         if (!::SetThreadErrorMode(SEM_FAILCRITICALERRORS | SEM_NOOPENFILEERRORBOX, &m_oldmode)) {
             qWarning() << "Failed to call SetThreadErrorMode:" << qGetLastError();
         }
+#endif
     }
     ~WinErrorBlocker()
     {
+#if _WIN32_WINNT < 0x0601
+        ::SetErrorMode(m_oldmode);
+#else
         if (!::SetThreadErrorMode(m_oldmode, NULL)) {
             qWarning() << "Failed to call SetThreadErrorMode:" << qGetLastError();
         }
+#endif
     }
 
 private:
     Q_DISABLE_COPY(WinErrorBlocker)
+#if _WIN32_WINNT < 0x0601
+    UINT m_oldmode;
+#else
     DWORD m_oldmode;
+#endif
 };
 
 #endif
