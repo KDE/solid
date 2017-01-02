@@ -50,7 +50,6 @@ class JobPrivate;
 class SOLID_EXPORT Job : public QObject
 {
     Q_OBJECT
-    Q_ENUMS(Error)
     Q_PROPERTY(int error READ error NOTIFY result)
     Q_PROPERTY(QString errorText READ errorText NOTIFY result)
 
@@ -64,6 +63,7 @@ public:
         /** Subclasses should define error codes starting at this value */
         UserDefinedError = 100
     };
+    Q_ENUM(Error)
 
     /**
      * Executes the job synchronously.

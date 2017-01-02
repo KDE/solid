@@ -38,8 +38,6 @@ class Device;
 class SOLID_EXPORT OpticalDisc : public StorageVolume
 {
     Q_OBJECT
-    Q_ENUMS(ContentType DiscType)
-    Q_FLAGS(ContentTypes)
     Q_PROPERTY(ContentTypes availableContent READ availableContent)
     Q_PROPERTY(DiscType discType READ discType)
     Q_PROPERTY(bool appendable READ isAppendable)
@@ -68,11 +66,13 @@ public:
         VideoDvd = 0x10,
         VideoBluRay = 0x20
     };
+    Q_ENUM(ContentType)
 
     /**
      * This type stores an OR combination of ContentType values.
      */
     Q_DECLARE_FLAGS(ContentTypes, ContentType)
+    Q_FLAG(ContentTypes)
 
     /**
      * This enum type defines the type of optical disc it can be.
@@ -104,6 +104,7 @@ public:
                     BluRayRom, BluRayRecordable, BluRayRewritable,
                     HdDvdRom, HdDvdRecordable, HdDvdRewritable
                   };
+    Q_ENUM(DiscType)
 
 private:
     /**

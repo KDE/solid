@@ -41,13 +41,13 @@ class AbstractInhibition;
 class SOLID_EXPORT Inhibition : public QObject
 {
     Q_OBJECT
-    Q_ENUMS(State)
     Q_PROPERTY(State state READ state NOTIFY stateChanged)
 public:
     enum State {
         Stopped = 0,
         Started = 1
     };
+    Q_ENUM(State)
 
     /**
      * This is meant to be instantiated by backends only

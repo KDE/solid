@@ -36,8 +36,6 @@ class Device;
 class SOLID_EXPORT Processor : public DeviceInterface
 {
     Q_OBJECT
-    Q_ENUMS(InstructionSet)
-    Q_FLAGS(InstructionSets)
     Q_PROPERTY(int number READ number)
     Q_PROPERTY(qulonglong maxSpeed READ maxSpeed)
     Q_PROPERTY(bool canChangeFrequency READ canChangeFrequency)
@@ -74,11 +72,13 @@ public:
         Amd3DNow = 0x20,
         AltiVec = 0x40
     };
+    Q_ENUM(InstructionSet)
 
     /*
      * The flags for the Extension enum.
      */
     Q_DECLARE_FLAGS(InstructionSets, InstructionSet)
+    Q_FLAG(InstructionSets)
 
     /**
      * Destroys a Processor object.

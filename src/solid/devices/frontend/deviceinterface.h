@@ -41,7 +41,6 @@ class DeviceInterfacePrivate;
 class SOLID_EXPORT DeviceInterface : public QObject
 {
     Q_OBJECT
-    Q_ENUMS(Type)
     Q_DECLARE_PRIVATE(DeviceInterface)
 
 public:
@@ -66,6 +65,7 @@ public:
                 Camera = 9, PortableMediaPlayer = 10,
                 Battery = 12, NetworkShare = 14, Last = 0xffff
               };
+    Q_ENUM(Type)
 
     /**
      * Destroys a DeviceInterface object.

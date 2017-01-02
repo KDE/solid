@@ -39,7 +39,6 @@ class Device;
 class SOLID_EXPORT StorageDrive : public DeviceInterface
 {
     Q_OBJECT
-    Q_ENUMS(Bus DriveType)
     Q_PROPERTY(Bus bus READ bus)
     Q_PROPERTY(DriveType driveType READ driveType)
     Q_PROPERTY(bool removable READ isRemovable)
@@ -61,6 +60,7 @@ public:
      * - Platform : A legacy bus that is part of the underlying platform
      */
     enum Bus { Ide, Usb, Ieee1394, Scsi, Sata, Platform };
+    Q_ENUM(Bus)
 
     /**
      * This enum type defines the type of drive a storage device can be.
@@ -76,6 +76,7 @@ public:
      * - Xd : A xD card reader
      */
     enum DriveType { HardDisk, CdromDrive, Floppy, Tape, CompactFlash, MemoryStick, SmartMedia, SdMmc, Xd };
+    Q_ENUM(DriveType)
 
 private:
     /**

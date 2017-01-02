@@ -44,7 +44,6 @@ class Device;
 class SOLID_EXPORT GenericInterface : public DeviceInterface
 {
     Q_OBJECT
-    Q_ENUMS(PropertyChange)
     Q_DECLARE_PRIVATE(GenericInterface)
     friend class Device;
 
@@ -58,6 +57,7 @@ public:
      * - PropertyRemoved : A property has been removed from the device
      */
     enum PropertyChange { PropertyModified, PropertyAdded, PropertyRemoved };
+    Q_ENUM(PropertyChange)
 
 private:
     /**

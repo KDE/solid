@@ -38,7 +38,6 @@ class Device;
 class SOLID_EXPORT Battery : public DeviceInterface
 {
     Q_OBJECT
-    Q_ENUMS(BatteryType ChargeState)
     Q_PROPERTY(bool present READ isPresent NOTIFY presentStateChanged)
     Q_PROPERTY(BatteryType type READ type CONSTANT)
     Q_PROPERTY(int chargePercent READ chargePercent NOTIFY chargePercentChanged)
@@ -82,6 +81,7 @@ public:
                        KeyboardMouseBattery, CameraBattery,
                        PhoneBattery, MonitorBattery
                      };
+    Q_ENUM(BatteryType)
 
     /**
      * This enum type defines charge state of a battery
@@ -94,6 +94,7 @@ public:
      *                 charges up to 100%
      */
     enum ChargeState { NoCharge, Charging, Discharging, FullyCharged };
+    Q_ENUM(ChargeState)
 
     /**
       * Technology used in the battery

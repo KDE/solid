@@ -33,7 +33,6 @@ class RequestStateJob;
 class SOLID_EXPORT Power : public QObject
 {
     Q_OBJECT
-    Q_FLAGS(States)
 public:
     /**
      * List of states a device can be in
@@ -57,6 +56,7 @@ public:
         Shutdown = 1 << 3
     };
     Q_DECLARE_FLAGS(InhibitionTypes, InhibitionType)
+    Q_FLAG(InhibitionTypes)
     /**
      * Returns an instance of Power
      *

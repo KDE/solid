@@ -34,12 +34,12 @@ class InhibitionJobPrivate;
 class SOLID_EXPORT InhibitionJob : public Job
 {
     Q_OBJECT
-    Q_ENUMS(Error)
 public:
     enum Error {
         InvalidInhibitions = Job::UserDefinedError,
         EmptyDescription
     };
+    Q_ENUM(Error)
 
     /**
      * Instantiate InhibitionJob
