@@ -25,7 +25,7 @@ endif()
 
 
 include(GenerateExportHeader)
-include(ECMPackageConfigHelpers)
+include(CMakePackageConfigHelpers)
 include(ECMSetupVersion)
 include(ECMGenerateHeaders)
 include(ECMMarkNonGuiExecutable)
@@ -88,7 +88,7 @@ add_subdirectory(autotests)
 # create a Config.cmake and a ConfigVersion.cmake file and install them
 set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF5Solid")
 
-ecm_configure_package_config_file(
+configure_package_config_file(
     "${CMAKE_CURRENT_SOURCE_DIR}/KF5SolidConfig.cmake.in"
     "${CMAKE_CURRENT_BINARY_DIR}/KF5SolidConfig.cmake"
     PATH_VARS KDE_INSTALL_DBUSINTERFACEDIR
