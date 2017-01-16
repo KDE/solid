@@ -73,13 +73,13 @@ FstabWatcher::~FstabWatcher()
 #if 0
     //qRemovePostRoutine(globalFstabWatcher.destroy);
 #else
-    m_fileSystemWatcher->setParent(0);
+    m_fileSystemWatcher->setParent(nullptr);
 #endif
 }
 
 void FstabWatcher::orphanFileSystemWatcher()
 {
-    m_fileSystemWatcher->setParent(0);
+    m_fileSystemWatcher->setParent(nullptr);
 }
 
 FstabWatcher *FstabWatcher::instance()

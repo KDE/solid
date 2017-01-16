@@ -217,7 +217,7 @@ QObject *UDevManager::createDevice(const QString &udi_)
         return new UDevDevice(device);
     }
 
-    return 0;
+    return nullptr;
 }
 
 void UDevManager::slotDeviceAdded(const UdevQt::Device &device)

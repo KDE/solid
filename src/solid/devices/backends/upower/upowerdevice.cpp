@@ -65,10 +65,10 @@ UPowerDevice::~UPowerDevice()
 QObject *UPowerDevice::createDeviceInterface(const Solid::DeviceInterface::Type &type)
 {
     if (!queryDeviceInterface(type)) {
-        return 0;
+        return nullptr;
     }
 
-    DeviceInterface *iface = 0;
+    DeviceInterface *iface = nullptr;
     switch (type) {
     case Solid::DeviceInterface::GenericInterface:
         iface = new GenericInterface(this);

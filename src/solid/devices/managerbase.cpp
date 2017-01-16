@@ -58,7 +58,7 @@ void Solid::ManagerBasePrivate::loadBackends()
     QString solidFakeXml(QString::fromLocal8Bit(qgetenv("SOLID_FAKEHW")));
 
     if (!solidFakeXml.isEmpty()) {
-        m_backends << new Solid::Backends::Fake::FakeManager(0, solidFakeXml);
+        m_backends << new Solid::Backends::Fake::FakeManager(nullptr, solidFakeXml);
     } else {
 #        if defined(Q_OS_MAC)
         m_backends << new Solid::Backends::IOKit::IOKitManager(0);
@@ -79,11 +79,11 @@ void Solid::ManagerBasePrivate::loadBackends()
 
 #        elif defined(Q_OS_LINUX)
 #               if UDEV_FOUND
-            m_backends << new Solid::Backends::UDev::UDevManager(0);
-            m_backends << new Solid::Backends::UDisks2::Manager(0);
+            m_backends << new Solid::Backends::UDev::UDevManager(nullptr);
+            m_backends << new Solid::Backends::UDisks2::Manager(nullptr);
 #               endif
-            m_backends << new Solid::Backends::UPower::UPowerManager(0)
-                       << new Solid::Backends::Fstab::FstabManager(0);
+            m_backends << new Solid::Backends::UPower::UPowerManager(nullptr)
+                       << new Solid::Backends::Fstab::FstabManager(nullptr);
 #        endif
     }
 }

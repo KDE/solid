@@ -239,7 +239,7 @@ private:
 
 public:
     SharedContentTypesCache()
-        : m_pointer(0),
+        : m_pointer(nullptr),
           m_semaphore(getKey() + "sem", 1), m_shmem(getKey() + "mem")
     {
         if (!m_semaphore.acquire()) {

@@ -97,7 +97,7 @@ QObject *UPowerManager::createDevice(const QString &udi)
         return new UPowerDevice(udi);
 
     } else {
-        return 0;
+        return nullptr;
     }
 }
 

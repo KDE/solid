@@ -255,10 +255,10 @@ QObject *FakeDevice::createDeviceInterface(const Solid::DeviceInterface::Type &t
 {
     // Do not try to cast with a unsupported device interface.
     if (!queryDeviceInterface(type)) {
-        return 0;
+        return nullptr;
     }
 
-    FakeDeviceInterface *iface = 0;
+    FakeDeviceInterface *iface = nullptr;
 
     switch (type) {
     case Solid::DeviceInterface::GenericInterface:

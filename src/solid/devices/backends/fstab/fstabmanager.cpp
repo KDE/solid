@@ -95,7 +95,7 @@ QObject *FstabManager::createDevice(const QString &udi)
         // global device manager makes sure udi starts with udi prefix + '/'
         QString internalName = udi.mid(udiPrefix().length() + 1, -1);
         if (!m_deviceList.contains(internalName)) {
-            return 0;
+            return nullptr;
         }
 
         QObject *device = new FstabDevice(udi);

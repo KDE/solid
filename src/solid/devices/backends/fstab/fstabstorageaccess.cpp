@@ -93,7 +93,7 @@ bool FstabStorageAccess::setup()
     m_process = FstabHandling::callSystemCommand("mount", filePath(),
                 this, SLOT(slotSetupFinished(int,QProcess::ExitStatus)));
 
-    return m_process != 0;
+    return m_process != nullptr;
 }
 
 void FstabStorageAccess::slotSetupRequested()
@@ -110,7 +110,7 @@ bool FstabStorageAccess::teardown()
     m_process = FstabHandling::callSystemCommand("umount", filePath(),
                 this, SLOT(slotTeardownFinished(int,QProcess::ExitStatus)));
 
-    return m_process != 0;
+    return m_process != nullptr;
 }
 
 void FstabStorageAccess::slotTeardownRequested()

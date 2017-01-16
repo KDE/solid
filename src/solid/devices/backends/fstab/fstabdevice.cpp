@@ -114,7 +114,7 @@ QObject *FstabDevice::createDeviceInterface(const Solid::DeviceInterface::Type &
     } else if (type == Solid::DeviceInterface::NetworkShare) {
         return new FstabNetworkShare(this);
     }
-    return 0;
+    return nullptr;
 }
 
 QString FstabDevice::device() const

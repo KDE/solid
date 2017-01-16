@@ -93,7 +93,7 @@ void SolidHwTest::testDeviceBasicFeatures()
     // Query properties
     QCOMPARE(valid_dev.as<Solid::GenericInterface>()->propertyExists("name"), true);
     QCOMPARE(valid_dev.as<Solid::GenericInterface>()->propertyExists("foo.bar"), false);
-    QCOMPARE((QObject *)invalid_dev.as<Solid::GenericInterface>(), (QObject *)0);
+    QCOMPARE((QObject *)invalid_dev.as<Solid::GenericInterface>(), (QObject *)nullptr);
 
     QCOMPARE(valid_dev.as<Solid::GenericInterface>()->property("name"), QVariant("Solid IDE DVD Writer"));
     QVERIFY(!valid_dev.as<Solid::GenericInterface>()->property("foo.bar").isValid());
@@ -229,7 +229,7 @@ void SolidHwTest::testDeviceInterfaces()
     Solid::DeviceInterface *processor = cpu.as<Solid::Processor>();
 
     QVERIFY(cpu.isDeviceInterface(Solid::DeviceInterface::Processor));
-    QVERIFY(iface != 0);
+    QVERIFY(iface != nullptr);
     QCOMPARE(iface, processor);
 
     Solid::Device cpu2("/org/kde/solid/fakehw/acpi_CPU0");
@@ -237,9 +237,9 @@ void SolidHwTest::testDeviceInterfaces()
     QCOMPARE(cpu.as<Solid::GenericInterface>(), cpu2.as<Solid::GenericInterface>());
 
     QPointer<Solid::Processor> p = cpu.as<Solid::Processor>();
-    QVERIFY(p != 0);
+    QVERIFY(p != nullptr);
     fakeManager->unplug("/org/kde/solid/fakehw/acpi_CPU0");
-    QVERIFY(p == 0);
+    QVERIFY(p == nullptr);
     fakeManager->plug("/org/kde/solid/fakehw/acpi_CPU0");
 
     QPointer<Solid::StorageVolume> v;
@@ -247,21 +247,21 @@ void SolidHwTest::testDeviceInterfaces()
     {
         Solid::Device partition("/org/kde/solid/fakehw/volume_uuid_f00ba7");
         v = partition.as<Solid::StorageVolume>();
-        QVERIFY(v != 0);
+        QVERIFY(v != nullptr);
         {
             Solid::Device partition2("/org/kde/solid/fakehw/volume_uuid_f00ba7");
             v2 = partition2.as<Solid::StorageVolume>();
-            QVERIFY(v2 != 0);
+            QVERIFY(v2 != nullptr);
             QVERIFY(v == v2);
         }
-        QVERIFY(v != 0);
-        QVERIFY(v2 != 0);
+        QVERIFY(v != nullptr);
+        QVERIFY(v2 != nullptr);
     }
-    QVERIFY(v != 0);
-    QVERIFY(v2 != 0);
+    QVERIFY(v != nullptr);
+    QVERIFY(v2 != nullptr);
     fakeManager->unplug("/org/kde/solid/fakehw/volume_uuid_f00ba7");
-    QVERIFY(v == 0);
-    QVERIFY(v2 == 0);
+    QVERIFY(v == nullptr);
+    QVERIFY(v2 == nullptr);
     fakeManager->plug("/org/kde/solid/fakehw/volume_uuid_f00ba7");
 }
 

@@ -133,12 +133,12 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateFstabMountPointsCache()
 #if HAVE_SETMNTENT
 
     FILE *fstab;
-    if ((fstab = setmntent(FSTAB, "r")) == 0) {
+    if ((fstab = setmntent(FSTAB, "r")) == nullptr) {
         return;
     }
 
     struct mntent *fe;
-    while ((fe = getmntent(fstab)) != 0) {
+    while ((fe = getmntent(fstab)) != nullptr) {
         if (_k_isFstabNetworkFileSystem(fe->mnt_type, fe->mnt_fsname)) {
             const QString device = QFile::decodeName(fe->mnt_fsname);
             const QString mountpoint = QFile::decodeName(fe->mnt_dir);
@@ -232,7 +232,7 @@ QProcess *Solid::Backends::Fstab::FstabHandling::callSystemCommand(const QString
         return process;
     } else {
         delete process;
-        return 0;
+        return nullptr;
     }
 }
 
@@ -333,7 +333,7 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateMtabMountPointsCache()
     free(mntctl_buffer);
 #else
     STRUCT_SETMNTENT mnttab;
-    if ((mnttab = SETMNTENT(MNTTAB, "r")) == 0) {
+    if ((mnttab = SETMNTENT(MNTTAB, "r")) == nullptr) {
         return;
     }
 

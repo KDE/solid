@@ -77,7 +77,7 @@ QString DevicePrivate::decodePropertyValue(const QByteArray &encoded) const
 }
 
 Device::Device()
-    : d(0)
+    : d(nullptr)
 {
 }
 
@@ -86,7 +86,7 @@ Device::Device(const Device &other)
     if (other.d) {
         d = new DevicePrivate(other.d->udev);
     } else {
-        d = 0;
+        d = nullptr;
     }
 }
 
@@ -107,7 +107,7 @@ Device &Device::operator=(const Device &other)
     }
     if (!other.d) {
         delete d;
-        d = 0;
+        d = nullptr;
         return *this;
     }
     if (!d) {
@@ -121,7 +121,7 @@ Device &Device::operator=(const Device &other)
 
 bool Device::isValid() const
 {
-    return (d != 0);
+    return (d != nullptr);
 }
 
 QString Device::subsystem() const

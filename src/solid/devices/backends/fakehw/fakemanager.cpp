@@ -130,7 +130,7 @@ QObject *FakeManager::createDevice(const QString &udi)
         return new FakeDevice(*d->loadedDevices[udi]);
     }
 
-    return 0;
+    return nullptr;
 }
 
 FakeDevice *FakeManager::findDevice(const QString &udi)
@@ -219,7 +219,7 @@ void FakeManager::parseMachineFile()
 
 FakeDevice *FakeManager::parseDeviceElement(const QDomElement &deviceElement)
 {
-    FakeDevice *device = 0;
+    FakeDevice *device = nullptr;
     QMap<QString, QVariant> propertyMap;
     QString udi = deviceElement.attribute("udi");
 
