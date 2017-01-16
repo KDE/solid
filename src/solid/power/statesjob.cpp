@@ -29,7 +29,7 @@ using namespace Solid;
 
 StatesJobPrivate::StatesJobPrivate()
 {
-    backendJob = Q_NULLPTR;
+    backendJob = nullptr;
 }
 
 StatesJob::StatesJob(QObject* parent) : Job(*new StatesJobPrivate(), parent)

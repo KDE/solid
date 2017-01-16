@@ -29,7 +29,7 @@ using namespace Solid;
 
 AcPluggedJobPrivate::AcPluggedJobPrivate()
 {
-    backendJob = Q_NULLPTR;
+    backendJob = nullptr;
     plugged = false;
     backendJobFinished = false;
 }

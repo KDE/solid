@@ -26,7 +26,7 @@ class SolidExtensionPlugin: public QQmlExtensionPlugin
     Q_PLUGIN_METADATA(IID "org.kde.solid")
 
 public:
-    SolidExtensionPlugin(QObject *parent = Q_NULLPTR);
+    SolidExtensionPlugin(QObject *parent = nullptr);
 
     void registerTypes(const char *uri) Q_DECL_OVERRIDE;
 

@@ -29,7 +29,7 @@ using namespace Solid;
 
 RequestStateJobPrivate::RequestStateJobPrivate()
 {
-    backendJob = Q_NULLPTR;
+    backendJob = nullptr;
     state = Power::None;
 }
 

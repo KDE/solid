@@ -76,7 +76,7 @@ class Devices: public QObject
     Q_PROPERTY(QStringList devices READ devices NOTIFY devicesChanged)
 
 public:
-    explicit Devices(QObject *parent = Q_NULLPTR);
+    explicit Devices(QObject *parent = nullptr);
     ~Devices();
 
 Q_SIGNALS:

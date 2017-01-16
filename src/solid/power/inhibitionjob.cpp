@@ -32,8 +32,8 @@ using namespace Solid;
 
 InhibitionJobPrivate::InhibitionJobPrivate()
     : inhibitions(Power::None)
-    , inhibition(Q_NULLPTR)
-    , backendJob(Q_NULLPTR)
+    , inhibition(nullptr)
+    , backendJob(nullptr)
 {
 
 }
@@ -52,7 +52,7 @@ Inhibition* InhibitionJob::inhibition() const
     }
 
     qWarning() << "result() has not been emitted yet, job not finished";
-    return Q_NULLPTR;
+    return nullptr;
 }
 
 void InhibitionJob::doStart()
