@@ -352,7 +352,7 @@ void StorageAccess::passphraseReply(const QString &passphrase)
             callCryptoSetup(passphrase);
         } else {
             m_setupInProgress = false;
-            m_device->broadcastActionDone("setup");
+            m_device->broadcastActionDone("setup", Solid::UserCanceled);
         }
     }
 }
