@@ -182,15 +182,19 @@ void DeviceBackend::checkCache(const QString &key) const
         return;
     }
 
-    QVariant reply = m_device->property(key.toUtf8());
-    m_propertyCache.insert(key, reply);
+    QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, m_udi, DBUS_INTERFACE_PROPS, "Get");
+    /*
+     * Interface is set to an empty string as in this QDBusInterface is a meta-object of multiple interfaces on the same path
+     * The DBus properties also interface supports this, and will find the appropriate interface if none is explicitly set.
+     * This matches what QDBusAbstractInterface would do
+     */
+    call.setArguments(QVariantList() << QString() << key);
+    QDBusPendingReply<QVariant> reply = QDBusConnection::systemBus().call(call);
 
-    if (!reply.isValid()) {
-        /* Store the item in the cache anyway so next time we don't have to
-         * do the DBus call to find out it does not exist but just check whether
-         * prop(key).isValid() */
-//         qDebug() << m_udi << ": property" << key << "does not exist";
-    }
+    /* We don't check for error here and store the item in the cache anyway so next time we don't have to
+     * do the DBus call to find out it does not exist but just check whether
+     * prop(key).isValid() */
+    m_propertyCache.insert(key, reply.value());
 }
 
 void DeviceBackend::slotPropertiesChanged(const QString &ifaceName, const QVariantMap &changedProps, const QStringList &invalidatedProps)
