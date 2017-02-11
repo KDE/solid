@@ -573,6 +573,8 @@ QString Device::volumeDescription() const
                 description = tr("Hard Drive");
             }
         }
+    } else if (drive_type == Solid::StorageDrive::Floppy) {
+        description = tr("Floppy Disk");
     } else {
         if (drive_is_removable) {
             description = tr("%1 Removable Media", "%1 is the size").arg(size_str);
