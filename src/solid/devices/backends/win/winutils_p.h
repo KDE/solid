@@ -28,7 +28,7 @@
 /**
  * @brief RAII class for blocking Windows from reporting errors
  *
- * Internally calls GetThreadErrorMode + SetErrorMode. This class stores the
+ * Internally calls SetThreadErrorMode. This class stores the
  * current error mode on construction and disables certain error reportings
  * during the life time of this object
  *
