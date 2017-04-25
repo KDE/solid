@@ -6,9 +6,7 @@
 #   Solid_VERSION_MINOR - the minor version number of Solid
 #   Solid_VERSION_PATCH - the patch version number of Solid
 #   Solid_INCLUDE_DIRS  - the include directories to use
-#   Solid_HAVE_WINDOWS_WBEM - TRUE if WBEM is supported as backend under Windows
 #   Solid_HAVE_UDev         - TRUE if device discovery via udev is supported
-#   Solid_USE_UDisk2        - TRUE is udisk2 is used instead of udisk on UNIX systems
 #
 # Additionally, the following imported library targets are created, which may be used directly
 # with target_link_libraries():
