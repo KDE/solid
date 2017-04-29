@@ -50,3 +50,23 @@ set(solidLogindInhibitionArgument_SRCS
 )
 ecm_add_test(${solidLogindInhibitionArgument_SRCS} TEST_NAME "logindinhibitionargument" LINK_LIBRARIES Qt5::Test KF5Solid_static)
 endif()
+
+set(solidUdisks2Test_SRCS solidudisks2test.cpp fakeUdisks2.cpp)
+ecm_add_test(${solidUdisks2Test_SRCS} TEST_NAME "solidudisks2" LINK_LIBRARIES Qt5::Test Qt5::DBus ${LIBS} KF5Solid_static)
+include(CheckSymbolExists)
+check_symbol_exists(major "sys/sysmacros.h" HAVE_SYSMACROS_MAJOR)
+check_symbol_exists(minor "sys/sysmacros.h" HAVE_SYSMACROS_MINOR)
+check_symbol_exists(major "sys/types.h" HAVE_SYSTYPES_MAJOR)
+check_symbol_exists(minor "sys/types.h" HAVE_SYSTYPES_MINOR)
+check_symbol_exists(major "sys/mkdev.h" HAVE_SYSMKDEV_MAJOR)
+check_symbol_exists(minor "sys/mkdev.h" HAVE_SYSMKDEV_MINOR)
+
+target_compile_definitions(solidudisks2 PRIVATE
+  HAVE_SYSMACROS_MAJOR_MINOR=$<AND:$<BOOL:${HAVE_SYSMACROS_MAJOR}>,$<BOOL:${HAVE_SYSMACROS_MINOR}>>
+)
+target_compile_definitions(solidudisks2 PRIVATE
+  HAVE_SYSTYPES_MAJOR_MINOR=$<AND:$<BOOL:${HAVE_SYSTYPES_MAJOR}>,$<BOOL:${HAVE_SYSTYPES_MINOR}>>
+)
+target_compile_definitions(solidudisks2 PRIVATE
+  HAVE_SYSMKDEV_MAJOR_MINOR=$<AND:$<BOOL:${HAVE_SYSMKDEV_MAJOR}>,$<BOOL:${HAVE_SYSMKDEV_MINOR}>>
+)

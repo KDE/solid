@@ -18,14 +18,18 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#if defined(Q_OS_LINUX)
-#include <linux/kdev_t.h>
+// Find appropriate major/minor macros - a CMake check tells us
+// where to find these.
+#if HAVE_SYSMACROS_MAJOR_MINOR
+#include <sys/sysmacros.h>
+#elif HAVE_SYSTYPES_MAJOR_MINOR
+#include <sys/types.h>
+#elif HAVE_SYSMKDEV_MAJOR_MINOR
+#include <sys/mkdev.h>
 #else
-// taken from linux/kdev_t.h
-#define MINORBITS       20
-#define MINORMASK       ((1U << MINORBITS) - 1)
-#define MAJOR(dev)      ((unsigned int) ((dev) >> MINORBITS))
-#define MINOR(dev)      ((unsigned int) ((dev) & MINORMASK))
+// Fall back to the traditional definition of major/minor - 8 bits for each.
+#define major(dev)      ((dev) >> 8)
+#define minor(dev)      ((dev) & 0xff)
 #endif
 
 #include <QFile>
@@ -87,10 +91,10 @@ QString Block::device() const
 
 int Block::deviceMinor() const
 {
-    return MINOR(m_devNum);
+    return minor(m_devNum);
 }
 
 int Block::deviceMajor() const
 {
-    return MAJOR(m_devNum);
+    return major(m_devNum);
 }
