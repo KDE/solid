@@ -29,6 +29,7 @@ include(CMakePackageConfigHelpers)
 include(ECMSetupVersion)
 include(ECMGenerateHeaders)
 include(ECMMarkNonGuiExecutable)
+include(ECMAddQch)
 
 find_package(FLEX REQUIRED)
 set_package_properties(FLEX PROPERTIES
@@ -60,6 +61,9 @@ endif()
 include(ECMPoQmTools)
 
 
+option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)" OFF)
+add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)")
+
 ecm_setup_version(PROJECT VARIABLE_PREFIX SOLID
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/solid_version.h"
                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5SolidConfigVersion.cmake"
@@ -87,6 +91,16 @@ add_subdirectory(autotests)
 
 # create a Config.cmake and a ConfigVersion.cmake file and install them
 set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF5Solid")
+
+if (BUILD_QCH)
+    ecm_install_qch_export(
+        TARGETS KF5Solid_QCH
+        FILE KF5SolidQchTargets.cmake
+        DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
+        COMPONENT Devel
+    )
+    set(PACKAGE_INCLUDE_QCHTARGETS "include(\"\${CMAKE_CURRENT_LIST_DIR}/KF5SolidQchTargets.cmake\")")
+endif()
 
 configure_package_config_file(
     "${CMAKE_CURRENT_SOURCE_DIR}/KF5SolidConfig.cmake.in"
