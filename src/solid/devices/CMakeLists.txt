@@ -96,6 +96,8 @@ include(devices/backends/fakehw/CMakeLists.txt)
 if(NOT WIN32 AND NOT APPLE)
    if (CMAKE_SYSTEM_NAME MATCHES FreeBSD)
       option(EXPERIMENTAL_BSDISKS "Use UDisks2/bsdisks backend instead of HAL to manage disk devices" OFF)
+   else ()
+      set(EXPERIMENTAL_BSDISKS FALSE)
    endif()
 
    if ( UDEV_FOUND )
@@ -107,7 +109,7 @@ if(NOT WIN32 AND NOT APPLE)
    include(devices/backends/upower/CMakeLists.txt)
 
    # FIXME: this should work on more Unix systems
-   if ((CMAKE_SYSTEM_NAME MATCHES Linux AND UDEV_FOUND) OR CMAKE_SYSTEM_NAME MATCHES FreeBSD)
+   if ((CMAKE_SYSTEM_NAME MATCHES Linux AND UDEV_FOUND) OR EXPERIMENTAL_BSDISKS)
         message(STATUS "Building Solid UDisks2 backend." )
         include(devices/backends/udisks2/CMakeLists.txt)
    endif ()
