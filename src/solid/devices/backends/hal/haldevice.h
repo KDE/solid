@@ -48,17 +48,17 @@ public:
     HalDevice(const QString &udi);
     virtual ~HalDevice();
 
-    virtual QString udi() const;
-    virtual QString parentUdi() const;
+    QString udi() const Q_DECL_OVERRIDE;
+    QString parentUdi() const Q_DECL_OVERRIDE;
 
-    virtual QString vendor() const;
-    virtual QString product() const;
-    virtual QString icon() const;
-    virtual QStringList emblems() const;
-    virtual QString description() const;
+    QString vendor() const Q_DECL_OVERRIDE;
+    QString product() const Q_DECL_OVERRIDE;
+    QString icon() const Q_DECL_OVERRIDE;
+    QStringList emblems() const Q_DECL_OVERRIDE;
+    QString description() const Q_DECL_OVERRIDE;
 
-    virtual bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const;
-    virtual QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type);
+    bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const Q_DECL_OVERRIDE;
+    QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type) Q_DECL_OVERRIDE;
 
 public:
     QVariant prop(const QString &key) const;

@@ -39,12 +39,12 @@ public:
     Storage(HalDevice *device);
     virtual ~Storage();
 
-    virtual Solid::StorageDrive::Bus bus() const;
-    virtual Solid::StorageDrive::DriveType driveType() const;
+    Solid::StorageDrive::Bus bus() const Q_DECL_OVERRIDE;
+    Solid::StorageDrive::DriveType driveType() const Q_DECL_OVERRIDE;
 
-    virtual bool isRemovable() const;
-    virtual bool isHotpluggable() const;
-    virtual qulonglong size() const;
+    bool isRemovable() const Q_DECL_OVERRIDE;
+    bool isHotpluggable() const Q_DECL_OVERRIDE;
+    qulonglong size() const Q_DECL_OVERRIDE;
 };
 }
 }

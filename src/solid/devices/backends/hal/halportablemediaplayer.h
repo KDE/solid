@@ -44,9 +44,9 @@ public:
     PortableMediaPlayer(HalDevice *device);
     virtual ~PortableMediaPlayer();
 
-    virtual QStringList supportedProtocols() const;
-    virtual QStringList supportedDrivers(QString protocol = QString()) const;
-    virtual QVariant driverHandle(const QString &driver) const;
+    QStringList supportedProtocols() const Q_DECL_OVERRIDE;
+    QStringList supportedDrivers(QString protocol = QString()) const Q_DECL_OVERRIDE;
+    QVariant driverHandle(const QString &driver) const Q_DECL_OVERRIDE;
 };
 }
 }

@@ -39,13 +39,13 @@ public:
     Volume(HalDevice *device);
     virtual ~Volume();
 
-    virtual bool isIgnored() const;
-    virtual Solid::StorageVolume::UsageType usage() const;
-    virtual QString fsType() const;
-    virtual QString label() const;
-    virtual QString uuid() const;
-    virtual qulonglong size() const;
-    virtual QString encryptedContainerUdi() const;
+    bool isIgnored() const Q_DECL_OVERRIDE;
+    Solid::StorageVolume::UsageType usage() const Q_DECL_OVERRIDE;
+    QString fsType() const Q_DECL_OVERRIDE;
+    QString label() const Q_DECL_OVERRIDE;
+    QString uuid() const Q_DECL_OVERRIDE;
+    qulonglong size() const Q_DECL_OVERRIDE;
+    QString encryptedContainerUdi() const Q_DECL_OVERRIDE;
 };
 }
 }

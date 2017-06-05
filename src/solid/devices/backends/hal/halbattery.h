@@ -39,51 +39,51 @@ public:
     Battery(HalDevice *device);
     virtual ~Battery();
 
-    virtual bool isPresent() const;
-    virtual Solid::Battery::BatteryType type() const;
+    bool isPresent() const Q_DECL_OVERRIDE;
+    Solid::Battery::BatteryType type() const Q_DECL_OVERRIDE;
 
-    virtual int chargePercent() const;
-    virtual int capacity() const;
+    int chargePercent() const Q_DECL_OVERRIDE;
+    int capacity() const Q_DECL_OVERRIDE;
 
-    virtual bool isRechargeable() const;
-    virtual bool isPowerSupply() const;
+    bool isRechargeable() const Q_DECL_OVERRIDE;
+    bool isPowerSupply() const Q_DECL_OVERRIDE;
 
-    virtual Solid::Battery::ChargeState chargeState() const;
-    virtual qlonglong timeToEmpty() const;
-    virtual qlonglong timeToFull() const;
+    Solid::Battery::ChargeState chargeState() const Q_DECL_OVERRIDE;
+    qlonglong timeToEmpty() const Q_DECL_OVERRIDE;
+    qlonglong timeToFull() const Q_DECL_OVERRIDE;
 
-    virtual Solid::Battery::Technology technology() const;
+    Solid::Battery::Technology technology() const Q_DECL_OVERRIDE;
 
-    virtual double energy() const;
-    virtual double energyFull() const;
-    virtual double energyFullDesign() const;
-    virtual double energyRate() const;
+    double energy() const Q_DECL_OVERRIDE;
+    double energyFull() const Q_DECL_OVERRIDE;
+    double energyFullDesign() const Q_DECL_OVERRIDE;
+    double energyRate() const Q_DECL_OVERRIDE;
 
-    virtual double voltage() const;
-    virtual double temperature() const;
+    double voltage() const Q_DECL_OVERRIDE;
+    double temperature() const Q_DECL_OVERRIDE;
 
-    virtual bool isRecalled() const;
-    virtual QString recallVendor() const;
-    virtual QString recallUrl() const;
+    bool isRecalled() const Q_DECL_OVERRIDE;
+    QString recallVendor() const Q_DECL_OVERRIDE;
+    QString recallUrl() const Q_DECL_OVERRIDE;
 
-    virtual QString serial() const;
+    QString serial() const Q_DECL_OVERRIDE;
 
-    virtual qlonglong remainingTime() const;
+    qlonglong remainingTime() const Q_DECL_OVERRIDE;
 
 Q_SIGNALS:
-    void presentStateChanged(bool newState, const QString &udi);
-    void chargePercentChanged(int value, const QString &udi);
-    void capacityChanged(int value, const QString &udi);
-    void powerSupplyStateChanged(bool newState, const QString &udi); // dummy
-    void chargeStateChanged(int newState, const QString &udi);
-    void timeToEmptyChanged(qlonglong time, const QString &udi);
-    void timeToFullChanged(qlonglong time, const QString &udi);
-    void energyChanged(double energy, const QString &udi);
-    void energyFullChanged(double energyFull, const QString &udi);
-    void energyFullDesignChanged(double energyFullDesign, const QString &udi);
-    void energyRateChanged(double energyRate, const QString &udi);
-    void voltageChanged(double voltage, const QString &udi);
-    void temperatureChanged(double temperature, const QString &udi); // dummy
+    void presentStateChanged(bool newState, const QString &udi) Q_DECL_OVERRIDE;
+    void chargePercentChanged(int value, const QString &udi) Q_DECL_OVERRIDE;
+    void capacityChanged(int value, const QString &udi) Q_DECL_OVERRIDE;
+    void powerSupplyStateChanged(bool newState, const QString &udi) Q_DECL_OVERRIDE; // dummy
+    void chargeStateChanged(int newState, const QString &udi) Q_DECL_OVERRIDE;
+    void timeToEmptyChanged(qlonglong time, const QString &udi) Q_DECL_OVERRIDE;
+    void timeToFullChanged(qlonglong time, const QString &udi) Q_DECL_OVERRIDE;
+    void energyChanged(double energy, const QString &udi) Q_DECL_OVERRIDE;
+    void energyFullChanged(double energyFull, const QString &udi) Q_DECL_OVERRIDE;
+    void energyFullDesignChanged(double energyFullDesign, const QString &udi) Q_DECL_OVERRIDE;
+    void energyRateChanged(double energyRate, const QString &udi) Q_DECL_OVERRIDE;
+    void voltageChanged(double voltage, const QString &udi) Q_DECL_OVERRIDE;
+    void temperatureChanged(double temperature, const QString &udi) Q_DECL_OVERRIDE; // dummy
     void remainingTimeChanged(qlonglong time, const QString &udi) Q_DECL_OVERRIDE;
 
 private Q_SLOTS:

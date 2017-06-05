@@ -44,15 +44,15 @@ public:
     Cdrom(HalDevice *device);
     virtual ~Cdrom();
 
-    virtual Solid::OpticalDrive::MediumTypes supportedMedia() const;
-    virtual int readSpeed() const;
-    virtual int writeSpeed() const;
-    virtual QList<int> writeSpeeds() const;
-    virtual bool eject();
+    Solid::OpticalDrive::MediumTypes supportedMedia() const Q_DECL_OVERRIDE;
+    int readSpeed() const Q_DECL_OVERRIDE;
+    int writeSpeed() const Q_DECL_OVERRIDE;
+    QList<int> writeSpeeds() const Q_DECL_OVERRIDE;
+    bool eject() Q_DECL_OVERRIDE;
 
 Q_SIGNALS:
-    void ejectPressed(const QString &udi);
-    void ejectDone(Solid::ErrorType error, QVariant errorData, const QString &udi);
+    void ejectPressed(const QString &udi) Q_DECL_OVERRIDE;
+    void ejectDone(Solid::ErrorType error, QVariant errorData, const QString &udi) Q_DECL_OVERRIDE;
     void ejectRequested(const QString &udi);
 
 private Q_SLOTS:

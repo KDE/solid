@@ -39,12 +39,12 @@ public:
     OpticalDisc(HalDevice *device);
     virtual ~OpticalDisc();
 
-    virtual Solid::OpticalDisc::ContentTypes availableContent() const;
-    virtual Solid::OpticalDisc::DiscType discType() const;
-    virtual bool isAppendable() const;
-    virtual bool isBlank() const;
-    virtual bool isRewritable() const;
-    virtual qulonglong capacity() const;
+    Solid::OpticalDisc::ContentTypes availableContent() const Q_DECL_OVERRIDE;
+    Solid::OpticalDisc::DiscType discType() const Q_DECL_OVERRIDE;
+    bool isAppendable() const Q_DECL_OVERRIDE;
+    bool isBlank() const Q_DECL_OVERRIDE;
+    bool isRewritable() const Q_DECL_OVERRIDE;
+    qulonglong capacity() const Q_DECL_OVERRIDE;
 };
 }
 }
