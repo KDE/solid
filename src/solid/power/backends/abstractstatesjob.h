@@ -30,7 +30,7 @@ class AbstractStatesJob : public Job
 {
     Q_OBJECT
 public:
-    explicit AbstractStatesJob(QObject* parent = 0) : Job(parent) { }
+    explicit AbstractStatesJob(QObject* parent = nullptr) : Job(parent) { }
     virtual ~AbstractStatesJob() {}
 
     virtual Power::InhibitionTypes states() const = 0;

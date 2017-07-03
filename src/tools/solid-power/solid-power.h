@@ -28,7 +28,7 @@ class SolidPower : public QObject
 {
     Q_OBJECT
 public:
-    explicit SolidPower(QObject *parent = 0);
+    explicit SolidPower(QObject *parent = nullptr);
 
     void show();
     void listen();

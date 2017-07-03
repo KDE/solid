@@ -34,7 +34,7 @@ class SOLID_EXPORT AcPluggedJob : public Job
     Q_PROPERTY(bool plugged READ isPlugged NOTIFY result)
 
 public:
-    explicit AcPluggedJob(QObject *parent = 0);
+    explicit AcPluggedJob(QObject *parent = nullptr);
 
     bool isPlugged() const;
 

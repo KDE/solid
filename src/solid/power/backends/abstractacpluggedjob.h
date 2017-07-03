@@ -29,7 +29,7 @@ class AbstractAcPluggedJob : public Job
 {
     Q_OBJECT
 public:
-    explicit AbstractAcPluggedJob(QObject* parent = 0) : Job(parent) { }
+    explicit AbstractAcPluggedJob(QObject* parent = nullptr) : Job(parent) { }
     virtual ~AbstractAcPluggedJob() {}
     virtual bool isPlugged() const = 0;
 };

@@ -38,7 +38,7 @@ class AbstractInhibition : public QObject
 {
     Q_OBJECT
 public:
-    explicit AbstractInhibition(QObject *parent = 0) : QObject(parent) {}
+    explicit AbstractInhibition(QObject *parent = nullptr) : QObject(parent) {}
     virtual ~AbstractInhibition(){}
 
     virtual void start() = 0;

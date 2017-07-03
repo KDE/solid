@@ -30,7 +30,7 @@ class AbstractInhibitionJob : public Job
 {
     Q_OBJECT
 public:
-    explicit AbstractInhibitionJob(QObject* parent = 0) : Job(parent) { }
+    explicit AbstractInhibitionJob(QObject* parent = nullptr) : Job(parent) { }
     virtual ~AbstractInhibitionJob() {}
 
     virtual Inhibition* inhibition() = 0 ;

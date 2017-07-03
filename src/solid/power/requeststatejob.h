@@ -49,7 +49,7 @@ public:
         Unsupported = Job::UserDefinedError
     };
 
-    explicit RequestStateJob(QObject *parent = 0);
+    explicit RequestStateJob(QObject *parent = nullptr);
 
     void setState(Power::InhibitionType state);
 

@@ -31,7 +31,7 @@ class DummyInhibitionJob : public AbstractInhibitionJob
 {
     Q_OBJECT
 public:
-    explicit DummyInhibitionJob(Power::InhibitionTypes inhibitions, const QString &description, QObject* parent = 0);
+    explicit DummyInhibitionJob(Power::InhibitionTypes inhibitions, const QString &description, QObject* parent = nullptr);
 
     Inhibition* inhibition() Q_DECL_OVERRIDE;
 private Q_SLOTS:

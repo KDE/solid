@@ -36,7 +36,7 @@ class FdInhibitionJob : public AbstractInhibitionJob
 {
     Q_OBJECT
 public:
-    explicit FdInhibitionJob(Power::InhibitionTypes inhibitions, const QString &description, QObject* parent = 0);
+    explicit FdInhibitionJob(Power::InhibitionTypes inhibitions, const QString &description, QObject* parent = nullptr);
     virtual ~FdInhibitionJob();
 
     Inhibition* inhibition() Q_DECL_OVERRIDE;

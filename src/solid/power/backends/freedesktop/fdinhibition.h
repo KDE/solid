@@ -35,7 +35,7 @@ class FdInhibition : public AbstractInhibition
 {
     Q_OBJECT
 public:
-    explicit FdInhibition(Power::InhibitionTypes inhibitions, const QString &description, QObject* parent = 0);
+    explicit FdInhibition(Power::InhibitionTypes inhibitions, const QString &description, QObject* parent = nullptr);
     virtual ~FdInhibition();
 
     void start() Q_DECL_OVERRIDE;

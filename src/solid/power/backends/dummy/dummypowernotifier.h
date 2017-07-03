@@ -29,7 +29,7 @@ class DummyPowerNotifier : public PowerNotifier
 {
     Q_OBJECT
 public:
-    explicit DummyPowerNotifier(QObject* parent = 0);
+    explicit DummyPowerNotifier(QObject* parent = nullptr);
 
 private Q_SLOTS:
     void emitEverythingChanged();

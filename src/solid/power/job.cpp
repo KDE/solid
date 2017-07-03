@@ -26,7 +26,7 @@
 using namespace Solid;
 JobPrivate::JobPrivate()
 {
-    eventLoop = 0;
+    eventLoop = nullptr;
     error = Job::NoError;
 }
 

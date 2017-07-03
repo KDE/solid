@@ -54,7 +54,7 @@ class SOLID_EXPORT Job : public QObject
     Q_PROPERTY(QString errorText READ errorText NOTIFY result)
 
 public:
-    explicit Job(QObject* parent = 0);
+    explicit Job(QObject* parent = nullptr);
     virtual ~Job();
 
     enum Error {

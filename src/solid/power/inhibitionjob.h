@@ -52,7 +52,7 @@ public:
      * At least one action to inhibit and description should be
      * added.
      */
-    explicit InhibitionJob(QObject* parent = 0);
+    explicit InhibitionJob(QObject* parent = nullptr);
 
 
     /**

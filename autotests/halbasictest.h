@@ -31,7 +31,7 @@ class HalBasicTest : public QObject
 {
     Q_OBJECT
 public:
-    HalBasicTest(QObject *parent = 0);
+    HalBasicTest(QObject *parent = nullptr);
 private Q_SLOTS:
     void initTestCase();
     void testBasic();

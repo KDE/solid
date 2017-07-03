@@ -408,7 +408,7 @@ QObject *HalDevice::createDeviceInterface(const Solid::DeviceInterface::Type &ty
         return 0;
     }
 
-    DeviceInterface *iface = 0;
+    DeviceInterface *iface = nullptr;
 
     switch (type) {
     case Solid::DeviceInterface::GenericInterface:

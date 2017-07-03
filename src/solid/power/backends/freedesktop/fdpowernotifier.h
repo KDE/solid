@@ -30,7 +30,7 @@ class FDPowerNotifier : public PowerNotifier
 {
     Q_OBJECT
 public:
-    explicit FDPowerNotifier(QObject* parent = 0);
+    explicit FDPowerNotifier(QObject* parent = nullptr);
 
 private Q_SLOTS:
     void upowerPropertiesChanged(const QString& interface, const QVariantMap& changedProperties, const QStringList& invalidated);

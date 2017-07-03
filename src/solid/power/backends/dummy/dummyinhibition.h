@@ -35,7 +35,7 @@ class DummyInhibition : public AbstractInhibition
 {
     Q_OBJECT
 public:
-    explicit DummyInhibition(QObject* parent = 0);
+    explicit DummyInhibition(QObject* parent = nullptr);
     virtual ~DummyInhibition();
 
     void start() Q_DECL_OVERRIDE;

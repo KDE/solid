@@ -41,7 +41,7 @@ class SOLID_EXPORT StatesJob : public Job
     Q_OBJECT
 
 public:
-    explicit StatesJob(QObject *parent = 0);
+    explicit StatesJob(QObject *parent = nullptr);
 
     /**
      * Once the job is finished, returns the supported Power::InhibitionTypes
