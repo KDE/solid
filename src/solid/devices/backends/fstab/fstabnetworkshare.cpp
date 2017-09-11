@@ -35,8 +35,8 @@ FstabNetworkShare::FstabNetworkShare(Solid::Backends::Fstab::FstabDevice *device
     } else if (m_fstabDevice->device().contains(":/")) {
         m_type = Solid::NetworkShare::Nfs;
         url = "nfs://";
+        url += m_fstabDevice->vendor() + "/";
         url += m_fstabDevice->product();
-        url += m_fstabDevice->vendor();
     } else {
         m_type = Solid::NetworkShare::Unknown;
     }

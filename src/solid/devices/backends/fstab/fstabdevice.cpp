@@ -23,6 +23,7 @@
 #include "fstabnetworkshare.h"
 #include "fstabstorageaccess.h"
 #include "fstabservice.h"
+#include <QtCore/QCoreApplication>
 #include <QtCore/QStringList>
 
 using namespace Solid::Backends::Fstab;
@@ -35,14 +36,15 @@ FstabDevice::FstabDevice(QString uid) :
     m_device.remove(parentUdi() + "/");
 
     if (m_device.startsWith("//")) {
-        m_product = m_device.mid(2, m_device.indexOf("/", 2) - 2);
-        m_vendor = m_device.mid(m_device.indexOf("/", 2) + 1);
+        m_vendor = m_device.mid(2, m_device.indexOf("/", 2) - 2);
+        m_product = m_device.mid(m_device.indexOf("/", 2) + 1);
     } else {
-        m_product = m_device.left(m_device.indexOf(":/"));
-        m_vendor = m_device.mid(m_device.indexOf(":/") + 1);
+        m_vendor = m_device.left(m_device.indexOf(":/"));
+        m_product = m_device.mid(m_device.indexOf(":/") + 2);
     }
 
-    m_description = m_vendor + " on " + m_product;
+    m_description = QCoreApplication::translate("", "%1 on %2",
+        "%1 is sharename, %2 is servername").arg(m_product).arg(m_vendor);
 }
 
 FstabDevice::~FstabDevice()
