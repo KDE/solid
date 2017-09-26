@@ -83,6 +83,7 @@ private:
     QProcess *m_process;
     QString m_filePath;
     bool m_isAccessible;
+    bool m_isIgnored;
 };
 
 }

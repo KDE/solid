@@ -43,6 +43,7 @@ public:
     static QStringList deviceList();
     static QStringList currentMountPoints(const QString &device);
     static QStringList mountPoints(const QString &device);
+    static QStringList options(const QString &device);
     static QProcess *callSystemCommand(const QString &commandName,
                                        const QStringList &args,
                                        QObject *obj, const char *slot);
@@ -60,6 +61,7 @@ private:
 
     QStringMultiHash m_mtabCache;
     QStringMultiHash m_fstabCache;
+    QStringMultiHash m_fstabOptionsCache;
     bool m_fstabCacheValid;
     bool m_mtabCacheValid;
 

@@ -129,6 +129,7 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateFstabMountPointsCache()
     }
 
     globalFstabCache->m_fstabCache.clear();
+    globalFstabCache->m_fstabOptionsCache.clear();
 
 #if HAVE_SETMNTENT
 
@@ -142,8 +143,12 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateFstabMountPointsCache()
         if (_k_isFstabNetworkFileSystem(fe->mnt_type, fe->mnt_fsname)) {
             const QString device = QFile::decodeName(fe->mnt_fsname);
             const QString mountpoint = QFile::decodeName(fe->mnt_dir);
+            QStringList options = QFile::decodeName(fe->mnt_opts).split(QLatin1Char(','));
 
             globalFstabCache->m_fstabCache.insert(device, mountpoint);
+            while (!options.isEmpty()) {
+                globalFstabCache->m_fstabOptionsCache.insert(device, options.takeFirst());
+            }
         }
     }
 
@@ -211,6 +216,14 @@ QStringList Solid::Backends::Fstab::FstabHandling::mountPoints(const QString &de
     mountpoints += globalFstabCache->m_mtabCache.values(device);
     mountpoints.removeDuplicates();
     return mountpoints;
+}
+
+QStringList Solid::Backends::Fstab::FstabHandling::options(const QString &device)
+{
+    _k_updateFstabMountPointsCache();
+
+    QStringList options = globalFstabCache->m_fstabOptionsCache.values(device);
+    return options;
 }
 
 QProcess *Solid::Backends::Fstab::FstabHandling::callSystemCommand(const QString &commandName,

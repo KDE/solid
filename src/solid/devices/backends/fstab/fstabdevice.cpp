@@ -25,6 +25,7 @@
 #include "fstabservice.h"
 #include <QtCore/QCoreApplication>
 #include <QtCore/QStringList>
+#include <QtCore/QUrl>
 
 using namespace Solid::Backends::Fstab;
 
@@ -43,8 +44,26 @@ FstabDevice::FstabDevice(QString uid) :
         m_product = m_device.mid(m_device.indexOf(":/") + 2);
     }
 
-    m_description = QCoreApplication::translate("", "%1 on %2",
-        "%1 is sharename, %2 is servername").arg(m_product).arg(m_vendor);
+    const QStringList& gvfsOptions = FstabHandling::options(m_device);
+
+    foreach (const QString& option, gvfsOptions) {
+        if (option.startsWith(QLatin1String("x-gvfs-name="))) {
+            QStringRef encoded = option.midRef(12);
+            m_description = QUrl::fromPercentEncoding(encoded.toLatin1());
+        } else if (option.startsWith(QLatin1String("x-gvfs-icon="))) {
+            QStringRef encoded = option.midRef(12);
+            m_iconName = QUrl::fromPercentEncoding(encoded.toLatin1());
+        }
+    }
+
+    if (m_description.isEmpty()) {
+        m_description = QCoreApplication::translate("", "%1 on %2",
+            "%1 is sharename, %2 is servername").arg(m_product).arg(m_vendor);
+    }
+
+    if (m_iconName.isEmpty()) {
+        m_iconName = QLatin1String("network-server");
+    }
 }
 
 FstabDevice::~FstabDevice()
@@ -73,7 +92,7 @@ QString FstabDevice::product() const
 
 QString FstabDevice::icon() const
 {
-    return QString::fromLatin1("network-server");
+    return m_iconName;
 }
 
 QStringList FstabDevice::emblems() const

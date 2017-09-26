@@ -44,6 +44,7 @@ FstabStorageAccess::FstabStorageAccess(Solid::Backends::Fstab::FstabDevice *devi
         m_filePath = currentMountPoints.first();
         m_isAccessible = true;
     }
+    m_isIgnored = FstabHandling::options(device->device()).contains(QLatin1String("x-gvfs-hide"));
 
     connect(device, SIGNAL(mtabChanged(QString)), this, SLOT(onMtabChanged(QString)));
     QTimer::singleShot(0, this, SLOT(connectDBusSignals()));
@@ -81,7 +82,7 @@ QString FstabStorageAccess::filePath() const
 
 bool FstabStorageAccess::isIgnored() const
 {
-    return false;
+    return m_isIgnored;
 }
 
 bool FstabStorageAccess::setup()

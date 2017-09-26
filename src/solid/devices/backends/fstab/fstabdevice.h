@@ -74,6 +74,7 @@ private:
     QString m_product;
     QString m_vendor;
     QString m_description;
+    QString m_iconName;
     QPointer<FstabStorageAccess> m_storageAccess;
 };
 
