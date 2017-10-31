@@ -80,6 +80,7 @@ bool UDevManager::Private::isOfInterest(const QString &udi, const UdevQt::Device
 
 bool UDevManager::Private::checkOfInterest(const UdevQt::Device &device)
 {
+    const QString subsystem = device.subsystem();
 #ifdef UDEV_DETAILED_OUTPUT
     qDebug() << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<";
     qDebug() << "Path:" << device.sysfsPath();
@@ -88,20 +89,21 @@ bool UDevManager::Private::checkOfInterest(const UdevQt::Device &device)
         qDebug() << "\t" << key << ":" << device.deviceProperty(key).toString();
     }
     qDebug() << "Driver:" << device.driver();
-    qDebug() << "Subsystem:" << device.subsystem();
+    qDebug() << "Subsystem:" << subsystem;
     qDebug() << ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>";
 #endif
-    if (device.subsystem() == QLatin1String("cpu")) {
+
+    if (subsystem == QLatin1String("cpu")) {
         // Linux ACPI reports processor slots, rather than processors.
         // Empty slots will not have a system device associated with them.
         return QFile::exists(device.sysfsPath() + "/sysdev") || QFile::exists(device.sysfsPath() + "/cpufreq") || QFile::exists(device.sysfsPath() + "/topology/core_id");
     }
-    if (device.subsystem() == QLatin1String("sound") &&
+    if (subsystem == QLatin1String("sound") &&
             device.deviceProperty("SOUND_FORM_FACTOR").toString() != "internal") {
         return true;
     }
 
-    if (device.subsystem() == QLatin1String("tty")) {
+    if (subsystem == QLatin1String("tty")) {
         QString path = device.deviceProperty("DEVPATH").toString();
 
         int lastSlash = path.length() - path.lastIndexOf(QLatin1String("/")) - 1;
@@ -112,7 +114,7 @@ bool UDevManager::Private::checkOfInterest(const UdevQt::Device &device)
         }
     }
 
-    if (device.subsystem() == QLatin1String("input")) {
+    if (subsystem == QLatin1String("input")) {
         if (device.deviceProperty("ID_INPUT_MOUSE").toInt() == 1 ||
                 device.deviceProperty("ID_INPUT_TOUCHPAD").toInt() == 1 ||
                 device.deviceProperty("ID_INPUT_TABLET").toInt() == 1 ||
@@ -122,8 +124,8 @@ bool UDevManager::Private::checkOfInterest(const UdevQt::Device &device)
 
     }
 
-    return device.subsystem() == QLatin1String("dvb") ||
-           device.subsystem() == QLatin1String("net") ||
+    return subsystem == QLatin1String("dvb") ||
+           subsystem == QLatin1String("net") ||
            (!device.deviceProperty("ID_MEDIA_PLAYER").toString().isEmpty() && device.parent().deviceProperty("ID_MEDIA_PLAYER").toString().isEmpty()) || // media-player-info recognized devices
            (device.deviceProperty("ID_GPHOTO2").toInt() == 1 && device.parent().deviceProperty("ID_GPHOTO2").toInt() != 1); // GPhoto2 cameras
 }
