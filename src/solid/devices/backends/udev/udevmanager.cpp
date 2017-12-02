@@ -175,29 +175,28 @@ QStringList UDevManager::allDevices()
 QStringList UDevManager::devicesFromQuery(const QString &parentUdi,
         Solid::DeviceInterface::Type type)
 {
-    QStringList allDev = allDevices();
     QStringList result;
 
     if (!parentUdi.isEmpty()) {
-        Q_FOREACH (const QString &udi, allDev) {
-            UDevDevice device(d->m_client->deviceBySysfsPath(udi.right(udi.size() - udiPrefix().size())));
-            if (device.queryDeviceInterface(type) && device.parentUdi() == parentUdi) {
-                result << udi;
+        const UdevQt::DeviceList deviceList = d->m_client->allDevices();
+        Q_FOREACH (const UdevQt::Device &dev, deviceList) {
+            UDevDevice device(dev);
+            if (device.queryDeviceInterface(type) && d->isOfInterest(udiPrefix() + dev.sysfsPath(), dev) && device.parentUdi() == parentUdi) {
+                result << udiPrefix() + dev.sysfsPath();
             }
         }
-
         return result;
     } else if (type != Solid::DeviceInterface::Unknown) {
-        Q_FOREACH (const QString &udi, allDev) {
-            UDevDevice device(d->m_client->deviceBySysfsPath(udi.right(udi.size() - udiPrefix().size())));
-            if (device.queryDeviceInterface(type)) {
-                result << udi;
+        const UdevQt::DeviceList deviceList = d->m_client->allDevices();
+        Q_FOREACH (const UdevQt::Device &dev, deviceList) {
+            UDevDevice device(dev);
+            if (device.queryDeviceInterface(type) && d->isOfInterest(udiPrefix() + dev.sysfsPath(), dev)) {
+                result << udiPrefix() + dev.sysfsPath();
             }
         }
-
         return result;
     } else {
-        return allDev;
+        return allDevices();
     }
 }
 
