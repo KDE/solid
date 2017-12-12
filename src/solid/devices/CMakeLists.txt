@@ -83,6 +83,8 @@ bison_target(SolidParser
              ${CMAKE_CURRENT_BINARY_DIR}/predicate_parser.c
              COMPILE_FLAGS "-p Solid -d -b predicate_parser"
 )
+set_property(SOURCE ${CMAKE_CURRENT_BINARY_DIR}/predicate_parser.h PROPERTY SKIP_AUTOMOC TRUE) # don't run automoc on this file
+
 flex_target(SolidLexer
             devices/predicate_lexer.l
             ${CMAKE_CURRENT_BINARY_DIR}/predicate_lexer.c
