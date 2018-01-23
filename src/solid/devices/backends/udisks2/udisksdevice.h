@@ -93,6 +93,7 @@ protected:
     QPointer<DeviceBackend> m_backend;
 
 private:
+    QString loopDescription() const;
     QString storageDescription() const;
     QString volumeDescription() const;
 };

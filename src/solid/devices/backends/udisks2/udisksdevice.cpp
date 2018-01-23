@@ -34,6 +34,7 @@
 #include <solid/device.h>
 
 #include <QtCore/QDebug>
+#include <QtCore/QMimeDatabase>
 
 #include <QtDBus/QDBusMessage>
 #include <QtDBus/QDBusMetaType>
@@ -245,7 +246,7 @@ QString Device::description() const
     }
 
     if (isLoop()) {
-        return tr("Loop Device");
+        return loopDescription();
     } else if (isSwap()) {
         return tr("Swap Space");
     } else if (queryDeviceInterface(Solid::DeviceInterface::StorageDrive)) {
@@ -255,6 +256,16 @@ QString Device::description() const
     } else {
         return product();
     }
+}
+
+QString Device::loopDescription() const
+{
+    const QString backingFile = prop("BackingFile").toString();
+    if (!backingFile.isEmpty()) {
+        return backingFile.section(QLatin1Char('/'), -1);
+    }
+
+    return tr("Loop Device");
 }
 
 QString Device::storageDescription() const
@@ -592,7 +603,16 @@ QString Device::icon() const
 
     if (!iconName.isEmpty()) {
         return iconName;
-    } else if (isLoop() || isSwap()) {
+    } else if (isLoop()) {
+        const QString backingFile = prop("BackingFile").toString();
+        if (!backingFile.isEmpty()) {
+            QMimeType type = QMimeDatabase().mimeTypeForFile(backingFile);
+            if (!type.isDefault()) {
+                return type.iconName();
+            }
+        }
+        return QStringLiteral("drive-harddisk");
+    } else if (isSwap()) {
         return "drive-harddisk";
     } else if (isDrive()) {
         const bool isRemovable = prop("Removable").toBool();
