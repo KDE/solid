@@ -22,6 +22,8 @@
 #include "udisksstoragevolume.h"
 #include "udisks2.h"
 
+#include <QDir>
+
 using namespace Solid::Backends::UDisks2;
 
 StorageVolume::StorageVolume(Device *device)
@@ -92,6 +94,15 @@ Solid::StorageVolume::UsageType StorageVolume::usage() const
 bool StorageVolume::isIgnored() const
 {
     const Solid::StorageVolume::UsageType usg = usage();
-    return m_device->prop("HintIgnore").toBool() || m_device->isSwap() ||
-           ((usg == Solid::StorageVolume::Unused || usg == Solid::StorageVolume::Other || usg == Solid::StorageVolume::PartitionTable) && !m_device->isOpticalDisc());
+    if (m_device->prop("HintIgnore").toBool()) {
+        return true;
+    }
+
+    if (m_device->isSwap() ||
+            ((usg == Solid::StorageVolume::Unused || usg == Solid::StorageVolume::Other || usg == Solid::StorageVolume::PartitionTable) && !m_device->isOpticalDisc())) {
+        return true;
+    }
+
+    const QString backingFile = m_device->prop("BackingFile").toString();
+    return backingFile.isEmpty() || !backingFile.startsWith(QDir::homePath());
 }

@@ -24,6 +24,7 @@
 
 #include <QDomDocument>
 #include <QDBusConnection>
+#include <QDir>
 #include <QApplication>
 #include <QWidget>
 
@@ -104,7 +105,15 @@ QString StorageAccess::filePath() const
 
 bool StorageAccess::isIgnored() const
 {
-    return m_device->prop("HintIgnore").toBool();
+    if (m_device->prop("HintIgnore").toBool()) {
+        return true;
+    }
+
+    const QString path = filePath();
+
+    return !path.startsWith(QLatin1String("/media/"))
+               && !path.startsWith(QLatin1String("/run/media/"))
+               && !path.startsWith(QDir::homePath());
 }
 
 bool StorageAccess::setup()
