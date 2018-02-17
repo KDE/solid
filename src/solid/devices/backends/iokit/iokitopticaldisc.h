@@ -1,5 +1,4 @@
 /*
-    Copyright 2009 Harald Fernengel <harry@kdevelop.org>
     Copyright 2017 René J.V. Bertin <rjvbertin@gmail.com>
 
     This library is free software; you can redistribute it and/or
@@ -19,14 +18,11 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef SOLID_BACKENDS_IOKIT_DEVICEINTERFACE_H
-#define SOLID_BACKENDS_IOKIT_DEVICEINTERFACE_H
+#ifndef SOLID_BACKENDS_IOKIT_OPTICALDISC_H
+#define SOLID_BACKENDS_IOKIT_OPTICALDISC_H
 
-#include <solid/devices/ifaces/deviceinterface.h>
-#include "iokitdevice.h"
-
-#include <QtCore/QObject>
-#include <QtCore/QStringList>
+#include <solid/devices/ifaces/opticaldisc.h>
+#include "iokitvolume.h"
 
 namespace Solid
 {
@@ -34,24 +30,29 @@ namespace Backends
 {
 namespace IOKit
 {
-class DeviceInterface : public QObject, virtual public Solid::Ifaces::DeviceInterface
+class IOKitOpticalDisc : public IOKitVolume, virtual public Solid::Ifaces::OpticalDisc
 {
     Q_OBJECT
-    Q_INTERFACES(Solid::Ifaces::DeviceInterface)
-public:
-    DeviceInterface(IOKitDevice *device);
-    // the ctor taking a const device* argument makes a deep
-    // copy of the IOKitDevice; any property changes made via 
-    // the resulting instance will not affect the original device.
-    DeviceInterface(const IOKitDevice *device);
-    virtual ~DeviceInterface();
+    Q_INTERFACES(Solid::Ifaces::OpticalDisc)
 
-protected:
-    IOKitDevice *m_device;
-    IOKitDevice *m_deviceCopy;
+public:
+    IOKitOpticalDisc(IOKitDevice *device);
+    IOKitOpticalDisc(const IOKitDevice *device);
+    virtual ~IOKitOpticalDisc();
+
+    // overriden from IOKit::Block because optical discs must
+    // be accessed through the raw device.
+    virtual QString device() const Q_DECL_OVERRIDE;
+
+    virtual Solid::OpticalDisc::ContentTypes availableContent() const Q_DECL_OVERRIDE;
+    virtual Solid::OpticalDisc::DiscType discType() const Q_DECL_OVERRIDE;
+    virtual bool isAppendable() const Q_DECL_OVERRIDE;
+    virtual bool isBlank() const Q_DECL_OVERRIDE;
+    virtual bool isRewritable() const Q_DECL_OVERRIDE;
+    virtual qulonglong capacity() const Q_DECL_OVERRIDE;
 };
 }
 }
 }
 
-#endif // SOLID_BACKENDS_IOKIT_DEVICEINTERFACE_H
+#endif // SOLID_BACKENDS_IOKIT_OPTICALDISC_H

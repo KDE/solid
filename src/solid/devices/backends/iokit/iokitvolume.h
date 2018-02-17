@@ -1,5 +1,4 @@
 /*
-    Copyright 2009 Harald Fernengel <harry@kdevelop.org>
     Copyright 2017 René J.V. Bertin <rjvbertin@gmail.com>
 
     This library is free software; you can redistribute it and/or
@@ -19,14 +18,14 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef SOLID_BACKENDS_IOKIT_DEVICEINTERFACE_H
-#define SOLID_BACKENDS_IOKIT_DEVICEINTERFACE_H
+#ifndef SOLID_BACKENDS_IOKIT_VOLUME_H
+#define SOLID_BACKENDS_IOKIT_VOLUME_H
 
-#include <solid/devices/ifaces/deviceinterface.h>
-#include "iokitdevice.h"
+#include <solid/devices/ifaces/storagevolume.h>
+#include "iokitblock.h"
+#include "dadictionary_p.h"
 
-#include <QtCore/QObject>
-#include <QtCore/QStringList>
+#include <DiskArbitration/DiskArbitration.h>
 
 namespace Solid
 {
@@ -34,24 +33,35 @@ namespace Backends
 {
 namespace IOKit
 {
-class DeviceInterface : public QObject, virtual public Solid::Ifaces::DeviceInterface
+class IOKitVolume : public Block, virtual public Solid::Ifaces::StorageVolume
 {
     Q_OBJECT
-    Q_INTERFACES(Solid::Ifaces::DeviceInterface)
-public:
-    DeviceInterface(IOKitDevice *device);
-    // the ctor taking a const device* argument makes a deep
-    // copy of the IOKitDevice; any property changes made via 
-    // the resulting instance will not affect the original device.
-    DeviceInterface(const IOKitDevice *device);
-    virtual ~DeviceInterface();
+    Q_INTERFACES(Solid::Ifaces::StorageVolume)
 
-protected:
-    IOKitDevice *m_device;
-    IOKitDevice *m_deviceCopy;
+public:
+    IOKitVolume(IOKitDevice *device);
+    IOKitVolume(const IOKitDevice *device);
+    virtual ~IOKitVolume();
+
+    bool isIgnored() const Q_DECL_OVERRIDE;
+    Solid::StorageVolume::UsageType usage() const Q_DECL_OVERRIDE;
+    QString fsType() const Q_DECL_OVERRIDE;
+    QString label() const Q_DECL_OVERRIDE;
+    QString uuid() const Q_DECL_OVERRIDE;
+    qulonglong size() const Q_DECL_OVERRIDE;
+    QString encryptedContainerUdi() const Q_DECL_OVERRIDE;
+
+    QString vendor() const;
+    QString product() const;
+    QString description() const;
+
+    DADiskRef daRef() const;
+
+private:
+    DADictionary *daDict;
 };
 }
 }
 }
 
-#endif // SOLID_BACKENDS_IOKIT_DEVICEINTERFACE_H
+#endif // SOLID_BACKENDS_IOKIT_VOLUME_H

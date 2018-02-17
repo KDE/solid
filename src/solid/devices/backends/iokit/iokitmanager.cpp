@@ -40,7 +40,7 @@ class IOKitManagerPrivate
 {
 public:
     inline IOKitManagerPrivate()
-        : port(0), source(0)
+        : port(nullptr), source(nullptr)
     {}
 
     IONotificationPortRef port;
@@ -89,11 +89,13 @@ const char *IOKitManagerPrivate::typeToName(Solid::DeviceInterface::Type type)
 
         //Solid::DeviceInterface::GenericInterface:
         //Solid::DeviceInterface::Block:
-        //Solid::DeviceInterface::StorageAccess:
-        //Solid::DeviceInterface::StorageDrive:
-        //Solid::DeviceInterface::OpticalDrive:
-        //Solid::DeviceInterface::StorageVolume:
-        //Solid::DeviceInterface::OpticalDisc:
+    case Solid::DeviceInterface::StorageAccess:
+    case Solid::DeviceInterface::StorageDrive:
+    case Solid::DeviceInterface::StorageVolume:
+        return "IOMedia";
+    case Solid::DeviceInterface::OpticalDrive:
+    case Solid::DeviceInterface::OpticalDisc:
+        return "IOCDMedia";
         //Solid::DeviceInterface::Camera:
         //Solid::DeviceInterface::PortableMediaPlayer:
     }

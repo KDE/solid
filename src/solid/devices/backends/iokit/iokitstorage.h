@@ -1,5 +1,5 @@
 /*
-    Copyright 2009 Harald Fernengel <harry@kdevelop.org>
+    Copyright 2017 René J.V. Bertin <rjvbertin@gmail.com>
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -18,11 +18,13 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef SOLID_BACKENDS_IOKIT_PROCESSOR_H
-#define SOLID_BACKENDS_IOKIT_PROCESSOR_H
+#ifndef SOLID_BACKENDS_IOKIT_IOKITSTORAGE_H
+#define SOLID_BACKENDS_IOKIT_IOKITSTORAGE_H
 
-#include <solid/devices/ifaces/processor.h>
-#include "iokitdeviceinterface.h"
+#include "iokitblock.h"
+#include "dadictionary_p.h"
+
+#include <solid/devices/ifaces/storagedrive.h>
 
 namespace Solid
 {
@@ -30,26 +32,32 @@ namespace Backends
 {
 namespace IOKit
 {
-class IOKitDevice;
-
-class Processor : public DeviceInterface, virtual public Solid::Ifaces::Processor
+class IOKitStorage : public Block, virtual public Solid::Ifaces::StorageDrive
 {
     Q_OBJECT
-    Q_INTERFACES(Solid::Ifaces::Processor)
+    Q_INTERFACES(Solid::Ifaces::StorageDrive)
 
 public:
-    Processor(IOKitDevice *device);
-    virtual ~Processor();
+    explicit IOKitStorage(IOKitDevice *device);
+    explicit IOKitStorage(const IOKitDevice *device);
+    ~IOKitStorage();
 
-    virtual int number() const Q_DECL_OVERRIDE;
-    virtual int maxSpeed() const Q_DECL_OVERRIDE;
-    virtual bool canChangeFrequency() const Q_DECL_OVERRIDE;
-    virtual Solid::Processor::InstructionSets instructionSets() const Q_DECL_OVERRIDE;
-    static QString vendor();
-    static QString product();
+    QString vendor() const;
+    QString product() const;
+    QString description() const;
+
+public Q_SLOTS:
+    Solid::StorageDrive::Bus bus() const Q_DECL_OVERRIDE;
+    Solid::StorageDrive::DriveType driveType() const Q_DECL_OVERRIDE;
+
+    bool isRemovable() const Q_DECL_OVERRIDE;
+    bool isHotpluggable() const Q_DECL_OVERRIDE;
+    qulonglong size() const Q_DECL_OVERRIDE;
+private:
+    DADictionary *daDict;
 };
 }
 }
 }
 
-#endif // SOLID_BACKENDS_IOKIT_PROCESSOR_H
+#endif // SOLID_BACKENDS_IOKIT_IOKITSTORAGE_H

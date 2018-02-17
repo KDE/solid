@@ -172,7 +172,7 @@ if(WIN32)
 endif()
 
 if(APPLE)
-   set(solid_OPTIONAL_LIBS ${IOKIT_LIBRARY})
+   set(solid_OPTIONAL_LIBS ${IOKIT_LIBRARY} "-framework DiskArbitration")
 endif()
 
 if ( UDEV_FOUND )

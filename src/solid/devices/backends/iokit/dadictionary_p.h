@@ -1,5 +1,5 @@
 /*
-    Copyright 2009 Harald Fernengel <harry@kdevelop.org>
+    Copyright 2018 René J.V. Bertin <rjvbertin@gmail.com>
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -18,34 +18,41 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "iokitgenericinterface.h"
+#ifndef SOLID_BACKENDS_IOKIT_DADICTIONARY_H
+#define SOLID_BACKENDS_IOKIT_DADICTIONARY_H
+
+#include <QString>
 
 #include "iokitdevice.h"
 
-using namespace Solid::Backends::IOKit;
+#include <CoreFoundation/CoreFoundation.h>
+#include <DiskArbitration/DiskArbitration.h>
 
-GenericInterface::GenericInterface(IOKitDevice *device)
-    : DeviceInterface(device)
+namespace Solid
 {
+namespace Backends
+{
+namespace IOKit
+{
+class DADictionary
+{
+public:
+    DADictionary(const IOKitDevice *device);
+    virtual ~DADictionary();
+
+    bool getDict();
+    void releaseDict();
+    const QString stringForKey(const CFStringRef key);
+    CFURLRef cfUrLRefForKey(const CFStringRef key);
+    bool boolForKey(const CFStringRef key, bool &value);
+
+    const IOKitDevice *device;
+    DASessionRef daSession;
+    DADiskRef daRef;
+    CFDictionaryRef daDict;
+};
+}
+}
 }
 
-GenericInterface::~GenericInterface()
-{
-
-}
-
-QVariant GenericInterface::property(const QString &key) const
-{
-    return m_device->property(key);
-}
-
-QMap<QString, QVariant> GenericInterface::allProperties() const
-{
-    return m_device->allProperties();
-}
-
-bool GenericInterface::propertyExists(const QString &key) const
-{
-    return m_device->iOKitPropertyExists(key);
-}
-
+#endif // SOLID_BACKENDS_IOKIT_DADICTIONARY_H

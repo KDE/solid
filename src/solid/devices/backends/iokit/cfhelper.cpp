@@ -1,5 +1,6 @@
 /*
     Copyright 2009 Harald Fernengel <harry@kdevelop.org>
+    Copyright 2017 René J.V. Bertin <rjvbertin@gmail.com>
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -26,6 +27,8 @@
 #include <QtCore/qdebug.h>
 
 #include <CoreFoundation/CoreFoundation.h>
+
+#include <sys/sysctl.h>
 
 /* helper classes to convert from CF types to Qt */
 
@@ -175,3 +178,18 @@ QMap<QString, QVariant> q_toVariantMap(const CFMutableDictionaryRef &dict)
     return result;
 }
 
+bool q_sysctlbyname(const char *name, QString &result)
+{
+    char *property = nullptr;
+    size_t size = 0;
+    int error = 0;
+    if (name && sysctlbyname(name, nullptr, &size, nullptr, 0) == 0 && size > 0) {
+        property = new char [size];
+        error = sysctlbyname(name, property, &size, nullptr, 0);
+        if (!error) {
+            result = QLatin1String(property);
+        }
+        delete[] property;
+    }
+    return !error;
+}

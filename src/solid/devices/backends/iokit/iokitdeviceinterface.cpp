@@ -1,5 +1,6 @@
 /*
     Copyright 2009 Harald Fernengel <harry@kdevelop.org>
+    Copyright 2017 René J.V. Bertin <rjvbertin@gmail.com>
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -23,11 +24,23 @@
 using namespace Solid::Backends::IOKit;
 
 DeviceInterface::DeviceInterface(IOKitDevice *device)
-    : QObject(device), m_device(device)
+    : QObject(device)
+    , m_device(device)
+    , m_deviceCopy(nullptr)
 {
+}
+
+DeviceInterface::DeviceInterface(const IOKitDevice *device)
+    : QObject(device->parent()), m_deviceCopy(new IOKitDevice(*device))
+{
+    m_device = m_deviceCopy;
 }
 
 DeviceInterface::~DeviceInterface()
 {
+    if (m_deviceCopy) {
+        delete m_deviceCopy;
+        m_deviceCopy = nullptr;
+    }
 }
 

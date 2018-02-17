@@ -39,25 +39,28 @@ class IOKitDevice : public Solid::Ifaces::Device
 
 public:
     IOKitDevice(const QString &udi);
+    IOKitDevice(const IOKitDevice &device);
     virtual ~IOKitDevice();
 
-    virtual QString udi() const;
-    virtual QString parentUdi() const;
+    virtual QString udi() const Q_DECL_OVERRIDE;
+    virtual QString parentUdi() const Q_DECL_OVERRIDE;
 
-    virtual QString vendor() const;
-    virtual QString product() const;
-    virtual QString icon() const;
-    virtual QStringList emblems() const;
-    virtual QString description() const;
+    virtual QString vendor() const Q_DECL_OVERRIDE;
+    virtual QString product() const Q_DECL_OVERRIDE;
+    virtual QString icon() const Q_DECL_OVERRIDE;
+    virtual QStringList emblems() const Q_DECL_OVERRIDE;
+    virtual QString description() const Q_DECL_OVERRIDE;
 
     virtual QVariant property(const QString &key) const;
 
     virtual QMap<QString, QVariant> allProperties() const;
 
-    virtual bool propertyExists(const QString &key) const;
+    virtual bool iOKitPropertyExists(const QString &key) const;
 
-    virtual bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const;
-    virtual QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type);
+    virtual bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const Q_DECL_OVERRIDE;
+    virtual QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type) Q_DECL_OVERRIDE;
+
+    bool conformsToIOKitClass(const QString &className) const;
 
 Q_SIGNALS:
     void propertyChanged(const QMap<QString, int> &changes);

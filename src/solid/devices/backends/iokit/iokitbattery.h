@@ -41,50 +41,51 @@ public:
     Battery(IOKitDevice *device);
     virtual ~Battery();
 
-    bool isPresent() const;
-    Solid::Battery::BatteryType type() const;
+    bool isPresent() const Q_DECL_OVERRIDE;
+    Solid::Battery::BatteryType type() const Q_DECL_OVERRIDE;
 
-    int chargePercent() const;
-    int capacity() const;
+    int chargePercent() const Q_DECL_OVERRIDE;
+    int capacity() const Q_DECL_OVERRIDE;
 
-    bool isRechargeable() const;
-    bool isPowerSupply() const;
+    bool isRechargeable() const Q_DECL_OVERRIDE;
+    bool isPowerSupply() const Q_DECL_OVERRIDE;
 
-    Solid::Battery::ChargeState chargeState() const;
+    Solid::Battery::ChargeState chargeState() const Q_DECL_OVERRIDE;
+
+    qlonglong timeToEmpty() const Q_DECL_OVERRIDE;
+    qlonglong timeToFull() const Q_DECL_OVERRIDE;
+    double voltage() const Q_DECL_OVERRIDE;
+    double temperature() const Q_DECL_OVERRIDE;
+    QString serial() const Q_DECL_OVERRIDE;
 
     // ### the ones below are TODO
-    qlonglong timeToEmpty() const { return 0; }
-    qlonglong timeToFull() const { return 0; }
-    Solid::Battery::Technology technology() const { return Solid::Battery::UnknownTechnology; }
-    double energy() const { return 0.0; }
-    double energyFull() const { return 0.0; }
-    double energyFullDesign() const { return 0.0; }
-    double energyRate() const { return 0.0; }
-    double voltage() const { return 0.0; }
-    double temperature() const { return 0.0; }
+    Solid::Battery::Technology technology() const Q_DECL_OVERRIDE { return Solid::Battery::UnknownTechnology; }
+    double energy() const Q_DECL_OVERRIDE { return 0.0; }
+    double energyFull() const Q_DECL_OVERRIDE { return 0.0; }
+    double energyFullDesign() const Q_DECL_OVERRIDE { return 0.0; }
+    double energyRate() const Q_DECL_OVERRIDE { return 0.0; }
 
-    bool isRecalled() const { return false; }
-    QString recallVendor() const { return QString(); }
-    QString recallUrl() const { return QString(); }
-    QString serial() const { return QString(); }
+    bool isRecalled() const Q_DECL_OVERRIDE { return false; }
+    QString recallVendor() const Q_DECL_OVERRIDE { return QString(); }
+    QString recallUrl() const Q_DECL_OVERRIDE { return QString(); }
 
-    qlonglong remainingTime() const { return -1; }
+    qlonglong remainingTime() const Q_DECL_OVERRIDE { return -1; }
 
 Q_SIGNALS:
-    void energyChanged(double energy, const QString &udi);
-    void energyFullChanged(double energyFull, const QString &udi);
-    void energyFullDesignChanged(double energyFullDesign, const QString &udi);
-    void energyRateChanged(double energyRate, const QString &udi);
-    void chargePercentChanged(int value, const QString &udi);
-    void capacityChanged(int value, const QString &udi);
-    void chargeStateChanged(int newState, const QString &udi);
-    void presentStateChanged(bool newState, const QString &udi);
-    void powerSupplyStateChanged(bool newState, const QString &udi);
-    void timeToEmptyChanged(qlonglong time, const QString &udi);
-    void timeToFullChanged(qlonglong time, const QString &udi);
-    void temperatureChanged(double temperature, const QString &udi);
-    void voltageChanged(double voltage, const QString &udi);
-    void remainingTimeChanged(qlonglong time, const QString &udi);
+    void energyChanged(double energy, const QString &udi) Q_DECL_OVERRIDE;
+    void energyFullChanged(double energyFull, const QString &udi) Q_DECL_OVERRIDE;
+    void energyFullDesignChanged(double energyFullDesign, const QString &udi) Q_DECL_OVERRIDE;
+    void energyRateChanged(double energyRate, const QString &udi) Q_DECL_OVERRIDE;
+    void chargePercentChanged(int value, const QString &udi) Q_DECL_OVERRIDE;
+    void capacityChanged(int value, const QString &udi) Q_DECL_OVERRIDE;
+    void chargeStateChanged(int newState, const QString &udi) Q_DECL_OVERRIDE;
+    void presentStateChanged(bool newState, const QString &udi) Q_DECL_OVERRIDE;
+    void powerSupplyStateChanged(bool newState, const QString &udi) Q_DECL_OVERRIDE;
+    void timeToEmptyChanged(qlonglong time, const QString &udi) Q_DECL_OVERRIDE;
+    void timeToFullChanged(qlonglong time, const QString &udi) Q_DECL_OVERRIDE;
+    void temperatureChanged(double temperature, const QString &udi) Q_DECL_OVERRIDE;
+    void voltageChanged(double voltage, const QString &udi) Q_DECL_OVERRIDE;
+    void remainingTimeChanged(qlonglong time, const QString &udi) Q_DECL_OVERRIDE;
 };
 }
 }

@@ -1,5 +1,5 @@
 /*
-    Copyright 2009 Harald Fernengel <harry@kdevelop.org>
+    Copyright 2017 René J.V. Bertin <rjvbertin@gmail.com>
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -18,34 +18,41 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "iokitgenericinterface.h"
+#include "iokitblock.h"
 
 #include "iokitdevice.h"
 
 using namespace Solid::Backends::IOKit;
 
-GenericInterface::GenericInterface(IOKitDevice *device)
+Block::Block(IOKitDevice *device)
     : DeviceInterface(device)
 {
 }
 
-GenericInterface::~GenericInterface()
+Block::Block(const IOKitDevice *device)
+    : DeviceInterface(device)
 {
-
 }
 
-QVariant GenericInterface::property(const QString &key) const
+Block::~Block()
 {
-    return m_device->property(key);
 }
 
-QMap<QString, QVariant> GenericInterface::allProperties() const
+int Block::deviceMajor() const
 {
-    return m_device->allProperties();
+    return m_device->property(QLatin1String("BSD Major")).toInt();
 }
 
-bool GenericInterface::propertyExists(const QString &key) const
+int Block::deviceMinor() const
 {
-    return m_device->iOKitPropertyExists(key);
+    return m_device->property(QLatin1String("BSD Minor")).toInt();
+}
+
+QString Block::device() const
+{
+    if (m_device->iOKitPropertyExists(QStringLiteral("BSD Name"))) {
+        return QStringLiteral("/dev/") + m_device->property(QLatin1String("BSD Name")).toString();
+    }
+    return QString();
 }
 

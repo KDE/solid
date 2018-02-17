@@ -1,5 +1,5 @@
 /*
-    Copyright 2009 Harald Fernengel <harry@kdevelop.org>
+    Copyright 2017 René J.V. Bertin <rjvbertin@gmail.com>
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -18,34 +18,34 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "iokitgenericinterface.h"
+#ifndef SOLID_BACKENDS_IOKIT_BLOCK_H
+#define SOLID_BACKENDS_IOKIT_BLOCK_H
 
-#include "iokitdevice.h"
+#include <solid/devices/ifaces/block.h>
+#include "iokitdeviceinterface.h"
 
-using namespace Solid::Backends::IOKit;
-
-GenericInterface::GenericInterface(IOKitDevice *device)
-    : DeviceInterface(device)
+namespace Solid
 {
+namespace Backends
+{
+namespace IOKit
+{
+class Block : public DeviceInterface, virtual public Solid::Ifaces::Block
+{
+    Q_OBJECT
+    Q_INTERFACES(Solid::Ifaces::Block)
+
+public:
+    Block(IOKitDevice *device);
+    Block(const IOKitDevice *device);
+    virtual ~Block();
+
+    virtual int deviceMajor() const Q_DECL_OVERRIDE;
+    virtual int deviceMinor() const Q_DECL_OVERRIDE;
+    virtual QString device() const Q_DECL_OVERRIDE;
+};
+}
+}
 }
 
-GenericInterface::~GenericInterface()
-{
-
-}
-
-QVariant GenericInterface::property(const QString &key) const
-{
-    return m_device->property(key);
-}
-
-QMap<QString, QVariant> GenericInterface::allProperties() const
-{
-    return m_device->allProperties();
-}
-
-bool GenericInterface::propertyExists(const QString &key) const
-{
-    return m_device->iOKitPropertyExists(key);
-}
-
+#endif // SOLID_BACKENDS_IOKIT_BLOCK_H

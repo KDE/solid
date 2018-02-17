@@ -1,5 +1,4 @@
 /*
-    Copyright 2009 Harald Fernengel <harry@kdevelop.org>
     Copyright 2017 René J.V. Bertin <rjvbertin@gmail.com>
 
     This library is free software; you can redistribute it and/or
@@ -19,14 +18,11 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef SOLID_BACKENDS_IOKIT_DEVICEINTERFACE_H
-#define SOLID_BACKENDS_IOKIT_DEVICEINTERFACE_H
+#ifndef SOLID_BACKENDS_IOKIT_OPTICALDRIVE_H
+#define SOLID_BACKENDS_IOKIT_OPTICALDRIVE_H
 
-#include <solid/devices/ifaces/deviceinterface.h>
-#include "iokitdevice.h"
-
-#include <QtCore/QObject>
-#include <QtCore/QStringList>
+#include <solid/devices/ifaces/opticaldrive.h>
+#include "iokitstorage.h"
 
 namespace Solid
 {
@@ -34,24 +30,33 @@ namespace Backends
 {
 namespace IOKit
 {
-class DeviceInterface : public QObject, virtual public Solid::Ifaces::DeviceInterface
+class IOKitOpticalDrive : public IOKitStorage, virtual public Solid::Ifaces::OpticalDrive
 {
     Q_OBJECT
-    Q_INTERFACES(Solid::Ifaces::DeviceInterface)
-public:
-    DeviceInterface(IOKitDevice *device);
-    // the ctor taking a const device* argument makes a deep
-    // copy of the IOKitDevice; any property changes made via 
-    // the resulting instance will not affect the original device.
-    DeviceInterface(const IOKitDevice *device);
-    virtual ~DeviceInterface();
+    Q_INTERFACES(Solid::Ifaces::OpticalDrive)
 
-protected:
-    IOKitDevice *m_device;
-    IOKitDevice *m_deviceCopy;
+public:
+    explicit IOKitOpticalDrive(IOKitDevice *device);
+    virtual ~IOKitOpticalDrive();
+
+public Q_SLOTS:
+    Solid::OpticalDrive::MediumTypes supportedMedia() const Q_DECL_OVERRIDE;
+    int readSpeed() const Q_DECL_OVERRIDE;
+    int writeSpeed() const Q_DECL_OVERRIDE;
+    QList<int> writeSpeeds() const Q_DECL_OVERRIDE;
+    bool eject() Q_DECL_OVERRIDE;
+
+Q_SIGNALS:
+    void ejectPressed(const QString &udi) Q_DECL_OVERRIDE;
+    void ejectDone(Solid::ErrorType error, QVariant errorData, const QString &udi) Q_DECL_OVERRIDE;
+    void ejectRequested(const QString &udi);
+
+private:
+    class Private;
+    Private *d;
 };
 }
 }
 }
 
-#endif // SOLID_BACKENDS_IOKIT_DEVICEINTERFACE_H
+#endif // SOLID_BACKENDS_IOKIT_OPTICALDRIVE_H
