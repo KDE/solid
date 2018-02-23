@@ -41,9 +41,8 @@ DeviceBackend *DeviceBackend::backendForUDI(const QString &udi, bool create)
         return backend;
     }
 
-    if (s_backends.contains(udi)) {
-        backend = s_backends.value(udi);
-    } else if (create) {
+    backend = s_backends.value(udi);
+    if (!backend && create) {
         backend = new DeviceBackend(udi);
         s_backends.insert(udi, backend);
     }
@@ -53,11 +52,7 @@ DeviceBackend *DeviceBackend::backendForUDI(const QString &udi, bool create)
 
 void DeviceBackend::destroyBackend(const QString &udi)
 {
-    if (s_backends.contains(udi)) {
-        DeviceBackend *backend = s_backends.value(udi);
-        s_backends.remove(udi);
-        delete backend;
-    }
+    delete s_backends.take(udi);
 }
 
 DeviceBackend::DeviceBackend(const QString &udi)
