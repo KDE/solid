@@ -111,7 +111,8 @@ bool StorageAccess::isIgnored() const
 
     const QString path = filePath();
 
-    return !path.startsWith(QLatin1String("/media/"))
+    return !path.isEmpty()
+               && !path.startsWith(QLatin1String("/media/"))
                && !path.startsWith(QLatin1String("/run/media/"))
                && !path.startsWith(QDir::homePath());
 }
