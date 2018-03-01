@@ -50,10 +50,13 @@ DADictionary::~DADictionary()
 
 bool DADictionary::getDict()
 {
+    // daDict may cache the latest disk description dict;
+    // we will refresh it now.
+    releaseDict();
     if (daRef) {
         daDict = DADiskCopyDescription(daRef);
     }
-    return daRef != nullptr;
+    return daDict != nullptr;
 }
 
 void DADictionary::releaseDict()
@@ -69,8 +72,8 @@ const QString DADictionary::stringForKey(const CFStringRef key)
     QString ret;
     if (getDict()) {
         ret = QString::fromCFString((const CFStringRef) CFDictionaryGetValue(daDict, key));
+        releaseDict();
     }
-    releaseDict();
     return ret;
 }
 
@@ -92,6 +95,7 @@ bool DADictionary::boolForKey(const CFStringRef key, bool &value)
         if (boolRef) {
             value = CFBooleanGetValue(boolRef);
         }
+        releaseDict();
         return boolRef != nullptr;
     }
     return false;
