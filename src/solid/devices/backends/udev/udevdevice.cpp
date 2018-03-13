@@ -150,7 +150,7 @@ bool UDevDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type) 
         return property("ID_GPHOTO2").toInt() == 1;
 
     case Solid::DeviceInterface::PortableMediaPlayer:
-        return !property("ID_MEDIA_PLAYER").toString().isEmpty();
+        return m_device.subsystem() == QLatin1String("usb") && !property("ID_MEDIA_PLAYER").toString().isEmpty();
 
     case Solid::DeviceInterface::Block:
         return !property("MAJOR").toString().isEmpty();

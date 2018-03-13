@@ -179,25 +179,39 @@ QStringList UDevManager::devicesFromQuery(const QString &parentUdi,
 
     if (!parentUdi.isEmpty()) {
         const UdevQt::DeviceList deviceList = d->m_client->allDevices();
-        Q_FOREACH (const UdevQt::Device &dev, deviceList) {
+        for (const UdevQt::Device &dev : deviceList) {
             UDevDevice device(dev);
             if (device.queryDeviceInterface(type) && d->isOfInterest(udiPrefix() + dev.sysfsPath(), dev) && device.parentUdi() == parentUdi) {
                 result << udiPrefix() + dev.sysfsPath();
             }
         }
         return result;
-    } else if (type != Solid::DeviceInterface::Unknown) {
-        const UdevQt::DeviceList deviceList = d->m_client->allDevices();
-        Q_FOREACH (const UdevQt::Device &dev, deviceList) {
-            UDevDevice device(dev);
-            if (device.queryDeviceInterface(type) && d->isOfInterest(udiPrefix() + dev.sysfsPath(), dev)) {
-                result << udiPrefix() + dev.sysfsPath();
-            }
-        }
-        return result;
-    } else {
+    }
+
+    if (type == DeviceInterface::Unknown) {
         return allDevices();
     }
+
+    UdevQt::DeviceList deviceList;
+
+    // Already limit the number of devices we query and have to create wrapper items for here
+    if (type == Solid::DeviceInterface::Processor) {
+        deviceList = d->m_client->devicesBySubsystem(QStringLiteral("processor"))
+                   + d->m_client->devicesBySubsystem(QStringLiteral("cpu"));
+    } else if (type == Solid::DeviceInterface::PortableMediaPlayer) {
+        deviceList = d->m_client->devicesBySubsystem(QStringLiteral("usb"));
+    } else if (type != Solid::DeviceInterface::Unknown) {
+        deviceList = d->m_client->allDevices();
+    }
+
+    for (const UdevQt::Device &dev : deviceList) {
+        UDevDevice device(dev);
+        if (device.queryDeviceInterface(type) && d->isOfInterest(udiPrefix() + dev.sysfsPath(), dev)) {
+            result << udiPrefix() + dev.sysfsPath();
+        }
+    }
+
+    return result;
 }
 
 QObject *UDevManager::createDevice(const QString &udi_)
