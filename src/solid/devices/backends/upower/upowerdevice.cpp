@@ -89,7 +89,13 @@ bool UPowerDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type
     case Solid::DeviceInterface::GenericInterface:
         return true;
     case Solid::DeviceInterface::Battery:
-        return (uptype == 2 || uptype == 3 || uptype == 5 || uptype == 6 || uptype == 7 || uptype == 8);
+        /* Every Device which is handled by Upower and which is not
+         * one of the following is a battery:
+         * UP_DEVICE_KIND_UNKNOWN (0)
+         * UP_DEVICE_KIND_LINE_POWER (1) or
+         * UP_DEVICE_KIND_MONITOR (4)
+         */
+        return (uptype != 0 && uptype != 1 && uptype != 4);
     default:
         return false;
     }
