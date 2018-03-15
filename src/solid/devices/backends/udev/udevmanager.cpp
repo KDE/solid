@@ -198,6 +198,8 @@ QStringList UDevManager::devicesFromQuery(const QString &parentUdi,
     if (type == Solid::DeviceInterface::Processor) {
         deviceList = d->m_client->devicesBySubsystem(QStringLiteral("processor"))
                    + d->m_client->devicesBySubsystem(QStringLiteral("cpu"));
+    } else if (type == Solid::DeviceInterface::Camera) {
+        deviceList = d->m_client->devicesByProperty("ID_GPHOTO2", 1);
     } else if (type == Solid::DeviceInterface::PortableMediaPlayer) {
         deviceList = d->m_client->devicesBySubsystem(QStringLiteral("usb"));
     } else if (type != Solid::DeviceInterface::Unknown) {
