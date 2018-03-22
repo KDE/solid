@@ -89,7 +89,24 @@ bool UPowerDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type
     case Solid::DeviceInterface::GenericInterface:
         return true;
     case Solid::DeviceInterface::Battery:
-        return (uptype == 2 || uptype == 3 || uptype == 5 || uptype == 6 || uptype == 7 || uptype == 8);
+        switch (uptype) {
+        case UP_DEVICE_KIND_BATTERY:
+        case UP_DEVICE_KIND_UPS:
+        case UP_DEVICE_KIND_MOUSE:
+        case UP_DEVICE_KIND_KEYBOARD:
+        case UP_DEVICE_KIND_PDA:
+        case UP_DEVICE_KIND_PHONE:
+        case UP_DEVICE_KIND_GAMING_INPUT:
+            return true;
+        case UP_DEVICE_KIND_UNKNOWN:
+        case UP_DEVICE_KIND_LINE_POWER:
+        case UP_DEVICE_KIND_MONITOR:
+        case UP_DEVICE_KIND_MEDIA_PLAYER:
+        case UP_DEVICE_KIND_TABLET:
+        case UP_DEVICE_KIND_COMPUTER:
+        case UP_DEVICE_KIND_LAST:
+            return false;
+        }
     default:
         return false;
     }
