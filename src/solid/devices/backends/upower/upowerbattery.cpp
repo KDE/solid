@@ -22,6 +22,8 @@
 
 #include "upowerbattery.h"
 
+#include "upower.h"
+
 using namespace Solid::Backends::UPower;
 
 Battery::Battery(UPowerDevice *device)
@@ -46,27 +48,27 @@ Solid::Battery::BatteryType Battery::type() const
     Solid::Battery::BatteryType result = Solid::Battery::UnknownBattery;
     const uint t = m_device.data()->prop("Type").toUInt();
     switch (t) {
-    case 1: // TODO "Line Power"
+    case UP_DEVICE_KIND_LINE_POWER: // TODO
         break;
-    case 2:
+    case UP_DEVICE_KIND_BATTERY:
         result = Solid::Battery::PrimaryBattery;
         break;
-    case 3:
+    case UP_DEVICE_KIND_UPS:
         result = Solid::Battery::UpsBattery;
         break;
-    case 4:
+    case UP_DEVICE_KIND_MONITOR:
         result = Solid::Battery::MonitorBattery;
         break;
-    case 5:
+    case UP_DEVICE_KIND_MOUSE:
         result = Solid::Battery::MouseBattery;
         break;
-    case 6:
+    case UP_DEVICE_KIND_KEYBOARD:
         result = Solid::Battery::KeyboardBattery;
         break;
-    case 7:
+    case UP_DEVICE_KIND_PDA:
         result = Solid::Battery::PdaBattery;
         break;
-    case 8:
+    case UP_DEVICE_KIND_PHONE:
         result = Solid::Battery::PhoneBattery;
         break;
     }
