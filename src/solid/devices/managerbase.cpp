@@ -77,7 +77,7 @@ void Solid::ManagerBasePrivate::loadBackends()
 #        elif defined(Q_OS_UNIX) && !defined(Q_OS_LINUX)
         m_backends << new Solid::Backends::Hal::HalManager(0);
 
-#        elif defined(Q_OS_LINUX)
+#        elif defined(Q_OS_LINUX) && !defined(Q_OS_ANDROID)
 #               if UDEV_FOUND
             m_backends << new Solid::Backends::UDev::UDevManager(nullptr);
             m_backends << new Solid::Backends::UDisks2::Manager(nullptr);
