@@ -71,6 +71,9 @@ Solid::Battery::BatteryType Battery::type() const
     case UP_DEVICE_KIND_PHONE:
         result = Solid::Battery::PhoneBattery;
         break;
+    case UP_DEVICE_KIND_GAMING_INPUT:
+        result = Solid::Battery::GamingInputBattery;
+        break;
     }
     return result;
 }

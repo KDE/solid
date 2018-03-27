@@ -56,6 +56,8 @@ Solid::Battery::BatteryType FakeBattery::type() const
         return Solid::Battery::KeyboardMouseBattery;
     } else if (name == "camera") {
         return Solid::Battery::CameraBattery;
+    } else if (name == "gaminginput") {
+        return Solid::Battery::GamingInputBattery;
     } else {
         return Solid::Battery::UnknownBattery;
     }
