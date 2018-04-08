@@ -111,10 +111,10 @@ bool StorageAccess::isIgnored() const
 
     const QString path = filePath();
 
-    return !path.isEmpty()
-               && !path.startsWith(QLatin1String("/media/"))
-               && !path.startsWith(QLatin1String("/run/media/"))
-               && !path.startsWith(QDir::homePath());
+    bool inUserPath = path.startsWith(QLatin1String("/media/")) ||
+                      path.startsWith(QLatin1String("/run/media/")) ||
+                      path.startsWith(QDir::homePath());
+    return !inUserPath;
 }
 
 bool StorageAccess::setup()
