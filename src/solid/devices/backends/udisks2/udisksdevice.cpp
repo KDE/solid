@@ -780,17 +780,17 @@ Solid::ErrorType Device::errorToSolidError(const QString &error) const
 
 bool Device::isBlock() const
 {
-    return hasInterface(UD2_DBUS_INTERFACE_BLOCK);
+    return hasInterface(QStringLiteral(UD2_DBUS_INTERFACE_BLOCK));
 }
 
 bool Device::isPartition() const
 {
-    return hasInterface(UD2_DBUS_INTERFACE_PARTITION);
+    return hasInterface(QStringLiteral(UD2_DBUS_INTERFACE_PARTITION));
 }
 
 bool Device::isPartitionTable() const
 {
-    return hasInterface(UD2_DBUS_INTERFACE_PARTITIONTABLE);
+    return hasInterface(QStringLiteral(UD2_DBUS_INTERFACE_PARTITIONTABLE));
 }
 
 bool Device::isStorageVolume() const
@@ -800,12 +800,12 @@ bool Device::isStorageVolume() const
 
 bool Device::isStorageAccess() const
 {
-    return hasInterface(UD2_DBUS_INTERFACE_FILESYSTEM) || isEncryptedContainer();
+    return hasInterface(QStringLiteral(UD2_DBUS_INTERFACE_FILESYSTEM)) || isEncryptedContainer();
 }
 
 bool Device::isDrive() const
 {
-    return hasInterface(UD2_DBUS_INTERFACE_DRIVE);
+    return hasInterface(QStringLiteral(UD2_DBUS_INTERFACE_DRIVE));
 }
 
 bool Device::isOpticalDrive() const
@@ -837,12 +837,13 @@ bool Device::mightBeOpticalDisc() const
 
 bool Device::isMounted() const
 {
-    return propertyExists("MountPoints") && !qdbus_cast<QByteArrayList>(prop("MountPoints")).isEmpty();
+    QVariant mountPoints = prop(QStringLiteral("MountPoints"));
+    return mountPoints.isValid() && !qdbus_cast<QByteArrayList>(mountPoints).isEmpty();
 }
 
 bool Device::isEncryptedContainer() const
 {
-    return hasInterface(UD2_DBUS_INTERFACE_ENCRYPTED);
+    return hasInterface(QStringLiteral(UD2_DBUS_INTERFACE_ENCRYPTED));
 }
 
 bool Device::isEncryptedCleartext() const
@@ -857,12 +858,12 @@ bool Device::isEncryptedCleartext() const
 
 bool Device::isSwap() const
 {
-    return hasInterface(UD2_DBUS_INTERFACE_SWAP);
+    return hasInterface(QStringLiteral(UD2_DBUS_INTERFACE_SWAP));
 }
 
 bool Device::isLoop() const
 {
-    return hasInterface(UD2_DBUS_INTERFACE_LOOP);
+    return hasInterface(QStringLiteral(UD2_DBUS_INTERFACE_LOOP));
 }
 
 QString Device::drivePath() const
