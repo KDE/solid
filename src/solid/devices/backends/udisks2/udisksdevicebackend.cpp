@@ -139,11 +139,15 @@ QVariantMap DeviceBackend::allProperties() const
         QDBusPendingReply<QVariantMap> reply = QDBusConnection::systemBus().call(call);
 
         if (reply.isValid()) {
-            m_propertyCache.unite(reply.value());
+            auto props = reply.value();
+            // Can not use QMap<>::unite(), as it allows multiple values per key
+            for (auto it = props.cbegin(); it != props.cend(); ++it) {
+                m_propertyCache.insert(it.key(), it.value());
+            }
         } else {
             qWarning() << "Error getting props:" << reply.error().name() << reply.error().message();
         }
-        //qDebug() << "After iface" << iface << ", cache now contains" << m_cache.size() << "items";
+        //qDebug() << "After iface" << iface << ", cache now contains" << m_propertyCache.size() << "items";
     }
 
     return m_propertyCache;
