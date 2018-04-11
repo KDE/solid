@@ -247,4 +247,10 @@ void DeviceBackend::slotInterfacesRemoved(const QDBusObjectPath &object_path, co
     Q_FOREACH (const QString &iface, interfaces) {
         m_interfaces.removeAll(iface);
     }
+
+    // We don't know which property belongs to which interface, so remove all
+    m_propertyCache.clear();
+    if (!m_interfaces.isEmpty()) {
+        allProperties();
+    }
 }
