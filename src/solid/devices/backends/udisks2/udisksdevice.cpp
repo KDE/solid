@@ -157,6 +157,13 @@ QStringList Device::interfaces() const
     return QStringList();
 }
 
+void Device::invalidateCache()
+{
+    if (m_backend) {
+        return m_backend->invalidateProperties();
+    }
+}
+
 QObject *Device::createDeviceInterface(const Solid::DeviceInterface::Type &type)
 {
     if (!queryDeviceInterface(type)) {

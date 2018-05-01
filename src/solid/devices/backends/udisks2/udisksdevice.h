@@ -61,6 +61,7 @@ public:
     QVariant prop(const QString &key) const;
     bool propertyExists(const QString &key) const;
     QVariantMap allProperties() const;
+    void invalidateCache();
 
     bool hasInterface(const QString &name) const;
     QStringList interfaces() const;

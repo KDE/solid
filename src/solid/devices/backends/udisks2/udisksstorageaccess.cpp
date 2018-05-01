@@ -166,6 +166,7 @@ void StorageAccess::slotDBusReply(const QDBusMessage & /*reply*/)
             mount();
         } else { // Don't broadcast setupDone unless the setup is really done. (Fix kde#271156)
             m_setupInProgress = false;
+            m_device->invalidateCache();
             m_device->broadcastActionDone("setup");
 
             checkAccessibility();
@@ -191,6 +192,7 @@ void StorageAccess::slotDBusReply(const QDBusMessage & /*reply*/)
             }
 
             m_teardownInProgress = false;
+            m_device->invalidateCache();
             m_device->broadcastActionDone("teardown");
 
             checkAccessibility();
@@ -227,9 +229,8 @@ void StorageAccess::slotSetupDone(int error, const QString &errorString)
 {
     m_setupInProgress = false;
     //qDebug() << "SETUP DONE:" << m_device->udi();
-    emit setupDone(static_cast<Solid::ErrorType>(error), errorString, m_device->udi());
-
     checkAccessibility();
+    emit setupDone(static_cast<Solid::ErrorType>(error), errorString, m_device->udi());
 }
 
 void StorageAccess::slotTeardownRequested()
@@ -241,9 +242,8 @@ void StorageAccess::slotTeardownRequested()
 void StorageAccess::slotTeardownDone(int error, const QString &errorString)
 {
     m_teardownInProgress = false;
-    emit teardownDone(static_cast<Solid::ErrorType>(error), errorString, m_device->udi());
-
     checkAccessibility();
+    emit teardownDone(static_cast<Solid::ErrorType>(error), errorString, m_device->udi());
 }
 
 bool StorageAccess::mount()
