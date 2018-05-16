@@ -226,34 +226,31 @@ QStringList Solid::Backends::Fstab::FstabHandling::options(const QString &device
     return options;
 }
 
-QProcess *Solid::Backends::Fstab::FstabHandling::callSystemCommand(const QString &commandName,
-        const QStringList &args,
-        QObject *obj, const char *slot)
+bool Solid::Backends::Fstab::FstabHandling::callSystemCommand(const QString &commandName, const QStringList &args,
+                                                              const QObject *receiver, std::function<void(QProcess *)> callback)
 {
     QStringList env = QProcess::systemEnvironment();
     env.replaceInStrings(QRegExp("^PATH=(.*)", Qt::CaseInsensitive), "PATH=/sbin:/bin:/usr/sbin/:/usr/bin");
 
-    QProcess *process = new QProcess(obj);
+    QProcess *process = new QProcess();
 
-    QObject::connect(process, SIGNAL(finished(int,QProcess::ExitStatus)),
-                     obj, slot);
+    QObject::connect(process, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), receiver,
+        [process, callback](int exitCode, QProcess::ExitStatus exitStatus) {
+            Q_UNUSED(exitCode);
+            Q_UNUSED(exitStatus);
+            callback(process);
+            process->deleteLater();
+    });
 
     process->setEnvironment(env);
     process->start(commandName, args);
 
     if (process->waitForStarted()) {
-        return process;
-    } else {
-        delete process;
-        return nullptr;
+        return true;
     }
-}
 
-QProcess *Solid::Backends::Fstab::FstabHandling::callSystemCommand(const QString &commandName,
-        const QString &device,
-        QObject *obj, const char *slot)
-{
-    return callSystemCommand(commandName, QStringList() << device, obj, slot);
+    delete process;
+    return false;
 }
 
 void Solid::Backends::Fstab::FstabHandling::_k_updateMtabMountPointsCache()

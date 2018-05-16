@@ -68,8 +68,6 @@ Q_SIGNALS:
     void teardownRequested(const QString &udi) Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
-    void slotSetupFinished(int exitCode, QProcess::ExitStatus exitStatus);
-    void slotTeardownFinished(int exitCode, QProcess::ExitStatus exitStatus);
     void onMtabChanged(const QString &device);
     void connectDBusSignals();
 
@@ -80,7 +78,6 @@ private Q_SLOTS:
 
 private:
     Solid::Backends::Fstab::FstabDevice *m_fstabDevice;
-    QProcess *m_process;
     QString m_filePath;
     bool m_isAccessible;
     bool m_isIgnored;

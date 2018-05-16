@@ -25,6 +25,8 @@
 #include <QtCore/QString>
 #include <QtCore/QMultiHash>
 
+#include <functional>
+
 class QProcess;
 class QObject;
 
@@ -44,12 +46,7 @@ public:
     static QStringList currentMountPoints(const QString &device);
     static QStringList mountPoints(const QString &device);
     static QStringList options(const QString &device);
-    static QProcess *callSystemCommand(const QString &commandName,
-                                       const QStringList &args,
-                                       QObject *obj, const char *slot);
-    static QProcess *callSystemCommand(const QString &commandName,
-                                       const QString &device,
-                                       QObject *obj, const char *slot);
+    static bool callSystemCommand(const QString &commandName, const QStringList &args, const QObject *recvr, std::function<void(QProcess *)> callback);
     static void flushMtabCache();
     static void flushFstabCache();
 
