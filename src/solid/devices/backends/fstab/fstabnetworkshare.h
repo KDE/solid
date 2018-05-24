@@ -42,9 +42,9 @@ public:
 
     virtual ~FstabNetworkShare();
 
-    Solid::NetworkShare::ShareType type() const Q_DECL_OVERRIDE;
+    Solid::NetworkShare::ShareType type() const override;
 
-    QUrl url() const Q_DECL_OVERRIDE;
+    QUrl url() const override;
 
 public:
     const Solid::Backends::Fstab::FstabDevice *fstabDevice() const;

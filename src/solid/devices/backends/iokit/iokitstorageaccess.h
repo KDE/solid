@@ -41,19 +41,19 @@ public:
     IOKitStorageAccess(const IOKitDevice *device);
     virtual ~IOKitStorageAccess();
 
-    bool isAccessible() const Q_DECL_OVERRIDE;
-    QString filePath() const Q_DECL_OVERRIDE;
-    bool isIgnored() const Q_DECL_OVERRIDE;
+    bool isAccessible() const override;
+    QString filePath() const override;
+    bool isIgnored() const override;
 public Q_SLOTS:
-    bool setup() Q_DECL_OVERRIDE;
-    bool teardown() Q_DECL_OVERRIDE;
+    bool setup() override;
+    bool teardown() override;
 
 Q_SIGNALS:
-    void accessibilityChanged(bool accessible, const QString &udi) Q_DECL_OVERRIDE;
-    void setupDone(Solid::ErrorType error, QVariant errorData, const QString &udi) Q_DECL_OVERRIDE;
-    void teardownDone(Solid::ErrorType error, QVariant errorData, const QString &udi) Q_DECL_OVERRIDE;
-    void setupRequested(const QString &udi) Q_DECL_OVERRIDE;
-    void teardownRequested(const QString &udi) Q_DECL_OVERRIDE;
+    void accessibilityChanged(bool accessible, const QString &udi) override;
+    void setupDone(Solid::ErrorType error, QVariant errorData, const QString &udi) override;
+    void teardownDone(Solid::ErrorType error, QVariant errorData, const QString &udi) override;
+    void setupRequested(const QString &udi) override;
+    void teardownRequested(const QString &udi) override;
 
 private Q_SLOTS:
     void onPropertyChanged(const QMap<QString, int> &changes);

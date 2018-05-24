@@ -39,15 +39,15 @@ public:
     UDevManager(QObject *parent);
     virtual ~UDevManager();
 
-    QString udiPrefix() const Q_DECL_OVERRIDE;
-    QSet<Solid::DeviceInterface::Type> supportedInterfaces() const Q_DECL_OVERRIDE;
+    QString udiPrefix() const override;
+    QSet<Solid::DeviceInterface::Type> supportedInterfaces() const override;
 
-    QStringList allDevices() Q_DECL_OVERRIDE;
+    QStringList allDevices() override;
 
     virtual QStringList devicesFromQuery(const QString &parentUdi,
-                                         Solid::DeviceInterface::Type type) Q_DECL_OVERRIDE;
+                                         Solid::DeviceInterface::Type type) override;
 
-    QObject *createDevice(const QString &udi) Q_DECL_OVERRIDE;
+    QObject *createDevice(const QString &udi) override;
 
 private Q_SLOTS:
     void slotDeviceAdded(const UdevQt::Device &device);

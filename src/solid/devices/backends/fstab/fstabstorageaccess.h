@@ -43,29 +43,29 @@ public:
 
     virtual ~FstabStorageAccess();
 
-    bool isAccessible() const Q_DECL_OVERRIDE;
+    bool isAccessible() const override;
 
-    QString filePath() const Q_DECL_OVERRIDE;
+    QString filePath() const override;
 
-    bool isIgnored() const Q_DECL_OVERRIDE;
+    bool isIgnored() const override;
 
-    bool setup() Q_DECL_OVERRIDE;
+    bool setup() override;
 
-    bool teardown() Q_DECL_OVERRIDE;
+    bool teardown() override;
 
 public:
     const Solid::Backends::Fstab::FstabDevice *fstabDevice() const;
 
 Q_SIGNALS:
-    void accessibilityChanged(bool accessible, const QString &udi) Q_DECL_OVERRIDE;
+    void accessibilityChanged(bool accessible, const QString &udi) override;
 
-    void setupDone(Solid::ErrorType error, QVariant data, const QString &udi) Q_DECL_OVERRIDE;
+    void setupDone(Solid::ErrorType error, QVariant data, const QString &udi) override;
 
-    void teardownDone(Solid::ErrorType error, QVariant data, const QString &udi) Q_DECL_OVERRIDE;
+    void teardownDone(Solid::ErrorType error, QVariant data, const QString &udi) override;
 
-    void setupRequested(const QString &udi) Q_DECL_OVERRIDE;
+    void setupRequested(const QString &udi) override;
 
-    void teardownRequested(const QString &udi) Q_DECL_OVERRIDE;
+    void teardownRequested(const QString &udi) override;
 
 private Q_SLOTS:
     void onMtabChanged(const QString &device);

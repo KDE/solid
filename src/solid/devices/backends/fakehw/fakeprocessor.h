@@ -40,10 +40,10 @@ public:
     ~FakeProcessor();
 
 public Q_SLOTS:
-    int number() const Q_DECL_OVERRIDE;
-    int maxSpeed() const Q_DECL_OVERRIDE;
-    bool canChangeFrequency() const Q_DECL_OVERRIDE;
-    Solid::Processor::InstructionSets instructionSets() const Q_DECL_OVERRIDE;
+    int number() const override;
+    int maxSpeed() const override;
+    bool canChangeFrequency() const override;
+    Solid::Processor::InstructionSets instructionSets() const override;
 };
 }
 }

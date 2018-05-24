@@ -43,13 +43,13 @@ public:
     IOKitVolume(const IOKitDevice *device);
     virtual ~IOKitVolume();
 
-    bool isIgnored() const Q_DECL_OVERRIDE;
-    Solid::StorageVolume::UsageType usage() const Q_DECL_OVERRIDE;
-    QString fsType() const Q_DECL_OVERRIDE;
-    QString label() const Q_DECL_OVERRIDE;
-    QString uuid() const Q_DECL_OVERRIDE;
-    qulonglong size() const Q_DECL_OVERRIDE;
-    QString encryptedContainerUdi() const Q_DECL_OVERRIDE;
+    bool isIgnored() const override;
+    Solid::StorageVolume::UsageType usage() const override;
+    QString fsType() const override;
+    QString label() const override;
+    QString uuid() const override;
+    qulonglong size() const override;
+    QString encryptedContainerUdi() const override;
 
     QString vendor() const;
     QString product() const;

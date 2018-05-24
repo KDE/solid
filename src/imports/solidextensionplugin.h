@@ -28,7 +28,7 @@ class SolidExtensionPlugin: public QQmlExtensionPlugin
 public:
     SolidExtensionPlugin(QObject *parent = nullptr);
 
-    void registerTypes(const char *uri) Q_DECL_OVERRIDE;
+    void registerTypes(const char *uri) override;
 
 };
 

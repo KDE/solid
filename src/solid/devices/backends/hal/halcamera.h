@@ -39,9 +39,9 @@ public:
     Camera(HalDevice *device);
     virtual ~Camera();
 
-    QStringList supportedProtocols() const Q_DECL_OVERRIDE;
-    QStringList supportedDrivers(QString protocol = QString()) const Q_DECL_OVERRIDE;
-    QVariant driverHandle(const QString &driver) const Q_DECL_OVERRIDE;
+    QStringList supportedProtocols() const override;
+    QStringList supportedDrivers(QString protocol = QString()) const override;
+    QVariant driverHandle(const QString &driver) const override;
 };
 }
 }

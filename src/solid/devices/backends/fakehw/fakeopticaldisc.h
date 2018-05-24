@@ -40,12 +40,12 @@ public:
     virtual ~FakeOpticalDisc();
 
 public Q_SLOTS:
-    Solid::OpticalDisc::ContentTypes availableContent() const Q_DECL_OVERRIDE;
-    Solid::OpticalDisc::DiscType discType() const Q_DECL_OVERRIDE;
-    bool isAppendable() const Q_DECL_OVERRIDE;
-    bool isBlank() const Q_DECL_OVERRIDE;
-    bool isRewritable() const Q_DECL_OVERRIDE;
-    qulonglong capacity() const Q_DECL_OVERRIDE;
+    Solid::OpticalDisc::ContentTypes availableContent() const override;
+    Solid::OpticalDisc::DiscType discType() const override;
+    bool isAppendable() const override;
+    bool isBlank() const override;
+    bool isRewritable() const override;
+    qulonglong capacity() const override;
 };
 }
 }

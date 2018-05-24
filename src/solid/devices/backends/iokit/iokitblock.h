@@ -40,9 +40,9 @@ public:
     Block(const IOKitDevice *device);
     virtual ~Block();
 
-    virtual int deviceMajor() const Q_DECL_OVERRIDE;
-    virtual int deviceMinor() const Q_DECL_OVERRIDE;
-    virtual QString device() const Q_DECL_OVERRIDE;
+    virtual int deviceMajor() const override;
+    virtual int deviceMinor() const override;
+    virtual QString device() const override;
 };
 }
 }

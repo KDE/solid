@@ -42,16 +42,16 @@ public:
     virtual ~OpticalDrive();
 
 Q_SIGNALS:
-    void ejectPressed(const QString &udi) Q_DECL_OVERRIDE;
-    void ejectDone(Solid::ErrorType error, QVariant errorData, const QString &udi) Q_DECL_OVERRIDE;
+    void ejectPressed(const QString &udi) override;
+    void ejectDone(Solid::ErrorType error, QVariant errorData, const QString &udi) override;
     void ejectRequested(const QString &udi);
 
 public:
-    bool eject() Q_DECL_OVERRIDE;
-    QList<int> writeSpeeds() const Q_DECL_OVERRIDE;
-    int writeSpeed() const Q_DECL_OVERRIDE;
-    int readSpeed() const Q_DECL_OVERRIDE;
-    Solid::OpticalDrive::MediumTypes supportedMedia() const Q_DECL_OVERRIDE;
+    bool eject() override;
+    QList<int> writeSpeeds() const override;
+    int writeSpeed() const override;
+    int readSpeed() const override;
+    Solid::OpticalDrive::MediumTypes supportedMedia() const override;
 
 private Q_SLOTS:
     void slotDBusReply(const QDBusMessage &reply);

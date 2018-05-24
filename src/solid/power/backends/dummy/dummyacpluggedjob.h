@@ -29,10 +29,10 @@ class DummyAcPluggedJob : public AbstractAcPluggedJob
 {
     Q_OBJECT
 public:
-    bool isPlugged() const Q_DECL_OVERRIDE;
+    bool isPlugged() const override;
 
 private Q_SLOTS:
-    void doStart() Q_DECL_OVERRIDE;
+    void doStart() override;
 };
 }
 

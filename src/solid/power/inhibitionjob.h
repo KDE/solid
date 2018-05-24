@@ -93,7 +93,7 @@ public:
     Inhibition* inhibition() const;
 
 private Q_SLOTS:
-    void doStart() Q_DECL_OVERRIDE;
+    void doStart() override;
 
 /**
  * We have to re-declare the signal because

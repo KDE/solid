@@ -40,15 +40,15 @@ public:
     virtual ~IOKitOpticalDrive();
 
 public Q_SLOTS:
-    Solid::OpticalDrive::MediumTypes supportedMedia() const Q_DECL_OVERRIDE;
-    int readSpeed() const Q_DECL_OVERRIDE;
-    int writeSpeed() const Q_DECL_OVERRIDE;
-    QList<int> writeSpeeds() const Q_DECL_OVERRIDE;
-    bool eject() Q_DECL_OVERRIDE;
+    Solid::OpticalDrive::MediumTypes supportedMedia() const override;
+    int readSpeed() const override;
+    int writeSpeed() const override;
+    QList<int> writeSpeeds() const override;
+    bool eject() override;
 
 Q_SIGNALS:
-    void ejectPressed(const QString &udi) Q_DECL_OVERRIDE;
-    void ejectDone(Solid::ErrorType error, QVariant errorData, const QString &udi) Q_DECL_OVERRIDE;
+    void ejectPressed(const QString &udi) override;
+    void ejectDone(Solid::ErrorType error, QVariant errorData, const QString &udi) override;
     void ejectRequested(const QString &udi);
 
 private:

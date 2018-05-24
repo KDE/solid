@@ -40,9 +40,9 @@ public:
     ~FakeBlock();
 
 public Q_SLOTS:
-    int deviceMajor() const Q_DECL_OVERRIDE;
-    int deviceMinor() const Q_DECL_OVERRIDE;
-    QString device() const Q_DECL_OVERRIDE;
+    int deviceMajor() const override;
+    int deviceMinor() const override;
+    QString device() const override;
 };
 }
 }

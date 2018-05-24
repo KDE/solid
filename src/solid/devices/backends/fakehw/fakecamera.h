@@ -40,9 +40,9 @@ public:
     ~FakeCamera();
 
 public Q_SLOTS:
-    QStringList supportedProtocols() const Q_DECL_OVERRIDE;
-    QStringList supportedDrivers(QString protocol) const Q_DECL_OVERRIDE;
-    QVariant driverHandle(const QString &driver) const Q_DECL_OVERRIDE;
+    QStringList supportedProtocols() const override;
+    QStringList supportedDrivers(QString protocol) const override;
+    QVariant driverHandle(const QString &driver) const override;
 };
 }
 }

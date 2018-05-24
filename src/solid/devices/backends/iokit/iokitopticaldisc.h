@@ -42,14 +42,14 @@ public:
 
     // overriden from IOKit::Block because optical discs must
     // be accessed through the raw device.
-    virtual QString device() const Q_DECL_OVERRIDE;
+    virtual QString device() const override;
 
-    virtual Solid::OpticalDisc::ContentTypes availableContent() const Q_DECL_OVERRIDE;
-    virtual Solid::OpticalDisc::DiscType discType() const Q_DECL_OVERRIDE;
-    virtual bool isAppendable() const Q_DECL_OVERRIDE;
-    virtual bool isBlank() const Q_DECL_OVERRIDE;
-    virtual bool isRewritable() const Q_DECL_OVERRIDE;
-    virtual qulonglong capacity() const Q_DECL_OVERRIDE;
+    virtual Solid::OpticalDisc::ContentTypes availableContent() const override;
+    virtual Solid::OpticalDisc::DiscType discType() const override;
+    virtual bool isAppendable() const override;
+    virtual bool isBlank() const override;
+    virtual bool isRewritable() const override;
+    virtual qulonglong capacity() const override;
 };
 }
 }

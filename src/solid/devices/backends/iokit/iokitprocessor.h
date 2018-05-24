@@ -41,10 +41,10 @@ public:
     Processor(IOKitDevice *device);
     virtual ~Processor();
 
-    virtual int number() const Q_DECL_OVERRIDE;
-    virtual int maxSpeed() const Q_DECL_OVERRIDE;
-    virtual bool canChangeFrequency() const Q_DECL_OVERRIDE;
-    virtual Solid::Processor::InstructionSets instructionSets() const Q_DECL_OVERRIDE;
+    virtual int number() const override;
+    virtual int maxSpeed() const override;
+    virtual bool canChangeFrequency() const override;
+    virtual Solid::Processor::InstructionSets instructionSets() const override;
     static QString vendor();
     static QString product();
 };

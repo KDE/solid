@@ -29,10 +29,10 @@ class DummyStatesJob : public AbstractStatesJob
 {
     Q_OBJECT
 public:
-    Power::InhibitionTypes states() const Q_DECL_OVERRIDE;
+    Power::InhibitionTypes states() const override;
 
 private Q_SLOTS:
-    void doStart() Q_DECL_OVERRIDE;
+    void doStart() override;
 };
 }
 

@@ -39,52 +39,52 @@ public:
     Battery(HalDevice *device);
     virtual ~Battery();
 
-    bool isPresent() const Q_DECL_OVERRIDE;
-    Solid::Battery::BatteryType type() const Q_DECL_OVERRIDE;
+    bool isPresent() const override;
+    Solid::Battery::BatteryType type() const override;
 
-    int chargePercent() const Q_DECL_OVERRIDE;
-    int capacity() const Q_DECL_OVERRIDE;
+    int chargePercent() const override;
+    int capacity() const override;
 
-    bool isRechargeable() const Q_DECL_OVERRIDE;
-    bool isPowerSupply() const Q_DECL_OVERRIDE;
+    bool isRechargeable() const override;
+    bool isPowerSupply() const override;
 
-    Solid::Battery::ChargeState chargeState() const Q_DECL_OVERRIDE;
-    qlonglong timeToEmpty() const Q_DECL_OVERRIDE;
-    qlonglong timeToFull() const Q_DECL_OVERRIDE;
+    Solid::Battery::ChargeState chargeState() const override;
+    qlonglong timeToEmpty() const override;
+    qlonglong timeToFull() const override;
 
-    Solid::Battery::Technology technology() const Q_DECL_OVERRIDE;
+    Solid::Battery::Technology technology() const override;
 
-    double energy() const Q_DECL_OVERRIDE;
-    double energyFull() const Q_DECL_OVERRIDE;
-    double energyFullDesign() const Q_DECL_OVERRIDE;
-    double energyRate() const Q_DECL_OVERRIDE;
+    double energy() const override;
+    double energyFull() const override;
+    double energyFullDesign() const override;
+    double energyRate() const override;
 
-    double voltage() const Q_DECL_OVERRIDE;
-    double temperature() const Q_DECL_OVERRIDE;
+    double voltage() const override;
+    double temperature() const override;
 
-    bool isRecalled() const Q_DECL_OVERRIDE;
-    QString recallVendor() const Q_DECL_OVERRIDE;
-    QString recallUrl() const Q_DECL_OVERRIDE;
+    bool isRecalled() const override;
+    QString recallVendor() const override;
+    QString recallUrl() const override;
 
-    QString serial() const Q_DECL_OVERRIDE;
+    QString serial() const override;
 
-    qlonglong remainingTime() const Q_DECL_OVERRIDE;
+    qlonglong remainingTime() const override;
 
 Q_SIGNALS:
-    void presentStateChanged(bool newState, const QString &udi) Q_DECL_OVERRIDE;
-    void chargePercentChanged(int value, const QString &udi) Q_DECL_OVERRIDE;
-    void capacityChanged(int value, const QString &udi) Q_DECL_OVERRIDE;
-    void powerSupplyStateChanged(bool newState, const QString &udi) Q_DECL_OVERRIDE; // dummy
-    void chargeStateChanged(int newState, const QString &udi) Q_DECL_OVERRIDE;
-    void timeToEmptyChanged(qlonglong time, const QString &udi) Q_DECL_OVERRIDE;
-    void timeToFullChanged(qlonglong time, const QString &udi) Q_DECL_OVERRIDE;
-    void energyChanged(double energy, const QString &udi) Q_DECL_OVERRIDE;
-    void energyFullChanged(double energyFull, const QString &udi) Q_DECL_OVERRIDE;
-    void energyFullDesignChanged(double energyFullDesign, const QString &udi) Q_DECL_OVERRIDE;
-    void energyRateChanged(double energyRate, const QString &udi) Q_DECL_OVERRIDE;
-    void voltageChanged(double voltage, const QString &udi) Q_DECL_OVERRIDE;
-    void temperatureChanged(double temperature, const QString &udi) Q_DECL_OVERRIDE; // dummy
-    void remainingTimeChanged(qlonglong time, const QString &udi) Q_DECL_OVERRIDE;
+    void presentStateChanged(bool newState, const QString &udi) override;
+    void chargePercentChanged(int value, const QString &udi) override;
+    void capacityChanged(int value, const QString &udi) override;
+    void powerSupplyStateChanged(bool newState, const QString &udi) override; // dummy
+    void chargeStateChanged(int newState, const QString &udi) override;
+    void timeToEmptyChanged(qlonglong time, const QString &udi) override;
+    void timeToFullChanged(qlonglong time, const QString &udi) override;
+    void energyChanged(double energy, const QString &udi) override;
+    void energyFullChanged(double energyFull, const QString &udi) override;
+    void energyFullDesignChanged(double energyFullDesign, const QString &udi) override;
+    void energyRateChanged(double energyRate, const QString &udi) override;
+    void voltageChanged(double voltage, const QString &udi) override;
+    void temperatureChanged(double temperature, const QString &udi) override; // dummy
+    void remainingTimeChanged(qlonglong time, const QString &udi) override;
 
 private Q_SLOTS:
     void slotPropertyChanged(const QMap<QString, int> &changes);

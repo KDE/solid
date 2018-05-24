@@ -46,12 +46,12 @@ public:
     OpticalDisc(Device *dev);
     virtual ~OpticalDisc();
 
-    qulonglong capacity() const Q_DECL_OVERRIDE;
-    bool isRewritable() const Q_DECL_OVERRIDE;
-    bool isBlank() const Q_DECL_OVERRIDE;
-    bool isAppendable() const Q_DECL_OVERRIDE;
-    Solid::OpticalDisc::DiscType discType() const Q_DECL_OVERRIDE;
-    Solid::OpticalDisc::ContentTypes availableContent() const Q_DECL_OVERRIDE;
+    qulonglong capacity() const override;
+    bool isRewritable() const override;
+    bool isBlank() const override;
+    bool isAppendable() const override;
+    Solid::OpticalDisc::DiscType discType() const override;
+    Solid::OpticalDisc::ContentTypes availableContent() const override;
 
     class Identity
     {

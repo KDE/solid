@@ -38,9 +38,9 @@ public:
     explicit DummyInhibition(QObject* parent = nullptr);
     virtual ~DummyInhibition();
 
-    void start() Q_DECL_OVERRIDE;
-    void stop() Q_DECL_OVERRIDE;
-    Inhibition::State state() const Q_DECL_OVERRIDE;
+    void start() override;
+    void stop() override;
+    Inhibition::State state() const override;
 
     Power::InhibitionTypes inhibitions;
     QString description;

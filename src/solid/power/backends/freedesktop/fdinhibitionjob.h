@@ -39,9 +39,9 @@ public:
     explicit FdInhibitionJob(Power::InhibitionTypes inhibitions, const QString &description, QObject* parent = nullptr);
     virtual ~FdInhibitionJob();
 
-    Inhibition* inhibition() Q_DECL_OVERRIDE;
+    Inhibition* inhibition() override;
 private Q_SLOTS:
-    void doStart() Q_DECL_OVERRIDE;
+    void doStart() override;
 
     void stateChanged(Inhibition::State state);
 private:

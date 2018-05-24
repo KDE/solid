@@ -30,7 +30,7 @@ class DummyRequestStateJob : public AbstractRequestStateJob
     Q_OBJECT
 
 private Q_SLOTS:
-    void doStart() Q_DECL_OVERRIDE;
+    void doStart() override;
 };
 }
 
