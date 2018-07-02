@@ -43,7 +43,7 @@ class WorkerThread : public QThread
 {
     Q_OBJECT
 protected:
-    void run() Q_DECL_OVERRIDE
+    void run() override
     {
         Solid::Device dev("/org/freedesktop/Hal/devices/computer");
 
