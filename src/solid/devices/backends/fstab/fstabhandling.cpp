@@ -86,7 +86,7 @@
 #define ENDMNTENT endmntent
 #define STRUCT_MNTENT struct mntent *
 #define STRUCT_SETMNTENT FILE *
-#define GETMNTENT(file, var) ((var = getmntent(file)) != 0)
+#define GETMNTENT(file, var) ((var = getmntent(file)) != nullptr)
 #define MOUNTPOINT(var) var->mnt_dir
 #define MOUNTTYPE(var) var->mnt_type
 #define MOUNTOPTIONS(var) var->mnt_opts
@@ -96,7 +96,7 @@
 #define ENDMNTENT fclose
 #define STRUCT_MNTENT struct mnttab
 #define STRUCT_SETMNTENT FILE *
-#define GETMNTENT(file, var) (getmntent(file, &var) == 0)
+#define GETMNTENT(file, var) (getmntent(file, &var) == nullptr)
 #define MOUNTPOINT(var) var.mnt_mountp
 #define MOUNTTYPE(var) var.mnt_fstype
 #define MOUNTOPTIONS(var) var.mnt_mntopts

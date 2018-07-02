@@ -132,7 +132,7 @@ bool Solid::Device::isDeviceInterface(const DeviceInterface::Type &type) const
 }
 
 #define deviceinterface_cast(IfaceType, DevType, backendObject) \
-    (qobject_cast<IfaceType *>(backendObject) ? new DevType(backendObject) : 0)
+    (qobject_cast<IfaceType *>(backendObject) ? new DevType(backendObject) : nullptr)
 
 Solid::DeviceInterface *Solid::Device::asDeviceInterface(const DeviceInterface::Type &type)
 {

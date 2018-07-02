@@ -25,7 +25,7 @@
 
 #define return_SOLID_CALL(Type, Object, Default, Method) \
     Type t = qobject_cast<Type>(Object); \
-    if (t!=0) \
+    if (t!=nullptr) \
     { \
         return t->Method; \
     } \
@@ -36,7 +36,7 @@
 
 #define SOLID_CALL(Type, Object, Method) \
     Type t = qobject_cast<Type>(Object); \
-    if (t!=0) \
+    if (t!=nullptr) \
     { \
         t->Method; \
     }

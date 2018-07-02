@@ -89,12 +89,12 @@ void _k_updateMountPointsCache()
 #if HAVE_SETMNTENT
 
     FILE *fstab;
-    if ((fstab = setmntent(FSTAB, "r")) == 0) {
+    if ((fstab = setmntent(FSTAB, "r")) == nullptr) {
         return;
     }
 
     struct mntent *fe;
-    while ((fe = getmntent(fstab)) != 0) {
+    while ((fe = getmntent(fstab)) != nullptr) {
         if (!_k_isNetworkFileSystem(fe->mnt_type, fe->mnt_fsname)) {
             const QString device = _k_resolveSymLink(QFile::decodeName(fe->mnt_fsname));
             const QString mountpoint = _k_resolveSymLink(QFile::decodeName(fe->mnt_dir));
