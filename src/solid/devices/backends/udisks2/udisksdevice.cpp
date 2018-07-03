@@ -370,7 +370,7 @@ QString Device::storageDescription() const
 
     if (drive_type == Solid::StorageDrive::HardDisk && !drive_is_removable) {
         QString size_str = formatByteSize(storageDrive.size());
-        if (!size_str.isEmpty()) {
+        if (storageDrive.size() > 0) {
             if (drive_is_hotpluggable) {
                 description = tr("%1 External Hard Drive", "%1 is the size").arg(size_str);
             } else {
@@ -572,13 +572,13 @@ QString Device::volumeDescription() const
 
     QString size_str = formatByteSize(storageVolume.size());
     if (isEncryptedContainer()) {
-        if (!size_str.isEmpty()) {
+        if (storageVolume.size() > 0) {
             description = tr("%1 Encrypted Drive", "%1 is the size").arg(size_str);
         } else {
             description = tr("Encrypted Drive");
         }
     } else if (drive_type == Solid::StorageDrive::HardDisk && !drive_is_removable) {
-        if (!size_str.isEmpty()) {
+        if (storageVolume.size() > 0) {
             if (drive_is_hotpluggable) {
                 description = tr("%1 External Hard Drive", "%1 is the size").arg(size_str);
             } else {
