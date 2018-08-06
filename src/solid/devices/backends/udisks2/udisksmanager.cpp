@@ -204,6 +204,9 @@ void Manager::slotInterfacesAdded(const QDBusObjectPath &object_path, const Vari
 void Manager::slotInterfacesRemoved(const QDBusObjectPath &object_path, const QStringList &interfaces)
 {
     const QString udi = object_path.path();
+    if (udi.isEmpty()) {
+        return;
+    }
 
     /* Ignore jobs */
     if (udi.startsWith(UD2_DBUS_PATH_JOBS)) {
@@ -212,14 +215,28 @@ void Manager::slotInterfacesRemoved(const QDBusObjectPath &object_path, const QS
 
     qDebug() << udi << "lost interfaces:" << interfaces;
 
-    updateBackend(udi);
-
+    /*
+     * Determine left interfaces. The device backend may have processed the
+     * InterfacesRemoved signal already, but the result set is the same
+     * independent if the backend or the manager processes the signal first.
+     */
     Device device(udi);
+    auto leftInterfaces = device.interfaces().toSet();
+    leftInterfaces.subtract(interfaces.toSet());
 
-    if (!udi.isEmpty() && (interfaces.isEmpty() || device.interfaces().isEmpty())) {
+    if (leftInterfaces.isEmpty()) {
+        // remove the device if the last interface is removed
         emit deviceRemoved(udi);
         m_deviceCache.removeAll(udi);
         DeviceBackend::destroyBackend(udi);
+    } else {
+        /*
+         * Changes in the interface composition may change if a device
+         * matches a Predicate. We have to do a remove-and-readd cycle
+         * as there is no dedicated signal for Predicate reevaluation.
+         */
+        emit deviceRemoved(udi);
+        emit deviceAdded(udi);
     }
 }
 
