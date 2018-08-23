@@ -123,7 +123,12 @@ void WinDevice::initStorageDevice()
         break;
     default:
         dev = WinBlock::driveLetterFromUdi(udi());
-        m_description = QString("%1 (%2)").arg(dev, WinStorageVolume(this).label());
+        const QString label = WinStorageVolume(this).label();
+        if (!label.isEmpty()) {
+            m_description = QStringLiteral("%1 (%2)").arg(dev, label);
+        } else {
+            m_description = dev;
+        }
     }
 
     STORAGE_PROPERTY_QUERY query;
