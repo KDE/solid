@@ -30,6 +30,7 @@
 #include <QtCore/QFile>
 #include <QtCore/QDebug>
 
+#include "udisks_debug.h"
 #include "udisksopticaldrive.h"
 #include "udisks2.h"
 #include "udisksdevice.h"
@@ -89,7 +90,7 @@ bool OpticalDrive::eject()
             }
         }
     } else { // show error
-        qWarning() << "Failed enumerating UDisks2 objects:" << reply.error().name() << "\n" << reply.error().message();
+        qCWarning(UDISKS2) << "Failed enumerating UDisks2 objects:" << reply.error().name() << "\n" << reply.error().message();
     }
 
     if (!blockPath.isEmpty()) {

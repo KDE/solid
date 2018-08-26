@@ -33,6 +33,7 @@
 #include <QtDBus/QDBusPendingReply>
 #include <QtXml/QDomDocument>
 
+#include "udisks_debug.h"
 #include "udisksblock.h"
 
 using namespace Solid::Backends::UDisks2;
@@ -69,7 +70,7 @@ Block::Block(Device *dev)
                 }
             }
         } else {
-            qWarning() << "Failed enumerating UDisks2 objects:" << reply.error().name() << "\n" << reply.error().message();
+            qCWarning(UDISKS2) << "Failed enumerating UDisks2 objects:" << reply.error().name() << "\n" << reply.error().message();
         }
     }
 

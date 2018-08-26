@@ -33,6 +33,7 @@
 #include "../shared/udevqt.h"
 
 #include "udisks2.h"
+#include "udisks_debug.h"
 #include "udisksopticaldisc.h"
 #include "soliddefs_p.h"
 
@@ -55,6 +56,8 @@ static Solid::OpticalDisc::ContentType advancedDiscDetect(const QByteArray &devi
     int pos = 0;
     /* the path table record we're on */
     int curr_record = 1;
+    /* import debug category */
+    using Solid::Backends::UDisks2::UDISKS2;
 
     Solid::OpticalDisc::ContentType result = Solid::OpticalDisc::NoContent;
 
@@ -63,21 +66,21 @@ static Solid::OpticalDisc::ContentType advancedDiscDetect(const QByteArray &devi
     /* read the block size */
     lseek(fd, 0x8080, SEEK_CUR);
     if (read(fd, &bs, 2) != 2) {
-        qDebug("Advanced probing on %s failed while reading block size", qPrintable(device_file));
+        qCDebug(UDISKS2, "Advanced probing on %s failed while reading block size", qPrintable(device_file));
         goto out;
     }
 
     /* read in size of path table */
     lseek(fd, 2, SEEK_CUR);
     if (read(fd, &ts, 2) != 2) {
-        qDebug("Advanced probing on %s failed while reading path table size", qPrintable(device_file));
+        qCDebug(UDISKS2, "Advanced probing on %s failed while reading path table size", qPrintable(device_file));
         goto out;
     }
 
     /* read in which block path table is in */
     lseek(fd, 6, SEEK_CUR);
     if (read(fd, &tl, 4) != 4) {
-        qDebug("Advanced probing on %s failed while reading path table block", qPrintable(device_file));
+        qCDebug(UDISKS2, "Advanced probing on %s failed while reading path table block", qPrintable(device_file));
         goto out;
     }
 
@@ -88,7 +91,7 @@ static Solid::OpticalDisc::ContentType advancedDiscDetect(const QByteArray &devi
     while (pos < ts) {
         /* get the length of the filename of the current entry */
         if (read(fd, &len_di, 1) != 1) {
-            qDebug("Advanced probing on %s failed, cannot read more entries", qPrintable(device_file));
+            qCDebug(UDISKS2, "Advanced probing on %s failed, cannot read more entries", qPrintable(device_file));
             break;
         }
 
@@ -96,13 +99,13 @@ static Solid::OpticalDisc::ContentType advancedDiscDetect(const QByteArray &devi
            i'm pretty sure that the 1st entry is always the top directory */
         lseek(fd, 5, SEEK_CUR);
         if (read(fd, &parent, 2) != 2) {
-            qDebug("Advanced probing on %s failed, couldn't read parent entry", qPrintable(device_file));
+            qCDebug(UDISKS2, "Advanced probing on %s failed, couldn't read parent entry", qPrintable(device_file));
             break;
         }
 
         /* read the name */
         if (read(fd, dirname, len_di) != len_di) {
-            qDebug("Advanced probing on %s failed, couldn't read the entry name", qPrintable(device_file));
+            qCDebug(UDISKS2, "Advanced probing on %s failed, couldn't read the entry name", qPrintable(device_file));
             break;
         }
         dirname[len_di] = 0;
@@ -111,19 +114,19 @@ static Solid::OpticalDisc::ContentType advancedDiscDetect(const QByteArray &devi
            one of the special directories then set the properties accordingly */
         if (parent == 1) {
             if (!strcasecmp(dirname, "VIDEO_TS")) {
-                qDebug("Disc in %s is a Video DVD", qPrintable(device_file));
+                qCDebug(UDISKS2, "Disc in %s is a Video DVD", qPrintable(device_file));
                 result = Solid::OpticalDisc::VideoDvd;
                 break;
             } else if (!strcasecmp(dirname, "BDMV")) {
-                qDebug("Disc in %s is a Blu-ray video disc", qPrintable(device_file));
+                qCDebug(UDISKS2, "Disc in %s is a Blu-ray video disc", qPrintable(device_file));
                 result = Solid::OpticalDisc::VideoBluRay;
                 break;
             } else if (!strcasecmp(dirname, "VCD")) {
-                qDebug("Disc in %s is a Video CD", qPrintable(device_file));
+                qCDebug(UDISKS2, "Disc in %s is a Video CD", qPrintable(device_file));
                 result = Solid::OpticalDisc::VideoCd;
                 break;
             } else if (!strcasecmp(dirname, "SVCD")) {
-                qDebug("Disc in %s is a Super Video CD", qPrintable(device_file));
+                qCDebug(UDISKS2, "Disc in %s is a Super Video CD", qPrintable(device_file));
                 result = Solid::OpticalDisc::SuperVideoCd;
                 break;
             }

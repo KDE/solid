@@ -15,6 +15,7 @@ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${CMAKE_CURRENT_S
 include(KDEInstallDirs)
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
+include(ECMQtDeclareLoggingCategory)
 
 set(REQUIRED_QT_VERSION 5.8.0)
 find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Xml DBus Widgets)

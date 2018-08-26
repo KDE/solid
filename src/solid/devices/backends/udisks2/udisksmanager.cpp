@@ -20,6 +20,7 @@
 
 #include "udisksmanager.h"
 #include "udisksdevicebackend.h"
+#include "udisks_debug.h"
 
 #include <QtCore/QDebug>
 #include <QtDBus>
@@ -163,7 +164,7 @@ void Manager::introspect(const QString &path, bool checkOptical)
             }
         }
     } else {
-        qWarning() << "Failed enumerating UDisks2 objects:" << reply.error().name() << "\n" << reply.error().message();
+        qCWarning(UDISKS2) << "Failed enumerating UDisks2 objects:" << reply.error().name() << "\n" << reply.error().message();
     }
 }
 
@@ -186,7 +187,7 @@ void Manager::slotInterfacesAdded(const QDBusObjectPath &object_path, const Vari
         return;
     }
 
-    qDebug() << udi << "has new interfaces:" << interfaces_and_properties.keys();
+    qCDebug(UDISKS2) << udi << "has new interfaces:" << interfaces_and_properties.keys();
 
     updateBackend(udi);
 
@@ -213,7 +214,7 @@ void Manager::slotInterfacesRemoved(const QDBusObjectPath &object_path, const QS
         return;
     }
 
-    qDebug() << udi << "lost interfaces:" << interfaces;
+    qCDebug(UDISKS2) << udi << "lost interfaces:" << interfaces;
 
     /*
      * Determine left interfaces. The device backend may have processed the
@@ -251,7 +252,7 @@ void Manager::slotMediaChanged(const QDBusMessage &msg)
     const QString udi = msg.path();
     updateBackend(udi);
     qulonglong size = properties.value("Size").toULongLong();
-    qDebug() << "MEDIA CHANGED in" << udi << "; size is:" << size;
+    qCDebug(UDISKS2) << "MEDIA CHANGED in" << udi << "; size is:" << size;
 
     if (!m_deviceCache.contains(udi) && size > 0) { // we don't know the optdisc, got inserted
         m_deviceCache.append(udi);

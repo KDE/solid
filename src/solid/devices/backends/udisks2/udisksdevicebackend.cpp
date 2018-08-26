@@ -20,6 +20,7 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include "udisks_debug.h"
 #include "udisksdevicebackend.h"
 
 #include <QtDBus/QDBusConnection>
@@ -86,7 +87,7 @@ void DeviceBackend::initInterfaces()
 
     const QString xmlData = introspect();
     if (xmlData.isEmpty()) {
-        qDebug() << m_udi << "has no interfaces!";
+        qCDebug(UDISKS2) << m_udi << "has no interfaces!";
         return;
     }
 
@@ -145,7 +146,7 @@ QVariantMap DeviceBackend::allProperties() const
                 m_propertyCache.insert(it.key(), it.value());
             }
         } else {
-            qWarning() << "Error getting props:" << reply.error().name() << reply.error().message();
+            qCWarning(UDISKS2) << "Error getting props:" << reply.error().name() << reply.error().message();
         }
         //qDebug() << "After iface" << iface << ", cache now contains" << m_propertyCache.size() << "items";
     }

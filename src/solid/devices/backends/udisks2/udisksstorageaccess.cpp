@@ -19,6 +19,7 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include "udisks_debug.h"
 #include "udisksstorageaccess.h"
 #include "udisks2.h"
 
@@ -347,7 +348,7 @@ bool StorageAccess::requestPassphrase()
                              m_lastReturnObject, wId, appId);
     m_passphraseRequested = reply.isValid();
     if (!m_passphraseRequested) {
-        qWarning() << "Failed to call the SolidUiServer, D-Bus said:" << reply.error();
+        qCWarning(UDISKS2) << "Failed to call the SolidUiServer, D-Bus said:" << reply.error();
     }
 
     return m_passphraseRequested;

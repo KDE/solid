@@ -19,6 +19,7 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include "udisks_debug.h"
 #include "udisksdevice.h"
 #include "udisksdevicebackend.h"
 #include "udisksblock.h"
@@ -95,7 +96,7 @@ Device::Device(const QString &udi)
         connect(m_backend, SIGNAL(changed()), this, SIGNAL(changed()));
         connect(m_backend, SIGNAL(propertyChanged(QMap<QString,int>)), this, SIGNAL(propertyChanged(QMap<QString,int>)));
     } else {
-        qDebug() << "Created invalid Device for udi" << udi;
+        qCDebug(UDISKS2) << "Created invalid Device for udi" << udi;
     }
 }
 
