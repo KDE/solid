@@ -68,7 +68,10 @@ int FakeBattery::chargePercent() const
     int last_full = fakeDevice()->property("lastFullLevel").toInt();
     int current = fakeDevice()->property("currentLevel").toInt();
 
-    int percent = (100 * current) / last_full;
+    int percent = 0;
+    if (last_full > 0) {
+        percent = (100 * current) / last_full;
+    }
 
     return percent;
 }
