@@ -40,7 +40,7 @@ public:
     IOKitOpticalDisc(const IOKitDevice *device);
     virtual ~IOKitOpticalDisc();
 
-    // overriden from IOKit::Block because optical discs must
+    // overridden from IOKit::Block because optical discs must
     // be accessed through the raw device.
     virtual QString device() const override;
 

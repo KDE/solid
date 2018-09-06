@@ -52,7 +52,7 @@ public:
     QSet<Solid::DeviceInterface::Type> supportedInterfaces;
 };
 
-// gets all registry pathes from an iterator
+// gets all registry paths from an iterator
 QStringList IOKitManagerPrivate::devicesFromRegistry(io_iterator_t it)
 {
     QStringList result;

@@ -91,7 +91,7 @@ public:
      *              the state is Unknown
      * - Charging : Battery is charging
      * - Discharging : Battery is discharging
-     * - FullyCharged: The battery is fully charged; a battery not neccessarily
+     * - FullyCharged: The battery is fully charged; a battery not necessarily
      *                 charges up to 100%
      */
     enum ChargeState { NoCharge, Charging, Discharging, FullyCharged };

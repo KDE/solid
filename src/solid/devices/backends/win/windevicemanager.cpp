@@ -211,7 +211,7 @@ QObject *Solid::Backends::Win::WinDeviceManager::createDevice(const QString &udi
 
 void WinDeviceManager::slotDeviceAdded(const QSet<QString> &udi)
 {
-    QSet<QString> tmp = udi - m_devices;//dont report devices that are already known(cd drive)
+    QSet<QString> tmp = udi - m_devices;//don't report devices that are already known(cd drive)
     m_devices += tmp;
     m_devicesList = m_devices.toList();
     qSort(m_devicesList);

@@ -24,7 +24,7 @@
 
 #include "solid/power/power.h"
 /**
- * The single responsability of this class is to create arguments valid for
+ * The single responsibility of this class is to create arguments valid for
  * logind Inhibit call.
  */
 namespace Solid

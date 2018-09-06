@@ -28,7 +28,6 @@
 #include "winstoragedrive.h"
 #include "winopticaldrive.h"
 #include "winopticaldisc.h"
-#include "windevice.h"
 #include "winprocessor.h"
 #include "winbattery.h"
 
@@ -144,7 +143,7 @@ void WinDevice::initStorageDevice()
         if (info->ProductIdOffset != 0) {
             m_product = QString((char *)buff + info->ProductIdOffset).trimmed();
         }
-    } else if (info->ProductIdOffset != 0) { //fallback doesnt work for all devices
+    } else if (info->ProductIdOffset != 0) { //fallback doesn't work for all devices
         QStringList tmp = QString((char *)buff + info->ProductIdOffset).trimmed().split(" ");
         m_vendor = tmp.takeFirst();
         m_product = tmp.join(" ");
