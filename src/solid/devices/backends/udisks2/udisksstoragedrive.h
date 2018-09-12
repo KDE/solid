@@ -19,12 +19,12 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef UDISKS2STORAGEDRIVE_H
-#define UDISKS2STORAGEDRIVE_H
+#ifndef UDISKSSTORAGEDRIVE_H
+#define UDISKSSTORAGEDRIVE_H
 
 #include <ifaces/storagedrive.h>
 
-#include "config-solid.h"
+#include <config-solid.h>
 #include "../shared/udevqt.h"
 
 #include "udisksblock.h"
@@ -61,4 +61,4 @@ private:
 }
 }
 
-#endif // UDISK2SSTORAGEDRIVE_H
+#endif // UDISKSSTORAGEDRIVE_H

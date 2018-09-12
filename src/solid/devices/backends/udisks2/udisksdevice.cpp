@@ -19,8 +19,8 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "udisks_debug.h"
 #include "udisksdevice.h"
+#include "udisks_debug.h"
 #include "udisksdevicebackend.h"
 #include "udisksblock.h"
 #include "udisksdeviceinterface.h"

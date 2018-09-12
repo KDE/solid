@@ -20,12 +20,12 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "udisks_debug.h"
 #include "udisksdevicebackend.h"
+#include "udisks_debug.h"
 
-#include <QtDBus/QDBusConnection>
-#include <QtDBus/QDBusInterface>
-#include <QtXml/QDomDocument>
+#include <QDBusConnection>
+#include <QDBusInterface>
+#include <QDomDocument>
 
 #include "solid/deviceinterface.h"
 #include "solid/genericinterface.h"

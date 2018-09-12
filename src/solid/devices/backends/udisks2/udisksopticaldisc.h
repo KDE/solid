@@ -19,12 +19,12 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef UDISKS2OPTICALDISC_H
-#define UDISKS2OPTICALDISC_H
+#ifndef UDISKSOPTICALDISC_H
+#define UDISKSOPTICALDISC_H
 
 #include <solid/devices/ifaces/opticaldisc.h>
 
-#include "config-solid.h"
+#include <config-solid.h>
 #include "../shared/udevqt.h"
 
 #include "udisksstoragevolume.h"
@@ -80,4 +80,4 @@ private:
 }
 }
 }
-#endif // UDISKS2OPTICALDISC_H
+#endif // UDISKSOPTICALDISC_H

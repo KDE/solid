@@ -18,8 +18,8 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef UDISKS2DEVICEINTERFACE_H
-#define UDISKS2DEVICEINTERFACE_H
+#ifndef UDISKSDEVICEINTERFACE_H
+#define UDISKSDEVICEINTERFACE_H
 
 #include <ifaces/deviceinterface.h>
 #include "udisksdevice.h"
@@ -110,4 +110,4 @@ public:
 }
 }
 
-#endif // UDISKS2DEVICEINTERFACE_H
+#endif // UDISKSDEVICEINTERFACE_H

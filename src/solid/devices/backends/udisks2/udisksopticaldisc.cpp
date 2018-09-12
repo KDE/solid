@@ -19,6 +19,7 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include "udisksopticaldisc.h"
 #include <sys/types.h>
 #include <unistd.h>
 #include <sys/stat.h>
@@ -34,7 +35,6 @@
 
 #include "udisks2.h"
 #include "udisks_debug.h"
-#include "udisksopticaldisc.h"
 #include "soliddefs_p.h"
 
 // inspired by http://cgit.freedesktop.org/hal/tree/hald/linux/probing/probe-volume.c

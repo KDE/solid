@@ -15,8 +15,8 @@
  *   License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SOLID_DECLARATIVE_EXTENSION_PLUGIN_H
-#define SOLID_DECLARATIVE_EXTENSION_PLUGIN_H
+#ifndef SOLID_EXTENSION_PLUGIN_H
+#define SOLID_EXTENSION_PLUGIN_H
 
 #include <QtQml/QQmlExtensionPlugin>
 

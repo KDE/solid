@@ -18,6 +18,8 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include "udisksblock.h"
+
 #if defined(Q_OS_LINUX)
 #include <linux/kdev_t.h>
 #else
@@ -29,12 +31,11 @@
 #endif
 
 #include <QFile>
-#include <QtDBus/QDBusConnection>
-#include <QtDBus/QDBusPendingReply>
-#include <QtXml/QDomDocument>
+#include <QDBusConnection>
+#include <QDBusPendingReply>
+#include <QDomDocument>
 
 #include "udisks_debug.h"
-#include "udisksblock.h"
 
 using namespace Solid::Backends::UDisks2;
 

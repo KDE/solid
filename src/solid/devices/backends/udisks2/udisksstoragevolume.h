@@ -18,8 +18,8 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef UDISKS2STORAGEVOLUME_H
-#define UDISKS2STORAGEVOLUME_H
+#ifndef UDISKSSTORAGEVOLUME_H
+#define UDISKSSTORAGEVOLUME_H
 
 #include <ifaces/storagevolume.h>
 #include "udisksblock.h"

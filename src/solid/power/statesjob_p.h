@@ -18,8 +18,8 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef SOLID_SLEEP_STAES_JOB_PRIVATE_H
-#define SOLID_SLEEP_STAES_JOB_PRIVATE_H
+#ifndef SOLID_SLEEP_STATES_JOB_P_H
+#define SOLID_SLEEP_STATES_JOB_P_H
 
 #include "job_p.h"
 
@@ -37,4 +37,4 @@ public:
 };
 }//Solid namespace
 
-#endif //SOLID_SLEEP_STAES_JOB_PRIVATE_H
+#endif //SOLID_SLEEP_STATES_JOB_P_H

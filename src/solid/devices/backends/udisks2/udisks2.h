@@ -22,7 +22,13 @@
 #define SOLID_BACKENDS_UDISKS2_H
 
 #include <QMetaType>
-#include <QtDBus>
+#include <QDBusObjectPath>
+#include <QDBusPendingReply>
+#include <QDBusReply>
+#include <QDBusAbstractInterface>
+#include <QPointer>
+#include <QCoreApplication>
+#include <QTimer>
 #include <QVariant>
 #include <QMap>
 #include <QList>

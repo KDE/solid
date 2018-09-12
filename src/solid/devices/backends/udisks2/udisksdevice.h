@@ -19,8 +19,8 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef UDISKS2DEVICE_H
-#define UDISKS2DEVICE_H
+#ifndef UDISKSDEVICE_H
+#define UDISKSDEVICE_H
 
 #include "udisks2.h"
 
@@ -103,4 +103,4 @@ private:
 }
 }
 
-#endif // UDISKS2DEVICE_H
+#endif // UDISKSDEVICE_H

@@ -18,8 +18,8 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef SOLID_BACKENDS_IOKIT_DADICTIONARY_H
-#define SOLID_BACKENDS_IOKIT_DADICTIONARY_H
+#ifndef SOLID_BACKENDS_IOKIT_DADICTIONARY_P_H
+#define SOLID_BACKENDS_IOKIT_DADICTIONARY_P_H
 
 #include <QString>
 
@@ -78,4 +78,4 @@ public:
 }
 }
 
-#endif // SOLID_BACKENDS_IOKIT_DADICTIONARY_H
+#endif // SOLID_BACKENDS_IOKIT_DADICTIONARY_P_H

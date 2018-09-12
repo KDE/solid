@@ -19,8 +19,8 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef UDISKS2OPTICALDRIVE_H
-#define UDISKS2OPTICALDRIVE_H
+#ifndef UDISKSOPTICALDRIVE_H
+#define UDISKSOPTICALDRIVE_H
 
 #include <solid/devices/ifaces/opticaldrive.h>
 #include "udisksstoragedrive.h"
@@ -78,4 +78,4 @@ private:
 }
 }
 
-#endif // UDISKS2OPTICALDRIVE_H
+#endif // UDISKSOPTICALDRIVE_H

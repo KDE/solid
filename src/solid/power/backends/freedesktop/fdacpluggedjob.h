@@ -18,8 +18,8 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef FREEDESKTOP_AC_PLUGGED_JOB_H
-#define FREEDESKTOP_AC_PLUGGED_JOB_H
+#ifndef FD_AC_PLUGGED_JOB_H
+#define FD_AC_PLUGGED_JOB_H
 
 #include "backends/abstractacpluggedjob.h"
 
@@ -46,4 +46,4 @@ private:
 };
 }
 
-#endif //FREEDESKTOP_AC_PLUGGED_JOB_H
+#endif //FD_AC_PLUGGED_JOB_H

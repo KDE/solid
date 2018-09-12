@@ -15,8 +15,8 @@
  *   License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SOLID_DECALARATIVE_DEVICE_NOTIFIER_P_H
-#define SOLID_DECALARATIVE_DEVICE_NOTIFIER_P_H
+#ifndef SOLID_DEVICES_P_H
+#define SOLID_DEVICES_P_H
 
 #include "devices.h"
 

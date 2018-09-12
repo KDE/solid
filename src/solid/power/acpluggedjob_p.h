@@ -18,8 +18,8 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef SOLID_AC_PUGGED_JOB_PRIVATE_H
-#define SOLID_AC_PUGGED_JOB_PRIVATE_H
+#ifndef SOLID_AC_PLUGGED_JOB_P_H
+#define SOLID_AC_PLUGGED_JOB_P_H
 
 #include "job_p.h"
 
@@ -38,4 +38,4 @@ public:
 };
 }//Solid namespace
 
-#endif //SOLID_AC_PUGGED_JOB_PRIVATE_H
+#endif //SOLID_AC_PLUGGED_JOB_P_H

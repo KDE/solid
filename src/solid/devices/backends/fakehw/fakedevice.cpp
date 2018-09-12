@@ -18,6 +18,7 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 #include "fakedevice.h"
+#include "fakedevice_p.h"
 
 #include "fakedeviceinterface.h"
 #include "fakegenericinterface.h"
@@ -33,12 +34,10 @@
 #include "fakenetworkshare.h"
 #include "fakebattery.h"
 
-#include <QtCore/QStringList>
-#include <QtDBus/QDBusConnection>
+#include <QStringList>
+#include <QDBusConnection>
 
 #include <solid/genericinterface.h>
-
-#include "fakedevice_p.h"
 
 using namespace Solid::Backends::Fake;
 

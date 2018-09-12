@@ -21,15 +21,15 @@
 
 #include "fstabhandling.h"
 
-#include <QtCore/QFile>
-#include <QtCore/QObject>
-#include <QtCore/QProcess>
-#include <QtCore/QTextStream>
-#include <QtCore/QTime>
+#include <QFile>
+#include <QObject>
+#include <QProcess>
+#include <QTextStream>
+#include <QTime>
 
 #include <solid/devices/soliddefs_p.h>
 
-#include "solid/config-solid.h"
+#include <solid/config-solid.h>
 #include <stdlib.h>
 
 #if HAVE_SYS_MNTTAB_H

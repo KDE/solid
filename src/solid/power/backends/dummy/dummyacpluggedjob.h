@@ -18,8 +18,8 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef UPOWER_AC_PLUGGED_JOB_H
-#define UPOWER_AC_PLUGGED_JOB_H
+#ifndef UPOWER_DUMMY_AC_PLUGGED_JOB_H
+#define UPOWER_DUMMY_AC_PLUGGED_JOB_H
 
 #include "backends/abstractacpluggedjob.h"
 
@@ -36,4 +36,4 @@ private Q_SLOTS:
 };
 }
 
-#endif //UPOWER_AC_PLUGGED_JOB_H
+#endif //UPOWER_DUMMY_AC_PLUGGED_JOB_H

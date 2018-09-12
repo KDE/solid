@@ -19,8 +19,8 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "udisks_debug.h"
 #include "udisksstorageaccess.h"
+#include "udisks_debug.h"
 #include "udisks2.h"
 
 #include <QDomDocument>

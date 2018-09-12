@@ -18,8 +18,8 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef SOLID_DUMMY_ADD_INHIBITION_JOB_H
-#define SOLID_DUMMY_ADD_INHIBITION_JOB_H
+#ifndef SOLID_DUMMY_INHIBITION_JOB_H
+#define SOLID_DUMMY_INHIBITION_JOB_H
 
 #include "backends/abstractinhibitionjob.h"
 #include "solid/power.h"
@@ -42,4 +42,4 @@ private:
     QString m_description;
 };
 }
-#endif //SOLID_DUMMY_ADD_INHIBITION_JOB_H
+#endif //SOLID_DUMMY_INHIBITION_JOB_H

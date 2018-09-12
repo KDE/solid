@@ -19,8 +19,8 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef UDISKS2MANAGER_H
-#define UDISKS2MANAGER_H
+#ifndef UDISKSMANAGER_H
+#define UDISKSMANAGER_H
 
 #include "udisks2.h"
 #include "udisksdevice.h"
@@ -68,4 +68,4 @@ private:
 }
 }
 }
-#endif // UDISKS2MANAGER_H
+#endif // UDISKSMANAGER_H

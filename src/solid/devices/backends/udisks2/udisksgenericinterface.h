@@ -18,8 +18,8 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef SOLID_BACKENDS_UDISKS2_GENERICINTERFACE_H
-#define SOLID_BACKENDS_UDISKS2_GENERICINTERFACE_H
+#ifndef SOLID_BACKENDS_UDISKS_GENERICINTERFACE_H
+#define SOLID_BACKENDS_UDISKS_GENERICINTERFACE_H
 
 #include <solid/devices/ifaces/genericinterface.h>
 #include <solid/genericinterface.h>
@@ -54,4 +54,4 @@ Q_SIGNALS:
 }
 }
 
-#endif // SOLID_BACKENDS_UDISKS2_GENERICINTERFACE_H
+#endif // SOLID_BACKENDS_UDISKS_GENERICINTERFACE_H

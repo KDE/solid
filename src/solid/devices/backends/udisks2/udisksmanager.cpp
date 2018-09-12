@@ -22,9 +22,12 @@
 #include "udisksdevicebackend.h"
 #include "udisks_debug.h"
 
-#include <QtCore/QDebug>
-#include <QtDBus>
-#include <QtXml/QDomDocument>
+#include <QDebug>
+#include <QDBusConnection>
+#include <QDBusObjectPath>
+#include <QDBusMetaType>
+#include <QDBusConnectionInterface>
+#include <QDomDocument>
 
 #include "../shared/rootdevice.h"
 

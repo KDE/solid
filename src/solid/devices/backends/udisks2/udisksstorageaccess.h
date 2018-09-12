@@ -19,8 +19,8 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef UDISKS2STORAGEACCESS_H
-#define UDISKS2STORAGEACCESS_H
+#ifndef UDISKSSTORAGEACCESS_H
+#define UDISKSSTORAGEACCESS_H
 
 #include <solid/devices/ifaces/storageaccess.h>
 #include "udisksdeviceinterface.h"
@@ -101,4 +101,4 @@ private:
 }
 }
 
-#endif // UDISKS2STORAGEACCESS_H
+#endif // UDISKSSTORAGEACCESS_H

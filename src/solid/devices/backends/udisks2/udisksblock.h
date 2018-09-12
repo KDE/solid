@@ -18,8 +18,8 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef UDISKS2BLOCK_H
-#define UDISKS2BLOCK_H
+#ifndef UDISKSBLOCK_H
+#define UDISKSBLOCK_H
 
 #include <solid/devices/ifaces/block.h>
 #include "udisksdeviceinterface.h"
@@ -55,4 +55,4 @@ private:
 }
 }
 
-#endif // UDISKS2BLOCK_H
+#endif // UDISKSBLOCK_H

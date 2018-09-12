@@ -19,6 +19,8 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include "udisksopticaldrive.h"
+
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -31,7 +33,6 @@
 #include <QtCore/QDebug>
 
 #include "udisks_debug.h"
-#include "udisksopticaldrive.h"
 #include "udisks2.h"
 #include "udisksdevice.h"
 #include "dbus/manager.h"

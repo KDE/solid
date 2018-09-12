@@ -18,13 +18,13 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <solid/deviceinterface.h>
 #include "windevicemanager.h"
+#include "windevicemanager_p.h"
+#include <solid/deviceinterface.h>
 #include "windevice.h"
 #include "winprocessor.h"
 #include "winblock.h"
 #include "winbattery.h"
-#include "windevicemanager_p.h"
 
 #include <dbt.h>
 

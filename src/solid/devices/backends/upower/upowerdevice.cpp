@@ -19,8 +19,8 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "upower.h"
 #include "upowerdevice.h"
+#include "upower.h"
 #include "upowerdeviceinterface.h"
 #include "upowergenericinterface.h"
 #include "upowerbattery.h"
