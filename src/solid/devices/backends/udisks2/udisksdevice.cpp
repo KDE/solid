@@ -268,6 +268,11 @@ QString Device::description() const
 
 QString Device::loopDescription() const
 {
+    const QString label = prop("IdLabel").toString();
+    if (!label.isEmpty()) {
+        return label;
+    }
+
     const QString backingFile = prop("BackingFile").toString();
     if (!backingFile.isEmpty()) {
         return backingFile.section(QLatin1Char('/'), -1);
