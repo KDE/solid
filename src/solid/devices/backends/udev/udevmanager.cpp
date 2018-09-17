@@ -206,7 +206,7 @@ QStringList UDevManager::devicesFromQuery(const QString &parentUdi,
         deviceList = d->m_client->allDevices();
     }
 
-    for (const UdevQt::Device &dev : deviceList) {
+    for (const UdevQt::Device &dev : qAsConst(deviceList)) {
         UDevDevice device(dev);
         if (device.queryDeviceInterface(type) && d->isOfInterest(udiPrefix() + dev.sysfsPath(), dev)) {
             result << udiPrefix() + dev.sysfsPath();
