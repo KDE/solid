@@ -354,9 +354,9 @@ QString Device::storageDescription() const
         }
 
         if (drive_is_hotpluggable) {
-            description = tr("External %1%2 Drive", "%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/DVD-R'/etc (with leading slash)").arg(first).arg(second);
+            description = tr("External %1%2 Drive", "%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/DVD-R'/etc (with leading slash)").arg(first, second);
         } else {
-            description = tr("%1%2 Drive", "%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/DVD-R'/etc (with leading slash)").arg(first).arg(second);
+            description = tr("%1%2 Drive", "%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/DVD-R'/etc (with leading slash)").arg(first, second);
         }
 
         return description;
@@ -409,7 +409,7 @@ QString Device::storageDescription() const
                 // e.g. vendor is "Nokia" and model is "Nokia N950" we do not want "Nokia Nokia N950" as description
                 vendormodel_str = model;
             } else {
-                vendormodel_str = tr("%1 %2", "%1 is the vendor, %2 is the model of the device").arg(vendor_str).arg(model);
+                vendormodel_str = tr("%1 %2", "%1 is the vendor, %2 is the model of the device").arg(vendor_str, model);
             }
         }
     }

@@ -58,7 +58,7 @@ FstabDevice::FstabDevice(QString uid) :
 
     if (m_description.isEmpty()) {
         m_description = QCoreApplication::translate("", "%1 on %2",
-            "%1 is sharename, %2 is servername").arg(m_product).arg(m_vendor);
+            "%1 is sharename, %2 is servername").arg(m_product, m_vendor);
     }
 
     if (m_iconName.isEmpty()) {
