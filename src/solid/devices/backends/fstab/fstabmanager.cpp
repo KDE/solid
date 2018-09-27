@@ -65,18 +65,26 @@ QStringList FstabManager::allDevices()
 QStringList FstabManager::devicesFromQuery(const QString &parentUdi,
         Solid::DeviceInterface::Type type)
 {
-    if (type == Solid::DeviceInterface::StorageAccess
-            || type == Solid::DeviceInterface::NetworkShare) {
-        if (parentUdi.isEmpty() || parentUdi == udiPrefix()) {
-            QStringList list = allDevices();
-            list.removeFirst();
-            return list;
-        } else {
-            QStringList list;
-            list << parentUdi;
-            return list;
+    if ((parentUdi == udiPrefix()) || parentUdi.isEmpty()) {
+        QStringList result;
+        if (type == Solid::DeviceInterface::StorageAccess) {
+            for (const QString &device : qAsConst(m_deviceList)) {
+                result << udiPrefix() + "/" + device;
+            }
+            return result;
+        } else if (type == Solid::DeviceInterface::NetworkShare) {
+            for (const QString &device : qAsConst(m_deviceList)) {
+                result << udiPrefix() + "/" + device;
+            }
+            return result;
+        }
+    } else {
+        if (type == Solid::DeviceInterface::StorageAccess ||
+            type == Solid::DeviceInterface::NetworkShare) {
+            return QStringList{parentUdi};
         }
     }
+
     return QStringList();
 }
 
@@ -85,9 +93,9 @@ QObject *FstabManager::createDevice(const QString &udi)
     if (udi == udiPrefix()) {
         RootDevice *root = new RootDevice(FSTAB_UDI_PREFIX);
 
-        root->setProduct(tr("Network Shares"));
-        root->setDescription(tr("NFS and SMB shares declared in your system"));
-        root->setIcon("folder-remote");
+        root->setProduct(tr("Filesystem Volumes"));
+        root->setDescription(tr("Mountable filesystems declared in your system"));
+        root->setIcon("folder");
 
         return root;
 
