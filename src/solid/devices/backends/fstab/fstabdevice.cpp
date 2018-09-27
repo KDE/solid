@@ -42,6 +42,9 @@ FstabDevice::FstabDevice(QString uid) :
     } else {
         m_vendor = m_device.left(m_device.indexOf(":/"));
         m_product = m_device.mid(m_device.indexOf(":/") + 2);
+        if (m_product.isEmpty()) {
+            m_product = QStringLiteral("/");
+        }
     }
 
     const QStringList& gvfsOptions = FstabHandling::options(m_device);
