@@ -77,7 +77,6 @@
 // There are (at least) four kind of APIs:
 // setmntent + getmntent + struct mntent (linux...)
 //             getmntent + struct mnttab
-// mntctl                + struct vmount (AIX)
 // getmntinfo + struct statfs&flags (BSD 4.4 and friends)
 // getfsent + char* (BSD 4.3 and friends)
 
@@ -280,63 +279,6 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateMtabMountPointsCache()
         }
     }
 
-#elif defined(_AIX)
-
-    struct vmount *mntctl_buffer;
-    struct vmount *vm;
-    char *mountedfrom;
-    char *mountedto;
-    int fsname_len, num;
-    int buf_sz = 4096;
-
-    mntctl_buffer = (struct vmount *)malloc(buf_sz);
-    num = mntctl(MCTL_QUERY, buf_sz, mntctl_buffer);
-    if (num == 0) {
-        buf_sz = *(int *)mntctl_buffer;
-        free(mntctl_buffer);
-        mntctl_buffer = (struct vmount *)malloc(buf_sz);
-        num = mntctl(MCTL_QUERY, buf_sz, mntctl_buffer);
-    }
-
-    if (num > 0) {
-        /* iterate through items in the vmount structure: */
-        vm = (struct vmount *)mntctl_buffer;
-        for (; num > 0; --num) {
-            /* get the name of the mounted file systems: */
-            fsname_len = vmt2datasize(vm, VMT_STUB);
-            mountedto     = (char *)malloc(fsname_len + 1);
-            mountedto[fsname_len] = '\0';
-            strncpy(mountedto, (char *)vmt2dataptr(vm, VMT_STUB), fsname_len);
-
-            fsname_len = vmt2datasize(vm, VMT_OBJECT);
-            mountedfrom     = (char *)malloc(fsname_len + 1);
-            mountedfrom[fsname_len] = '\0';
-            strncpy(mountedfrom, (char *)vmt2dataptr(vm, VMT_OBJECT), fsname_len);
-
-            /* Look up the string for the file system type,
-             * as listed in /etc/vfs.
-             * ex.: nfs,jfs,afs,cdrfs,sfs,cachefs,nfs3,autofs
-             */
-            struct vfs_ent *ent = getvfsbytype(vm->vmt_gfstype);
-
-            QString type = QFile::decodeName(ent->vfsent_name);
-            if (_k_isFstabNetworkFileSystem(type, QString())) {
-                const QString device = QFile::decodeName(mountedfrom);
-                const QString mountpoint = QFile::decodeName(mountedto);
-                globalFstabCache->m_mtabCache.insert(device, mountpoint);
-            }
-
-            free(mountedfrom);
-            free(mountedto);
-
-            /* goto the next vmount structure: */
-            vm = (struct vmount *)((char *)vm + vm->vmt_length);
-        }
-
-        endvfsent();
-    }
-
-    free(mntctl_buffer);
 #else
     STRUCT_SETMNTENT mnttab;
     if ((mnttab = SETMNTENT(MNTTAB, "r")) == nullptr) {
