@@ -272,11 +272,7 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateMtabMountPointsCache()
     int num_fs = getmntinfo(&mounted, MNT_NOWAIT);
 
     for (int i = 0; i < num_fs; i++) {
-#ifdef __osf__
-        QString type = QFile::decodeName(mnt_names[mounted[i].f_type]);
-#else
         QString type = QFile::decodeName(mounted[i].f_fstypename);
-#endif
         if (_k_isFstabNetworkFileSystem(type, QString())) {
             const QString device = QFile::decodeName(mounted[i].f_mntfromname);
             const QString mountpoint = QFile::decodeName(mounted[i].f_mntonname);
