@@ -173,6 +173,7 @@ void StorageAccess::slotDBusReply(const QDBusMessage & /*reply*/)
             checkAccessibility();
         }
     } else if (m_teardownInProgress) { // FIXME
+        qCDebug(UDISKS2) << "Successfully unmounted " << m_device->udi();
         if (isLuksDevice() && !ctPath.isEmpty() && ctPath != "/") { // unlocked device, lock it
             callCryptoTeardown();
         } else if (!ctPath.isEmpty() && ctPath != "/") {
@@ -182,11 +183,18 @@ void StorageAccess::slotDBusReply(const QDBusMessage & /*reply*/)
             QString drivePath = m_device->drivePath();
             if (!drivePath.isEmpty() || drivePath != "/") {
                 Device drive(drivePath);
+                QDBusConnection c = QDBusConnection::systemBus();
+
                 if (drive.prop("Ejectable").toBool() &&
                         drive.prop("MediaAvailable").toBool() &&
                         !m_device->isOpticalDisc()) { // optical drives have their Eject method
-                    QDBusConnection c = QDBusConnection::systemBus();
                     QDBusMessage msg = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, drivePath, UD2_DBUS_INTERFACE_DRIVE, "Eject");
+                    msg << QVariantMap();   // options, unused now
+                    c.call(msg, QDBus::NoBlock);
+                } else if (drive.prop("CanPowerOff").toBool() &&
+                        !m_device->isOpticalDisc()) { // avoid disconnecting optical drives from the bus
+                    qCDebug(UDISKS2) << "Drive can power off:" << drivePath;
+                    QDBusMessage msg = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, drivePath, UD2_DBUS_INTERFACE_DRIVE, "PowerOff");
                     msg << QVariantMap();   // options, unused now
                     c.call(msg, QDBus::NoBlock);
                 }
@@ -285,6 +293,7 @@ bool StorageAccess::unmount()
 
     msg << QVariantMap();   // options, unused now
 
+    qCDebug(UDISKS2) << "Initiating unmount of " << path;
     return c.callWithCallback(msg, this,
                               SLOT(slotDBusReply(QDBusMessage)),
                               SLOT(slotDBusError(QDBusError)),
