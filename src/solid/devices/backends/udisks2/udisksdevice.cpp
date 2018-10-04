@@ -231,8 +231,6 @@ QStringList Device::emblems() const
         if (accessIface.isAccessible()) {
             if (isEncryptedContainer()) {
                 res << "emblem-encrypted-unlocked";
-            } else {
-                res << "emblem-mounted";
             }
         } else {
             if (isEncryptedContainer()) {
