@@ -614,6 +614,11 @@ QString Device::icon() const
 
     if (!iconName.isEmpty()) {
         return iconName;
+    } else if (queryDeviceInterface(Solid::DeviceInterface::StorageAccess)) {
+        const UDisks2::StorageAccess accessIface(const_cast<Device *>(this));
+        if (accessIface.filePath() == QLatin1String("/")) {
+            return QStringLiteral("drive-harddisk-root");
+        }
     } else if (isLoop()) {
         const QString backingFile = prop("BackingFile").toString();
         if (!backingFile.isEmpty()) {
