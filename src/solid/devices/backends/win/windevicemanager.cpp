@@ -139,8 +139,8 @@ WinDeviceManager::WinDeviceManager(QObject *parent)
     : DeviceManager(parent)
 {
 
-    connect(solidWineventFilter, SIGNAL(deviceAdded(const QSet<QString> &)),this, SLOT(slotDeviceAdded(QSet<QString>)));
-    connect(solidWineventFilter, SIGNAL(deviceRemoved(const QSet<QString> &)),this, SLOT(slotDeviceRemoved(QSet<QString>)));
+    connect(solidWineventFilter, SIGNAL(deviceAdded(QSet<QString>)),this, SLOT(slotDeviceAdded(QSet<QString>)));
+    connect(solidWineventFilter, SIGNAL(deviceRemoved(QSet<QString>)),this, SLOT(slotDeviceRemoved(QSet<QString>)));
 
     m_supportedInterfaces << Solid::DeviceInterface::GenericInterface
                              //                          << Solid::DeviceInterface::Block

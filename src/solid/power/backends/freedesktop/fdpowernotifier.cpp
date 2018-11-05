@@ -32,7 +32,7 @@ Solid::FDPowerNotifier::FDPowerNotifier(QObject* parent): PowerNotifier(parent)
                  QStringLiteral("org.freedesktop.DBus.Properties"),
                  QStringLiteral("PropertiesChanged"),
                  this,
-                 SLOT(upowerPropertiesChanged(QString, QVariantMap, QStringList))
+                 SLOT(upowerPropertiesChanged(QString,QVariantMap,QStringList))
                  );
 
     conn.connect(QStringLiteral("org.freedesktop.login1"),
