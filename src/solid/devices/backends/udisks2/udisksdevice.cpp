@@ -614,11 +614,8 @@ QString Device::icon() const
 
     if (!iconName.isEmpty()) {
         return iconName;
-    } else if (queryDeviceInterface(Solid::DeviceInterface::StorageAccess)) {
-        const UDisks2::StorageAccess accessIface(const_cast<Device *>(this));
-        if (accessIface.filePath() == QLatin1String("/")) {
-            return QStringLiteral("drive-harddisk-root");
-        }
+    } else if (isRoot()) {
+        return QStringLiteral("drive-harddisk-root");
     } else if (isLoop()) {
         const QString backingFile = prop("BackingFile").toString();
         if (!backingFile.isEmpty()) {
@@ -870,6 +867,15 @@ bool Device::isEncryptedCleartext() const
     } else {
         return true;
     }
+}
+
+bool Device::isRoot() const
+{
+    if (isStorageAccess()) {
+        const UDisks2::StorageAccess accessIface(const_cast<Device *>(this));
+        return accessIface.filePath() == QLatin1String("/");
+    }
+    return false;
 }
 
 bool Device::isSwap() const

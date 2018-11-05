@@ -81,6 +81,7 @@ public:
     bool isMounted() const;
     bool isEncryptedContainer() const;
     bool isEncryptedCleartext() const;
+    bool isRoot() const;
     bool isSwap() const;
     bool isLoop() const;
 
