@@ -25,8 +25,8 @@
 #include <solid/devices/ifaces/storageaccess.h>
 #include "udisksdeviceinterface.h"
 
-#include <QtDBus/QDBusMessage>
-#include <QtDBus/QDBusError>
+#include <QDBusMessage>
+#include <QDBusError>
 
 namespace Solid
 {

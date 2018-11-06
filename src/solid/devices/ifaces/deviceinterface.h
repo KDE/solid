@@ -21,7 +21,7 @@
 #ifndef SOLID_IFACES_DEVICEINTERFACE_H
 #define SOLID_IFACES_DEVICEINTERFACE_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
 namespace Solid
 {

@@ -23,8 +23,8 @@
 
 #include <solid/devices/ifaces/storageaccess.h>
 
-#include <QtCore/QObject>
-#include <QtCore/QProcess>
+#include <QObject>
+#include <QProcess>
 
 namespace Solid
 {

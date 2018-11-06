@@ -22,8 +22,8 @@
 #ifndef SOLID_BACKENDS_FSTAB_FSTABHANDLING_H
 #define SOLID_BACKENDS_FSTAB_FSTABHANDLING_H
 
-#include <QtCore/QString>
-#include <QtCore/QMultiHash>
+#include <QString>
+#include <QMultiHash>
 
 #include <functional>
 

@@ -29,8 +29,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-#include <QtCore/QFile>
-#include <QtCore/QDebug>
+#include <QFile>
+#include <QDebug>
 
 #include "udisks_debug.h"
 #include "udisks2.h"

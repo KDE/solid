@@ -20,7 +20,7 @@
 #ifndef SOLID_BACKENDS_FAKEHW_FAKEDEVICEINTERFACE_H
 #define SOLID_BACKENDS_FAKEHW_FAKEDEVICEINTERFACE_H
 
-#include <QtCore/QObject>
+#include <QObject>
 #include <solid/devices/ifaces/deviceinterface.h>
 
 #include "fakedevice.h"

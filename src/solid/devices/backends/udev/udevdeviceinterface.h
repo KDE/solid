@@ -24,8 +24,8 @@
 #include <solid/devices/ifaces/deviceinterface.h>
 #include "udevdevice.h"
 
-#include <QtCore/QObject>
-#include <QtCore/QStringList>
+#include <QObject>
+#include <QStringList>
 
 namespace Solid
 {

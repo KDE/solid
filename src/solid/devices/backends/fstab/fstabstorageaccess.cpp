@@ -23,7 +23,7 @@
 #include <solid/devices/backends/fstab/fstabdevice.h>
 #include <solid/devices/backends/fstab/fstabhandling.h>
 #include <solid/devices/backends/fstab/fstabservice.h>
-#include <QtCore/QStringList>
+#include <QStringList>
 
 #include <QTimer>
 

@@ -23,9 +23,9 @@
 #include "fstabnetworkshare.h"
 #include "fstabstorageaccess.h"
 #include "fstabservice.h"
-#include <QtCore/QCoreApplication>
-#include <QtCore/QStringList>
-#include <QtCore/QUrl>
+#include <QCoreApplication>
+#include <QStringList>
+#include <QUrl>
 
 using namespace Solid::Backends::Fstab;
 

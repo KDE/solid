@@ -25,8 +25,8 @@
 
 #include <solid/deviceinterface.h>
 
-#include <QtCore/QStringList>
-#include <QtCore/QVariant>
+#include <QStringList>
+#include <QVariant>
 
 namespace Solid
 {

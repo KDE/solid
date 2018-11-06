@@ -20,10 +20,10 @@
 #ifndef SOLID_BACKENDS_FAKEHW_FAKEDEVICE_P_H
 #define SOLID_BACKENDS_FAKEHW_FAKEDEVICE_P_H
 
-#include <QtCore/QMap>
-#include <QtCore/QString>
-#include <QtCore/QVariant>
-#include <QtCore/QObject>
+#include <QMap>
+#include <QString>
+#include <QVariant>
+#include <QObject>
 
 #include "fakedevice.h"
 

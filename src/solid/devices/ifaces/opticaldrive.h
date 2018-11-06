@@ -21,7 +21,7 @@
 #ifndef SOLID_IFACE_OPTICALDRIVE_H
 #define SOLID_IFACE_OPTICALDRIVE_H
 
-#include <QtCore/QList>
+#include <QList>
 
 #include <solid/devices/ifaces/storagedrive.h>
 #include <solid/opticaldrive.h>

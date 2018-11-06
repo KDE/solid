@@ -18,7 +18,7 @@
 #ifndef SOLID_EXTENSION_PLUGIN_H
 #define SOLID_EXTENSION_PLUGIN_H
 
-#include <QtQml/QQmlExtensionPlugin>
+#include <QQmlExtensionPlugin>
 
 class SolidExtensionPlugin: public QQmlExtensionPlugin
 {

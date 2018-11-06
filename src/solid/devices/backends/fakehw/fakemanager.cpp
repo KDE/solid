@@ -22,14 +22,14 @@
 #include "fakedevice.h"
 
 // Qt includes
-#include <QtXml/QDomDocument>
-#include <QtXml/QDomElement>
-#include <QtXml/QDomNode>
-#include <QtCore/QDebug>
-#include <QtCore/QFile>
-#include <QtCore/QString>
-#include <QtCore/QTimer>
-#include <QtDBus/QDBusConnection>
+#include <QDomDocument>
+#include <QDomElement>
+#include <QDomNode>
+#include <QDebug>
+#include <QFile>
+#include <QString>
+#include <QTimer>
+#include <QDBusConnection>
 
 using namespace Solid::Backends::Fake;
 

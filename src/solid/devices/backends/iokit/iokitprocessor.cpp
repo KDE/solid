@@ -22,7 +22,7 @@
 #include "iokitprocessor.h"
 #include "iokitdevice.h"
 
-#include <QtCore/qdebug.h>
+#include <qdebug.h>
 
 #include <sys/types.h>
 #include <sys/sysctl.h>

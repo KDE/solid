@@ -23,8 +23,8 @@
 
 #include "../shared/udevqt.h"
 
-#include <QtCore/QDebug>
-#include <QtCore/QFile>
+#include <QDebug>
+#include <QFile>
 
 using namespace Solid::Backends::UDisks2;
 

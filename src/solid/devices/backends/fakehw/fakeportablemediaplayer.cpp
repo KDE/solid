@@ -21,7 +21,7 @@
 
 #include "fakeportablemediaplayer.h"
 
-#include <QtCore/QStringList>
+#include <QStringList>
 
 using namespace Solid::Backends::Fake;
 

@@ -24,7 +24,7 @@
 #include "cpuinfo.h"
 #include "../shared/cpufeatures.h"
 
-#include <QtCore/QFile>
+#include <QFile>
 
 using namespace Solid::Backends::UDev;
 

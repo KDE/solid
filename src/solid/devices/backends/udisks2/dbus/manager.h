@@ -11,13 +11,13 @@
 #ifndef MANAGER_H_1329493525
 #define MANAGER_H_1329493525
 
-#include <QtCore/QObject>
-#include <QtCore/QByteArray>
-#include <QtCore/QList>
-#include <QtCore/QMap>
-#include <QtCore/QString>
-#include <QtCore/QStringList>
-#include <QtCore/QVariant>
+#include <QObject>
+#include <QByteArray>
+#include <QList>
+#include <QMap>
+#include <QString>
+#include <QStringList>
+#include <QVariant>
 #include <QDBusConnection>
 
 #include "../udisks2.h"

@@ -18,12 +18,12 @@
     License along with this library. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <QtCore/QObject>
-#include <QtCore/QThread>
-#include <QtCore/QThreadPool>
+#include <QObject>
+#include <QThread>
+#include <QThreadPool>
 #include <qtconcurrentrun.h>
 
-#include <QtTest/QtTest>
+#include <QtTest>
 
 #include <solid/device.h>
 #include <solid/predicate.h>

@@ -21,11 +21,11 @@
 #include "fstabwatcher.h"
 #include "soliddefs_p.h"
 
-#include <QtCore/QCoreApplication>
-#include <QtCore/QFileSystemWatcher>
-#include <QtCore/QSocketNotifier>
-#include <QtCore/QFile>
-#include <QtCore/QStringList>
+#include <QCoreApplication>
+#include <QFileSystemWatcher>
+#include <QSocketNotifier>
+#include <QFile>
+#include <QStringList>
 
 using namespace Solid::Backends::Fstab;
 

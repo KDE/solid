@@ -23,7 +23,7 @@
 
 #include <solid/devices/ifaces/deviceinterface.h>
 
-#include <QtCore/QMetaEnum>
+#include <QMetaEnum>
 
 Solid::DeviceInterface::DeviceInterface(DeviceInterfacePrivate &dd, QObject *backendObject)
     : d_ptr(&dd)

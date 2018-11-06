@@ -25,10 +25,10 @@
 
 #include "devicenotifier.h"
 
-#include <QtCore/QMap>
-#include <QtCore/QPointer>
-#include <QtCore/QSharedData>
-#include <QtCore/QThreadStorage>
+#include <QMap>
+#include <QPointer>
+#include <QSharedData>
+#include <QThreadStorage>
 
 namespace Solid
 {

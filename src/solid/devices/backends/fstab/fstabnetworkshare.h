@@ -23,7 +23,7 @@
 
 #include <solid/devices/ifaces/networkshare.h>
 
-#include <QtCore/QObject>
+#include <QObject>
 
 namespace Solid
 {

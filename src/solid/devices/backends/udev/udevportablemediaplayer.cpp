@@ -22,10 +22,10 @@
 
 #include "udevportablemediaplayer.h"
 
-#include <QtCore/QChar>
-#include <QtCore/QDebug>
-#include <QtCore/QFile>
-#include <QtCore/QTextStream>
+#include <QChar>
+#include <QDebug>
+#include <QFile>
+#include <QTextStream>
 #include <qstandardpaths.h>
 
 using namespace Solid::Backends::UDev;

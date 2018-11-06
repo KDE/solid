@@ -21,9 +21,9 @@
 #ifndef HALBASICTEST_H
 #define HALBASICTEST_H
 
-#include <QtCore/QObject>
-#include <QtCore/QMap>
-#include <QtCore/QString>
+#include <QObject>
+#include <QMap>
+#include <QString>
 
 #include "solid/devices/backends/hal/haldevice.h"
 

@@ -20,7 +20,7 @@
 
 #include "halbasictest.h"
 
-#include <QtTest/QtTest>
+#include <QtTest>
 
 #include "solid/devices/backends/hal/halmanager.h"
 
@@ -30,7 +30,7 @@
 #include <solid/devices/ifaces/processor.h>
 #include "solid/devices/backends/hal/halprocessor.h"
 
-#include <QtDBus/QDBusConnection>
+#include <QDBusConnection>
 
 QTEST_MAIN(HalBasicTest)
 

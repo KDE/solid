@@ -24,9 +24,9 @@
 #define UDISKSDEVICEBACKEND_H
 
 #include <QObject>
-#include <QtDBus/QDBusConnection>
-#include <QtDBus/QDBusObjectPath>
-#include <QtDBus/QDBusInterface>
+#include <QDBusConnection>
+#include <QDBusObjectPath>
+#include <QDBusInterface>
 #include <QStringList>
 
 #include "udisks2.h"

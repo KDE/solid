@@ -35,7 +35,7 @@ enum ErrorType {
 };
 }
 
-#include <QtCore/QMetaType>
+#include <QMetaType>
 
 Q_DECLARE_METATYPE(Solid::ErrorType)
 

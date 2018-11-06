@@ -30,8 +30,8 @@ extern "C"
 
 #include <stdlib.h>
 
-#include <QtCore/QStringList>
-#include <QtCore/QThreadStorage>
+#include <QStringList>
+#include <QThreadStorage>
 
 namespace Solid
 {

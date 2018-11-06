@@ -23,7 +23,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include <QtCore/qtemporaryfile.h>
+#include <qtemporaryfile.h>
 
 #include <QDebug>
 #include <QTimer>

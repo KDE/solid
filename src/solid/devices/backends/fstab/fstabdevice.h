@@ -22,8 +22,8 @@
 #define SOLID_BACKENDS_FSTAB_FSTAB_DEVICE_H
 
 #include <solid/devices/ifaces/device.h>
-#include <QtCore/QStringList>
-#include <QtCore/QPointer>
+#include <QStringList>
+#include <QPointer>
 #include "fstabstorageaccess.h"
 
 namespace Solid

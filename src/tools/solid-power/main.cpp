@@ -20,8 +20,8 @@
 
 #include "solid-power.h"
 
-#include <QtCore/QCoreApplication>
-#include <QtCore/QCommandLineParser>
+#include <QCoreApplication>
+#include <QCommandLineParser>
 #include <QTextStream>
 
 static QTextStream sOut(stdout);

@@ -21,7 +21,7 @@
 #include "udevqtclient.h"
 #include "udevqt_p.h"
 
-#include <QtCore/QSocketNotifier>
+#include <QSocketNotifier>
 #include <qplatformdefs.h>
 
 namespace UdevQt

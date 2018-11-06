@@ -21,8 +21,8 @@
 #ifndef SOLIDHWTEST_H
 #define SOLIDHWTEST_H
 
-#include <QtCore/QObject>
-#include <QtCore/QMap>
+#include <QObject>
+#include <QMap>
 
 namespace Solid
 {

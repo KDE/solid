@@ -20,7 +20,7 @@
 
 #include "fakevolume.h"
 
-#include <QtDBus/QDBusConnection>
+#include <QDBusConnection>
 
 using namespace Solid::Backends::Fake;
 

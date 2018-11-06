@@ -20,11 +20,11 @@
 
 #include "halcdrom.h"
 
-#include <QtCore/QStringList>
-#include <QtDBus/QDBusInterface>
-#include <QtDBus/QDBusReply>
-#include <QtDBus/QDBusError>
-#include <QtDBus/QDBusVariant>
+#include <QStringList>
+#include <QDBusInterface>
+#include <QDBusReply>
+#include <QDBusError>
+#include <QDBusVariant>
 
 #include "halfstabhandling.h"
 

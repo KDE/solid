@@ -25,9 +25,9 @@
 #include <ifaces/deviceinterface.h>
 #include "upowerdevice.h"
 
-#include <QtCore/QObject>
-#include <QtCore/QStringList>
-#include <QtCore/QPointer>
+#include <QObject>
+#include <QStringList>
+#include <QPointer>
 
 namespace Solid
 {

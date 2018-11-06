@@ -21,10 +21,10 @@
 #ifndef SOLID_IFACES_DEVICE_H
 #define SOLID_IFACES_DEVICE_H
 
-#include <QtCore/QObject>
-#include <QtCore/QVariant>
+#include <QObject>
+#include <QVariant>
 
-#include <QtCore/QMap>
+#include <QMap>
 
 #include <solid/deviceinterface.h>
 #include <solid/device.h>

@@ -20,7 +20,7 @@
 #ifndef FAKEHARDWARETEST_H
 #define FAKEHARDWARETEST_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
 class FakeHardwareTest : public QObject
 {

@@ -26,7 +26,7 @@
 
 #ifdef EJECT_USING_DISKARBITRATION
 // for QCFType:
-#include <QtCore/private/qcore_mac_p.h>
+#include <private/qcore_mac_p.h>
 #else
 #include <QStandardPaths>
 #endif

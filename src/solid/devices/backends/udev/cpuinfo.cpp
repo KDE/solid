@@ -20,10 +20,10 @@
 
 #include "cpuinfo.h"
 
-#include <QtCore/QDebug>
-#include <QtCore/QFile>
-#include <QtCore/QRegExp>
-#include <QtCore/QStringList>
+#include <QDebug>
+#include <QFile>
+#include <QRegExp>
+#include <QStringList>
 
 namespace Solid
 {

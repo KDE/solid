@@ -21,8 +21,8 @@
 #ifndef SOLID_OPTICALDRIVE_H
 #define SOLID_OPTICALDRIVE_H
 
-#include <QtCore/QList>
-#include <QtCore/QVariant>
+#include <QList>
+#include <QVariant>
 
 #include <solid/solid_export.h>
 #include <solid/solidnamespace.h>

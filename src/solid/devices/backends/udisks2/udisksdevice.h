@@ -28,9 +28,9 @@
 #include <solid/deviceinterface.h>
 #include <solid/solidnamespace.h>
 
-#include <QtDBus/QDBusInterface>
-#include <QtDBus/QDBusObjectPath>
-#include <QtCore/QStringList>
+#include <QDBusInterface>
+#include <QDBusObjectPath>
+#include <QStringList>
 
 namespace Solid
 {

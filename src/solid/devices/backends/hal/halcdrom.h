@@ -24,10 +24,10 @@
 #include <solid/devices/ifaces/opticaldrive.h>
 #include "halstorage.h"
 
-#include <QtCore/QProcess>
-#include <QtDBus/QDBusMessage>
-#include <QtDBus/QDBusError>
-#include <QtDBus/QDBusVariant>
+#include <QProcess>
+#include <QDBusMessage>
+#include <QDBusError>
+#include <QDBusVariant>
 
 namespace Solid
 {

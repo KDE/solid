@@ -21,10 +21,10 @@
 #ifndef SOLID_IFACES_GENERICINTERFACE_H
 #define SOLID_IFACES_GENERICINTERFACE_H
 
-#include <QtCore/QObject>
+#include <QObject>
 
-#include <QtCore/QMap>
-#include <QtCore/QVariant>
+#include <QMap>
+#include <QVariant>
 
 namespace Solid
 {

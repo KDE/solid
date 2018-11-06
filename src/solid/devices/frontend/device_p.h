@@ -21,9 +21,9 @@
 #ifndef SOLID_DEVICE_P_H
 #define SOLID_DEVICE_P_H
 
-#include <QtCore/QObject>
-#include <QtCore/QSharedData>
-#include <QtCore/QPointer>
+#include <QObject>
+#include <QSharedData>
+#include <QPointer>
 
 #include <ifaces/device.h>
 

@@ -22,8 +22,8 @@
 
 #include <solid/devices/ifaces/device.h>
 
-#include <QtCore/QMap>
-#include <QtCore/QSharedPointer>
+#include <QMap>
+#include <QSharedPointer>
 
 namespace Solid
 {

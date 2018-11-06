@@ -26,8 +26,8 @@
 #include <ifaces/device.h>
 #include <solid/deviceinterface.h>
 
-#include <QtDBus/QDBusInterface>
-#include <QtCore/QSet>
+#include <QDBusInterface>
+#include <QSet>
 
 namespace Solid
 {

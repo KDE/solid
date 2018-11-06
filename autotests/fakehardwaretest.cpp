@@ -20,8 +20,8 @@
 #include "fakehardwaretest.h"
 
 // Qt includes
-#include <QtTest/QtTest>
-#include <QtCore/QStringList>
+#include <QtTest>
+#include <QStringList>
 
 // Solid includes
 #include <solid/devices/ifaces/device.h>

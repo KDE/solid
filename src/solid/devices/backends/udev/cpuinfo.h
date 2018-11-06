@@ -21,7 +21,7 @@
 #ifndef SOLID_BACKENDS_UDEV_CPUINFO_H
 #define SOLID_BACKENDS_UDEV_CPUINFO_H
 
-#include <QtCore/QString>
+#include <QString>
 
 namespace Solid
 {
