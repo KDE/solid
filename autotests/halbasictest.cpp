@@ -93,7 +93,7 @@ void HalBasicTest::testProcessorList()
 {
     QList<Solid::Device> list = Solid::Device::listFromType(Solid::DeviceInterface::Processor, QString());
     qDebug() << "Number of processors:" << list.size();
-    if (list.size() > 0) {
+    if (!list.isEmpty()) {
         Solid::Processor *p = list[0].as<Solid::Processor>();
         QVERIFY(p);
         Solid::Processor::InstructionSets features = p->instructionSets();
