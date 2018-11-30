@@ -42,14 +42,14 @@ public:
     IOKitDevice(const IOKitDevice &device);
     virtual ~IOKitDevice();
 
-    virtual QString udi() const override;
-    virtual QString parentUdi() const override;
+    QString udi() const override;
+    QString parentUdi() const override;
 
-    virtual QString vendor() const override;
-    virtual QString product() const override;
-    virtual QString icon() const override;
-    virtual QStringList emblems() const override;
-    virtual QString description() const override;
+    QString vendor() const override;
+    QString product() const override;
+    QString icon() const override;
+    QStringList emblems() const override;
+    QString description() const override;
 
     virtual QVariant property(const QString &key) const;
 
@@ -57,8 +57,8 @@ public:
 
     virtual bool iOKitPropertyExists(const QString &key) const;
 
-    virtual bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const override;
-    virtual QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type) override;
+    bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const override;
+    QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type) override;
 
     bool conformsToIOKitClass(const QString &className) const;
 
