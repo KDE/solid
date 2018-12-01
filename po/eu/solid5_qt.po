@@ -1,0 +1,1240 @@
+# Translation of solid5_qt.po to Euskera/Basque (eu).
+# Copyright (C) 2011-2017, Free Software Foundation, Inc.
+# This file is distributed under the same license as the frameworks package.
+#
+# Iñigo Salvador Azurmendi <xalba@euskalnet.net>, 2009, 2010, 2011, 2012, 2017.
+# marcos <marcos@euskalgnu.org>, 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version: solid5_qt\n"
+"Report-Msgid-Bugs-To: http://bugs.kde.org\n"
+"POT-Creation-Date: 2014-04-01 01:49+0000\n"
+"PO-Revision-Date: 2017-10-17 21:29+0100\n"
+"Last-Translator: Iñigo Salvador Azurmendi <xalba@euskalnet.net>\n"
+"Language-Team: Basque <kde-i18n-doc@kde.org>\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 2.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Qt-Contexts: true\n"
+
+#: solid/devices/backends/fstab/fstabdevice.cpp:63
+#, qt-format
+msgctxt "%1 is sharename, %2 is servername"
+msgid "%1 on %2"
+msgstr "%1 %2-(e)(a)n"
+
+#: solid/devices/backends/fstab/fstabmanager.cpp:88
+msgctxt "Solid::Backends::Fstab::FstabManager|"
+msgid "Network Shares"
+msgstr "Sareko partekatzeak"
+
+#: solid/devices/backends/fstab/fstabmanager.cpp:89
+msgctxt "Solid::Backends::Fstab::FstabManager|"
+msgid "NFS and SMB shares declared in your system"
+msgstr "Zure sisteman NFS eta SMB partekatzeak deklaratuta daude"
+
+#: solid/devices/backends/hal/haldevice.cpp:64
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 TiB"
+msgstr "%1 TiB"
+
+#: solid/devices/backends/hal/haldevice.cpp:66
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 GiB"
+msgstr "%1 GiB"
+
+#: solid/devices/backends/hal/haldevice.cpp:72
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 MiB"
+msgstr "%1 MiB"
+
+#: solid/devices/backends/hal/haldevice.cpp:77
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 KiB"
+msgstr "%1 KiB"
+
+#: solid/devices/backends/hal/haldevice.cpp:81
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 B"
+msgstr "%1 B"
+
+#: solid/devices/backends/hal/haldevice.cpp:85
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "0 B"
+msgstr "0 B"
+
+#: solid/devices/backends/hal/haldevice.cpp:320
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "WLAN Interface"
+msgstr "WLAN Interfazea"
+
+#: solid/devices/backends/hal/haldevice.cpp:322
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Networking Interface"
+msgstr "Sareko interfazea"
+
+#: solid/devices/backends/hal/haldevice.cpp:507
+msgctxt "Solid::Backends::Hal::HalDevice|First item of %1%2 Drive sentence"
+msgid "CD-ROM"
+msgstr "CD-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:509
+msgctxt "Solid::Backends::Hal::HalDevice|First item of %1%2 Drive sentence"
+msgid "CD-R"
+msgstr "CD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:512
+msgctxt "Solid::Backends::Hal::HalDevice|First item of %1%2 Drive sentence"
+msgid "CD-RW"
+msgstr "CD-RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:516
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-ROM"
+msgstr "/DVD-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:519
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD+R"
+msgstr "/DVD+R"
+
+#: solid/devices/backends/hal/haldevice.cpp:522
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD+RW"
+msgstr "/DVD+RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:525
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-R"
+msgstr "/DVD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:528
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-RW"
+msgstr "/DVD-RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:531
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-RAM"
+msgstr "/DVD-RAM"
+
+#: solid/devices/backends/hal/haldevice.cpp:535
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±R DL"
+msgstr "/DVD±R DL"
+
+#: solid/devices/backends/hal/haldevice.cpp:537
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±R"
+msgstr "/DVD±R"
+
+#: solid/devices/backends/hal/haldevice.cpp:542
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±RW DL"
+msgstr "/DVD±RW DL"
+
+#: solid/devices/backends/hal/haldevice.cpp:544
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±RW"
+msgstr "/DVD±RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:548
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/BD-ROM"
+msgstr "/BD-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:551
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/BD-R"
+msgstr "/BD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:554
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/BD-RE"
+msgstr "/BD-RE"
+
+#: solid/devices/backends/hal/haldevice.cpp:557
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-ROM"
+msgstr "/HD DVD-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:560
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-R"
+msgstr "/HD DVD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:563
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-RW"
+msgstr "/HD DVD-RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:567
+#, qt-format
+msgctxt ""
+"Solid::Backends::Hal::HalDevice|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
+"DVD-R'/etc (with leading slash)"
+msgid "External %1%2 Drive"
+msgstr "Kanpoko %1%2 unitatea"
+
+#: solid/devices/backends/hal/haldevice.cpp:569
+#, qt-format
+msgctxt ""
+"Solid::Backends::Hal::HalDevice|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
+"DVD-R'/etc (with leading slash)"
+msgid "%1%2 Drive"
+msgstr "%1%2 unitatea"
+
+#: solid/devices/backends/hal/haldevice.cpp:577
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "External Floppy Drive"
+msgstr "Kanpoko diskete unitatea"
+
+#: solid/devices/backends/hal/haldevice.cpp:579
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Floppy Drive"
+msgstr "Diskete unitatea"
+
+#: solid/devices/backends/hal/haldevice.cpp:591
+#: solid/devices/backends/hal/haldevice.cpp:794
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 External Hard Drive"
+msgstr "%1(e)ko kanpoko disko-zurrun unitatea"
+
+#: solid/devices/backends/hal/haldevice.cpp:593
+#: solid/devices/backends/hal/haldevice.cpp:796
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 Hard Drive"
+msgstr "%1 disko-zurruna"
+
+#: solid/devices/backends/hal/haldevice.cpp:597
+#: solid/devices/backends/hal/haldevice.cpp:800
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "External Hard Drive"
+msgstr "Kanpoko disko-zurrun unitatea"
+
+#: solid/devices/backends/hal/haldevice.cpp:599
+#: solid/devices/backends/hal/haldevice.cpp:802
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Hard Drive"
+msgstr "Disko-zurruna"
+
+#: solid/devices/backends/hal/haldevice.cpp:618
+#, qt-format
+msgctxt ""
+"Solid::Backends::Hal::HalDevice|%1 is the vendor, %2 is the model of the "
+"device"
+msgid "%1 %2"
+msgstr "%1 %2"
+
+#: solid/devices/backends/hal/haldevice.cpp:623
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Drive"
+msgstr "Unitatea"
+
+#: solid/devices/backends/hal/haldevice.cpp:652
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "CD-ROM"
+msgstr "CD-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:657
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank CD-R"
+msgstr "CD-R hutsa"
+
+#: solid/devices/backends/hal/haldevice.cpp:659
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "CD-R"
+msgstr "CD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:665
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank CD-RW"
+msgstr "CD-RW hutsa"
+
+#: solid/devices/backends/hal/haldevice.cpp:667
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "CD-RW"
+msgstr "CD-RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:672
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD-ROM"
+msgstr "DVD-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:677
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD-RAM"
+msgstr "DVD-RAM hutsa"
+
+#: solid/devices/backends/hal/haldevice.cpp:679
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD-RAM"
+msgstr "DVD-RAM"
+
+#: solid/devices/backends/hal/haldevice.cpp:685
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD-R"
+msgstr "DVD-R hutsa"
+
+#: solid/devices/backends/hal/haldevice.cpp:687
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD-R"
+msgstr "DVD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:693
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD+R Dual-Layer"
+msgstr "Geruza bikoitzeko DVD+R hutsa"
+
+#: solid/devices/backends/hal/haldevice.cpp:695
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD+R Dual-Layer"
+msgstr "Geruza bikoitzeko DVD+R"
+
+#: solid/devices/backends/hal/haldevice.cpp:701
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD-RW"
+msgstr "DVD-RW hutsa"
+
+#: solid/devices/backends/hal/haldevice.cpp:703
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD-RW"
+msgstr "DVD-RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:709
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD+R"
+msgstr "DVD+R hutsa"
+
+#: solid/devices/backends/hal/haldevice.cpp:711
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD+R"
+msgstr "DVD+R"
+
+#: solid/devices/backends/hal/haldevice.cpp:717
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD+RW"
+msgstr "DVD+RW hutsa"
+
+#: solid/devices/backends/hal/haldevice.cpp:719
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD+RW"
+msgstr "DVD+RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:725
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD+RW Dual-Layer"
+msgstr "Geruza bikoitzeko DVD+RW hutsa"
+
+#: solid/devices/backends/hal/haldevice.cpp:727
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD+RW Dual-Layer"
+msgstr "Geruza bikoitzeko DVD+RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:732
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "BD-ROM"
+msgstr "BD-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:737
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank BD-R"
+msgstr "BD-R hutsa"
+
+#: solid/devices/backends/hal/haldevice.cpp:739
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "BD-R"
+msgstr "BD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:745
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank BD-RE"
+msgstr "BD-RE hutsa"
+
+#: solid/devices/backends/hal/haldevice.cpp:747
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "BD-RE"
+msgstr "BD-RE"
+
+#: solid/devices/backends/hal/haldevice.cpp:752
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "HD DVD-ROM"
+msgstr "HD DVD-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:757
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank HD DVD-R"
+msgstr "HD DVD-R hutsa"
+
+#: solid/devices/backends/hal/haldevice.cpp:759
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "HD DVD-R"
+msgstr "HD DVD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:765
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank HD DVD-RW"
+msgstr "HD DVD-RW hutsa"
+
+#: solid/devices/backends/hal/haldevice.cpp:767
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "HD DVD-RW"
+msgstr "HD DVD-RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:774
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Audio CD"
+msgstr "Audio CD"
+
+#: solid/devices/backends/hal/haldevice.cpp:787
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 Encrypted Container"
+msgstr "%1(e)ko zifratutako edukitzailea"
+
+#: solid/devices/backends/hal/haldevice.cpp:789
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Encrypted Container"
+msgstr "Zifratutako edukitzailea"
+
+#: solid/devices/backends/hal/haldevice.cpp:807
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 Removable Media"
+msgstr "%1-(e)ko euskarri aldagarria"
+
+#: solid/devices/backends/hal/haldevice.cpp:809
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 Media"
+msgstr "%1-(e)ko euskarria"
+
+#: solid/devices/backends/udev/udevdevice.cpp:116
+msgctxt "Solid::Backends::UDev::UDevDevice|"
+msgid "Computer"
+msgstr "Ordenagailua"
+
+#: solid/devices/backends/udev/udevdevice.cpp:120
+msgctxt "Solid::Backends::UDev::UDevDevice|"
+msgid "Processor"
+msgstr "Prozesatzailea"
+
+#: solid/devices/backends/udev/udevdevice.cpp:131
+msgctxt "Solid::Backends::UDev::UDevDevice|"
+msgid "Portable Media Player"
+msgstr "Euskarri jole eramangarria"
+
+#: solid/devices/backends/udev/udevdevice.cpp:134
+msgctxt "Solid::Backends::UDev::UDevDevice|"
+msgid "Camera"
+msgstr "Kamera"
+
+#: solid/devices/backends/udev/udevmanager.cpp:223
+msgctxt "Solid::Backends::UDev::UDevManager|"
+msgid "Devices"
+msgstr "Gailuak"
+
+# Zalantza sortzen dit  'declare'  'aitortu'  gisa itzultzeak, are gehiago 'deklaratu'  gisa itzultzeak.
+#: solid/devices/backends/udev/udevmanager.cpp:224
+msgctxt "Solid::Backends::UDev::UDevManager|"
+msgid "Devices declared in your system"
+msgstr "Zure sisteman aitortutako gailuak"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:65
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 TiB"
+msgstr "%1 TiB"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:67
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 GiB"
+msgstr "%1 GiB"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:73
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 MiB"
+msgstr "%1 MiB"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:78
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 KiB"
+msgstr "%1 KiB"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:82
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 B"
+msgstr "%1 B"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:86
+msgctxt "udisksdevice|"
+msgid "0 B"
+msgstr "0 B"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:257
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Swap Space"
+msgstr "Trukatzeko-leku"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:279
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Loop Device"
+msgstr "Begizta gailua"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:295
+msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
+msgid "CD-ROM"
+msgstr "CD-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:297
+msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
+msgid "CD-R"
+msgstr "CD-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:300
+msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
+msgid "CD-RW"
+msgstr "CD-RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:304
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD-ROM"
+msgstr "/DVD-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:307
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD+R"
+msgstr "/DVD+R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:310
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD+RW"
+msgstr "/DVD+RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:313
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD-R"
+msgstr "/DVD-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:316
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD-RW"
+msgstr "/DVD-RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:319
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD-RAM"
+msgstr "/DVD-RAM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:323
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD±R DL"
+msgstr "/DVD±R DL"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:325
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD±R"
+msgstr "/DVD±R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:330
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD±RW DL"
+msgstr "/DVD±RW DL"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:332
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD±RW"
+msgstr "/DVD±RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:336
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/BD-ROM"
+msgstr "/BD-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:339
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/BD-R"
+msgstr "/BD-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:342
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/BD-RE"
+msgstr "/BD-RE"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:345
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-ROM"
+msgstr "/HD DVD-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:348
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-R"
+msgstr "/HD DVD-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:351
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-RW"
+msgstr "/HD DVD-RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:355
+#, qt-format
+msgctxt ""
+"Solid::Backends::UDisks2::Device|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
+"DVD-R'/etc (with leading slash)"
+msgid "External %1%2 Drive"
+msgstr "Kanpoko %1%2 unitatea"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:357
+#, qt-format
+msgctxt ""
+"Solid::Backends::UDisks2::Device|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
+"DVD-R'/etc (with leading slash)"
+msgid "%1%2 Drive"
+msgstr "%1%2 unitatea"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:365
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "External Floppy Drive"
+msgstr "Kanpoko diskete unitatea"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:367
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Floppy Drive"
+msgstr "Diskete unitatea"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:379
+#: solid/devices/backends/udisks2/udisksdevice.cpp:587
+#, qt-format
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 External Hard Drive"
+msgstr "%1(e)ko kanpoko disko-zurrun unitatea"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:381
+#: solid/devices/backends/udisks2/udisksdevice.cpp:589
+#, qt-format
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 Hard Drive"
+msgstr "%1(e)ko disko-zurrun unitatea"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:385
+#: solid/devices/backends/udisks2/udisksdevice.cpp:593
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "External Hard Drive"
+msgstr "Kanpoko disko-zurrun unitatea"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:387
+#: solid/devices/backends/udisks2/udisksdevice.cpp:595
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Hard Drive"
+msgstr "Disko-zurrun unitatea"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:410
+#, qt-format
+msgctxt ""
+"Solid::Backends::UDisks2::Device|%1 is the vendor, %2 is the model of the "
+"device"
+msgid "%1 %2"
+msgstr "%1 %2"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:416
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Drive"
+msgstr "Unitatea"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:446
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "CD-ROM"
+msgstr "CD-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:451
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank CD-R"
+msgstr "CD-R hutsa"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:453
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "CD-R"
+msgstr "CD-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:459
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank CD-RW"
+msgstr "CD-RW hutsa"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:461
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "CD-RW"
+msgstr "CD-RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:466
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD-ROM"
+msgstr "DVD-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:471
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD-RAM"
+msgstr "DVD-RAM hutsa"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:473
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD-RAM"
+msgstr "DVD-RAM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:479
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD-R"
+msgstr "DVD-R hutsa"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:481
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD-R"
+msgstr "DVD-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:487
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD+R Dual-Layer"
+msgstr "Geruza bikoitzeko DVD+R hutsa"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:489
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD+R Dual-Layer"
+msgstr "Geruza bikoitzeko DVD+R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:495
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD-RW"
+msgstr "DVD-RW hutsa"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:497
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD-RW"
+msgstr "DVD-RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:503
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD+R"
+msgstr "DVD+R hutsa"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:505
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD+R"
+msgstr "DVD+R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:511
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD+RW"
+msgstr "DVD+RW hutsa"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:513
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD+RW"
+msgstr "DVD+RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:519
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD+RW Dual-Layer"
+msgstr "Geruza bikoitzeko DVD+RW hutsa"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:521
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD+RW Dual-Layer"
+msgstr "Geruza bikoitzeko DVD+RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:526
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "BD-ROM"
+msgstr "BD-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:531
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank BD-R"
+msgstr "BD-R hutsa"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:533
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "BD-R"
+msgstr "BD-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:539
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank BD-RE"
+msgstr "BD-RE hutsa"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:541
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "BD-RE"
+msgstr "BD-RE"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:546
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "HD DVD-ROM"
+msgstr "HD DVD-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:551
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank HD DVD-R"
+msgstr "HD DVD-R hutsa"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:553
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "HD DVD-R"
+msgstr "HD DVD-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:559
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank HD DVD-RW"
+msgstr "HD DVD-RW hutsa"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:561
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "HD DVD-RW"
+msgstr "HD DVD-RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:568
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Audio CD"
+msgstr "Audio CD"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:580
+#, qt-format
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 Encrypted Drive"
+msgstr "%1-(e)ko zifratutako unitatea"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:582
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Encrypted Drive"
+msgstr "Zifratutako unitatea"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:599
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Floppy Disk"
+msgstr "Diskete unitatea"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:602
+#, qt-format
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 Removable Media"
+msgstr "%1-(e)ko euskarri aldagarria"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:604
+#, qt-format
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 Media"
+msgstr "%1-(e)ko euskarria"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:747
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "You are not authorized to perform this operation"
+msgstr "Ez duzu eragiketa hau egiteko baimenik"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:749
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is currently busy"
+msgstr "Gailua une honetan lanpetuta dago"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:751
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The requested operation has failed"
+msgstr "Eskatutako eragiketak huts egin du"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:753
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The requested operation has been canceled"
+msgstr "Eskatutako eragiketa bertan behera utzi da"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:755
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "An invalid or malformed option has been given"
+msgstr "Baliogabeko edo gaizki osatutako aukera bat eman da"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:757
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The kernel driver for this filesystem type is not available"
+msgstr "Fitxategi-sistema honentzako nukleoaren gidaria ez dago eskuragarri"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:759
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is already mounted"
+msgstr "Gailua jadanik muntatuta dago"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:761
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is not mounted"
+msgstr "Gailua ez dago muntatuta"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:763
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is mounted by another user"
+msgstr "Gailua beste erabiltzaile batek muntatua dago"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:765
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is already unmounting"
+msgstr "Gailua dagoeneko desmuntatzen ari da"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:767
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The operation timed out"
+msgstr "Eragiketak denbora-muga gainditu du"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:769
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The operation would wake up a disk that is in a deep-sleep state"
+msgstr "Eragiketak lo-sakonean dagoen disko bat esnatuko luke"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:771
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The operation has already been canceled"
+msgstr "Eragiketa dagoeneko bertan behera utzi da"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:773
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "An unspecified error has occurred"
+msgstr "Zehaztu gabeko errore bat gertatu da"
+
+#: solid/devices/backends/udisks2/udisksmanager.cpp:93
+msgctxt "Solid::Backends::UDisks2::Manager|"
+msgid "Storage"
+msgstr "Biltegiratzea"
+
+# Ez nago ziur zentzu egokia den.
+#: solid/devices/backends/udisks2/udisksmanager.cpp:94
+msgctxt "Solid::Backends::UDisks2::Manager|"
+msgid "Storage devices"
+msgstr "Biltegiratze gailuak"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:123
+#, qt-format
+msgctxt "Solid::Backends::UPower::UPowerDevice|%1 is battery technology"
+msgid "%1 Battery"
+msgstr "%1 bateria"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:138
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Lithium Ion"
+msgstr "Litio ioi"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:140
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Lithium Polymer"
+msgstr "Litio polimero"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:142
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Lithium Iron Phosphate"
+msgstr "Litio burdin fosfato"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:144
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Lead Acid"
+msgstr "Berun azido"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:146
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Nickel Cadmium"
+msgstr "Nikel kadmio"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:148
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Nickel Metal Hydride"
+msgstr "Nikel metal hidruro"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:150
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Unknown"
+msgstr "Ezezaguna"
+
+#: solid/devices/backends/upower/upowermanager.cpp:90
+msgctxt "Solid::Backends::UPower::UPowerManager|"
+msgid "Power Management"
+msgstr "Energia kudeaketa"
+
+#: solid/devices/backends/upower/upowermanager.cpp:91
+msgctxt "Solid::Backends::UPower::UPowerManager|"
+msgid "Batteries and other sources of power"
+msgstr "Bateriak eta beste energia iturburu batzuk"
+
+#: solid/devices/backends/win/windevice.cpp:173
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Lithium Ion"
+msgstr "Litio ioi"
+
+#: solid/devices/backends/win/windevice.cpp:176
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Lead Acid"
+msgstr "Berun azido"
+
+#: solid/devices/backends/win/windevice.cpp:179
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Nickel Cadmium"
+msgstr "Nikel kadmio"
+
+#: solid/devices/backends/win/windevice.cpp:182
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Nickel Metal Hydride"
+msgstr "Nikel metal hidruro"
+
+#: solid/devices/backends/win/windevice.cpp:185
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Unknown"
+msgstr "Ezezaguna"
+
+#: solid/devices/frontend/deviceinterface.cpp:66
+msgctxt "Solid::DeviceInterface|Unknown device type"
+msgid "Unknown"
+msgstr "Ezezaguna"
+
+#: solid/devices/frontend/deviceinterface.cpp:68
+msgctxt "Solid::DeviceInterface|Generic Interface device type"
+msgid "Generic Interface"
+msgstr "Interfaze generikoa"
+
+#: solid/devices/frontend/deviceinterface.cpp:70
+msgctxt "Solid::DeviceInterface|Processor device type"
+msgid "Processor"
+msgstr "Prozesatzailea"
+
+#: solid/devices/frontend/deviceinterface.cpp:72
+msgctxt "Solid::DeviceInterface|Block device type"
+msgid "Block"
+msgstr "Bloke"
+
+# Ez nago ziur zentzu egokia den.
+#: solid/devices/frontend/deviceinterface.cpp:74
+msgctxt "Solid::DeviceInterface|Storage Access device type"
+msgid "Storage Access"
+msgstr "Biltegiratze sarbidea"
+
+#: solid/devices/frontend/deviceinterface.cpp:76
+msgctxt "Solid::DeviceInterface|Storage Drive device type"
+msgid "Storage Drive"
+msgstr "Biltegiratze unitatea"
+
+#: solid/devices/frontend/deviceinterface.cpp:78
+msgctxt "Solid::DeviceInterface|Optical Drive device type"
+msgid "Optical Drive"
+msgstr "Unitate optikoa"
+
+#: solid/devices/frontend/deviceinterface.cpp:80
+msgctxt "Solid::DeviceInterface|Storage Volume device type"
+msgid "Storage Volume"
+msgstr "Biltegiratze bolumena"
+
+#: solid/devices/frontend/deviceinterface.cpp:82
+msgctxt "Solid::DeviceInterface|Optical Disc device type"
+msgid "Optical Disc"
+msgstr "Disko optikoa"
+
+#: solid/devices/frontend/deviceinterface.cpp:84
+msgctxt "Solid::DeviceInterface|Camera device type"
+msgid "Camera"
+msgstr "Kamera"
+
+#: solid/devices/frontend/deviceinterface.cpp:86
+msgctxt "Solid::DeviceInterface|Portable Media Player device type"
+msgid "Portable Media Player"
+msgstr "Euskarri jole eramangarria"
+
+#: solid/devices/frontend/deviceinterface.cpp:88
+msgctxt "Solid::DeviceInterface|Battery device type"
+msgid "Battery"
+msgstr "Bateria"
+
+#: solid/devices/frontend/deviceinterface.cpp:90
+msgctxt "Solid::DeviceInterface|Network Share device type"
+msgid "Network Share"
+msgstr "Sareko baliabide partekatua"
+
+#: tools/solid-hardware/solid-hardware.cpp:174
+#: tools/solid-hardware/solid-hardware.cpp:273
+msgctxt "solid-hardware|"
+msgid "Device udi"
+msgstr "UDI gailua"
+
+#: tools/solid-hardware/solid-hardware.cpp:189
+msgctxt "solid-hardware|"
+msgid "KDE tool for querying your hardware from the command line"
+msgstr "KDEren tresna zure hardwarea komando-lerrotik itauntzeko"
+
+#: tools/solid-hardware/solid-hardware.cpp:192
+msgctxt "solid-hardware|"
+msgid "Command to execute"
+msgstr "Exekutatu beharreko komandoa"
+
+#: tools/solid-hardware/solid-hardware.cpp:194
+msgctxt "solid-hardware|"
+msgid "Show available commands"
+msgstr "Erakutsi komando erabilgarriak"
+
+#: tools/solid-hardware/solid-hardware.cpp:200 tools/solid-power/main.cpp:47
+msgctxt "solid-hardware|"
+msgid "Syntax:"
+msgstr "Sintaxia:"
+
+#: tools/solid-hardware/solid-hardware.cpp:203
+msgctxt "solid-hardware|"
+msgid ""
+"             # List the hardware available in the system.\n"
+"             # - If the 'nonportableinfo' option is specified, the device\n"
+"             # properties are listed (be careful, in this case property "
+"names\n"
+"             # are backend dependent),\n"
+"             # - If the 'details' option is specified, the device "
+"interfaces\n"
+"             # and the corresponding properties are listed in a platform\n"
+"             # neutral fashion,\n"
+"             # - Otherwise only device UDIs are listed.\n"
+msgstr ""
+"             # Zerrendatu sistema honetan erabilgarri dagoen hardwarea.\n"
+"             # - 'nonportableinfo' aukera zehaztuta, gailuaren\n"
+"             # propietateak zerrendatuko dira (kontuz, kasu honetan "
+"propietate-izenak\n"
+"             # atzealdekoaren menpekoak dira),\n"
+"             # - 'details' aukera zehaztuta, gailu-interfazeak\n"
+"             # eta dagozkien propietatea zerrendatuko dira plataformarekiko\n"
+"             # era neutroan,\n"
+"             # - Bestela soilik UDI-ak zerrendatuko dira.\n"
+
+#: tools/solid-hardware/solid-hardware.cpp:214
+msgctxt "solid-hardware|"
+msgid ""
+"             # Display all the interfaces and properties of the device\n"
+"             # corresponding to 'udi' in a platform neutral fashion.\n"
+msgstr ""
+"             # Erakutsi gailuaren interfaze eta propietate guztiak,\n"
+"             # 'udi'-ri dagozkionak, plataformarekiko era neutroan.\n"
+
+#: tools/solid-hardware/solid-hardware.cpp:219
+msgctxt "solid-hardware|"
+msgid ""
+"             # Display all the properties of the device corresponding to "
+"'udi'\n"
+"             # (be careful, in this case property names are backend "
+"dependent).\n"
+msgstr ""
+"             # Erakutsi 'udi'-ri dagozkion gailuaren propietate guztiak\n"
+"             # (kontuz, kasu honetan propietateak atzealdekoaren menpekoak "
+"dira).\n"
+
+# UDI: Unique Device Identification
+#: tools/solid-hardware/solid-hardware.cpp:224
+msgctxt "solid-hardware|"
+msgid ""
+"             # List the UDI of devices corresponding to 'predicate'.\n"
+"             # - If 'parentUdi' is specified, the search is restricted to "
+"the\n"
+"             # branch of the corresponding device,\n"
+"             # - Otherwise the search is done on all the devices.\n"
+msgstr ""
+"             # Zerrendatu 'predicate'-ri dagozkion gailuen UDI.\n"
+"             # - 'parentUdi' zehaztuta, bilaketa dagokion gailuaren\n"
+"             #  adarrera mugatuko da,\n"
+"             # - Bestela bilaketa gailu guztietan egingo da.\n"
+
+#: tools/solid-hardware/solid-hardware.cpp:231
+msgctxt "solid-hardware|"
+msgid ""
+"             # If applicable, mount the device corresponding to 'udi'.\n"
+msgstr "             # Hala badagokio, muntatu 'udi'-ri dagokion gailua.\n"
+
+#: tools/solid-hardware/solid-hardware.cpp:235
+msgctxt "solid-hardware|"
+msgid ""
+"             # If applicable, unmount the device corresponding to 'udi'.\n"
+msgstr "             # Hala badagokio, desmuntatu 'udi'-ri dagokion gailua.\n"
+
+#: tools/solid-hardware/solid-hardware.cpp:239
+msgctxt "solid-hardware|"
+msgid ""
+"             # If applicable, eject the device corresponding to 'udi'.\n"
+msgstr "             # Hala badagokio, egotzi 'udi'-ri dagokion gailua.\n"
+
+#: tools/solid-hardware/solid-hardware.cpp:243
+msgctxt "solid-hardware|"
+msgid "             # Listen to all add/remove events on supported hardware."
+msgstr ""
+"             # Entzun gehitu/kendu gertaera guztiei onartutako hardwarean."
+
+#: tools/solid-hardware/solid-hardware.cpp:260
+msgctxt "solid-hardware|"
+msgid "Show device details"
+msgstr "Erakutsi gailuaren xehetasunak"
+
+# Mezu hau zalantzagarria da:
+#
+# Erakutsi ez-eramagarrien informazioa
+# Erakutsi informazio ez-eramangarria
+#: tools/solid-hardware/solid-hardware.cpp:261
+msgctxt "solid-hardware|"
+msgid "Show non portable information"
+msgstr "Erakutsi ez-eramagarrien informazioa"
+
+#: tools/solid-hardware/solid-hardware.cpp:274
+msgctxt "solid-hardware|"
+msgid "Parent device udi"
+msgstr "UDI guraso-gailua"
+
+#: tools/solid-hardware/solid-hardware.cpp:302
+#, qt-format
+msgctxt "solid-hardware|"
+msgid "Syntax Error: Unknown command '%1'"
+msgstr "Sintaxi errorea: komando ezezaguna '%1'"
+
+#: tools/solid-hardware/solid-hardware.cpp:371
+#, qt-format
+msgctxt "SolidHardware|"
+msgid "Error: %1 does not have the interface StorageAccess."
+msgstr "Errorea: %1(e)k ez du «StorageAccess» interfazea."
+
+#: tools/solid-hardware/solid-hardware.cpp:376
+#, qt-format
+msgctxt "SolidHardware|"
+msgid "Error: %1 does not have the interface OpticalDrive."
+msgstr "Errorea: %1(e)k ez du «OpticalDrive» interfazea."
+
+#: tools/solid-hardware/solid-hardware.cpp:409
+#, qt-format
+msgctxt "SolidHardware|"
+msgid "Error: %1"
+msgstr "Errorea: %1"
+
+#: tools/solid-power/main.cpp:36
+msgctxt "solid-power|"
+msgid "Tool to know and set the power management state of your device"
+msgstr "Zure gailuaren energia kudeaketa egoera jakiteko eta ezartzeko tresna"
+
+#: tools/solid-power/main.cpp:38
+msgctxt "solid-power|"
+msgid "Command to execute"
+msgstr "Exekutatu beharreko komandoa"
+
+#: tools/solid-power/main.cpp:40
+msgctxt "solid-power|"
+msgid "Show available commands"
+msgstr "Erakutsi komando erabilgarriak"
+
+#: tools/solid-power/main.cpp:50
+msgctxt "solid-power|"
+msgid ""
+"             # Show all the power management information from the system.\n"
+"             # - acPlugged: whether the device is connected to the AC or "
+"not\n"
+msgstr ""
+"             # Erakutsi sistemako energia kudeaketa informazio osoa.\n"
+"             # - acPlugged: sistema AC-ra konektatuta dagoen edo ez\n"
