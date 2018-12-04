@@ -75,12 +75,15 @@ public:
      * - PhoneBattery : A battery in a phone
      * - MonitorBattery : A battery in a monitor
      * - GamingInputBattery : A battery in a gaming input device (for example a wireless game pad)
+     * - BluetoothBattery: A generic Bluetooth device battery (if its type isn't known, a Bluetooth
+     *                     mouse would normally show up as a MouseBattery), @since 5.54
      * - UnknownBattery : A battery in an unknown device
      */
     enum BatteryType { UnknownBattery, PdaBattery, UpsBattery,
                        PrimaryBattery, MouseBattery, KeyboardBattery,
                        KeyboardMouseBattery, CameraBattery,
-                       PhoneBattery, MonitorBattery, GamingInputBattery
+                       PhoneBattery, MonitorBattery, GamingInputBattery,
+                       BluetoothBattery
                      };
     Q_ENUM(BatteryType)
 

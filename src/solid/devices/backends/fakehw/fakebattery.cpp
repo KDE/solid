@@ -58,6 +58,8 @@ Solid::Battery::BatteryType FakeBattery::type() const
         return Solid::Battery::CameraBattery;
     } else if (name == "gaminginput") {
         return Solid::Battery::GamingInputBattery;
+    } else if (name == "bluetooth") {
+        return Solid::Battery::BluetoothBattery;
     } else {
         return Solid::Battery::UnknownBattery;
     }

@@ -99,6 +99,11 @@ bool UPowerDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type
         case UP_DEVICE_KIND_GAMING_INPUT:
             return true;
         case UP_DEVICE_KIND_UNKNOWN:
+            // There is currently no "Bluetooth battery" type, so check if it comes from Bluez
+            if (prop("NativePath").toString().startsWith(QLatin1String("/org/bluez/"))) {
+                return true;
+            }
+            return false;
         case UP_DEVICE_KIND_LINE_POWER:
         case UP_DEVICE_KIND_MONITOR:
         case UP_DEVICE_KIND_MEDIA_PLAYER:
