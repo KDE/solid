@@ -159,7 +159,7 @@ QObject *HalManager::createDevice(const QString &udi)
     if (deviceExists(udi)) {
         return new HalDevice(udi);
     } else {
-        return 0;
+        return nullptr;
     }
 }
 

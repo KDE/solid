@@ -61,21 +61,21 @@ void Solid::ManagerBasePrivate::loadBackends()
         m_backends << new Solid::Backends::Fake::FakeManager(nullptr, solidFakeXml);
     } else {
 #        if defined(Q_OS_MAC)
-        m_backends << new Solid::Backends::IOKit::IOKitManager(0);
+        m_backends << new Solid::Backends::IOKit::IOKitManager(nullptr);
 
 #        elif defined(Q_OS_FREEBSD)
-        m_backends << new Solid::Backends::UPower::UPowerManager(0)
+        m_backends << new Solid::Backends::UPower::UPowerManager(nullptr)
 #               if EXPERIMENTAL_BSDISKS
-                   << new Solid::Backends::UDisks2::Manager(0)
+                   << new Solid::Backends::UDisks2::Manager(nullptr)
 #               else
-                   << new Solid::Backends::Hal::HalManager(0)
+                   << new Solid::Backends::Hal::HalManager(nullptr)
 #               endif
-                   << new Solid::Backends::Fstab::FstabManager(0);
+                   << new Solid::Backends::Fstab::FstabManager(nullptr);
 
 #        elif defined(Q_OS_WIN) && !defined(_WIN32_WCE)
-        m_backends << new Solid::Backends::Win::WinDeviceManager(0);
+        m_backends << new Solid::Backends::Win::WinDeviceManager(nullptr);
 #        elif defined(Q_OS_UNIX) && !defined(Q_OS_LINUX)
-        m_backends << new Solid::Backends::Hal::HalManager(0);
+        m_backends << new Solid::Backends::Hal::HalManager(nullptr);
 
 #        elif defined(Q_OS_LINUX) && !defined(Q_OS_ANDROID)
 #               if UDEV_FOUND

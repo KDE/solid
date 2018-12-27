@@ -95,7 +95,7 @@ public:
                  udi,
                  "org.freedesktop.Hal.Device",
                  QDBusConnection::systemBus()),
-        cacheSynced(false), parent(0) { }
+        cacheSynced(false), parent(nullptr) { }
     void checkCache(const QString &key = QString());
 
     QDBusInterface device;
