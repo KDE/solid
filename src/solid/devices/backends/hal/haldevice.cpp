@@ -405,7 +405,7 @@ bool HalDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type) c
 QObject *HalDevice::createDeviceInterface(const Solid::DeviceInterface::Type &type)
 {
     if (!queryDeviceInterface(type)) {
-        return 0;
+        return nullptr;
     }
 
     DeviceInterface *iface = nullptr;

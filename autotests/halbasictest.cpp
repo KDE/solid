@@ -48,7 +48,7 @@ void HalBasicTest::initTestCase()
 
 void HalBasicTest::testBasic()
 {
-    Solid::Backends::Hal::HalManager *manager = new Solid::Backends::Hal::HalManager(0);
+    Solid::Backends::Hal::HalManager *manager = new Solid::Backends::Hal::HalManager(nullptr);
 
     QVERIFY(manager->deviceExists("/org/freedesktop/Hal/devices/computer"));
     QVERIFY(!manager->allDevices().isEmpty());
@@ -70,7 +70,7 @@ void HalBasicTest::testBasic()
     QObject *interface = processor->createDeviceInterface(Solid::DeviceInterface::Processor);
     Solid::Ifaces::Processor *proc_iface = qobject_cast<Solid::Ifaces::Processor *>(interface);
 
-    QVERIFY(proc_iface != 0);
+    QVERIFY(proc_iface != nullptr);
 
 #if 0
     // HAL locking support being broken anyway...
@@ -116,7 +116,7 @@ void HalBasicTest::testDeviceCreation()
 
 void HalBasicTest::testSignalHandling()
 {
-    Solid::Backends::Hal::HalManager *manager = new Solid::Backends::Hal::HalManager(0);
+    Solid::Backends::Hal::HalManager *manager = new Solid::Backends::Hal::HalManager(nullptr);
     m_device = qobject_cast<Solid::Backends::Hal::HalDevice *>(manager->createDevice("/org/freedesktop/Hal/devices/computer"));
 
 #if 0
