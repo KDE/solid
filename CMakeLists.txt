@@ -51,18 +51,6 @@ set_package_properties(BISON PROPERTIES
     PURPOSE "Required for the Predicate parser"
 )
 
-option(UDEV_DISABLED "Allows disabling UDev usage on Linux builds" OFF)
-if (CMAKE_SYSTEM_NAME MATCHES Linux AND NOT UDEV_DISABLED)
-    find_package( UDev )
-    if (UDev_FOUND)
-        set(UDEV_FOUND TRUE) # for config-solid.h
-    endif()
-
-    set_package_properties(UDev PROPERTIES TYPE REQUIRED
-                                            PURPOSE "Allows Solid to use UDev to provide information about devices on Linux"
-                            )
-endif()
-
 
 include(ECMPoQmTools)
 
@@ -91,6 +79,49 @@ add_feature_info(Solid::PowerManagement WITH_NEW_POWER_ASYNC_API "WIP: Asynchron
 
 option(WITH_NEW_POWER_ASYNC_FREEDESKTOP "WIP: Freedesktop backend for the asynchronous api" Off)
 add_feature_info(Solid::PowerManagement WITH_NEW_POWER_ASYNC_FREEDESKTOP "WIP: Freedesktop backend for the asynchronous api")
+
+include(SolidBackendsMacros)
+
+add_device_backends_begin()
+add_device_backend(fakehw)
+if (CMAKE_SYSTEM_NAME MATCHES Linux)
+    option(UDEV_DISABLED "Allows disabling UDev usage on Linux builds" OFF)
+    if (NOT UDEV_DISABLED)
+        find_package(UDev REQUIRED)
+        set_package_properties(UDev PROPERTIES
+            TYPE REQUIRED
+            PURPOSE "Allows Solid to use UDev to provide information about devices on Linux"
+        )
+    endif()
+    if (UDev_FOUND)
+        set(UDEV_FOUND TRUE) # for config-solid.h
+        add_device_backend(udev)
+    endif()
+    add_device_backend(udisks2)
+    add_device_backend(fstab)
+    add_device_backend(upower)
+elseif (APPLE)
+    find_package(IOKit REQUIRED)
+    add_device_backend(iokit)
+elseif (WIN32)
+    add_device_backend(win)
+elseif (NOT ANDROID)
+    add_device_backend(upower)
+    add_device_backend(fstab)
+
+    if (CMAKE_SYSTEM_NAME MATCHES FreeBSD)
+        # FIXME: this should work on more Unix systems
+        option(EXPERIMENTAL_BSDISKS "Use UDisks2/bsdisks backend instead of HAL to manage disk devices" OFF)
+    else ()
+        set(EXPERIMENTAL_BSDISKS FALSE)
+    endif()
+    if(EXPERIMENTAL_BSDISKS)
+        add_device_backend(udisks2)
+    else()
+        add_device_backend(hal)
+    endif()
+endif()
+add_device_backends_cmake()
 
 add_subdirectory(src)
 if (BUILD_TESTING)

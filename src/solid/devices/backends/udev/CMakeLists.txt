@@ -1,16 +1,17 @@
-set(solid_LIB_SRCS ${solid_LIB_SRCS}
-    devices/backends/udev/udevdevice.cpp
-    devices/backends/udev/udevmanager.cpp
-    devices/backends/udev/udevdeviceinterface.cpp
-    devices/backends/udev/udevgenericinterface.cpp
-    devices/backends/udev/cpuinfo.cpp
-    devices/backends/udev/udevprocessor.cpp
-    devices/backends/udev/udevcamera.cpp
-    devices/backends/udev/udevportablemediaplayer.cpp
-    devices/backends/udev/udevblock.cpp
-    devices/backends/shared/udevqtclient.cpp
-    devices/backends/shared/udevqtdevice.cpp
+set(backend_sources
+    udevdevice.cpp
+    udevmanager.cpp
+    udevdeviceinterface.cpp
+    udevgenericinterface.cpp
+    cpuinfo.cpp
+    udevprocessor.cpp
+    udevcamera.cpp
+    udevportablemediaplayer.cpp
+    udevblock.cpp
+    ../shared/udevqtclient.cpp
+    ../shared/udevqtdevice.cpp
 )
+set(backend_libs UDev::UDev)
 
 set(UDEV_DETAILED_OUTPUT OFF CACHE BOOL "provide extended output regarding udev events")
 if(UDEV_DETAILED_OUTPUT)

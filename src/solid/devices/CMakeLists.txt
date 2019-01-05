@@ -93,38 +93,6 @@ flex_target(SolidLexer
 add_flex_bison_dependency(SolidLexer SolidParser)
 list(APPEND solid_LIB_SRCS ${BISON_SolidParser_OUTPUTS} ${FLEX_SolidLexer_OUTPUTS})
 
-include(devices/backends/fakehw/CMakeLists.txt)
-
-if(NOT WIN32 AND NOT APPLE AND NOT ANDROID)
-   if (CMAKE_SYSTEM_NAME MATCHES FreeBSD)
-      option(EXPERIMENTAL_BSDISKS "Use UDisks2/bsdisks backend instead of HAL to manage disk devices" OFF)
-   else ()
-      set(EXPERIMENTAL_BSDISKS FALSE)
-   endif()
-
-   if ( UDev_FOUND )
-      message(STATUS "Building Solid UDev backend." )
-      include(devices/backends/udev/CMakeLists.txt)
-   endif()
-
-   message(STATUS "Building Solid UPower backend." )
-   include(devices/backends/upower/CMakeLists.txt)
-
-   # FIXME: this should work on more Unix systems
-   if ((CMAKE_SYSTEM_NAME MATCHES Linux AND UDev_FOUND) OR EXPERIMENTAL_BSDISKS)
-        message(STATUS "Building Solid UDisks2 backend." )
-        include(devices/backends/udisks2/CMakeLists.txt)
-   endif ()
-
-   message(STATUS "Building Solid fstab backend." )
-   include(devices/backends/fstab/CMakeLists.txt)
-
-    if (NOT CMAKE_SYSTEM_NAME MATCHES Linux)
-        message(STATUS "Building Solid HAL backend." )
-        include(devices/backends/hal/CMakeLists.txt)
-    endif()
-endif()
-
 include(CheckIncludeFiles)
 include(CheckFunctionExists)
 include(CheckCXXSourceCompiles)
@@ -152,29 +120,6 @@ check_cxx_source_compiles("
 
 configure_file(devices/config-solid.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-solid.h )
 
-if(APPLE)
-   find_package(IOKit REQUIRED)
-
-   message(STATUS "-- Building Solid IOKit backend." )
-   include(devices/backends/iokit/CMakeLists.txt)
-endif()
-
-if(WIN32)
-    message(STATUS "-- Building Solid Windows backend." )
-    include(devices/backends/win/CMakeLists.txt)
-endif()
-
 set(solid_OPTIONAL_LIBS)
 
-if(WIN32)
-    set(solid_OPTIONAL_LIBS ${solid_OPTIONAL_LIBS} Qt5::Network setupapi)
-    set(solid_OPTIONAL_LIBS ${solid_OPTIONAL_LIBS} setupapi)
-endif()
-
-if(APPLE)
-   set(solid_OPTIONAL_LIBS ${IOKIT_LIBRARY} "-framework DiskArbitration")
-endif()
-
-if ( UDev_FOUND )
-   set(solid_OPTIONAL_LIBS ${solid_OPTIONAL_LIBS} UDev::UDev)
-endif ()
+add_device_backends_build("${CMAKE_CURRENT_SOURCE_DIR}/devices/backends" solid_LIB_SRCS solid_OPTIONAL_LIBS)

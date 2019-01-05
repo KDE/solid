@@ -21,26 +21,33 @@
 #include "managerbase_p.h"
 
 #include <stdlib.h>
-#if !defined (Q_OS_WIN) && !defined (Q_OS_MAC)
-#include <config-solid.h>
-#endif
 
+#include <config-backends.h>
+
+// do *not* use other defines than BUILD_DEVICE_BACKEND_$backend to include
+// the managers, and keep an alphabetical order
+#ifdef BUILD_DEVICE_BACKEND_fakehw
 #include "backends/fakehw/fakemanager.h"
-
-#if defined (Q_OS_MAC)
-#include "backends/iokit/iokitmanager.h"
-#elif defined (Q_OS_UNIX) && !defined(Q_OS_ANDROID)
+#endif
+#ifdef BUILD_DEVICE_BACKEND_fstab
+#include "backends/fstab/fstabmanager.h"
+#endif
+#ifdef BUILD_DEVICE_BACKEND_hal
 #include "backends/hal/halmanager.h"
-#include "backends/udisks2/udisksmanager.h"
-#include "backends/upower/upowermanager.h"
-
-#if UDEV_FOUND
+#endif
+#ifdef BUILD_DEVICE_BACKEND_iokit
+#include "backends/iokit/iokitmanager.h"
+#endif
+#ifdef BUILD_DEVICE_BACKEND_udev
 #include "backends/udev/udevmanager.h"
 #endif
-
-#include "backends/fstab/fstabmanager.h"
-
-#elif defined (Q_OS_WIN) && !defined(_WIN32_WCE)
+#ifdef BUILD_DEVICE_BACKEND_udisks2
+#include "backends/udisks2/udisksmanager.h"
+#endif
+#ifdef BUILD_DEVICE_BACKEND_upower
+#include "backends/upower/upowermanager.h"
+#endif
+#ifdef BUILD_DEVICE_BACKEND_win
 #include "backends/win/windevicemanager.h"
 #endif
 
@@ -53,38 +60,38 @@ Solid::ManagerBasePrivate::~ManagerBasePrivate()
     qDeleteAll(m_backends);
 }
 
+// do *not* use other defines than BUILD_DEVICE_BACKEND_$backend to add
+// the managers, and keep an alphabetical order
 void Solid::ManagerBasePrivate::loadBackends()
 {
     QString solidFakeXml(QString::fromLocal8Bit(qgetenv("SOLID_FAKEHW")));
 
     if (!solidFakeXml.isEmpty()) {
+#ifdef BUILD_DEVICE_BACKEND_fakehw
         m_backends << new Solid::Backends::Fake::FakeManager(nullptr, solidFakeXml);
+#endif
     } else {
-#        if defined(Q_OS_MAC)
-        m_backends << new Solid::Backends::IOKit::IOKitManager(nullptr);
-
-#        elif defined(Q_OS_FREEBSD)
-        m_backends << new Solid::Backends::UPower::UPowerManager(nullptr)
-#               if EXPERIMENTAL_BSDISKS
-                   << new Solid::Backends::UDisks2::Manager(nullptr)
-#               else
-                   << new Solid::Backends::Hal::HalManager(nullptr)
-#               endif
-                   << new Solid::Backends::Fstab::FstabManager(nullptr);
-
-#        elif defined(Q_OS_WIN) && !defined(_WIN32_WCE)
-        m_backends << new Solid::Backends::Win::WinDeviceManager(nullptr);
-#        elif defined(Q_OS_UNIX) && !defined(Q_OS_LINUX)
+#ifdef BUILD_DEVICE_BACKEND_fstab
+        m_backends << new Solid::Backends::Fstab::FstabManager(nullptr);
+#endif
+#ifdef BUILD_DEVICE_BACKEND_hal
         m_backends << new Solid::Backends::Hal::HalManager(nullptr);
-
-#        elif defined(Q_OS_LINUX) && !defined(Q_OS_ANDROID)
-#               if UDEV_FOUND
-            m_backends << new Solid::Backends::UDev::UDevManager(nullptr);
-            m_backends << new Solid::Backends::UDisks2::Manager(nullptr);
-#               endif
-            m_backends << new Solid::Backends::UPower::UPowerManager(nullptr)
-                       << new Solid::Backends::Fstab::FstabManager(nullptr);
-#        endif
+#endif
+#ifdef BUILD_DEVICE_BACKEND_iokit
+        m_backends << new Solid::Backends::IOKit::IOKitManager(nullptr);
+#endif
+#ifdef BUILD_DEVICE_BACKEND_udev
+        m_backends << new Solid::Backends::UDev::UDevManager(nullptr);
+#endif
+#ifdef BUILD_DEVICE_BACKEND_udisks2
+        m_backends << new Solid::Backends::UDisks2::Manager(nullptr);
+#endif
+#ifdef BUILD_DEVICE_BACKEND_upower
+        m_backends << new Solid::Backends::UPower::UPowerManager(nullptr);
+#endif
+#ifdef BUILD_DEVICE_BACKEND_win
+        m_backends << new Solid::Backends::Win::WinDeviceManager(nullptr);
+#endif
     }
 }
 
