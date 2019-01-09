@@ -216,6 +216,8 @@ private:
         {
             m_mem->unlock();
         }
+        Unlocker(const Unlocker &) = delete;
+        Unlocker &operator=(const Unlocker &) = delete;
     private:
         QSharedMemory *m_mem;
     };
@@ -227,6 +229,8 @@ private:
         {
             m_sem->release();
         }
+        Releaser(const Releaser &) = delete;
+        Releaser &operator=(const Releaser &) = delete;
     private:
         QSystemSemaphore *m_sem;
     };
