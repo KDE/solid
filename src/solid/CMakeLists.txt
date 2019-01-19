@@ -17,11 +17,13 @@ add_library(KF5::Solid ALIAS KF5Solid)
 target_include_directories(KF5Solid INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/Solid>")
 
 target_link_libraries(KF5Solid PUBLIC Qt5::Core
-                               PRIVATE Qt5::DBus
-                                       Qt5::Xml
+                               PRIVATE Qt5::Xml
                                        Qt5::Widgets
                                        ${solid_OPTIONAL_LIBS}
  )
+if (TARGET Qt5::DBus)
+  target_link_libraries(KF5Solid PRIVATE Qt5::DBus)
+endif()
 
 set_target_properties(KF5Solid PROPERTIES  VERSION ${SOLID_VERSION_STRING}
                                            SOVERSION ${SOLID_SOVERSION}
@@ -90,7 +92,10 @@ add_library(KF5Solid_static STATIC ${solid_LIB_SRCS})
 set_target_properties(KF5Solid_static PROPERTIES COMPILE_FLAGS -DSOLID_STATIC_DEFINE=1)
 
 target_link_libraries(KF5Solid_static PUBLIC Qt5::Core)
-target_link_libraries(KF5Solid_static PRIVATE Qt5::DBus Qt5::Xml Qt5::Widgets ${solid_OPTIONAL_LIBS})
+target_link_libraries(KF5Solid_static PRIVATE Qt5::Xml Qt5::Widgets ${solid_OPTIONAL_LIBS})
+if (TARGET Qt5::DBus)
+  target_link_libraries(KF5Solid_static PRIVATE Qt5::DBus)
+endif()
 target_include_directories(KF5Solid_static PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR};${CMAKE_CURRENT_SOURCE_DIR}/..;${CMAKE_CURRENT_BINARY_DIR}/..>")
 
 ########### install files ###############

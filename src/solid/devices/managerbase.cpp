@@ -29,7 +29,7 @@
 
 #if defined (Q_OS_MAC)
 #include "backends/iokit/iokitmanager.h"
-#elif defined (Q_OS_UNIX)
+#elif defined (Q_OS_UNIX) && !defined(Q_OS_ANDROID)
 #include "backends/hal/halmanager.h"
 #include "backends/udisks2/udisksmanager.h"
 #include "backends/upower/upowermanager.h"

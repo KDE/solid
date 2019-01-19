@@ -20,8 +20,6 @@
 
 #include "fakevolume.h"
 
-#include <QDBusConnection>
-
 using namespace Solid::Backends::Fake;
 
 FakeVolume::FakeVolume(FakeDevice *device)

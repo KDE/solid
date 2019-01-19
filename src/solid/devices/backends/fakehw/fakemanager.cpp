@@ -29,7 +29,9 @@
 #include <QFile>
 #include <QString>
 #include <QTimer>
+#ifdef QT_DBUS_LIB
 #include <QDBusConnection>
+#endif
 
 using namespace Solid::Backends::Fake;
 
@@ -48,7 +50,9 @@ FakeManager::FakeManager(QObject *parent, const QString &xmlFile)
     QString machineXmlFile = xmlFile;
     d->xmlFile = machineXmlFile;
 
+#ifdef QT_DBUS_LIB
     QDBusConnection::sessionBus().registerObject("/org/kde/solid/fakehw", this, QDBusConnection::ExportNonScriptableSlots);
+#endif
 
     parseMachineFile();
 
@@ -68,7 +72,9 @@ FakeManager::FakeManager(QObject *parent, const QString &xmlFile)
 
 FakeManager::~FakeManager()
 {
+#ifdef QT_DBUS_LIB
     QDBusConnection::sessionBus().unregisterObject("/org/kde/solid/fakehw", QDBusConnection::UnregisterTree);
+#endif
     qDeleteAll(d->loadedDevices);
     delete d;
 }

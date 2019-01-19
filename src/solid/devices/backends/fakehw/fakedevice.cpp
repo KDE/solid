@@ -35,7 +35,9 @@
 #include "fakebattery.h"
 
 #include <QStringList>
+#ifdef QT_DBUS_LIB
 #include <QDBusConnection>
+#endif
 
 #include <solid/genericinterface.h>
 
@@ -51,7 +53,9 @@ FakeDevice::FakeDevice(const QString &udi, const QMap<QString, QVariant> &proper
     d->locked = false;
     d->broken = false;
 
+#ifdef QT_DBUS_LIB
     QDBusConnection::sessionBus().registerObject(udi, this, QDBusConnection::ExportNonScriptableSlots);
+#endif
 
     // Force instantiation of all the device interfaces
     // this way they'll get exported on the bus
@@ -79,7 +83,9 @@ FakeDevice::FakeDevice(const FakeDevice &dev)
 
 FakeDevice::~FakeDevice()
 {
+#ifdef QT_DBUS_LIB
     QDBusConnection::sessionBus().unregisterObject(d->udi, QDBusConnection::UnregisterTree);
+#endif
 }
 
 QString FakeDevice::udi() const
@@ -302,10 +308,12 @@ QObject *FakeDevice::createDeviceInterface(const Solid::DeviceInterface::Type &t
         break;
     }
 
+#ifdef QT_DBUS_LIB
     if (iface) {
         QDBusConnection::sessionBus().registerObject(d->udi + '/' + Solid::DeviceInterface::typeToString(type), iface,
                 QDBusConnection::ExportNonScriptableSlots);
     }
+#endif
 
     return iface;
 }

@@ -20,8 +20,10 @@
 
 #include "ifaces/device.h"
 
+#ifdef QT_DBUS_LIB
 #include <QDBusConnection>
 #include <QDBusMessage>
+#endif
 
 Solid::Ifaces::Device::Device(QObject *parent)
     : QObject(parent)
@@ -44,6 +46,7 @@ void Solid::Ifaces::Device::registerAction(const QString &actionName,
         const char *requestSlot,
         const char *doneSlot) const
 {
+#ifdef QT_DBUS_LIB
     QDBusConnection::sessionBus().connect(QString(), deviceDBusPath(),
                                           "org.kde.Solid.Device", actionName + "Requested",
                                           dest, requestSlot);
@@ -51,21 +54,26 @@ void Solid::Ifaces::Device::registerAction(const QString &actionName,
     QDBusConnection::sessionBus().connect(QString(), deviceDBusPath(),
                                           "org.kde.Solid.Device", actionName + "Done",
                                           dest, doneSlot);
+#endif
 }
 
 void Solid::Ifaces::Device::broadcastActionDone(const QString &actionName,
         int error, const QString &errorString) const
 {
+#ifdef QT_DBUS_LIB
     QDBusMessage signal = QDBusMessage::createSignal(deviceDBusPath(), "org.kde.Solid.Device", actionName + "Done");
     signal << error << errorString;
 
     QDBusConnection::sessionBus().send(signal);
+#endif
 }
 
 void Solid::Ifaces::Device::broadcastActionRequested(const QString &actionName) const
 {
+#ifdef QT_DBUS_LIB
     QDBusMessage signal = QDBusMessage::createSignal(deviceDBusPath(), "org.kde.Solid.Device", actionName + "Requested");
     QDBusConnection::sessionBus().send(signal);
+#endif
 }
 
 QString Solid::Ifaces::Device::deviceDBusPath() const
