@@ -1,11 +1,30 @@
-# - Try to find the UDev library
-# Once done this will define
+#.rst:
+# FindUDev
+# --------
 #
-#  UDEV_FOUND - system has UDev
-#  UDEV_INCLUDE_DIR - the libudev include directory
-#  UDEV_LIBS - The libudev libraries
+# Try to find the UDev library, once done this will define:
+#
+#  ``UDev_FOUND``
+#      System has UDev.
+#
+#  ``UDev_INCLUDE_DIRS``
+#      The libudev include directory.
+#
+# ``UDev_LIBRARIES``
+#     The libudev libraries.
+#
+# ``UDev_VERSION``
+#     The libudev version.
+#
+# If ``UDev_FOUND`` is TRUE, the following imported target
+# will be available:
+#
+# ``UDev::UDev``
+#     The UDev library
 
+#=============================================================================
 # Copyright (c) 2010, Rafael Fernández López, <ereslibre@kde.org>
+# Copyright (c) 2019, Volker Krause, <vkrause@kde.org>
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions
@@ -30,21 +49,36 @@
 # LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 # SUCH DAMAGE.
+#=============================================================================
 
-find_path(UDEV_INCLUDE_DIR libudev.h)
-find_library(UDEV_LIBS udev)
+find_package(PkgConfig QUIET)
+pkg_check_modules(PC_UDEV QUIET libudev)
 
-if(UDEV_INCLUDE_DIR AND UDEV_LIBS)
-   include(CheckFunctionExists)
-   include(CMakePushCheckState)
-   cmake_push_check_state()
-   set(CMAKE_REQUIRED_LIBRARIES ${UDEV_LIBS} )
+find_path(UDev_INCLUDE_DIRS NAMES libudev.h HINTS ${PC_UDEV_INCLUDE_DIRS})
+find_library(UDev_LIBRARIES NAMES udev HINTS ${PC_UDEV_LIBRARY_DIRS})
 
-   cmake_pop_check_state()
-
-endif()
+set(UDev_VERSION ${PC_UDEV_VERSION})
 
 include(FindPackageHandleStandardArgs)
-find_package_handle_standard_args(UDev DEFAULT_MSG UDEV_INCLUDE_DIR UDEV_LIBS)
+find_package_handle_standard_args(UDev
+    FOUND_VAR UDev_FOUND
+    REQUIRED_VARS UDev_INCLUDE_DIRS UDev_LIBRARIES
+    VERSION_VAR UDev_VERSION
+)
 
-mark_as_advanced(UDEV_INCLUDE_DIR UDEV_LIBS)
+mark_as_advanced(UDev_INCLUDE_DIRS UDev_LIBRARIES)
+
+if(UDev_FOUND AND NOT TARGET UDev::UDev)
+    add_library(UDev::UDev UNKNOWN IMPORTED)
+    set_target_properties(UDev::UDev PROPERTIES
+        IMPORTED_LOCATION "${UDev_LIBRARIES}"
+        INTERFACE_INCLUDE_DIRECTORIES "${UDev_INCLUDE_DIRS}"
+        INTERFACE_COMPILE_DEFINITIONS "${PC_UDEV_CFLAGS_OTHER}"
+    )
+endif()
+
+include(FeatureSummary)
+set_package_properties(UDev PROPERTIES
+    DESCRIPTION "API for enumerating and introspecting local devices (part of systemd)"
+    URL "https://freedesktop.org/wiki/Software/systemd/"
+)

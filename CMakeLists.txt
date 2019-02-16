@@ -53,10 +53,11 @@ set_package_properties(BISON PROPERTIES
 
 if (CMAKE_SYSTEM_NAME MATCHES Linux)
     find_package( UDev )
+    if (UDev_FOUND)
+        set(UDEV_FOUND TRUE) # for config-solid.h
+    endif()
 
-    set_package_properties(UDev PROPERTIES  URL "http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html"
-                                            DESCRIPTION "UDev support for Solid"
-                                            TYPE REQUIRED
+    set_package_properties(UDev PROPERTIES TYPE REQUIRED
                                             PURPOSE "Allows Solid to use UDev to provide information about devices on Linux"
                             )
 endif()
