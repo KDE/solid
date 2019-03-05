@@ -38,6 +38,9 @@ namespace Backends
 namespace UDisks2
 {
 
+// interface -> [ {property: key}, {property: key}, ... ]
+using PropertyMap = QMap<QString, QVariantMap>;
+
 class Manager: public Solid::Ifaces::DeviceManager
 {
     Q_OBJECT
@@ -51,18 +54,25 @@ public:
     QString udiPrefix() const override;
     virtual ~Manager();
 
+    QStringList interfaces(const QString &udi);
+    QMap<QString, PropertyMap> allProperties();
+    PropertyMap properties(const QString &udi);
+
 private Q_SLOTS:
     void slotInterfacesAdded(const QDBusObjectPath &object_path, const VariantMapMap &interfaces_and_properties);
     void slotInterfacesRemoved(const QDBusObjectPath &object_path, const QStringList &interfaces);
+    void slotPropertiesChanged(const QDBusMessage &msg);
     void slotMediaChanged(const QDBusMessage &msg);
 
 private:
-    const QStringList &deviceCache();
-    void introspect(const QString &path, bool checkOptical = false);
+    // udi (dbus path) -> PropertyMap
+    QMap<QString, PropertyMap> deviceCache();
+
     void updateBackend(const QString &udi);
     QSet<Solid::DeviceInterface::Type> m_supportedInterfaces;
     org::freedesktop::DBus::ObjectManager m_manager;
-    QStringList m_deviceCache;
+    QMap<QString, PropertyMap> m_cache;
+
 };
 
 }

@@ -42,8 +42,6 @@
 #include <QDBusPendingReply>
 #include <QDBusArgument>
 
-#include <QDomDocument>
-
 using namespace Solid::Backends::UDisks2;
 
 // Adapted from KLocale as Solid needs to be Qt-only
@@ -93,8 +91,8 @@ Device::Device(const QString &udi)
     , m_backend(DeviceBackend::backendForUDI(udi))
 {
     if (m_backend) {
-        connect(m_backend, SIGNAL(changed()), this, SIGNAL(changed()));
-        connect(m_backend, SIGNAL(propertyChanged(QMap<QString,int>)), this, SIGNAL(propertyChanged(QMap<QString,int>)));
+        connect(m_backend, &DeviceBackend::changed, this, &Device::changed);
+        connect(m_backend, &DeviceBackend::propertyChanged, this, &Device::propertyChanged);
     } else {
         qCDebug(UDISKS2) << "Created invalid Device for udi" << udi;
     }

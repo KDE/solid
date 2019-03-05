@@ -25,15 +25,18 @@
 
 #include <QDBusConnection>
 #include <QDBusInterface>
-#include <QDomDocument>
 
 #include "solid/deviceinterface.h"
 #include "solid/genericinterface.h"
+
+#include "udisksmanager.h"
 
 using namespace Solid::Backends::UDisks2;
 
 /* Static cache for DeviceBackends for all UDIs */
 QMap<QString /* UDI */, DeviceBackend *> DeviceBackend::s_backends;
+
+Manager *DeviceBackend::s_manager = nullptr;
 
 DeviceBackend *DeviceBackend::backendForUDI(const QString &udi, bool create)
 {
@@ -56,59 +59,33 @@ void DeviceBackend::destroyBackend(const QString &udi)
     delete s_backends.take(udi);
 }
 
+Manager *DeviceBackend::manager()
+{
+    return s_manager;
+}
+
+void DeviceBackend::setManager(Manager *manager)
+{
+    s_manager = manager;
+}
+
 DeviceBackend::DeviceBackend(const QString &udi)
     : m_udi(udi)
 {
-    //qDebug() << "Creating backend for device" << m_udi;
-    m_device = new QDBusInterface(UD2_DBUS_SERVICE, m_udi,
-                                  QString(), // no interface, we aggregate them
-                                  QDBusConnection::systemBus(), this);
-
-    if (m_device->isValid()) {
-        QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE, m_udi, DBUS_INTERFACE_PROPS, "PropertiesChanged", this,
-                                             SLOT(slotPropertiesChanged(QString,QVariantMap,QStringList)));
-        QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE, UD2_DBUS_PATH, DBUS_INTERFACE_MANAGER, "InterfacesAdded",
-                                             this, SLOT(slotInterfacesAdded(QDBusObjectPath,VariantMapMap)));
-        QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE, UD2_DBUS_PATH, DBUS_INTERFACE_MANAGER, "InterfacesRemoved",
-                                             this, SLOT(slotInterfacesRemoved(QDBusObjectPath,QStringList)));
-
-        initInterfaces();
-    }
+    Q_ASSERT(s_manager);
+    connect(this, &DeviceBackend::propertyChanged, this, &DeviceBackend::changed);
 }
 
 DeviceBackend::~DeviceBackend()
 {
-    //qDebug() << "Destroying backend for device" << m_udi;
-}
 
-void DeviceBackend::initInterfaces()
-{
-    m_interfaces.clear();
-
-    const QString xmlData = introspect();
-    if (xmlData.isEmpty()) {
-        qCDebug(UDISKS2) << m_udi << "has no interfaces!";
-        return;
-    }
-
-    QDomDocument dom;
-    dom.setContent(xmlData);
-
-    QDomNodeList ifaceNodeList = dom.elementsByTagName("interface");
-    for (int i = 0; i < ifaceNodeList.count(); i++) {
-        QDomElement ifaceElem = ifaceNodeList.item(i).toElement();
-        /* Accept only org.freedesktop.UDisks2.* interfaces so that when the device is unplugged,
-         * m_interfaces goes empty and we can easily verify that the device is gone. */
-        if (!ifaceElem.isNull() && ifaceElem.attribute("name").startsWith(UD2_DBUS_SERVICE)) {
-            m_interfaces.append(ifaceElem.attribute("name"));
-        }
-    }
-
-    //qDebug() << m_udi << "has interfaces:" << m_interfaces;
 }
 
 QStringList DeviceBackend::interfaces() const
 {
+    if (m_interfaces.isEmpty()) {
+        m_interfaces = s_manager->interfaces(m_udi);
+    }
     return m_interfaces;
 }
 
@@ -126,50 +103,37 @@ QVariant DeviceBackend::prop(const QString &key) const
 bool DeviceBackend::propertyExists(const QString &key) const
 {
     checkCache(key);
-    /* checkCache() will put an invalid QVariant in cache when the property
-     * does not exist, so check for validity, not for an actual presence. */
     return m_propertyCache.value(key).isValid();
 }
 
 QVariantMap DeviceBackend::allProperties() const
 {
-    QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, m_udi, DBUS_INTERFACE_PROPS, "GetAll");
+    m_propertyCache.clear();
 
-    Q_FOREACH (const QString &iface, m_interfaces) {
-        call.setArguments(QVariantList() << iface);
-        QDBusPendingReply<QVariantMap> reply = QDBusConnection::systemBus().call(call);
+    const PropertyMap properties = s_manager->properties(m_udi);
 
-        if (reply.isValid()) {
-            auto props = reply.value();
-            // Can not use QMap<>::unite(), as it allows multiple values per key
-            for (auto it = props.cbegin(); it != props.cend(); ++it) {
-                m_propertyCache.insert(it.key(), it.value());
-            }
-        } else {
-            qCWarning(UDISKS2) << "Error getting props:" << reply.error().name() << reply.error().message();
+    // flatten the properties into a single map as that is was the code was originally built upon
+    // TODO I bet there is a neat std::transform or something to do this?
+    for (auto it = properties.begin(), end = properties.end(); it != end; ++it) {
+        const auto props = it.value();
+
+        for (auto propsIt = props.begin(), propsEnd = props.end(); propsIt != propsEnd; ++propsIt) {
+            m_propertyCache.insert(propsIt.key(), propsIt.value());
         }
-        //qDebug() << "After iface" << iface << ", cache now contains" << m_propertyCache.size() << "items";
     }
 
     return m_propertyCache;
 }
 
-void DeviceBackend::invalidateProperties()
+void DeviceBackend::invalidateInterfaces()
 {
-    m_propertyCache.clear();
+    m_interfaces.clear();
 }
 
-QString DeviceBackend::introspect() const
+void DeviceBackend::invalidateProperties()
 {
-    QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, m_udi,
-                        DBUS_INTERFACE_INTROSPECT, "Introspect");
-    QDBusPendingReply<QString> reply = QDBusConnection::systemBus().call(call);
-
-    if (reply.isValid()) {
-        return reply.value();
-    } else {
-        return QString();
-    }
+    invalidateInterfaces();
+    m_propertyCache.clear();
 }
 
 void DeviceBackend::checkCache(const QString &key) const
@@ -182,76 +146,5 @@ void DeviceBackend::checkCache(const QString &key) const
         return;
     }
 
-    QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, m_udi, DBUS_INTERFACE_PROPS, "Get");
-    /*
-     * Interface is set to an empty string as in this QDBusInterface is a meta-object of multiple interfaces on the same path
-     * The DBus properties also interface supports this, and will find the appropriate interface if none is explicitly set.
-     * This matches what QDBusAbstractInterface would do
-     */
-    call.setArguments(QVariantList() << QString() << key);
-    QDBusPendingReply<QVariant> reply = QDBusConnection::systemBus().call(call);
-
-    /* We don't check for error here and store the item in the cache anyway so next time we don't have to
-     * do the DBus call to find out it does not exist but just check whether
-     * prop(key).isValid() */
-    m_propertyCache.insert(key, reply.value());
-}
-
-void DeviceBackend::slotPropertiesChanged(const QString &ifaceName, const QVariantMap &changedProps, const QStringList &invalidatedProps)
-{
-    if (!ifaceName.startsWith(UD2_DBUS_SERVICE)) {
-        return;
-    }
-    //qDebug() << m_udi << "'s interface" << ifaceName << "changed props:";
-
-    QMap<QString, int> changeMap;
-
-    Q_FOREACH (const QString &key, invalidatedProps) {
-        m_propertyCache.remove(key);
-        changeMap.insert(key, Solid::GenericInterface::PropertyModified);
-        //qDebug() << "\t invalidated:" << key;
-    }
-
-    QMapIterator<QString, QVariant> i(changedProps);
-    while (i.hasNext()) {
-        i.next();
-        const QString key = i.key();
-        m_propertyCache.insert(key, i.value());  // replace the value
-        changeMap.insert(key, Solid::GenericInterface::PropertyModified);
-        //qDebug() << "\t modified:" << key << ":" << m_propertyCache.value(key);
-    }
-
-    emit propertyChanged(changeMap);
-    emit changed();
-}
-
-void DeviceBackend::slotInterfacesAdded(const QDBusObjectPath &object_path, const VariantMapMap &interfaces_and_properties)
-{
-    if (object_path.path() != m_udi) {
-        return;
-    }
-
-    Q_FOREACH (const QString &iface, interfaces_and_properties.keys()) {
-        /* Don't store generic DBus interfaces */
-        if (iface.startsWith(UD2_DBUS_SERVICE)) {
-            m_interfaces.append(iface);
-        }
-    }
-}
-
-void DeviceBackend::slotInterfacesRemoved(const QDBusObjectPath &object_path, const QStringList &interfaces)
-{
-    if (object_path.path() != m_udi) {
-        return;
-    }
-
-    Q_FOREACH (const QString &iface, interfaces) {
-        m_interfaces.removeAll(iface);
-    }
-
-    // We don't know which property belongs to which interface, so remove all
-    m_propertyCache.clear();
-    if (!m_interfaces.isEmpty()) {
-        allProperties();
-    }
+    // old code fetched the property if neccessary but we have the manager take care of this
 }

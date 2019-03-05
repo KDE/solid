@@ -19,6 +19,8 @@
 */
 
 #include "udisksblock.h"
+#include "udisksdevicebackend.h"
+#include "udisksmanager.h"
 
 #if defined(Q_OS_LINUX)
 #include <linux/kdev_t.h>
@@ -33,7 +35,6 @@
 #include <QFile>
 #include <QDBusConnection>
 #include <QDBusPendingReply>
-#include <QDomDocument>
 
 #include "udisks_debug.h"
 
@@ -47,31 +48,25 @@ Block::Block(Device *dev)
 
     // we have a drive (non-block device for udisks), so let's find the corresponding (real) block device
     if (m_devNum == 0 || m_devFile.isEmpty()) {
-        const QString path = "/org/freedesktop/UDisks2/block_devices";
-        QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, path,
-                            DBUS_INTERFACE_INTROSPECT, "Introspect");
-        QDBusPendingReply<QString> reply = QDBusConnection::systemBus().asyncCall(call);
-        reply.waitForFinished();
+        // kinda breaks the encapsulation if this thing ends up calling all the way into the Manager...
+        const auto allProperties = DeviceBackend::manager()->allProperties();
+        for (auto it = allProperties.begin(), end = allProperties.end(); it != end; ++it) {
+            const QVariantMap blockProps = it->value(UD2_DBUS_INTERFACE_BLOCK);
 
-        if (reply.isValid()) {
-            QDomDocument dom;
-            dom.setContent(reply.value());
-            QDomNodeList nodeList = dom.documentElement().elementsByTagName("node");
-            for (int i = 0; i < nodeList.count(); i++) {
-                QDomElement nodeElem = nodeList.item(i).toElement();
-                if (!nodeElem.isNull() && nodeElem.hasAttribute("name")) {
-                    const QString udi = path + "/" + nodeElem.attribute("name");
+            // FIXME the old code introspecting DBus found "/dev/nvme0n1p3" for my SSD
+            // whereas the new code finds "/dev/nvme0n1" which looks more sensible
+            // but this could have some unwanted implications.
+            // Not really sure what this code is trying to achieve anyway, but I think
+            // returning the drive device instead of a (random?) partition on it is better
 
-                    Device device(udi);
-                    if (device.drivePath() == dev->udi()) {
-                        m_devNum = device.prop("DeviceNumber").toULongLong();
-                        m_devFile = QFile::decodeName(device.prop("Device").toByteArray());
-                        break;
-                    }
-                }
+            const QString drivePath = blockProps.value(QStringLiteral("Drive")).value<QDBusObjectPath>().path();
+            if (drivePath != dev->udi()) {
+                continue;
             }
-        } else {
-            qCWarning(UDISKS2) << "Failed enumerating UDisks2 objects:" << reply.error().name() << "\n" << reply.error().message();
+
+            m_devNum = blockProps.value(QStringLiteral("DeviceNumber")).toULongLong();
+            m_devFile = QFile::decodeName(blockProps.value(QStringLiteral("Device")).toByteArray());
+            break;
         }
     }
 

@@ -38,6 +38,8 @@ namespace Backends
 namespace UDisks2
 {
 
+class Manager;
+
 class DeviceBackend: public QObject
 {
 
@@ -46,6 +48,8 @@ class DeviceBackend: public QObject
 public:
     static DeviceBackend *backendForUDI(const QString &udi, bool create = true);
     static void destroyBackend(const QString &udi);
+    static Manager *manager();
+    static void setManager(Manager *manager);
 
     DeviceBackend(const QString &udi);
     ~DeviceBackend();
@@ -57,28 +61,24 @@ public:
     QStringList interfaces() const;
     const QString &udi() const;
 
+    void invalidateInterfaces();
     void invalidateProperties();
+
 Q_SIGNALS:
     void propertyChanged(const QMap<QString, int> &changeMap);
     void changed();
 
-private Q_SLOTS:
-    void slotInterfacesAdded(const QDBusObjectPath &object_path, const VariantMapMap &interfaces_and_properties);
-    void slotInterfacesRemoved(const QDBusObjectPath &object_path, const QStringList &interfaces);
-    void slotPropertiesChanged(const QString &ifaceName, const QVariantMap &changedProps, const QStringList &invalidatedProps);
-
 private:
-    void initInterfaces();
-    QString introspect() const;
     void checkCache(const QString &key) const;
 
     QDBusInterface *m_device;
 
     mutable QVariantMap m_propertyCache;
-    QStringList m_interfaces;
+    mutable QStringList m_interfaces;
     QString m_udi;
 
     static QMap<QString, DeviceBackend *> s_backends;
+    static Manager *s_manager;
 
 };
 
