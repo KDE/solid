@@ -219,7 +219,7 @@ void Manager::slotInterfacesAdded(const QDBusObjectPath &object_path, const Vari
     // TODO "merge" / "unite"?
     for (auto it = interfaces_and_properties.begin(), end = interfaces_and_properties.end(); it != end; ++it) {
         /* Don't store generic DBus interfaces */
-        if (it.key().startsWith(UD2_DBUS_SERVICE)) {
+        if (!it.key().startsWith(UD2_DBUS_SERVICE)) {
             continue;
         }
         deviceIt->insert(it.key(), it.value());
