@@ -150,32 +150,7 @@ QStringList Manager::allDevices()
                 continue;
             }
 
-            PropertyMap deviceProps = it.value();
-
-            // Check if it might be an optical disc so we detect when media arrives
-            if (udi.startsWith(UD2_DBUS_PATH_BLOCK_DEVICES)) {
-                // FIXME check if this is working, as we explicitly don't check /drives but /block_devices, but I don't have a CD drive :)
-                const QString drivePath = deviceProps.value(UD2_DBUS_INTERFACE_BLOCK).value(QStringLiteral("Drive")).value<QDBusObjectPath>().path();
-                const bool isDrive = deviceProps.contains(QLatin1String(UD2_DBUS_INTERFACE_DRIVE));
-                const QStringList mediaCompatibility = deviceProps.value(UD2_DBUS_INTERFACE_DRIVE).value(QStringLiteral("MediaCompatibility")).toStringList();
-
-                // this is basically device.mightBeOpticalDisc() but without first creating an entire Device object
-                if (isDrive
-                        && !drivePath.isEmpty() && drivePath != QLatin1String("/")
-                        && !mediaCompatibility.filter(QStringLiteral("optical_")).isEmpty()) {
-
-                    QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE, udi, DBUS_INTERFACE_PROPS,
-                                                         "PropertiesChanged", this,
-                                                         SLOT(slotMediaChanged(QDBusMessage)));
-
-                    // not interesting for us right now without optical media, skip
-                    if (!deviceProps.value(UD2_DBUS_INTERFACE_DRIVE).value(QStringLiteral("Optical")).toBool()) {
-                        continue;
-                    }
-                }
-            }
-
-            m_cache.insert(udi, deviceProps);
+            m_cache.insert(udi, it.value());
         }
     }
 
@@ -228,7 +203,8 @@ void Manager::slotInterfacesAdded(const QDBusObjectPath &object_path, const Vari
     updateBackend(udi);
 
     // re-emit in case of 2-stage devices like N9 or some Android phones
-    if (interfaces_and_properties.contains(UD2_DBUS_INTERFACE_FILESYSTEM)) {
+    // however, don't for optical media since this will be done in checkOpticalMedium when a medium arrives
+    if (interfaces_and_properties.contains(UD2_DBUS_INTERFACE_FILESYSTEM) && opticalDriveFor(udi).isEmpty()) {
         emit deviceAdded(udi);
     }
 }
@@ -294,6 +270,9 @@ void Manager::slotPropertiesChanged(const QDBusMessage &msg)
     const QVariantMap changed = qdbus_cast<QVariantMap>(msg.arguments().at(1));
     const QStringList invalidated = qdbus_cast<QStringList>(msg.arguments().at(2));
 
+    // Remember the current Size for the optical drive check below
+    const qulonglong oldSize = cachedIt->value(UD2_DBUS_INTERFACE_BLOCK).value(QStringLiteral("Size")).toULongLong();
+
     for (const QString &prop : invalidated) {
         (*cachedIt)[iface].remove(prop);
         // TODO old code did this but isn't this a removal?
@@ -312,30 +291,57 @@ void Manager::slotPropertiesChanged(const QDBusMessage &msg)
             emit backend->propertyChanged(changeMap);
         }
     }
+
+    const qulonglong newSize = cachedIt->value(UD2_DBUS_INTERFACE_BLOCK).value(QStringLiteral("Size")).toULongLong();
+
+    checkOpticalMedium(udi, oldSize, newSize);
 }
 
-void Manager::slotMediaChanged(const QDBusMessage &msg)
+QString Manager::opticalDriveFor(const QString &udi) const
 {
-    const QVariantMap properties = qdbus_cast<QVariantMap>(msg.arguments().at(1));
+    const PropertyMap deviceProps = m_cache.value(udi);
 
-    if (!properties.contains("Size")) { // react only on Size changes
+    // Check if the block belongs to an optical drive
+    const QString drivePath = deviceProps.value(UD2_DBUS_INTERFACE_BLOCK)
+                                         .value(QStringLiteral("Drive"))
+                                         .value<QDBusObjectPath>().path();
+
+    if (drivePath.isEmpty() || drivePath == QLatin1String("/")) {
+        return QString();
+    }
+
+    auto driveIt = m_cache.constFind(drivePath);
+    if (driveIt == m_cache.constEnd()) {
+        qCDebug(UDISKS2) << "Block device" << udi << "belongs to a drive" << drivePath << "that doesn't exist";
+        return QString();
+    }
+
+    const QStringList mediaCompatibility = driveIt->value(UD2_DBUS_INTERFACE_DRIVE)
+                                                    .value(QStringLiteral("MediaCompatibility")).toStringList();
+
+    if (mediaCompatibility.filter(QStringLiteral("optical_")).isEmpty()) {
+        return QString();
+    }
+
+    return drivePath;
+}
+
+void Manager::checkOpticalMedium(const QString &udi, qulonglong oldSize, qulonglong newSize)
+{
+    if (oldSize == newSize) {
         return;
     }
 
-    const QString udi = msg.path();
-    updateBackend(udi);
-    qulonglong size = properties.value("Size").toULongLong();
-    qCDebug(UDISKS2) << "MEDIA CHANGED in" << udi << "; size is:" << size;
-
-    if (!m_cache.contains(udi) && size > 0) { // we don't know the optdisc, got inserted
-        // FIXME FIXME FIXME get the properties
-        //m_cache.insert(udi, properties);
-        emit deviceAdded(udi);
+    if (opticalDriveFor(udi).isEmpty()) {
+        return;
     }
 
-    if (m_cache.contains(udi) && size == 0) {  // we know the optdisc, got removed
+    updateBackend(udi);
+
+    if (newSize && !oldSize) {
+        emit deviceAdded(udi);
+    } else if (oldSize && !newSize) {
         emit deviceRemoved(udi);
-        m_cache.remove(udi);
         DeviceBackend::destroyBackend(udi);
     }
 }

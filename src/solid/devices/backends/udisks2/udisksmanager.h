@@ -62,9 +62,11 @@ private Q_SLOTS:
     void slotInterfacesAdded(const QDBusObjectPath &object_path, const VariantMapMap &interfaces_and_properties);
     void slotInterfacesRemoved(const QDBusObjectPath &object_path, const QStringList &interfaces);
     void slotPropertiesChanged(const QDBusMessage &msg);
-    void slotMediaChanged(const QDBusMessage &msg);
 
 private:
+    QString opticalDriveFor(const QString &udi) const;
+    void checkOpticalMedium(const QString &udi, qulonglong oldSize, qulonglong newSize);
+
     // udi (dbus path) -> PropertyMap
     QMap<QString, PropertyMap> deviceCache();
 
