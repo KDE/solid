@@ -161,7 +161,6 @@ void StorageAccess::checkAccessibility()
 
 void StorageAccess::slotDBusReply(const QDBusMessage & /*reply*/)
 {
-    const QString ctPath = clearTextPath();
     if (m_setupInProgress) {
         if (isLuksDevice() && !isAccessible()) { // unlocked device, now mount it
             mount();
@@ -173,6 +172,7 @@ void StorageAccess::slotDBusReply(const QDBusMessage & /*reply*/)
             checkAccessibility();
         }
     } else if (m_teardownInProgress) { // FIXME
+        const QString ctPath = clearTextPath();
         qCDebug(UDISKS2) << "Successfully unmounted " << m_device->udi();
         if (isLuksDevice() && !ctPath.isEmpty() && ctPath != "/") { // unlocked device, lock it
             callCryptoTeardown();
@@ -258,10 +258,12 @@ void StorageAccess::slotTeardownDone(int error, const QString &errorString)
 bool StorageAccess::mount()
 {
     QString path = m_device->udi();
-    const QString ctPath = clearTextPath();
 
-    if (isLuksDevice() && !ctPath.isEmpty()) { // mount options for the cleartext volume
-        path = ctPath;
+    if (isLuksDevice()) { // mount options for the cleartext volume
+        const QString ctPath = clearTextPath();
+        if (!ctPath.isEmpty()) {
+            path = ctPath;
+        }
     }
 
     QDBusConnection c = QDBusConnection::systemBus();
@@ -282,10 +284,12 @@ bool StorageAccess::mount()
 bool StorageAccess::unmount()
 {
     QString path = m_device->udi();
-    const QString ctPath = clearTextPath();
 
-    if (isLuksDevice() && !ctPath.isEmpty()) { // unmount options for the cleartext volume
-        path = ctPath;
+    if (isLuksDevice()) { // unmount options for the cleartext volume
+        const QString ctPath = clearTextPath();
+        if (!ctPath.isEmpty()) {
+            path = ctPath;
+        }
     }
 
     QDBusConnection c = QDBusConnection::systemBus();
