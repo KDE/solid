@@ -51,7 +51,8 @@ set_package_properties(BISON PROPERTIES
     PURPOSE "Required for the Predicate parser"
 )
 
-if (CMAKE_SYSTEM_NAME MATCHES Linux)
+option(UDEV_DISABLED "Allows disabling UDev usage on Linux builds" OFF)
+if (CMAKE_SYSTEM_NAME MATCHES Linux AND NOT UDEV_DISABLED)
     find_package( UDev )
     if (UDev_FOUND)
         set(UDEV_FOUND TRUE) # for config-solid.h
