@@ -32,7 +32,7 @@
 using namespace Solid::Backends::UDisks2;
 
 StorageAccess::StorageAccess(Device *device)
-    : DeviceInterface(device), m_setupInProgress(false), m_teardownInProgress(false), m_passphraseRequested(false)
+    : DeviceInterface(device), m_setupInProgress(false), m_teardownInProgress(false), m_passphraseRequested(false), m_mountPoint()
 {
     connect(device, SIGNAL(changed()), this, SLOT(checkAccessibility()));
     updateCache();
@@ -79,29 +79,14 @@ bool StorageAccess::isAccessible() const
 
 QString StorageAccess::filePath() const
 {
-    QByteArrayList mntPoints;
-
-    if (isLuksDevice()) {  // encrypted (and unlocked) device
-        const QString path = clearTextPath();
-        if (path.isEmpty() || path == "/") {
-            return QString();
-        }
-        Device holderDevice(path);
-        mntPoints = qdbus_cast<QByteArrayList>(holderDevice.prop("MountPoints"));
+    if (m_mountPoint.isEmpty()) {
+        QByteArrayList mntPoints = qdbus_cast<QByteArrayList>(m_device->prop("MountPoints"));
         if (!mntPoints.isEmpty()) {
-            return QFile::decodeName(mntPoints.first());    // FIXME Solid doesn't support multiple mount points
-        } else {
-            return QString();
+            m_mountPoint = QFile::decodeName(mntPoints.first());    // FIXME Solid doesn't support multiple mount points
         }
     }
 
-    mntPoints = qdbus_cast<QByteArrayList>(m_device->prop("MountPoints"));
-
-    if (!mntPoints.isEmpty()) {
-        return QFile::decodeName(mntPoints.first());    // FIXME Solid doesn't support multiple mount points
-    } else {
-        return QString();
-    }
+    return m_mountPoint;
 }
 
 bool StorageAccess::isIgnored() const
@@ -159,14 +144,25 @@ void StorageAccess::checkAccessibility()
     }
 }
 
-void StorageAccess::slotDBusReply(const QDBusMessage & /*reply*/)
+void StorageAccess::slotDBusReply(const QDBusMessage &reply)
 {
     if (m_setupInProgress) {
-        if (isLuksDevice() && !isAccessible()) { // unlocked device, now mount it
-            mount();
+        if (isLuksDevice()) {
+            if(!isAccessible()) { // unlocked device, now mount it
+                mount();
+            } else {
+                const QString path = clearTextPath();
+                if (path.isEmpty() || path == "/") {
+                    return;
+                }
+                Device holderDevice(path);
+                QByteArrayList mntPoints = qdbus_cast<QByteArrayList>(holderDevice.prop("MountPoints"));
+                m_mountPoint = QFile::decodeName(mntPoints.first());    // FIXME Solid doesn't support multiple mount points
+            }
         } else { // Don't broadcast setupDone unless the setup is really done. (Fix kde#271156)
             m_setupInProgress = false;
             m_device->invalidateCache();
+            m_mountPoint = reply.arguments().first().toString(); // FIXME Solid doesn't support multiple mount points
             m_device->broadcastActionDone("setup");
 
             checkAccessibility();
