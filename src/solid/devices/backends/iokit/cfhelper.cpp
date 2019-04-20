@@ -94,7 +94,7 @@ static QVariant q_toVariant(const CFTypeRef &obj)
 
     if (typeId == CFDateGetTypeID()) {
         QDateTime dt;
-        dt.setTime_t(uint(kCFAbsoluteTimeIntervalSince1970));
+        dt.setSecsSinceEpoch(qint64(kCFAbsoluteTimeIntervalSince1970));
         return dt.addSecs(int(CFDateGetAbsoluteTime(static_cast<const CFDateRef>(obj))));
     }
 
