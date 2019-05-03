@@ -121,6 +121,24 @@ bool _k_isFstabNetworkFileSystem(const QString &fstype, const QString &devName)
     return false;
 }
 
+bool _k_isFstabSupportedLocalFileSystem(const QString &fstype)
+{
+    if (fstype == "fuse.encfs" ||
+        fstype == "fuse.cryfs") {
+        return true;
+    }
+    return false;
+}
+
+QString _k_deviceNameForMountpoint(const QString &source, const QString &fstype,
+                                   const QString &mountpoint)
+{
+    if (fstype.startsWith("fuse.")) {
+            return fstype + mountpoint;
+    }
+    return source;
+}
+
 void Solid::Backends::Fstab::FstabHandling::_k_updateFstabMountPointsCache()
 {
     if (globalFstabCache->m_fstabCacheValid) {
@@ -141,9 +159,10 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateFstabMountPointsCache()
     while ((fe = getmntent(fstab)) != nullptr) {
         const QString fsname = QFile::decodeName(fe->mnt_fsname);
         const QString fstype = QFile::decodeName(fe->mnt_type);
-        if (_k_isFstabNetworkFileSystem(fstype, fsname)) {
+        if (_k_isFstabNetworkFileSystem(fstype, fsname) ||
+            _k_isFstabSupportedLocalFileSystem(fstype)) {
             const QString mountpoint = QFile::decodeName(fe->mnt_dir);
-            const QString device = fsname;
+            const QString device = _k_deviceNameForMountpoint(fsname, fstype, mountpoint);
             QStringList options = QFile::decodeName(fe->mnt_opts).split(QLatin1Char(','));
 
             globalFstabCache->m_fstabCache.insert(device, mountpoint);
@@ -185,7 +204,8 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateFstabMountPointsCache()
         }
 #endif
         //prevent accessing a blocking directory
-        if (_k_isFstabNetworkFileSystem(items.at(2), items.at(0))) {
+        if (_k_isFstabNetworkFileSystem(items.at(2), items.at(0)) ||
+            _k_isFstabSupportedLocalFileSystem(items.at(2))) {
             const QString device = items.at(0);
             const QString mountpoint = items.at(1);
 
@@ -282,9 +302,11 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateMtabMountPointsCache()
 
     for (int i = 0; i < num_fs; i++) {
         QString type = QFile::decodeName(mounted[i].f_fstypename);
-        if (_k_isFstabNetworkFileSystem(type, QString())) {
-            const QString device = QFile::decodeName(mounted[i].f_mntfromname);
+        if (_k_isFstabNetworkFileSystem(type, QString()) ||
+            _k_isFstabSupportedLocalFileSystem(type)) {
+            const QString fsname = QFile::decodeName(mounted[i].f_mntfromname);
             const QString mountpoint = QFile::decodeName(mounted[i].f_mntonname);
+            const QString device = _k_deviceNameForMountpoint(fsname, type, mountpoint);
             globalFstabCache->m_mtabCache.insert(device, mountpoint);
             globalFstabCache->m_fstabFstypeCache.insert(device, type);
         }
@@ -299,9 +321,11 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateMtabMountPointsCache()
     STRUCT_MNTENT fe;
     while (GETMNTENT(mnttab, fe)) {
         QString type = QFile::decodeName(MOUNTTYPE(fe));
-        if (_k_isFstabNetworkFileSystem(type, QString())) {
-            const QString device = QFile::decodeName(FSNAME(fe));
+        if (_k_isFstabNetworkFileSystem(type, QString()) ||
+            _k_isFstabSupportedLocalFileSystem(type)) {
+            const QString fsname = QFile::decodeName(FSNAME(fe));
             const QString mountpoint = QFile::decodeName(MOUNTPOINT(fe));
+            const QString device = _k_deviceNameForMountpoint(fsname, type, mountpoint);
             globalFstabCache->m_mtabCache.insert(device, mountpoint);
             globalFstabCache->m_fstabFstypeCache.insert(device, type);
         }

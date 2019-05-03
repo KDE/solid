@@ -23,8 +23,10 @@
 #include "fstabnetworkshare.h"
 #include "fstabstorageaccess.h"
 #include "fstabservice.h"
+#include "fstab_debug.h"
 #include <QCoreApplication>
 #include <QStringList>
+#include <QDir>
 #include <QUrl>
 
 using namespace Solid::Backends::Fstab;
@@ -36,14 +38,26 @@ FstabDevice::FstabDevice(QString uid) :
     m_device = m_uid;
     m_device.remove(parentUdi() + "/");
 
+    const QString& fstype = FstabHandling::fstype(m_device);
+    qCDebug(FSTAB) << "Adding " << m_device << "type:" << fstype;
+
     if (m_device.startsWith("//")) {
         m_vendor = m_device.mid(2, m_device.indexOf("/", 2) - 2);
         m_product = m_device.mid(m_device.indexOf("/", 2) + 1);
-    } else {
+        m_isNetworkShare = true;
+    } else if (fstype.startsWith("nfs")) {
         m_vendor = m_device.left(m_device.indexOf(":/"));
         m_product = m_device.mid(m_device.indexOf(":/") + 2);
         if (m_product.isEmpty()) {
             m_product = QStringLiteral("/");
+        }
+        m_isNetworkShare = true;
+    } else if (fstype.startsWith("fuse.")) {
+        m_vendor = fstype;
+        m_product = m_device.mid(m_device.indexOf(fstype) + fstype.length());
+        QString home = QDir::homePath();
+        if (m_product.startsWith(home)) {
+            m_product = "~" + m_product.mid(home.length());
         }
     }
 
@@ -60,12 +74,21 @@ FstabDevice::FstabDevice(QString uid) :
     }
 
     if (m_description.isEmpty()) {
-        m_description = QCoreApplication::translate("", "%1 on %2",
+        if (m_isNetworkShare) {
+            m_description = QCoreApplication::translate("", "%1 on %2",
             "%1 is sharename, %2 is servername").arg(m_product, m_vendor);
+        } else {
+            m_description = QCoreApplication::translate("", "%1 (%2)",
+            "%1 is mountpoint, %2 is fs type").arg(m_product, m_vendor);
+        }
     }
 
     if (m_iconName.isEmpty()) {
-        m_iconName = QLatin1String("network-server");
+        if (m_isNetworkShare) {
+            m_iconName = QLatin1String("network-server");
+        } else {
+            m_iconName = QLatin1String("folder");
+        }
     }
 }
 
@@ -121,8 +144,10 @@ QString FstabDevice::description() const
 
 bool FstabDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type) const
 {
-    if (type == Solid::DeviceInterface::StorageAccess
-            || type == Solid::DeviceInterface::NetworkShare) {
+    if (type == Solid::DeviceInterface::StorageAccess) {
+        return true;
+    }
+    if (m_isNetworkShare && (type == Solid::DeviceInterface::NetworkShare)) {
         return true;
     }
     return false;
@@ -135,7 +160,7 @@ QObject *FstabDevice::createDeviceInterface(const Solid::DeviceInterface::Type &
             m_storageAccess = new FstabStorageAccess(this);
         }
         return m_storageAccess;
-    } else if (type == Solid::DeviceInterface::NetworkShare) {
+    } else if (m_isNetworkShare && (type == Solid::DeviceInterface::NetworkShare)) {
         return new FstabNetworkShare(this);
     }
     return nullptr;

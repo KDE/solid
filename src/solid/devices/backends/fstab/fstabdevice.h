@@ -76,6 +76,7 @@ private:
     QString m_description;
     QString m_iconName;
     QPointer<FstabStorageAccess> m_storageAccess;
+    bool m_isNetworkShare = false;
 };
 
 }
