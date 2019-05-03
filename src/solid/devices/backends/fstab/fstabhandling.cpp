@@ -139,12 +139,15 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateFstabMountPointsCache()
 
     struct mntent *fe;
     while ((fe = getmntent(fstab)) != nullptr) {
-        if (_k_isFstabNetworkFileSystem(fe->mnt_type, fe->mnt_fsname)) {
-            const QString device = QFile::decodeName(fe->mnt_fsname);
+        const QString fsname = QFile::decodeName(fe->mnt_fsname);
+        const QString fstype = QFile::decodeName(fe->mnt_type);
+        if (_k_isFstabNetworkFileSystem(fstype, fsname)) {
             const QString mountpoint = QFile::decodeName(fe->mnt_dir);
+            const QString device = fsname;
             QStringList options = QFile::decodeName(fe->mnt_opts).split(QLatin1Char(','));
 
             globalFstabCache->m_fstabCache.insert(device, mountpoint);
+            globalFstabCache->m_fstabFstypeCache.insert(device, fstype);
             while (!options.isEmpty()) {
                 globalFstabCache->m_fstabOptionsCache.insert(device, options.takeFirst());
             }
@@ -225,6 +228,13 @@ QStringList Solid::Backends::Fstab::FstabHandling::options(const QString &device
     return options;
 }
 
+QString Solid::Backends::Fstab::FstabHandling::fstype(const QString &device)
+{
+    _k_updateFstabMountPointsCache();
+
+    return globalFstabCache->m_fstabFstypeCache.value(device);
+}
+
 bool Solid::Backends::Fstab::FstabHandling::callSystemCommand(const QString &commandName, const QStringList &args,
                                                               const QObject *receiver, std::function<void(QProcess *)> callback)
 {
@@ -276,6 +286,7 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateMtabMountPointsCache()
             const QString device = QFile::decodeName(mounted[i].f_mntfromname);
             const QString mountpoint = QFile::decodeName(mounted[i].f_mntonname);
             globalFstabCache->m_mtabCache.insert(device, mountpoint);
+            globalFstabCache->m_fstabFstypeCache.insert(device, type);
         }
     }
 
@@ -292,6 +303,7 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateMtabMountPointsCache()
             const QString device = QFile::decodeName(FSNAME(fe));
             const QString mountpoint = QFile::decodeName(MOUNTPOINT(fe));
             globalFstabCache->m_mtabCache.insert(device, mountpoint);
+            globalFstabCache->m_fstabFstypeCache.insert(device, type);
         }
     }
     ENDMNTENT(mnttab);
