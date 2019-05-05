@@ -44,20 +44,24 @@ FstabDevice::FstabDevice(QString uid) :
     if (m_device.startsWith("//")) {
         m_vendor = m_device.mid(2, m_device.indexOf("/", 2) - 2);
         m_product = m_device.mid(m_device.indexOf("/", 2) + 1);
-        m_isNetworkShare = true;
+        m_storageType = StorageType::NetworkShare;
     } else if (fstype.startsWith("nfs")) {
         m_vendor = m_device.left(m_device.indexOf(":/"));
         m_product = m_device.mid(m_device.indexOf(":/") + 2);
         if (m_product.isEmpty()) {
             m_product = QStringLiteral("/");
         }
-        m_isNetworkShare = true;
+        m_storageType = StorageType::NetworkShare;
     } else if (fstype.startsWith("fuse.")) {
         m_vendor = fstype;
         m_product = m_device.mid(m_device.indexOf(fstype) + fstype.length());
         QString home = QDir::homePath();
         if (m_product.startsWith(home)) {
             m_product = "~" + m_product.mid(home.length());
+        }
+        if ((fstype == QLatin1String("fuse.encfs")) ||
+            (fstype == QLatin1String("fuse.cryfs"))) {
+            m_storageType = StorageType::Encrypted;
         }
     }
 
@@ -74,7 +78,7 @@ FstabDevice::FstabDevice(QString uid) :
     }
 
     if (m_description.isEmpty()) {
-        if (m_isNetworkShare) {
+        if (m_storageType == StorageType::NetworkShare) {
             m_description = QCoreApplication::translate("", "%1 on %2",
             "%1 is sharename, %2 is servername").arg(m_product, m_vendor);
         } else {
@@ -84,8 +88,10 @@ FstabDevice::FstabDevice(QString uid) :
     }
 
     if (m_iconName.isEmpty()) {
-        if (m_isNetworkShare) {
+        if (m_storageType == StorageType::NetworkShare) {
             m_iconName = QLatin1String("network-server");
+        } else if (m_storageType == StorageType::Encrypted) {
+            m_iconName = QLatin1String("folder-decrypted");
         } else {
             m_iconName = QLatin1String("folder");
         }
@@ -142,25 +148,27 @@ QString FstabDevice::description() const
     return m_description;
 }
 
-bool FstabDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type) const
+bool FstabDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &interfaceType) const
 {
-    if (type == Solid::DeviceInterface::StorageAccess) {
+    if (interfaceType == Solid::DeviceInterface::StorageAccess) {
         return true;
     }
-    if (m_isNetworkShare && (type == Solid::DeviceInterface::NetworkShare)) {
+    if ((m_storageType == StorageType::NetworkShare) &&
+        (interfaceType == Solid::DeviceInterface::NetworkShare)) {
         return true;
     }
     return false;
 }
 
-QObject *FstabDevice::createDeviceInterface(const Solid::DeviceInterface::Type &type)
+QObject *FstabDevice::createDeviceInterface(const Solid::DeviceInterface::Type &interfaceType)
 {
-    if (type == Solid::DeviceInterface::StorageAccess) {
+    if (interfaceType == Solid::DeviceInterface::StorageAccess) {
         if (!m_storageAccess) {
             m_storageAccess = new FstabStorageAccess(this);
         }
         return m_storageAccess;
-    } else if (m_isNetworkShare && (type == Solid::DeviceInterface::NetworkShare)) {
+    } else if ((m_storageType == StorageType::NetworkShare) &&
+               (interfaceType == Solid::DeviceInterface::NetworkShare)) {
         return new FstabNetworkShare(this);
     }
     return nullptr;
