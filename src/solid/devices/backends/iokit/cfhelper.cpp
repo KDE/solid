@@ -63,32 +63,32 @@ static QVariant q_toVariant(const CFTypeRef &obj)
         const CFNumberType type = CFNumberGetType(num);
         switch (type) {
         case kCFNumberSInt8Type:
-            return qVariantFromValue(convertCFNumber<char>(num, type));
+            return QVariant::fromValue(convertCFNumber<char>(num, type));
         case kCFNumberSInt16Type:
-            return qVariantFromValue(convertCFNumber<qint16>(num, type));
+            return QVariant::fromValue(convertCFNumber<qint16>(num, type));
         case kCFNumberSInt32Type:
-            return qVariantFromValue(convertCFNumber<qint32>(num, type));
+            return QVariant::fromValue(convertCFNumber<qint32>(num, type));
         case kCFNumberSInt64Type:
-            return qVariantFromValue(convertCFNumber<qint64>(num, type));
+            return QVariant::fromValue(convertCFNumber<qint64>(num, type));
         case kCFNumberCharType:
-            return qVariantFromValue(convertCFNumber<uchar>(num, type));
+            return QVariant::fromValue(convertCFNumber<uchar>(num, type));
         case kCFNumberShortType:
-            return qVariantFromValue(convertCFNumber<short>(num, type));
+            return QVariant::fromValue(convertCFNumber<short>(num, type));
         case kCFNumberIntType:
-            return qVariantFromValue(convertCFNumber<int>(num, type));
+            return QVariant::fromValue(convertCFNumber<int>(num, type));
         case kCFNumberLongType:
-            return qVariantFromValue(convertCFNumber<long>(num, type));
+            return QVariant::fromValue(convertCFNumber<long>(num, type));
         case kCFNumberLongLongType:
-            return qVariantFromValue(convertCFNumber<long long>(num, type));
+            return QVariant::fromValue(convertCFNumber<long long>(num, type));
         case kCFNumberFloatType:
-            return qVariantFromValue(convertCFNumber<float>(num, type));
+            return QVariant::fromValue(convertCFNumber<float>(num, type));
         case kCFNumberDoubleType:
-            return qVariantFromValue(convertCFNumber<double>(num, type));
+            return QVariant::fromValue(convertCFNumber<double>(num, type));
         default:
             if (CFNumberIsFloatType(num)) {
-                return qVariantFromValue(convertCFNumber<double>(num, kCFNumberDoubleType));
+                return QVariant::fromValue(convertCFNumber<double>(num, kCFNumberDoubleType));
             }
-            return qVariantFromValue(convertCFNumber<quint64>(num, kCFNumberLongLongType));
+            return QVariant::fromValue(convertCFNumber<quint64>(num, kCFNumberLongLongType));
         }
     }
 
