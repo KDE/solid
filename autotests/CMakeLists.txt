@@ -4,22 +4,26 @@ find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Concurrent Test)
 
 ########### fakehardwaretest ###############
 
-ecm_add_test(fakehardwaretest.cpp LINK_LIBRARIES KF5Solid_static Qt5::DBus Qt5::Xml Qt5::Test)
-# QT5 TODO Port solid to QFINDTESTDATA
-target_compile_definitions(fakehardwaretest PRIVATE SOLID_STATIC_DEFINE=1 TEST_DATA="${CMAKE_CURRENT_SOURCE_DIR}/../src/solid/devices/backends/fakehw/fakecomputer.xml")
+if (BUILD_DEVICE_BACKEND_fakehw)
+    ecm_add_test(fakehardwaretest.cpp LINK_LIBRARIES KF5Solid_static Qt5::DBus Qt5::Xml Qt5::Test)
+    # QT5 TODO Port solid to QFINDTESTDATA
+    target_compile_definitions(fakehardwaretest PRIVATE SOLID_STATIC_DEFINE=1 TEST_DATA="${CMAKE_CURRENT_SOURCE_DIR}/../src/solid/devices/backends/fakehw/fakecomputer.xml")
+endif()
 
 
 ########### halbasictest ###############
 
-if(NOT WIN32 AND NOT APPLE AND NOT CMAKE_SYSTEM_NAME MATCHES Linux)
+if (BUILD_DEVICE_BACKEND_hal)
     ecm_add_test(halbasictest.cpp LINK_LIBRARIES KF5Solid_static Qt5::DBus Qt5::Xml Qt5::Test)
 endif()
 
 ########### solidhwtest ###############
 
-ecm_add_test(solidhwtest.cpp LINK_LIBRARIES Qt5::DBus Qt5::Xml Qt5::Test ${LIBS} KF5Solid_static)
-target_compile_definitions(solidhwtest PRIVATE SOLID_STATIC_DEFINE=1 FAKE_COMPUTER_XML="${CMAKE_CURRENT_SOURCE_DIR}/../src/solid/devices/backends/fakehw/fakecomputer.xml")
-target_include_directories(solidhwtest PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../src/solid/devices/backends/fakehw)
+if (BUILD_DEVICE_BACKEND_fakehw)
+    ecm_add_test(solidhwtest.cpp LINK_LIBRARIES Qt5::DBus Qt5::Xml Qt5::Test ${LIBS} KF5Solid_static)
+    target_compile_definitions(solidhwtest PRIVATE SOLID_STATIC_DEFINE=1 FAKE_COMPUTER_XML="${CMAKE_CURRENT_SOURCE_DIR}/../src/solid/devices/backends/fakehw/fakecomputer.xml")
+    target_include_directories(solidhwtest PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../src/solid/devices/backends/fakehw)
+endif()
 
 ########### solidmttest ###############
 
