@@ -199,18 +199,10 @@ QStringList UDevManager::devicesFromQuery(const QString &parentUdi,
         deviceList = d->m_client->devicesBySubsystem(QStringLiteral("processor"))
                    + d->m_client->devicesBySubsystem(QStringLiteral("cpu"));
     } else if (type == Solid::DeviceInterface::Camera) {
-        deviceList = d->m_client->devicesBySubsystemsAndProperties({
-            QStringLiteral("usb"),
-        }, {
-            {QStringLiteral("ID_GPHOTO2"), QVariant()} // checks for property existance
-        });
+        deviceList = d->m_client->devicesByProperty("ID_GPHOTO2", 1);
     } else if (type == Solid::DeviceInterface::PortableMediaPlayer) {
-        deviceList = d->m_client->devicesBySubsystemsAndProperties({
-            QStringLiteral("usb"),
-        }, {
-            {QStringLiteral("ID_MEDIA_PLAYER"), QVariant()}  // checks for property existance
-        });
-    } else {
+        deviceList = d->m_client->devicesBySubsystem(QStringLiteral("usb"));
+    } else if (type != Solid::DeviceInterface::Unknown) {
         deviceList = d->m_client->allDevices();
     }
 

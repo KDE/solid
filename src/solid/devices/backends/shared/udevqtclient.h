@@ -50,12 +50,6 @@ public:
     DeviceList allDevices();
     DeviceList devicesByProperty(const QString &property, const QVariant &value);
     DeviceList devicesBySubsystem(const QString &subsystem);
-    /**
-     * Returns a list of devices matching any of the given subsystems AND any of the properties.
-     *
-     * (subsystem1 || subsystem2 || ...) && (property1 || property2 || ...)
-     */
-    DeviceList devicesBySubsystemsAndProperties(const QStringList &subsystems, const QVariantMap &properties);
     Device deviceByDeviceFile(const QString &deviceFile);
     Device deviceBySysfsPath(const QString &sysfsPath);
     Device deviceBySubsystemAndName(const QString &subsystem, const QString &name);

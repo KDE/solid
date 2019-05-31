@@ -215,25 +215,6 @@ DeviceList Client::devicesBySubsystem(const QString &subsystem)
     return d->deviceListFromEnumerate(en);
 }
 
-DeviceList Client::devicesBySubsystemsAndProperties(const QStringList &subsystems, const QVariantMap &properties)
-{
-    struct udev_enumerate *en = udev_enumerate_new(d->udev);
-
-    for (const QString &subsystem : subsystems) {
-        udev_enumerate_add_match_subsystem(en, subsystem.toLatin1().constData());
-    }
-
-    for (auto it = properties.begin(), end = properties.end(); it != end; ++it) {
-        if (it.value().isValid()) {
-            udev_enumerate_add_match_property(en, it.key().toLatin1().constData(), it.value().toString().toLatin1().constData());
-        } else {
-            udev_enumerate_add_match_property(en, it.key().toLatin1().constData(), nullptr);
-        }
-    }
-
-    return d->deviceListFromEnumerate(en);
-}
-
 Device Client::deviceByDeviceFile(const QString &deviceFile)
 {
     QT_STATBUF sb;
