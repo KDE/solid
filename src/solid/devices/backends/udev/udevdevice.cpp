@@ -147,10 +147,10 @@ bool UDevDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type) 
         return m_device.subsystem() == QLatin1String("cpu");
 
     case Solid::DeviceInterface::Camera:
-        return property("ID_GPHOTO2").toInt() == 1;
+        return m_device.subsystem() == QLatin1String("usb") && property("ID_GPHOTO2").isValid();
 
     case Solid::DeviceInterface::PortableMediaPlayer:
-        return m_device.subsystem() == QLatin1String("usb") && !property("ID_MEDIA_PLAYER").toString().isEmpty();
+        return m_device.subsystem() == QLatin1String("usb") && property("ID_MEDIA_PLAYER").isValid();
 
     case Solid::DeviceInterface::Block:
         return !property("MAJOR").toString().isEmpty();
