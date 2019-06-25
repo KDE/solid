@@ -52,7 +52,8 @@ FstabDevice::FstabDevice(QString uid) :
             m_product = QStringLiteral("/");
         }
         m_storageType = StorageType::NetworkShare;
-    } else if (fstype.startsWith("fuse.")) {
+    } else if (fstype.startsWith("fuse.") ||
+               fstype == QLatin1String("overlay")) {
         m_vendor = fstype;
         m_product = m_device.mid(m_device.indexOf(fstype) + fstype.length());
         QString home = QDir::homePath();

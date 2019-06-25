@@ -124,7 +124,8 @@ bool _k_isFstabNetworkFileSystem(const QString &fstype, const QString &devName)
 bool _k_isFstabSupportedLocalFileSystem(const QString &fstype)
 {
     if (fstype == "fuse.encfs" ||
-        fstype == "fuse.cryfs") {
+        fstype == "fuse.cryfs" ||
+        fstype == "overlay") {
         return true;
     }
     return false;
@@ -133,7 +134,8 @@ bool _k_isFstabSupportedLocalFileSystem(const QString &fstype)
 QString _k_deviceNameForMountpoint(const QString &source, const QString &fstype,
                                    const QString &mountpoint)
 {
-    if (fstype.startsWith("fuse.")) {
+    if (fstype.startsWith("fuse.") ||
+        fstype == QLatin1String("overlay")) {
             return fstype + mountpoint;
     }
     return source;
