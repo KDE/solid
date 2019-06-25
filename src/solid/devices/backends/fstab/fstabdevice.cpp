@@ -94,7 +94,15 @@ FstabDevice::FstabDevice(QString uid) :
         } else if (m_storageType == StorageType::Encrypted) {
             m_iconName = QLatin1String("folder-decrypted");
         } else {
-            m_iconName = QLatin1String("folder");
+            const QStringList& mountPoints = FstabHandling::mountPoints(m_device);
+            const QString home = QDir::homePath();
+            if (mountPoints.contains("/")) {
+                m_iconName = QStringLiteral("drive-harddisk-root");
+            } else if (mountPoints.contains(home)) {
+                m_iconName = QStringLiteral("user-home");
+            } else {
+                m_iconName = QStringLiteral("folder");
+            }
         }
     }
 }
