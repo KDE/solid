@@ -50,6 +50,7 @@
 #include <sys/param.h>
 #endif
 #include <sys/mount.h>
+#include <QThreadStorage>
 #endif
 
 #ifdef Q_OS_SOLARIS
@@ -102,7 +103,7 @@
 #define FSNAME(var) var.mnt_special
 #endif
 
-Q_GLOBAL_STATIC(Solid::Backends::Fstab::FstabHandling, globalFstabCache)
+Q_GLOBAL_STATIC(QThreadStorage<Solid::Backends::Fstab::FstabHandling>, globalFstabCache)
 
 Solid::Backends::Fstab::FstabHandling::FstabHandling()
     : m_fstabCacheValid(false),
@@ -143,12 +144,12 @@ QString _k_deviceNameForMountpoint(const QString &source, const QString &fstype,
 
 void Solid::Backends::Fstab::FstabHandling::_k_updateFstabMountPointsCache()
 {
-    if (globalFstabCache->m_fstabCacheValid) {
+    if (globalFstabCache->localData().m_fstabCacheValid) {
         return;
     }
 
-    globalFstabCache->m_fstabCache.clear();
-    globalFstabCache->m_fstabOptionsCache.clear();
+    globalFstabCache->localData().m_fstabCache.clear();
+    globalFstabCache->localData().m_fstabOptionsCache.clear();
 
 #if HAVE_SETMNTENT
 
@@ -167,10 +168,10 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateFstabMountPointsCache()
             const QString device = _k_deviceNameForMountpoint(fsname, fstype, mountpoint);
             QStringList options = QFile::decodeName(fe->mnt_opts).split(QLatin1Char(','));
 
-            globalFstabCache->m_fstabCache.insert(device, mountpoint);
-            globalFstabCache->m_fstabFstypeCache.insert(device, fstype);
+            globalFstabCache->localData().m_fstabCache.insert(device, mountpoint);
+            globalFstabCache->localData().m_fstabFstypeCache.insert(device, fstype);
             while (!options.isEmpty()) {
-                globalFstabCache->m_fstabOptionsCache.insert(device, options.takeFirst());
+                globalFstabCache->localData().m_fstabOptionsCache.insert(device, options.takeFirst());
             }
         }
     }
@@ -211,13 +212,13 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateFstabMountPointsCache()
             const QString device = items.at(0);
             const QString mountpoint = items.at(1);
 
-            globalFstabCache->m_fstabCache.insert(device, mountpoint);
+            globalFstabCache->localData().m_fstabCache.insert(device, mountpoint);
         }
     }
 
     fstab.close();
 #endif
-    globalFstabCache->m_fstabCacheValid = true;
+    globalFstabCache->localData().m_fstabCacheValid = true;
 }
 
 QStringList Solid::Backends::Fstab::FstabHandling::deviceList()
@@ -225,8 +226,8 @@ QStringList Solid::Backends::Fstab::FstabHandling::deviceList()
     _k_updateFstabMountPointsCache();
     _k_updateMtabMountPointsCache();
 
-    QStringList devices = globalFstabCache->m_fstabCache.keys();
-    devices += globalFstabCache->m_mtabCache.keys();
+    QStringList devices = globalFstabCache->localData().m_fstabCache.keys();
+    devices += globalFstabCache->localData().m_mtabCache.keys();
     devices.removeDuplicates();
     return devices;
 }
@@ -236,8 +237,8 @@ QStringList Solid::Backends::Fstab::FstabHandling::mountPoints(const QString &de
     _k_updateFstabMountPointsCache();
     _k_updateMtabMountPointsCache();
 
-    QStringList mountpoints = globalFstabCache->m_fstabCache.values(device);
-    mountpoints += globalFstabCache->m_mtabCache.values(device);
+    QStringList mountpoints = globalFstabCache->localData().m_fstabCache.values(device);
+    mountpoints += globalFstabCache->localData().m_mtabCache.values(device);
     mountpoints.removeDuplicates();
     return mountpoints;
 }
@@ -246,7 +247,7 @@ QStringList Solid::Backends::Fstab::FstabHandling::options(const QString &device
 {
     _k_updateFstabMountPointsCache();
 
-    QStringList options = globalFstabCache->m_fstabOptionsCache.values(device);
+    QStringList options = globalFstabCache->localData().m_fstabOptionsCache.values(device);
     return options;
 }
 
@@ -254,7 +255,7 @@ QString Solid::Backends::Fstab::FstabHandling::fstype(const QString &device)
 {
     _k_updateFstabMountPointsCache();
 
-    return globalFstabCache->m_fstabFstypeCache.value(device);
+    return globalFstabCache->localData().m_fstabFstypeCache.value(device);
 }
 
 bool Solid::Backends::Fstab::FstabHandling::callSystemCommand(const QString &commandName, const QStringList &args,
@@ -286,11 +287,11 @@ bool Solid::Backends::Fstab::FstabHandling::callSystemCommand(const QString &com
 
 void Solid::Backends::Fstab::FstabHandling::_k_updateMtabMountPointsCache()
 {
-    if (globalFstabCache->m_mtabCacheValid) {
+    if (globalFstabCache->localData().m_mtabCacheValid) {
         return;
     }
 
-    globalFstabCache->m_mtabCache.clear();
+    globalFstabCache->localData().m_mtabCache.clear();
 
 #if HAVE_GETMNTINFO
 
@@ -309,8 +310,8 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateMtabMountPointsCache()
             const QString fsname = QFile::decodeName(mounted[i].f_mntfromname);
             const QString mountpoint = QFile::decodeName(mounted[i].f_mntonname);
             const QString device = _k_deviceNameForMountpoint(fsname, type, mountpoint);
-            globalFstabCache->m_mtabCache.insert(device, mountpoint);
-            globalFstabCache->m_fstabFstypeCache.insert(device, type);
+            globalFstabCache->localData().m_mtabCache.insert(device, mountpoint);
+            globalFstabCache->localData().m_fstabFstypeCache.insert(device, type);
         }
     }
 
@@ -328,28 +329,28 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateMtabMountPointsCache()
             const QString fsname = QFile::decodeName(FSNAME(fe));
             const QString mountpoint = QFile::decodeName(MOUNTPOINT(fe));
             const QString device = _k_deviceNameForMountpoint(fsname, type, mountpoint);
-            globalFstabCache->m_mtabCache.insert(device, mountpoint);
-            globalFstabCache->m_fstabFstypeCache.insert(device, type);
+            globalFstabCache->localData().m_mtabCache.insert(device, mountpoint);
+            globalFstabCache->localData().m_fstabFstypeCache.insert(device, type);
         }
     }
     ENDMNTENT(mnttab);
 #endif
 
-    globalFstabCache->m_mtabCacheValid = true;
+    globalFstabCache->localData().m_mtabCacheValid = true;
 }
 
 QStringList Solid::Backends::Fstab::FstabHandling::currentMountPoints(const QString &device)
 {
     _k_updateMtabMountPointsCache();
-    return globalFstabCache->m_mtabCache.values(device);
+    return globalFstabCache->localData().m_mtabCache.values(device);
 }
 
 void Solid::Backends::Fstab::FstabHandling::flushMtabCache()
 {
-    globalFstabCache->m_mtabCacheValid = false;
+    globalFstabCache->localData().m_mtabCacheValid = false;
 }
 
 void Solid::Backends::Fstab::FstabHandling::flushFstabCache()
 {
-    globalFstabCache->m_fstabCacheValid = false;
+    globalFstabCache->localData().m_fstabCacheValid = false;
 }

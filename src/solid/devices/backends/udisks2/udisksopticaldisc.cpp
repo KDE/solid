@@ -30,6 +30,7 @@
 #include <QSharedMemory>
 #include <QSystemSemaphore>
 #include <QDBusConnection>
+#include <QThreadStorage>
 
 #include "../shared/udevqt.h"
 
@@ -305,7 +306,7 @@ public:
     }
 };
 
-Q_GLOBAL_STATIC(SharedContentTypesCache, sharedContentTypesCache)
+Q_GLOBAL_STATIC(QThreadStorage<SharedContentTypesCache>, sharedContentTypesCache)
 
 OpticalDisc::Identity::Identity() : m_detectTime(0), m_size(0), m_labelHash(0)
 {
@@ -419,7 +420,7 @@ Solid::OpticalDisc::ContentTypes OpticalDisc::availableContent() const
         if (!(m_identity == newIdentity)) {
             QByteArray deviceFile(m_device->prop("Device").toByteArray());
             m_cachedContent =
-                sharedContentTypesCache->getContent(newIdentity, deviceFile);
+                sharedContentTypesCache->localData().getContent(newIdentity, deviceFile);
             m_identity = newIdentity;
         }
 

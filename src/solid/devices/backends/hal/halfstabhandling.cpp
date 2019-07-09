@@ -25,6 +25,7 @@
 #include <QObject>
 #include <QProcess>
 #include <QTextStream>
+#include <QWriteLocker>
 #include <QTime>
 
 #include <soliddefs_p.h>
@@ -43,7 +44,17 @@
 #endif
 
 typedef QMultiHash<QString, QString> QStringMultiHash;
-Q_GLOBAL_STATIC(QStringMultiHash, globalMountPointsCache)
+
+class MountPointsCache
+{
+public:
+    QReadWriteLock lock;
+    bool firstCall = true;
+    QTime elapsedTime;
+    QMultiHash<QString, QString> values;
+};
+
+Q_GLOBAL_STATIC(MountPointsCache, globalMountPointsCache)
 
 QString _k_resolveSymLink(const QString &filename)
 {
@@ -72,19 +83,17 @@ bool _k_isNetworkFileSystem(const QString &fstype, const QString &devName)
 
 void _k_updateMountPointsCache()
 {
-    static bool firstCall = true;
-    static QTime elapsedTime;
-
-    if (firstCall) {
-        firstCall = false;
-        elapsedTime.start();
-    } else if (elapsedTime.elapsed() > 10000) {
-        elapsedTime.restart();
+    QWriteLocker locker(&globalMountPointsCache->lock);
+    if (globalMountPointsCache->firstCall) {
+        globalMountPointsCache->firstCall = false;
+        globalMountPointsCache->elapsedTime.start();
+    } else if (globalMountPointsCache->elapsedTime.elapsed() > 10000) {
+        globalMountPointsCache->elapsedTime.restart();
     } else {
         return;
     }
 
-    globalMountPointsCache->clear();
+    globalMountPointsCache->values.clear();
 
 #if HAVE_SETMNTENT
 
@@ -99,7 +108,7 @@ void _k_updateMountPointsCache()
             const QString device = _k_resolveSymLink(QFile::decodeName(fe->mnt_fsname));
             const QString mountpoint = _k_resolveSymLink(QFile::decodeName(fe->mnt_dir));
 
-            globalMountPointsCache->insert(device, mountpoint);
+            globalMountPointsCache->values.insert(device, mountpoint);
         }
     }
 
@@ -138,7 +147,7 @@ void _k_updateMountPointsCache()
             const QString device = _k_resolveSymLink(items.at(0));
             const QString mountpoint = _k_resolveSymLink(items.at(1));
 
-            globalMountPointsCache->insert(device, mountpoint);
+            globalMountPointsCache->values.insert(device, mountpoint);
         }
     }
 
@@ -151,7 +160,8 @@ bool Solid::Backends::Hal::FstabHandling::isInFstab(const QString &device)
     _k_updateMountPointsCache();
     const QString deviceToFind = _k_resolveSymLink(device);
 
-    return globalMountPointsCache->contains(deviceToFind);
+    QReadLocker lock(&globalMountPointsCache->lock);
+    return globalMountPointsCache->values.contains(deviceToFind);
 }
 
 QStringList Solid::Backends::Hal::FstabHandling::possibleMountPoints(const QString &device)
@@ -159,7 +169,8 @@ QStringList Solid::Backends::Hal::FstabHandling::possibleMountPoints(const QStri
     _k_updateMountPointsCache();
     const QString deviceToFind = _k_resolveSymLink(device);
 
-    return globalMountPointsCache->values(deviceToFind);
+    QReadLocker lock(&globalMountPointsCache->lock);
+    return globalMountPointsCache->values.values(deviceToFind);
 }
 
 QProcess *Solid::Backends::Hal::FstabHandling::callSystemCommand(const QString &commandName,

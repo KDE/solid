@@ -28,6 +28,7 @@
 #include <QDBusObjectPath>
 #include <QDBusInterface>
 #include <QStringList>
+#include <QThreadStorage>
 
 #include "udisks2.h"
 
@@ -78,7 +79,7 @@ private:
     QStringList m_interfaces;
     QString m_udi;
 
-    static QMap<QString, DeviceBackend *> s_backends;
+    static QThreadStorage<QMap<QString, DeviceBackend *>> s_backends;
 
 };
 

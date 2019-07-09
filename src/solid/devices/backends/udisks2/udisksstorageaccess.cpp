@@ -306,7 +306,7 @@ bool StorageAccess::unmount()
 
 QString StorageAccess::generateReturnObjectPath()
 {
-    static int number = 1;
+    static QAtomicInt number = 1;
 
     return "/org/kde/solid/UDisks2StorageAccess_" + QString::number(number++);
 }

@@ -312,7 +312,7 @@ void StorageAccess::slotEjectRequested()
 
 QString generateReturnObjectPath()
 {
-    static int number = 1;
+    static QAtomicInt number = 1;
 
     return "/org/kde/solid/HalStorageAccess_" + QString::number(number++);
 }
