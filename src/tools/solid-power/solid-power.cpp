@@ -23,8 +23,6 @@
 #include <solid/power.h>
 #include <solid/acpluggedjob.h>
 
-#include <QDebug>
-#include <QCoreApplication>
 #include <QTextStream>
 
 using namespace Solid;

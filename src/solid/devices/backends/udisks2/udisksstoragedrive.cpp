@@ -24,7 +24,6 @@
 #include "../shared/udevqt.h"
 
 #include <QDebug>
-#include <QFile>
 
 using namespace Solid::Backends::UDisks2;
 

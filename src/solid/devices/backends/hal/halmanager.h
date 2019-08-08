@@ -24,7 +24,6 @@
 #include <solid/devices/ifaces/devicemanager.h>
 #include <solid/deviceinterface.h>
 
-#include <QVariant>
 #include <QStringList>
 
 namespace Solid

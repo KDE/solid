@@ -19,6 +19,7 @@
 */
 
 #include "fakeblock.h"
+#include <QVariant>
 
 using namespace Solid::Backends::Fake;
 

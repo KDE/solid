@@ -26,7 +26,6 @@
 #include "iokitdevice.h"
 
 #include <QObject>
-#include <QStringList>
 
 namespace Solid
 {

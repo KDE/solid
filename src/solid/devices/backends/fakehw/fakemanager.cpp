@@ -28,7 +28,6 @@
 #include <QDebug>
 #include <QFile>
 #include <QString>
-#include <QTimer>
 #ifdef QT_DBUS_LIB
 #include <QDBusConnection>
 #endif

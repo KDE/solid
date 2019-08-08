@@ -20,7 +20,6 @@
 
 #include "cpuinfo.h"
 
-#include <QDebug>
 #include <QFile>
 #include <QRegExp>
 #include <QStringList>

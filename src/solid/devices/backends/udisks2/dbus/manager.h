@@ -12,9 +12,7 @@
 #define MANAGER_H_1329493525
 
 #include <QObject>
-#include <QByteArray>
 #include <QList>
-#include <QMap>
 #include <QString>
 #include <QStringList>
 #include <QVariant>

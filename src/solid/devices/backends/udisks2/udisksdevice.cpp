@@ -34,15 +34,9 @@
 #include <solid/deviceinterface.h>
 #include <solid/device.h>
 
-#include <QDebug>
 #include <QMimeDatabase>
 
-#include <QDBusMessage>
-#include <QDBusMetaType>
-#include <QDBusPendingReply>
-#include <QDBusArgument>
 
-#include <QDomDocument>
 
 using namespace Solid::Backends::UDisks2;
 

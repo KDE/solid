@@ -22,7 +22,6 @@
 #include "iokitbattery.h"
 #include "iokitdevice.h"
 
-#include <QDebug>
 
 // TODO - emit the signals
 

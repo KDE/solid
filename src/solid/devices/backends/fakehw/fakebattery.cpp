@@ -21,6 +21,7 @@
 */
 
 #include "fakebattery.h"
+#include <QVariant>
 
 using namespace Solid::Backends::Fake;
 

@@ -21,7 +21,6 @@
 #ifndef SOLID_FAKE_LOGIND_H
 #define SOLID_FAKE_LOGIND_H
 
-#include <QList>
 #include <QString>
 #include <QDBusUnixFileDescriptor>
 #include <QDBusObjectPath>

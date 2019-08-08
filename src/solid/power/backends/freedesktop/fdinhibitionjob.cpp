@@ -21,10 +21,7 @@
 #include "fdinhibitionjob.h"
 #include "fdinhibition.h"
 
-#include <QCoreApplication>
-#include <QVariant>
 
-#include <QDebug>
 #include <unistd.h>
 
 using namespace Solid;

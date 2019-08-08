@@ -20,7 +20,6 @@
 
 #include "iokitopticaldisc.h"
 
-#include <QDebug>
 
 #include <CoreFoundation/CoreFoundation.h>
 

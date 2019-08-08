@@ -21,7 +21,6 @@
 
 // Qt includes
 #include <QtTest>
-#include <QStringList>
 
 // Solid includes
 #include <solid/devices/ifaces/device.h>

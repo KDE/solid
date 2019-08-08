@@ -28,7 +28,6 @@
 #include <solid/deviceinterface.h>
 #include <solid/solidnamespace.h>
 
-#include <QDBusInterface>
 #include <QDBusObjectPath>
 #include <QStringList>
 

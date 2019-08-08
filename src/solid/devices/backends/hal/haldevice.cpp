@@ -26,7 +26,6 @@
 #include <QDBusReply>
 #include <QDBusArgument>
 #include <QDBusMetaType>
-#include <QDBusVariant>
 
 #include <solid/genericinterface.h>
 

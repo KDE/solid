@@ -20,7 +20,6 @@
 
 #include "iokitopticaldrive.h"
 
-#include <QStringList>
 #include <QDebug>
 #include <QProcess>
 

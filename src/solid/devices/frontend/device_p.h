@@ -24,6 +24,7 @@
 #include <QObject>
 #include <QSharedData>
 #include <QPointer>
+#include <QMap>
 
 #include <ifaces/device.h>
 

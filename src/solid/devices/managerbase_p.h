@@ -22,7 +22,6 @@
 #define SOLID_MANAGERBASE_P_H
 
 #include <QObject>
-#include <QString>
 
 #include "solid/solid_export.h"
 

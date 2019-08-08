@@ -29,9 +29,6 @@
 #include <dbt.h>
 
 #include <QDebug>
-#include <QTimer>
-#include <QTime>
-#include <QApplication>
 
 using namespace Solid::Backends::Win;
 

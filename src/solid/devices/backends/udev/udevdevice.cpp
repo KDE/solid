@@ -30,8 +30,6 @@
 #include <sys/socket.h>
 #include <linux/if_arp.h>
 
-#include <QFile>
-#include <QDebug>
 
 using namespace Solid::Backends::UDev;
 

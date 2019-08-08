@@ -22,7 +22,6 @@
 #define UDEVQTCLIENT_H
 
 #include <QObject>
-#include <QList>
 #include <QString>
 #include <QStringList>
 #include <QVariant>

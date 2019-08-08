@@ -21,7 +21,6 @@
 #include "iokitvolume.h"
 #include "iokitgenericinterface.h"
 
-#include <QDebug>
 
 #include <CoreFoundation/CoreFoundation.h>
 #include <DiskArbitration/DiskArbitration.h>

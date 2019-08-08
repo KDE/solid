@@ -31,7 +31,6 @@
 
 #include <QDebug>
 #include <QSet>
-#include <QPointer>
 #include <QUrl>
 
 #include <sys/types.h>

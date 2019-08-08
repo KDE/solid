@@ -25,9 +25,7 @@
 
 #include <solid/deviceinterface.h>
 
-#include <QString>
 #include <QUrl>
-#include <QVariant>
 
 namespace Solid
 {

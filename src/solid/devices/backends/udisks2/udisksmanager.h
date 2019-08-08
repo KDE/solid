@@ -28,7 +28,6 @@
 
 #include <solid/devices/ifaces/devicemanager.h>
 
-#include <QDBusInterface>
 #include <QSet>
 
 namespace Solid

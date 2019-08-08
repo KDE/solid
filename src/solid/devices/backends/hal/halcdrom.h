@@ -27,7 +27,6 @@
 #include <QProcess>
 #include <QDBusMessage>
 #include <QDBusError>
-#include <QDBusVariant>
 
 namespace Solid
 {

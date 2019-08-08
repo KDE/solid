@@ -21,9 +21,7 @@
 #ifndef SOLID_DEVICE_H
 #define SOLID_DEVICE_H
 
-#include <QVariant>
 
-#include <QMap>
 #include <QList>
 #include <QSharedData>
 

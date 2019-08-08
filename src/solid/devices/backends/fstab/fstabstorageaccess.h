@@ -24,7 +24,6 @@
 #include <solid/devices/ifaces/storageaccess.h>
 
 #include <QObject>
-#include <QProcess>
 
 namespace Solid
 {

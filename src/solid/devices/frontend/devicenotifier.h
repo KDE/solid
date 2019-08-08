@@ -22,7 +22,6 @@
 #define SOLID_DEVICENOTIFIER_H
 
 #include <QObject>
-#include <QList>
 
 #include <solid/solid_export.h>
 

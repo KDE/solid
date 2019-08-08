@@ -20,13 +20,9 @@
 
 #include "fdacpluggedjob.h"
 
-#include <QDebug>
 
 #include <QDBusConnection>
 #include <QDBusMessage>
-#include <QDBusPendingCall>
-#include <QDBusPendingReply>
-#include <QDBusInterface>
 
 using namespace Solid;
 

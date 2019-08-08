@@ -19,6 +19,7 @@
 */
 
 #include "fakenetworkshare.h"
+#include <QVariant>
 
 using namespace Solid::Backends::Fake;
 

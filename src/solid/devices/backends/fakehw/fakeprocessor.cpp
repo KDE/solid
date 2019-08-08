@@ -21,6 +21,7 @@
 #include "fakeprocessor.h"
 
 #include <QStringList>
+#include <QVariant>
 
 using namespace Solid::Backends::Fake;
 

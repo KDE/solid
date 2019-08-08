@@ -20,7 +20,6 @@
 
 #include "iokitstorageaccess.h"
 
-#include <QDebug>
 
 #include <CoreFoundation/CoreFoundation.h>
 #include <DiskArbitration/DiskArbitration.h>

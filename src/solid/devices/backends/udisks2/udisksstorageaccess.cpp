@@ -28,6 +28,7 @@
 #include <QDir>
 #include <QApplication>
 #include <QWidget>
+#include <QDBusInterface>
 
 using namespace Solid::Backends::UDisks2;
 

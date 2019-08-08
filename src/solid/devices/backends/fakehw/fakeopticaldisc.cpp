@@ -21,6 +21,7 @@
 #include "fakeopticaldisc.h"
 
 #include <QStringList>
+#include <QVariant>
 
 using namespace Solid::Backends::Fake;
 

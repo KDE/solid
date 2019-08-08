@@ -24,7 +24,6 @@
 #include <QDBusInterface>
 #include <QDBusReply>
 #include <QDBusError>
-#include <QDBusVariant>
 
 #include "halfstabhandling.h"
 

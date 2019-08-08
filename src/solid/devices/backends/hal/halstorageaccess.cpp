@@ -23,14 +23,12 @@
 #include "halfstabhandling.h"
 #include "halgenericinterface.h"
 
-#include <QLocale>
 #include <QDebug>
 #include <QProcess>
 #include <QTimer>
 #include <QDBusConnection>
 #include <QDBusInterface>
 #include <QDBusReply>
-#include <QDBusVariant>
 #include <QApplication>
 #include <QWidget>
 

@@ -25,7 +25,6 @@
 #include <QStringList>
 #include <QMetaProperty>
 #include <QMetaEnum>
-#include <QTimer>
 
 #include <QCoreApplication>
 #include <QCommandLineParser>

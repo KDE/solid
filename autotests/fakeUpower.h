@@ -23,7 +23,6 @@
 
 #include <QList>
 #include <QString>
-#include <QDBusAbstractAdaptor>
 #include <QDBusObjectPath>
 
 class FakeUpower : public QObject

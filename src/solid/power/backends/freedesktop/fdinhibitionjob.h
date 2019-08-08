@@ -25,8 +25,6 @@
 #include "solid/power.h"
 #include "solid/inhibition.h"
 
-#include <QDBusMessage>
-#include <QDBusError>
 
 namespace Solid
 {

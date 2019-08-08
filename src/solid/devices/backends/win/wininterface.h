@@ -24,7 +24,6 @@
 #include <solid/devices/ifaces/deviceinterface.h>
 
 #include "windevice.h"
-#include <QDebug>
 
 namespace Solid
 {

@@ -29,7 +29,6 @@
 #include <solid/device.h>
 
 #include <QStringList>
-#include <QDebug>
 #include <QDBusReply>
 
 using namespace Solid::Backends::UPower;

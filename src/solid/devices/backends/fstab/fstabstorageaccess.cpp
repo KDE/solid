@@ -25,6 +25,7 @@
 #include <solid/devices/backends/fstab/fstabservice.h>
 #include <QStringList>
 
+#include <QProcess>
 #include <QTimer>
 
 #define MTAB "/etc/mtab"

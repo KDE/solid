@@ -27,7 +27,6 @@
 #include <solid/deviceinterface.h>
 
 #include <QDBusInterface>
-#include <QSet>
 
 namespace Solid
 {

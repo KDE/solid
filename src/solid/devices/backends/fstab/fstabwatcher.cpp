@@ -25,7 +25,6 @@
 #include <QFileSystemWatcher>
 #include <QSocketNotifier>
 #include <QFile>
-#include <QStringList>
 
 using namespace Solid::Backends::Fstab;
 

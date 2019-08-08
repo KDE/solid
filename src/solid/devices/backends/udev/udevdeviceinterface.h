@@ -25,7 +25,6 @@
 #include "udevdevice.h"
 
 #include <QObject>
-#include <QStringList>
 
 namespace Solid
 {

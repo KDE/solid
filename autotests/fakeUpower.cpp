@@ -20,8 +20,6 @@
 
 #include "fakeUpower.h"
 
-#include <QDebug>
-#include <QDBusPendingCall>
 #include <QDBusConnection>
 #include <qdbusmessage.h>
 

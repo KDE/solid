@@ -23,7 +23,6 @@
 #include "powerbackendloader.h"
 #include "backends/abstractrequeststatejob.h"
 
-#include <QDebug>
 
 using namespace Solid;
 

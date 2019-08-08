@@ -22,7 +22,6 @@
 #define SOLID_POWER_TOOL_H
 
 #include <QObject>
-#include <QTextStream>
 
 class SolidPower : public QObject
 {

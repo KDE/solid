@@ -18,7 +18,6 @@
 #include "devices.h"
 #include "devices_p.h"
 
-#include <QDebug>
 
 #include <solid/device.h>
 #include <solid/deviceinterface.h>

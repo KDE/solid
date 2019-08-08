@@ -23,7 +23,6 @@
 #include "fakelogind.h"
 
 #include <QTest>
-#include <QDebug>
 #include <QSignalSpy>
 #include <QDBusConnection>
 #include <Solid/Power>

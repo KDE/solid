@@ -25,11 +25,9 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-#include <QFile>
 #include <QMap>
 #include <QSharedMemory>
 #include <QSystemSemaphore>
-#include <QDBusConnection>
 #include <QThreadStorage>
 
 #include "../shared/udevqt.h"

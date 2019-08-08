@@ -24,7 +24,6 @@
 #define UDISKSDEVICEBACKEND_H
 
 #include <QObject>
-#include <QDBusConnection>
 #include <QDBusObjectPath>
 #include <QDBusInterface>
 #include <QStringList>

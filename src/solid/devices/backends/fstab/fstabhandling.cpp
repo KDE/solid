@@ -25,7 +25,6 @@
 #include <QObject>
 #include <QProcess>
 #include <QTextStream>
-#include <QTime>
 
 #include <solid/devices/soliddefs_p.h>
 
