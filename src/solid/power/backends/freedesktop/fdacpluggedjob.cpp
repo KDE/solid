@@ -23,6 +23,7 @@
 
 #include <QDBusConnection>
 #include <QDBusMessage>
+#include <QDBusVariant>
 
 using namespace Solid;
 
