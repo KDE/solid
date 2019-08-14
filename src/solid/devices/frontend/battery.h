@@ -53,6 +53,7 @@ class SOLID_EXPORT Battery : public DeviceInterface
     Q_PROPERTY(double energyRate READ energyRate NOTIFY energyRateChanged)
     Q_PROPERTY(double voltage READ voltage NOTIFY voltageChanged)
     Q_PROPERTY(double temperature READ temperature NOTIFY temperatureChanged)
+    Q_PROPERTY(Technology technology READ technology)
     Q_PROPERTY(bool recalled READ isRecalled)
     Q_PROPERTY(QString recallVendor READ recallVendor)
     Q_PROPERTY(QString recallUrl READ recallUrl)
@@ -114,6 +115,7 @@ public:
     enum Technology { UnknownTechnology = 0, LithiumIon, LithiumPolymer, LithiumIronPhosphate,
                       LeadAcid, NickelCadmium, NickelMetalHydride
                     };
+    Q_ENUM(Technology)
 
 private:
     /**
