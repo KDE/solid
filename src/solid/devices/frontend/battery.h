@@ -57,7 +57,7 @@ class SOLID_EXPORT Battery : public DeviceInterface
     Q_PROPERTY(bool recalled READ isRecalled)
     Q_PROPERTY(QString recallVendor READ recallVendor)
     Q_PROPERTY(QString recallUrl READ recallUrl)
-    Q_PROPERTY(QString serial READ serial)
+    Q_PROPERTY(QString serial READ serial CONSTANT)
     Q_PROPERTY(qlonglong remainingTime READ remainingTime NOTIFY remainingTimeChanged)
     Q_DECLARE_PRIVATE(Battery)
     friend class Device;
