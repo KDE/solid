@@ -40,7 +40,7 @@ class DevicesQueryPrivate;
  *
  * It is intended to be used from QML like this:
  *
- * <code>
+ * @code
  *    Solid.Devices {
  *        id: allDevices
  *    }
@@ -64,7 +64,7 @@ class DevicesQueryPrivate;
  *            networkShares.devices[0], "NetworkShare"
  *        ).url
  *    }
- * </code>
+ * @endcode
  */
 class Devices: public QObject
 {
