@@ -30,7 +30,7 @@ int main(int argc, char **argv)
     qputenv("SOLID_POWER_BACKEND", "FREE_DESKTOP");
 
     QCoreApplication app(argc, argv);
-    app.setApplicationName(QLatin1Literal("solid-power"));
+    app.setApplicationName(QLatin1String("solid-power"));
 
     QCommandLineParser parser;
     parser.setApplicationDescription(QCoreApplication::translate("solid-power", "Tool to know and set the power management state of your device"));

@@ -28,7 +28,7 @@ void DummyRequestStateJob::doStart()
 {
     if (state == Power::Shutdown) {
         setError(RequestStateJob::Unsupported);
-        setErrorText(QLatin1Literal("State Brightness is unsupported"));
+        setErrorText(QLatin1String("State Brightness is unsupported"));
     }
     emitResult();
 }

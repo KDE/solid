@@ -79,7 +79,7 @@ void solidPowerTest::testAddInhibition()
     QCOMPARE(job->error(), (int) InhibitionJob::EmptyDescription);
     delete job;
 
-    job = Power::inhibit(Power::Sleep, QLatin1Literal("Running a test, we don't want to suspend now"));
+    job = Power::inhibit(Power::Sleep, QLatin1String("Running a test, we don't want to suspend now"));
     QVERIFY(job->exec());
 
     auto inhibition = job->inhibition();
@@ -116,7 +116,7 @@ void solidPowerTest::testRequestState()
     QVERIFY(!job->exec());
 
     QCOMPARE(job->error(), (int) RequestStateJob::Unsupported);
-    QCOMPARE(job->errorText(), QLatin1Literal(QLatin1Literal("State Brightness is unsupported")));
+    QCOMPARE(job->errorText(), QLatin1String(QLatin1String("State Brightness is unsupported")));
 }
 
 QTEST_MAIN(solidPowerTest)
