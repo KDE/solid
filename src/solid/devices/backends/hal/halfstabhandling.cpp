@@ -26,7 +26,7 @@
 #include <QProcess>
 #include <QTextStream>
 #include <QWriteLocker>
-#include <QTime>
+#include <QElapsedTimer>
 
 #include <soliddefs_p.h>
 #include <config-solid.h>
@@ -50,7 +50,7 @@ class MountPointsCache
 public:
     QReadWriteLock lock;
     bool firstCall = true;
-    QTime elapsedTime;
+    QElapsedTimer elapsedTime;
     QMultiHash<QString, QString> values;
 };
 
