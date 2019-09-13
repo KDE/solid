@@ -25,6 +25,7 @@
 #include <QObject>
 #include <QProcess>
 #include <QTextStream>
+#include <QThreadStorage>
 
 #include <solid/devices/soliddefs_p.h>
 
@@ -49,7 +50,6 @@
 #include <sys/param.h>
 #endif
 #include <sys/mount.h>
-#include <QThreadStorage>
 #endif
 
 #ifdef Q_OS_SOLARIS
