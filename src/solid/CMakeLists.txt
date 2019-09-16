@@ -9,7 +9,12 @@ endif()
 set(solid_LIB_SRCS ${solid_LIB_SRCS} ${solid_QM_LOADER})
 
 add_library(KF5Solid  ${solid_LIB_SRCS})
-target_include_directories(KF5Solid PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR};${CMAKE_CURRENT_SOURCE_DIR}/..;${CMAKE_CURRENT_BINARY_DIR}/..>")
+set(solid_BUILD_INCLUDE_DIRS
+    ${CMAKE_CURRENT_BINARY_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/..
+    ${CMAKE_CURRENT_BINARY_DIR}/..
+)
+target_include_directories(KF5Solid PUBLIC "$<BUILD_INTERFACE:${solid_BUILD_INCLUDE_DIRS}>")
 generate_export_header(KF5Solid BASE_NAME Solid)
 add_library(KF5::Solid ALIAS KF5Solid)
 
@@ -119,6 +124,8 @@ if(BUILD_QCH)
         MD_MAINPAGE "${CMAKE_SOURCE_DIR}/README.md"
         LINK_QCHS
             Qt5Core_QCH
+        INCLUDE_DIRS
+            ${solid_BUILD_INCLUDE_DIRS}
         BLANK_MACROS
             SOLID_EXPORT
             SOLID_DEPRECATED
