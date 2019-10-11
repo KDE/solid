@@ -93,15 +93,17 @@ install(TARGETS KF5Solid EXPORT KF5SolidTargets ${KF5_INSTALL_TARGETS_DEFAULT_AR
 
 ########### static lib for tests  ###############
 
-add_library(KF5Solid_static STATIC ${solid_LIB_SRCS})
-set_target_properties(KF5Solid_static PROPERTIES COMPILE_FLAGS -DSOLID_STATIC_DEFINE=1)
+if (BUILD_TESTING)
+  add_library(KF5Solid_static STATIC ${solid_LIB_SRCS})
+  set_target_properties(KF5Solid_static PROPERTIES COMPILE_FLAGS -DSOLID_STATIC_DEFINE=1)
 
-target_link_libraries(KF5Solid_static PUBLIC Qt5::Core)
-target_link_libraries(KF5Solid_static PRIVATE Qt5::Xml Qt5::Widgets ${solid_OPTIONAL_LIBS})
-if (TARGET Qt5::DBus)
-  target_link_libraries(KF5Solid_static PRIVATE Qt5::DBus)
+  target_link_libraries(KF5Solid_static PUBLIC Qt5::Core)
+  target_link_libraries(KF5Solid_static PRIVATE Qt5::Xml Qt5::Widgets ${solid_OPTIONAL_LIBS})
+  if (TARGET Qt5::DBus)
+    target_link_libraries(KF5Solid_static PRIVATE Qt5::DBus)
+  endif()
+  target_include_directories(KF5Solid_static PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR};${CMAKE_CURRENT_SOURCE_DIR}/..;${CMAKE_CURRENT_BINARY_DIR}/..>")
 endif()
-target_include_directories(KF5Solid_static PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR};${CMAKE_CURRENT_SOURCE_DIR}/..;${CMAKE_CURRENT_BINARY_DIR}/..>")
 
 ########### install files ###############
 
