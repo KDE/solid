@@ -17,7 +17,7 @@ set(solid_BUILD_INCLUDE_DIRS
 target_include_directories(KF5Solid PUBLIC "$<BUILD_INTERFACE:${solid_BUILD_INCLUDE_DIRS}>")
 ecm_generate_export_header(KF5Solid
     BASE_NAME Solid
-    # GROUP_BASE_NAME KF <- enable once all of KF modules use ecm_generate_export_header
+    GROUP_BASE_NAME KF
     VERSION ${KF5_VERSION}
     DEPRECATED_BASE_VERSION 0
     DEPRECATION_VERSIONS 5.0
