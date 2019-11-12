@@ -191,6 +191,18 @@ void Manager::slotInterfacesAdded(const QDBusObjectPath &object_path, const Vari
 
     qCDebug(UDISKS2) << udi << "has new interfaces:" << interfaces_and_properties.keys();
 
+    // If device gained an org.freedesktop.UDisks2.Block interface, we
+    // should check if it is an optical drive, in order to properly
+    // register mediaChanged event handler with newly-plugged external
+    // drives
+    if (interfaces_and_properties.contains("org.freedesktop.UDisks2.Block")) {
+        Device device(udi);
+        if (device.mightBeOpticalDisc()) {
+            QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE, udi, DBUS_INTERFACE_PROPS, "PropertiesChanged", this,
+                SLOT(slotMediaChanged(QDBusMessage)));
+        }
+    }
+
     updateBackend(udi);
 
     // new device, we don't know it yet
