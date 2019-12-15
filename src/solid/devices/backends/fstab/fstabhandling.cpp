@@ -225,9 +225,32 @@ QStringList Solid::Backends::Fstab::FstabHandling::deviceList()
     _k_updateFstabMountPointsCache();
     _k_updateMtabMountPointsCache();
 
-    QStringList devices = globalFstabCache->localData().m_fstabCache.keys();
-    devices += globalFstabCache->localData().m_mtabCache.keys();
-    devices.removeDuplicates();
+    QStringList devices = globalFstabCache->localData().m_mtabCache.keys();
+
+    // Ensure that regardless an fstab device ends with a slash
+    // it will match its eventual mounted device regardless whether or not its path
+    // ends with a slash
+    for (auto it = globalFstabCache->localData().m_fstabCache.constBegin(),
+         end = globalFstabCache->localData().m_fstabCache.constEnd();
+         it != end; ++it) {
+
+        auto device = it.key();
+        // the device is already known
+        if (devices.contains(device)) {
+            continue;
+        }
+
+        // deviceName will or won't end with / depending if device ended with one
+        QString deviceName = device;
+        if (deviceName.endsWith(QLatin1Char('/'))) {
+            deviceName.chop(1);
+        } else {
+            deviceName.append(QLatin1Char('/'));
+        }
+        if (!devices.contains(deviceName)) {
+            devices.append(device);
+        }
+    }
     return devices;
 }
 
