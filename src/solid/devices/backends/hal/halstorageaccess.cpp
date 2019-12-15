@@ -30,7 +30,7 @@
 #include <QDBusInterface>
 #include <QDBusReply>
 #include <QGuiApplication>
-#include <QWidget>
+#include <QWindow>
 
 #include <unistd.h>
 #include <stdlib.h>
