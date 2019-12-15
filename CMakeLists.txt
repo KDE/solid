@@ -17,7 +17,7 @@ include(KDECMakeSettings)
 include(ECMQtDeclareLoggingCategory)
 
 set(REQUIRED_QT_VERSION 5.11.0)
-find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Xml Widgets)
+find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Xml Gui)
 if (NOT ANDROID)
   find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED DBus)
 endif()

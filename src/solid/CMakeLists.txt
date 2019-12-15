@@ -30,7 +30,7 @@ target_include_directories(KF5Solid INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL
 
 target_link_libraries(KF5Solid PUBLIC Qt5::Core
                                PRIVATE Qt5::Xml
-                                       Qt5::Widgets
+                                       Qt5::Gui
                                        ${solid_OPTIONAL_LIBS}
  )
 if (TARGET Qt5::DBus)
@@ -105,7 +105,7 @@ if (BUILD_TESTING)
   set_target_properties(KF5Solid_static PROPERTIES COMPILE_FLAGS -DSOLID_STATIC_DEFINE=1)
 
   target_link_libraries(KF5Solid_static PUBLIC Qt5::Core)
-  target_link_libraries(KF5Solid_static PRIVATE Qt5::Xml Qt5::Widgets ${solid_OPTIONAL_LIBS})
+  target_link_libraries(KF5Solid_static PRIVATE Qt5::Xml Qt5::Gui ${solid_OPTIONAL_LIBS})
   if (TARGET Qt5::DBus)
     target_link_libraries(KF5Solid_static PRIVATE Qt5::DBus)
   endif()
