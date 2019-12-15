@@ -29,7 +29,7 @@
 #include <QDBusConnection>
 #include <QDBusInterface>
 #include <QDBusReply>
-#include <QApplication>
+#include <QGuiApplication>
 #include <QWidget>
 
 #include <unistd.h>
@@ -324,7 +324,7 @@ bool StorageAccess::requestPassphrase()
     QDBusConnection::sessionBus().registerObject(m_lastReturnObject, this,
             QDBusConnection::ExportScriptableSlots);
 
-    QWidget *activeWindow = QApplication::activeWindow();
+    auto activeWindow = QGuiApplication::focusWindow();
     uint wId = 0;
     if (activeWindow != nullptr) {
         wId = (uint)activeWindow->winId();

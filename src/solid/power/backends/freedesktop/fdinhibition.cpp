@@ -25,7 +25,7 @@
 
 #include <QVariant>
 #include <QDebug>
-#include <QApplication>
+#include <QCoreApplication>
 #include <QDBusConnection>
 #include <QDBusUnixFileDescriptor>
 
@@ -55,7 +55,7 @@ void FdInhibition::start()
 
     QList<QVariant> args;
     args << LogindInhibitionArgument::fromPowerState(m_inhibitions)
-         << qApp->applicationName()
+         << QCoreApplication::instance()->applicationName()
          << m_description
          << QStringLiteral("block");
     msg.setArguments(args);
