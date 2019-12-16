@@ -20,7 +20,8 @@
 
 #include "solidhwtest.h"
 
-#include <QtTest>
+#include <QTest>
+#include <QSignalSpy>
 
 #include <solid/devicenotifier.h>
 #include <solid/device.h>

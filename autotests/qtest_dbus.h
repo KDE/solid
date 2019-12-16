@@ -22,7 +22,8 @@
 #ifndef SOLID_QTEST_DBUS_H
 #define SOLID_QTEST_DBUS_H
 
-#include <QtTest>
+#include <QTest>
+#include <QProcess>
 #include <QDebug>
 #include <stdlib.h>
 

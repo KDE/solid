@@ -20,7 +20,7 @@
 
 #include "halbasictest.h"
 
-#include <QtTest>
+#include <QTest>
 
 #include "solid/devices/backends/hal/halmanager.h"
 

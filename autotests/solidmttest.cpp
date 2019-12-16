@@ -23,7 +23,7 @@
 #include <QThreadPool>
 #include <qtconcurrentrun.h>
 
-#include <QtTest>
+#include <QTest>
 
 #include <solid/device.h>
 #include <solid/predicate.h>
