@@ -143,7 +143,7 @@ QList<Solid::Device> Solid::Device::listFromQuery(const Predicate &predicate,
                 continue;
             }
 
-            QList<DeviceInterface::Type> sortedTypes = supportedTypes.toList();
+            QList<DeviceInterface::Type> sortedTypes = supportedTypes.values();
             std::sort(sortedTypes.begin(), sortedTypes.end());
             Q_FOREACH (DeviceInterface::Type type, sortedTypes) {
                 udis += backend->devicesFromQuery(parentUdi, type);
