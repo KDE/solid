@@ -47,7 +47,7 @@ FstabDevice::FstabDevice(QString uid) :
         m_storageType = StorageType::NetworkShare;
     } else if (fstype.startsWith("nfs")) {
         m_vendor = m_device.left(m_device.indexOf(":/"));
-        m_product = m_device.mid(m_device.indexOf(":/") + 2);
+        m_product = m_device.mid(m_device.indexOf(":/") + 1);
         if (m_product.isEmpty()) {
             m_product = QStringLiteral("/");
         }
