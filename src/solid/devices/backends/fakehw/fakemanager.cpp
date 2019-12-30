@@ -192,19 +192,19 @@ void FakeManager::parseMachineFile()
 {
     QFile machineFile(d->xmlFile);
     if (!machineFile.open(QIODevice::ReadOnly)) {
-        qWarning() << Q_FUNC_INFO << "Error while opening " << d->xmlFile << endl;
+        qWarning() << Q_FUNC_INFO << "Error while opening " << d->xmlFile;
         return;
     }
 
     QDomDocument fakeDocument;
     if (!fakeDocument.setContent(&machineFile)) {
-        qWarning() << Q_FUNC_INFO << "Error while creating the QDomDocument." << endl;
+        qWarning() << Q_FUNC_INFO << "Error while creating the QDomDocument.";
         machineFile.close();
         return;
     }
     machineFile.close();
 
-    qDebug() << Q_FUNC_INFO << "Parsing fake computer XML: " << d->xmlFile << endl;
+    qDebug() << Q_FUNC_INFO << "Parsing fake computer XML: " << d->xmlFile;
     QDomElement mainElement = fakeDocument.documentElement();
     QDomNode node = mainElement.firstChild();
     while (!node.isNull()) {
