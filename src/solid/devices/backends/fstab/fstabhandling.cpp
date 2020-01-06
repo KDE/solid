@@ -24,6 +24,7 @@
 #include <QFile>
 #include <QObject>
 #include <QProcess>
+#include <QRegularExpression>
 #include <QTextStream>
 #include <QThreadStorage>
 
@@ -284,7 +285,9 @@ bool Solid::Backends::Fstab::FstabHandling::callSystemCommand(const QString &com
                                                               const QObject *receiver, std::function<void(QProcess *)> callback)
 {
     QStringList env = QProcess::systemEnvironment();
-    env.replaceInStrings(QRegExp("^PATH=(.*)", Qt::CaseInsensitive), "PATH=/sbin:/bin:/usr/sbin/:/usr/bin");
+    env.replaceInStrings(
+        QRegularExpression(QStringLiteral("^PATH=(.*)"), QRegularExpression::CaseInsensitiveOption),
+        QStringLiteral("PATH=/sbin:/bin:/usr/sbin/:/usr/bin"));
 
     QProcess *process = new QProcess();
 

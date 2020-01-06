@@ -21,7 +21,7 @@
 #include "cpuinfo.h"
 
 #include <QFile>
-#include <QRegExp>
+#include <QRegularExpression>
 #include <QStringList>
 
 namespace Solid
@@ -81,18 +81,20 @@ CpuInfo::CpuInfo() {
 
 QString CpuInfo::extractCpuInfoLine(int processorNumber, const QString &regExpStr)
 {
-    const QRegExp processorRegExp("processor\\s+:\\s+(\\d+)");
-    const QRegExp regExp(regExpStr);
+    const QRegularExpression processorRegExp(
+                   QRegularExpression::anchoredPattern(QStringLiteral("processor\\s+:\\s+(\\d+)")));
+    const QRegularExpression regExp(QRegularExpression::anchoredPattern(regExpStr));
 
     int line = 0;
     while (line < cpuInfo.size()) {
-        if (processorRegExp.exactMatch(cpuInfo.at(line))) {
-            int recordProcNum = processorRegExp.capturedTexts()[1].toInt();
+        QRegularExpressionMatch match;
+        if ((match = processorRegExp.match(cpuInfo.at(line))).hasMatch()) {
+            int recordProcNum = match.captured(1).toInt();
             if (recordProcNum == processorNumber) {
                 ++line;
                 while (line < cpuInfo.size()) {
-                    if (regExp.exactMatch(cpuInfo.at(line))) {
-                        return regExp.capturedTexts()[1];
+                    if ((match = regExp.match(cpuInfo.at(line))).hasMatch()) {
+                        return match.captured(1);
                     }
                     ++line;
                 }
@@ -106,11 +108,12 @@ QString CpuInfo::extractCpuInfoLine(int processorNumber, const QString &regExpSt
 
 QString CpuInfo::extractInfoLine(const QString &regExpStr)
 {
-    const QRegExp regExp(regExpStr);
+    const QRegularExpression regExp(QRegularExpression::anchoredPattern(regExpStr));
 
     foreach (const QString &line, cpuInfo) {
-        if (regExp.exactMatch(line)) {
-            return regExp.capturedTexts()[1];
+        QRegularExpressionMatch match = regExp.match(line);
+        if (match.hasMatch()) {
+            return match.captured(1);
         }
     }
     return QString();
