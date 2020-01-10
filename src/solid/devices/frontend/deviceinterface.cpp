@@ -35,6 +35,7 @@ Solid::DeviceInterface::DeviceInterface(DeviceInterfacePrivate &dd, QObject *bac
 
 Solid::DeviceInterface::~DeviceInterface()
 {
+    delete d_ptr->backendObject();
     delete d_ptr;
     d_ptr = nullptr;
 }

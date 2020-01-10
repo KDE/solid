@@ -61,7 +61,7 @@ public Q_SLOTS:
 private:
     QString m_udi;
     QPointer<Ifaces::Device> m_backendObject;
-    QMap<DeviceInterface::Type, DeviceInterface *> m_ifaces;
+    QMap<DeviceInterface::Type, QPointer<DeviceInterface>> m_ifaces;
 };
 }
 
