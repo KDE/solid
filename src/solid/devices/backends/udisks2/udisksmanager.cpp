@@ -236,8 +236,14 @@ void Manager::slotInterfacesRemoved(const QDBusObjectPath &object_path, const QS
      * independent if the backend or the manager processes the signal first.
      */
     Device device(udi);
-    auto leftInterfaces = device.interfaces().toSet();
+    const QStringList ifaceList = device.interfaces();
+#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
+    QSet<QString> leftInterfaces = ifaceList.toSet();
     leftInterfaces.subtract(interfaces.toSet());
+#else
+    QSet<QString> leftInterfaces(ifaceList.begin(), ifaceList.end());
+    leftInterfaces.subtract(QSet<QString>(interfaces.begin(), interfaces.end()));
+#endif
 
     if (leftInterfaces.isEmpty()) {
         // remove the device if the last interface is removed
