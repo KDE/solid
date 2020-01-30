@@ -65,6 +65,8 @@ Q_SIGNALS:
     void deviceChanged(const UdevQt::Device &dev);
     void deviceOnlined(const UdevQt::Device &dev);
     void deviceOfflined(const UdevQt::Device &dev);
+    void deviceBound(const UdevQt::Device &dev);
+    void deviceUnbound(const UdevQt::Device &dev);
 
 private:
     friend class ClientPrivate;

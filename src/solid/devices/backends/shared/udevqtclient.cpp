@@ -115,6 +115,10 @@ void ClientPrivate::_uq_monitorReadyRead(int fd)
         emit q->deviceOnlined(device);
     } else  if (action == "offline") {
         emit q->deviceOfflined(device);
+    } else  if (action == "bind") {
+        emit q->deviceBound(device);
+    } else  if (action == "unbind") {
+        emit q->deviceUnbound(device);
     } else {
         qWarning("UdevQt: unhandled device action \"%s\"", action.constData());
     }
