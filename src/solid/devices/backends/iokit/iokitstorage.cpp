@@ -85,9 +85,9 @@ Solid::StorageDrive::DriveType IOKitStorage::driveType() const
 
 bool IOKitStorage::isRemovable() const
 {
-    bool isExternal = false;
-    daDict->boolForKey(kDADiskDescriptionDeviceInternalKey, isExternal);
-    return isExternal || m_device->property(QLatin1String("Removable")).toBool();
+    bool isInternal = false;
+    daDict->boolForKey(kDADiskDescriptionDeviceInternalKey, isInternal);
+    return !isInternal || m_device->property(QLatin1String("Removable")).toBool();
 }
 
 bool IOKitStorage::isHotpluggable() const
