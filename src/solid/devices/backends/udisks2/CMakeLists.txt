@@ -14,7 +14,10 @@ set(backend_sources
 )
 
 ecm_qt_declare_logging_category(backend_sources
-                                HEADER udisks_debug.h
-                                IDENTIFIER Solid::Backends::UDisks2::UDISKS2
-                                DEFAULT_SEVERITY Warning
-                                CATEGORY_NAME org.kde.solid.udisks2)
+    HEADER udisks_debug.h
+    IDENTIFIER Solid::Backends::UDisks2::UDISKS2
+    DEFAULT_SEVERITY Warning
+    CATEGORY_NAME org.kde.solid.udisks2
+    DESCRIPTION "UDisks2 (Solid)"
+    EXPORT SOLID
+)
