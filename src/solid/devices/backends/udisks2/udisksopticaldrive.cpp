@@ -149,7 +149,11 @@ void OpticalDrive::initReadWriteSpeeds() const
         m_readSpeed = read_speed;
         m_writeSpeed = write_speed;
 
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
         QStringList list = QString::fromLatin1(write_speeds).split(',', QString::SkipEmptyParts);
+#else
+        QStringList list = QString::fromLatin1(write_speeds).split(',', Qt::SkipEmptyParts);
+#endif
         Q_FOREACH (const QString &speed, list) {
             m_writeSpeeds.append(speed.toInt());
         }

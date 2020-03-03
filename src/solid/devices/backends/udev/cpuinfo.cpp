@@ -76,7 +76,11 @@ CpuInfo::CpuInfo() {
     if (!cpuInfoFile.open(QIODevice::ReadOnly)) {
         return;
     }
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
     cpuInfo = QString(cpuInfoFile.readAll()).split('\n', QString::SkipEmptyParts);
+#else
+    cpuInfo = QString(cpuInfoFile.readAll()).split('\n', Qt::SkipEmptyParts);
+#endif
 }
 
 QString CpuInfo::extractCpuInfoLine(int processorNumber, const QString &regExpStr)
