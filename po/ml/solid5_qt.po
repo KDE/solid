@@ -1,0 +1,1372 @@
+# translation of solid_qt.po to
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Anish A <anish.nl@gmail.com>, 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version: solid_qt\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-04-01 01:49+0000\n"
+"PO-Revision-Date: 2010-12-29 11:59+0530\n"
+"Last-Translator: Anish A <anish.nl@gmail.com>\n"
+"Language-Team: Swathantra Malayalam Computing |  സ്വതന്ത്ര മലയാള കമ്പ്യൂട്ടിങ് "
+"<discuss@lists.smc.org.in>\n"
+"Language: ml\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: KBabel 1.11.4\n"
+"X-Qt-Contexts: true\n"
+
+#: solid/devices/backends/fstab/fstabdevice.cpp:80
+#, qt-format
+msgctxt "%1 is sharename, %2 is servername"
+msgid "%1 on %2"
+msgstr ""
+
+#: solid/devices/backends/fstab/fstabdevice.cpp:83
+#, qt-format
+msgctxt "%1 is mountpoint, %2 is fs type"
+msgid "%1 (%2)"
+msgstr ""
+
+#: solid/devices/backends/fstab/fstabmanager.cpp:96
+msgctxt "Solid::Backends::Fstab::FstabManager|"
+msgid "Filesystem Volumes"
+msgstr ""
+
+#: solid/devices/backends/fstab/fstabmanager.cpp:97
+#, fuzzy
+msgctxt "Solid::Backends::Fstab::FstabManager|"
+msgid "Mountable filesystems declared in your system"
+msgstr "താങ്കളുടെ സിസ്റ്റത്തില്‍ പ്രഖ്യാപിച്ചിട്ടുള്ള ഉപകരണങ്ങള്‍"
+
+#: solid/devices/backends/hal/haldevice.cpp:63
+#, fuzzy, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 TiB"
+msgstr "%1 ടെറാബൈറ്റ്"
+
+#: solid/devices/backends/hal/haldevice.cpp:65
+#, fuzzy, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 GiB"
+msgstr "%1 ജിഗാബൈറ്റ്"
+
+#: solid/devices/backends/hal/haldevice.cpp:71
+#, fuzzy, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 MiB"
+msgstr "%1 മെഗാബൈറ്റ്"
+
+#: solid/devices/backends/hal/haldevice.cpp:76
+#, fuzzy, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 KiB"
+msgstr "%1 കിലോബൈറ്റ്"
+
+#: solid/devices/backends/hal/haldevice.cpp:80
+#, fuzzy, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 B"
+msgstr "%1 ബൈറ്റ്"
+
+#: solid/devices/backends/hal/haldevice.cpp:84
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "0 B"
+msgstr "0 ബൈറ്റ്"
+
+#: solid/devices/backends/hal/haldevice.cpp:319
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "WLAN Interface"
+msgstr "വയര്‍ലെസ്സ് ലാന്‍ വിനിമയതലങ്ങള്‍"
+
+#: solid/devices/backends/hal/haldevice.cpp:321
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Networking Interface"
+msgstr "ശൃഖലയുമായുള്ള വിനിമയതലങ്ങള്‍"
+
+#: solid/devices/backends/hal/haldevice.cpp:506
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|First item of %1%2 Drive sentence"
+msgid "CD-ROM"
+msgstr "സിഡി റോം"
+
+#: solid/devices/backends/hal/haldevice.cpp:508
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|First item of %1%2 Drive sentence"
+msgid "CD-R"
+msgstr "സിഡി-ആര്‍"
+
+#: solid/devices/backends/hal/haldevice.cpp:511
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|First item of %1%2 Drive sentence"
+msgid "CD-RW"
+msgstr "സി ഡി-ആര്‍ ഡബ്ളിയു"
+
+#: solid/devices/backends/hal/haldevice.cpp:515
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-ROM"
+msgstr "/DVD-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:518
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD+R"
+msgstr "/DVD+R"
+
+#: solid/devices/backends/hal/haldevice.cpp:521
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD+RW"
+msgstr "/DVD+RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:524
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-R"
+msgstr "/DVD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:527
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-RW"
+msgstr "/DVD-RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:530
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-RAM"
+msgstr "/DVD-RAM"
+
+#: solid/devices/backends/hal/haldevice.cpp:534
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±R DL"
+msgstr "/DVD±R DL"
+
+#: solid/devices/backends/hal/haldevice.cpp:536
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±R"
+msgstr "/DVD±R"
+
+#: solid/devices/backends/hal/haldevice.cpp:541
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±RW DL"
+msgstr "/DVD±RW DL"
+
+#: solid/devices/backends/hal/haldevice.cpp:543
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±RW"
+msgstr "/DVD±RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:547
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/BD-ROM"
+msgstr "/BD-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:550
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/BD-R"
+msgstr "/BD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:553
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/BD-RE"
+msgstr "/BD-RE"
+
+#: solid/devices/backends/hal/haldevice.cpp:556
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-ROM"
+msgstr "/HD DVD-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:559
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-R"
+msgstr "/HD DVD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:562
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-RW"
+msgstr "/HD DVD-RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:566
+#, fuzzy, qt-format
+msgctxt ""
+"Solid::Backends::Hal::HalDevice|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
+"DVD-R'/etc (with leading slash)"
+msgid "External %1%2 Drive"
+msgstr "പുറമേയുള്ള %1%2 ഡ്രൈവ്"
+
+#: solid/devices/backends/hal/haldevice.cpp:568
+#, fuzzy, qt-format
+msgctxt ""
+"Solid::Backends::Hal::HalDevice|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
+"DVD-R'/etc (with leading slash)"
+msgid "%1%2 Drive"
+msgstr "%1%2 ഡ്രൈവ്"
+
+#: solid/devices/backends/hal/haldevice.cpp:576
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "External Floppy Drive"
+msgstr "പുറമേയുള്ള ഫ്ളോപ്പി ഡ്രൈവ്"
+
+#: solid/devices/backends/hal/haldevice.cpp:578
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Floppy Drive"
+msgstr "ഫ്ളോപ്പി ഡ്രൈവ്"
+
+#: solid/devices/backends/hal/haldevice.cpp:590
+#: solid/devices/backends/hal/haldevice.cpp:793
+#, fuzzy, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 External Hard Drive"
+msgstr "%1 പുറമേയുള്ള ഹാര്‍ഡ് ഡ്രൈവ്"
+
+#: solid/devices/backends/hal/haldevice.cpp:592
+#: solid/devices/backends/hal/haldevice.cpp:795
+#, fuzzy, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 Hard Drive"
+msgstr "%1 ഹാര്‍ഡ് ഡ്രൈവ്"
+
+#: solid/devices/backends/hal/haldevice.cpp:596
+#: solid/devices/backends/hal/haldevice.cpp:799
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "External Hard Drive"
+msgstr "പുറമേയുള്ള ഹാര്‍ഡ് ഡ്രൈവ്"
+
+#: solid/devices/backends/hal/haldevice.cpp:598
+#: solid/devices/backends/hal/haldevice.cpp:801
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Hard Drive"
+msgstr "ഹാര്‍ഡ് ഡ്രൈവ്"
+
+#: solid/devices/backends/hal/haldevice.cpp:617
+#, fuzzy, qt-format
+msgctxt ""
+"Solid::Backends::Hal::HalDevice|%1 is the vendor, %2 is the model of the "
+"device"
+msgid "%1 %2"
+msgstr "%1 %2"
+
+#: solid/devices/backends/hal/haldevice.cpp:622
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Drive"
+msgstr "ഡ്രൈവ്"
+
+#: solid/devices/backends/hal/haldevice.cpp:651
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "CD-ROM"
+msgstr "സിഡി റോം"
+
+#: solid/devices/backends/hal/haldevice.cpp:656
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank CD-R"
+msgstr "ഒഴിഞ്ഞ സിഡി-ആര്‍"
+
+#: solid/devices/backends/hal/haldevice.cpp:658
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "CD-R"
+msgstr "സിഡി-ആര്‍"
+
+#: solid/devices/backends/hal/haldevice.cpp:664
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank CD-RW"
+msgstr "ഒഴിഞ്ഞ സിഡി-ആര്‍ഡബ്ളിയൂ"
+
+#: solid/devices/backends/hal/haldevice.cpp:666
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "CD-RW"
+msgstr "സി ഡി-ആര്‍ ഡബ്ളിയു"
+
+#: solid/devices/backends/hal/haldevice.cpp:671
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD-ROM"
+msgstr "ഡിവിഡി-റോം"
+
+#: solid/devices/backends/hal/haldevice.cpp:676
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD-RAM"
+msgstr "കാലി ഡി വി ഡി-റാം"
+
+#: solid/devices/backends/hal/haldevice.cpp:678
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD-RAM"
+msgstr "ഡിവിഡി-റാം"
+
+#: solid/devices/backends/hal/haldevice.cpp:684
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD-R"
+msgstr "കാലി ഡി വി ഡി-ആര്‍"
+
+#: solid/devices/backends/hal/haldevice.cpp:686
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD-R"
+msgstr "ഡിവിഡി-ആര്‍"
+
+#: solid/devices/backends/hal/haldevice.cpp:692
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD+R Dual-Layer"
+msgstr "കാലി രണ്ട് പാളി ഡിവിഡി+ആര്‍"
+
+#: solid/devices/backends/hal/haldevice.cpp:694
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD+R Dual-Layer"
+msgstr "രണ്ട് പാളി ഡിവിഡി+ആര്‍"
+
+#: solid/devices/backends/hal/haldevice.cpp:700
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD-RW"
+msgstr "കാലി ഡിവിഡി-ആര്‍ഡബ്ളിയൂ"
+
+#: solid/devices/backends/hal/haldevice.cpp:702
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD-RW"
+msgstr "ഡിവിഡി-ആര്‍ഡബ്ളിയൂ"
+
+#: solid/devices/backends/hal/haldevice.cpp:708
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD+R"
+msgstr "കാലി ഡി വി ഡി+ആര്‍"
+
+#: solid/devices/backends/hal/haldevice.cpp:710
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD+R"
+msgstr "ഡിവിഡി+ആര്‍"
+
+#: solid/devices/backends/hal/haldevice.cpp:716
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD+RW"
+msgstr "കാലി ഡിവിഡി+ആര്‍ഡബ്ളിയൂ"
+
+#: solid/devices/backends/hal/haldevice.cpp:718
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD+RW"
+msgstr "ഡിവിഡി+ആര്‍ഡബ്ളിയൂ"
+
+#: solid/devices/backends/hal/haldevice.cpp:724
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD+RW Dual-Layer"
+msgstr "കാലി രണ്ട് പാളി ഡിവിഡി+ആര്‍ഡബ്ളിയൂ"
+
+#: solid/devices/backends/hal/haldevice.cpp:726
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD+RW Dual-Layer"
+msgstr "രണ്ട് പാളി ഡിവിഡി+ആര്‍ഡബ്ളിയൂ"
+
+#: solid/devices/backends/hal/haldevice.cpp:731
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "BD-ROM"
+msgstr "ബ്ളുറേ-റോം"
+
+#: solid/devices/backends/hal/haldevice.cpp:736
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank BD-R"
+msgstr "കാലി ബ്ളുറേ-ആര്‍"
+
+#: solid/devices/backends/hal/haldevice.cpp:738
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "BD-R"
+msgstr "ബ്ളൂറേ-ആര്‍"
+
+#: solid/devices/backends/hal/haldevice.cpp:744
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank BD-RE"
+msgstr "കാലി ബ്ളുറേ-ആര്‍ഇ"
+
+#: solid/devices/backends/hal/haldevice.cpp:746
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "BD-RE"
+msgstr "ബ്ളൂറേ-ആര്‍ഇ"
+
+#: solid/devices/backends/hal/haldevice.cpp:751
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "HD DVD-ROM"
+msgstr "എച് ഡി ഡിവിഡി-റോം"
+
+#: solid/devices/backends/hal/haldevice.cpp:756
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank HD DVD-R"
+msgstr "കാലി എച് ഡി ഡിവിഡി ആര്‍"
+
+#: solid/devices/backends/hal/haldevice.cpp:758
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "HD DVD-R"
+msgstr "എച് ഡി ഡിവിഡി-ആര്‍"
+
+#: solid/devices/backends/hal/haldevice.cpp:764
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank HD DVD-RW"
+msgstr "കാലി എച് ഡി ഡിവിഡി ആര്‍ഡബ്ളിയൂ"
+
+#: solid/devices/backends/hal/haldevice.cpp:766
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "HD DVD-RW"
+msgstr "എച് ഡി ഡിവിഡി-ആര്‍ഡബ്ളിയൂ"
+
+#: solid/devices/backends/hal/haldevice.cpp:773
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Audio CD"
+msgstr "ഓഡിയോ സിഡി"
+
+#: solid/devices/backends/hal/haldevice.cpp:786
+#, fuzzy, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 Encrypted Container"
+msgstr "%1 എന്‍ക്രിപ്റ്റ് ചെയ്ത കണ്ടൈനര്‍"
+
+#: solid/devices/backends/hal/haldevice.cpp:788
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Encrypted Container"
+msgstr "എന്‍ക്രിപ്റ്റ് ചെയ്ത കണ്ടൈനര്‍"
+
+#: solid/devices/backends/hal/haldevice.cpp:806
+#, fuzzy, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 Removable Media"
+msgstr "%1 ഇളക്കിമാറ്റാവുന്ന മാധ്യമം"
+
+#: solid/devices/backends/hal/haldevice.cpp:808
+#, fuzzy, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 Media"
+msgstr "%1 മാധ്യമം"
+
+#: solid/devices/backends/udev/udevdevice.cpp:114
+#, fuzzy
+msgctxt "Solid::Backends::UDev::UDevDevice|"
+msgid "Computer"
+msgstr "കമ്പ്യൂട്ടര്‍"
+
+#: solid/devices/backends/udev/udevdevice.cpp:118
+#, fuzzy
+msgctxt "Solid::Backends::UDev::UDevDevice|"
+msgid "Processor"
+msgstr "പ്രോസ്സസര്‍"
+
+#: solid/devices/backends/udev/udevdevice.cpp:129
+#, fuzzy
+msgctxt "Solid::Backends::UDev::UDevDevice|"
+msgid "Portable Media Player"
+msgstr "കൊണ്ടുനടക്കാവുന്ന മീഡിയ പ്ലെയര്‍"
+
+#: solid/devices/backends/udev/udevdevice.cpp:132
+#, fuzzy
+msgctxt "Solid::Backends::UDev::UDevDevice|"
+msgid "Camera"
+msgstr "ക്യാമറ"
+
+#: solid/devices/backends/udev/udevmanager.cpp:231
+#, fuzzy
+msgctxt "Solid::Backends::UDev::UDevManager|"
+msgid "Devices"
+msgstr "ഉപകരണങ്ങള്‍"
+
+#: solid/devices/backends/udev/udevmanager.cpp:232
+#, fuzzy
+msgctxt "Solid::Backends::UDev::UDevManager|"
+msgid "Devices declared in your system"
+msgstr "താങ്കളുടെ സിസ്റ്റത്തില്‍ പ്രഖ്യാപിച്ചിട്ടുള്ള ഉപകരണങ്ങള്‍"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:59
+#, fuzzy, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 TiB"
+msgstr "%1 ടെറാബൈറ്റ്"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:61
+#, fuzzy, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 GiB"
+msgstr "%1 ജിഗാബൈറ്റ്"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:67
+#, fuzzy, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 MiB"
+msgstr "%1 മെഗാബൈറ്റ്"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:72
+#, fuzzy, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 KiB"
+msgstr "%1 കിലോബൈറ്റ്"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:76
+#, fuzzy, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 B"
+msgstr "%1 ബൈറ്റ്"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:80
+#, fuzzy
+msgctxt "udisksdevice|"
+msgid "0 B"
+msgstr "0 ബൈറ്റ്"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:251
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Swap Space"
+msgstr ""
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:273
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Loop Device"
+msgstr "ഉപകരണങ്ങള്‍"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:289
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
+msgid "CD-ROM"
+msgstr "സിഡി റോം"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:291
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
+msgid "CD-R"
+msgstr "സിഡി-ആര്‍"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:294
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
+msgid "CD-RW"
+msgstr "സി ഡി-ആര്‍ ഡബ്ളിയു"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:298
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD-ROM"
+msgstr "/DVD-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:301
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD+R"
+msgstr "/DVD+R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:304
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD+RW"
+msgstr "/DVD+RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:307
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD-R"
+msgstr "/DVD-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:310
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD-RW"
+msgstr "/DVD-RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:313
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD-RAM"
+msgstr "/DVD-RAM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:317
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD±R DL"
+msgstr "/DVD±R DL"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:319
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD±R"
+msgstr "/DVD±R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:324
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD±RW DL"
+msgstr "/DVD±RW DL"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:326
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD±RW"
+msgstr "/DVD±RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:330
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/BD-ROM"
+msgstr "/BD-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:333
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/BD-R"
+msgstr "/BD-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:336
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/BD-RE"
+msgstr "/BD-RE"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:339
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-ROM"
+msgstr "/HD DVD-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:342
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-R"
+msgstr "/HD DVD-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:345
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-RW"
+msgstr "/HD DVD-RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:349
+#, fuzzy, qt-format
+msgctxt ""
+"Solid::Backends::UDisks2::Device|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
+"DVD-R'/etc (with leading slash)"
+msgid "External %1%2 Drive"
+msgstr "പുറമേയുള്ള %1%2 ഡ്രൈവ്"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:351
+#, fuzzy, qt-format
+msgctxt ""
+"Solid::Backends::UDisks2::Device|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
+"DVD-R'/etc (with leading slash)"
+msgid "%1%2 Drive"
+msgstr "%1%2 ഡ്രൈവ്"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:359
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "External Floppy Drive"
+msgstr "പുറമേയുള്ള ഫ്ളോപ്പി ഡ്രൈവ്"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:361
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Floppy Drive"
+msgstr "ഫ്ളോപ്പി ഡ്രൈവ്"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:373
+#: solid/devices/backends/udisks2/udisksdevice.cpp:581
+#, fuzzy, qt-format
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 External Hard Drive"
+msgstr "%1 പുറമേയുള്ള ഹാര്‍ഡ് ഡ്രൈവ്"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:375
+#: solid/devices/backends/udisks2/udisksdevice.cpp:583
+#, fuzzy, qt-format
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 Hard Drive"
+msgstr "%1 ഹാര്‍ഡ് ഡ്രൈവ്"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:379
+#: solid/devices/backends/udisks2/udisksdevice.cpp:587
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "External Hard Drive"
+msgstr "പുറമേയുള്ള ഹാര്‍ഡ് ഡ്രൈവ്"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:381
+#: solid/devices/backends/udisks2/udisksdevice.cpp:589
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Hard Drive"
+msgstr "ഹാര്‍ഡ് ഡ്രൈവ്"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:404
+#, fuzzy, qt-format
+msgctxt ""
+"Solid::Backends::UDisks2::Device|%1 is the vendor, %2 is the model of the "
+"device"
+msgid "%1 %2"
+msgstr "%1 %2"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:410
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Drive"
+msgstr "ഡ്രൈവ്"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:440
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "CD-ROM"
+msgstr "സിഡി റോം"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:445
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank CD-R"
+msgstr "ഒഴിഞ്ഞ സിഡി-ആര്‍"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:447
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "CD-R"
+msgstr "സിഡി-ആര്‍"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:453
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank CD-RW"
+msgstr "ഒഴിഞ്ഞ സിഡി-ആര്‍ഡബ്ളിയൂ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:455
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "CD-RW"
+msgstr "സി ഡി-ആര്‍ ഡബ്ളിയു"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:460
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD-ROM"
+msgstr "ഡിവിഡി-റോം"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:465
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD-RAM"
+msgstr "കാലി ഡി വി ഡി-റാം"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:467
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD-RAM"
+msgstr "ഡിവിഡി-റാം"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:473
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD-R"
+msgstr "കാലി ഡി വി ഡി-ആര്‍"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:475
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD-R"
+msgstr "ഡിവിഡി-ആര്‍"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:481
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD+R Dual-Layer"
+msgstr "കാലി രണ്ട് പാളി ഡിവിഡി+ആര്‍"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:483
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD+R Dual-Layer"
+msgstr "രണ്ട് പാളി ഡിവിഡി+ആര്‍"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:489
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD-RW"
+msgstr "കാലി ഡിവിഡി-ആര്‍ഡബ്ളിയൂ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:491
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD-RW"
+msgstr "ഡിവിഡി-ആര്‍ഡബ്ളിയൂ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:497
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD+R"
+msgstr "കാലി ഡി വി ഡി+ആര്‍"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:499
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD+R"
+msgstr "ഡിവിഡി+ആര്‍"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:505
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD+RW"
+msgstr "കാലി ഡിവിഡി+ആര്‍ഡബ്ളിയൂ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:507
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD+RW"
+msgstr "ഡിവിഡി+ആര്‍ഡബ്ളിയൂ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:513
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD+RW Dual-Layer"
+msgstr "കാലി രണ്ട് പാളി ഡിവിഡി+ആര്‍ഡബ്ളിയൂ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:515
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD+RW Dual-Layer"
+msgstr "രണ്ട് പാളി ഡിവിഡി+ആര്‍ഡബ്ളിയൂ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:520
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "BD-ROM"
+msgstr "ബ്ളുറേ-റോം"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:525
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank BD-R"
+msgstr "കാലി ബ്ളുറേ-ആര്‍"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:527
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "BD-R"
+msgstr "ബ്ളൂറേ-ആര്‍"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:533
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank BD-RE"
+msgstr "കാലി ബ്ളുറേ-ആര്‍ഇ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:535
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "BD-RE"
+msgstr "ബ്ളൂറേ-ആര്‍ഇ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:540
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "HD DVD-ROM"
+msgstr "എച് ഡി ഡിവിഡി-റോം"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:545
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank HD DVD-R"
+msgstr "കാലി എച് ഡി ഡിവിഡി ആര്‍"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:547
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "HD DVD-R"
+msgstr "എച് ഡി ഡിവിഡി-ആര്‍"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:553
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank HD DVD-RW"
+msgstr "കാലി എച് ഡി ഡിവിഡി ആര്‍ഡബ്ളിയൂ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:555
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "HD DVD-RW"
+msgstr "എച് ഡി ഡിവിഡി-ആര്‍ഡബ്ളിയൂ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:562
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Audio CD"
+msgstr "ഓഡിയോ സിഡി"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:574
+#, fuzzy, qt-format
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 Encrypted Drive"
+msgstr "%1 എന്‍ക്രിപ്റ്റ് ചെയ്ത കണ്ടൈനര്‍"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:576
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Encrypted Drive"
+msgstr "എന്‍ക്രിപ്റ്റ് ചെയ്ത കണ്ടൈനര്‍"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:593
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Floppy Disk"
+msgstr "ഫ്ളോപ്പി ഡ്രൈവ്"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:596
+#, fuzzy, qt-format
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 Removable Media"
+msgstr "%1 ഇളക്കിമാറ്റാവുന്ന മാധ്യമം"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:598
+#, fuzzy, qt-format
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 Media"
+msgstr "%1 മാധ്യമം"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:741
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "You are not authorized to perform this operation"
+msgstr ""
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:743
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is currently busy"
+msgstr ""
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:745
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The requested operation has failed"
+msgstr ""
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:747
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The requested operation has been canceled"
+msgstr ""
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:749
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "An invalid or malformed option has been given"
+msgstr ""
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:751
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The kernel driver for this filesystem type is not available"
+msgstr ""
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:753
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is already mounted"
+msgstr ""
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:755
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is not mounted"
+msgstr ""
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:757
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is mounted by another user"
+msgstr ""
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:759
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is already unmounting"
+msgstr ""
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:761
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The operation timed out"
+msgstr ""
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:763
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The operation would wake up a disk that is in a deep-sleep state"
+msgstr ""
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:765
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The operation has already been canceled"
+msgstr ""
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:767
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "An unspecified error has occurred"
+msgstr ""
+
+#: solid/devices/backends/udisks2/udisksmanager.cpp:92
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Manager|"
+msgid "Storage"
+msgstr "സംഭരണം"
+
+#: solid/devices/backends/udisks2/udisksmanager.cpp:93
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Manager|"
+msgid "Storage devices"
+msgstr "സംഭരണ ഉപകരണങ്ങള്‍"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:127
+#, fuzzy, qt-format
+msgctxt "Solid::Backends::UPower::UPowerDevice|%1 is battery technology"
+msgid "%1 Battery"
+msgstr "%1 ബാറ്ററി"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:142
+#, fuzzy
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Lithium Ion"
+msgstr "ലിഥിയം അയോണ്‍"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:144
+#, fuzzy
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Lithium Polymer"
+msgstr "ലിഥിയം പോളിമര്‍"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:146
+#, fuzzy
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Lithium Iron Phosphate"
+msgstr "ലിഥിയം അയണ്‍ ഫോസ്ഫേറ്റ്"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:148
+#, fuzzy
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Lead Acid"
+msgstr "ലെഡ് ആസിഡ്"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:150
+#, fuzzy
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Nickel Cadmium"
+msgstr "നിക്കല്‍ കാഡ്മിയം"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:152
+#, fuzzy
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Nickel Metal Hydride"
+msgstr "നിക്കല്‍ മെറ്റല്‍ ഹൈഡ്രൈഡ്"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:154
+#, fuzzy
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Unknown"
+msgstr "അജ്ഞാതം"
+
+#: solid/devices/backends/upower/upowermanager.cpp:90
+#, fuzzy
+msgctxt "Solid::Backends::UPower::UPowerManager|"
+msgid "Power Management"
+msgstr "ഊര്‍ജ്ജ നടത്തിപ്പ്"
+
+#: solid/devices/backends/upower/upowermanager.cpp:91
+#, fuzzy
+msgctxt "Solid::Backends::UPower::UPowerManager|"
+msgid "Batteries and other sources of power"
+msgstr "ബാറ്ററികളും ഊര്‍ജ്ജത്തിന്റെ മറ്റുറവിടങ്ങളും"
+
+#: solid/devices/backends/win/windevice.cpp:173
+#, fuzzy
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Lithium Ion"
+msgstr "ലിഥിയം അയോണ്‍"
+
+#: solid/devices/backends/win/windevice.cpp:176
+#, fuzzy
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Lead Acid"
+msgstr "ലെഡ് ആസിഡ്"
+
+#: solid/devices/backends/win/windevice.cpp:179
+#, fuzzy
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Nickel Cadmium"
+msgstr "നിക്കല്‍ കാഡ്മിയം"
+
+#: solid/devices/backends/win/windevice.cpp:182
+#, fuzzy
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Nickel Metal Hydride"
+msgstr "നിക്കല്‍ മെറ്റല്‍ ഹൈഡ്രൈഡ്"
+
+#: solid/devices/backends/win/windevice.cpp:185
+#, fuzzy
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Unknown"
+msgstr "അജ്ഞാതം"
+
+#: solid/devices/frontend/deviceinterface.cpp:67
+#, fuzzy
+msgctxt "Solid::DeviceInterface|Unknown device type"
+msgid "Unknown"
+msgstr "അജ്ഞാതം"
+
+#: solid/devices/frontend/deviceinterface.cpp:69
+#, fuzzy
+msgctxt "Solid::DeviceInterface|Generic Interface device type"
+msgid "Generic Interface"
+msgstr "പൊതുവായ സംയോജകഘടകങ്ങള്‍"
+
+#: solid/devices/frontend/deviceinterface.cpp:71
+#, fuzzy
+msgctxt "Solid::DeviceInterface|Processor device type"
+msgid "Processor"
+msgstr "പ്രോസ്സസര്‍"
+
+#: solid/devices/frontend/deviceinterface.cpp:73
+#, fuzzy
+msgctxt "Solid::DeviceInterface|Block device type"
+msgid "Block"
+msgstr "ബ്ലോക്ക്"
+
+#: solid/devices/frontend/deviceinterface.cpp:75
+#, fuzzy
+msgctxt "Solid::DeviceInterface|Storage Access device type"
+msgid "Storage Access"
+msgstr "സംഭരണ സമീപനം"
+
+#: solid/devices/frontend/deviceinterface.cpp:77
+#, fuzzy
+msgctxt "Solid::DeviceInterface|Storage Drive device type"
+msgid "Storage Drive"
+msgstr "സംഭരണ ഡ്രൈവ്"
+
+#: solid/devices/frontend/deviceinterface.cpp:79
+#, fuzzy
+msgctxt "Solid::DeviceInterface|Optical Drive device type"
+msgid "Optical Drive"
+msgstr "ഒപ്റ്റിക്കല്‍ ഡ്രൈവ്"
+
+#: solid/devices/frontend/deviceinterface.cpp:81
+#, fuzzy
+msgctxt "Solid::DeviceInterface|Storage Volume device type"
+msgid "Storage Volume"
+msgstr "സംഭരണ വോള്യം"
+
+#: solid/devices/frontend/deviceinterface.cpp:83
+#, fuzzy
+msgctxt "Solid::DeviceInterface|Optical Disc device type"
+msgid "Optical Disc"
+msgstr "ഒപ്റ്റിക്കല്‍ ഡിസ്ക്ക്"
+
+#: solid/devices/frontend/deviceinterface.cpp:85
+#, fuzzy
+msgctxt "Solid::DeviceInterface|Camera device type"
+msgid "Camera"
+msgstr "ക്യാമറ"
+
+#: solid/devices/frontend/deviceinterface.cpp:87
+#, fuzzy
+msgctxt "Solid::DeviceInterface|Portable Media Player device type"
+msgid "Portable Media Player"
+msgstr "കൊണ്ടുനടക്കാവുന്ന മീഡിയ പ്ലെയര്‍"
+
+#: solid/devices/frontend/deviceinterface.cpp:89
+#, fuzzy
+msgctxt "Solid::DeviceInterface|Battery device type"
+msgid "Battery"
+msgstr "ബാറ്ററി"
+
+#: solid/devices/frontend/deviceinterface.cpp:91
+#, fuzzy
+msgctxt "Solid::DeviceInterface|Network Share device type"
+msgid "Network Share"
+msgstr "ശൃംഖലാ പങ്കുവെയ്ക്കലുകള്‍"
+
+#: tools/solid-hardware/solid-hardware.cpp:173
+#: tools/solid-hardware/solid-hardware.cpp:272
+#, fuzzy
+msgctxt "solid-hardware|"
+msgid "Device udi"
+msgstr "ഉപകരണങ്ങള്‍"
+
+#: tools/solid-hardware/solid-hardware.cpp:188
+msgctxt "solid-hardware|"
+msgid "KDE tool for querying your hardware from the command line"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:191
+msgctxt "solid-hardware|"
+msgid "Command to execute"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:193
+msgctxt "solid-hardware|"
+msgid "Show available commands"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:199 tools/solid-power/main.cpp:47
+msgctxt "solid-hardware|"
+msgid "Syntax:"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:202
+msgctxt "solid-hardware|"
+msgid ""
+"             # List the hardware available in the system.\n"
+"             # - If the 'nonportableinfo' option is specified, the device\n"
+"             # properties are listed (be careful, in this case property "
+"names\n"
+"             # are backend dependent),\n"
+"             # - If the 'details' option is specified, the device "
+"interfaces\n"
+"             # and the corresponding properties are listed in a platform\n"
+"             # neutral fashion,\n"
+"             # - Otherwise only device UDIs are listed.\n"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:213
+msgctxt "solid-hardware|"
+msgid ""
+"             # Display all the interfaces and properties of the device\n"
+"             # corresponding to 'udi' in a platform neutral fashion.\n"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:218
+msgctxt "solid-hardware|"
+msgid ""
+"             # Display all the properties of the device corresponding to "
+"'udi'\n"
+"             # (be careful, in this case property names are backend "
+"dependent).\n"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:223
+msgctxt "solid-hardware|"
+msgid ""
+"             # List the UDI of devices corresponding to 'predicate'.\n"
+"             # - If 'parentUdi' is specified, the search is restricted to "
+"the\n"
+"             # branch of the corresponding device,\n"
+"             # - Otherwise the search is done on all the devices.\n"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:230
+msgctxt "solid-hardware|"
+msgid ""
+"             # If applicable, mount the device corresponding to 'udi'.\n"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:234
+msgctxt "solid-hardware|"
+msgid ""
+"             # If applicable, unmount the device corresponding to 'udi'.\n"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:238
+msgctxt "solid-hardware|"
+msgid ""
+"             # If applicable, eject the device corresponding to 'udi'.\n"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:242
+msgctxt "solid-hardware|"
+msgid "             # Listen to all add/remove events on supported hardware."
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:259
+msgctxt "solid-hardware|"
+msgid "Show device details"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:260
+msgctxt "solid-hardware|"
+msgid "Show non portable information"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:273
+#, fuzzy
+msgctxt "solid-hardware|"
+msgid "Parent device udi"
+msgstr "യുപിഎന്‍പി ഉപകരണങ്ങള്‍"
+
+#: tools/solid-hardware/solid-hardware.cpp:301
+#, qt-format
+msgctxt "solid-hardware|"
+msgid "Syntax Error: Unknown command '%1'"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:370
+#, qt-format
+msgctxt "SolidHardware|"
+msgid "Error: %1 does not have the interface StorageAccess."
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:375
+#, qt-format
+msgctxt "SolidHardware|"
+msgid "Error: %1 does not have the interface OpticalDrive."
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:408
+#, qt-format
+msgctxt "SolidHardware|"
+msgid "Error: %1"
+msgstr ""
+
+#: tools/solid-power/main.cpp:36
+msgctxt "solid-power|"
+msgid "Tool to know and set the power management state of your device"
+msgstr ""
+
+#: tools/solid-power/main.cpp:38
+msgctxt "solid-power|"
+msgid "Command to execute"
+msgstr ""
+
+#: tools/solid-power/main.cpp:40
+msgctxt "solid-power|"
+msgid "Show available commands"
+msgstr ""
+
+#: tools/solid-power/main.cpp:50
+msgctxt "solid-power|"
+msgid ""
+"             # Show all the power management information from the system.\n"
+"             # - acPlugged: whether the device is connected to the AC or "
+"not\n"
+msgstr ""
