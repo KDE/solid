@@ -124,12 +124,12 @@ QString _k_deviceNameForMountpoint(const QString &source, const QString &fstype,
     if (fstype.startsWith("fuse.") ||
         fstype == QLatin1String("overlay")) {
             return fstype + mountpoint;
-    } else if (fstype == QLatin1String("cifs")) {
-        // append mountpoint to samba device name as they don't contain it in getmntent return
-        // and this is needed to differentiate different mounts with same source
-        return source + QLatin1Char(':') + mountpoint;
     }
-    return source;
+    // A source may be mounted several times, e.g. with different
+    // options, often a network share with different credentials
+    // for different users. Make sure it is unique by appending the
+    // mountpoint (which is unique).
+    return source + QLatin1Char(':') + mountpoint;
 }
 
 void Solid::Backends::Fstab::FstabHandling::_k_updateFstabMountPointsCache()
