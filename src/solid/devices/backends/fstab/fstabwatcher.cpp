@@ -6,6 +6,7 @@
 
 #include "fstabwatcher.h"
 #include "soliddefs_p.h"
+#include "fstab_debug.h"
 
 #include <QCoreApplication>
 #include <QFileSystemWatcher>
@@ -24,6 +25,7 @@ static const QString s_fstabFile = QStringLiteral("/etc/vfstab");
 #else
 static const QString s_fstabFile = QStringLiteral("/etc/fstab");
 #endif
+static const QString s_fstabPath = QStringLiteral("/etc");
 
 FstabWatcher::FstabWatcher()
     : m_isRoutineInstalled(false)
@@ -45,7 +47,19 @@ FstabWatcher::FstabWatcher()
         m_fileSystemWatcher->addPath(s_mtabFile);
     }
 
-    m_fileSystemWatcher->addPath(s_fstabFile);
+    m_fileSystemWatcher->addPath(s_fstabPath);
+    connect(m_fileSystemWatcher, &QFileSystemWatcher::directoryChanged,
+        this, [this] (const QString &) {
+            if (!m_isFstabWatched) {
+                m_isFstabWatched = m_fileSystemWatcher->addPath(s_fstabFile);
+                if (m_isFstabWatched) {
+                    qCDebug(FSTAB) << "Readded" << s_fstabFile;
+                    emit onFileChanged(s_fstabFile);
+                }
+            }
+    });
+
+    m_isFstabWatched = m_fileSystemWatcher->addPath(s_fstabFile);
     connect(m_fileSystemWatcher, &QFileSystemWatcher::fileChanged,
             this, &FstabWatcher::onFileChanged);
 }
@@ -96,7 +110,8 @@ void FstabWatcher::onFileChanged(const QString &path)
     if (path == s_fstabFile) {
         emit fstabChanged();
         if (!m_fileSystemWatcher->files().contains(s_fstabFile)) {
-            m_fileSystemWatcher->addPath(s_fstabFile);
+            m_isFstabWatched = m_fileSystemWatcher->addPath(s_fstabFile);
+            qCDebug(FSTAB) << "Fstab removed, readded:" << m_isFstabWatched;
         }
     }
 }

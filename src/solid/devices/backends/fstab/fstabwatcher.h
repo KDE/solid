@@ -42,6 +42,7 @@ private:
     QFileSystemWatcher *m_fileSystemWatcher;
     QSocketNotifier *m_mtabSocketNotifier;
     QFile *m_mtabFile;
+    bool m_isFstabWatched;
 };
 }
 }
