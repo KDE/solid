@@ -22,8 +22,8 @@ FstabManager::FstabManager(QObject *parent)
 
     m_deviceList = FstabHandling::deviceList();
 
-    connect(FstabWatcher::instance(), SIGNAL(fstabChanged()), this, SLOT(onFstabChanged()));
-    connect(FstabWatcher::instance(), SIGNAL(mtabChanged()), this, SLOT(onMtabChanged()));
+    connect(FstabWatcher::instance(), &FstabWatcher::fstabChanged, this, &FstabManager::onFstabChanged);
+    connect(FstabWatcher::instance(), &FstabWatcher::mtabChanged, this, &FstabManager::onMtabChanged);
 }
 
 QString FstabManager::udiPrefix() const
@@ -92,8 +92,8 @@ QObject *FstabManager::createDevice(const QString &udi)
             return nullptr;
         }
 
-        QObject *device = new FstabDevice(udi);
-        connect(this, SIGNAL(mtabChanged(QString)), device, SLOT(onMtabChanged(QString)));
+        FstabDevice *device = new FstabDevice(udi);
+        connect(this, &FstabManager::mtabChanged, device, &FstabDevice::onMtabChanged);
         return device;
 
     }

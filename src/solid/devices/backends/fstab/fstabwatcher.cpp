@@ -30,7 +30,7 @@ FstabWatcher::FstabWatcher()
     , m_fileSystemWatcher(new QFileSystemWatcher(this))
 {
     if (qApp) {
-        connect(qApp, SIGNAL(aboutToQuit()), this, SLOT(orphanFileSystemWatcher()));
+        connect(qApp, &QCoreApplication::aboutToQuit, this, &FstabWatcher::orphanFileSystemWatcher);
     }
 
     m_mtabFile = new QFile(s_mtabFile, this);
@@ -39,14 +39,15 @@ FstabWatcher::FstabWatcher()
 
         m_mtabSocketNotifier = new QSocketNotifier(m_mtabFile->handle(),
                 QSocketNotifier::Exception, this);
-        connect(m_mtabSocketNotifier,
-                SIGNAL(activated(int)), this, SIGNAL(mtabChanged()));
+        connect(m_mtabSocketNotifier, &QSocketNotifier::activated,
+                this, &FstabWatcher::mtabChanged);
     } else {
         m_fileSystemWatcher->addPath(s_mtabFile);
     }
 
     m_fileSystemWatcher->addPath(s_fstabFile);
-    connect(m_fileSystemWatcher, SIGNAL(fileChanged(QString)), this, SLOT(onFileChanged(QString)));
+    connect(m_fileSystemWatcher, &QFileSystemWatcher::fileChanged,
+            this, &FstabWatcher::onFileChanged);
 }
 
 FstabWatcher::~FstabWatcher()

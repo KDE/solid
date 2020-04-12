@@ -51,7 +51,7 @@ public:
 Q_SIGNALS:
     void mtabChanged(const QString &device);
 
-private Q_SLOTS:
+public Q_SLOTS:
     void onMtabChanged(const QString &device);
 
 private:
