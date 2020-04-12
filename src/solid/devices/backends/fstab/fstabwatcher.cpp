@@ -12,15 +12,17 @@
 #include <QSocketNotifier>
 #include <QFile>
 
-using namespace Solid::Backends::Fstab;
+namespace Solid {
+namespace Backends {
+namespace Fstab {
 
 Q_GLOBAL_STATIC(FstabWatcher, globalFstabWatcher)
 
-#define MTAB "/etc/mtab"
+static const QString s_mtabFile = QStringLiteral("/etc/mtab");
 #ifdef Q_OS_SOLARIS
-#define FSTAB "/etc/vfstab"
+static const QString s_fstabFile = QStringLiteral("/etc/vfstab");
 #else
-#define FSTAB "/etc/fstab"
+static const QString s_fstabFile = QStringLiteral("/etc/fstab");
 #endif
 
 FstabWatcher::FstabWatcher()
@@ -31,7 +33,7 @@ FstabWatcher::FstabWatcher()
         connect(qApp, SIGNAL(aboutToQuit()), this, SLOT(orphanFileSystemWatcher()));
     }
 
-    m_mtabFile = new QFile(MTAB, this);
+    m_mtabFile = new QFile(s_mtabFile, this);
     if (m_mtabFile && m_mtabFile->symLinkTarget().startsWith("/proc/")
             && m_mtabFile->open(QIODevice::ReadOnly)) {
 
@@ -40,10 +42,10 @@ FstabWatcher::FstabWatcher()
         connect(m_mtabSocketNotifier,
                 SIGNAL(activated(int)), this, SIGNAL(mtabChanged()));
     } else {
-        m_fileSystemWatcher->addPath(MTAB);
+        m_fileSystemWatcher->addPath(s_mtabFile);
     }
 
-    m_fileSystemWatcher->addPath(FSTAB);
+    m_fileSystemWatcher->addPath(s_fstabFile);
     connect(m_fileSystemWatcher, SIGNAL(fileChanged(QString)), this, SLOT(onFileChanged(QString)));
 }
 
@@ -84,17 +86,18 @@ FstabWatcher *FstabWatcher::instance()
 
 void FstabWatcher::onFileChanged(const QString &path)
 {
-    if (path == MTAB) {
+    if (path == s_mtabFile) {
         emit mtabChanged();
-        if (!m_fileSystemWatcher->files().contains(MTAB)) {
-            m_fileSystemWatcher->addPath(MTAB);
+        if (!m_fileSystemWatcher->files().contains(s_mtabFile)) {
+            m_fileSystemWatcher->addPath(s_mtabFile);
         }
     }
-    if (path == FSTAB) {
+    if (path == s_fstabFile) {
         emit fstabChanged();
-        if (!m_fileSystemWatcher->files().contains(FSTAB)) {
-            m_fileSystemWatcher->addPath(FSTAB);
+        if (!m_fileSystemWatcher->files().contains(s_fstabFile)) {
+            m_fileSystemWatcher->addPath(s_fstabFile);
         }
     }
 }
 
+}}} // namespace Solid:Backends::Fstab
