@@ -10,6 +10,7 @@
 #include "../shared/rootdevice.h"
 #include "fstabservice.h"
 #include "fstabwatcher.h"
+#include "fstab_debug.h"
 
 using namespace Solid::Backends::Fstab;
 using namespace Solid::Backends::Shared;
@@ -116,6 +117,10 @@ void FstabManager::_k_updateDeviceList()
     QSet<QString> oldlist(m_deviceList.begin(), m_deviceList.end());
 #endif
 
+    m_deviceList = deviceList;
+
+    qCDebug(FSTAB) << oldlist << "->" << newlist;
+
     Q_FOREACH (const QString &device, newlist) {
         if (!oldlist.contains(device)) {
             emit deviceAdded(udiPrefix() + "/" + device);
@@ -125,14 +130,6 @@ void FstabManager::_k_updateDeviceList()
     Q_FOREACH (const QString &device, oldlist) {
         if (!newlist.contains(device)) {
             emit deviceRemoved(udiPrefix() + "/" + device);
-        }
-    }
-
-    m_deviceList = deviceList;
-
-    Q_FOREACH (const QString &device, newlist) {
-        if (!oldlist.contains(device)) {
-            emit deviceAdded(udiPrefix() + "/" + device);
         }
     }
 }
