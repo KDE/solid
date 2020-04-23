@@ -78,7 +78,7 @@ QStringList FakeManager::allDevices()
 {
     QStringList deviceUdiList;
 
-    Q_FOREACH (FakeDevice *device, d->loadedDevices) {
+    for (const FakeDevice *device : qAsConst(d->loadedDevices)) {
         deviceUdiList.append(device->udi());
     }
 
@@ -132,8 +132,7 @@ FakeDevice *FakeManager::findDevice(const QString &udi)
 QStringList FakeManager::findDeviceStringMatch(const QString &key, const QString &value)
 {
     QStringList result;
-    FakeDevice *device;
-    Q_FOREACH (device, d->loadedDevices) {
+    for (const FakeDevice *device : qAsConst(d->loadedDevices)) {
         if (device->property(key).toString() == value) {
             result.append(device->udi());
         }
@@ -145,8 +144,7 @@ QStringList FakeManager::findDeviceStringMatch(const QString &key, const QString
 QStringList FakeManager::findDeviceByDeviceInterface(Solid::DeviceInterface::Type type)
 {
     QStringList result;
-    FakeDevice *device;
-    Q_FOREACH (device, d->loadedDevices) {
+    for (const FakeDevice *device : qAsConst(d->loadedDevices)) {
         if (device->queryDeviceInterface(type)) {
             result.append(device->udi());
         }

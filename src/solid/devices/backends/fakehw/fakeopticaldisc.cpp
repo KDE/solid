@@ -26,19 +26,17 @@ Solid::OpticalDisc::ContentTypes FakeOpticalDisc::availableContent() const
 {
     Solid::OpticalDisc::ContentTypes content;
 
-    QMap<Solid::OpticalDisc::ContentType, QString> map;
-    map[Solid::OpticalDisc::Audio] = "audio";
-    map[Solid::OpticalDisc::Data] = "data";
-    map[Solid::OpticalDisc::VideoCd] = "vcd";
-    map[Solid::OpticalDisc::SuperVideoCd] = "svcd";
-    map[Solid::OpticalDisc::VideoDvd] = "videodvd";
+    const QMap<QString, Solid::OpticalDisc::ContentType> map = {
+        {QStringLiteral("audio"), Solid::OpticalDisc::Audio},
+        {QStringLiteral("data"), Solid::OpticalDisc::Data},
+        {QStringLiteral("vcd"), Solid::OpticalDisc::VideoCd},
+        {QStringLiteral("svcd"), Solid::OpticalDisc::SuperVideoCd},
+        {QStringLiteral("videodvd"), Solid::OpticalDisc::VideoDvd}};
 
-    QStringList content_typelist = fakeDevice()->property("availableContent").toString().split(',');
+    const QStringList content_typelist = fakeDevice()->property("availableContent").toString().split(',');
 
-    Q_FOREACH (const Solid::OpticalDisc::ContentType type, map.keys()) {
-        if (content_typelist.indexOf(map[type]) != -1) {
-            content |= type;
-        }
+    for (const QString &type : content_typelist) {
+        content |= map.value(type, Solid::OpticalDisc::NoContent);
     }
 
     return content;

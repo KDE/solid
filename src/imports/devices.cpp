@@ -51,7 +51,8 @@ DevicesQueryPrivate::DevicesQueryPrivate(const QString &query)
         return;
     }
 
-    Q_FOREACH (const Solid::Device &device, Solid::Device::listFromQuery(predicate)) {
+    const QList<Solid::Device> deviceList = Solid::Device::listFromQuery(predicate);
+    for (const Solid::Device &device : deviceList) {
         matchingDevices << device.udi();
     }
 }

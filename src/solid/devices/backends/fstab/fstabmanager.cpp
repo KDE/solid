@@ -42,7 +42,7 @@ QStringList FstabManager::allDevices()
     QStringList result;
 
     result << udiPrefix();
-    Q_FOREACH (const QString &device, m_deviceList) {
+    for (const QString &device : qAsConst(m_deviceList)) {
         result << udiPrefix() + "/" + device;
     }
 
@@ -108,26 +108,26 @@ void FstabManager::onFstabChanged()
 
 void FstabManager::_k_updateDeviceList()
 {
-    QStringList deviceList = FstabHandling::deviceList();
+    const QStringList deviceList = FstabHandling::deviceList();
 #if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
-    QSet<QString> newlist = deviceList.toSet();
-    QSet<QString> oldlist = m_deviceList.toSet();
+    const QSet<QString> newlist = deviceList.toSet();
+    const QSet<QString> oldlist = m_deviceList.toSet();
 #else
-    QSet<QString> newlist(deviceList.begin(), deviceList.end());
-    QSet<QString> oldlist(m_deviceList.begin(), m_deviceList.end());
+    const QSet<QString> newlist(deviceList.begin(), deviceList.end());
+    const QSet<QString> oldlist(m_deviceList.begin(), m_deviceList.end());
 #endif
 
     m_deviceList = deviceList;
 
     qCDebug(FSTAB) << oldlist << "->" << newlist;
 
-    Q_FOREACH (const QString &device, newlist) {
+    for (const QString &device : newlist) {
         if (!oldlist.contains(device)) {
             emit deviceAdded(udiPrefix() + "/" + device);
         }
     }
 
-    Q_FOREACH (const QString &device, oldlist) {
+    for (const QString &device : oldlist) {
         if (!newlist.contains(device)) {
             emit deviceRemoved(udiPrefix() + "/" + device);
         }
@@ -140,7 +140,7 @@ void FstabManager::onMtabChanged()
 
     _k_updateDeviceList(); // devicelist is union of mtab and fstab
 
-    Q_FOREACH (const QString &device, m_deviceList) {
+    for (const QString &device : qAsConst(m_deviceList)) {
         // notify storageaccess objects via device ...
         emit mtabChanged(device);
     }

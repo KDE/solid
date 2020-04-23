@@ -50,8 +50,7 @@ FstabDevice::FstabDevice(QString uid) :
     }
 
     const QStringList& gvfsOptions = FstabHandling::options(m_device);
-
-    foreach (const QString& option, gvfsOptions) {
+    for  (const QString &option : gvfsOptions) {
         if (option.startsWith(QLatin1String("x-gvfs-name="))) {
             QStringRef encoded = option.midRef(12);
             m_description = QUrl::fromPercentEncoding(encoded.toLatin1());

@@ -47,7 +47,7 @@ FakeDevice::FakeDevice(const QString &udi, const QMap<QString, QVariant> &proper
     // this way they'll get exported on the bus
     // that means they'll be created twice, but that won't be
     // a problem for unit testing.
-    Q_FOREACH (const QString &interface, d->interfaceList) {
+    for (const QString &interface : qAsConst(d->interfaceList)) {
         Solid::DeviceInterface::Type type = Solid::DeviceInterface::stringToType(interface);
         createDeviceInterface(type);
     }
