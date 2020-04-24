@@ -367,9 +367,8 @@ bool HalDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type) c
         return d->capListCache.value(type);
     }
 
-    QStringList cap_list = DeviceInterface::toStringList(type);
-
-    Q_FOREACH (const QString &cap, cap_list) {
+    const QStringList cap_list = DeviceInterface::toStringList(type);
+    for (const QString &cap : cap_list) {
         QDBusReply<bool> reply = d->device.call("QueryCapability", cap);
 
         if (!reply.isValid()) {
@@ -443,7 +442,7 @@ void HalDevice::slotPropertyModified(int /*count */, const QList<ChangeDescripti
 {
     QMap<QString, int> result;
 
-    Q_FOREACH (const ChangeDescription &change, changes) {
+    for (const ChangeDescription &change : changes) {
         QString key = change.key;
         bool added = change.added;
         bool removed = change.removed;

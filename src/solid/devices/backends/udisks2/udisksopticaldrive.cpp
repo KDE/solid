@@ -60,8 +60,9 @@ bool OpticalDrive::eject()
     QDBusPendingReply<DBUSManagerStruct> reply = manager.GetManagedObjects();
     reply.waitForFinished();
     if (!reply.isError()) {  // enum devices
-        Q_FOREACH (const QDBusObjectPath &objPath, reply.value().keys()) {
-            const QString udi = objPath.path();
+        const auto objPathMap = reply.value();
+        for (auto it = objPathMap.cbegin(); it != objPathMap.cend(); ++it) {
+            const QString udi = it.key().path();
 
             //qDebug() << "Inspecting" << udi;
 
@@ -183,32 +184,30 @@ Solid::OpticalDrive::MediumTypes OpticalDrive::supportedMedia() const
     const QStringList mediaTypes = m_device->prop("MediaCompatibility").toStringList();
     Solid::OpticalDrive::MediumTypes supported;
 
-    QMap<Solid::OpticalDrive::MediumType, QString> map;
-    map[Solid::OpticalDrive::Cdr] = "optical_cd_r";
-    map[Solid::OpticalDrive::Cdrw] = "optical_cd_rw";
-    map[Solid::OpticalDrive::Dvd] = "optical_dvd";
-    map[Solid::OpticalDrive::Dvdr] = "optical_dvd_r";
-    map[Solid::OpticalDrive::Dvdrw] = "optical_dvd_rw";
-    map[Solid::OpticalDrive::Dvdram] = "optical_dvd_ram";
-    map[Solid::OpticalDrive::Dvdplusr] = "optical_dvd_plus_r";
-    map[Solid::OpticalDrive::Dvdplusrw] = "optical_dvd_plus_rw";
-    map[Solid::OpticalDrive::Dvdplusdl] = "optical_dvd_plus_r_dl";
-    map[Solid::OpticalDrive::Dvdplusdlrw] = "optical_dvd_plus_rw_dl";
-    map[Solid::OpticalDrive::Bd] = "optical_bd";
-    map[Solid::OpticalDrive::Bdr] = "optical_bd_r";
-    map[Solid::OpticalDrive::Bdre] = "optical_bd_re";
-    map[Solid::OpticalDrive::HdDvd] = "optical_hddvd";
-    map[Solid::OpticalDrive::HdDvdr] = "optical_hddvd_r";
-    map[Solid::OpticalDrive::HdDvdrw] = "optical_hddvd_rw";
+    QMap<QString, Solid::OpticalDrive::MediumType> map = {
+        {QStringLiteral("optical_cd_r"), Solid::OpticalDrive::Cdr},
+        {QStringLiteral("optical_cd_rw"), Solid::OpticalDrive::Cdrw},
+        {QStringLiteral("optical_dvd"), Solid::OpticalDrive::Dvd},
+        {QStringLiteral("optical_dvd_r"), Solid::OpticalDrive::Dvdr},
+        {QStringLiteral("optical_dvd_rw"), Solid::OpticalDrive::Dvdrw},
+        {QStringLiteral("optical_dvd_ram"), Solid::OpticalDrive::Dvdram},
+        {QStringLiteral("optical_dvd_plus_r"), Solid::OpticalDrive::Dvdplusr},
+        {QStringLiteral("optical_dvd_plus_rw"), Solid::OpticalDrive::Dvdplusrw},
+        {QStringLiteral("optical_dvd_plus_r_dl"), Solid::OpticalDrive::Dvdplusdl},
+        {QStringLiteral("optical_dvd_plus_rw_dl"), Solid::OpticalDrive::Dvdplusdlrw},
+        {QStringLiteral("optical_bd"), Solid::OpticalDrive::Bd},
+        {QStringLiteral("optical_bd_r"), Solid::OpticalDrive::Bdr},
+        {QStringLiteral("optical_bd_re"), Solid::OpticalDrive::Bdre},
+        {QStringLiteral("optical_hddvd"), Solid::OpticalDrive::HdDvd},
+        {QStringLiteral("optical_hddvd_r"), Solid::OpticalDrive::HdDvdr},
+        {QStringLiteral("optical_hddvd_rw"), Solid::OpticalDrive::HdDvdrw}};
     // TODO add these to Solid
     //map[Solid::OpticalDrive::Mo] ="optical_mo";
     //map[Solid::OpticalDrive::Mr] ="optical_mrw";
     //map[Solid::OpticalDrive::Mrw] ="optical_mrw_w";
 
-    Q_FOREACH (const Solid::OpticalDrive::MediumType &type, map.keys()) {
-        if (mediaTypes.contains(map[type])) {
-            supported |= type;
-        }
+    for (const QString &media : mediaTypes) {
+        supported |= map.value(media, Solid::OpticalDrive::UnknownMediumType);
     }
 
     return supported;

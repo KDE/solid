@@ -100,7 +100,7 @@ QString CpuInfo::extractInfoLine(const QString &regExpStr)
 {
     const QRegularExpression regExp(QRegularExpression::anchoredPattern(regExpStr));
 
-    foreach (const QString &line, cpuInfo) {
+    for (const QString &line : qAsConst(cpuInfo)) {
         QRegularExpressionMatch match = regExp.match(line);
         if (match.hasMatch()) {
             return match.captured(1);

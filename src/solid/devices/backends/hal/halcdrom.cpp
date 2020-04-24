@@ -34,27 +34,27 @@ Solid::OpticalDrive::MediumTypes Cdrom::supportedMedia() const
 {
     Solid::OpticalDrive::MediumTypes supported;
 
-    QMap<Solid::OpticalDrive::MediumType, QString> map;
-    map[Solid::OpticalDrive::Cdr] = "storage.cdrom.cdr";
-    map[Solid::OpticalDrive::Cdrw] = "storage.cdrom.cdrw";
-    map[Solid::OpticalDrive::Dvd] = "storage.cdrom.dvd";
-    map[Solid::OpticalDrive::Dvdr] = "storage.cdrom.dvdr";
-    map[Solid::OpticalDrive::Dvdrw] = "storage.cdrom.dvdrw";
-    map[Solid::OpticalDrive::Dvdram] = "storage.cdrom.dvdram";
-    map[Solid::OpticalDrive::Dvdplusr] = "storage.cdrom.dvdplusr";
-    map[Solid::OpticalDrive::Dvdplusrw] = "storage.cdrom.dvdplusrw";
-    map[Solid::OpticalDrive::Dvdplusdl] = "storage.cdrom.dvdplusrdl";
-    map[Solid::OpticalDrive::Dvdplusdlrw] = "storage.cdrom.dvdplusrwdl";
-    map[Solid::OpticalDrive::Bd] = "storage.cdrom.bd";
-    map[Solid::OpticalDrive::Bdr] = "storage.cdrom.bdr";
-    map[Solid::OpticalDrive::Bdre] = "storage.cdrom.bdre";
-    map[Solid::OpticalDrive::HdDvd] = "storage.cdrom.hddvd";
-    map[Solid::OpticalDrive::HdDvdr] = "storage.cdrom.hddvdr";
-    map[Solid::OpticalDrive::HdDvdrw] = "storage.cdrom.hddvdrw";
+    const QMap<Solid::OpticalDrive::MediumType, QString> map = {
+        {Solid::OpticalDrive::Cdr, QStringLiteral("storage.cdrom.cdr")},
+        {Solid::OpticalDrive::Cdrw, QStringLiteral("storage.cdrom.cdrw")},
+        {Solid::OpticalDrive::Dvd, QStringLiteral("storage.cdrom.dvd")},
+        {Solid::OpticalDrive::Dvdr, QStringLiteral("storage.cdrom.dvdr")},
+        {Solid::OpticalDrive::Dvdrw, QStringLiteral("storage.cdrom.dvdrw")},
+        {Solid::OpticalDrive::Dvdram, QStringLiteral("storage.cdrom.dvdram")},
+        {Solid::OpticalDrive::Dvdplusr, QStringLiteral("storage.cdrom.dvdplusr")},
+        {Solid::OpticalDrive::Dvdplusrw, QStringLiteral("storage.cdrom.dvdplusrw")},
+        {Solid::OpticalDrive::Dvdplusdl, QStringLiteral("storage.cdrom.dvdplusrdl")},
+        {Solid::OpticalDrive::Dvdplusdlrw, QStringLiteral("storage.cdrom.dvdplusrwdl")},
+        {Solid::OpticalDrive::Bd, QStringLiteral("storage.cdrom.bd")},
+        {Solid::OpticalDrive::Bdr, QStringLiteral("storage.cdrom.bdr")},
+        {Solid::OpticalDrive::Bdre, QStringLiteral("storage.cdrom.bdre")},
+        {Solid::OpticalDrive::HdDvd, QStringLiteral("storage.cdrom.hddvd")},
+        {Solid::OpticalDrive::HdDvdr, QStringLiteral("storage.cdrom.hddvdr")},
+        {Solid::OpticalDrive::HdDvdrw, QStringLiteral("storage.cdrom.hddvdrw")}};
 
-    Q_FOREACH (const Solid::OpticalDrive::MediumType type, map.keys()) {
-        if (m_device->prop(map[type]).toBool()) {
-            supported |= type;
+    for (auto it = map.cbegin(); it != map.cend(); ++it) {
+        if (m_device->prop(it.value()).toBool()) {
+            supported |= it.key();
         }
     }
 
@@ -74,9 +74,9 @@ int Cdrom::writeSpeed() const
 QList<int> Cdrom::writeSpeeds() const
 {
     QList<int> speeds;
-    QStringList speed_strlist = m_device->prop("storage.cdrom.write_speeds").toStringList();
+    const QStringList speed_strlist = m_device->prop("storage.cdrom.write_speeds").toStringList();
 
-    Q_FOREACH (const QString &speed_str, speed_strlist) {
+    for (const QString &speed_str : speed_strlist) {
         speeds << speed_str.toInt();
     }
 

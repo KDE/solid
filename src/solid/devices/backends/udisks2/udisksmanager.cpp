@@ -90,9 +90,10 @@ QObject *Manager::createDevice(const QString &udi)
 QStringList Manager::devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type)
 {
     QStringList result;
+    const QStringList deviceList = deviceCache();
 
     if (!parentUdi.isEmpty()) {
-        Q_FOREACH (const QString &udi, deviceCache()) {
+        for (const QString &udi : deviceList) {
             Device device(udi);
             if (device.queryDeviceInterface(type) && device.parentUdi() == parentUdi) {
                 result << udi;
@@ -101,7 +102,7 @@ QStringList Manager::devicesFromQuery(const QString &parentUdi, Solid::DeviceInt
 
         return result;
     } else if (type != Solid::DeviceInterface::Unknown) {
-        Q_FOREACH (const QString &udi, deviceCache()) {
+        for (const QString &udi : deviceList) {
             Device device(udi);
             if (device.queryDeviceInterface(type)) {
                 result << udi;

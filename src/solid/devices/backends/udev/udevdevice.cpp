@@ -189,7 +189,8 @@ QVariant UDevDevice::property(const QString &key) const
 QMap<QString, QVariant> UDevDevice::allProperties() const
 {
     QMap<QString, QVariant> res;
-    Q_FOREACH (const QString &prop, m_device.deviceProperties()) {
+    const QStringList properties = m_device.deviceProperties();
+    for (const QString &prop : properties) {
         res[prop] = property(prop);
     }
     return res;

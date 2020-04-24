@@ -121,7 +121,7 @@ QVariantMap DeviceBackend::allProperties() const
 {
     QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, m_udi, DBUS_INTERFACE_PROPS, "GetAll");
 
-    Q_FOREACH (const QString &iface, m_interfaces) {
+    for (const QString &iface : qAsConst(m_interfaces)) {
         call.setArguments(QVariantList() << iface);
         QDBusPendingReply<QVariantMap> reply = QDBusConnection::systemBus().call(call);
 
@@ -192,7 +192,7 @@ void DeviceBackend::slotPropertiesChanged(const QString &ifaceName, const QVaria
 
     QMap<QString, int> changeMap;
 
-    Q_FOREACH (const QString &key, invalidatedProps) {
+    for (const QString &key : invalidatedProps) {
         m_propertyCache.remove(key);
         changeMap.insert(key, Solid::GenericInterface::PropertyModified);
         //qDebug() << "\t invalidated:" << key;
@@ -217,7 +217,8 @@ void DeviceBackend::slotInterfacesAdded(const QDBusObjectPath &object_path, cons
         return;
     }
 
-    Q_FOREACH (const QString &iface, interfaces_and_properties.keys()) {
+    for (auto it = interfaces_and_properties.cbegin(); it != interfaces_and_properties.cend(); ++it) {
+        const QString &iface = it.key();
         /* Don't store generic DBus interfaces */
         if (iface.startsWith(UD2_DBUS_SERVICE)) {
             m_interfaces.append(iface);
@@ -231,7 +232,7 @@ void DeviceBackend::slotInterfacesRemoved(const QDBusObjectPath &object_path, co
         return;
     }
 
-    Q_FOREACH (const QString &iface, interfaces) {
+    for (const QString &iface : interfaces) {
         m_interfaces.removeAll(iface);
     }
 

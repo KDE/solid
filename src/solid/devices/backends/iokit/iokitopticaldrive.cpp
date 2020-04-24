@@ -281,20 +281,21 @@ Solid::OpticalDrive::MediumTypes IOKitOpticalDrive::supportedMedia() const
 
     qDebug() << Q_FUNC_INFO << "cdFeatures" << cdFeatures << "dvdFeatures" << dvdFeatures << "bdFeatures" << bdFeatures;
 
-    foreach (const Solid::OpticalDrive::MediumType type, d->cdTypeMap.keys()) {
-        if (cdFeatures & d->cdTypeMap[type]) {
-            supported |= type;
+    for (auto it = d->cdTypeMap.cbegin(); it != d->cdTypeMap.cend(); ++it) {
+        if (cdFeatures & it.value()) {
+            supported |= it.key();
         }
     }
-    foreach (const Solid::OpticalDrive::MediumType type, d->dvdTypeMap.keys()) {
-        if (dvdFeatures & d->dvdTypeMap[type]) {
-            supported |= type;
+    for (auto it = d->dvdTypeMap.cbegin(); it != d->dvdTypeMap.cend(); ++it) {
+        if (dvdFeatures & it.value()) {
+            supported |= it.key();
         }
     }
-    foreach (const Solid::OpticalDrive::MediumType type, d->bdTypeMap.keys()) {
-        if (bdFeatures & d->bdTypeMap[type]) {
-            supported |= type;
-            if (d->bdTypeMap[type] == kBDFeaturesWriteMask) {
+    for (auto it = d->bdTypeMap.cbegin(); it != d->bdTypeMap.cend(); ++it) {
+        const uint32_t value = it.value();
+        if (bdFeatures & value) {
+            supported |= it.key();
+            if (value == kBDFeaturesWriteMask) {
                 supported |= Solid::OpticalDrive::Bdre;
             }
         }

@@ -86,8 +86,8 @@ bool IOKitStorageAccess::teardown()
 
 void IOKitStorageAccess::onPropertyChanged(const QMap<QString, int> &changes)
 {
-    Q_FOREACH (const QString &property, changes.keys()) {
-        if (property == QStringLiteral("isMounted")) {
+    for (auto it = changes.cbegin(); it != changes.cend(); ++it) {
+        if (it.key() == QLatin1String("isMounted")) {
             emit accessibilityChanged(m_device->property(QStringLiteral("isMounted")).toBool(), m_device->udi());
         }
     }

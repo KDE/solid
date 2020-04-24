@@ -23,17 +23,17 @@ Solid::OpticalDisc::ContentTypes OpticalDisc::availableContent() const
 {
     Solid::OpticalDisc::ContentTypes content;
 
-    QMap<Solid::OpticalDisc::ContentType, QString> map;
-    map[Solid::OpticalDisc::Audio] = "volume.disc.has_audio";
-    map[Solid::OpticalDisc::Data] = "volume.disc.has_data";
-    map[Solid::OpticalDisc::VideoCd] = "volume.disc.is_vcd";
-    map[Solid::OpticalDisc::SuperVideoCd] = "volume.disc.is_svcd";
-    map[Solid::OpticalDisc::VideoDvd] = "volume.disc.is_videodvd";
-    map[Solid::OpticalDisc::VideoBluRay] = "volume.disc.is_blurayvideo";
+    const QMap<Solid::OpticalDisc::ContentType, QString> map = {
+        {Solid::OpticalDisc::Audio, QStringLiteral("volume.disc.has_audio")},
+        {Solid::OpticalDisc::Data, QStringLiteral("volume.disc.has_data")},
+        {Solid::OpticalDisc::VideoCd, QStringLiteral("volume.disc.is_vcd")},
+        {Solid::OpticalDisc::SuperVideoCd, QStringLiteral("volume.disc.is_svcd")},
+        {Solid::OpticalDisc::VideoDvd, QStringLiteral("volume.disc.is_videodvd")},
+        {Solid::OpticalDisc::VideoBluRay, QStringLiteral("volume.disc.is_blurayvideo")}};
 
-    Q_FOREACH (const Solid::OpticalDisc::ContentType type, map.keys()) {
-        if (m_device->prop(map[type]).toBool()) {
-            content |= type;
+    for (auto it = map.cbegin(); it != map.cend(); ++it) {
+        if (m_device->prop(it.value()).toBool()) {
+            content |= it.key();
         }
     }
 

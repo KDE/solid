@@ -123,7 +123,8 @@ QStringList HalManager::devicesFromQuery(const QString &parentUdi,
 
     QStringList result;
 
-    Q_FOREACH (const QString &udi, allDevices()) {
+    const QStringList deviceList = allDevices();
+    for (const QString &udi : deviceList) {
         HalDevice device(udi);
 
         if ((!parentUdi.isEmpty()) && (parentUdi != device.parentUdi())) {

@@ -71,7 +71,9 @@ bool UDevManager::Private::checkOfInterest(const UdevQt::Device &device)
     qDebug() << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<";
     qDebug() << "Path:" << device.sysfsPath();
     qDebug() << "Properties:" << device.deviceProperties();
-    Q_FOREACH (const QString &key, device.deviceProperties()) {
+
+    const QStringList properties = device.deviceProperties();
+    for (const QString &key : properties) {
         qDebug() << "\t" << key << ":" << device.deviceProperty(key).toString();
     }
     qDebug() << "Driver:" << device.driver();
@@ -150,7 +152,7 @@ QStringList UDevManager::allDevices()
 {
     QStringList res;
     const UdevQt::DeviceList deviceList = d->m_client->allDevices();
-    Q_FOREACH (const UdevQt::Device &device, deviceList) {
+    for (const UdevQt::Device &device : deviceList) {
         if (d->isOfInterest(udiPrefix() + device.sysfsPath(), device)) {
             res << udiPrefix() + device.sysfsPath();
         }
