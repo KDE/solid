@@ -34,6 +34,8 @@ public:
      * Some States are more complex or contain sub-states, those are usually
      * set using a specific job (for example Sleep can be done either using suspend to ram,
      * suspend to disk or an hybrid approach).
+     *
+     * @see InhibitionTypes
      */
     enum InhibitionType {
         None = 0,
@@ -41,6 +43,9 @@ public:
         Screen = 1 << 1,
         Shutdown = 1 << 3
     };
+    /*
+     * Stores a combination of #InhibitionType values.
+     */
     Q_DECLARE_FLAGS(InhibitionTypes, InhibitionType)
     Q_FLAG(InhibitionTypes)
     /**

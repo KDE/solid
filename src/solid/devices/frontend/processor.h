@@ -44,6 +44,8 @@ public:
     /**
      * This enum contains the list of architecture extensions you
      * can query.
+     *
+     * @see InstructionSets
      */
     enum InstructionSet {
         NoExtensions = 0x0,
@@ -61,7 +63,7 @@ public:
     Q_ENUM(InstructionSet)
 
     /*
-     * The flags for the Extension enum.
+     * Stores a combination of #InstructionSet values.
      */
     Q_DECLARE_FLAGS(InstructionSets, InstructionSet)
     Q_FLAG(InstructionSets)

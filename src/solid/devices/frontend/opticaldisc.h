@@ -42,6 +42,8 @@ public:
      * - VideoCd : A Video Compact Disc (VCD)
      * - SuperVideoCd : A Super Video Compact Disc (SVCD)
      * - VideoDvd : A Video Digital Versatile Disc (DVD-Video)
+     *
+     * @see ContentTypes
      */
     enum ContentType {
         NoContent = 0x00,
@@ -55,7 +57,7 @@ public:
     Q_ENUM(ContentType)
 
     /**
-     * This type stores an OR combination of ContentType values.
+     * Stores a combination of #ContentType values.
      */
     Q_DECLARE_FLAGS(ContentTypes, ContentType)
     Q_FLAG(ContentTypes)
