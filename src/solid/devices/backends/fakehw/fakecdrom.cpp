@@ -46,10 +46,7 @@ Solid::OpticalDrive::MediumTypes FakeCdrom::supportedMedia() const
     const QStringList supported_medialist = fakeDevice()->property("supportedMedia").toString().simplified().split(',');
 
     for (const QString &media : supported_medialist) {
-        const auto it = map.constFind(media);
-        if (it != map.cend()) {
-            supported |= it.value();
-        }
+        supported |= map.value(media, Solid::OpticalDrive::UnknownMediumType);
     }
 
     return supported;
