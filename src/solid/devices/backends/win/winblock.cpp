@@ -102,12 +102,12 @@ QString WinBlock::resolveVirtualDrive(const QString &drive)
 
 QSet<QString> WinBlock::updateUdiFromBitMask(const DWORD unitmask)
 {
-    QStringList drives = drivesFromMask(unitmask);
+    const QStringList drives = drivesFromMask(unitmask);
     QSet<QString> list;
     wchar_t driveWCHAR[MAX_PATH];
     wchar_t bufferOut[MAX_PATH];
     QString dosPath;
-    foreach (const QString &drive, drives) {
+    for (const QString &drive : drives) {
         QSet<QString> udis;
         driveWCHAR[drive.toWCharArray(driveWCHAR)] = 0;
         if (GetDriveType(driveWCHAR) == DRIVE_REMOTE) { //network drive
@@ -152,8 +152,8 @@ QSet<QString> WinBlock::updateUdiFromBitMask(const DWORD unitmask)
             }
         }
         m_driveUDIS[drive] = udis;
-        foreach (const QString &s, udis) {
-            m_driveLetters[s] = drive;
+        for (const QString &str : qAsConst(udis)) {
+            m_driveLetters[str] = drive;
         }
         list += udis;
     }
@@ -163,8 +163,8 @@ QSet<QString> WinBlock::updateUdiFromBitMask(const DWORD unitmask)
 QSet<QString> WinBlock::getFromBitMask(const DWORD unitmask)
 {
     QSet<QString> list;
-    QStringList drives = drivesFromMask(unitmask);
-    foreach (const QString &drive, drives) {
+    const QStringList drives = drivesFromMask(unitmask);
+    for (const QString &drive : drives) {
         if (m_driveUDIS.contains(drive)) {
             list += m_driveUDIS[drive];
         } else {

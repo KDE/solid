@@ -14,8 +14,8 @@ using namespace Solid::Backends::Win;
 WinOpticalDrive::WinOpticalDrive(WinDevice *device) :
     WinStorageDrive(device)
 {
-    QMap<ulong, MediaProfiles> profiles = MediaProfiles::profiles(WinBlock::driveLetterFromUdi(m_device->udi()));
-    foreach (const MediaProfiles p, profiles.values()) {
+    const QMap<ulong, MediaProfiles> profiles = MediaProfiles::profiles(WinBlock::driveLetterFromUdi(m_device->udi()));
+    for (const MediaProfiles &p : profiles) {
         m_supportedTypes |= p.type;
     }
 }

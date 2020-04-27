@@ -82,10 +82,11 @@ std::ostream &operator<<(std::ostream &out, const QVariant &value)
         //qDebug() << "got variant type:" << value.typeName();
         if (value.canConvert<QList<int> >())
         {
-            QList<int> intlist = value.value<QList<int> >();
+            const QList<int> intlist = value.value<QList<int>>();
             QStringList tmp;
-            foreach (int val, intlist)
+            for (const int val : intlist) {
                 tmp.append(QString::number(val));
+            }
             out << "{" << tmp.join(",") << "} (int list)";
         }
         break;
@@ -148,9 +149,8 @@ std::ostream &operator<<(std::ostream &out, const Solid::Device &device)
 
 std::ostream &operator<<(std::ostream &out, const QMap<QString,QVariant> &properties)
 {
-    Q_FOREACH (const QString &key, properties.keys())
-    {
-        out << "  " << key << " = " << properties[key] << endl;
+    for (auto it = properties.cbegin(); it != properties.cend(); ++it) {
+        out << "  " << it.key() << " = " << it.value() << endl;
     }
 
     return out;
@@ -306,7 +306,7 @@ bool SolidHardware::hwList(bool interfaces, bool system)
 {
     const QList<Solid::Device> all = Solid::Device::allDevices();
 
-    Q_FOREACH (const Solid::Device &device, all)
+    for (const Solid::Device &device : all)
     {
         cout << "udi = '" << device.udi() << "'" << endl;
 
@@ -352,8 +352,7 @@ bool SolidHardware::hwQuery(const QString &parentUdi, const QString &query)
     const QList<Solid::Device> devices
         = Solid::Device::listFromQuery(query, parentUdi);
 
-    Q_FOREACH (const Solid::Device &device, devices)
-    {
+    for (const Solid::Device &device : devices) {
         cout << "udi = '" << device.udi() << "'" << endl;
     }
 

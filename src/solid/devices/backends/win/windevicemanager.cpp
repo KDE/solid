@@ -162,22 +162,23 @@ QStringList WinDeviceManager::devicesFromQuery(const QString &parentUdi, Solid::
 {
 
     QStringList list;
+    const QStringList deviceList = allDevices();
     if (!parentUdi.isEmpty()) {
-        foreach (const QString &udi, allDevices()) {
+        for (const QString &udi : deviceList) {
             WinDevice device(udi);
             if (device.type() == type && device.parentUdi() == parentUdi) {
                 list << udi;
             }
         }
     } else if (type != Solid::DeviceInterface::Unknown) {
-        foreach (const QString &udi, allDevices()) {
+        for (const QString &udi : deviceList) {
             WinDevice device(udi);
             if (device.queryDeviceInterface(type)) {
                 list << udi;
             }
         }
     } else {
-        list << allDevices();
+        list << deviceList;
     }
     return list;
 
@@ -194,12 +195,12 @@ QObject *Solid::Backends::Win::WinDeviceManager::createDevice(const QString &udi
 
 void WinDeviceManager::slotDeviceAdded(const QSet<QString> &udi)
 {
-    QSet<QString> tmp = udi - m_devices;//don't report devices that are already known(cd drive)
+    const QSet<QString> tmp = udi - m_devices; //don't report devices that are already known(cd drive)
     m_devices += tmp;
     m_devicesList = m_devices.toList();
     std::sort(m_devicesList.begin(), m_devicesList.end());
-    foreach (const QString &s, tmp) {
-        emit deviceAdded(s);
+    for (const QString &str : tmp) {
+        emit deviceAdded(str);
     }
 }
 
@@ -208,8 +209,8 @@ void WinDeviceManager::slotDeviceRemoved(const QSet<QString> &udi)
     m_devices -= udi;
     m_devicesList = m_devices.toList();
     std::sort(m_devicesList.begin(), m_devicesList.end());
-    foreach (const QString &s, udi) {
-        emit deviceRemoved(s);
+    for (const QString &str : udi) {
+        emit deviceRemoved(str);
     }
 }
 

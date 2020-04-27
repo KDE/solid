@@ -89,11 +89,11 @@ QObject *UPowerManager::createDevice(const QString &udi)
 
 QStringList UPowerManager::devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type)
 {
-    QStringList allDev = allDevices();
+    const QStringList allDev = allDevices();
     QStringList result;
 
     if (!parentUdi.isEmpty()) {
-        Q_FOREACH (const QString &udi, allDev) {
+        for (const QString &udi : allDev) {
             if (udi == udiPrefix()) {
                 continue;
             }
@@ -106,7 +106,7 @@ QStringList UPowerManager::devicesFromQuery(const QString &parentUdi, Solid::Dev
 
         return result;
     } else if (type != Solid::DeviceInterface::Unknown) {
-        Q_FOREACH (const QString &udi, allDev) {
+        for (const QString &udi : allDev) {
             if (udi == udiPrefix()) {
                 continue;
             }
@@ -135,7 +135,8 @@ QStringList UPowerManager::allDevices()
     QStringList retList;
     retList << udiPrefix();
 
-    Q_FOREACH (const QDBusObjectPath &path, reply.value()) {
+    const auto pathList = reply.value();
+    for (const QDBusObjectPath &path : pathList) {
         retList << path.path();
     }
 
