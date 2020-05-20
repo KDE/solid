@@ -229,9 +229,7 @@ void Solid::DevicePrivate::setBackendObject(Ifaces::Device *object)
     }
 
     if (!m_ifaces.isEmpty()) {
-        Q_FOREACH (DeviceInterface *iface, m_ifaces) {
-            delete iface;
-        }
+        qDeleteAll(m_ifaces);
 
         m_ifaces.clear();
         if (!ref.deref()) {

@@ -33,8 +33,8 @@ protected:
     {
         Solid::Device dev("/org/freedesktop/Hal/devices/computer");
 
-        QList<Solid::Device> driveList = Solid::Device::listFromType(Solid::DeviceInterface::StorageDrive);
-        Q_FOREACH (const Solid::Device &solidDevice, driveList) {
+        const QList<Solid::Device> driveList = Solid::Device::listFromType(Solid::DeviceInterface::StorageDrive);
+        for (const Solid::Device &solidDevice : driveList) {
             const Solid::StorageDrive *solidDrive = solidDevice.as<Solid::StorageDrive>();
             Q_ASSERT(solidDrive);
             Q_UNUSED(solidDrive);
@@ -61,7 +61,7 @@ void SolidMtTest::testWorkerThread()
     wt->wait();
 
     const QList<Solid::Device> driveList = Solid::Device::listFromType(Solid::DeviceInterface::StorageDrive);
-    Q_FOREACH (const Solid::Device &solidDevice, driveList) {
+    for (const Solid::Device &solidDevice : driveList) {
         const Solid::GenericInterface *solidDrive = solidDevice.as<Solid::GenericInterface>();
         Q_ASSERT(solidDrive);
         Q_UNUSED(solidDrive);
@@ -73,16 +73,11 @@ void SolidMtTest::testWorkerThread()
 void SolidMtTest::testThreadedPredicate()
 {
     QThreadPool::globalInstance()->setMaxThreadCount(10);
-    QList<QFuture<void> > futures;
-    futures << QtConcurrent::run(&doPredicates);
-    futures << QtConcurrent::run(&doPredicates);
-    futures << QtConcurrent::run(&doPredicates);
-    futures << QtConcurrent::run(&doPredicates);
-    futures << QtConcurrent::run(&doPredicates);
-    futures << QtConcurrent::run(&doPredicates);
-    futures << QtConcurrent::run(&doPredicates);
-    futures << QtConcurrent::run(&doPredicates);
-    Q_FOREACH (QFuture<void> f, futures) {
+    const QList<QFuture<void> > futures = { QtConcurrent::run(&doPredicates), QtConcurrent::run(&doPredicates),
+                                            QtConcurrent::run(&doPredicates), QtConcurrent::run(&doPredicates),
+                                            QtConcurrent::run(&doPredicates), QtConcurrent::run(&doPredicates),
+                                            QtConcurrent::run(&doPredicates), QtConcurrent::run(&doPredicates) };
+    for (QFuture<void> f : futures) {
         f.waitForFinished();
     }
     QThreadPool::globalInstance()->setMaxThreadCount(1); // delete those threads
