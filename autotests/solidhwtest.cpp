@@ -44,16 +44,21 @@ void SolidHwTest::initTestCase()
 
 void SolidHwTest::testAllDevices()
 {
+    const QList<Solid::Device> devices = Solid::Device::allDevices();
+
     // Verify that the framework reported correctly the devices available
     // in the backend.
-    QSet<QString> expected_udis, received_udis;
+    QStringList expected_udis;
+    QStringList received_udis;
 
-    expected_udis = QSet<QString>::fromList(fakeManager->allDevices());
+    expected_udis = fakeManager->allDevices();
+    std::sort(expected_udis.begin(), expected_udis.end());
 
-    const QList<Solid::Device> devices = Solid::Device::allDevices();
     for (const Solid::Device &dev : devices) {
         received_udis << dev.udi();
     }
+
+    std::sort(received_udis.begin(), received_udis.end());
 
     QCOMPARE(expected_udis, received_udis);
 }
