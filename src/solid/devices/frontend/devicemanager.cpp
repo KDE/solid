@@ -39,7 +39,9 @@ Solid::DeviceManagerPrivate::~DeviceManagerPrivate()
         disconnect(backend, nullptr, this, nullptr);
     }
 
-    Q_FOREACH (QPointer<DevicePrivate> dev, m_devicesMap) {
+    // take a copy as m_devicesMap is changed by Solid::DeviceManagerPrivate::_k_destroyed
+    const auto deviceMap = m_devicesMap;
+    for (QPointer<DevicePrivate> dev : deviceMap) {
         if (!dev.data()->ref.deref()) {
             delete dev.data();
         }
