@@ -40,6 +40,8 @@ public:
 
     QStringList emblems() const override;
 
+    QString displayName() const;
+
     QString description() const override;
 
     bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const override;
@@ -59,6 +61,7 @@ private:
     QString m_device;
     QString m_product;
     QString m_vendor;
+    QString m_displayName;
     QString m_description;
     QString m_iconName;
     QPointer<FstabStorageAccess> m_storageAccess;

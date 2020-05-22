@@ -68,3 +68,8 @@ QString Solid::Ifaces::Device::deviceDBusPath() const
     return QString("/org/kde/solid/Device_") + QString::fromLatin1(encodedUdi);
 }
 
+QString Solid::Ifaces::Device::displayName() const
+{
+    return description();
+}
+

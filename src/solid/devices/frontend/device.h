@@ -173,6 +173,15 @@ public:
     QStringList emblems() const;
 
     /**
+     * Retrieves the display Name to use for this device.
+     * Same as description when not defined.
+     *
+     * @return the display Name
+     * @since 5.71
+     */
+    QString displayName() const;
+
+    /**
      * Retrieves the description of device.
      *
      * @return the description

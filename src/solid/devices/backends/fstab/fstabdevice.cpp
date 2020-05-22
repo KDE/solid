@@ -53,20 +53,28 @@ FstabDevice::FstabDevice(QString uid) :
     for  (const QString &option : gvfsOptions) {
         if (option.startsWith(QLatin1String("x-gvfs-name="))) {
             QStringRef encoded = option.midRef(12);
-            m_description = QUrl::fromPercentEncoding(encoded.toLatin1());
+            m_displayName = QUrl::fromPercentEncoding(encoded.toLatin1());
         } else if (option.startsWith(QLatin1String("x-gvfs-icon="))) {
             QStringRef encoded = option.midRef(12);
             m_iconName = QUrl::fromPercentEncoding(encoded.toLatin1());
         }
     }
 
-    if (m_description.isEmpty()) {
-        if (m_storageType == StorageType::NetworkShare) {
-            m_description = QCoreApplication::translate("", "%1 on %2",
-            "%1 is sharename, %2 is servername").arg(m_product, m_vendor);
+    if (m_storageType == StorageType::NetworkShare) {
+        m_description = QCoreApplication::translate("", "%1 on %2",
+        "%1 is sharename, %2 is servername").arg(m_product, m_vendor);
+    } else {
+        m_description = QCoreApplication::translate("", "%1 (%2)",
+        "%1 is mountpoint, %2 is fs type").arg(m_product, m_vendor);
+    }
+
+    if (m_displayName.isEmpty()) {
+        const QStringList currentMountPoints = FstabHandling::currentMountPoints(m_device);
+        if (currentMountPoints.isEmpty()) {
+            const QStringList mountPoints = FstabHandling::mountPoints(m_device);
+            m_displayName = mountPoints.isEmpty() ? m_description : mountPoints.first();
         } else {
-            m_description = QCoreApplication::translate("", "%1 (%2)",
-            "%1 is mountpoint, %2 is fs type").arg(m_product, m_vendor);
+            m_displayName = currentMountPoints.first();
         }
     }
 
@@ -132,6 +140,11 @@ QStringList FstabDevice::emblems() const
     }
 
     return res;
+}
+
+QString FstabDevice::displayName() const
+{
+    return m_displayName;
 }
 
 QString FstabDevice::description() const

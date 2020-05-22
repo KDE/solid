@@ -107,6 +107,11 @@ QStringList Solid::Device::emblems() const
     return_SOLID_CALL(Ifaces::Device *, d->backendObject(), QStringList(), emblems());
 }
 
+QString Solid::Device::displayName() const
+{
+    return_SOLID_CALL(Ifaces::Device *, d->backendObject(), QString(), displayName());
+}
+
 QString Solid::Device::description() const
 {
     return_SOLID_CALL(Ifaces::Device *, d->backendObject(), QString(), description());
