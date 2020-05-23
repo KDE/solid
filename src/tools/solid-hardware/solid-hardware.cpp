@@ -169,7 +169,7 @@ QString getUdiFromArguments(QCoreApplication &app, QCommandLineParser &parser)
 static QString commandsHelp()
 {
 #if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
-    const auto qtEndl = endl;
+    const auto qtEndl = std::endl;
 #else
     const auto qtEndl = Qt::endl;
 #endif
