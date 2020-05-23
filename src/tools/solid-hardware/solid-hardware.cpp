@@ -168,17 +168,11 @@ QString getUdiFromArguments(QCoreApplication &app, QCommandLineParser &parser)
 
 static QString commandsHelp()
 {
-#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
-    const auto qtEndl = std::endl;
-#else
-    const auto qtEndl = Qt::endl;
-#endif
-
     QString data;
     QTextStream cout(&data);
-    cout << qtEndl << QCoreApplication::translate("solid-hardware", "Syntax:") << qtEndl << qtEndl;
+    cout << '\n' << QCoreApplication::translate("solid-hardware", "Syntax:") << '\n' << '\n';
 
-    cout << "  solid-hardware list [details|nonportableinfo]" << qtEndl;
+    cout << "  solid-hardware list [details|nonportableinfo]" << '\n';
     cout << QCoreApplication::translate("solid-hardware",
             "             # List the hardware available in the system.\n"
             "             # - If the 'nonportableinfo' option is specified, the device\n"
@@ -187,40 +181,40 @@ static QString commandsHelp()
             "             # - If the 'details' option is specified, the device interfaces\n"
             "             # and the corresponding properties are listed in a platform\n"
             "             # neutral fashion,\n"
-            "             # - Otherwise only device UDIs are listed.\n") << qtEndl;
+            "             # - Otherwise only device UDIs are listed.\n") << '\n';
 
-    cout << "  solid-hardware details 'udi'" << qtEndl;
+    cout << "  solid-hardware details 'udi'" << '\n';
     cout << QCoreApplication::translate("solid-hardware",
             "             # Display all the interfaces and properties of the device\n"
-            "             # corresponding to 'udi' in a platform neutral fashion.\n") << qtEndl;
+            "             # corresponding to 'udi' in a platform neutral fashion.\n") << '\n';
 
-    cout << "  solid-hardware nonportableinfo 'udi'" << qtEndl;
+    cout << "  solid-hardware nonportableinfo 'udi'" << '\n';
     cout << QCoreApplication::translate("solid-hardware",
             "             # Display all the properties of the device corresponding to 'udi'\n"
-            "             # (be careful, in this case property names are backend dependent).\n") << qtEndl;
+            "             # (be careful, in this case property names are backend dependent).\n") << '\n';
 
-    cout << "  solid-hardware query 'predicate' ['parentUdi']" << qtEndl;
+    cout << "  solid-hardware query 'predicate' ['parentUdi']" << '\n';
     cout << QCoreApplication::translate("solid-hardware",
             "             # List the UDI of devices corresponding to 'predicate'.\n"
             "             # - If 'parentUdi' is specified, the search is restricted to the\n"
             "             # branch of the corresponding device,\n"
-            "             # - Otherwise the search is done on all the devices.\n") << qtEndl;
+            "             # - Otherwise the search is done on all the devices.\n") << '\n';
 
-    cout << "  solid-hardware mount 'udi'" << qtEndl;
+    cout << "  solid-hardware mount 'udi'" << '\n';
     cout << QCoreApplication::translate("solid-hardware",
-            "             # If applicable, mount the device corresponding to 'udi'.\n") << qtEndl;
+            "             # If applicable, mount the device corresponding to 'udi'.\n") << '\n';
 
-    cout << "  solid-hardware unmount 'udi'" << qtEndl;
+    cout << "  solid-hardware unmount 'udi'" << '\n';
     cout << QCoreApplication::translate("solid-hardware",
-            "             # If applicable, unmount the device corresponding to 'udi'.\n") << qtEndl;
+            "             # If applicable, unmount the device corresponding to 'udi'.\n") << '\n';
 
-    cout << "  solid-hardware eject 'udi'" << qtEndl;
+    cout << "  solid-hardware eject 'udi'" << '\n';
     cout << QCoreApplication::translate("solid-hardware",
-            "             # If applicable, eject the device corresponding to 'udi'.\n") << qtEndl;
+            "             # If applicable, eject the device corresponding to 'udi'.\n") << '\n';
 
-    cout << "  solid-hardware listen" << qtEndl;
+    cout << "  solid-hardware listen" << '\n';
     cout << QCoreApplication::translate("solid-hardware",
-            "             # Listen to all add/remove events on supported hardware.") << qtEndl;
+            "             # Listen to all add/remove events on supported hardware.") << '\n';
 
     return data;
 }
