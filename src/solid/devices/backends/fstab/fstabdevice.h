@@ -40,7 +40,7 @@ public:
 
     QStringList emblems() const override;
 
-    QString displayName() const;
+    QString displayName() const override;
 
     QString description() const override;
 

@@ -96,7 +96,7 @@ public:
       * @return the display name
       * @since 5.71
       */
-    QString displayName() const;
+    virtual QString displayName() const;
 
     /**
       * Retrieves the description of device.
