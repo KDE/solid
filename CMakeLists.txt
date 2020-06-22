@@ -112,12 +112,6 @@ elseif (NOT ANDROID)
     add_device_backend(fstab)
 
     if (CMAKE_SYSTEM_NAME MATCHES FreeBSD)
-        # FIXME: this should work on more Unix systems
-        option(EXPERIMENTAL_BSDISKS "Use UDisks2/bsdisks backend instead of HAL to manage disk devices" OFF)
-    else ()
-        set(EXPERIMENTAL_BSDISKS FALSE)
-    endif()
-    if(EXPERIMENTAL_BSDISKS)
         add_device_backend(udisks2)
     else()
         add_device_backend(hal)
