@@ -10,13 +10,21 @@
 #include "device.h"
 #include "device_p.h"
 #include "predicate.h"
+#include <storageaccess.h>
+#include "storagevolume.h"
 
 #include "ifaces/devicemanager.h"
 #include "ifaces/device.h"
 
 #include "soliddefs_p.h"
 
+#include <QDir>
+#include <QFileInfo>
+#include <QLoggingCategory>
+
 Q_GLOBAL_STATIC(Solid::DeviceManagerStorage, globalDeviceStorage)
+
+Q_LOGGING_CATEGORY(DEVICE_MANAGER_LOG, "device manager")
 
 Solid::DeviceManagerPrivate::DeviceManagerPrivate()
     : m_nullDevice(new DevicePrivate(QString()))
@@ -160,6 +168,35 @@ QList<Solid::Device> Solid::Device::listFromQuery(const Predicate &predicate,
     }
 
     return list;
+}
+
+Solid::Device Solid::Device::storageAccessFromPath(QString path)
+{
+    QFileInfo fileInfo = QFileInfo(path);
+    if (!fileInfo.exists()) {
+        qCWarning(DEVICE_MANAGER_LOG) << "Incorrect file path";
+        return Device();
+    }
+    //We ensure file and all mount paths and with file separators, to avoid false positive matches later
+    if (!path.endsWith(QDir::separator())) {
+        path.append(QDir::separator());
+    }
+
+    QList<Device> list = Solid::Device::listFromType(DeviceInterface::Type::StorageAccess);
+    Device match;
+    int match_length = 0;
+    for (Device device: list) {
+        StorageAccess *storageAccess = device.as<StorageAccess>();
+        QString mountPath = storageAccess->filePath();
+        if (!mountPath.endsWith(QDir::separator())) {
+            mountPath.append(QDir::separator());
+        }
+        if (path.startsWith(mountPath) && mountPath.size() > match_length) {
+            match_length = mountPath.size();
+            match = device;
+        }
+    }
+    return match;
 }
 
 Solid::DeviceNotifier *Solid::DeviceNotifier::instance()

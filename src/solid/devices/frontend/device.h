@@ -75,6 +75,14 @@ public:
      */
     static QList<Device> listFromQuery(const QString &predicate,
                                        const QString &parentUdi = QString());
+    
+    /**
+     * Retrives storage volume for given path
+     * 
+     * @param path
+     * @return StorageVolume Device
+     */
+    static Device storageAccessFromPath(QString path);
 
     /**
      * Constructs a device for a given Universal Device Identifier (UDI).
