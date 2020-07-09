@@ -81,6 +81,7 @@ public:
      * 
      * @param path
      * @return StorageVolume Device
+     * @since 5.73
      */
     static Device storageAccessFromPath(QString path);
 
