@@ -177,7 +177,7 @@ Solid::Device Solid::Device::storageAccessFromPath(QString path)
         qCWarning(DEVICE_MANAGER_LOG) << "Incorrect file path";
         return Device();
     }
-    //We ensure file and all mount paths and with file separators, to avoid false positive matches later
+    //We ensure file and all mount paths are with trailing dir separators, to avoid false positive matches later
     if (!path.endsWith(QDir::separator())) {
         path.append(QDir::separator());
     }
