@@ -185,7 +185,7 @@ Solid::Device Solid::Device::storageAccessFromPath(QString path)
     Device match;
     int match_length = 0;
     for (const Device &device : list) {
-        StorageAccess *storageAccess = device.as<StorageAccess>();
+        auto storageAccess = device.as<StorageAccess>();
         QString mountPath = storageAccess->filePath();
         if (!mountPath.endsWith(QDir::separator())) {
             mountPath.append(QDir::separator());
