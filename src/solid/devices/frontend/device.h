@@ -77,7 +77,7 @@ public:
                                        const QString &parentUdi = QString());
     
     /**
-     * Retrives storage volume for given canonical path
+     * Returns storage volume for given canonical path
      * 
      * @param path
      * @return StorageVolume Device
