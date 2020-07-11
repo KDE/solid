@@ -190,7 +190,7 @@ Solid::Device Solid::Device::storageAccessFromPath(QString path)
         if (!mountPath.endsWith(QDir::separator())) {
             mountPath.append(QDir::separator());
         }
-        if (path.startsWith(mountPath) && mountPath.size() > match_length) {
+        if (mountPath.size() > match_length && path.startsWith(mountPath)) {
             match_length = mountPath.size();
             match = device;
         }
