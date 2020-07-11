@@ -173,7 +173,7 @@ QList<Solid::Device> Solid::Device::listFromQuery(const Predicate &predicate,
 Solid::Device Solid::Device::storageAccessFromPath(QString path)
 {
     if (!QFileInfo::exists(path)) {
-        qCWarning(DEVICE_MANAGER_LOG) << "Incorrect file path";
+        qCWarning(DEVICE_MANAGER_LOG) << "Couldn't get StorageAccess for \"" << path << "\" - File doesn't exist";
         return Device();
     }
     //We ensure file and all mount paths are with trailing dir separators, to avoid false positive matches later
