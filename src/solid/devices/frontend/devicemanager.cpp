@@ -181,7 +181,7 @@ Solid::Device Solid::Device::storageAccessFromPath(QString path)
         path.append(QDir::separator());
     }
 
-    QList<Device> list = Solid::Device::listFromType(DeviceInterface::Type::StorageAccess);
+    const QList<Device> list = Solid::Device::listFromType(DeviceInterface::Type::StorageAccess);
     Device match;
     int match_length = 0;
     for (const Device &device : list) {
