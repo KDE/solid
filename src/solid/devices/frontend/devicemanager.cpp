@@ -173,7 +173,7 @@ QList<Solid::Device> Solid::Device::listFromQuery(const Predicate &predicate,
 Solid::Device Solid::Device::storageAccessFromPath(QString path)
 {
     QFileInfo fileInfo = QFileInfo(path);
-    if (!fileInfo.exists()) {
+    if (!QFileInfo::exists(path)) {
         qCWarning(DEVICE_MANAGER_LOG) << "Incorrect file path";
         return Device();
     }
