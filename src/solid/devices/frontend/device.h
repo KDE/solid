@@ -77,10 +77,10 @@ public:
                                        const QString &parentUdi = QString());
     
     /**
-     * Returns storage volume for given canonical path
+     * Returns storage volume for given canonical path to file stored on that device
      * 
-     * @param path
-     * @return StorageVolume Device
+     * @param canonical path to an existing file
+     * @return StorageVolume Device containing file to which path was given
      * @since 5.73
      */
     static Device storageAccessFromPath(QString path);
