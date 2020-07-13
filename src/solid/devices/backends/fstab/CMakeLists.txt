@@ -11,7 +11,8 @@ ecm_qt_declare_logging_category(backend_sources
     HEADER fstab_debug.h
     IDENTIFIER Solid::Backends::Fstab::FSTAB
     DEFAULT_SEVERITY Warning
-    CATEGORY_NAME org.kde.solid.fstab
+    CATEGORY_NAME kf.solid.backends.fstab
+    OLD_CATEGORY_NAMES org.kde.solid.fstab
     DESCRIPTION "Fstab (Solid)"
     EXPORT SOLID
 )
