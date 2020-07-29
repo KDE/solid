@@ -117,6 +117,8 @@ QStringList Manager::devicesFromQuery(const QString &parentUdi, Solid::DeviceInt
 
 QStringList Manager::allDevices()
 {
+    m_deviceCache.clear();
+
     introspect("/org/freedesktop/UDisks2/block_devices", true /*checkOptical*/);
     introspect("/org/freedesktop/UDisks2/drives");
 
