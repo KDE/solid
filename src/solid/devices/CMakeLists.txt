@@ -78,6 +78,15 @@ set(solid_LIB_SRCS
     devices/backends/shared/cpufeatures.cpp
 )
 
+ecm_qt_declare_logging_category(solid_LIB_SRCS
+    HEADER devices_debug.h
+    IDENTIFIER Solid::Frontend::DeviceManager::DEVICEMANAGER
+    DEFAULT_SEVERITY Warning
+    CATEGORY_NAME kf.solid.frontend.devicemanager
+    DESCRIPTION "Device Manager (Solid)"
+    EXPORT SOLID
+)
+
 bison_target(SolidParser
              devices/predicate_parser.y
              ${CMAKE_CURRENT_BINARY_DIR}/predicate_parser.c

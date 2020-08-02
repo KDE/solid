@@ -9,6 +9,7 @@
 
 #include "device.h"
 #include "device_p.h"
+#include "devices_debug.h"
 #include "predicate.h"
 #include "storageaccess.h"
 #include "storagevolume.h"
@@ -23,8 +24,6 @@
 #include <QLoggingCategory>
 
 Q_GLOBAL_STATIC(Solid::DeviceManagerStorage, globalDeviceStorage)
-
-Q_LOGGING_CATEGORY(DEVICE_MANAGER_LOG, "device manager")
 
 Solid::DeviceManagerPrivate::DeviceManagerPrivate()
     : m_nullDevice(new DevicePrivate(QString()))
@@ -174,7 +173,7 @@ Solid::Device Solid::Device::storageAccessFromPath(const QString &path)
 {
     QString trailing_path(path);
     if (!QFileInfo::exists(trailing_path)) {
-        qCWarning(DEVICE_MANAGER_LOG) << "Couldn't get StorageAccess for \"" << trailing_path << "\" - File doesn't exist";
+        qCWarning(Frontend::DeviceManager::DEVICEMANAGER) << "Couldn't get StorageAccess for " << trailing_path << " - File doesn't exist";
         return Device();
     }
     //We ensure file and all mount paths are with trailing dir separators, to avoid false positive matches later
