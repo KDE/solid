@@ -170,15 +170,16 @@ QList<Solid::Device> Solid::Device::listFromQuery(const Predicate &predicate,
     return list;
 }
 
-Solid::Device Solid::Device::storageAccessFromPath(QString path)
+Solid::Device Solid::Device::storageAccessFromPath(const QString &path)
 {
-    if (!QFileInfo::exists(path)) {
-        qCWarning(DEVICE_MANAGER_LOG) << "Couldn't get StorageAccess for \"" << path << "\" - File doesn't exist";
+    QString trailing_path(path);
+    if (!QFileInfo::exists(trailing_path)) {
+        qCWarning(DEVICE_MANAGER_LOG) << "Couldn't get StorageAccess for \"" << trailing_path << "\" - File doesn't exist";
         return Device();
     }
     //We ensure file and all mount paths are with trailing dir separators, to avoid false positive matches later
-    if (!path.endsWith(QDir::separator())) {
-        path.append(QDir::separator());
+    if (!trailing_path.endsWith(QDir::separator())) {
+        trailing_path.append(QDir::separator());
     }
 
     const QList<Device> list = Solid::Device::listFromType(DeviceInterface::Type::StorageAccess);
@@ -190,7 +191,7 @@ Solid::Device Solid::Device::storageAccessFromPath(QString path)
         if (!mountPath.endsWith(QDir::separator())) {
             mountPath.append(QDir::separator());
         }
-        if (mountPath.size() > match_length && path.startsWith(mountPath)) {
+        if (mountPath.size() > match_length && trailing_path.startsWith(mountPath)) {
             match_length = mountPath.size();
             match = device;
         }

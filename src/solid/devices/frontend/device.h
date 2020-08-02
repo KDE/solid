@@ -83,7 +83,7 @@ public:
      * @return StorageVolume Device containing file to which path was given
      * @since 5.73
      */
-    static Device storageAccessFromPath(QString path);
+    static Device storageAccessFromPath(const QString &path);
 
     /**
      * Constructs a device for a given Universal Device Identifier (UDI).
