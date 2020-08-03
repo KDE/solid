@@ -80,7 +80,7 @@ public:
      * Returns storage volume for given canonical path to file stored on that device
      * 
      * @param canonical path to an existing file
-     * @return StorageVolume Device containing file to which path was given
+     * @return StorageVolume Device containing file to which path was given or an empty Device, if no device could be found
      * @since 5.73
      */
     static Device storageAccessFromPath(const QString &path);
