@@ -171,12 +171,12 @@ QList<Solid::Device> Solid::Device::listFromQuery(const Predicate &predicate,
 
 Solid::Device Solid::Device::storageAccessFromPath(const QString &path)
 {
-    QString trailing_path(path);
-    if (!QFileInfo::exists(trailing_path)) {
-        qCWarning(Frontend::DeviceManager::DEVICEMANAGER).nospace() << "Couldn't get StorageAccess for \"" << trailing_path << "\" - File doesn't exist";
+    if (!QFileInfo::exists(path)) {
+        qCWarning(Frontend::DeviceManager::DEVICEMANAGER).nospace() << "Couldn't get StorageAccess for \"" << path << "\" - File doesn't exist";
         return Device();
     }
     //We ensure file and all mount paths are with trailing dir separators, to avoid false positive matches later
+    QString trailing_path(path);
     if (!trailing_path.endsWith(QDir::separator())) {
         trailing_path.append(QDir::separator());
     }
