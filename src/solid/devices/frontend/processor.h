@@ -117,8 +117,9 @@ public:
      */
     InstructionSets instructionSets() const;
 };
-}
 
-Q_DECLARE_OPERATORS_FOR_FLAGS(Solid::Processor::InstructionSets)
+Q_DECLARE_OPERATORS_FOR_FLAGS(Processor::InstructionSets)
+
+}
 
 #endif

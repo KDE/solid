@@ -169,8 +169,9 @@ public:
      */
     qulonglong capacity() const;
 };
-}
 
-Q_DECLARE_OPERATORS_FOR_FLAGS(Solid::OpticalDisc::ContentTypes)
+Q_DECLARE_OPERATORS_FOR_FLAGS(OpticalDisc::ContentTypes)
+
+}
 
 #endif

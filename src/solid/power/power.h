@@ -122,9 +122,11 @@ private:
     class Private;
     Private * const d;
 };
+
+Q_DECLARE_OPERATORS_FOR_FLAGS(Power::InhibitionTypes)
+
 }
 
 Q_DECLARE_METATYPE(Solid::Power::InhibitionType)
-Q_DECLARE_OPERATORS_FOR_FLAGS(Solid::Power::InhibitionTypes)
 
 #endif //SOLID_POWER_H

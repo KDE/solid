@@ -168,8 +168,9 @@ Q_SIGNALS:
     void ejectRequested(const QString &udi);
 
 };
-}
 
-Q_DECLARE_OPERATORS_FOR_FLAGS(Solid::OpticalDrive::MediumTypes)
+Q_DECLARE_OPERATORS_FOR_FLAGS(OpticalDrive::MediumTypes)
+
+}
 
 #endif // SOLID_OPTICALDRIVE_H
