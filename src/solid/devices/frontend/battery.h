@@ -142,7 +142,7 @@ public:
     /**
      * Indicates if this battery is currently present in its bay.
      *
-     * @deprecated since Solid 5.0. Use isPresent instead.
+     * @deprecated Since 5.0, use isPresent() instead.
      */
     SOLID_DEPRECATED_VERSION(5, 0, "Use Battery::isPresent()")
     bool isPlugged() const { return isPresent(); }
