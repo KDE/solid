@@ -70,10 +70,14 @@ void Solid::ManagerBasePrivate::loadBackends()
         m_backends << new Solid::Backends::UDev::UDevManager(nullptr);
 #endif
 #ifdef BUILD_DEVICE_BACKEND_udisks2
-        m_backends << new Solid::Backends::UDisks2::Manager(nullptr);
+        if (!qEnvironmentVariableIsSet("SOLID_DISABLE_UDISKS2")) {
+            m_backends << new Solid::Backends::UDisks2::Manager(nullptr);
+        }
 #endif
 #ifdef BUILD_DEVICE_BACKEND_upower
-        m_backends << new Solid::Backends::UPower::UPowerManager(nullptr);
+        if (!qEnvironmentVariableIsSet("SOLID_DISABLE_UPOWER")) {
+            m_backends << new Solid::Backends::UPower::UPowerManager(nullptr);
+        }
 #endif
 #ifdef BUILD_DEVICE_BACKEND_win
         m_backends << new Solid::Backends::Win::WinDeviceManager(nullptr);
