@@ -11,7 +11,7 @@
 
 #include "devicenotifier.h"
 
-#include <QMap>
+#include <QHash>
 #include <QPointer>
 #include <QSharedData>
 #include <QThreadStorage>
@@ -42,8 +42,8 @@ private:
     Ifaces::Device *createBackendObject(const QString &udi);
 
     QExplicitlySharedDataPointer<DevicePrivate> m_nullDevice;
-    QMap<QString, QPointer<DevicePrivate> > m_devicesMap;
-    QMap<QObject *, QString> m_reverseMap;
+    QHash<QString, QPointer<DevicePrivate> > m_devicesMap;
+    QHash<QObject *, QString> m_reverseMap;
 };
 
 class DeviceManagerStorage
