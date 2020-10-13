@@ -50,6 +50,18 @@ set_package_properties(BISON PROPERTIES
     PURPOSE "Required for the Predicate parser"
 )
 
+find_package(IMobileDevice)
+set_package_properties(IMobileDevice PROPERTIES
+                       TYPE OPTIONAL
+                       PURPOSE "Needed to build the iOS device support backend"
+                      )
+
+find_package(PList)
+set_package_properties(PList PROPERTIES
+                       TYPE OPTIONAL
+                       PURPOSE "Needed to build the iOS device support backend"
+                      )
+
 
 include(ECMPoQmTools)
 
@@ -117,6 +129,11 @@ elseif (NOT ANDROID)
         add_device_backend(hal)
     endif()
 endif()
+
+if(IMobileDevice_FOUND AND PList_FOUND)
+    add_device_backend(imobile)
+endif()
+
 add_device_backends_cmake()
 
 add_subdirectory(src)

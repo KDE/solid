@@ -21,6 +21,9 @@
 #ifdef BUILD_DEVICE_BACKEND_hal
 #include "backends/hal/halmanager.h"
 #endif
+#ifdef BUILD_DEVICE_BACKEND_imobile
+#include "backends/imobile/imobilemanager.h"
+#endif
 #ifdef BUILD_DEVICE_BACKEND_iokit
 #include "backends/iokit/iokitmanager.h"
 #endif
@@ -62,6 +65,9 @@ void Solid::ManagerBasePrivate::loadBackends()
 #endif
 #ifdef BUILD_DEVICE_BACKEND_hal
         m_backends << new Solid::Backends::Hal::HalManager(nullptr);
+#endif
+#ifdef BUILD_DEVICE_BACKEND_imobile
+        m_backends << new Solid::Backends::IMobile::Manager(nullptr);
 #endif
 #ifdef BUILD_DEVICE_BACKEND_iokit
         m_backends << new Solid::Backends::IOKit::IOKitManager(nullptr);
