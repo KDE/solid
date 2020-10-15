@@ -125,5 +125,11 @@ void Manager::onDeviceEvent(const idevice_event_t *event)
             emit deviceRemoved(udi);
         }
         return;
+#if IMOBILEDEVICE_API >= QT_VERSION_CHECK(1, 3, 0)
+    case IDEVICE_DEVICE_PAIRED:
+        return;
+#endif
     }
+
+    qCDebug(IMOBILE) << "Unhandled device event" << event->event << "for" << event->udid;
 }

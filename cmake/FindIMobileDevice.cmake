@@ -47,11 +47,21 @@ find_package_handle_standard_args(IMobileDevice
 mark_as_advanced(IMobileDevice_INCLUDE_DIRS IMobileDevice_LIBRARIES)
 
 if(IMobileDevice_FOUND AND NOT TARGET IMobileDevice::IMobileDevice)
+    # Handle API variations, follow QT_VERSION_CHECK conventions
+    set(_imobile_version "0x00000")
+    if (IMobileDevice_VERSION VERSION_GREATER_EQUAL 1.3.0)
+        set(_imobile_version "0x10300")
+    elseif(IMobileDevice_VERSION VERSION_GREATER_EQUAL 1.2.0)
+        set(_imobile_version "0x10200")
+    endif()
+
+    # Imported target
     add_library(IMobileDevice::IMobileDevice UNKNOWN IMPORTED)
     set_target_properties(IMobileDevice::IMobileDevice PROPERTIES
         IMPORTED_LOCATION "${IMobileDevice_LIBRARIES}"
         INTERFACE_INCLUDE_DIRECTORIES "${IMobileDevice_INCLUDE_DIRS}"
         INTERFACE_COMPILE_OPTIONS "${PC_libimobiledevice_CFLAGS_OTHER}"
+        INTERFACE_COMPILE_DEFINITIONS "IMOBILEDEVICE_API=${_imobile_version}"
     )
 endif()
 
