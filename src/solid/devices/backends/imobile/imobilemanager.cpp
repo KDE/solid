@@ -125,9 +125,5 @@ void Manager::onDeviceEvent(const idevice_event_t *event)
             emit deviceRemoved(udi);
         }
         return;
-    case IDEVICE_DEVICE_PAIRED:
-        return;
     }
-
-    qCDebug(IMOBILE) << "Unhandled device event" << event->event << "for" << event->udid;
 }
