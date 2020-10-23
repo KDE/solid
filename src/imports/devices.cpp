@@ -9,7 +9,6 @@
 
 
 #include <solid/device.h>
-#include <solid/deviceinterface.h>
 #include <solid/devicenotifier.h>
 #include <solid/genericinterface.h>
 

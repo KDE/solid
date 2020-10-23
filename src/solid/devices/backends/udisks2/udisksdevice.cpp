@@ -17,7 +17,6 @@
 #include "udisksgenericinterface.h"
 
 #include <solid/genericinterface.h>
-#include <solid/deviceinterface.h>
 #include <solid/device.h>
 
 #include <QMimeDatabase>

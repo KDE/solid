@@ -7,7 +7,6 @@
 #include "predicate.h"
 
 #include <solid/device.h>
-#include <solid/deviceinterface.h>
 #include <QStringList>
 #include <QMetaEnum>
 

@@ -9,7 +9,6 @@
 #include <QStringList>
 #include <QDBusInterface>
 #include <QDBusReply>
-#include <QDBusError>
 
 #include "halfstabhandling.h"
 

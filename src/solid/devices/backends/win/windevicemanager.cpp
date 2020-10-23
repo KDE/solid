@@ -14,7 +14,6 @@
 
 #include <dbt.h>
 
-#include <QDebug>
 
 using namespace Solid::Backends::Win;
 

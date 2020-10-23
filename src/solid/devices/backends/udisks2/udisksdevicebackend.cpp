@@ -10,7 +10,6 @@
 #include "udisks_debug.h"
 
 #include <QDBusConnection>
-#include <QDBusInterface>
 #include <QDomDocument>
 
 #include "solid/deviceinterface.h"

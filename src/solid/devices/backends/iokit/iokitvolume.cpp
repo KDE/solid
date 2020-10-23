@@ -9,7 +9,6 @@
 
 
 #include <CoreFoundation/CoreFoundation.h>
-#include <DiskArbitration/DiskArbitration.h>
 
 using namespace Solid::Backends::IOKit;
 

@@ -5,7 +5,6 @@
 */
 
 #include "rootdevice.h"
-#include <QStringList>
 
 using namespace Solid::Backends::Shared;
 

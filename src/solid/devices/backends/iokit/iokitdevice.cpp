@@ -22,7 +22,6 @@
 #include <sys/types.h>
 #include <sys/sysctl.h>
 
-#include <IOKit/IOKitLib.h>
 #include <IOKit/usb/IOUSBLib.h>
 #include <IOKit/network/IOEthernetInterface.h>
 

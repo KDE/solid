@@ -14,12 +14,10 @@
 #include <QMetaEnum>
 #include <QTextStream>
 
-#include <QCoreApplication>
 #include <QCommandLineParser>
 
 #include <solid/device.h>
 #include <solid/genericinterface.h>
-#include <solid/storageaccess.h>
 #include <solid/opticaldrive.h>
 
 #include <iostream>

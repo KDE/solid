@@ -10,7 +10,6 @@
 #include "halgenericinterface.h"
 
 #include <QDebug>
-#include <QProcess>
 #include <QTimer>
 #include <QDBusConnection>
 #include <QDBusInterface>

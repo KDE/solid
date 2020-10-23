@@ -13,7 +13,6 @@
 #include "imobile.h"
 #include  "imobiledevice.h"
 
-#include <libimobiledevice/libimobiledevice.h>
 
 using namespace Solid::Backends::IMobile;
 using namespace Solid::Backends::Shared;

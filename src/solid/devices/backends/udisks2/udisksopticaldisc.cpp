@@ -16,7 +16,6 @@
 #include <QSystemSemaphore>
 #include <QThreadStorage>
 
-#include "../shared/udevqt.h"
 
 #include "udisks2.h"
 #include "udisks_debug.h"

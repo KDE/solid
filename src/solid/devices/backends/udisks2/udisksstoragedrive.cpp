@@ -7,7 +7,6 @@
 
 #include "udisksstoragedrive.h"
 
-#include "../shared/udevqt.h"
 
 #include <QDebug>
 

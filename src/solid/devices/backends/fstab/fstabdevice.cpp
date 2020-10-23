@@ -7,11 +7,9 @@
 #include "fstabdevice.h"
 #include "fstabhandling.h"
 #include "fstabnetworkshare.h"
-#include "fstabstorageaccess.h"
 #include "fstabservice.h"
 #include "fstab_debug.h"
 #include <QCoreApplication>
-#include <QStringList>
 #include <QDir>
 #include <QUrl>
 
