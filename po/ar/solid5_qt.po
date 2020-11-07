@@ -1,0 +1,1253 @@
+# Safa Alfulaij <safa1996alfulaij@gmail.com>, 2014.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-28 15:38+0300\n"
+"PO-Revision-Date: 2014-06-28 06:10+0300\n"
+"Last-Translator: Safa Alfulaij <safa1996alfulaij@gmail.com>\n"
+"Language-Team: Arabic <doc@arabeyes.org>\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"X-Generator: Virtaal 0.7.1\n"
+"X-Qt-Contexts: true\n"
+
+#: solid/devices/backends/fstab/fstabdevice.cpp:62
+#, qt-format
+msgctxt "%1 is sharename, %2 is servername"
+msgid "%1 on %2"
+msgstr ""
+
+#: solid/devices/backends/fstab/fstabdevice.cpp:65
+#, qt-format
+msgctxt "%1 is mountpoint, %2 is fs type"
+msgid "%1 (%2)"
+msgstr ""
+
+#: solid/devices/backends/fstab/fstabmanager.cpp:83
+msgctxt "Solid::Backends::Fstab::FstabManager|"
+msgid "Filesystem Volumes"
+msgstr ""
+
+#: solid/devices/backends/fstab/fstabmanager.cpp:84
+msgctxt "Solid::Backends::Fstab::FstabManager|"
+msgid "Mountable filesystems declared in your system"
+msgstr ""
+
+#: solid/devices/backends/hal/haldevice.cpp:49
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 TiB"
+msgstr "%1 ت.بايت"
+
+#: solid/devices/backends/hal/haldevice.cpp:51
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 GiB"
+msgstr "%1 ج.بايت"
+
+#: solid/devices/backends/hal/haldevice.cpp:57
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 MiB"
+msgstr "%1 م.بايت"
+
+#: solid/devices/backends/hal/haldevice.cpp:62
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 KiB"
+msgstr "%1 ك.بايت"
+
+#: solid/devices/backends/hal/haldevice.cpp:66
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 B"
+msgstr "%1 بايت"
+
+#: solid/devices/backends/hal/haldevice.cpp:70
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "0 B"
+msgstr "0 بايت"
+
+#: solid/devices/backends/hal/haldevice.cpp:305
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "WLAN Interface"
+msgstr "واجهة الشبكة اللاسلكية"
+
+#: solid/devices/backends/hal/haldevice.cpp:307
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Networking Interface"
+msgstr ""
+
+#: solid/devices/backends/hal/haldevice.cpp:491
+msgctxt "Solid::Backends::Hal::HalDevice|First item of %1%2 Drive sentence"
+msgid "CD-ROM"
+msgstr "CD-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:493
+msgctxt "Solid::Backends::Hal::HalDevice|First item of %1%2 Drive sentence"
+msgid "CD-R"
+msgstr "CD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:496
+msgctxt "Solid::Backends::Hal::HalDevice|First item of %1%2 Drive sentence"
+msgid "CD-RW"
+msgstr "CD-RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:500
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-ROM"
+msgstr "/DVD-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:503
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD+R"
+msgstr "/DVD+R"
+
+#: solid/devices/backends/hal/haldevice.cpp:506
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD+RW"
+msgstr "/DVD+RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:509
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-R"
+msgstr "/DVD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:512
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-RW"
+msgstr "/DVD-RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:515
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-RAM"
+msgstr "/DVD-RAM"
+
+#: solid/devices/backends/hal/haldevice.cpp:519
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±R DL"
+msgstr "/DVD±R DL"
+
+#: solid/devices/backends/hal/haldevice.cpp:521
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±R"
+msgstr "/DVD±R"
+
+#: solid/devices/backends/hal/haldevice.cpp:526
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±RW DL"
+msgstr "/DVD±RW DL"
+
+#: solid/devices/backends/hal/haldevice.cpp:528
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±RW"
+msgstr "/DVD±RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:532
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/BD-ROM"
+msgstr "/BD-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:535
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/BD-R"
+msgstr "/BD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:538
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/BD-RE"
+msgstr "/BD-RE"
+
+#: solid/devices/backends/hal/haldevice.cpp:541
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-ROM"
+msgstr "/HD DVD-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:544
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-R"
+msgstr "/HD DVD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:547
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-RW"
+msgstr "/HD DVD-RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:551
+#, qt-format
+msgctxt ""
+"Solid::Backends::Hal::HalDevice|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
+"DVD-R'/etc (with leading slash)"
+msgid "External %1%2 Drive"
+msgstr "قرص %1%2 خارجي"
+
+#: solid/devices/backends/hal/haldevice.cpp:553
+#, qt-format
+msgctxt ""
+"Solid::Backends::Hal::HalDevice|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
+"DVD-R'/etc (with leading slash)"
+msgid "%1%2 Drive"
+msgstr "قرص %1%2"
+
+#: solid/devices/backends/hal/haldevice.cpp:561
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "External Floppy Drive"
+msgstr "قرص مرن خارجي"
+
+#: solid/devices/backends/hal/haldevice.cpp:563
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Floppy Drive"
+msgstr "قرص مرن"
+
+#: solid/devices/backends/hal/haldevice.cpp:575
+#: solid/devices/backends/hal/haldevice.cpp:778
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 External Hard Drive"
+msgstr "قرص %1 صلب خارجي"
+
+#: solid/devices/backends/hal/haldevice.cpp:577
+#: solid/devices/backends/hal/haldevice.cpp:780
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 Hard Drive"
+msgstr "قرص %1 صلب"
+
+#: solid/devices/backends/hal/haldevice.cpp:581
+#: solid/devices/backends/hal/haldevice.cpp:784
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "External Hard Drive"
+msgstr "قرص صلب خارجي"
+
+#: solid/devices/backends/hal/haldevice.cpp:583
+#: solid/devices/backends/hal/haldevice.cpp:786
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Hard Drive"
+msgstr "قرص صلب"
+
+#: solid/devices/backends/hal/haldevice.cpp:602
+#, qt-format
+msgctxt ""
+"Solid::Backends::Hal::HalDevice|%1 is the vendor, %2 is the model of the "
+"device"
+msgid "%1 %2"
+msgstr "%1 %2"
+
+#: solid/devices/backends/hal/haldevice.cpp:607
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Drive"
+msgstr "قرص"
+
+#: solid/devices/backends/hal/haldevice.cpp:636
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "CD-ROM"
+msgstr "CD-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:641
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank CD-R"
+msgstr "CD-R فارغ"
+
+#: solid/devices/backends/hal/haldevice.cpp:643
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "CD-R"
+msgstr "CD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:649
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank CD-RW"
+msgstr "CD-RW فارغ"
+
+#: solid/devices/backends/hal/haldevice.cpp:651
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "CD-RW"
+msgstr "CD-RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:656
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD-ROM"
+msgstr "DVD-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:661
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD-RAM"
+msgstr "DVD-RAM فارغ"
+
+#: solid/devices/backends/hal/haldevice.cpp:663
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD-RAM"
+msgstr "DVD-RAM"
+
+#: solid/devices/backends/hal/haldevice.cpp:669
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD-R"
+msgstr "DVD-R فارغ"
+
+#: solid/devices/backends/hal/haldevice.cpp:671
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD-R"
+msgstr "DVD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:677
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD+R Dual-Layer"
+msgstr "DVD+R متعدّد الطبقات فارغ"
+
+#: solid/devices/backends/hal/haldevice.cpp:679
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD+R Dual-Layer"
+msgstr "DVD+R متعدّد الطبقات"
+
+#: solid/devices/backends/hal/haldevice.cpp:685
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD-RW"
+msgstr "DVD-RW فارغ"
+
+#: solid/devices/backends/hal/haldevice.cpp:687
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD-RW"
+msgstr "DVD-RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:693
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD+R"
+msgstr "DVD+R فارغ"
+
+#: solid/devices/backends/hal/haldevice.cpp:695
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD+R"
+msgstr "DVD+R"
+
+#: solid/devices/backends/hal/haldevice.cpp:701
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD+RW"
+msgstr "DVD+RW فارغ"
+
+#: solid/devices/backends/hal/haldevice.cpp:703
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD+RW"
+msgstr "DVD+RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:709
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD+RW Dual-Layer"
+msgstr "DVD+RW متعدّد الطبقات فارغ"
+
+#: solid/devices/backends/hal/haldevice.cpp:711
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD+RW Dual-Layer"
+msgstr "DVD+RW متعدّد الطبقات"
+
+#: solid/devices/backends/hal/haldevice.cpp:716
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "BD-ROM"
+msgstr "BD-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:721
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank BD-R"
+msgstr "BD-R فارغ"
+
+#: solid/devices/backends/hal/haldevice.cpp:723
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "BD-R"
+msgstr "BD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:729
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank BD-RE"
+msgstr "BD-RE فارغ"
+
+#: solid/devices/backends/hal/haldevice.cpp:731
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "BD-RE"
+msgstr "BD-RE"
+
+#: solid/devices/backends/hal/haldevice.cpp:736
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "HD DVD-ROM"
+msgstr "/HD DVD-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:741
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank HD DVD-R"
+msgstr "DVD-R فارغ"
+
+#: solid/devices/backends/hal/haldevice.cpp:743
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "HD DVD-R"
+msgstr "/HD DVD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:749
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank HD DVD-RW"
+msgstr "DVD-RW فارغ"
+
+#: solid/devices/backends/hal/haldevice.cpp:751
+#, fuzzy
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "HD DVD-RW"
+msgstr "/HD DVD-RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:758
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Audio CD"
+msgstr "CD صوتي"
+
+#: solid/devices/backends/hal/haldevice.cpp:771
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 Encrypted Container"
+msgstr "حاوي %1 مشفّر"
+
+#: solid/devices/backends/hal/haldevice.cpp:773
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Encrypted Container"
+msgstr "حاول مشفّر"
+
+#: solid/devices/backends/hal/haldevice.cpp:791
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 Removable Media"
+msgstr "وسيطة %1 قابلة للإزالة"
+
+#: solid/devices/backends/hal/haldevice.cpp:793
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 Media"
+msgstr "وسيطة %1"
+
+#: solid/devices/backends/imobile/imobiledevice.cpp:91
+msgctxt "imobiledevice|Company name"
+msgid "Apple"
+msgstr ""
+
+#: solid/devices/backends/imobile/imobilemanager.cpp:59
+msgctxt "Solid::Backends::IMobile::Manager|"
+msgid "iDevice"
+msgstr ""
+
+#: solid/devices/backends/imobile/imobilemanager.cpp:60
+msgctxt "Solid::Backends::IMobile::Manager|"
+msgid "iOS devices"
+msgstr ""
+
+#: solid/devices/backends/udev/udevdevice.cpp:100
+msgctxt "Solid::Backends::UDev::UDevDevice|"
+msgid "Computer"
+msgstr "حاسوب"
+
+#: solid/devices/backends/udev/udevdevice.cpp:104
+msgctxt "Solid::Backends::UDev::UDevDevice|"
+msgid "Processor"
+msgstr "معالج"
+
+#: solid/devices/backends/udev/udevdevice.cpp:115
+msgctxt "Solid::Backends::UDev::UDevDevice|"
+msgid "Portable Media Player"
+msgstr "مشغّل وسائط محمول"
+
+#: solid/devices/backends/udev/udevdevice.cpp:118
+msgctxt "Solid::Backends::UDev::UDevDevice|"
+msgid "Camera"
+msgstr "كاميرا"
+
+#: solid/devices/backends/udev/udevmanager.cpp:219
+msgctxt "Solid::Backends::UDev::UDevManager|"
+msgid "Devices"
+msgstr ""
+
+#: solid/devices/backends/udev/udevmanager.cpp:220
+msgctxt "Solid::Backends::UDev::UDevManager|"
+msgid "Devices declared in your system"
+msgstr ""
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:44
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 TiB"
+msgstr "%1 ت.بايت"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:46
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 GiB"
+msgstr "%1 ج.بايت"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:52
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 MiB"
+msgstr "%1 م.بايت"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:57
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 KiB"
+msgstr "%1 ك.بايت"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:61
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 B"
+msgstr "%1 بايت"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:65
+msgctxt "udisksdevice|"
+msgid "0 B"
+msgstr "0 بايت"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:236
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Swap Space"
+msgstr ""
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:258
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Loop Device"
+msgstr ""
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:274
+msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
+msgid "CD-ROM"
+msgstr "CD-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:276
+msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
+msgid "CD-R"
+msgstr "CD-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:279
+msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
+msgid "CD-RW"
+msgstr "CD-RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:283
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD-ROM"
+msgstr "/DVD-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:286
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD+R"
+msgstr "/DVD+R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:289
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD+RW"
+msgstr "/DVD+RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:292
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD-R"
+msgstr "/DVD-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:295
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD-RW"
+msgstr "/DVD-RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:298
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD-RAM"
+msgstr "/DVD-RAM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:302
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD±R DL"
+msgstr "/DVD±R DL"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:304
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD±R"
+msgstr "/DVD±R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:309
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD±RW DL"
+msgstr "/DVD±RW DL"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:311
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD±RW"
+msgstr "/DVD±RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:315
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/BD-ROM"
+msgstr "/BD-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:318
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/BD-R"
+msgstr "/BD-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:321
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/BD-RE"
+msgstr "/BD-RE"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:324
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-ROM"
+msgstr "/HD DVD-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:327
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-R"
+msgstr "/HD DVD-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:330
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-RW"
+msgstr "/HD DVD-RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:334
+#, qt-format
+msgctxt ""
+"Solid::Backends::UDisks2::Device|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
+"DVD-R'/etc (with leading slash)"
+msgid "External %1%2 Drive"
+msgstr "قرص %1%2 خارجي"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:336
+#, qt-format
+msgctxt ""
+"Solid::Backends::UDisks2::Device|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
+"DVD-R'/etc (with leading slash)"
+msgid "%1%2 Drive"
+msgstr "قرص %1%2"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:344
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "External Floppy Drive"
+msgstr "قرص مرن خارجي"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:346
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Floppy Drive"
+msgstr "قرص مرن"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:358
+#: solid/devices/backends/udisks2/udisksdevice.cpp:566
+#, qt-format
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 External Hard Drive"
+msgstr "قرص %1 صلب خارجي"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:360
+#: solid/devices/backends/udisks2/udisksdevice.cpp:568
+#, qt-format
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 Hard Drive"
+msgstr "قرص %1 صلب"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:364
+#: solid/devices/backends/udisks2/udisksdevice.cpp:572
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "External Hard Drive"
+msgstr "قرص صلب خارجي"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:366
+#: solid/devices/backends/udisks2/udisksdevice.cpp:574
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Hard Drive"
+msgstr "قرص صلب"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:389
+#, qt-format
+msgctxt ""
+"Solid::Backends::UDisks2::Device|%1 is the vendor, %2 is the model of the "
+"device"
+msgid "%1 %2"
+msgstr "%1 %2"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:395
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Drive"
+msgstr "قرص"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:425
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "CD-ROM"
+msgstr "CD-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:430
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank CD-R"
+msgstr "CD-R فارغ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:432
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "CD-R"
+msgstr "CD-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:438
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank CD-RW"
+msgstr "CD-RW فارغ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:440
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "CD-RW"
+msgstr "CD-RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:445
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD-ROM"
+msgstr "DVD-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:450
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD-RAM"
+msgstr "DVD-RAM فارغ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:452
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD-RAM"
+msgstr "DVD-RAM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:458
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD-R"
+msgstr "DVD-R فارغ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:460
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD-R"
+msgstr "DVD-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:466
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD+R Dual-Layer"
+msgstr "DVD+R متعدّد الطبقات فارغ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:468
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD+R Dual-Layer"
+msgstr "DVD+R متعدّد الطبقات"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:474
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD-RW"
+msgstr "DVD-RW فارغ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:476
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD-RW"
+msgstr "DVD-RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:482
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD+R"
+msgstr "DVD+R فارغ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:484
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD+R"
+msgstr "DVD+R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:490
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD+RW"
+msgstr "DVD+RW فارغ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:492
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD+RW"
+msgstr "DVD+RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:498
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD+RW Dual-Layer"
+msgstr "DVD+RW متعدّد الطبقات فارغ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:500
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD+RW Dual-Layer"
+msgstr "DVD+RW متعدّد الطبقات"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:505
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "BD-ROM"
+msgstr "BD-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:510
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank BD-R"
+msgstr "BD-R فارغ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:512
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "BD-R"
+msgstr "BD-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:518
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank BD-RE"
+msgstr "BD-RE فارغ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:520
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "BD-RE"
+msgstr "BD-RE"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:525
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "HD DVD-ROM"
+msgstr "/HD DVD-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:530
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank HD DVD-R"
+msgstr "DVD-R فارغ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:532
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "HD DVD-R"
+msgstr "/HD DVD-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:538
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank HD DVD-RW"
+msgstr "DVD-RW فارغ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:540
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "HD DVD-RW"
+msgstr "/HD DVD-RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:547
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Audio CD"
+msgstr "CD صوتي"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:559
+#, qt-format
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 Encrypted Drive"
+msgstr "حاوي %1 مشفّر"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:561
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Encrypted Drive"
+msgstr "حاوي مشفّر"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:578
+#, fuzzy
+#| msgctxt "Solid::Backends::UDisks2::Device|"
+#| msgid "Floppy Drive"
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Floppy Disk"
+msgstr "قرص مرن"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:581
+#, qt-format
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 Removable Media"
+msgstr "وسيطة %1 قابلة للإزالة"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:583
+#, qt-format
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 Media"
+msgstr "وسيطة %1"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:726
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "You are not authorized to perform this operation"
+msgstr "ليس مأذون لك بإجراء هذه العملية"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:728
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is currently busy"
+msgstr "الجهاز مشغول حاليًا"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:730
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The requested operation has failed"
+msgstr "فشلت العملية المطلوبة"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:732
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The requested operation has been canceled"
+msgstr "أُلغيت العملية المطلوبة"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:734
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "An invalid or malformed option has been given"
+msgstr "أُعطي خيار غير صالح أو تالف"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:736
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The kernel driver for this filesystem type is not available"
+msgstr "جهاز النواة لنوع نظام الملفات هذا غير متوفّر"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:738
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is already mounted"
+msgstr "الجهاز مضموم بالفعل"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:740
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is not mounted"
+msgstr "الجهاز غير مضموم"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:742
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is mounted by another user"
+msgstr ""
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:744
+#, fuzzy
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is already unmounting"
+msgstr "الجهاز مضموم بالفعل"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:746
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The operation timed out"
+msgstr "انتهى وقت العملية"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:748
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The operation would wake up a disk that is in a deep-sleep state"
+msgstr ""
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:750
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The operation has already been canceled"
+msgstr "هذه العملية ملغاة بالفعل"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:752
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "An unspecified error has occurred"
+msgstr "حدث خطأ غير محدَّد"
+
+#: solid/devices/backends/udisks2/udisksmanager.cpp:78
+msgctxt "Solid::Backends::UDisks2::Manager|"
+msgid "Storage"
+msgstr ""
+
+#: solid/devices/backends/udisks2/udisksmanager.cpp:79
+msgctxt "Solid::Backends::UDisks2::Manager|"
+msgid "Storage devices"
+msgstr ""
+
+#: solid/devices/backends/upower/upowerdevice.cpp:113
+#, qt-format
+msgctxt "Solid::Backends::UPower::UPowerDevice|%1 is battery technology"
+msgid "%1 Battery"
+msgstr "بطارية %1"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:128
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Lithium Ion"
+msgstr "أيونات ليثيوم"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:130
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Lithium Polymer"
+msgstr "بوليمرات ليثيوم"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:132
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Lithium Iron Phosphate"
+msgstr "فوسفات حديد الليثيوم"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:134
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Lead Acid"
+msgstr "حمض الرصاص"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:136
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Nickel Cadmium"
+msgstr "كادميوم نيكل"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:138
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Nickel Metal Hydride"
+msgstr "هيدريد فلز النيكل"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:140
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Unknown"
+msgstr "مجهولة"
+
+#: solid/devices/backends/upower/upowermanager.cpp:76
+msgctxt "Solid::Backends::UPower::UPowerManager|"
+msgid "Power Management"
+msgstr "إدارة الطاقة"
+
+#: solid/devices/backends/upower/upowermanager.cpp:77
+msgctxt "Solid::Backends::UPower::UPowerManager|"
+msgid "Batteries and other sources of power"
+msgstr "البطاريات ومصادر الطاقة الأخرى"
+
+#: solid/devices/backends/win/windevice.cpp:159
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Lithium Ion"
+msgstr "أيونات ليثيوم"
+
+#: solid/devices/backends/win/windevice.cpp:162
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Lead Acid"
+msgstr "حمض الرصاص"
+
+#: solid/devices/backends/win/windevice.cpp:165
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Nickel Cadmium"
+msgstr "كادميوم نيكل"
+
+#: solid/devices/backends/win/windevice.cpp:168
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Nickel Metal Hydride"
+msgstr "هيدريد فلز النيكل"
+
+#: solid/devices/backends/win/windevice.cpp:171
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Unknown"
+msgstr "مجهولة"
+
+#: solid/devices/frontend/deviceinterface.cpp:53
+msgctxt "Solid::DeviceInterface|Unknown device type"
+msgid "Unknown"
+msgstr "مجهول"
+
+#: solid/devices/frontend/deviceinterface.cpp:55
+msgctxt "Solid::DeviceInterface|Generic Interface device type"
+msgid "Generic Interface"
+msgstr ""
+
+#: solid/devices/frontend/deviceinterface.cpp:57
+msgctxt "Solid::DeviceInterface|Processor device type"
+msgid "Processor"
+msgstr "معالج"
+
+#: solid/devices/frontend/deviceinterface.cpp:59
+msgctxt "Solid::DeviceInterface|Block device type"
+msgid "Block"
+msgstr ""
+
+#: solid/devices/frontend/deviceinterface.cpp:61
+msgctxt "Solid::DeviceInterface|Storage Access device type"
+msgid "Storage Access"
+msgstr ""
+
+#: solid/devices/frontend/deviceinterface.cpp:63
+msgctxt "Solid::DeviceInterface|Storage Drive device type"
+msgid "Storage Drive"
+msgstr ""
+
+#: solid/devices/frontend/deviceinterface.cpp:65
+#, fuzzy
+msgctxt "Solid::DeviceInterface|Optical Drive device type"
+msgid "Optical Drive"
+msgstr "قرص ضوئي"
+
+#: solid/devices/frontend/deviceinterface.cpp:67
+msgctxt "Solid::DeviceInterface|Storage Volume device type"
+msgid "Storage Volume"
+msgstr ""
+
+#: solid/devices/frontend/deviceinterface.cpp:69
+msgctxt "Solid::DeviceInterface|Optical Disc device type"
+msgid "Optical Disc"
+msgstr "قرص ضوئي"
+
+#: solid/devices/frontend/deviceinterface.cpp:71
+msgctxt "Solid::DeviceInterface|Camera device type"
+msgid "Camera"
+msgstr "كاميرا"
+
+#: solid/devices/frontend/deviceinterface.cpp:73
+msgctxt "Solid::DeviceInterface|Portable Media Player device type"
+msgid "Portable Media Player"
+msgstr "مشغّل وسائط محمول"
+
+#: solid/devices/frontend/deviceinterface.cpp:75
+msgctxt "Solid::DeviceInterface|Battery device type"
+msgid "Battery"
+msgstr "بطارية"
+
+#: solid/devices/frontend/deviceinterface.cpp:77
+#, fuzzy
+msgctxt "Solid::DeviceInterface|Network Share device type"
+msgid "Network Share"
+msgstr "مشاركات الشبكة"
+
+#: tools/solid-hardware/solid-hardware.cpp:159
+#: tools/solid-hardware/solid-hardware.cpp:269
+msgctxt "solid-hardware|"
+msgid "Device udi"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:171 tools/solid-power/main.cpp:33
+msgctxt "solid-hardware|"
+msgid "Syntax:"
+msgstr "الصياغة:"
+
+#: tools/solid-hardware/solid-hardware.cpp:174
+msgctxt "solid-hardware|"
+msgid ""
+"             # List the hardware available in the system.\n"
+"             # - If the 'nonportableinfo' option is specified, the device\n"
+"             # properties are listed (be careful, in this case property "
+"names\n"
+"             # are backend dependent),\n"
+"             # - If the 'details' option is specified, the device "
+"interfaces\n"
+"             # and the corresponding properties are listed in a platform\n"
+"             # neutral fashion,\n"
+"             # - Otherwise only device UDIs are listed.\n"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:185
+#, fuzzy
+msgctxt "solid-hardware|"
+msgid ""
+"             # Display all the interfaces and properties of the device\n"
+"             # corresponding to 'udi' in a platform neutral fashion.\n"
+msgstr ""
+"             # اعرض كل الواجهات وخصائص الجهاز\n"
+"             # corresponding to 'udi' in a platform neutral fashion.\n"
+
+#: tools/solid-hardware/solid-hardware.cpp:190
+msgctxt "solid-hardware|"
+msgid ""
+"             # Display all the properties of the device corresponding to "
+"'udi'\n"
+"             # (be careful, in this case property names are backend "
+"dependent).\n"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:195
+msgctxt "solid-hardware|"
+msgid ""
+"             # List the UDI of devices corresponding to 'predicate'.\n"
+"             # - If 'parentUdi' is specified, the search is restricted to "
+"the\n"
+"             # branch of the corresponding device,\n"
+"             # - Otherwise the search is done on all the devices.\n"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:202
+msgctxt "solid-hardware|"
+msgid ""
+"             # If applicable, mount the device corresponding to 'udi'.\n"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:206
+msgctxt "solid-hardware|"
+msgid ""
+"             # If applicable, unmount the device corresponding to 'udi'.\n"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:210
+msgctxt "solid-hardware|"
+msgid ""
+"             # If applicable, eject the device corresponding to 'udi'.\n"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:214
+msgctxt "solid-hardware|"
+msgid "             # Listen to all add/remove events on supported hardware."
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:227
+msgctxt "solid-hardware|"
+msgid "KDE tool for querying your hardware from the command line"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:230
+msgctxt "solid-hardware|"
+msgid "Command to execute"
+msgstr "الأمر لتنفيذه"
+
+#: tools/solid-hardware/solid-hardware.cpp:232
+msgctxt "solid-hardware|"
+msgid "Show available commands"
+msgstr "أظهر الأوامر المتوفّرة"
+
+#: tools/solid-hardware/solid-hardware.cpp:256
+msgctxt "solid-hardware|"
+msgid "Show device details"
+msgstr "أظهر تفاصيل الجهاز"
+
+#: tools/solid-hardware/solid-hardware.cpp:257
+msgctxt "solid-hardware|"
+msgid "Show non portable information"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:270
+msgctxt "solid-hardware|"
+msgid "Parent device udi"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:298
+#, qt-format
+msgctxt "solid-hardware|"
+msgid "Syntax Error: Unknown command '%1'"
+msgstr "خطأ صياغي: الأمر '%1' مجهول"
+
+#: tools/solid-hardware/solid-hardware.cpp:366
+#, qt-format
+msgctxt "SolidHardware|"
+msgid "Error: %1 does not have the interface StorageAccess."
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:371
+#, qt-format
+msgctxt "SolidHardware|"
+msgid "Error: %1 does not have the interface OpticalDrive."
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:404
+#, qt-format
+msgctxt "SolidHardware|"
+msgid "Error: %1"
+msgstr "خطأ: %1"
+
+#: tools/solid-power/main.cpp:22
+msgctxt "solid-power|"
+msgid "Tool to know and set the power management state of your device"
+msgstr ""
+
+#: tools/solid-power/main.cpp:24
+#, fuzzy
+#| msgctxt "solid-hardware|"
+#| msgid "Command to execute"
+msgctxt "solid-power|"
+msgid "Command to execute"
+msgstr "الأمر لتنفيذه"
+
+#: tools/solid-power/main.cpp:26
+#, fuzzy
+#| msgctxt "solid-hardware|"
+#| msgid "Show available commands"
+msgctxt "solid-power|"
+msgid "Show available commands"
+msgstr "أظهر الأوامر المتوفّرة"
+
+#: tools/solid-power/main.cpp:36
+msgctxt "solid-power|"
+msgid ""
+"             # Show all the power management information from the system.\n"
+"             # - acPlugged: whether the device is connected to the AC or "
+"not\n"
+msgstr ""
