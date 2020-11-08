@@ -33,7 +33,7 @@ find_package(PkgConfig QUIET)
 pkg_search_module(PC_libplist QUIET libplist-2.0 libplist)
 
 find_path(PList_INCLUDE_DIRS NAMES plist/plist.h HINTS ${PC_libplist_INCLUDE_DIRS})
-find_library(PList_LIBRARIES NAMES plist HINTS ${PC_libplist_LIBRARY_DIRS})
+find_library(PList_LIBRARIES NAMES plist-2.0 plist HINTS ${PC_libplist_LIBRARY_DIRS})
 
 set(PList_VERSION ${PC_libplist_VERSION})
 

@@ -33,7 +33,7 @@ find_package(PkgConfig QUIET)
 pkg_check_modules(PC_libimobiledevice QUIET libimobiledevice-1.0)
 
 find_path(IMobileDevice_INCLUDE_DIRS NAMES libimobiledevice/libimobiledevice.h HINTS ${PC_libimobiledevice_INCLUDE_DIRS})
-find_library(IMobileDevice_LIBRARIES NAMES imobiledevice HINTS ${PC_libimobiledevice_LIBRARY_DIRS})
+find_library(IMobileDevice_LIBRARIES NAMES imobiledevice-1.0 imobiledevice HINTS ${PC_libimobiledevice_LIBRARY_DIRS})
 
 set(IMobileDevice_VERSION ${PC_libimobiledevice_VERSION})
 
