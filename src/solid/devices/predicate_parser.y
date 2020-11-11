@@ -57,7 +57,7 @@ typedef void *yyscan_t;
 %destructor { PredicateParse_destroy( $$ ); } predicate_or
 %destructor { PredicateParse_destroy( $$ ); } predicate_and
 
-%pure-parser
+%define api.pure
 
 %lex-param   { yyscan_t scanner }
 %parse-param { yyscan_t scanner }
