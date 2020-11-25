@@ -100,9 +100,13 @@ bool FstabStorageAccess::teardown()
     m_fstabDevice->broadcastActionRequested("teardown");
     return FstabHandling::callSystemCommand("umount", {filePath()}, this, [this](QProcess *process) {
         if (process->exitCode() == 0) {
-            m_fstabDevice->broadcastActionDone("teardown", Solid::NoError, QString());
-        } else {
+            m_fstabDevice->broadcastActionDone("teardown", Solid::NoError);
+        } else if (process->exitCode() == EBUSY) {
+            m_fstabDevice->broadcastActionDone("teardown", Solid::DeviceBusy);
+        } else if (process->exitCode() == EPERM) {
             m_fstabDevice->broadcastActionDone("teardown", Solid::UnauthorizedOperation, process->readAllStandardError());
+        } else {
+            m_fstabDevice->broadcastActionDone("teardown", Solid::OperationFailed, process->readAllStandardError());
         }
     });
 }
