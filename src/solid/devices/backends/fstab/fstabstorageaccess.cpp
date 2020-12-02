@@ -14,6 +14,8 @@
 #include <QProcess>
 #include <QTimer>
 
+#include <errno.h>
+
 #define MTAB "/etc/mtab"
 
 using namespace Solid::Backends::Fstab;
