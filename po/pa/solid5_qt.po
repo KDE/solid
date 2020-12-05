@@ -1,0 +1,1236 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# A S Alam <aalam@users.sf.net>, 2009, 2010, 2011, 2012, 2014, 2018, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-04-01 01:49+0000\n"
+"PO-Revision-Date: 2020-10-13 21:40-0700\n"
+"Last-Translator: A S Alam <aalam.yellow@gmail.com>\n"
+"Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
+"Language: pa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 19.12.2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Qt-Contexts: true\n"
+
+#: solid/devices/backends/fstab/fstabdevice.cpp:62
+#, qt-format
+msgctxt "%1 is sharename, %2 is servername"
+msgid "%1 on %2"
+msgstr "%2 ਉੱਤੇ %1"
+
+#: solid/devices/backends/fstab/fstabdevice.cpp:65
+#, qt-format
+msgctxt "%1 is mountpoint, %2 is fs type"
+msgid "%1 (%2)"
+msgstr "%1 (%2)"
+
+#: solid/devices/backends/fstab/fstabmanager.cpp:83
+msgctxt "Solid::Backends::Fstab::FstabManager|"
+msgid "Filesystem Volumes"
+msgstr "ਫਾਇਲਸਿਸਟਮ ਵਾਲੀਅਮ"
+
+#: solid/devices/backends/fstab/fstabmanager.cpp:84
+msgctxt "Solid::Backends::Fstab::FstabManager|"
+msgid "Mountable filesystems declared in your system"
+msgstr "ਤੁਹਾਡੇ ਸਿਸਟਮ ਵਿੱਚ ਐਲਾਨ ਕੀਤੇ ਮਾਊਂਟ ਕਰਨ ਯੋਗ ਫ਼ਾਇਲ-ਸਿਸਟਮ"
+
+#: solid/devices/backends/hal/haldevice.cpp:49
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 TiB"
+msgstr "%1 TiB"
+
+#: solid/devices/backends/hal/haldevice.cpp:51
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 GiB"
+msgstr "%1 GiB"
+
+#: solid/devices/backends/hal/haldevice.cpp:57
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 MiB"
+msgstr "%1 MiB"
+
+#: solid/devices/backends/hal/haldevice.cpp:62
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 KiB"
+msgstr "%1 KiB"
+
+#: solid/devices/backends/hal/haldevice.cpp:66
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "%1 B"
+msgstr "%1 B"
+
+#: solid/devices/backends/hal/haldevice.cpp:70
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "0 B"
+msgstr "0 B"
+
+#: solid/devices/backends/hal/haldevice.cpp:305
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "WLAN Interface"
+msgstr "WLAN ਇੰਟਰਫੇਸ"
+
+#: solid/devices/backends/hal/haldevice.cpp:307
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Networking Interface"
+msgstr "ਨੈੱਟਵਰਕਿੰਗ ਇੰਟਰਫੇਸ"
+
+#: solid/devices/backends/hal/haldevice.cpp:491
+msgctxt "Solid::Backends::Hal::HalDevice|First item of %1%2 Drive sentence"
+msgid "CD-ROM"
+msgstr "CD-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:493
+msgctxt "Solid::Backends::Hal::HalDevice|First item of %1%2 Drive sentence"
+msgid "CD-R"
+msgstr "CD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:496
+msgctxt "Solid::Backends::Hal::HalDevice|First item of %1%2 Drive sentence"
+msgid "CD-RW"
+msgstr "CD-RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:500
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-ROM"
+msgstr "/DVD-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:503
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD+R"
+msgstr "/DVD+R"
+
+#: solid/devices/backends/hal/haldevice.cpp:506
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD+RW"
+msgstr "/DVD+RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:509
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-R"
+msgstr "/DVD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:512
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-RW"
+msgstr "/DVD-RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:515
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD-RAM"
+msgstr "/DVD-RAM"
+
+#: solid/devices/backends/hal/haldevice.cpp:519
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±R DL"
+msgstr "/DVD±R DL"
+
+#: solid/devices/backends/hal/haldevice.cpp:521
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±R"
+msgstr "/DVD±R"
+
+#: solid/devices/backends/hal/haldevice.cpp:526
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±RW DL"
+msgstr "/DVD±RW DL"
+
+#: solid/devices/backends/hal/haldevice.cpp:528
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/DVD±RW"
+msgstr "/DVD±RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:532
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/BD-ROM"
+msgstr "/BD-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:535
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/BD-R"
+msgstr "/BD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:538
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/BD-RE"
+msgstr "/BD-RE"
+
+#: solid/devices/backends/hal/haldevice.cpp:541
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-ROM"
+msgstr "/HD DVD-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:544
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-R"
+msgstr "/HD DVD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:547
+msgctxt "Solid::Backends::Hal::HalDevice|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-RW"
+msgstr "/HD DVD-RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:551
+#, qt-format
+msgctxt ""
+"Solid::Backends::Hal::HalDevice|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
+"DVD-R'/etc (with leading slash)"
+msgid "External %1%2 Drive"
+msgstr "ਬਾਹਰੀ %1%2 ਡਰਾਇਵ"
+
+#: solid/devices/backends/hal/haldevice.cpp:553
+#, qt-format
+msgctxt ""
+"Solid::Backends::Hal::HalDevice|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
+"DVD-R'/etc (with leading slash)"
+msgid "%1%2 Drive"
+msgstr "%1%2 ਡਰਾਇਵ"
+
+#: solid/devices/backends/hal/haldevice.cpp:561
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "External Floppy Drive"
+msgstr "ਬਾਹਰੀ ਫਲਾਪੀ ਡਰਾਇਵ"
+
+#: solid/devices/backends/hal/haldevice.cpp:563
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Floppy Drive"
+msgstr "ਫਲਾਪੀ ਡਰਾਇਵ"
+
+#: solid/devices/backends/hal/haldevice.cpp:575
+#: solid/devices/backends/hal/haldevice.cpp:778
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 External Hard Drive"
+msgstr "%1 ਬਾਹਰੀ ਹਾਰਡ ਡਰਾਇਵ"
+
+#: solid/devices/backends/hal/haldevice.cpp:577
+#: solid/devices/backends/hal/haldevice.cpp:780
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 Hard Drive"
+msgstr "%1 ਹਾਰਡ ਡਰਾਇਵ"
+
+#: solid/devices/backends/hal/haldevice.cpp:581
+#: solid/devices/backends/hal/haldevice.cpp:784
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "External Hard Drive"
+msgstr "ਬਾਹਰੀ ਹਾਰਡ ਡਰਾਇਵ"
+
+#: solid/devices/backends/hal/haldevice.cpp:583
+#: solid/devices/backends/hal/haldevice.cpp:786
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Hard Drive"
+msgstr "ਹਾਰਡ ਡਰਾਇਵ"
+
+#: solid/devices/backends/hal/haldevice.cpp:602
+#, qt-format
+msgctxt ""
+"Solid::Backends::Hal::HalDevice|%1 is the vendor, %2 is the model of the "
+"device"
+msgid "%1 %2"
+msgstr "%1 %2"
+
+#: solid/devices/backends/hal/haldevice.cpp:607
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Drive"
+msgstr "ਡਰਾਇਵ"
+
+#: solid/devices/backends/hal/haldevice.cpp:636
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "CD-ROM"
+msgstr "CD-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:641
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank CD-R"
+msgstr "ਖਾਲੀ CD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:643
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "CD-R"
+msgstr "CD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:649
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank CD-RW"
+msgstr "ਖਾਲੀ CD-RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:651
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "CD-RW"
+msgstr "CD-RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:656
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD-ROM"
+msgstr "DVD-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:661
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD-RAM"
+msgstr "ਖਾਲੀ DVD-RAM"
+
+#: solid/devices/backends/hal/haldevice.cpp:663
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD-RAM"
+msgstr "DVD-RAM"
+
+#: solid/devices/backends/hal/haldevice.cpp:669
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD-R"
+msgstr "ਖਾਲੀ DVD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:671
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD-R"
+msgstr "DVD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:677
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD+R Dual-Layer"
+msgstr "ਖਾਲੀ DVD+R ਡੁਅਲ-ਲੇਅਰ"
+
+#: solid/devices/backends/hal/haldevice.cpp:679
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD+R Dual-Layer"
+msgstr "DVD+R ਡੁਅਲ-ਲੇਅਰ"
+
+#: solid/devices/backends/hal/haldevice.cpp:685
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD-RW"
+msgstr "ਖਾਲੀ DVD-RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:687
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD-RW"
+msgstr "DVD-RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:693
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD+R"
+msgstr "ਖਾਲੀ DVD+R"
+
+#: solid/devices/backends/hal/haldevice.cpp:695
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD+R"
+msgstr "DVD+R"
+
+#: solid/devices/backends/hal/haldevice.cpp:701
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD+RW"
+msgstr "ਖਾਲੀ DVD+RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:703
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD+RW"
+msgstr "DVD+RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:709
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank DVD+RW Dual-Layer"
+msgstr "ਖਾਲੀ DVD+RW ਡੁਅਲ-ਲੇਅਰ"
+
+#: solid/devices/backends/hal/haldevice.cpp:711
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "DVD+RW Dual-Layer"
+msgstr "DVD+RW ਡੁਅਲ ਲੇਅਰ"
+
+#: solid/devices/backends/hal/haldevice.cpp:716
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "BD-ROM"
+msgstr "BD-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:721
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank BD-R"
+msgstr "ਖਾਲੀ BD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:723
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "BD-R"
+msgstr "BD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:729
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank BD-RE"
+msgstr "ਖਾਲੀ BD-RE"
+
+#: solid/devices/backends/hal/haldevice.cpp:731
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "BD-RE"
+msgstr "BD-RE"
+
+#: solid/devices/backends/hal/haldevice.cpp:736
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "HD DVD-ROM"
+msgstr "HD DVD-ROM"
+
+#: solid/devices/backends/hal/haldevice.cpp:741
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank HD DVD-R"
+msgstr "ਖਾਲੀ HD DVD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:743
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "HD DVD-R"
+msgstr "HD DVD-R"
+
+#: solid/devices/backends/hal/haldevice.cpp:749
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Blank HD DVD-RW"
+msgstr "ਖਾਲੀ HD DVD-RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:751
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "HD DVD-RW"
+msgstr "HD DVD-RW"
+
+#: solid/devices/backends/hal/haldevice.cpp:758
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Audio CD"
+msgstr "ਆਡੀਓ CD"
+
+#: solid/devices/backends/hal/haldevice.cpp:771
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 Encrypted Container"
+msgstr "%1 ਇੰਕ੍ਰਿਪਟਡ ਕੰਨਟੇਨਰ"
+
+#: solid/devices/backends/hal/haldevice.cpp:773
+msgctxt "Solid::Backends::Hal::HalDevice|"
+msgid "Encrypted Container"
+msgstr "ਇੰਕ੍ਰਿਪਟਡ ਕੰਨਟੇਨਰ"
+
+#: solid/devices/backends/hal/haldevice.cpp:791
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 Removable Media"
+msgstr "%1 ਹਟਾਉਣਯੋਗ ਮੀਡਿਆ"
+
+#: solid/devices/backends/hal/haldevice.cpp:793
+#, qt-format
+msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
+msgid "%1 Media"
+msgstr "%1 ਮੀਡਿਆ"
+
+#: solid/devices/backends/imobile/imobiledevice.cpp:91
+msgctxt "imobiledevice|Company name"
+msgid "Apple"
+msgstr ""
+
+#: solid/devices/backends/imobile/imobilemanager.cpp:59
+#, fuzzy
+#| msgctxt "Solid::Backends::UDev::UDevManager|"
+#| msgid "Devices"
+msgctxt "Solid::Backends::IMobile::Manager|"
+msgid "iDevice"
+msgstr "ਜੰਤਰ"
+
+#: solid/devices/backends/imobile/imobilemanager.cpp:60
+#, fuzzy
+msgctxt "Solid::Backends::IMobile::Manager|"
+msgid "iOS devices"
+msgstr "UPnP ਜੰਤਰ"
+
+#: solid/devices/backends/udev/udevdevice.cpp:100
+msgctxt "Solid::Backends::UDev::UDevDevice|"
+msgid "Computer"
+msgstr "ਕੰਪਿਊਟਰ"
+
+#: solid/devices/backends/udev/udevdevice.cpp:104
+msgctxt "Solid::Backends::UDev::UDevDevice|"
+msgid "Processor"
+msgstr "ਪਰੋਸੈਸਰ"
+
+#: solid/devices/backends/udev/udevdevice.cpp:115
+msgctxt "Solid::Backends::UDev::UDevDevice|"
+msgid "Portable Media Player"
+msgstr "ਪੋਰਟੇਬਲ ਮੀਡਿਆ ਪਲੇਅਰ"
+
+#: solid/devices/backends/udev/udevdevice.cpp:118
+msgctxt "Solid::Backends::UDev::UDevDevice|"
+msgid "Camera"
+msgstr "ਕੈਮਰਾ"
+
+#: solid/devices/backends/udev/udevmanager.cpp:219
+msgctxt "Solid::Backends::UDev::UDevManager|"
+msgid "Devices"
+msgstr "ਜੰਤਰ"
+
+#: solid/devices/backends/udev/udevmanager.cpp:220
+msgctxt "Solid::Backends::UDev::UDevManager|"
+msgid "Devices declared in your system"
+msgstr "ਤੁਹਾਡੇ ਸਿਸਟਮ ਵਿੱਚ ਦੱਸਿਆ ਜੰਤਰ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:44
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 TiB"
+msgstr "%1 TiB"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:46
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 GiB"
+msgstr "%1 GiB"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:52
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 MiB"
+msgstr "%1 MiB"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:57
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 KiB"
+msgstr "%1 KiB"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:61
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 B"
+msgstr "%1 B"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:65
+msgctxt "udisksdevice|"
+msgid "0 B"
+msgstr "0 B"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:236
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Swap Space"
+msgstr "ਸਵੈਪ ਥਾਂ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:258
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Loop Device"
+msgstr "ਲੂਪ ਜੰਤਰ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:274
+msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
+msgid "CD-ROM"
+msgstr "CD-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:276
+msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
+msgid "CD-R"
+msgstr "CD-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:279
+msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
+msgid "CD-RW"
+msgstr "CD-RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:283
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD-ROM"
+msgstr "/DVD-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:286
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD+R"
+msgstr "/DVD+R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:289
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD+RW"
+msgstr "/DVD+RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:292
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD-R"
+msgstr "/DVD-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:295
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD-RW"
+msgstr "/DVD-RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:298
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD-RAM"
+msgstr "/DVD-RAM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:302
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD±R DL"
+msgstr "/DVD±R DL"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:304
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD±R"
+msgstr "/DVD±R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:309
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD±RW DL"
+msgstr "/DVD±RW DL"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:311
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/DVD±RW"
+msgstr "/DVD±RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:315
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/BD-ROM"
+msgstr "/BD-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:318
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/BD-R"
+msgstr "/BD-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:321
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/BD-RE"
+msgstr "/BD-RE"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:324
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-ROM"
+msgstr "/HD DVD-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:327
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-R"
+msgstr "/HD DVD-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:330
+msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
+msgid "/HD DVD-RW"
+msgstr "/HD DVD-RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:334
+#, qt-format
+msgctxt ""
+"Solid::Backends::UDisks2::Device|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
+"DVD-R'/etc (with leading slash)"
+msgid "External %1%2 Drive"
+msgstr "ਬਾਹਰੀ %1%2 ਡਰਾਇਵ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:336
+#, qt-format
+msgctxt ""
+"Solid::Backends::UDisks2::Device|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
+"DVD-R'/etc (with leading slash)"
+msgid "%1%2 Drive"
+msgstr "%1%2 ਡਰਾਇਵ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:344
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "External Floppy Drive"
+msgstr "ਬਾਹਰੀ ਫਲਾਪੀ ਡਰਾਇਵ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:346
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Floppy Drive"
+msgstr "ਫਲਾਪੀ ਡਰਾਇਵ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:358
+#: solid/devices/backends/udisks2/udisksdevice.cpp:566
+#, qt-format
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 External Hard Drive"
+msgstr "%1 ਬਾਹਰੀ ਹਾਰਡ ਡਰਾਇਵ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:360
+#: solid/devices/backends/udisks2/udisksdevice.cpp:568
+#, qt-format
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 Hard Drive"
+msgstr "%1 ਹਾਰਡ ਡਰਾਇਵ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:364
+#: solid/devices/backends/udisks2/udisksdevice.cpp:572
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "External Hard Drive"
+msgstr "ਬਾਹਰੀ ਹਾਰਡ ਡਰਾਇਵ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:366
+#: solid/devices/backends/udisks2/udisksdevice.cpp:574
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Hard Drive"
+msgstr "ਹਾਰਡ ਡਰਾਇਵ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:389
+#, qt-format
+msgctxt ""
+"Solid::Backends::UDisks2::Device|%1 is the vendor, %2 is the model of the "
+"device"
+msgid "%1 %2"
+msgstr "%1 %2"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:395
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Drive"
+msgstr "ਡਰਾਇਵ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:425
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "CD-ROM"
+msgstr "CD-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:430
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank CD-R"
+msgstr "ਖਾਲੀ CD-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:432
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "CD-R"
+msgstr "CD-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:438
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank CD-RW"
+msgstr "ਖਾਲੀ CD-RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:440
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "CD-RW"
+msgstr "CD-RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:445
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD-ROM"
+msgstr "DVD-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:450
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD-RAM"
+msgstr "ਖਾਲੀ DVD-RAM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:452
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD-RAM"
+msgstr "DVD-RAM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:458
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD-R"
+msgstr "ਖਾਲੀ DVD-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:460
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD-R"
+msgstr "DVD-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:466
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD+R Dual-Layer"
+msgstr "ਖਾਲੀ DVD+R ਡੁਅਲ-ਲੇਅਰ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:468
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD+R Dual-Layer"
+msgstr "DVD+R ਡੁਅਲ-ਲੇਅਰ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:474
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD-RW"
+msgstr "ਖਾਲੀ DVD-RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:476
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD-RW"
+msgstr "DVD-RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:482
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD+R"
+msgstr "ਖਾਲੀ DVD+R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:484
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD+R"
+msgstr "DVD+R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:490
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD+RW"
+msgstr "ਖਾਲੀ DVD+RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:492
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD+RW"
+msgstr "DVD+RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:498
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank DVD+RW Dual-Layer"
+msgstr "ਖਾਲੀ DVD+RW ਡੁਅਲ-ਲੇਅਰ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:500
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "DVD+RW Dual-Layer"
+msgstr "DVD+RW ਡੁਅਲ ਲੇਅਰ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:505
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "BD-ROM"
+msgstr "BD-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:510
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank BD-R"
+msgstr "ਖਾਲੀ BD-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:512
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "BD-R"
+msgstr "BD-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:518
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank BD-RE"
+msgstr "ਖਾਲੀ BD-RE"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:520
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "BD-RE"
+msgstr "BD-RE"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:525
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "HD DVD-ROM"
+msgstr "HD DVD-ROM"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:530
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank HD DVD-R"
+msgstr "ਖਾਲੀ HD DVD-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:532
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "HD DVD-R"
+msgstr "HD DVD-R"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:538
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Blank HD DVD-RW"
+msgstr "ਖਾਲੀ HD DVD-RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:540
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "HD DVD-RW"
+msgstr "HD DVD-RW"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:547
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Audio CD"
+msgstr "ਆਡੀਓ CD"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:559
+#, qt-format
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 Encrypted Drive"
+msgstr "%1 ਇੰਕ੍ਰਿਪਟਡ ਕੰਨਟੇਨਰ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:561
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Encrypted Drive"
+msgstr "ਇੰਕ੍ਰਿਪਟ ਕੀਤੀ ਡਰਾਇਵ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:578
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "Floppy Disk"
+msgstr "ਫਲਾਪੀ ਡਿਸਕ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:581
+#, qt-format
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 Removable Media"
+msgstr "%1 ਹਟਾਉਣਯੋਗ ਮੀਡਿਆ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:583
+#, qt-format
+msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
+msgid "%1 Media"
+msgstr "%1 ਮੀਡਿਆ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:726
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "You are not authorized to perform this operation"
+msgstr "ਤੁਹਾਨੂੰ ਇਹ ਕਾਰਵਾਈ ਕਰਨ ਦਾ ਅਧਿਕਾਰ ਨਹੀਂ ਹੈ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:728
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is currently busy"
+msgstr "ਜੰਤਰ ਇਸ ਸਮੇਂ ਰੁੱਝਿਆ ਹੋਇਆ ਹੈ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:730
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The requested operation has failed"
+msgstr "ਮੰਗ ਕੀਤੀ ਗਈ ਕਾਰਵਾਈ ਫੇਲ੍ਹ ਹੋ ਚੁੱਕੀ ਹੈ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:732
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The requested operation has been canceled"
+msgstr "ਮੰਗ ਕੀਤੀ ਕਾਰਵਾਈ ਰੱਦ ਕੀਤੀ ਗਈ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:734
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "An invalid or malformed option has been given"
+msgstr "ਗਲਤ ਜਾਂ ਨਿਕਾਰਾ ਚੋਣ ਦਿੱਤੀ ਗਈ ਹੈ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:736
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The kernel driver for this filesystem type is not available"
+msgstr "ਇਹ ਫਾਈਲ-ਸਿਸਟਮ ਕਿਸਮ ਲਈ ਕਰਨਲ ਡਰਾਇਵਰ ਉਪਲੱਬਧ ਨਹੀਂ ਹੈ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:738
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is already mounted"
+msgstr "ਜੰਤਰ ਪਹਿਲਾਂ ਹੀ ਮਾਊਂਟ ਹੈ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:740
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is not mounted"
+msgstr "ਜੰਟਰ ਮਾਊਂਟ ਨਹੀਂ ਹੈ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:742
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is mounted by another user"
+msgstr "ਜੰਤਰ ਹੋਰ ਵਰਤੋਂਕਾਰ ਵਲੋਂ ਮਾਊਂਟ ਕੀਤਾ ਗਿਆ ਹੈ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:744
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The device is already unmounting"
+msgstr "ਜੰਤਰ ਪਹਿਲਾਂ ਹੀ ਅਣ-ਮਾਊਂਟ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:746
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The operation timed out"
+msgstr "ਓਪਰੇਸ਼ਨ ਸਮਾਂ ਸਮਾਪਤ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:748
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The operation would wake up a disk that is in a deep-sleep state"
+msgstr "ਕਾਰਵਾਈ ਡਿਸਕ ਨੂੰ ਜਗਾਏਗੀ, ਜੋ ਕਿ ਡੂੰਘੀ-ਨੀਂਦ (ਡੀਪ-ਸਲੀਪ) ਹਾਲਤ ਵਿੱਚ ਹ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:750
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "The operation has already been canceled"
+msgstr "ਮੰਗ ਕੀਤੀ ਕਾਰਵਾਈ ਰੱਦ ਕੀਤੀ ਗਈ"
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:752
+msgctxt "Solid::Backends::UDisks2::Device|"
+msgid "An unspecified error has occurred"
+msgstr "ਅਣਜਾਣ ਗਲਤੀ ਆਈ ਹੈ"
+
+#: solid/devices/backends/udisks2/udisksmanager.cpp:78
+msgctxt "Solid::Backends::UDisks2::Manager|"
+msgid "Storage"
+msgstr "ਸਟੋਰੇਜ਼"
+
+#: solid/devices/backends/udisks2/udisksmanager.cpp:79
+msgctxt "Solid::Backends::UDisks2::Manager|"
+msgid "Storage devices"
+msgstr "ਸਟੋਰੇਜ਼ ਜੰਤਰ"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:113
+#, qt-format
+msgctxt "Solid::Backends::UPower::UPowerDevice|%1 is battery technology"
+msgid "%1 Battery"
+msgstr "%1 ਬੈਟਰੀ"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:128
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Lithium Ion"
+msgstr "ਲੀਥੀਅਮ ion"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:130
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Lithium Polymer"
+msgstr "ਲੀਥੀਅਮ ਪੋਲੀਮਰ"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:132
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Lithium Iron Phosphate"
+msgstr "ਲੀਥੀਅਮ ਆਈਰਨ ਫਾਸਫੇਟ"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:134
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Lead Acid"
+msgstr "ਲੈੱਡ ਤੇਜ਼ਾਬ"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:136
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Nickel Cadmium"
+msgstr "ਨਿੱਕਲ ਕੇਡਮੀਅਮ"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:138
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Nickel Metal Hydride"
+msgstr "ਨਿੱਕਲ ਮੈਟਲ ਹਾਡਰਾਇਡ"
+
+#: solid/devices/backends/upower/upowerdevice.cpp:140
+msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+msgid "Unknown"
+msgstr "ਅਣਜਾਣ"
+
+#: solid/devices/backends/upower/upowermanager.cpp:76
+msgctxt "Solid::Backends::UPower::UPowerManager|"
+msgid "Power Management"
+msgstr "ਪਾਵਰ ਮੈਨਿਜਮੈਂਟ"
+
+#: solid/devices/backends/upower/upowermanager.cpp:77
+msgctxt "Solid::Backends::UPower::UPowerManager|"
+msgid "Batteries and other sources of power"
+msgstr "ਬੈਟਰੀਆਂ ਤੇ ਊਰਜਾ ਦੇ ਹੋਰ ਸਰੋਤ"
+
+#: solid/devices/backends/win/windevice.cpp:159
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Lithium Ion"
+msgstr "ਲੀਥੀਅਮ ion"
+
+#: solid/devices/backends/win/windevice.cpp:162
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Lead Acid"
+msgstr "ਲੈੱਡ ਤੇਜ਼ਾਬ"
+
+#: solid/devices/backends/win/windevice.cpp:165
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Nickel Cadmium"
+msgstr "ਨਿੱਕਲ ਕੇਡਮੀਅਮ"
+
+#: solid/devices/backends/win/windevice.cpp:168
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Nickel Metal Hydride"
+msgstr "ਨਿੱਕਲ ਮੈਟਲ ਹਾਡਰਾਇਡ"
+
+#: solid/devices/backends/win/windevice.cpp:171
+msgctxt "Solid::Backends::Win::WinDevice|battery technology"
+msgid "Unknown"
+msgstr "ਅਣਜਾਣ"
+
+#: solid/devices/frontend/deviceinterface.cpp:53
+msgctxt "Solid::DeviceInterface|Unknown device type"
+msgid "Unknown"
+msgstr "ਅਣਜਾਣ"
+
+#: solid/devices/frontend/deviceinterface.cpp:55
+msgctxt "Solid::DeviceInterface|Generic Interface device type"
+msgid "Generic Interface"
+msgstr "ਆਮ ਇੰਟਰਫੇਸ"
+
+#: solid/devices/frontend/deviceinterface.cpp:57
+msgctxt "Solid::DeviceInterface|Processor device type"
+msgid "Processor"
+msgstr "ਪਰੋਸੈਸਰ"
+
+#: solid/devices/frontend/deviceinterface.cpp:59
+msgctxt "Solid::DeviceInterface|Block device type"
+msgid "Block"
+msgstr "ਬਲਾਕ"
+
+#: solid/devices/frontend/deviceinterface.cpp:61
+msgctxt "Solid::DeviceInterface|Storage Access device type"
+msgid "Storage Access"
+msgstr "ਸਟੋਰੇਜ਼ ਅਸੈੱਸ"
+
+#: solid/devices/frontend/deviceinterface.cpp:63
+msgctxt "Solid::DeviceInterface|Storage Drive device type"
+msgid "Storage Drive"
+msgstr "ਸਟੋਰੇਜ਼ ਡਰਾਇਵ"
+
+#: solid/devices/frontend/deviceinterface.cpp:65
+msgctxt "Solid::DeviceInterface|Optical Drive device type"
+msgid "Optical Drive"
+msgstr "ਓਪਟੀਕਲ ਡਰਾਇਵ"
+
+#: solid/devices/frontend/deviceinterface.cpp:67
+msgctxt "Solid::DeviceInterface|Storage Volume device type"
+msgid "Storage Volume"
+msgstr "ਸਟੋਰੇਜ਼ ਵਾਲੀਅਮ"
+
+#: solid/devices/frontend/deviceinterface.cpp:69
+msgctxt "Solid::DeviceInterface|Optical Disc device type"
+msgid "Optical Disc"
+msgstr "ਓਪਟੀਕਲ ਡਿਸਕ"
+
+#: solid/devices/frontend/deviceinterface.cpp:71
+msgctxt "Solid::DeviceInterface|Camera device type"
+msgid "Camera"
+msgstr "ਕੈਮਰਾ"
+
+#: solid/devices/frontend/deviceinterface.cpp:73
+msgctxt "Solid::DeviceInterface|Portable Media Player device type"
+msgid "Portable Media Player"
+msgstr "ਪੋਰਟੇਬਲ ਮੀਡਿਆ ਪਲੇਅਰ"
+
+#: solid/devices/frontend/deviceinterface.cpp:75
+msgctxt "Solid::DeviceInterface|Battery device type"
+msgid "Battery"
+msgstr "ਬੈਟਰੀ"
+
+#: solid/devices/frontend/deviceinterface.cpp:77
+msgctxt "Solid::DeviceInterface|Network Share device type"
+msgid "Network Share"
+msgstr "ਨੈੱਟਵਰਕ ਸਾਂਝ"
+
+#: tools/solid-hardware/solid-hardware.cpp:159
+#: tools/solid-hardware/solid-hardware.cpp:269
+msgctxt "solid-hardware|"
+msgid "Device udi"
+msgstr "ਜੰਤਰ udi"
+
+#: tools/solid-hardware/solid-hardware.cpp:171 tools/solid-power/main.cpp:33
+msgctxt "solid-hardware|"
+msgid "Syntax:"
+msgstr "ਸੰਟੈਕਸ:"
+
+#: tools/solid-hardware/solid-hardware.cpp:174
+msgctxt "solid-hardware|"
+msgid ""
+"             # List the hardware available in the system.\n"
+"             # - If the 'nonportableinfo' option is specified, the device\n"
+"             # properties are listed (be careful, in this case property "
+"names\n"
+"             # are backend dependent),\n"
+"             # - If the 'details' option is specified, the device "
+"interfaces\n"
+"             # and the corresponding properties are listed in a platform\n"
+"             # neutral fashion,\n"
+"             # - Otherwise only device UDIs are listed.\n"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:185
+msgctxt "solid-hardware|"
+msgid ""
+"             # Display all the interfaces and properties of the device\n"
+"             # corresponding to 'udi' in a platform neutral fashion.\n"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:190
+msgctxt "solid-hardware|"
+msgid ""
+"             # Display all the properties of the device corresponding to "
+"'udi'\n"
+"             # (be careful, in this case property names are backend "
+"dependent).\n"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:195
+msgctxt "solid-hardware|"
+msgid ""
+"             # List the UDI of devices corresponding to 'predicate'.\n"
+"             # - If 'parentUdi' is specified, the search is restricted to "
+"the\n"
+"             # branch of the corresponding device,\n"
+"             # - Otherwise the search is done on all the devices.\n"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:202
+msgctxt "solid-hardware|"
+msgid ""
+"             # If applicable, mount the device corresponding to 'udi'.\n"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:206
+msgctxt "solid-hardware|"
+msgid ""
+"             # If applicable, unmount the device corresponding to 'udi'.\n"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:210
+msgctxt "solid-hardware|"
+msgid ""
+"             # If applicable, eject the device corresponding to 'udi'.\n"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:214
+msgctxt "solid-hardware|"
+msgid "             # Listen to all add/remove events on supported hardware."
+msgstr "             # ਸਹਾਇਤਾ ਪ੍ਰਾਪਤ ਹਾਰਡਵੇਅਰ ਉੱਤੇ ਜੋੜਨ/ਹਟਾਉਣ ਦੇ ਸਭ ਈਵੈਂਟ ਸੁਣੋ।"
+
+#: tools/solid-hardware/solid-hardware.cpp:227
+msgctxt "solid-hardware|"
+msgid "KDE tool for querying your hardware from the command line"
+msgstr "ਕਮਾਂਡ ਲਾਇਨ ਤੋਂ ਤੁਹਾਡੇ ਹਾਰਡਵੇਅਰ ਲਈ ਕਿਊਰੀ ਕਰਨ ਵਾਸਤੇ KDE ਟੂਲ"
+
+#: tools/solid-hardware/solid-hardware.cpp:230
+msgctxt "solid-hardware|"
+msgid "Command to execute"
+msgstr "ਚਲਾਉਣ ਲਈ ਕਮਾਂਡ"
+
+#: tools/solid-hardware/solid-hardware.cpp:232
+msgctxt "solid-hardware|"
+msgid "Show available commands"
+msgstr "ਉਪਲੱਬਧ ਕਮਾਂਡਾਂ ਵੇਖਾਓ"
+
+#: tools/solid-hardware/solid-hardware.cpp:256
+msgctxt "solid-hardware|"
+msgid "Show device details"
+msgstr "ਜੰਤਰ ਵੇਰਵਾ ਵੇਖੋ"
+
+#: tools/solid-hardware/solid-hardware.cpp:257
+msgctxt "solid-hardware|"
+msgid "Show non portable information"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:270
+#, fuzzy
+#| msgid "UPnP devices"
+msgctxt "solid-hardware|"
+msgid "Parent device udi"
+msgstr "UPnP ਜੰਤਰ"
+
+#: tools/solid-hardware/solid-hardware.cpp:298
+#, qt-format
+msgctxt "solid-hardware|"
+msgid "Syntax Error: Unknown command '%1'"
+msgstr "ਸੰਟੈਕਸ ਗਲਤੀ: ਅਣਜਾਣ ਕਮਾਂਡ '%1'"
+
+#: tools/solid-hardware/solid-hardware.cpp:366
+#, qt-format
+msgctxt "SolidHardware|"
+msgid "Error: %1 does not have the interface StorageAccess."
+msgstr "ਗਲਤੀ: %1 ਕੋਲ StorageAccess ਇੰਟਰਫੇਸ ਨਹੀਂ ਹੈ।"
+
+#: tools/solid-hardware/solid-hardware.cpp:371
+#, qt-format
+msgctxt "SolidHardware|"
+msgid "Error: %1 does not have the interface OpticalDrive."
+msgstr "ਗਲਤੀ: %1 ਦਾ ਆਪਟੀਕਲ ਡਰਾਇਵ ਇੰਟਰਫੇਸ ਨਹੀਂ ਹੈ।"
+
+#: tools/solid-hardware/solid-hardware.cpp:404
+#, qt-format
+msgctxt "SolidHardware|"
+msgid "Error: %1"
+msgstr "ਗਲਤੀ: %1"
+
+#: tools/solid-power/main.cpp:22
+msgctxt "solid-power|"
+msgid "Tool to know and set the power management state of your device"
+msgstr ""
+
+#: tools/solid-power/main.cpp:24
+msgctxt "solid-power|"
+msgid "Command to execute"
+msgstr "ਚਲਾਉਣ ਲਈ ਕਮਾਂਡ"
+
+#: tools/solid-power/main.cpp:26
+msgctxt "solid-power|"
+msgid "Show available commands"
+msgstr "ਉਪਲੱਬਧ ਕਮਾਂਡਾਂ ਵੇਖਾਓ"
+
+#: tools/solid-power/main.cpp:36
+msgctxt "solid-power|"
+msgid ""
+"             # Show all the power management information from the system.\n"
+"             # - acPlugged: whether the device is connected to the AC or "
+"not\n"
+msgstr ""
