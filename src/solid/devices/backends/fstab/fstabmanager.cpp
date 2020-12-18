@@ -109,13 +109,8 @@ void FstabManager::onFstabChanged()
 void FstabManager::_k_updateDeviceList()
 {
     const QStringList deviceList = FstabHandling::deviceList();
-#if QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
-    const QSet<QString> newlist = deviceList.toSet();
-    const QSet<QString> oldlist = m_deviceList.toSet();
-#else
     const QSet<QString> newlist(deviceList.begin(), deviceList.end());
     const QSet<QString> oldlist(m_deviceList.begin(), m_deviceList.end());
-#endif
 
     m_deviceList = deviceList;
 
