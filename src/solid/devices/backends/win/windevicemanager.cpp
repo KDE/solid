@@ -196,7 +196,7 @@ void WinDeviceManager::slotDeviceAdded(const QSet<QString> &udi)
 {
     const QSet<QString> tmp = udi - m_devices; //don't report devices that are already known(cd drive)
     m_devices += tmp;
-    m_devicesList = QSet(m_devices.begin(), m_devices.end());
+    m_devicesList = QStringList(m_devices.begin(), m_devices.end());
     std::sort(m_devicesList.begin(), m_devicesList.end());
     for (const QString &str : tmp) {
         emit deviceAdded(str);
@@ -206,7 +206,7 @@ void WinDeviceManager::slotDeviceAdded(const QSet<QString> &udi)
 void WinDeviceManager::slotDeviceRemoved(const QSet<QString> &udi)
 {
     m_devices -= udi;
-    m_devicesList = QSet(m_devices.begin(), m_devices.end());
+    m_devicesList = QStringList(m_devices.begin(), m_devices.end());
     std::sort(m_devicesList.begin(), m_devicesList.end());
     for (const QString &str : udi) {
         emit deviceRemoved(str);
@@ -220,7 +220,7 @@ void WinDeviceManager::updateDeviceList()
     devices += WinBattery::getUdis();
 
     m_devices = devices;
-    m_devicesList = QSet(m_devices.begin(), m_devices.end());
+    m_devicesList = QStringList(m_devices.begin(), m_devices.end());
     std::sort(m_devicesList.begin(), m_devicesList.end());
 }
 
