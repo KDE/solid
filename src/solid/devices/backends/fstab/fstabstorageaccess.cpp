@@ -12,6 +12,7 @@
 #include <QStringList>
 
 #include <QProcess>
+#include <QDir>
 #include <QTimer>
 
 #include <errno.h>
@@ -33,7 +34,19 @@ FstabStorageAccess::FstabStorageAccess(Solid::Backends::Fstab::FstabDevice *devi
         m_filePath = currentMountPoints.first();
         m_isAccessible = true;
     }
-    m_isIgnored = FstabHandling::options(device->device()).contains(QLatin1String("x-gvfs-hide"));
+
+    const bool inUserPath = m_filePath.startsWith(QLatin1String("/media/")) ||
+            m_filePath.startsWith(QLatin1String("/run/media/")) ||
+            m_filePath.startsWith(QDir::homePath());
+
+    const bool gvfsHidden = FstabHandling::options(device->device()).contains(QLatin1String("x-gvfs-hide"));
+    const bool fsIsOverlay = FstabHandling::fstype(device->device()) == QLatin1String("overlay");
+
+    m_isIgnored = gvfsHidden ||
+            // ignore overlay fs not pointing to / or seemingly mounted by user
+            (fsIsOverlay &&
+             m_filePath != QLatin1String("/") &&
+            !inUserPath);
 
     connect(device, SIGNAL(mtabChanged(QString)), this, SLOT(onMtabChanged(QString)));
     QTimer::singleShot(0, this, SLOT(connectDBusSignals()));
