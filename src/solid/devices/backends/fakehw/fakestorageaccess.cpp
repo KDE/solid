@@ -59,7 +59,7 @@ void Solid::Backends::Fake::FakeStorageAccess::onPropertyChanged(const QMap<QStr
 {
     for (auto it = changes.cbegin(); it != changes.cend(); ++it) {
         if (it.key() == QLatin1String("isMounted")) {
-            emit accessibilityChanged(fakeDevice()->property("isMounted").toBool(), fakeDevice()->udi());
+            Q_EMIT accessibilityChanged(fakeDevice()->property("isMounted").toBool(), fakeDevice()->udi());
         }
     }
 }

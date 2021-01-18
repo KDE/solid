@@ -230,59 +230,59 @@ void Battery::slotChanged()
         updateCache();
 
         if (old_isPresent != m_isPresent) {
-            emit presentStateChanged(m_isPresent, m_device.data()->udi());
+            Q_EMIT presentStateChanged(m_isPresent, m_device.data()->udi());
         }
 
         if (old_chargePercent != m_chargePercent) {
-            emit chargePercentChanged(m_chargePercent, m_device.data()->udi());
+            Q_EMIT chargePercentChanged(m_chargePercent, m_device.data()->udi());
         }
 
         if (old_capacity != m_capacity) {
-            emit capacityChanged(m_capacity, m_device.data()->udi());
+            Q_EMIT capacityChanged(m_capacity, m_device.data()->udi());
         }
 
         if (old_isPowerSupply != m_isPowerSupply) {
-            emit powerSupplyStateChanged(m_isPowerSupply, m_device.data()->udi());
+            Q_EMIT powerSupplyStateChanged(m_isPowerSupply, m_device.data()->udi());
         }
 
         if (old_chargeState != m_chargeState) {
-            emit chargeStateChanged(m_chargeState, m_device.data()->udi());
+            Q_EMIT chargeStateChanged(m_chargeState, m_device.data()->udi());
         }
 
         if (old_timeToEmpty != m_timeToEmpty) {
-            emit timeToEmptyChanged(m_timeToEmpty, m_device.data()->udi());
+            Q_EMIT timeToEmptyChanged(m_timeToEmpty, m_device.data()->udi());
         }
 
         if (old_timeToFull != m_timeToFull) {
-            emit timeToFullChanged(m_timeToFull, m_device.data()->udi());
+            Q_EMIT timeToFullChanged(m_timeToFull, m_device.data()->udi());
         }
 
         if (old_energy != m_energy) {
-            emit energyChanged(m_energy, m_device.data()->udi());
+            Q_EMIT energyChanged(m_energy, m_device.data()->udi());
         }
 
         if (old_energyFull != m_energyFull) {
-            emit energyFullChanged(m_energyFull, m_device.data()->udi());
+            Q_EMIT energyFullChanged(m_energyFull, m_device.data()->udi());
         }
 
         if (old_energyFullDesign != m_energyFullDesign) {
-            emit energyFullChanged(m_energyFullDesign, m_device.data()->udi());
+            Q_EMIT energyFullChanged(m_energyFullDesign, m_device.data()->udi());
         }
 
         if (old_energyRate != m_energyRate) {
-            emit energyRateChanged(m_energyRate, m_device.data()->udi());
+            Q_EMIT energyRateChanged(m_energyRate, m_device.data()->udi());
         }
 
         if (old_voltage != m_voltage) {
-            emit voltageChanged(m_voltage, m_device.data()->udi());
+            Q_EMIT voltageChanged(m_voltage, m_device.data()->udi());
         }
 
         if (old_temperature != m_temperature) {
-            emit temperatureChanged(m_temperature, m_device.data()->udi());
+            Q_EMIT temperatureChanged(m_temperature, m_device.data()->udi());
         }
 
         if (old_timeToFull != m_timeToFull || old_timeToEmpty != m_timeToEmpty) {
-            emit remainingTimeChanged(remainingTime(), m_device.data()->udi());
+            Q_EMIT remainingTimeChanged(remainingTime(), m_device.data()->udi());
         }
     }
 }

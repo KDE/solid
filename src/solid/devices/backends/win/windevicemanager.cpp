@@ -58,17 +58,17 @@ SolidWinEventFilter::SolidWinEventFilter():
 
     void SolidWinEventFilter::promoteAddedDevice(const QSet<QString> &udi)
     {
-        emit deviceAdded(udi);
+        Q_EMIT deviceAdded(udi);
     }
 
     void SolidWinEventFilter::promoteRemovedDevice(const QSet<QString> &udi)
     {
-        emit deviceRemoved(udi);
+        Q_EMIT deviceRemoved(udi);
     }
 
     void SolidWinEventFilter::promotePowerChange()
     {
-        emit powerChanged();
+        Q_EMIT powerChanged();
     }
 
     LRESULT CALLBACK SolidWinEventFilter::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
@@ -199,7 +199,7 @@ void WinDeviceManager::slotDeviceAdded(const QSet<QString> &udi)
     m_devicesList = QStringList(m_devices.begin(), m_devices.end());
     std::sort(m_devicesList.begin(), m_devicesList.end());
     for (const QString &str : tmp) {
-        emit deviceAdded(str);
+        Q_EMIT deviceAdded(str);
     }
 }
 
@@ -209,7 +209,7 @@ void WinDeviceManager::slotDeviceRemoved(const QSet<QString> &udi)
     m_devicesList = QStringList(m_devices.begin(), m_devices.end());
     std::sort(m_devicesList.begin(), m_devicesList.end());
     for (const QString &str : udi) {
-        emit deviceRemoved(str);
+        Q_EMIT deviceRemoved(str);
     }
 }
 

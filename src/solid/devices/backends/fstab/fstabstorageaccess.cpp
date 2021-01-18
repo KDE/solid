@@ -104,7 +104,7 @@ bool FstabStorageAccess::setup()
 
 void FstabStorageAccess::slotSetupRequested()
 {
-    emit setupRequested(m_fstabDevice->udi());
+    Q_EMIT setupRequested(m_fstabDevice->udi());
 }
 
 bool FstabStorageAccess::teardown()
@@ -128,17 +128,17 @@ bool FstabStorageAccess::teardown()
 
 void FstabStorageAccess::slotTeardownRequested()
 {
-    emit teardownRequested(m_fstabDevice->udi());
+    Q_EMIT teardownRequested(m_fstabDevice->udi());
 }
 
 void FstabStorageAccess::slotSetupDone(int error, const QString &errorString)
 {
-    emit setupDone(static_cast<Solid::ErrorType>(error), errorString, m_fstabDevice->udi());
+    Q_EMIT setupDone(static_cast<Solid::ErrorType>(error), errorString, m_fstabDevice->udi());
 }
 
 void FstabStorageAccess::slotTeardownDone(int error, const QString &errorString)
 {
-    emit teardownDone(static_cast<Solid::ErrorType>(error), errorString, m_fstabDevice->udi());
+    Q_EMIT teardownDone(static_cast<Solid::ErrorType>(error), errorString, m_fstabDevice->udi());
 }
 
 void FstabStorageAccess::onMtabChanged(const QString &device)
@@ -148,11 +148,11 @@ void FstabStorageAccess::onMtabChanged(const QString &device)
         // device umounted
         m_filePath = FstabHandling::mountPoints(device).first();
         m_isAccessible = false;
-        emit accessibilityChanged(false, QString(FSTAB_UDI_PREFIX) + "/" + device);
+        Q_EMIT accessibilityChanged(false, QString(FSTAB_UDI_PREFIX) + "/" + device);
     } else {
         // device added
         m_filePath = currentMountPoints.first();
         m_isAccessible = true;
-        emit accessibilityChanged(true, QString(FSTAB_UDI_PREFIX) + "/" + device);
+        Q_EMIT accessibilityChanged(true, QString(FSTAB_UDI_PREFIX) + "/" + device);
     }
 }

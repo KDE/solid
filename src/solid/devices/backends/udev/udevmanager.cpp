@@ -236,14 +236,14 @@ QObject *UDevManager::createDevice(const QString &udi_)
 void UDevManager::slotDeviceAdded(const UdevQt::Device &device)
 {
     if (d->isOfInterest(udiPrefix() + device.sysfsPath(), device)) {
-        emit deviceAdded(udiPrefix() + device.sysfsPath());
+        Q_EMIT deviceAdded(udiPrefix() + device.sysfsPath());
     }
 }
 
 void UDevManager::slotDeviceRemoved(const UdevQt::Device &device)
 {
     if (d->isOfInterest(udiPrefix() + device.sysfsPath(), device)) {
-        emit deviceRemoved(udiPrefix() + device.sysfsPath());
+        Q_EMIT deviceRemoved(udiPrefix() + device.sysfsPath());
         d->m_devicesOfInterest.removeAll(udiPrefix() + device.sysfsPath());
     }
 }

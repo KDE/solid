@@ -142,7 +142,7 @@ void StorageAccess::checkAccessibility()
     updateCache();
 
     if (old_isAccessible != m_isAccessible) {
-        emit accessibilityChanged(m_isAccessible, m_device->udi());
+        Q_EMIT accessibilityChanged(m_isAccessible, m_device->udi());
     }
 }
 
@@ -218,7 +218,7 @@ void StorageAccess::slotSetupRequested()
 {
     m_setupInProgress = true;
     //qDebug() << "SETUP REQUESTED:" << m_device->udi();
-    emit setupRequested(m_device->udi());
+    Q_EMIT setupRequested(m_device->udi());
 }
 
 void StorageAccess::slotSetupDone(int error, const QString &errorString)
@@ -226,20 +226,20 @@ void StorageAccess::slotSetupDone(int error, const QString &errorString)
     m_setupInProgress = false;
     //qDebug() << "SETUP DONE:" << m_device->udi();
     checkAccessibility();
-    emit setupDone(static_cast<Solid::ErrorType>(error), errorString, m_device->udi());
+    Q_EMIT setupDone(static_cast<Solid::ErrorType>(error), errorString, m_device->udi());
 }
 
 void StorageAccess::slotTeardownRequested()
 {
     m_teardownInProgress = true;
-    emit teardownRequested(m_device->udi());
+    Q_EMIT teardownRequested(m_device->udi());
 }
 
 void StorageAccess::slotTeardownDone(int error, const QString &errorString)
 {
     m_teardownInProgress = false;
     checkAccessibility();
-    emit teardownDone(static_cast<Solid::ErrorType>(error), errorString, m_device->udi());
+    Q_EMIT teardownDone(static_cast<Solid::ErrorType>(error), errorString, m_device->udi());
 }
 
 bool StorageAccess::mount()

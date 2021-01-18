@@ -197,11 +197,11 @@ void Manager::slotInterfacesAdded(const QDBusObjectPath &object_path, const Vari
     // new device, we don't know it yet
     if (!m_deviceCache.contains(udi)) {
         m_deviceCache.append(udi);
-        emit deviceAdded(udi);
+        Q_EMIT deviceAdded(udi);
     }
     // re-emit in case of 2-stage devices like N9 or some Android phones
     else if (m_deviceCache.contains(udi) && interfaces_and_properties.keys().contains(UD2_DBUS_INTERFACE_FILESYSTEM)) {
-        emit deviceAdded(udi);
+        Q_EMIT deviceAdded(udi);
     }
 }
 
@@ -231,7 +231,7 @@ void Manager::slotInterfacesRemoved(const QDBusObjectPath &object_path, const QS
 
     if (leftInterfaces.isEmpty()) {
         // remove the device if the last interface is removed
-        emit deviceRemoved(udi);
+        Q_EMIT deviceRemoved(udi);
         m_deviceCache.removeAll(udi);
         DeviceBackend::destroyBackend(udi);
     } else {
@@ -240,8 +240,8 @@ void Manager::slotInterfacesRemoved(const QDBusObjectPath &object_path, const QS
          * matches a Predicate. We have to do a remove-and-readd cycle
          * as there is no dedicated signal for Predicate reevaluation.
          */
-        emit deviceRemoved(udi);
-        emit deviceAdded(udi);
+        Q_EMIT deviceRemoved(udi);
+        Q_EMIT deviceAdded(udi);
     }
 }
 
@@ -260,11 +260,11 @@ void Manager::slotMediaChanged(const QDBusMessage &msg)
 
     if (!m_deviceCache.contains(udi) && size > 0) { // we don't know the optdisc, got inserted
         m_deviceCache.append(udi);
-        emit deviceAdded(udi);
+        Q_EMIT deviceAdded(udi);
     }
 
     if (m_deviceCache.contains(udi) && size == 0) {  // we know the optdisc, got removed
-        emit deviceRemoved(udi);
+        Q_EMIT deviceRemoved(udi);
         m_deviceCache.removeAll(udi);
         DeviceBackend::destroyBackend(udi);
     }

@@ -85,7 +85,7 @@ QList<int> Cdrom::writeSpeeds() const
 void Cdrom::slotCondition(const QString &name, const QString &/*reason */)
 {
     if (name == "EjectPressed") {
-        emit ejectPressed(m_device->udi());
+        Q_EMIT ejectPressed(m_device->udi());
     }
 }
 
@@ -107,7 +107,7 @@ bool Cdrom::eject()
 void Cdrom::slotEjectRequested()
 {
     m_ejectInProgress = true;
-    emit ejectRequested(m_device->udi());
+    Q_EMIT ejectRequested(m_device->udi());
 }
 
 bool Cdrom::callHalDriveEject()
@@ -189,6 +189,6 @@ void Solid::Backends::Hal::Cdrom::slotProcessFinished(int exitCode, QProcess::Ex
 void Cdrom::slotEjectDone(int error, const QString &errorString)
 {
     m_ejectInProgress = false;
-    emit ejectDone(static_cast<Solid::ErrorType>(error), errorString, m_device->udi());
+    Q_EMIT ejectDone(static_cast<Solid::ErrorType>(error), errorString, m_device->udi());
 }
 

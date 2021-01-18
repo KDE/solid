@@ -206,8 +206,8 @@ void DeviceBackend::slotPropertiesChanged(const QString &ifaceName, const QVaria
         //qDebug() << "\t modified:" << key << ":" << m_propertyCache.value(key);
     }
 
-    emit propertyChanged(changeMap);
-    emit changed();
+    Q_EMIT propertyChanged(changeMap);
+    Q_EMIT changed();
 }
 
 void DeviceBackend::slotInterfacesAdded(const QDBusObjectPath &object_path, const VariantMapMap &interfaces_and_properties)

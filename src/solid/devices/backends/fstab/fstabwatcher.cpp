@@ -54,7 +54,7 @@ FstabWatcher::FstabWatcher()
                 m_isFstabWatched = m_fileSystemWatcher->addPath(s_fstabFile);
                 if (m_isFstabWatched) {
                     qCDebug(FSTAB) << "Readded" << s_fstabFile;
-                    emit onFileChanged(s_fstabFile);
+                    Q_EMIT onFileChanged(s_fstabFile);
                 }
             }
     });
@@ -102,13 +102,13 @@ FstabWatcher *FstabWatcher::instance()
 void FstabWatcher::onFileChanged(const QString &path)
 {
     if (path == s_mtabFile) {
-        emit mtabChanged();
+        Q_EMIT mtabChanged();
         if (!m_fileSystemWatcher->files().contains(s_mtabFile)) {
             m_fileSystemWatcher->addPath(s_mtabFile);
         }
     }
     if (path == s_fstabFile) {
-        emit fstabChanged();
+        Q_EMIT fstabChanged();
         if (!m_fileSystemWatcher->files().contains(s_fstabFile)) {
             m_isFstabWatched = m_fileSystemWatcher->addPath(s_fstabFile);
             qCDebug(FSTAB) << "Fstab removed, readded:" << m_isFstabWatched;

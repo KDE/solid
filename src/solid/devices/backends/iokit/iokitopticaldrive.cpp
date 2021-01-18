@@ -334,10 +334,10 @@ bool IOKitOpticalDrive::eject()
     }
 #endif //EJECT_USING_DISKARBITRATION
     if (error) {
-        emit ejectDone(Solid::ErrorType::OperationFailed, QVariant(), m_device->udi());
+        Q_EMIT ejectDone(Solid::ErrorType::OperationFailed, QVariant(), m_device->udi());
         return false;
     } else {
-        emit ejectDone(Solid::ErrorType::NoError, QVariant(), m_device->udi());
+        Q_EMIT ejectDone(Solid::ErrorType::NoError, QVariant(), m_device->udi());
         return true;
     }
 }

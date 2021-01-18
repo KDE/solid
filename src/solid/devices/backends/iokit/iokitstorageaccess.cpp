@@ -88,7 +88,7 @@ void IOKitStorageAccess::onPropertyChanged(const QMap<QString, int> &changes)
 {
     for (auto it = changes.cbegin(); it != changes.cend(); ++it) {
         if (it.key() == QLatin1String("isMounted")) {
-            emit accessibilityChanged(m_device->property(QStringLiteral("isMounted")).toBool(), m_device->udi());
+            Q_EMIT accessibilityChanged(m_device->property(QStringLiteral("isMounted")).toBool(), m_device->udi());
         }
     }
 }

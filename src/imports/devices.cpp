@@ -65,7 +65,7 @@ void DevicesQueryPrivate::addDevice(const QString &udi)
 {
     if (predicate.isValid() && predicate.matches(Solid::Device(udi))) {
         matchingDevices << udi;
-        emit deviceAdded(udi);
+        Q_EMIT deviceAdded(udi);
     }
 }
 
@@ -73,7 +73,7 @@ void DevicesQueryPrivate::removeDevice(const QString &udi)
 {
     if (predicate.isValid() && matchingDevices.contains(udi)) {
         matchingDevices.removeAll(udi);
-        emit deviceRemoved(udi);
+        Q_EMIT deviceRemoved(udi);
     }
 }
 
@@ -100,9 +100,9 @@ void Devices::initialize() const
     const int matchesCount = m_backend->devices().count();
 
     if (matchesCount != 0) {
-        emit emptyChanged(false);
-        emit countChanged(matchesCount);
-        emit devicesChanged(m_backend->devices());
+        Q_EMIT emptyChanged(false);
+        Q_EMIT countChanged(matchesCount);
+        Q_EMIT devicesChanged(m_backend->devices());
     }
 }
 
@@ -115,9 +115,9 @@ void Devices::reset()
     m_backend->disconnect(this);
     m_backend.reset();
 
-    emit emptyChanged(true);
-    emit countChanged(0);
-    emit devicesChanged(QStringList());
+    Q_EMIT emptyChanged(true);
+    Q_EMIT countChanged(0);
+    Q_EMIT devicesChanged(QStringList());
 }
 
 void Devices::addDevice(const QString &udi)
@@ -129,12 +129,12 @@ void Devices::addDevice(const QString &udi)
     const int count = m_backend->devices().count();
 
     if (count == 1) {
-        emit emptyChanged(false);
+        Q_EMIT emptyChanged(false);
     }
 
-    emit countChanged(count);
-    emit devicesChanged(m_backend->devices());
-    emit deviceAdded(udi);
+    Q_EMIT countChanged(count);
+    Q_EMIT devicesChanged(m_backend->devices());
+    Q_EMIT deviceAdded(udi);
 }
 
 void Devices::removeDevice(const QString &udi)
@@ -146,12 +146,12 @@ void Devices::removeDevice(const QString &udi)
     const int count = m_backend->devices().count();
 
     if (count == 0) {
-        emit emptyChanged(true);
+        Q_EMIT emptyChanged(true);
     }
 
-    emit countChanged(count);
-    emit devicesChanged(m_backend->devices());
-    emit deviceRemoved(udi);
+    Q_EMIT countChanged(count);
+    Q_EMIT devicesChanged(m_backend->devices());
+    Q_EMIT deviceRemoved(udi);
 }
 
 Devices::Devices(QObject *parent)
@@ -197,7 +197,7 @@ void Devices::setQuery(const QString &query)
     reset();
     initialize();
 
-    emit queryChanged(query);
+    Q_EMIT queryChanged(query);
 }
 
 QObject *Devices::device(const QString &udi, const QString &_type)

@@ -195,40 +195,40 @@ void WinBattery::powerChanged()
     m_rechargeable = info.Technology == 1;
 
     if (m_charge != old_charge) {
-        emit chargePercentChanged(m_charge, m_device->udi());
+        Q_EMIT chargePercentChanged(m_charge, m_device->udi());
     }
 
     if (m_capacity != old_capacity) {
-        emit capacityChanged(m_capacity, m_device->udi());
+        Q_EMIT capacityChanged(m_capacity, m_device->udi());
     }
 
     if (old_state != m_state) {
-        emit chargeStateChanged(m_state, m_device->udi());
+        Q_EMIT chargeStateChanged(m_state, m_device->udi());
     }
 
     if (old_isPowerSupply != m_isPowerSupply) {
-        emit powerSupplyStateChanged(m_isPowerSupply, m_device->udi());
+        Q_EMIT powerSupplyStateChanged(m_isPowerSupply, m_device->udi());
     }
 
     if (old_energy != m_energy) {
-        emit energyChanged(m_energy, m_device->udi());
+        Q_EMIT energyChanged(m_energy, m_device->udi());
     }
 
     if (old_energyFull != m_energyFull) {
-        emit energyFullChanged(m_energyFull, m_device->udi());
+        Q_EMIT energyFullChanged(m_energyFull, m_device->udi());
     }
 
     if (old_energyFullDesign != m_energyFullDesign) {
-        emit energyFullDesignChanged(m_energyFullDesign, m_device->udi());
+        Q_EMIT energyFullDesignChanged(m_energyFullDesign, m_device->udi());
     }
 
     if (old_energyRate != m_energyRate) {
-        emit energyRateChanged(m_energyRate, m_device->udi());
+        Q_EMIT energyRateChanged(m_energyRate, m_device->udi());
     }
 
     if(old_voltage != m_voltage)
     {
-        emit voltageChanged(m_voltage, m_device->udi());
+        Q_EMIT voltageChanged(m_voltage, m_device->udi());
     }
 }
 
@@ -260,7 +260,7 @@ void WinBattery::updateTimeToEmpty(const WinBattery::Battery &b)
     if(time != m_timeUntilEmpty)
     {
         m_timeUntilEmpty = time;
-        emit timeToEmptyChanged(time, m_device->udi());
+        Q_EMIT timeToEmptyChanged(time, m_device->udi());
     }
 }
 
@@ -275,7 +275,7 @@ void WinBattery::updateBatteryTemp(const WinBattery::Battery &b)
     if(batteryTemp != m_temperature)
     {
         m_temperature = batteryTemp;
-        emit temperatureChanged(batteryTemp, m_device->udi());
+        Q_EMIT temperatureChanged(batteryTemp, m_device->udi());
     }
 }
 

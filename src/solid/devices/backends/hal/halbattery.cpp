@@ -182,47 +182,47 @@ qlonglong Battery::remainingTime() const
 void Battery::slotPropertyChanged(const QMap<QString, int> &changes)
 {
     if (changes.contains("battery.present")) {
-        emit presentStateChanged(isPresent(), m_device->udi());
+        Q_EMIT presentStateChanged(isPresent(), m_device->udi());
     }
 
     if (changes.contains("battery.charge_level.percentage")) {
-        emit chargePercentChanged(chargePercent(), m_device->udi());
+        Q_EMIT chargePercentChanged(chargePercent(), m_device->udi());
     }
 
     if (changes.contains("battery.charge_level.last_full")
             || changes.contains("battery.charge_level.design")) {
-        emit capacityChanged(capacity(), m_device->udi());
+        Q_EMIT capacityChanged(capacity(), m_device->udi());
     }
 
     if (changes.contains("battery.rechargeable.is_charging")
             || changes.contains("battery.rechargeable.is_discharging")) {
-        emit chargeStateChanged(chargeState(), m_device->udi());
+        Q_EMIT chargeStateChanged(chargeState(), m_device->udi());
     }
 
     if (changes.contains("battery.remaining_time")) {
-        emit timeToEmptyChanged(timeToEmpty(), m_device->udi());
-        emit timeToFullChanged(timeToFull(), m_device->udi());
-        emit remainingTimeChanged(remainingTime(), m_device->udi());
+        Q_EMIT timeToEmptyChanged(timeToEmpty(), m_device->udi());
+        Q_EMIT timeToFullChanged(timeToFull(), m_device->udi());
+        Q_EMIT remainingTimeChanged(remainingTime(), m_device->udi());
     }
 
     if (changes.contains("battery.charge_level.current")) {
-        emit energyChanged(energy(), m_device->udi());
+        Q_EMIT energyChanged(energy(), m_device->udi());
     }
 
     if (changes.contains("battery.charge_level.last_full")) {
-        emit energyFullChanged(energyFull(), m_device->udi());
+        Q_EMIT energyFullChanged(energyFull(), m_device->udi());
     }
 
     if (changes.contains("battery.charge_level.design")) {
-        emit energyFullDesignChanged(energyFullDesign(), m_device->udi());
+        Q_EMIT energyFullDesignChanged(energyFullDesign(), m_device->udi());
     }
 
     if (changes.contains("battery.charge_level.rate")) {
-        emit energyRateChanged(energyRate(), m_device->udi());
+        Q_EMIT energyRateChanged(energyRate(), m_device->udi());
     }
 
     if (changes.contains("battery.voltage.current")) {
-        emit voltageChanged(voltage(), m_device->udi());
+        Q_EMIT voltageChanged(voltage(), m_device->udi());
     }
 
 }

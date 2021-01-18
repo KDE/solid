@@ -109,13 +109,13 @@ void OpticalDrive::slotDBusError(const QDBusError &error)
 void OpticalDrive::slotEjectRequested()
 {
     m_ejectInProgress = true;
-    emit ejectRequested(m_device->udi());
+    Q_EMIT ejectRequested(m_device->udi());
 }
 
 void OpticalDrive::slotEjectDone(int error, const QString &errorString)
 {
     m_ejectInProgress = false;
-    emit ejectDone(static_cast<Solid::ErrorType>(error), errorString, m_device->udi());
+    Q_EMIT ejectDone(static_cast<Solid::ErrorType>(error), errorString, m_device->udi());
 }
 
 void OpticalDrive::initReadWriteSpeeds() const

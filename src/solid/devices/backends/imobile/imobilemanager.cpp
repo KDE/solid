@@ -116,12 +116,12 @@ void Manager::onDeviceEvent(const idevice_event_t *event)
     case IDEVICE_DEVICE_ADD:
         if (!m_deviceUdis.contains(udi)) {
             m_deviceUdis.append(udi);
-            emit deviceAdded(udi);
+            Q_EMIT deviceAdded(udi);
         }
         return;
     case IDEVICE_DEVICE_REMOVE:
         if (m_deviceUdis.removeOne(udi)) {
-            emit deviceRemoved(udi);
+            Q_EMIT deviceRemoved(udi);
         }
         return;
 #if IMOBILEDEVICE_API >= QT_VERSION_CHECK(1, 3, 0)

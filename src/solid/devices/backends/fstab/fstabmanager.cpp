@@ -118,13 +118,13 @@ void FstabManager::_k_updateDeviceList()
 
     for (const QString &device : newlist) {
         if (!oldlist.contains(device)) {
-            emit deviceAdded(udiPrefix() + "/" + device);
+            Q_EMIT deviceAdded(udiPrefix() + "/" + device);
         }
     }
 
     for (const QString &device : oldlist) {
         if (!newlist.contains(device)) {
-            emit deviceRemoved(udiPrefix() + "/" + device);
+            Q_EMIT deviceRemoved(udiPrefix() + "/" + device);
         }
     }
 }
@@ -137,7 +137,7 @@ void FstabManager::onMtabChanged()
 
     for (const QString &device : qAsConst(m_deviceList)) {
         // notify storageaccess objects via device ...
-        emit mtabChanged(device);
+        Q_EMIT mtabChanged(device);
     }
 }
 

@@ -155,11 +155,11 @@ QString UPowerManager::udiPrefix() const
 
 void UPowerManager::onDeviceAdded(const QDBusObjectPath &path)
 {
-    emit deviceAdded(path.path());
+    Q_EMIT deviceAdded(path.path());
 }
 
 void UPowerManager::onDeviceRemoved(const QDBusObjectPath &path)
 {
-    emit deviceRemoved(path.path());
+    Q_EMIT deviceRemoved(path.path());
 }
 
