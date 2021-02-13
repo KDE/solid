@@ -8,6 +8,10 @@
 #include "solid-hardware.h"
 
 
+#if defined QT_DBUS_LIB
+#include <QDBusArgument>
+#include <QDBusObjectPath>
+#endif
 #include <QString>
 #include <QStringList>
 #include <QMetaProperty>
@@ -33,6 +37,58 @@ std::ostream &operator<<(std::ostream &out, const QString &msg)
     return (out << msg.toLocal8Bit().constData());
 }
 
+std::ostream &operator<<(std::ostream &out, const QVariant &value);
+#if defined QT_DBUS_LIB
+std::ostream &operator<<(std::ostream &out, const QDBusArgument &arg)
+{
+    auto type = arg.currentType();
+    switch (type) {
+    case QDBusArgument::ArrayType:
+        out << " { ";
+        arg.beginArray();
+        while (!arg.atEnd()) {
+            out << arg;
+            if (!arg.atEnd()) {
+                out << ", ";
+            }
+        }
+        arg.endArray();
+        out << " }";
+        break;
+    case QDBusArgument::StructureType:
+        out << " ( ";
+        arg.beginStructure();
+        while (!arg.atEnd()) {
+            out << arg.asVariant();
+        }
+        arg.endStructure();
+        out << " )";
+        break;
+    case QDBusArgument::MapType:
+        out << " [ ";
+        arg.beginMap();
+        if (!arg.atEnd()) {
+            out << arg;
+        }
+        arg.endMap();
+        out << " ]";
+        break;
+    case QDBusArgument::MapEntryType:
+        arg.beginMapEntry();
+        out << arg.asVariant() << " = " << arg;
+        arg.endMapEntry();
+        break;
+    case QDBusArgument::UnknownType:
+        out << "(unknown DBus type)";
+        break;
+    case QDBusArgument::BasicType:
+    case QDBusArgument::VariantType:
+        out << arg.asVariant();
+    }
+    return out;
+}
+#endif
+
 std::ostream &operator<<(std::ostream &out, const QVariant &value)
 {
     switch (value.type())
@@ -56,11 +112,14 @@ std::ostream &operator<<(std::ostream &out, const QVariant &value)
             }
         }
 
-        out << "}  (string list)";
+        out << "} (string list)";
         break;
     }
+    case QVariant::String:
+        out << "'" << value.toString() << "' (string)";
+        break;
     case QVariant::Bool:
-        out << (value.toBool()?"true":"false") << "  (bool)";
+        out << (value.toBool()?"true":"false") << " (bool)";
         break;
     case QVariant::Int:
     case QVariant::LongLong:
@@ -75,8 +134,10 @@ std::ostream &operator<<(std::ostream &out, const QVariant &value)
     case QVariant::Double:
         out << value.toString() << " (double)";
         break;
+    case QVariant::ByteArray:
+        out << "'" << value.toString() << "' (bytes)";
+        break;
     case QVariant::UserType:
-    {
         //qDebug() << "got variant type:" << value.typeName();
         if (value.canConvert<QList<int> >())
         {
@@ -86,11 +147,21 @@ std::ostream &operator<<(std::ostream &out, const QVariant &value)
                 tmp.append(QString::number(val));
             }
             out << "{" << tmp.join(",") << "} (int list)";
+#if defined QT_DBUS_LIB
+        } else if (value.canConvert<QDBusObjectPath>()) {
+            out << value.value<QDBusObjectPath>().path() << " (ObjectPath)";
+        } else if (value.canConvert<QDBusVariant>()) {
+            out << value.value<QDBusVariant>().variant() << "(Variant)";
+        } else if (value.canConvert<QDBusArgument>()) {
+            out << value.value<QDBusArgument>();
+#endif
+        } else {
+            out << value.toString() << " (unhandled)";
         }
+
         break;
-    }
     default:
-        out << "'" << value.toString() << "'  (string)";
+        out << "'" << value.toString() << "' (" << QVariant::typeToName(value.type()) << ")";
         break;
     }
 
