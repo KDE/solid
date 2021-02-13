@@ -840,7 +840,7 @@ bool Device::isEncryptedContainer() const
 
 bool Device::isEncryptedCleartext() const
 {
-    const QString holderDevice = prop("CryptoBackingDevice").toString();
+    const QString holderDevice = prop("CryptoBackingDevice").value<QDBusObjectPath>().path();
     if (holderDevice.isEmpty() || holderDevice == "/") {
         return false;
     } else {
