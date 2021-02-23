@@ -144,6 +144,12 @@ bool StorageAccess::isIgnored() const
     return !removable && !hotpluggable;
 }
 
+bool StorageAccess::isEncrypted() const
+{
+    // TODO: Implementation left for hal developer
+    return false;
+}
+
 bool StorageAccess::setup()
 {
     if (m_teardownInProgress || m_setupInProgress || isAccessible()) {

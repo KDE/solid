@@ -77,3 +77,9 @@ bool Solid::StorageAccess::isIgnored() const
     return_SOLID_CALL(Ifaces::StorageAccess *, d->backendObject(), true, isIgnored());
 }
 
+bool Solid::StorageAccess::isEncrypted() const
+{
+    Q_D(const StorageAccess);
+    return_SOLID_CALL(Ifaces::StorageAccess *, d->backendObject(), false, isEncrypted());
+}
+

@@ -31,6 +31,7 @@ class SOLID_EXPORT StorageAccess : public DeviceInterface
     Q_PROPERTY(bool accessible READ isAccessible)
     Q_PROPERTY(QString filePath READ filePath)
     Q_PROPERTY(bool ignored READ isIgnored)
+    Q_PROPERTY(bool encrypted READ isEncrypted)
     Q_DECLARE_PRIVATE(StorageAccess)
     friend class Device;
 
@@ -87,6 +88,16 @@ public:
      * @return true if the volume should be ignored
      */
     bool isIgnored() const;
+    
+    
+    /**
+     * Checks if source of the storage is encrypted.
+     * 
+     * @return true if storage is encrypted one
+     *
+     * @since 5.80
+     */
+    bool isEncrypted() const;
 
     /**
      * Mounts the volume.

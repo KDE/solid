@@ -43,6 +43,8 @@ public:
     QString displayName() const override;
 
     QString description() const override;
+    
+    bool isEncrypted() const;
 
     bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const override;
 

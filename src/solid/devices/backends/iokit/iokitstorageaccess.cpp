@@ -72,6 +72,12 @@ bool IOKitStorageAccess::isIgnored() const
     return isIgnored.isValid() && isIgnored.toBool();
 }
 
+bool IOKitStorageAccess::isEncrypted() const
+{
+    //TODO: Implementation left for IOKit developer
+    return false;
+}
+
 bool IOKitStorageAccess::setup()
 {
     // TODO?

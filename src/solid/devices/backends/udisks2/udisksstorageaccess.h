@@ -34,6 +34,7 @@ public:
     bool isIgnored() const override;
     bool setup() override;
     bool teardown() override;
+    bool isEncrypted() const override;
 
 Q_SIGNALS:
     void accessibilityChanged(bool accessible, const QString &udi) override;

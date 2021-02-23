@@ -64,6 +64,13 @@ bool StorageAccess::isAccessible() const
     return m_device->isMounted();
 }
 
+bool StorageAccess::isEncrypted() const
+{
+    // FIXME We should also check if physical device is encrypted
+    // FIXME Gocryptfs is not supported
+    return isLuksDevice() || m_device->isEncryptedCleartext();
+}
+
 QString StorageAccess::filePath() const
 {
     QByteArrayList mntPoints;

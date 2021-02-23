@@ -87,6 +87,11 @@ bool FstabStorageAccess::isIgnored() const
     return m_isIgnored;
 }
 
+bool FstabStorageAccess::isEncrypted() const
+{
+    return m_fstabDevice->isEncrypted();
+}
+
 bool FstabStorageAccess::setup()
 {
     if (filePath().isEmpty()) {

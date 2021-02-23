@@ -35,6 +35,11 @@ bool FakeStorageAccess::isIgnored() const
     return fakeDevice()->property("isIgnored").toBool();
 }
 
+bool FakeStorageAccess::isEncrypted() const
+{
+    return fakeDevice()->property("isEncrypted").toBool();
+}
+
 bool FakeStorageAccess::setup()
 {
     if (fakeDevice()->isBroken() || isAccessible()) {

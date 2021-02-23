@@ -31,6 +31,8 @@ public:
     virtual QString filePath() const;
 
     virtual bool isIgnored() const;
+    
+    virtual bool isEncrypted() const;
 
     virtual bool setup();
 

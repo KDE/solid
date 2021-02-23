@@ -28,6 +28,7 @@ public:
     bool isAccessible() const override;
     QString filePath() const override;
     bool isIgnored() const override;
+    bool isEncrypted() const override;
 public Q_SLOTS:
     bool setup() override;
     bool teardown() override;

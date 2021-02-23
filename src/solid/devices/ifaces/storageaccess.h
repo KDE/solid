@@ -55,6 +55,13 @@ public:
     virtual bool isIgnored() const = 0;
 
     /**
+     * Checks if source of the storage is encrypted.
+     * 
+     * @return true if storage is encrypted one
+     */
+    virtual bool isEncrypted() const = 0;
+    
+    /**
      * Mounts the volume.
      *
      * @return the job handling the operation

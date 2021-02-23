@@ -34,6 +34,12 @@ bool WinStorageAccess::isIgnored() const
     return false;
 }
 
+bool WinStorageAccess::isEncrypted() const
+{
+    //TODO: implementation left for Win developer
+    return false;
+}
+
 bool WinStorageAccess::setup()
 {
     return true;

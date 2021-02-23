@@ -32,6 +32,7 @@ public:
     bool isAccessible() const override;
     QString filePath() const override;
     bool isIgnored() const override;
+    bool isEncrypted() const override;
     bool setup() override;
     bool teardown() override;
 

@@ -150,6 +150,11 @@ QString FstabDevice::description() const
     return m_description;
 }
 
+bool FstabDevice::isEncrypted() const
+{
+    return m_storageType == FstabDevice::StorageType::Encrypted;
+}
+
 bool FstabDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &interfaceType) const
 {
     if (interfaceType == Solid::DeviceInterface::StorageAccess) {
