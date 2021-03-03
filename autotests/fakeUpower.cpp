@@ -7,6 +7,7 @@
 #include "fakeUpower.h"
 
 #include <QDBusConnection>
+#include <QDBusPendingCall>
 #include <qdbusmessage.h>
 
 FakeUpower::FakeUpower(QObject* parent) : QObject(parent),

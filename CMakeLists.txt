@@ -85,14 +85,14 @@ if (IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/po")
     ecm_install_po_files_as_qm(po)
 endif()
 
-option(WITH_NEW_SOLID_JOB "WIP: base Job class" Off)
-add_feature_info(Solid::Job WITH_NEW_SOLID_JOB "WIP: Base class for Solid Asynchronous apis")
+option(WITH_NEW_SOLID_JOB "base Job class" On)
+add_feature_info(Solid::Job WITH_NEW_SOLID_JOB "Base class for Solid Asynchronous apis")
 
-option(WITH_NEW_POWER_ASYNC_API "WIP: Asynchronous API for power management" Off)
-add_feature_info(Solid::PowerManagement WITH_NEW_POWER_ASYNC_API "WIP: Asynchronous API for power management")
+option(WITH_NEW_POWER_ASYNC_API "Asynchronous API for power management" On)
+add_feature_info(Solid::PowerManagement WITH_NEW_POWER_ASYNC_API "Asynchronous API for power management")
 
-option(WITH_NEW_POWER_ASYNC_FREEDESKTOP "WIP: Freedesktop backend for the asynchronous api" Off)
-add_feature_info(Solid::PowerManagement WITH_NEW_POWER_ASYNC_FREEDESKTOP "WIP: Freedesktop backend for the asynchronous api")
+option(WITH_NEW_POWER_ASYNC_FREEDESKTOP "Freedesktop backend for the asynchronous api" On)
+add_feature_info(Solid::PowerManagement WITH_NEW_POWER_ASYNC_FREEDESKTOP "Freedesktop backend for the asynchronous api")
 
 include(SolidBackendsMacros)
 
