@@ -41,7 +41,7 @@ public:
      * AbstractInhibition is not part of Solid public API so this
      * constructor is meant to be used only by backends.
      */
-    explicit Inhibition(AbstractInhibition *backend, QObject *parent=0);
+    explicit Inhibition(AbstractInhibition *backend, QObject *parent=nullptr);
     virtual ~Inhibition();
 
     /**
