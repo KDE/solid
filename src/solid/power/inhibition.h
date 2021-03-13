@@ -31,7 +31,7 @@ class SOLID_EXPORT Inhibition : public QObject
 public:
     enum State {
         Stopped = 0,
-        Started = 1
+        Started = 1,
     };
     Q_ENUM(State)
 

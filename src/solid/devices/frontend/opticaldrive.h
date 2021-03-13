@@ -62,7 +62,7 @@ public:
                       Dvdr = 0x00008, Dvdrw = 0x00010, Dvdram = 0x00020, Dvdplusr = 0x00040,
                       Dvdplusrw = 0x00080, Dvdplusdl = 0x00100, Dvdplusdlrw = 0x00200,
                       Bd = 0x00400, Bdr = 0x00800, Bdre = 0x01000,
-                      HdDvd = 0x02000, HdDvdr = 0x04000, HdDvdrw = 0x08000
+                      HdDvd = 0x02000, HdDvdr = 0x04000, HdDvdrw = 0x08000,
                     };
     Q_ENUM(MediumType)
 

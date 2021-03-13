@@ -17,7 +17,7 @@ enum ErrorType {
     OperationFailed,
     UserCanceled,
     InvalidOption,
-    MissingDriver
+    MissingDriver,
 };
 }
 

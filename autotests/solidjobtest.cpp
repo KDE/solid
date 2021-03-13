@@ -18,7 +18,7 @@ class MockSolidJob : public Solid::Job
 public:
     enum Error {
         Foo = Job::UserDefinedError,
-        Bar
+        Bar,
     };
     bool execWithError();
     void startWithError();

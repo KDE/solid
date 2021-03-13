@@ -52,7 +52,7 @@ public:
         VideoCd = 0x04,
         SuperVideoCd = 0x08,
         VideoDvd = 0x10,
-        VideoBluRay = 0x20
+        VideoBluRay = 0x20,
     };
     Q_ENUM(ContentType)
 
@@ -90,7 +90,7 @@ public:
                     DvdPlusRecordable, DvdPlusRewritable,
                     DvdPlusRecordableDuallayer, DvdPlusRewritableDuallayer,
                     BluRayRom, BluRayRecordable, BluRayRewritable,
-                    HdDvdRom, HdDvdRecordable, HdDvdRewritable
+                    HdDvdRom, HdDvdRecordable, HdDvdRewritable,
                   };
     Q_ENUM(DiscType)
 

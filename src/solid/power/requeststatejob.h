@@ -32,7 +32,7 @@ class SOLID_EXPORT RequestStateJob : public Job
 
 public:
     enum Error {
-        Unsupported = Job::UserDefinedError
+        Unsupported = Job::UserDefinedError,
     };
 
     explicit RequestStateJob(QObject *parent = nullptr);

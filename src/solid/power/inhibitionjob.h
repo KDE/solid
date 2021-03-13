@@ -23,7 +23,7 @@ class SOLID_EXPORT InhibitionJob : public Job
 public:
     enum Error {
         InvalidInhibitions = Job::UserDefinedError,
-        EmptyDescription
+        EmptyDescription,
     };
     Q_ENUM(Error)
 

@@ -42,7 +42,7 @@ public:
      * - PropertyAdded : A new property has been added to the device
      * - PropertyRemoved : A property has been removed from the device
      */
-    enum PropertyChange { PropertyModified, PropertyAdded, PropertyRemoved };
+    enum PropertyChange { PropertyModified, PropertyAdded, PropertyRemoved, };
     Q_ENUM(PropertyChange)
 
 private:

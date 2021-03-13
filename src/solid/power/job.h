@@ -47,7 +47,7 @@ public:
         /** Indicates there is no error */
         NoError = 0,
         /** Subclasses should define error codes starting at this value */
-        UserDefinedError = 100
+        UserDefinedError = 100,
     };
     Q_ENUM(Error)
 

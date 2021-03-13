@@ -36,7 +36,7 @@ private:
     enum CanChangeFrequencyEnum {
         NotChecked,
         CanChangeFreq,
-        CannotChangeFreq
+        CannotChangeFreq,
     };
     mutable CanChangeFrequencyEnum m_canChangeFrequency;
     mutable int m_maxSpeed;

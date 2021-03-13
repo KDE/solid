@@ -41,7 +41,7 @@ public:
         None = 0,
         Sleep = 1 << 0,
         Screen = 1 << 1,
-        Shutdown = 1 << 3
+        Shutdown = 1 << 3,
     };
     /*
      * Stores a combination of #InhibitionType values.

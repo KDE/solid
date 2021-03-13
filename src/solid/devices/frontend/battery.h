@@ -70,7 +70,7 @@ public:
                        PrimaryBattery, MouseBattery, KeyboardBattery,
                        KeyboardMouseBattery, CameraBattery,
                        PhoneBattery, MonitorBattery, GamingInputBattery,
-                       BluetoothBattery
+                       BluetoothBattery,
                      };
     Q_ENUM(BatteryType)
 
@@ -99,7 +99,7 @@ public:
       * 6: Nickel metal hydride
       */
     enum Technology { UnknownTechnology = 0, LithiumIon, LithiumPolymer, LithiumIronPhosphate,
-                      LeadAcid, NickelCadmium, NickelMetalHydride
+                      LeadAcid, NickelCadmium, NickelMetalHydride,
                     };
     Q_ENUM(Technology)
 

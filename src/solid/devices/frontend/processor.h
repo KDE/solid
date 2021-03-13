@@ -58,7 +58,7 @@ public:
         IntelSse41 = 0x10,
         IntelSse42 = 0x100,
         Amd3DNow = 0x20,
-        AltiVec = 0x40
+        AltiVec = 0x40,
     };
     Q_ENUM(InstructionSet)
 
