@@ -57,15 +57,15 @@ static DeviceInterfaceTypes typesFromEntry(const io_registry_entry_t &entry,
     }
     const QString bsdName = QStringLiteral("BSD Name"),
         leaf = QStringLiteral("Leaf");
-    if (IOObjectConformsTo(entry, "IOCDMedia")
-        || IOObjectConformsTo(entry, "IODVDMedia")
+    if (IOObjectConformsTo(entry, "IOCDMedia") //
+        || IOObjectConformsTo(entry, "IODVDMedia") //
         || IOObjectConformsTo(entry, "IOBDMedia")) {
         mainType = Solid::DeviceInterface::OpticalDrive;
         types << mainType
             << Solid::DeviceInterface::OpticalDisc;
     }
     if (properties.contains(bsdName) && properties.value(bsdName).toString().startsWith(QStringLiteral("disk"))) {
-        if ((properties.contains(leaf) && properties.value(leaf).toBool() == false)
+        if ((properties.contains(leaf) && properties.value(leaf).toBool() == false) //
             || mainType == Solid::DeviceInterface::OpticalDrive) {
             if (mainType == Solid::DeviceInterface::Unknown) {
                 mainType = Solid::DeviceInterface::StorageDrive;

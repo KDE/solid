@@ -44,7 +44,7 @@ HalManager::HalManager(QObject *parent)
                                     "org.freedesktop.Hal.Manager",
                                     "DeviceRemoved",
                                     this, SLOT(slotDeviceRemoved(QString)));
-
+    // clang-format off
     d->supportedInterfaces << Solid::DeviceInterface::GenericInterface
                            << Solid::DeviceInterface::Processor
                            << Solid::DeviceInterface::Block
@@ -56,6 +56,7 @@ HalManager::HalManager(QObject *parent)
                            << Solid::DeviceInterface::Camera
                            << Solid::DeviceInterface::PortableMediaPlayer
                            << Solid::DeviceInterface::Battery;
+    // clang-format on
 }
 
 HalManager::~HalManager()

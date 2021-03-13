@@ -98,12 +98,12 @@ Solid::Backends::Fstab::FstabHandling::FstabHandling()
 
 bool _k_isFstabNetworkFileSystem(const QString &fstype, const QString &devName)
 {
-    if (fstype == "nfs"
-            || fstype == "nfs4"
-            || fstype == "smbfs"
-            || fstype == "cifs"
-            || fstype == "fuse.sshfs"
-            || devName.startsWith(QLatin1String("//"))) {
+    if (fstype == "nfs" //
+        || fstype == "nfs4" //
+        || fstype == "smbfs" //
+        || fstype == "cifs" //
+        || fstype == "fuse.sshfs" //
+        || devName.startsWith(QLatin1String("//"))) {
         return true;
     }
     return false;
@@ -111,9 +111,9 @@ bool _k_isFstabNetworkFileSystem(const QString &fstype, const QString &devName)
 
 bool _k_isFstabSupportedLocalFileSystem(const QString &fstype)
 {
-    if (fstype == "fuse.encfs" ||
-        fstype == "fuse.cryfs" ||
-        fstype == "overlay") {
+    if (fstype == "fuse.encfs" //
+        || fstype == "fuse.cryfs" //
+        || fstype == "overlay") {
         return true;
     }
     return false;

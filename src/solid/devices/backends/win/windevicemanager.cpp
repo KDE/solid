@@ -124,6 +124,7 @@ WinDeviceManager::WinDeviceManager(QObject *parent)
     connect(solidWineventFilter, SIGNAL(deviceAdded(QSet<QString>)),this, SLOT(slotDeviceAdded(QSet<QString>)));
     connect(solidWineventFilter, SIGNAL(deviceRemoved(QSet<QString>)),this, SLOT(slotDeviceRemoved(QSet<QString>)));
 
+    // clang-format off
     m_supportedInterfaces << Solid::DeviceInterface::GenericInterface
                              //                          << Solid::DeviceInterface::Block
                           << Solid::DeviceInterface::StorageAccess
@@ -133,6 +134,7 @@ WinDeviceManager::WinDeviceManager(QObject *parent)
                           << Solid::DeviceInterface::OpticalDisc
                           << Solid::DeviceInterface::Processor
                           << Solid::DeviceInterface::Battery;
+    // clang-format on
 
     updateDeviceList();
 }

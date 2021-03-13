@@ -180,6 +180,7 @@ Solid::OpticalDrive::MediumTypes OpticalDrive::supportedMedia() const
     const QStringList mediaTypes = m_device->prop("MediaCompatibility").toStringList();
     Solid::OpticalDrive::MediumTypes supported;
 
+    // clang-format off
     QMap<QString, Solid::OpticalDrive::MediumType> map = {
         {QStringLiteral("optical_cd_r"), Solid::OpticalDrive::Cdr},
         {QStringLiteral("optical_cd_rw"), Solid::OpticalDrive::Cdrw},
@@ -197,6 +198,8 @@ Solid::OpticalDrive::MediumTypes OpticalDrive::supportedMedia() const
         {QStringLiteral("optical_hddvd"), Solid::OpticalDrive::HdDvd},
         {QStringLiteral("optical_hddvd_r"), Solid::OpticalDrive::HdDvdr},
         {QStringLiteral("optical_hddvd_rw"), Solid::OpticalDrive::HdDvdrw}};
+    // clang-format on
+
     // TODO add these to Solid
     //map[Solid::OpticalDrive::Mo] ="optical_mo";
     //map[Solid::OpticalDrive::Mr] ="optical_mrw";

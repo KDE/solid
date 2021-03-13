@@ -260,9 +260,9 @@ Device Client::deviceBySysfsPath(const QString &sysfsPath)
 
 Device Client::deviceBySubsystemAndName(const QString &subsystem, const QString &name)
 {
-    struct udev_device *ud = udev_device_new_from_subsystem_sysname(d->udev,
-                             subsystem.toLatin1().constData(),
-                             name.toLatin1().constData());
+    struct udev_device *ud = udev_device_new_from_subsystem_sysname(d->udev, //
+                                                                    subsystem.toLatin1().constData(),
+                                                                    name.toLatin1().constData());
 
     if (!ud) {
         return Device();

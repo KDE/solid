@@ -84,7 +84,9 @@ bool UDevManager::Private::checkOfInterest(const UdevQt::Device &device)
     if (subsystem == QLatin1String("cpu")) {
         // Linux ACPI reports processor slots, rather than processors.
         // Empty slots will not have a system device associated with them.
-        return QFile::exists(device.sysfsPath() + "/sysdev") || QFile::exists(device.sysfsPath() + "/cpufreq") || QFile::exists(device.sysfsPath() + "/topology/core_id");
+        return QFile::exists(device.sysfsPath() + "/sysdev") //
+            || QFile::exists(device.sysfsPath() + "/cpufreq") //
+            || QFile::exists(device.sysfsPath() + "/topology/core_id");
     }
     if (subsystem == QLatin1String("sound") &&
             device.deviceProperty("SOUND_FORM_FACTOR").toString() != "internal") {
@@ -112,10 +114,11 @@ bool UDevManager::Private::checkOfInterest(const UdevQt::Device &device)
 
     }
 
-    return subsystem == QLatin1String("dvb") ||
-           subsystem == QLatin1String("net") ||
-           (!device.deviceProperty("ID_MEDIA_PLAYER").toString().isEmpty() && device.parent().deviceProperty("ID_MEDIA_PLAYER").toString().isEmpty()) || // media-player-info recognized devices
-           (device.deviceProperty("ID_GPHOTO2").toInt() == 1 && device.parent().deviceProperty("ID_GPHOTO2").toInt() != 1); // GPhoto2 cameras
+    return subsystem == QLatin1String("dvb") || //
+        subsystem == QLatin1String("net") || //
+        (!device.deviceProperty("ID_MEDIA_PLAYER").toString().isEmpty() && device.parent().deviceProperty("ID_MEDIA_PLAYER").toString().isEmpty())
+        || // media-player-info recognized devices
+        (device.deviceProperty("ID_GPHOTO2").toInt() == 1 && device.parent().deviceProperty("ID_GPHOTO2").toInt() != 1); // GPhoto2 cameras
 }
 
 UDevManager::UDevManager(QObject *parent)
@@ -125,12 +128,13 @@ UDevManager::UDevManager(QObject *parent)
     connect(d->m_client, SIGNAL(deviceAdded(UdevQt::Device)), this, SLOT(slotDeviceAdded(UdevQt::Device)));
     connect(d->m_client, SIGNAL(deviceRemoved(UdevQt::Device)), this, SLOT(slotDeviceRemoved(UdevQt::Device)));
 
+    // clang-format off
     d->m_supportedInterfaces << Solid::DeviceInterface::GenericInterface
                              << Solid::DeviceInterface::Processor
                              << Solid::DeviceInterface::Camera
                              << Solid::DeviceInterface::PortableMediaPlayer
-                             << Solid::DeviceInterface::Block
-                             ;
+                             << Solid::DeviceInterface::Block;
+    // clang-format on
 }
 
 UDevManager::~UDevManager()

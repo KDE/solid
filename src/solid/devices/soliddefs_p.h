@@ -7,6 +7,7 @@
 #ifndef SOLID_SOLIDDEFS_P_H
 #define SOLID_SOLIDDEFS_P_H
 
+// clang-format off
 
 #define return_SOLID_CALL(Type, Object, Default, Method) \
     Type t = qobject_cast<Type>(Object); \

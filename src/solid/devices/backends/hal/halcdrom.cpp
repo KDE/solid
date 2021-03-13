@@ -32,7 +32,7 @@ Cdrom::~Cdrom()
 Solid::OpticalDrive::MediumTypes Cdrom::supportedMedia() const
 {
     Solid::OpticalDrive::MediumTypes supported;
-
+    // clang-format off
     const QMap<Solid::OpticalDrive::MediumType, QString> map = {
         {Solid::OpticalDrive::Cdr, QStringLiteral("storage.cdrom.cdr")},
         {Solid::OpticalDrive::Cdrw, QStringLiteral("storage.cdrom.cdrw")},
@@ -50,6 +50,7 @@ Solid::OpticalDrive::MediumTypes Cdrom::supportedMedia() const
         {Solid::OpticalDrive::HdDvd, QStringLiteral("storage.cdrom.hddvd")},
         {Solid::OpticalDrive::HdDvdr, QStringLiteral("storage.cdrom.hddvdr")},
         {Solid::OpticalDrive::HdDvdrw, QStringLiteral("storage.cdrom.hddvdrw")}};
+    // clang-format on
 
     for (auto it = map.cbegin(); it != map.cend(); ++it) {
         if (m_device->prop(it.value()).toBool()) {

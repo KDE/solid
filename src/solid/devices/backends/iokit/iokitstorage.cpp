@@ -55,8 +55,8 @@ Solid::StorageDrive::DriveType IOKitStorage::driveType() const
     const QString udi = m_device->udi();
     const QString type = m_device->property(QLatin1String("className")).toString();
 
-    if (type == QStringLiteral("IOCDMedia")
-        || type == QStringLiteral("IOBDMedia")
+    if (type == QStringLiteral("IOCDMedia") //
+        || type == QStringLiteral("IOBDMedia") //
         || type == QStringLiteral("IODVDMedia")) {
         return Solid::StorageDrive::CdromDrive;
     }
@@ -79,8 +79,9 @@ bool IOKitStorage::isRemovable() const
 bool IOKitStorage::isHotpluggable() const
 {
     const Solid::StorageDrive::DriveType type = driveType();
-    return bus() == Solid::StorageDrive::Usb
-        || type == Solid::StorageDrive::CdromDrive || type == Solid::StorageDrive::SdMmc;
+    return bus() == Solid::StorageDrive::Usb //
+        || type == Solid::StorageDrive::CdromDrive //
+        || type == Solid::StorageDrive::SdMmc;
 }
 
 qulonglong IOKitStorage::size() const

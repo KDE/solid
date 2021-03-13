@@ -105,7 +105,7 @@ IOKitManager::IOKitManager(QObject *parent)
     }
 
     CFRunLoopAddSource(CFRunLoopGetCurrent(), d->source, kCFRunLoopDefaultMode);
-
+    // clang-format off
     d->supportedInterfaces << Solid::DeviceInterface::GenericInterface
                            << Solid::DeviceInterface::Processor
                            << Solid::DeviceInterface::Block
@@ -117,6 +117,7 @@ IOKitManager::IOKitManager(QObject *parent)
                            << Solid::DeviceInterface::Camera
                            << Solid::DeviceInterface::PortableMediaPlayer
                            << Solid::DeviceInterface::Battery;
+    // clang-format on
 }
 
 IOKitManager::~IOKitManager()

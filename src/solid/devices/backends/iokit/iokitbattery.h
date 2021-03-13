@@ -45,6 +45,7 @@ public:
     QString serial() const override;
 
     // ### the ones below are TODO
+    // clang-format off
     Solid::Battery::Technology technology() const override { return Solid::Battery::UnknownTechnology; }
     double energy() const override { return 0.0; }
     double energyFull() const override { return 0.0; }
@@ -56,6 +57,7 @@ public:
     QString recallUrl() const override { return QString(); }
 
     qlonglong remainingTime() const override { return -1; }
+    // clang-format on
 
 Q_SIGNALS:
     void energyChanged(double energy, const QString &udi) override;

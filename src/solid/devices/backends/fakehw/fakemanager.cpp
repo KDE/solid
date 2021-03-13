@@ -41,6 +41,7 @@ FakeManager::FakeManager(QObject *parent, const QString &xmlFile)
 
     parseMachineFile();
 
+    // clang-format off
     d->supportedInterfaces << Solid::DeviceInterface::GenericInterface
                            << Solid::DeviceInterface::Processor
                            << Solid::DeviceInterface::Block
@@ -53,6 +54,7 @@ FakeManager::FakeManager(QObject *parent, const QString &xmlFile)
                            << Solid::DeviceInterface::PortableMediaPlayer
                            << Solid::DeviceInterface::Battery
                            << Solid::DeviceInterface::NetworkShare;
+    // clang-format on
 }
 
 FakeManager::~FakeManager()

@@ -13,6 +13,7 @@
 #include <QDebug>
 #include <stdlib.h>
 
+// clang-format off
 #define QTEST_GUILESS_MAIN_SYSTEM_DBUS(TestObject) \
 int main(int argc, char *argv[]) \
 { \

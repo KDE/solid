@@ -158,7 +158,7 @@ public:
     }
 #endif //EJECT_USING_DISKARBITRATION
 };
-
+// clang-format off
 const QMap<Solid::OpticalDrive::MediumType, uint32_t> IOKitOpticalDrive::Private::cdTypeMap = {
     {Solid::OpticalDrive::Cdr, kCDFeaturesWriteOnceMask},
     {Solid::OpticalDrive::Cdrw, kCDFeaturesReWriteableMask}};
@@ -178,6 +178,7 @@ const QMap<Solid::OpticalDrive::MediumType, uint32_t> IOKitOpticalDrive::Private
 const QMap<Solid::OpticalDrive::MediumType, uint32_t> IOKitOpticalDrive::Private::bdTypeMap = {
     {Solid::OpticalDrive::Bd, kBDFeaturesReadMask},
     {Solid::OpticalDrive::Bdr, kBDFeaturesWriteMask}}; // also Solid::OpticalDrive::Bdre
+// clang-format on
 
 IOKitOpticalDrive::IOKitOpticalDrive(IOKitDevice *device)
     : IOKitStorage(device)

@@ -58,11 +58,11 @@ QString _k_resolveSymLink(const QString &filename)
 
 bool _k_isNetworkFileSystem(const QString &fstype, const QString &devName)
 {
-    if (fstype == "nfs"
-            || fstype == "nfs4"
-            || fstype == "smbfs"
-            || fstype == "cifs"
-            || devName.startsWith(QLatin1String("//"))) {
+    if (fstype == "nfs" //
+        || fstype == "nfs4" //
+        || fstype == "smbfs" //
+        || fstype == "cifs" //
+        || devName.startsWith(QLatin1String("//"))) {
         return true;
     }
     return false;

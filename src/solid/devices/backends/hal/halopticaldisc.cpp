@@ -22,7 +22,7 @@ OpticalDisc::~OpticalDisc()
 Solid::OpticalDisc::ContentTypes OpticalDisc::availableContent() const
 {
     Solid::OpticalDisc::ContentTypes content;
-
+    // clang-format off
     const QMap<Solid::OpticalDisc::ContentType, QString> map = {
         {Solid::OpticalDisc::Audio, QStringLiteral("volume.disc.has_audio")},
         {Solid::OpticalDisc::Data, QStringLiteral("volume.disc.has_data")},
@@ -30,6 +30,7 @@ Solid::OpticalDisc::ContentTypes OpticalDisc::availableContent() const
         {Solid::OpticalDisc::SuperVideoCd, QStringLiteral("volume.disc.is_svcd")},
         {Solid::OpticalDisc::VideoDvd, QStringLiteral("volume.disc.is_videodvd")},
         {Solid::OpticalDisc::VideoBluRay, QStringLiteral("volume.disc.is_blurayvideo")}};
+    // clang-format on
 
     for (auto it = map.cbegin(); it != map.cend(); ++it) {
         if (m_device->prop(it.value()).toBool()) {

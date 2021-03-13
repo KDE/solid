@@ -25,6 +25,8 @@ Q_DECLARE_METATYPE(VariantMapMap)
 typedef QMap<QDBusObjectPath, VariantMapMap> DBUSManagerStruct;
 Q_DECLARE_METATYPE(DBUSManagerStruct)
 
+// clang-format off
+
 /* UDisks2 */
 #define UD2_DBUS_SERVICE                 "org.freedesktop.UDisks2"
 #define UD2_DBUS_PATH                    "/org/freedesktop/UDisks2"

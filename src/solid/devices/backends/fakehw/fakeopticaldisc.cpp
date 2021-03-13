@@ -26,12 +26,14 @@ Solid::OpticalDisc::ContentTypes FakeOpticalDisc::availableContent() const
 {
     Solid::OpticalDisc::ContentTypes content;
 
+    // clang-format off
     const QMap<QString, Solid::OpticalDisc::ContentType> map = {
         {QStringLiteral("audio"), Solid::OpticalDisc::Audio},
         {QStringLiteral("data"), Solid::OpticalDisc::Data},
         {QStringLiteral("vcd"), Solid::OpticalDisc::VideoCd},
         {QStringLiteral("svcd"), Solid::OpticalDisc::SuperVideoCd},
         {QStringLiteral("videodvd"), Solid::OpticalDisc::VideoDvd}};
+    // clang-format on
 
     const QStringList content_typelist = fakeDevice()->property("availableContent").toString().split(',');
 

@@ -181,8 +181,8 @@ QString HalDevice::icon() const
             return "media-flash-sd-mmc";
         } else if (prop("storage.hotpluggable").toBool()) {
             if (prop("storage.bus").toString() == "usb") {
-                if (prop("storage.no_partitions_hint").toBool()
-                        || prop("storage.removable.media_size").toLongLong() < 4000000000LL) {
+                if (prop("storage.no_partitions_hint").toBool() //
+                    || prop("storage.removable.media_size").toLongLong() < 4000000000LL) {
                     return "drive-removable-media-usb-pendrive";
                 } else {
                     return "drive-removable-media-usb";
@@ -199,13 +199,13 @@ QString HalDevice::icon() const
         QStringList capabilities = prop("info.capabilities").toStringList();
 
         if (capabilities.contains("volume.disc")) {
-            bool has_video = prop("volume.disc.is_vcd").toBool()
-                             || prop("volume.disc.is_svcd").toBool()
-                             || prop("volume.disc.is_videodvd").toBool();
+            bool has_video = prop("volume.disc.is_vcd").toBool() //
+                || prop("volume.disc.is_svcd").toBool() //
+                || prop("volume.disc.is_videodvd").toBool();
             bool has_audio = prop("volume.disc.has_audio").toBool();
-            bool recordable = prop("volume.disc.is_blank").toBool()
-                              || prop("volume.disc.is_appendable").toBool()
-                              || prop("volume.disc.is_rewritable").toBool();
+            bool recordable = prop("volume.disc.is_blank").toBool() //
+                || prop("volume.disc.is_appendable").toBool() //
+                || prop("volume.disc.is_rewritable").toBool();
 
             if (has_video) {
                 return "media-optical-video";
