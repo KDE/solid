@@ -7,7 +7,6 @@
 
 #include "udisksstoragedrive.h"
 
-
 #include <QDebug>
 
 using namespace Solid::Backends::UDisks2;
@@ -35,8 +34,8 @@ bool StorageDrive::isHotpluggable() const
 {
     const Solid::StorageDrive::Bus _bus = bus();
 #if UDEV_FOUND
-    return _bus == Solid::StorageDrive::Usb || _bus == Solid::StorageDrive::Ieee1394 ||
-           (m_udevDevice.deviceProperty("UDISKS_SYSTEM").isValid() && !m_udevDevice.deviceProperty("UDISKS_SYSTEM").toBool());
+    return _bus == Solid::StorageDrive::Usb || _bus == Solid::StorageDrive::Ieee1394
+        || (m_udevDevice.deviceProperty("UDISKS_SYSTEM").isValid() && !m_udevDevice.deviceProperty("UDISKS_SYSTEM").toBool());
 #elif defined(Q_OS_FREEBSD)
     return m_device->prop("bsdisks_IsHotpluggable").toBool();
 #else
@@ -73,8 +72,7 @@ Solid::StorageDrive::DriveType StorageDrive::driveType() const
         return Solid::StorageDrive::MemoryStick;
     } else if (mediaTypes.contains("flash_sm")) {
         return Solid::StorageDrive::SmartMedia;
-    } else if (mediaTypes.contains("flash_sd") || mediaTypes.contains("flash_sdhc")
-               || mediaTypes.contains("flash_mmc") || mediaTypes.contains("flash_sdxc")) {
+    } else if (mediaTypes.contains("flash_sd") || mediaTypes.contains("flash_sdhc") || mediaTypes.contains("flash_mmc") || mediaTypes.contains("flash_sdxc")) {
         return Solid::StorageDrive::SdMmc;
     }
     // FIXME: udisks2 doesn't know about xD cards
@@ -86,7 +84,7 @@ Solid::StorageDrive::DriveType StorageDrive::driveType() const
 Solid::StorageDrive::Bus StorageDrive::bus() const
 {
     const QString bus = m_device->prop("ConnectionBus").toString();
-    const QString udevBus = 
+    const QString udevBus =
 #if UDEV_FOUND
         m_udevDevice.deviceProperty("ID_BUS").toString();
 #elif defined(Q_OS_FREEBSD)
@@ -95,7 +93,7 @@ Solid::StorageDrive::Bus StorageDrive::bus() const
 #error Implement this or stub this out for your platform
 #endif
 
-    //qDebug() << "bus:" << bus << "udev bus:" << udevBus;
+    // qDebug() << "bus:" << bus << "udev bus:" << udevBus;
 
     if (udevBus == "ata") {
 #if UDEV_FOUND
@@ -120,7 +118,7 @@ Solid::StorageDrive::Bus StorageDrive::bus() const
     } else if (udevBus == "scsi") {
         return Solid::StorageDrive::Scsi;
     }
-#if 0  // TODO add these to Solid
+#if 0 // TODO add these to Solid
     else if (bus == "sdio") {
         return Solid::StorageDrive::SDIO;
     } else if (bus == "virtual") {

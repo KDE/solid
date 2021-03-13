@@ -6,16 +6,15 @@
 
 #include "udevdevice.h"
 
-#include "udevgenericinterface.h"
-#include "udevprocessor.h"
-#include "udevcamera.h"
-#include "udevportablemediaplayer.h"
-#include "udevblock.h"
 #include "cpuinfo.h"
+#include "udevblock.h"
+#include "udevcamera.h"
+#include "udevgenericinterface.h"
+#include "udevportablemediaplayer.h"
+#include "udevprocessor.h"
 
-#include <sys/socket.h>
 #include <linux/if_arp.h>
-
+#include <sys/socket.h>
 
 using namespace Solid::Backends::UDev;
 

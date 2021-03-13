@@ -7,12 +7,11 @@
 #include "fdinhibitionjob.h"
 #include "fdinhibition.h"
 
-
 #include <unistd.h>
 
 using namespace Solid;
 
-FdInhibitionJob::FdInhibitionJob(Power::InhibitionTypes inhibitions, const QString &description, QObject* parent)
+FdInhibitionJob::FdInhibitionJob(Power::InhibitionTypes inhibitions, const QString &description, QObject *parent)
     : AbstractInhibitionJob(parent)
     , m_inhibition(new FdInhibition(inhibitions, description))
 {
@@ -36,8 +35,7 @@ void FdInhibitionJob::stateChanged(Inhibition::State state)
     emitResult();
 }
 
-
-Inhibition* FdInhibitionJob::inhibition()
+Inhibition *FdInhibitionJob::inhibition()
 {
     return new Inhibition(m_inhibition);
 }

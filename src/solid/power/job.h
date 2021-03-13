@@ -40,7 +40,7 @@ class SOLID_EXPORT Job : public QObject
     Q_PROPERTY(QString errorText READ errorText NOTIFY result)
 
 public:
-    explicit Job(QObject* parent = nullptr);
+    explicit Job(QObject *parent = nullptr);
     virtual ~Job();
 
     enum Error {
@@ -162,6 +162,7 @@ protected:
 
     JobPrivate *const d_ptr;
     Job(JobPrivate &dd, QObject *parent);
+
 private:
     Q_DECLARE_PRIVATE(Job)
 
@@ -171,4 +172,4 @@ Q_SIGNALS:
 }
 Q_DECLARE_METATYPE(Solid::Job::Error)
 
-#endif //SOLID_JOB_H
+#endif // SOLID_JOB_H

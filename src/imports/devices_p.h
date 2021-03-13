@@ -12,12 +12,11 @@
 #include <QSharedPointer>
 #include <QWeakPointer>
 
-#include <solid/devicenotifier.h>
 #include <solid/device.h>
+#include <solid/devicenotifier.h>
 
 namespace Solid
 {
-
 /**
  * Instances of this class are used as backends for
  * Devices and DevicesPrivate classes.
@@ -31,7 +30,7 @@ namespace Solid
  * allocation and deallocation - just use DevicesQueryPrivate::forQuery
  * and store the retrieved smart pointer.
  */
-class DevicesQueryPrivate: public QObject
+class DevicesQueryPrivate : public QObject
 {
     Q_OBJECT
 
@@ -78,10 +77,9 @@ private:
     QStringList matchingDevices;
 
     // Maps queries to the handler objects
-    static QHash<QString, QWeakPointer<DevicesQueryPrivate> > handlers;
+    static QHash<QString, QWeakPointer<DevicesQueryPrivate>> handlers;
 };
 
 } // namespace Solid
 
 #endif
-

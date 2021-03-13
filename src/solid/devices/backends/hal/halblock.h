@@ -7,8 +7,8 @@
 #ifndef SOLID_BACKENDS_HAL_BLOCK_H
 #define SOLID_BACKENDS_HAL_BLOCK_H
 
-#include <solid/devices/ifaces/block.h>
 #include "haldeviceinterface.h"
+#include <solid/devices/ifaces/block.h>
 
 namespace Solid
 {

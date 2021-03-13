@@ -14,7 +14,6 @@
 
 namespace UdevQt
 {
-
 class DevicePrivate;
 class Device
 {
@@ -22,7 +21,7 @@ public:
     Device();
     Device(const Device &other);
     ~Device();
-    Device &operator= (const Device &other);
+    Device &operator=(const Device &other);
 
     bool isValid() const;
     QString subsystem() const;

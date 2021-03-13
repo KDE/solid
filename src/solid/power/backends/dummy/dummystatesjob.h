@@ -22,4 +22,4 @@ private Q_SLOTS:
 };
 }
 
-#endif //DUMMY_STATES_JOB_H
+#endif // DUMMY_STATES_JOB_H

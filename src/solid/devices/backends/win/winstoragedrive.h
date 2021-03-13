@@ -8,8 +8,8 @@
 
 #include <solid/devices/ifaces/storagedrive.h>
 
-#include "windevice.h"
 #include "winblock.h"
+#include "windevice.h"
 
 namespace Solid
 {
@@ -17,8 +17,7 @@ namespace Backends
 {
 namespace Win
 {
-
-class WinStorageDrive : public WinBlock,  public virtual Solid::Ifaces::StorageDrive
+class WinStorageDrive : public WinBlock, public virtual Solid::Ifaces::StorageDrive
 {
     Q_OBJECT
     Q_INTERFACES(Solid::Ifaces::StorageDrive)

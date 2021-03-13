@@ -15,7 +15,7 @@ public:
     AbstractInhibition *backendObject;
 };
 
-Inhibition::Inhibition(AbstractInhibition* backend, QObject* parent)
+Inhibition::Inhibition(AbstractInhibition *backend, QObject *parent)
     : QObject(parent)
     , d_ptr(new InhibitionPrivate)
 {
@@ -43,4 +43,3 @@ Inhibition::State Inhibition::state() const
 {
     return d_ptr->backendObject->state();
 }
-

@@ -9,9 +9,9 @@
 
 using namespace Solid::Backends::Fstab;
 
-FstabNetworkShare::FstabNetworkShare(Solid::Backends::Fstab::FstabDevice *device) :
-    QObject(device),
-    m_fstabDevice(device)
+FstabNetworkShare::FstabNetworkShare(Solid::Backends::Fstab::FstabDevice *device)
+    : QObject(device)
+    , m_fstabDevice(device)
 {
     QString url;
     if (m_fstabDevice->device().startsWith("//")) {

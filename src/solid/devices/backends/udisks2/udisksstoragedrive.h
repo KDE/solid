@@ -10,8 +10,8 @@
 
 #include <ifaces/storagedrive.h>
 
-#include <config-solid.h>
 #include "../shared/udevqt.h"
+#include <config-solid.h>
 
 #include "udisksblock.h"
 
@@ -21,8 +21,7 @@ namespace Backends
 {
 namespace UDisks2
 {
-
-class StorageDrive: public Block, virtual public Solid::Ifaces::StorageDrive
+class StorageDrive : public Block, virtual public Solid::Ifaces::StorageDrive
 {
     Q_OBJECT
     Q_INTERFACES(Solid::Ifaces::StorageDrive)

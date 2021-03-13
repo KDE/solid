@@ -5,18 +5,20 @@
 */
 
 #include "fstabwatcher.h"
-#include "soliddefs_p.h"
 #include "fstab_debug.h"
+#include "soliddefs_p.h"
 
 #include <QCoreApplication>
+#include <QFile>
 #include <QFileSystemWatcher>
 #include <QSocketNotifier>
-#include <QFile>
 
-namespace Solid {
-namespace Backends {
-namespace Fstab {
-
+namespace Solid
+{
+namespace Backends
+{
+namespace Fstab
+{
 Q_GLOBAL_STATIC(FstabWatcher, globalFstabWatcher)
 
 static const QString s_mtabFile = QStringLiteral("/etc/mtab");
@@ -36,32 +38,26 @@ FstabWatcher::FstabWatcher()
     }
 
     m_mtabFile = new QFile(s_mtabFile, this);
-    if (m_mtabFile && m_mtabFile->symLinkTarget().startsWith("/proc/")
-            && m_mtabFile->open(QIODevice::ReadOnly)) {
-
-        m_mtabSocketNotifier = new QSocketNotifier(m_mtabFile->handle(),
-                QSocketNotifier::Exception, this);
-        connect(m_mtabSocketNotifier, &QSocketNotifier::activated,
-                this, &FstabWatcher::mtabChanged);
+    if (m_mtabFile && m_mtabFile->symLinkTarget().startsWith("/proc/") && m_mtabFile->open(QIODevice::ReadOnly)) {
+        m_mtabSocketNotifier = new QSocketNotifier(m_mtabFile->handle(), QSocketNotifier::Exception, this);
+        connect(m_mtabSocketNotifier, &QSocketNotifier::activated, this, &FstabWatcher::mtabChanged);
     } else {
         m_fileSystemWatcher->addPath(s_mtabFile);
     }
 
     m_fileSystemWatcher->addPath(s_fstabPath);
-    connect(m_fileSystemWatcher, &QFileSystemWatcher::directoryChanged,
-        this, [this] (const QString &) {
-            if (!m_isFstabWatched) {
-                m_isFstabWatched = m_fileSystemWatcher->addPath(s_fstabFile);
-                if (m_isFstabWatched) {
-                    qCDebug(FSTAB) << "Readded" << s_fstabFile;
-                    Q_EMIT onFileChanged(s_fstabFile);
-                }
+    connect(m_fileSystemWatcher, &QFileSystemWatcher::directoryChanged, this, [this](const QString &) {
+        if (!m_isFstabWatched) {
+            m_isFstabWatched = m_fileSystemWatcher->addPath(s_fstabFile);
+            if (m_isFstabWatched) {
+                qCDebug(FSTAB) << "Readded" << s_fstabFile;
+                Q_EMIT onFileChanged(s_fstabFile);
             }
+        }
     });
 
     m_isFstabWatched = m_fileSystemWatcher->addPath(s_fstabFile);
-    connect(m_fileSystemWatcher, &QFileSystemWatcher::fileChanged,
-            this, &FstabWatcher::onFileChanged);
+    connect(m_fileSystemWatcher, &QFileSystemWatcher::fileChanged, this, &FstabWatcher::onFileChanged);
 }
 
 FstabWatcher::~FstabWatcher()
@@ -116,4 +112,6 @@ void FstabWatcher::onFileChanged(const QString &path)
     }
 }
 
-}}} // namespace Solid:Backends::Fstab
+}
+}
+} // namespace Solid:Backends::Fstab

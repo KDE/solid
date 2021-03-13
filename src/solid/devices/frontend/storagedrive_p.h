@@ -15,7 +15,9 @@ class StorageDrivePrivate : public DeviceInterfacePrivate
 {
 public:
     StorageDrivePrivate()
-        : DeviceInterfacePrivate() { }
+        : DeviceInterfacePrivate()
+    {
+    }
 };
 }
 

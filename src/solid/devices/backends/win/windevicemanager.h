@@ -9,8 +9,8 @@
 
 #include <solid/devices/ifaces/devicemanager.h>
 
-#include <QSet>
 #include <QDebug>
+#include <QSet>
 
 #include <qt_windows.h>
 #include <winioctl.h>
@@ -18,14 +18,13 @@
 inline QString qGetLastError(ulong errorNummber = GetLastError())
 {
     LPVOID error = NULL;
-    size_t len = FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER |
-                               FORMAT_MESSAGE_FROM_SYSTEM |
-                               FORMAT_MESSAGE_IGNORE_INSERTS,
+    size_t len = FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
                                NULL,
                                errorNummber,
                                MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
-                               (LPWSTR) &error,
-                               0, NULL);
+                               (LPWSTR)&error,
+                               0,
+                               NULL);
     QString out = QString::fromWCharArray((wchar_t *)error, (int)len).trimmed().append(" %1").arg(errorNummber);
     LocalFree(error);
     return out;
@@ -37,8 +36,6 @@ namespace Backends
 {
 namespace Win
 {
-
-
 class WinDeviceManager : public Solid::Ifaces::DeviceManager
 {
     Q_OBJECT
@@ -52,20 +49,19 @@ public:
 
     virtual QStringList allDevices();
 
-    virtual QStringList devicesFromQuery(const QString &parentUdi,
-                                         Solid::DeviceInterface::Type type = Solid::DeviceInterface::Unknown);
+    virtual QStringList devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type = Solid::DeviceInterface::Unknown);
 
     virtual QObject *createDevice(const QString &udi);
 
     static const WinDeviceManager *instance();
 
-    template< class INFO>
+    template<class INFO>
     static INFO getDeviceInfo(const QString &devName, int code)
     {
         return getDeviceInfo<INFO, void *>(devName, code);
     }
 
-    template< class INFO, class QUERY>
+    template<class INFO, class QUERY>
     static INFO getDeviceInfo(const QString &devName, int code, QUERY *query = NULL)
     {
         INFO info;
@@ -77,7 +73,7 @@ public:
     template<class BUFFER_TYPE, class QUERY>
     static void getDeviceInfo(const QString &devName, int code, BUFFER_TYPE *out, DWORD outSize, QUERY *query = NULL)
     {
-        ZeroMemory(out, sizeof(BUFFER_TYPE)*outSize);
+        ZeroMemory(out, sizeof(BUFFER_TYPE) * outSize);
         getDeviceInfoPrivate(devName, code, out, outSize, query);
     }
 
@@ -89,7 +85,6 @@ public:
 Q_SIGNALS:
     void powerChanged();
 
-
 private Q_SLOTS:
     void updateDeviceList();
     void slotDeviceAdded(const QSet<QString> &udi);
@@ -98,12 +93,11 @@ private Q_SLOTS:
 private:
     friend class SolidWinEventFilter;
 
-
     QSet<QString> m_devices;
     QStringList m_devicesList;
     QSet<Solid::DeviceInterface::Type> m_supportedInterfaces;
 
-    template< class INFO, class QUERY>
+    template<class INFO, class QUERY>
     static void getDeviceInfoPrivate(const QString &devName, int code, INFO *info, DWORD size, QUERY *query = NULL)
     {
         Q_ASSERT(!devName.isNull());
@@ -113,15 +107,14 @@ private:
             dev = QLatin1String("\\\\?\\") + dev;
         }
         deviceNameBuffer[dev.toWCharArray(deviceNameBuffer)] = 0;
-        DWORD bytesReturned =  0;
+        DWORD bytesReturned = 0;
 
         ulong err = NO_ERROR;
         HANDLE handle = ::CreateFileW(deviceNameBuffer, GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL);
         if (handle == INVALID_HANDLE_VALUE) {
-
             err = GetLastError();
             if (err == ERROR_ACCESS_DENIED) {
-                //we would need admin rights for GENERIC_READ on systenm drives and volumes
+                // we would need admin rights for GENERIC_READ on systenm drives and volumes
                 handle = ::CreateFileW(deviceNameBuffer, 0, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL);
                 err = GetLastError();
             }
@@ -129,7 +122,6 @@ private:
                 qWarning() << "Invalid Handle" << dev << "reason:" << qGetLastError(err) << " this should not happen.";
                 return;
             }
-
         }
         if (::DeviceIoControl(handle, code, query, sizeof(QUERY), info, size, &bytesReturned, NULL)) {
             ::CloseHandle(handle);
@@ -142,21 +134,19 @@ private:
         }
 
         err = GetLastError();
-        switch(err)
-        {
+        switch (err) {
         case ERROR_NOT_READY:
-            //the drive is a cd drive with no disk
+            // the drive is a cd drive with no disk
             break;
         case ERROR_INVALID_FUNCTION:
-            //in most cases this means that the device doesn't support this method, like temperature for some batteries
+            // in most cases this means that the device doesn't support this method, like temperature for some batteries
             break;
         default:
             qWarning() << "Failed to query" << dev << "reason:" << qGetLastError(err);
-            //DebugBreak();
+            // DebugBreak();
         }
         ::CloseHandle(handle);
     }
-
 };
 
 }

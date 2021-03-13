@@ -4,13 +4,12 @@
     SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
-
 #ifndef SOLID_QTEST_DBUS_H
 #define SOLID_QTEST_DBUS_H
 
-#include <QTest>
-#include <QProcess>
 #include <QDebug>
+#include <QProcess>
+#include <QTest>
 #include <stdlib.h>
 
 // clang-format off

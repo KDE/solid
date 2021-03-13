@@ -4,8 +4,8 @@
     SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
-#include "devicenotifier.h"
 #include "devicemanager_p.h" //krazy:exclude=includes (devicenotifier.h is the header file for this class)
+#include "devicenotifier.h"
 
 #include "device.h"
 #include "device_p.h"
@@ -14,8 +14,8 @@
 #include "storageaccess.h"
 #include "storagevolume.h"
 
-#include "ifaces/devicemanager.h"
 #include "ifaces/device.h"
+#include "ifaces/devicemanager.h"
 
 #include "soliddefs_p.h"
 
@@ -32,10 +32,8 @@ Solid::DeviceManagerPrivate::DeviceManagerPrivate()
 
     const QList<QObject *> backends = managerBackends();
     for (QObject *backend : backends) {
-        connect(backend, SIGNAL(deviceAdded(QString)),
-                this, SLOT(_k_deviceAdded(QString)));
-        connect(backend, SIGNAL(deviceRemoved(QString)),
-                this, SLOT(_k_deviceRemoved(QString)));
+        connect(backend, SIGNAL(deviceAdded(QString)), this, SLOT(_k_deviceAdded(QString)));
+        connect(backend, SIGNAL(deviceRemoved(QString)), this, SLOT(_k_deviceRemoved(QString)));
     }
 }
 
@@ -78,8 +76,7 @@ QList<Solid::Device> Solid::Device::allDevices()
     return list;
 }
 
-QList<Solid::Device> Solid::Device::listFromQuery(const QString &predicate,
-        const QString &parentUdi)
+QList<Solid::Device> Solid::Device::listFromQuery(const QString &predicate, const QString &parentUdi)
 {
     Predicate p = Predicate::fromString(predicate);
 
@@ -90,8 +87,7 @@ QList<Solid::Device> Solid::Device::listFromQuery(const QString &predicate,
     }
 }
 
-QList<Solid::Device> Solid::Device::listFromType(const DeviceInterface::Type &type,
-        const QString &parentUdi)
+QList<Solid::Device> Solid::Device::listFromType(const DeviceInterface::Type &type, const QString &parentUdi)
 {
     QList<Device> list;
     const QList<QObject *> backends = globalDeviceStorage->managerBackends();
@@ -115,8 +111,7 @@ QList<Solid::Device> Solid::Device::listFromType(const DeviceInterface::Type &ty
     return list;
 }
 
-QList<Solid::Device> Solid::Device::listFromQuery(const Predicate &predicate,
-        const QString &parentUdi)
+QList<Solid::Device> Solid::Device::listFromQuery(const Predicate &predicate, const QString &parentUdi)
 {
     QList<Device> list;
     const QSet<DeviceInterface::Type> usedTypes = predicate.usedTypes();
@@ -175,7 +170,7 @@ Solid::Device Solid::Device::storageAccessFromPath(const QString &path)
         qCWarning(Frontend::DeviceManager::DEVICEMANAGER).nospace() << "Couldn't get StorageAccess for \"" << path << "\" - File doesn't exist";
         return Device();
     }
-    //We ensure file and all mount paths are with trailing dir separators, to avoid false positive matches later
+    // We ensure file and all mount paths are with trailing dir separators, to avoid false positive matches later
     QString trailing_path(path);
     if (!trailing_path.endsWith(QDir::separator())) {
         trailing_path.append(QDir::separator());
@@ -263,8 +258,7 @@ Solid::DevicePrivate *Solid::DeviceManagerPrivate::findRegisteredDevice(const QS
         m_devicesMap[udi] = ptr;
         m_reverseMap[devData] = udi;
 
-        connect(devData, SIGNAL(destroyed(QObject*)),
-                this, SLOT(_k_destroyed(QObject*)));
+        connect(devData, SIGNAL(destroyed(QObject *)), this, SLOT(_k_destroyed(QObject *)));
 
         return devData;
     }
@@ -301,7 +295,6 @@ Solid::Ifaces::Device *Solid::DeviceManagerPrivate::createBackendObject(const QS
 
 Solid::DeviceManagerStorage::DeviceManagerStorage()
 {
-
 }
 
 QList<QObject *> Solid::DeviceManagerStorage::managerBackends()
@@ -325,4 +318,3 @@ void Solid::DeviceManagerStorage::ensureManagerCreated()
 
 #include "moc_devicemanager_p.cpp"
 #include "moc_devicenotifier.cpp"
-

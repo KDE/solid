@@ -7,8 +7,8 @@
 #ifndef WINBLOCK_H
 #define WINBLOCK_H
 
-#include <solid/devices/ifaces/block.h>
 #include "wininterface.h"
+#include <solid/devices/ifaces/block.h>
 
 namespace Solid
 {
@@ -16,7 +16,6 @@ namespace Backends
 {
 namespace Win
 {
-
 class WinBlock : public WinInterface, virtual public Solid::Ifaces::Block
 {
     Q_OBJECT
@@ -38,9 +37,10 @@ public:
     static QString resolveVirtualDrive(const QString &drive);
     static QSet<QString> updateUdiFromBitMask(const DWORD unitmask);
     static QSet<QString> getFromBitMask(const DWORD unitmask);
+
 private:
     static QMap<QString, QString> m_driveLetters;
-    static QMap<QString, QSet<QString> > m_driveUDIS;
+    static QMap<QString, QSet<QString>> m_driveUDIS;
     static QMap<QString, QString> m_virtualDrives;
 
     int m_major;

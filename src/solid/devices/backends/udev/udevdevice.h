@@ -9,8 +9,8 @@
 
 #include "udev.h"
 
-#include <solid/devices/ifaces/device.h>
 #include <QStringList>
+#include <solid/devices/ifaces/device.h>
 
 namespace Solid
 {
@@ -18,7 +18,6 @@ namespace Backends
 {
 namespace UDev
 {
-
 class UDevDevice : public Solid::Ifaces::Device
 {
     Q_OBJECT
@@ -57,6 +56,7 @@ public:
     int deviceNumber() const;
 
     UdevQt::Device udevDevice();
+
 private:
     UdevQt::Device m_device;
 };

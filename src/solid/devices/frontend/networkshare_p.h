@@ -15,7 +15,9 @@ class NetworkSharePrivate : public DeviceInterfacePrivate
 {
 public:
     NetworkSharePrivate()
-        : DeviceInterfacePrivate() { }
+        : DeviceInterfacePrivate()
+    {
+    }
 };
 }
 

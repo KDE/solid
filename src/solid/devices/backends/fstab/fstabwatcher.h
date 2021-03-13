@@ -19,7 +19,6 @@ namespace Backends
 {
 namespace Fstab
 {
-
 class FstabWatcher : public QObject
 {
     Q_OBJECT
@@ -48,4 +47,3 @@ private:
 }
 }
 #endif // SOLID_BACKENDS_FSTAB_WATCHER_H
-

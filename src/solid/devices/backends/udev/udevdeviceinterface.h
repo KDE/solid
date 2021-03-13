@@ -7,8 +7,8 @@
 #ifndef SOLID_BACKENDS_UDEV_DEVICEINTERFACE_H
 #define SOLID_BACKENDS_UDEV_DEVICEINTERFACE_H
 
-#include <solid/devices/ifaces/deviceinterface.h>
 #include "udevdevice.h"
+#include <solid/devices/ifaces/deviceinterface.h>
 
 #include <QObject>
 

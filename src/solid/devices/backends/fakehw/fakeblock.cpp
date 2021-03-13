@@ -12,12 +12,10 @@ using namespace Solid::Backends::Fake;
 FakeBlock::FakeBlock(FakeDevice *device)
     : FakeDeviceInterface(device)
 {
-
 }
 
 FakeBlock::~FakeBlock()
 {
-
 }
 
 int FakeBlock::deviceMajor() const
@@ -34,4 +32,3 @@ QString FakeBlock::device() const
 {
     return fakeDevice()->property("device").toString();
 }
-

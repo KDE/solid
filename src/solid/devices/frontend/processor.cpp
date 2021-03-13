@@ -17,7 +17,6 @@ Solid::Processor::Processor(QObject *backendObject)
 
 Solid::Processor::~Processor()
 {
-
 }
 
 int Solid::Processor::number() const
@@ -43,4 +42,3 @@ Solid::Processor::InstructionSets Solid::Processor::instructionSets() const
     Q_D(const Processor);
     return_SOLID_CALL(Ifaces::Processor *, d->backendObject(), InstructionSets(), instructionSets());
 }
-

@@ -4,7 +4,6 @@
     SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
-
 #ifndef SOLID_FD_INHIBITION_H
 #define SOLID_FD_INHIBITION_H
 
@@ -12,8 +11,8 @@
 #include "inhibition.h"
 #include "solid/power.h"
 
-#include <qglobal.h>
 #include <QDBusMessage>
+#include <qglobal.h>
 
 namespace Solid
 {
@@ -21,7 +20,7 @@ class FdInhibition : public AbstractInhibition
 {
     Q_OBJECT
 public:
-    explicit FdInhibition(Power::InhibitionTypes inhibitions, const QString &description, QObject* parent = nullptr);
+    explicit FdInhibition(Power::InhibitionTypes inhibitions, const QString &description, QObject *parent = nullptr);
     virtual ~FdInhibition();
 
     void start() override;
@@ -44,4 +43,4 @@ private:
 };
 }
 
-#endif //SOLID_FD_INHIBITION_H
+#endif // SOLID_FD_INHIBITION_H

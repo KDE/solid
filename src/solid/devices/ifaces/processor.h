@@ -55,7 +55,6 @@ public:
      * @return the extensions supported by the CPU
      */
     virtual Solid::Processor::InstructionSets instructionSets() const = 0;
-
 };
 }
 }

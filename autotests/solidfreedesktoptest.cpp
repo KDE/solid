@@ -4,19 +4,19 @@
     SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
-#include "qtest_dbus.h"
 #include "fakeUpower.h"
 #include "fakelogind.h"
+#include "qtest_dbus.h"
 
-#include <QTest>
-#include <QSignalSpy>
 #include <QDBusConnection>
-#include <Solid/Power>
+#include <QSignalSpy>
+#include <QTest>
 #include <Solid/AcPluggedJob>
 #include <Solid/Inhibition>
 #include <Solid/InhibitionJob>
-#include <Solid/StatesJob>
+#include <Solid/Power>
 #include <Solid/RequestStateJob>
+#include <Solid/StatesJob>
 
 using namespace Solid;
 class solidFreedesktopTest : public QObject
@@ -78,7 +78,7 @@ void solidFreedesktopTest::testAcPluggedChanged()
 
 void solidFreedesktopTest::testAddInhibition()
 {
-    QSignalSpy spy(m_fakeLogind, SIGNAL(newInhibition(QString,QString,QString,QString)));
+    QSignalSpy spy(m_fakeLogind, SIGNAL(newInhibition(QString, QString, QString, QString)));
     auto job = new InhibitionJob(this);
     job->setDescription(QStringLiteral("Foo! I am inhibing!"));
     job->setInhibitions(Power::Shutdown | Power::Sleep);
@@ -107,12 +107,10 @@ void solidFreedesktopTest::testAddInhibition()
 
 void solidFreedesktopTest::testSupportedStates()
 {
-
 }
 
 void solidFreedesktopTest::testRequestState()
 {
-
 }
 
 QTEST_GUILESS_MAIN_SYSTEM_DBUS(solidFreedesktopTest)

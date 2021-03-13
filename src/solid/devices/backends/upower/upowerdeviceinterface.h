@@ -7,12 +7,12 @@
 #ifndef UPOWERDEVICEINTERFACE_H
 #define UPOWERDEVICEINTERFACE_H
 
-#include <ifaces/deviceinterface.h>
 #include "upowerdevice.h"
+#include <ifaces/deviceinterface.h>
 
 #include <QObject>
-#include <QStringList>
 #include <QPointer>
+#include <QStringList>
 
 namespace Solid
 {
@@ -20,7 +20,6 @@ namespace Backends
 {
 namespace UPower
 {
-
 class DeviceInterface : public QObject, virtual public Solid::Ifaces::DeviceInterface
 {
     Q_OBJECT

@@ -9,8 +9,8 @@
 
 #include <solid/devices/ifaces/storagevolume.h>
 
-#include "wininterface.h"
 #include "winblock.h"
+#include "wininterface.h"
 
 namespace Solid
 {
@@ -18,7 +18,6 @@ namespace Backends
 {
 namespace Win
 {
-
 class WinStorageVolume : public WinBlock, public virtual Solid::Ifaces::StorageVolume
 {
     Q_OBJECT
@@ -44,7 +43,6 @@ private:
     qulonglong m_size;
 
     void updateCache();
-
 };
 
 }

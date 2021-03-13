@@ -17,7 +17,6 @@ Solid::OpticalDisc::OpticalDisc(QObject *backendObject)
 
 Solid::OpticalDisc::~OpticalDisc()
 {
-
 }
 
 Solid::OpticalDisc::ContentTypes Solid::OpticalDisc::availableContent() const
@@ -55,4 +54,3 @@ qulonglong Solid::OpticalDisc::capacity() const
     Q_D(const OpticalDisc);
     return_SOLID_CALL(Ifaces::OpticalDisc *, d->backendObject(), 0, capacity());
 }
-

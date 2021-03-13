@@ -16,11 +16,16 @@ class AbstractRequestStateJob : public Job
 {
     Q_OBJECT
 public:
-    explicit AbstractRequestStateJob(QObject* parent = nullptr) : Job(parent) { }
-    virtual ~AbstractRequestStateJob() {}
+    explicit AbstractRequestStateJob(QObject *parent = nullptr)
+        : Job(parent)
+    {
+    }
+    virtual ~AbstractRequestStateJob()
+    {
+    }
 
     Power::InhibitionType state;
 };
 }
 
-#endif //ABSTRACT_REQUEST_STATE_JOB_H
+#endif // ABSTRACT_REQUEST_STATE_JOB_H

@@ -5,12 +5,12 @@
     SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
-#include <qvarlengtharray.h>
+#include <qdatetime.h>
+#include <qdebug.h>
 #include <qstring.h>
 #include <qstringlist.h>
 #include <qvariant.h>
-#include <qdatetime.h>
-#include <qdebug.h>
+#include <qvarlengtharray.h>
 
 #include <CoreFoundation/CoreFoundation.h>
 
@@ -23,12 +23,12 @@ static QString q_toString(const CFStringRef &str)
     CFIndex length = CFStringGetLength(str);
     QVarLengthArray<UniChar> buffer(length);
 
-    CFRange range = { 0, length };
+    CFRange range = {0, length};
     CFStringGetCharacters(str, range, buffer.data());
     return QString(reinterpret_cast<const QChar *>(buffer.data()), length);
 }
 
-template <typename T>
+template<typename T>
 static inline T convertCFNumber(const CFNumberRef &num, CFNumberType type)
 {
     T n;
@@ -86,8 +86,7 @@ static QVariant q_toVariant(const CFTypeRef &obj)
 
     if (typeId == CFDataGetTypeID()) {
         const CFDataRef cfdata = static_cast<const CFDataRef>(obj);
-        return QByteArray(reinterpret_cast<const char *>(CFDataGetBytePtr(cfdata)),
-                          CFDataGetLength(cfdata));
+        return QByteArray(reinterpret_cast<const char *>(CFDataGetBytePtr(cfdata)), CFDataGetLength(cfdata));
     }
 
     if (typeId == CFBooleanGetTypeID()) {
@@ -151,9 +150,7 @@ QMap<QString, QVariant> q_toVariantMap(const CFMutableDictionaryRef &dict)
     QVarLengthArray<void *> keys(count);
     QVarLengthArray<void *> values(count);
 
-    CFDictionaryGetKeysAndValues(dict,
-                                 const_cast<const void **>(keys.data()),
-                                 const_cast<const void **>(values.data()));
+    CFDictionaryGetKeysAndValues(dict, const_cast<const void **>(keys.data()), const_cast<const void **>(values.data()));
 
     for (int i = 0; i < count; ++i) {
         const QString key = q_toString((CFStringRef)keys[i]);
@@ -170,7 +167,7 @@ bool q_sysctlbyname(const char *name, QString &result)
     size_t size = 0;
     int error = 0;
     if (name && sysctlbyname(name, nullptr, &size, nullptr, 0) == 0 && size > 0) {
-        property = new char [size];
+        property = new char[size];
         error = sysctlbyname(name, property, &size, nullptr, 0);
         if (!error) {
             result = QLatin1String(property);

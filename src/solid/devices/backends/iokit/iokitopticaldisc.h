@@ -7,8 +7,8 @@
 #ifndef SOLID_BACKENDS_IOKIT_OPTICALDISC_H
 #define SOLID_BACKENDS_IOKIT_OPTICALDISC_H
 
-#include <solid/devices/ifaces/opticaldisc.h>
 #include "iokitvolume.h"
+#include <solid/devices/ifaces/opticaldisc.h>
 
 namespace Solid
 {

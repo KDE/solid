@@ -11,19 +11,19 @@
 #ifndef MANAGER_H_1329493525
 #define MANAGER_H_1329493525
 
-#include <QObject>
+#include <QDBusConnection>
 #include <QList>
+#include <QObject>
 #include <QString>
 #include <QStringList>
 #include <QVariant>
-#include <QDBusConnection>
 
 #include "../udisks2.h"
 
 /*
  * Proxy class for interface org.freedesktop.DBus.ObjectManager
  */
-class OrgFreedesktopDBusObjectManagerInterface: public QDBusAbstractInterface
+class OrgFreedesktopDBusObjectManagerInterface : public QDBusAbstractInterface
 {
     Q_OBJECT
 public:

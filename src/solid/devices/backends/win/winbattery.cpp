@@ -6,18 +6,18 @@
 #include "winbattery.h"
 #include "windevicemanager_p.h"
 
-#include <devpropdef.h>
-#include <setupapi.h>
 #include <batclass.h>
 #include <devguid.h>
+#include <devpropdef.h>
+#include <setupapi.h>
 
 using namespace Solid::Backends::Win;
 
 QMap<QString, WinBattery::Battery> WinBattery::m_udiToGDI = QMap<QString, WinBattery::Battery>();
 
-WinBattery::WinBattery(WinDevice *device) :
-    WinInterface(device),
-    m_state(Solid::Battery::NoCharge)
+WinBattery::WinBattery(WinDevice *device)
+    : WinInterface(device)
+    , m_state(Solid::Battery::NoCharge)
 {
     powerChanged();
     connect(SolidWinEventFilter::instance(), SIGNAL(powerChanged()), this, SLOT(powerChanged()));
@@ -56,11 +56,7 @@ Solid::Battery::ChargeState WinBattery::chargeState() const
 QSet<QString> WinBattery::getUdis()
 {
     QSet<QString> udis;
-    HDEVINFO hdev =
-            SetupDiGetClassDevs(&GUID_DEVCLASS_BATTERY,
-                                0,
-                                0,
-                                DIGCF_PRESENT | DIGCF_DEVICEINTERFACE);
+    HDEVINFO hdev = SetupDiGetClassDevs(&GUID_DEVCLASS_BATTERY, 0, 0, DIGCF_PRESENT | DIGCF_DEVICEINTERFACE);
 
     if (INVALID_HANDLE_VALUE != hdev) {
         // Limit search to 100 batteries max
@@ -69,38 +65,23 @@ QSet<QString> WinBattery::getUdis()
             ZeroMemory(&did, sizeof(did));
             did.cbSize = sizeof(did);
 
-            if (SetupDiEnumDeviceInterfaces(hdev,
-                                            0,
-                                            &GUID_DEVCLASS_BATTERY,
-                                            idev,
-                                            &did)) {
+            if (SetupDiEnumDeviceInterfaces(hdev, 0, &GUID_DEVCLASS_BATTERY, idev, &did)) {
                 DWORD cbRequired = 0;
 
-                SetupDiGetDeviceInterfaceDetailW(hdev,
-                                                 &did,
-                                                 0,
-                                                 0,
-                                                 &cbRequired,
-                                                 0);
+                SetupDiGetDeviceInterfaceDetailW(hdev, &did, 0, 0, &cbRequired, 0);
                 if (ERROR_INSUFFICIENT_BUFFER == GetLastError()) {
                     char *buffer = new char[cbRequired];
                     SP_DEVICE_INTERFACE_DETAIL_DATA *pdidd = (SP_DEVICE_INTERFACE_DETAIL_DATA *)buffer;
                     ZeroMemory(pdidd, cbRequired);
                     pdidd->cbSize = sizeof(*pdidd);
-                    if (SetupDiGetDeviceInterfaceDetail(hdev,
-                                                        &did,
-                                                        pdidd,
-                                                        cbRequired,
-                                                        &cbRequired,
-                                                        0)) {
+                    if (SetupDiGetDeviceInterfaceDetail(hdev, &did, pdidd, cbRequired, &cbRequired, 0)) {
                         QString path = QString::fromWCharArray(pdidd->DevicePath);
                         ulong tag = WinDeviceManager::getDeviceInfo<ulong>(path, IOCTL_BATTERY_QUERY_TAG);
                         QString udi = QLatin1String("/org/kde/solid/win/power.battery/battery#") + QString::number(tag);
                         udis << udi;
                         m_udiToGDI[udi] = Battery(path, tag);
                     }
-                    delete [] buffer;
-
+                    delete[] buffer;
                 }
             }
         }
@@ -117,8 +98,7 @@ const WinBattery::Battery WinBattery::batteryInfoFromUdi(const QString &udi)
 
 void WinBattery::powerChanged()
 {
-
-    const int old_charge  = m_charge;
+    const int old_charge = m_charge;
     const int old_capacity = m_capacity;
     const Solid::Battery::ChargeState old_state = m_state;
     const bool old_isPowerSupply = m_isPowerSupply;
@@ -130,7 +110,7 @@ void WinBattery::powerChanged()
 
     BATTERY_WAIT_STATUS batteryStatusQuery;
     ZeroMemory(&batteryStatusQuery, sizeof(batteryStatusQuery));
-    Battery b =  m_udiToGDI[m_device->udi()];
+    Battery b = m_udiToGDI[m_device->udi()];
     batteryStatusQuery.BatteryTag = b.second;
     BATTERY_STATUS status = WinDeviceManager::getDeviceInfo<BATTERY_STATUS, BATTERY_WAIT_STATUS>(b.first, IOCTL_BATTERY_QUERY_STATUS, &batteryStatusQuery);
 
@@ -138,7 +118,8 @@ void WinBattery::powerChanged()
     ZeroMemory(&batteryInformationQuery, sizeof(batteryInformationQuery));
     batteryInformationQuery.BatteryTag = b.second;
     batteryInformationQuery.InformationLevel = BatteryInformation;
-    BATTERY_INFORMATION info = WinDeviceManager::getDeviceInfo<BATTERY_INFORMATION, BATTERY_QUERY_INFORMATION>(b.first, IOCTL_BATTERY_QUERY_INFORMATION, &batteryInformationQuery);
+    BATTERY_INFORMATION info =
+        WinDeviceManager::getDeviceInfo<BATTERY_INFORMATION, BATTERY_QUERY_INFORMATION>(b.first, IOCTL_BATTERY_QUERY_INFORMATION, &batteryInformationQuery);
 
     initSerial(b);
     updateBatteryTemp(b);
@@ -160,11 +141,11 @@ void WinBattery::powerChanged()
         m_technology = Solid::Battery::UnknownTechnology;
     }
 
-    m_energy = status.Capacity / 1000.0;//provided in mWh
+    m_energy = status.Capacity / 1000.0; // provided in mWh
     m_energyFull = info.FullChargedCapacity / 1000.0; // provided in mWh
     m_energyFullDesign = info.DesignedCapacity / 1000.0; // provided in mWh
-    m_energyRate = status.Rate / 1000.0;//provided in mW
-    m_voltage = status.Voltage / 1000.0;//provided in mV
+    m_energyRate = status.Rate / 1000.0; // provided in mW
+    m_voltage = status.Voltage / 1000.0; // provided in mV
 
     if (info.FullChargedCapacity != 0) {
         m_charge = (float)status.Capacity / info.FullChargedCapacity * 100.0;
@@ -226,8 +207,7 @@ void WinBattery::powerChanged()
         Q_EMIT energyRateChanged(m_energyRate, m_device->udi());
     }
 
-    if(old_voltage != m_voltage)
-    {
+    if (old_voltage != m_voltage) {
         Q_EMIT voltageChanged(m_voltage, m_device->udi());
     }
 }
@@ -252,13 +232,11 @@ void WinBattery::updateTimeToEmpty(const WinBattery::Battery &b)
     batteryInformationQuery.InformationLevel = BatteryEstimatedTime;
     ulong time = WinDeviceManager::getDeviceInfo<ulong, BATTERY_QUERY_INFORMATION>(b.first, IOCTL_BATTERY_QUERY_INFORMATION, &batteryInformationQuery);
 
-    if(time == BATTERY_UNKNOWN_TIME)
-    {
+    if (time == BATTERY_UNKNOWN_TIME) {
         time = 0;
     }
 
-    if(time != m_timeUntilEmpty)
-    {
+    if (time != m_timeUntilEmpty) {
         m_timeUntilEmpty = time;
         Q_EMIT timeToEmptyChanged(time, m_device->udi());
     }
@@ -272,8 +250,7 @@ void WinBattery::updateBatteryTemp(const WinBattery::Battery &b)
     batteryInformationQuery.InformationLevel = BatteryTemperature;
     ulong batteryTemp = WinDeviceManager::getDeviceInfo<ulong, BATTERY_QUERY_INFORMATION>(b.first, IOCTL_BATTERY_QUERY_INFORMATION, &batteryInformationQuery);
 
-    if(batteryTemp != m_temperature)
-    {
+    if (batteryTemp != m_temperature) {
         m_temperature = batteryTemp;
         Q_EMIT temperatureChanged(batteryTemp, m_device->udi());
     }

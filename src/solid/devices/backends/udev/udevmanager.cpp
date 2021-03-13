@@ -6,13 +6,13 @@
 
 #include "udevmanager.h"
 
+#include "../shared/rootdevice.h"
 #include "udev.h"
 #include "udevdevice.h"
-#include "../shared/rootdevice.h"
 
-#include <QSet>
-#include <QFile>
 #include <QDebug>
+#include <QFile>
+#include <QSet>
 
 using namespace Solid::Backends::UDev;
 using namespace Solid::Backends::Shared;
@@ -88,8 +88,7 @@ bool UDevManager::Private::checkOfInterest(const UdevQt::Device &device)
             || QFile::exists(device.sysfsPath() + "/cpufreq") //
             || QFile::exists(device.sysfsPath() + "/topology/core_id");
     }
-    if (subsystem == QLatin1String("sound") &&
-            device.deviceProperty("SOUND_FORM_FACTOR").toString() != "internal") {
+    if (subsystem == QLatin1String("sound") && device.deviceProperty("SOUND_FORM_FACTOR").toString() != "internal") {
         return true;
     }
 
@@ -105,13 +104,10 @@ bool UDevManager::Private::checkOfInterest(const UdevQt::Device &device)
     }
 
     if (subsystem == QLatin1String("input")) {
-        if (device.deviceProperty("ID_INPUT_MOUSE").toInt() == 1 ||
-                device.deviceProperty("ID_INPUT_TOUCHPAD").toInt() == 1 ||
-                device.deviceProperty("ID_INPUT_TABLET").toInt() == 1 ||
-                device.deviceProperty("ID_INPUT_TOUCHSCREEN").toInt() == 1) {
+        if (device.deviceProperty("ID_INPUT_MOUSE").toInt() == 1 || device.deviceProperty("ID_INPUT_TOUCHPAD").toInt() == 1
+            || device.deviceProperty("ID_INPUT_TABLET").toInt() == 1 || device.deviceProperty("ID_INPUT_TOUCHSCREEN").toInt() == 1) {
             return true;
         }
-
     }
 
     return subsystem == QLatin1String("dvb") || //
@@ -122,8 +118,8 @@ bool UDevManager::Private::checkOfInterest(const UdevQt::Device &device)
 }
 
 UDevManager::UDevManager(QObject *parent)
-    : Solid::Ifaces::DeviceManager(parent),
-      d(new Private)
+    : Solid::Ifaces::DeviceManager(parent)
+    , d(new Private)
 {
     connect(d->m_client, SIGNAL(deviceAdded(UdevQt::Device)), this, SLOT(slotDeviceAdded(UdevQt::Device)));
     connect(d->m_client, SIGNAL(deviceRemoved(UdevQt::Device)), this, SLOT(slotDeviceRemoved(UdevQt::Device)));
@@ -164,8 +160,7 @@ QStringList UDevManager::allDevices()
     return res;
 }
 
-QStringList UDevManager::devicesFromQuery(const QString &parentUdi,
-        Solid::DeviceInterface::Type type)
+QStringList UDevManager::devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type)
 {
     QStringList result;
 
@@ -188,20 +183,23 @@ QStringList UDevManager::devicesFromQuery(const QString &parentUdi,
 
     // Already limit the number of devices we query and have to create wrapper items for here
     if (type == Solid::DeviceInterface::Processor) {
-        deviceList = d->m_client->devicesBySubsystem(QStringLiteral("processor"))
-                   + d->m_client->devicesBySubsystem(QStringLiteral("cpu"));
+        deviceList = d->m_client->devicesBySubsystem(QStringLiteral("processor")) + d->m_client->devicesBySubsystem(QStringLiteral("cpu"));
     } else if (type == Solid::DeviceInterface::Camera) {
-        deviceList = d->m_client->devicesBySubsystemsAndProperties({
-            QStringLiteral("usb"),
-        }, {
-            {QStringLiteral("ID_GPHOTO2"), QStringLiteral("*")} // match any
-        });
+        deviceList = d->m_client->devicesBySubsystemsAndProperties(
+            {
+                QStringLiteral("usb"),
+            },
+            {
+                {QStringLiteral("ID_GPHOTO2"), QStringLiteral("*")} // match any
+            });
     } else if (type == Solid::DeviceInterface::PortableMediaPlayer) {
-        deviceList = d->m_client->devicesBySubsystemsAndProperties({
-            QStringLiteral("usb"),
-        }, {
-            {QStringLiteral("ID_MEDIA_PLAYER"), QStringLiteral("*")} // match any
-        });
+        deviceList = d->m_client->devicesBySubsystemsAndProperties(
+            {
+                QStringLiteral("usb"),
+            },
+            {
+                {QStringLiteral("ID_MEDIA_PLAYER"), QStringLiteral("*")} // match any
+            });
     } else {
         deviceList = d->m_client->allDevices();
     }

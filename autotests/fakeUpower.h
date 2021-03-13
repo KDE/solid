@@ -7,9 +7,9 @@
 #ifndef SOLID_FAKE_UPOWER_H
 #define SOLID_FAKE_UPOWER_H
 
+#include <QDBusObjectPath>
 #include <QList>
 #include <QString>
-#include <QDBusObjectPath>
 
 class FakeUpower : public QObject
 {
@@ -18,7 +18,7 @@ class FakeUpower : public QObject
     Q_PROPERTY(bool OnBattery READ onBattery)
     Q_CLASSINFO("D-Bus Interface", "org.freedesktop.UPower")
 public:
-    explicit FakeUpower(QObject* parent);
+    explicit FakeUpower(QObject *parent);
 
     QString daemonVersion() const;
     bool isDocked() const;
@@ -36,4 +36,4 @@ public Q_SLOTS:
     QDBusObjectPath GetDisplayDevice();
 };
 
-#endif //SOLID_FAKE_UPOWER_H
+#endif // SOLID_FAKE_UPOWER_H

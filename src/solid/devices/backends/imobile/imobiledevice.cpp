@@ -73,7 +73,6 @@ IMobileDevice::IMobileDevice(const QString &udi)
 
 IMobileDevice::~IMobileDevice()
 {
-
 }
 
 QString IMobileDevice::udi() const
@@ -124,8 +123,8 @@ QString IMobileDevice::description() const
 bool IMobileDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type) const
 {
     switch (type) {
-    // TOOD would be cool to support GenericInterface for reading
-    // arbitrary plist configuration, cf. what ideviceinfo tool does
+        // TOOD would be cool to support GenericInterface for reading
+        // arbitrary plist configuration, cf. what ideviceinfo tool does
 
     case Solid::DeviceInterface::PortableMediaPlayer:
         return true;

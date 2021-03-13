@@ -136,7 +136,7 @@ void FakeBattery::setChargeLevel(int newLevel)
 
 Solid::Battery::Technology FakeBattery::technology() const
 {
-    return (Solid::Battery::Technology) fakeDevice()->property("technology").toInt();
+    return (Solid::Battery::Technology)fakeDevice()->property("technology").toInt();
 }
 
 double FakeBattery::energy() const

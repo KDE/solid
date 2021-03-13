@@ -16,11 +16,16 @@ class AbstractInhibitionJob : public Job
 {
     Q_OBJECT
 public:
-    explicit AbstractInhibitionJob(QObject* parent = nullptr) : Job(parent) { }
-    virtual ~AbstractInhibitionJob() {}
+    explicit AbstractInhibitionJob(QObject *parent = nullptr)
+        : Job(parent)
+    {
+    }
+    virtual ~AbstractInhibitionJob()
+    {
+    }
 
-    virtual Inhibition* inhibition() = 0 ;
+    virtual Inhibition *inhibition() = 0;
 };
 }
 
-#endif //ABSTRACT_ADD_INHIBITION_JOB_H
+#endif // ABSTRACT_ADD_INHIBITION_JOB_H

@@ -7,8 +7,8 @@
 #ifndef HALBASICTEST_H
 #define HALBASICTEST_H
 
-#include <QObject>
 #include <QMap>
+#include <QObject>
 #include <QString>
 
 #include "solid/devices/backends/hal/haldevice.h"

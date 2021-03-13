@@ -10,8 +10,8 @@
 #include <QMap>
 #include <QVariant>
 
-#include <solid/solid_export.h>
 #include <solid/deviceinterface.h>
+#include <solid/solid_export.h>
 
 namespace Solid
 {
@@ -42,7 +42,11 @@ public:
      * - PropertyAdded : A new property has been added to the device
      * - PropertyRemoved : A property has been removed from the device
      */
-    enum PropertyChange { PropertyModified, PropertyAdded, PropertyRemoved, };
+    enum PropertyChange {
+        PropertyModified,
+        PropertyAdded,
+        PropertyRemoved,
+    };
     Q_ENUM(PropertyChange)
 
 private:

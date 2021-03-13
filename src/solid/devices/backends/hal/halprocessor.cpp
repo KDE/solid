@@ -6,20 +6,18 @@
 
 #include "halprocessor.h"
 
-#include "haldevice.h"
 #include "../shared/cpufeatures.h"
+#include "haldevice.h"
 
 using namespace Solid::Backends::Hal;
 
 Processor::Processor(HalDevice *device)
     : DeviceInterface(device)
 {
-
 }
 
 Processor::~Processor()
 {
-
 }
 
 int Processor::number() const
@@ -44,4 +42,3 @@ Solid::Processor::InstructionSets Processor::instructionSets() const
 
     return cpuextensions;
 }
-

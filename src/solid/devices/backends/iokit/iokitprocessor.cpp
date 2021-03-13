@@ -10,9 +10,9 @@
 
 #include <qdebug.h>
 
-#include <sys/types.h>
-#include <sys/sysctl.h>
 #include <errno.h>
+#include <sys/sysctl.h>
+#include <sys/types.h>
 
 #include "../shared/cpufeatures.h"
 
@@ -24,12 +24,11 @@ using namespace Solid::Backends::IOKit;
 Processor::Processor(IOKitDevice *device)
     : DeviceInterface(device)
 {
-    //IOKitDevice parent(device->parentUdi());
+    // IOKitDevice parent(device->parentUdi());
 }
 
 Processor::~Processor()
 {
-
 }
 
 int Processor::number() const
@@ -55,8 +54,7 @@ bool Processor::canChangeFrequency() const
     uint64_t minFreq = 0, maxFreq = 0;
     size_t size = sizeof(uint64_t);
 
-    if (sysctlbyname("hw.cpufrequency_min", &minFreq, &size, nullptr, 0) == 0
-        && sysctlbyname("hw.cpufrequency_max", &maxFreq, &size, nullptr, 0) == 0) {
+    if (sysctlbyname("hw.cpufrequency_min", &minFreq, &size, nullptr, 0) == 0 && sysctlbyname("hw.cpufrequency_max", &maxFreq, &size, nullptr, 0) == 0) {
         return maxFreq > minFreq;
     }
     return false;

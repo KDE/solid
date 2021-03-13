@@ -15,10 +15,15 @@ class AbstractAcPluggedJob : public Job
 {
     Q_OBJECT
 public:
-    explicit AbstractAcPluggedJob(QObject* parent = nullptr) : Job(parent) { }
-    virtual ~AbstractAcPluggedJob() {}
+    explicit AbstractAcPluggedJob(QObject *parent = nullptr)
+        : Job(parent)
+    {
+    }
+    virtual ~AbstractAcPluggedJob()
+    {
+    }
     virtual bool isPlugged() const = 0;
 };
 }
 
-#endif //ABSTRACT_AC_PLUGGED_JOB_H
+#endif // ABSTRACT_AC_PLUGGED_JOB_H

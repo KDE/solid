@@ -67,7 +67,7 @@ public:
     virtual bool eject() = 0;
 
 protected:
-    //Q_SIGNALS:
+    // Q_SIGNALS:
     /**
      * This signal is emitted when the eject button is pressed
      * on the drive.

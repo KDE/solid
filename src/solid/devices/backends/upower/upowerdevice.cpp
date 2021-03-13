@@ -7,24 +7,21 @@
 
 #include "upowerdevice.h"
 #include "upower.h"
+#include "upowerbattery.h"
 #include "upowerdeviceinterface.h"
 #include "upowergenericinterface.h"
-#include "upowerbattery.h"
 
-#include <solid/genericinterface.h>
 #include <solid/device.h>
+#include <solid/genericinterface.h>
 
-#include <QStringList>
 #include <QDBusReply>
+#include <QStringList>
 
 using namespace Solid::Backends::UPower;
 
 UPowerDevice::UPowerDevice(const QString &udi)
     : Solid::Ifaces::Device()
-    , m_device(UP_DBUS_SERVICE,
-               udi,
-               UP_DBUS_INTERFACE_DEVICE,
-               QDBusConnection::systemBus())
+    , m_device(UP_DBUS_SERVICE, udi, UP_DBUS_INTERFACE_DEVICE, QDBusConnection::systemBus())
     , m_udi(udi)
 {
     if (m_device.isValid()) {
@@ -32,14 +29,22 @@ UPowerDevice::UPowerDevice(const QString &udi)
             connect(&m_device, SIGNAL(Changed()), this, SLOT(slotChanged()));
         } else {
             // for UPower >= 0.99.0, missing Changed() signal
-            QDBusConnection::systemBus().connect(UP_DBUS_SERVICE, m_udi, "org.freedesktop.DBus.Properties", "PropertiesChanged", this,
-                                                 SLOT(onPropertiesChanged(QString,QVariantMap,QStringList)));
+            QDBusConnection::systemBus().connect(UP_DBUS_SERVICE,
+                                                 m_udi,
+                                                 "org.freedesktop.DBus.Properties",
+                                                 "PropertiesChanged",
+                                                 this,
+                                                 SLOT(onPropertiesChanged(QString, QVariantMap, QStringList)));
         }
 
         // TODO port this to Solid::Power, we can't link against kdelibs4support for this signal
         // older upower versions not affected
-        QDBusConnection::systemBus().connect("org.freedesktop.login1", "/org/freedesktop/login1", "org.freedesktop.login1.Manager", "PrepareForSleep",
-                                             this, SLOT(login1Resuming(bool)));
+        QDBusConnection::systemBus().connect("org.freedesktop.login1",
+                                             "/org/freedesktop/login1",
+                                             "org.freedesktop.login1.Manager",
+                                             "PrepareForSleep",
+                                             this,
+                                             SLOT(login1Resuming(bool)));
     }
 }
 
@@ -209,10 +214,9 @@ bool UPowerDevice::propertyExists(const QString &key) const
 
 QMap<QString, QVariant> UPowerDevice::allProperties() const
 {
-    QDBusMessage call = QDBusMessage::createMethodCall(m_device.service(), m_device.path(),
-                        "org.freedesktop.DBus.Properties", "GetAll");
+    QDBusMessage call = QDBusMessage::createMethodCall(m_device.service(), m_device.path(), "org.freedesktop.DBus.Properties", "GetAll");
     call << m_device.interface();
-    QDBusPendingReply< QVariantMap > reply = QDBusConnection::systemBus().asyncCall(call);
+    QDBusPendingReply<QVariantMap> reply = QDBusConnection::systemBus().asyncCall(call);
     reply.waitForFinished();
 
     if (reply.isValid()) {

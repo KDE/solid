@@ -14,12 +14,10 @@ using namespace Solid::Backends::Fake;
 FakePortableMediaPlayer::FakePortableMediaPlayer(FakeDevice *device)
     : FakeDeviceInterface(device)
 {
-
 }
 
 FakePortableMediaPlayer::~FakePortableMediaPlayer()
 {
-
 }
 
 QStringList FakePortableMediaPlayer::supportedProtocols() const
@@ -38,4 +36,3 @@ QVariant Solid::Backends::Fake::FakePortableMediaPlayer::driverHandle(const QStr
     Q_UNUSED(driver);
     return QVariant();
 }
-

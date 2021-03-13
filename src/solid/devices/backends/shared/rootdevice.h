@@ -17,7 +17,6 @@ namespace Backends
 {
 namespace Shared
 {
-
 class RootDevice : public Solid::Ifaces::Device
 {
     Q_OBJECT
@@ -48,6 +47,7 @@ public:
     bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const override;
 
     QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type) override;
+
 private:
     QString m_udi;
     QString m_parentUdi;

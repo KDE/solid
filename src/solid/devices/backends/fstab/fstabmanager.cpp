@@ -5,12 +5,12 @@
 */
 
 #include "fstabmanager.h"
+#include "../shared/rootdevice.h"
+#include "fstab_debug.h"
 #include "fstabdevice.h"
 #include "fstabhandling.h"
-#include "../shared/rootdevice.h"
 #include "fstabservice.h"
 #include "fstabwatcher.h"
-#include "fstab_debug.h"
 
 using namespace Solid::Backends::Fstab;
 using namespace Solid::Backends::Shared;
@@ -49,8 +49,7 @@ QStringList FstabManager::allDevices()
     return result;
 }
 
-QStringList FstabManager::devicesFromQuery(const QString &parentUdi,
-        Solid::DeviceInterface::Type type)
+QStringList FstabManager::devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type)
 {
     if ((parentUdi == udiPrefix()) || parentUdi.isEmpty()) {
         QStringList result;
@@ -66,8 +65,7 @@ QStringList FstabManager::devicesFromQuery(const QString &parentUdi,
             return result;
         }
     } else {
-        if (type == Solid::DeviceInterface::StorageAccess ||
-            type == Solid::DeviceInterface::NetworkShare) {
+        if (type == Solid::DeviceInterface::StorageAccess || type == Solid::DeviceInterface::NetworkShare) {
             return QStringList{parentUdi};
         }
     }
@@ -96,7 +94,6 @@ QObject *FstabManager::createDevice(const QString &udi)
         FstabDevice *device = new FstabDevice(udi);
         connect(this, &FstabManager::mtabChanged, device, &FstabDevice::onMtabChanged);
         return device;
-
     }
 }
 

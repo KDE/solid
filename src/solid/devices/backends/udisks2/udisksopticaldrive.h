@@ -8,8 +8,8 @@
 #ifndef UDISKSOPTICALDRIVE_H
 #define UDISKSOPTICALDRIVE_H
 
-#include <solid/devices/ifaces/opticaldrive.h>
 #include "udisksstoragedrive.h"
+#include <solid/devices/ifaces/opticaldrive.h>
 
 namespace Solid
 {
@@ -17,8 +17,7 @@ namespace Backends
 {
 namespace UDisks2
 {
-
-class OpticalDrive: public StorageDrive, virtual public Solid::Ifaces::OpticalDrive
+class OpticalDrive : public StorageDrive, virtual public Solid::Ifaces::OpticalDrive
 {
     Q_OBJECT
     Q_INTERFACES(Solid::Ifaces::OpticalDrive)

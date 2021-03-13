@@ -4,11 +4,10 @@
     SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
-extern "C"
-{
+extern "C" {
 #include "predicateparse.h"
 
-    void PredicateParse_mainParse(const char *_code);
+void PredicateParse_mainParse(const char *_code);
 }
 
 #include "predicate.h"
@@ -23,11 +22,11 @@ namespace Solid
 {
 namespace PredicateParse
 {
-
 struct ParsingData {
     ParsingData()
         : result(nullptr)
-    {}
+    {
+    }
 
     Solid::Predicate *result;
     QByteArray buffer;
@@ -56,7 +55,7 @@ Solid::Predicate Solid::Predicate::fromString(const QString &predicate)
 void PredicateParse_setResult(void *result)
 {
     Solid::PredicateParse::ParsingData *data = s_parsingData->localData();
-    data->result = (Solid::Predicate *) result;
+    data->result = (Solid::Predicate *)result;
 }
 
 void PredicateParse_errorDetected(const char *s)
@@ -68,7 +67,7 @@ void PredicateParse_errorDetected(const char *s)
 void PredicateParse_destroy(void *pred)
 {
     Solid::PredicateParse::ParsingData *data = s_parsingData->localData();
-    Solid::Predicate *p = (Solid::Predicate *) pred;
+    Solid::Predicate *p = (Solid::Predicate *)pred;
     if (p != data->result) {
         delete p;
     }
@@ -211,6 +210,5 @@ void *PredicateParse_appendStringListValue(char *name, void *list)
 
 void PredicateLexer_unknownToken(const char *text)
 {
-    qWarning("ERROR from solid predicate parser: unrecognized token '%s' in predicate '%s'\n",
-             text, s_parsingData->localData()->buffer.constData());
+    qWarning("ERROR from solid predicate parser: unrecognized token '%s' in predicate '%s'\n", text, s_parsingData->localData()->buffer.constData());
 }

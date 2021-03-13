@@ -15,11 +15,11 @@ class DummyPowerNotifier : public PowerNotifier
 {
     Q_OBJECT
 public:
-    explicit DummyPowerNotifier(QObject* parent = nullptr);
+    explicit DummyPowerNotifier(QObject *parent = nullptr);
 
 private Q_SLOTS:
     void emitEverythingChanged();
 };
 }
 
-#endif //SOLID_DUMMY_POWER_NOTIFIER_H
+#endif // SOLID_DUMMY_POWER_NOTIFIER_H

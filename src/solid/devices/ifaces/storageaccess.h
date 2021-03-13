@@ -56,11 +56,11 @@ public:
 
     /**
      * Checks if source of the storage is encrypted.
-     * 
+     *
      * @return true if storage is encrypted one
      */
     virtual bool isEncrypted() const = 0;
-    
+
     /**
      * Mounts the volume.
      *
@@ -76,7 +76,7 @@ public:
     virtual bool teardown() = 0;
 
 protected:
-    //Q_SIGNALS:
+    // Q_SIGNALS:
     /**
      * This signal is emitted when the mount state of this device
      * has changed.

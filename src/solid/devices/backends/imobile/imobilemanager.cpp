@@ -11,8 +11,7 @@
 
 #include "../shared/rootdevice.h"
 #include "imobile.h"
-#include  "imobiledevice.h"
-
+#include "imobiledevice.h"
 
 using namespace Solid::Backends::IMobile;
 using namespace Solid::Backends::Shared;
@@ -20,9 +19,11 @@ using namespace Solid::Backends::Shared;
 Manager::Manager(QObject *parent)
     : Solid::Ifaces::DeviceManager(parent)
 {
-    auto ret = idevice_event_subscribe([](const idevice_event_t *event, void *user_data) {
-        static_cast<Manager *>(user_data)->onDeviceEvent(event);
-    }, this);
+    auto ret = idevice_event_subscribe(
+        [](const idevice_event_t *event, void *user_data) {
+            static_cast<Manager *>(user_data)->onDeviceEvent(event);
+        },
+        this);
     if (ret != IDEVICE_E_SUCCESS) {
         qCWarning(IMOBILE) << "Failed to subscribe to device events";
     }
@@ -98,9 +99,7 @@ QStringList Manager::allDevices()
 
 QSet<Solid::DeviceInterface::Type> Manager::supportedInterfaces() const
 {
-    return {
-        Solid::DeviceInterface::PortableMediaPlayer
-    };
+    return {Solid::DeviceInterface::PortableMediaPlayer};
 }
 
 QString Manager::udiPrefix() const

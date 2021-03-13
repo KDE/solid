@@ -24,8 +24,13 @@ class AbstractInhibition : public QObject
 {
     Q_OBJECT
 public:
-    explicit AbstractInhibition(QObject *parent = nullptr) : QObject(parent) {}
-    virtual ~AbstractInhibition(){}
+    explicit AbstractInhibition(QObject *parent = nullptr)
+        : QObject(parent)
+    {
+    }
+    virtual ~AbstractInhibition()
+    {
+    }
 
     virtual void start() = 0;
     virtual void stop() = 0;
@@ -34,5 +39,5 @@ public:
 Q_SIGNALS:
     void stateChanged(Inhibition::State state);
 };
-} //Solid nanmespace
-#endif //ABSTRACT_INHIBITION_H
+} // Solid nanmespace
+#endif // ABSTRACT_INHIBITION_H

@@ -8,8 +8,8 @@
 #include "storagevolume_p.h"
 
 #include "soliddefs_p.h"
-#include <solid/devices/ifaces/storagevolume.h>
 #include <solid/device.h>
+#include <solid/devices/ifaces/storagevolume.h>
 
 Solid::StorageVolume::StorageVolume(QObject *backendObject)
     : DeviceInterface(*new StorageVolumePrivate(), backendObject)
@@ -23,7 +23,6 @@ Solid::StorageVolume::StorageVolume(StorageVolumePrivate &dd, QObject *backendOb
 
 Solid::StorageVolume::~StorageVolume()
 {
-
 }
 
 bool Solid::StorageVolume::isIgnored() const
@@ -66,8 +65,7 @@ Solid::Device Solid::StorageVolume::encryptedContainer() const
 {
     Q_D(const StorageVolume);
 
-    Ifaces::StorageVolume *iface
-        = qobject_cast<Ifaces::StorageVolume *>(d->backendObject());
+    Ifaces::StorageVolume *iface = qobject_cast<Ifaces::StorageVolume *>(d->backendObject());
 
     if (iface != nullptr) {
         return Device(iface->encryptedContainerUdi());
@@ -75,4 +73,3 @@ Solid::Device Solid::StorageVolume::encryptedContainer() const
         return Device();
     }
 }
-

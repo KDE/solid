@@ -7,8 +7,8 @@
 #ifndef SOLID_BACKENDS_IOKIT_BATTERY_H
 #define SOLID_BACKENDS_IOKIT_BATTERY_H
 
-#include <solid/devices/ifaces/battery.h>
 #include "iokitdeviceinterface.h"
+#include <solid/devices/ifaces/battery.h>
 
 namespace Solid
 {

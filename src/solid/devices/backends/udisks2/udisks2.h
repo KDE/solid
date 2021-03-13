@@ -7,17 +7,17 @@
 #ifndef SOLID_BACKENDS_UDISKS2_H
 #define SOLID_BACKENDS_UDISKS2_H
 
-#include <QMetaType>
+#include <QCoreApplication>
+#include <QDBusAbstractInterface>
 #include <QDBusObjectPath>
 #include <QDBusPendingReply>
 #include <QDBusReply>
-#include <QDBusAbstractInterface>
+#include <QList>
+#include <QMap>
+#include <QMetaType>
 #include <QPointer>
-#include <QCoreApplication>
 #include <QTimer>
 #include <QVariant>
-#include <QMap>
-#include <QList>
 
 typedef QMap<QString, QVariantMap> VariantMapMap;
 Q_DECLARE_METATYPE(VariantMapMap)

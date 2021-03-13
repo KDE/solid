@@ -19,12 +19,12 @@ class PowerNotifier;
 class PowerBackendLoader
 {
 public:
-    static AbstractAcPluggedJob* AcPluggedJob();
-    static AbstractInhibitionJob* addInhibitionJob(Power::InhibitionTypes inhibitions, const QString &description);
-    static AbstractStatesJob* statesJob();
-    static AbstractRequestStateJob* requestState();
-    static PowerNotifier* notifier();
+    static AbstractAcPluggedJob *AcPluggedJob();
+    static AbstractInhibitionJob *addInhibitionJob(Power::InhibitionTypes inhibitions, const QString &description);
+    static AbstractStatesJob *statesJob();
+    static AbstractRequestStateJob *requestState();
+    static PowerNotifier *notifier();
 };
 }
 
-#endif //POWER_BACKEND_LOADER_H
+#endif // POWER_BACKEND_LOADER_H

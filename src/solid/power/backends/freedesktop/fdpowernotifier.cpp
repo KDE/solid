@@ -7,10 +7,11 @@
 
 #include "fdpowernotifier.h"
 
-#include <QDebug>
 #include <QDBusConnection>
+#include <QDebug>
 
-Solid::FDPowerNotifier::FDPowerNotifier(QObject* parent): PowerNotifier(parent)
+Solid::FDPowerNotifier::FDPowerNotifier(QObject *parent)
+    : PowerNotifier(parent)
 {
     auto conn = QDBusConnection::systemBus();
     conn.connect(QStringLiteral("org.freedesktop.UPower"),
@@ -18,16 +19,14 @@ Solid::FDPowerNotifier::FDPowerNotifier(QObject* parent): PowerNotifier(parent)
                  QStringLiteral("org.freedesktop.DBus.Properties"),
                  QStringLiteral("PropertiesChanged"),
                  this,
-                 SLOT(upowerPropertiesChanged(QString,QVariantMap,QStringList))
-                 );
+                 SLOT(upowerPropertiesChanged(QString, QVariantMap, QStringList)));
 
     conn.connect(QStringLiteral("org.freedesktop.login1"),
                  QStringLiteral("/org/freedesktop/login1"),
                  QStringLiteral("org.freedesktop.login1.Manager"),
                  QStringLiteral("PrepareForSleep"),
                  this,
-                 SLOT(login1Resuming(bool))
-                 );
+                 SLOT(login1Resuming(bool)));
 }
 
 void Solid::FDPowerNotifier::upowerPropertiesChanged(const QString &interface, const QVariantMap &changedProperties, const QStringList &invalidated)
@@ -40,7 +39,7 @@ void Solid::FDPowerNotifier::upowerPropertiesChanged(const QString &interface, c
         Q_EMIT acPluggedChanged(!changedProperties.value(QStringLiteral("OnBattery")).toBool());
     }
 
-    //Just for debug purposes
+    // Just for debug purposes
     if (!invalidated.isEmpty()) {
         qDebug() << "Invalidated" << invalidated;
     }

@@ -20,7 +20,6 @@ namespace Backends
 {
 namespace UPower
 {
-
 class UPowerManager : public Solid::Ifaces::DeviceManager
 {
     Q_OBJECT
@@ -31,7 +30,7 @@ public:
     QObject *createDevice(const QString &udi) override;
     QStringList devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type) override;
     QStringList allDevices() override;
-    QSet< Solid::DeviceInterface::Type > supportedInterfaces() const override;
+    QSet<Solid::DeviceInterface::Type> supportedInterfaces() const override;
     QString udiPrefix() const override;
 
 private Q_SLOTS:

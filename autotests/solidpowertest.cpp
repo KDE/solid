@@ -4,14 +4,14 @@
     SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
-#include <QTest>
 #include <QSignalSpy>
-#include <Solid/Power>
+#include <QTest>
 #include <Solid/AcPluggedJob>
 #include <Solid/Inhibition>
 #include <Solid/InhibitionJob>
-#include <Solid/StatesJob>
+#include <Solid/Power>
 #include <Solid/RequestStateJob>
+#include <Solid/StatesJob>
 
 using namespace Solid;
 class solidPowerTest : public QObject
@@ -56,13 +56,13 @@ void solidPowerTest::testAddInhibition()
     InhibitionJob *job = new InhibitionJob();
     QVERIFY(!job->exec());
 
-    QCOMPARE(job->error(), (int) InhibitionJob::InvalidInhibitions);
+    QCOMPARE(job->error(), (int)InhibitionJob::InvalidInhibitions);
     delete job;
 
     job = new InhibitionJob();
     job->setInhibitions(Power::Sleep);
     QVERIFY(!job->exec());
-    QCOMPARE(job->error(), (int) InhibitionJob::EmptyDescription);
+    QCOMPARE(job->error(), (int)InhibitionJob::EmptyDescription);
     delete job;
 
     job = Power::inhibit(Power::Sleep, QLatin1String("Running a test, we don't want to suspend now"));
@@ -73,7 +73,7 @@ void solidPowerTest::testAddInhibition()
     inhibition->deleteLater();
 
     QVERIFY(spy.wait());
-    QCOMPARE(spy.takeFirst().first().toInt(), (int) Inhibition::Stopped);
+    QCOMPARE(spy.takeFirst().first().toInt(), (int)Inhibition::Stopped);
 }
 
 void solidPowerTest::testSupportedStates()
@@ -101,7 +101,7 @@ void solidPowerTest::testRequestState()
     job = Power::requestState(Power::Shutdown);
     QVERIFY(!job->exec());
 
-    QCOMPARE(job->error(), (int) RequestStateJob::Unsupported);
+    QCOMPARE(job->error(), (int)RequestStateJob::Unsupported);
     QCOMPARE(job->errorText(), QLatin1String(QLatin1String("State Brightness is unsupported")));
 }
 

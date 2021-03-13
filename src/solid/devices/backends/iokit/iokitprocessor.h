@@ -7,8 +7,8 @@
 #ifndef SOLID_BACKENDS_IOKIT_PROCESSOR_H
 #define SOLID_BACKENDS_IOKIT_PROCESSOR_H
 
-#include <solid/devices/ifaces/processor.h>
 #include "iokitdeviceinterface.h"
+#include <solid/devices/ifaces/processor.h>
 
 namespace Solid
 {

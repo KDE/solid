@@ -9,4 +9,3 @@
 Solid::Ifaces::Block::~Block()
 {
 }
-

@@ -16,12 +16,12 @@ class FDPowerNotifier : public PowerNotifier
 {
     Q_OBJECT
 public:
-    explicit FDPowerNotifier(QObject* parent = nullptr);
+    explicit FDPowerNotifier(QObject *parent = nullptr);
 
 private Q_SLOTS:
-    void upowerPropertiesChanged(const QString& interface, const QVariantMap& changedProperties, const QStringList& invalidated);
+    void upowerPropertiesChanged(const QString &interface, const QVariantMap &changedProperties, const QStringList &invalidated);
     void login1Resuming(bool active);
 };
 }
 
-#endif //SOLID_FD_POWER_NOTIFIER_H
+#endif // SOLID_FD_POWER_NOTIFIER_H

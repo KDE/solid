@@ -16,7 +16,6 @@ namespace Backends
 {
 namespace UDev
 {
-
 class CpuInfo
 {
 public:
@@ -28,7 +27,8 @@ private:
     QStringList cpuInfo;
 };
 
-QString extractCpuVendor(int processorNumber) {
+QString extractCpuVendor(int processorNumber)
+{
     CpuInfo info;
     QString vendor = info.extractCpuInfoLine(processorNumber, "vendor_id\\s+:\\s+(\\S.+)");
 
@@ -39,7 +39,8 @@ QString extractCpuVendor(int processorNumber) {
     return vendor;
 }
 
-QString extractCpuModel(int processorNumber) {
+QString extractCpuModel(int processorNumber)
+{
     CpuInfo info;
     QString model = info.extractCpuInfoLine(processorNumber, "model name\\s+:\\s+(\\S.+)");
 
@@ -50,14 +51,15 @@ QString extractCpuModel(int processorNumber) {
     return model;
 }
 
-int extractCurrentCpuSpeed(int processorNumber) {
+int extractCurrentCpuSpeed(int processorNumber)
+{
     CpuInfo info;
     int speed = info.extractCpuInfoLine(processorNumber, "cpu MHz\\s+:\\s+(\\d+).*").toInt();
     return speed;
 }
 
-
-CpuInfo::CpuInfo() {
+CpuInfo::CpuInfo()
+{
     QFile cpuInfoFile("/proc/cpuinfo");
     if (!cpuInfoFile.open(QIODevice::ReadOnly)) {
         return;
@@ -67,8 +69,7 @@ CpuInfo::CpuInfo() {
 
 QString CpuInfo::extractCpuInfoLine(int processorNumber, const QString &regExpStr)
 {
-    const QRegularExpression processorRegExp(
-                   QRegularExpression::anchoredPattern(QStringLiteral("processor\\s+:\\s+(\\d+)")));
+    const QRegularExpression processorRegExp(QRegularExpression::anchoredPattern(QStringLiteral("processor\\s+:\\s+(\\d+)")));
     const QRegularExpression regExp(QRegularExpression::anchoredPattern(regExpStr));
 
     int line = 0;
@@ -104,7 +105,6 @@ QString CpuInfo::extractInfoLine(const QString &regExpStr)
     }
     return QString();
 }
-
 
 }
 }

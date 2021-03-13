@@ -7,8 +7,8 @@
 #ifndef WINDEVICE_H
 #define WINDEVICE_H
 
-#include <solid/devices/ifaces/device.h>
 #include "windevicemanager.h"
+#include <solid/devices/ifaces/device.h>
 
 namespace Solid
 {
@@ -16,7 +16,6 @@ namespace Backends
 {
 namespace Win
 {
-
 class WinDevice : public Solid::Ifaces::Device
 {
     Q_OBJECT
@@ -51,7 +50,6 @@ private:
     void initStorageDevice();
     void initBatteryDevice();
     void initCpuDevice();
-
 };
 
 }

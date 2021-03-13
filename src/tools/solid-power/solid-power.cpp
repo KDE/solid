@@ -6,8 +6,8 @@
 
 #include "solid-power.h"
 
-#include <solid/power.h>
 #include <solid/acpluggedjob.h>
+#include <solid/power.h>
 
 #include <QTextStream>
 
@@ -16,7 +16,8 @@ using namespace std;
 
 static QTextStream sCout(stdout);
 
-SolidPower::SolidPower(QObject* parent) : QObject(parent)
+SolidPower::SolidPower(QObject *parent)
+    : QObject(parent)
 {
 }
 
@@ -34,18 +35,18 @@ void SolidPower::listen()
 {
     auto power = Power::self();
 
-    connect(power, &Power::acPluggedChanged, [](bool plugged){
+    connect(power, &Power::acPluggedChanged, [](bool plugged) {
         QTextStream lOut(stdout);
         QString status = plugged ? "yes" : "no";
         lOut << "\tAC plugged changed:\t" << status << endl;
     });
 
-    connect(power, &Power::aboutToSuspend, [](){
+    connect(power, &Power::aboutToSuspend, []() {
         QTextStream lOut(stdout);
         lOut << "\tAbout to suspend" << endl;
     });
 
-    connect(power, &Power::resumeFromSuspend, [](){
+    connect(power, &Power::resumeFromSuspend, []() {
         QTextStream lOut(stdout);
         lOut << "\tResume from suspend" << endl;
     });

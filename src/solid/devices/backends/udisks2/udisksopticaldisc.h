@@ -10,11 +10,11 @@
 
 #include <solid/devices/ifaces/opticaldisc.h>
 
-#include <config-solid.h>
 #include "../shared/udevqt.h"
+#include <config-solid.h>
 
-#include "udisksstoragevolume.h"
 #include "udisksdevice.h"
+#include "udisksstoragevolume.h"
 
 namespace Solid
 {
@@ -22,8 +22,7 @@ namespace Backends
 {
 namespace UDisks2
 {
-
-class OpticalDisc: public StorageVolume, virtual public Solid::Ifaces::OpticalDisc
+class OpticalDisc : public StorageVolume, virtual public Solid::Ifaces::OpticalDisc
 {
     Q_OBJECT
     Q_INTERFACES(Solid::Ifaces::OpticalDisc)
@@ -44,7 +43,7 @@ public:
     public:
         Identity();
         Identity(const Device &device, const Device &drive);
-        bool operator ==(const Identity &) const;
+        bool operator==(const Identity &) const;
 
     private:
         long long m_detectTime;
@@ -53,7 +52,6 @@ public:
     };
 
 private:
-
     mutable Identity m_identity;
     QString media() const;
     mutable Solid::OpticalDisc::ContentTypes m_cachedContent;

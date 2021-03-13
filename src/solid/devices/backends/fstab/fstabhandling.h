@@ -8,8 +8,8 @@
 #ifndef SOLID_BACKENDS_FSTAB_FSTABHANDLING_H
 #define SOLID_BACKENDS_FSTAB_FSTABHANDLING_H
 
-#include <QString>
 #include <QMultiHash>
+#include <QString>
 
 #include <functional>
 
@@ -22,7 +22,6 @@ namespace Backends
 {
 namespace Fstab
 {
-
 class FstabHandling
 {
 public:
@@ -49,7 +48,6 @@ private:
     QHash<QString, QString> m_fstabFstypeCache;
     bool m_fstabCacheValid;
     bool m_mtabCacheValid;
-
 };
 
 }
@@ -57,4 +55,3 @@ private:
 }
 
 #endif
-

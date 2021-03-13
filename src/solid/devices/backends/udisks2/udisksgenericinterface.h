@@ -7,9 +7,9 @@
 #ifndef SOLID_BACKENDS_UDISKS_GENERICINTERFACE_H
 #define SOLID_BACKENDS_UDISKS_GENERICINTERFACE_H
 
+#include "udisksdeviceinterface.h"
 #include <solid/devices/ifaces/genericinterface.h>
 #include <solid/genericinterface.h>
-#include "udisksdeviceinterface.h"
 
 namespace Solid
 {

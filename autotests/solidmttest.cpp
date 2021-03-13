@@ -12,10 +12,10 @@
 #include <QTest>
 
 #include <solid/device.h>
-#include <solid/predicate.h>
-#include <solid/storagevolume.h>
-#include <solid/storagedrive.h>
 #include <solid/genericinterface.h>
+#include <solid/predicate.h>
+#include <solid/storagedrive.h>
+#include <solid/storagevolume.h>
 
 class SolidMtTest : public QObject
 {
@@ -44,7 +44,8 @@ protected:
 
 static void doPredicates()
 {
-    Solid::Predicate p5 = Solid::Predicate::fromString("[[Processor.maxSpeed == 3201 AND Processor.canChangeFrequency == false] OR StorageVolume.mountPoint == '/media/blup']");
+    Solid::Predicate p5 =
+        Solid::Predicate::fromString("[[Processor.maxSpeed == 3201 AND Processor.canChangeFrequency == false] OR StorageVolume.mountPoint == '/media/blup']");
 
     Solid::Predicate p6 = Solid::Predicate::fromString("StorageVolume.usage == 'Other'");
     Solid::Predicate p7 = Solid::Predicate::fromString(QString("StorageVolume.usage == %1").arg((int)Solid::StorageVolume::Other));
@@ -73,10 +74,14 @@ void SolidMtTest::testWorkerThread()
 void SolidMtTest::testThreadedPredicate()
 {
     QThreadPool::globalInstance()->setMaxThreadCount(10);
-    const QList<QFuture<void> > futures = { QtConcurrent::run(&doPredicates), QtConcurrent::run(&doPredicates),
-                                            QtConcurrent::run(&doPredicates), QtConcurrent::run(&doPredicates),
-                                            QtConcurrent::run(&doPredicates), QtConcurrent::run(&doPredicates),
-                                            QtConcurrent::run(&doPredicates), QtConcurrent::run(&doPredicates) };
+    const QList<QFuture<void>> futures = {QtConcurrent::run(&doPredicates),
+                                          QtConcurrent::run(&doPredicates),
+                                          QtConcurrent::run(&doPredicates),
+                                          QtConcurrent::run(&doPredicates),
+                                          QtConcurrent::run(&doPredicates),
+                                          QtConcurrent::run(&doPredicates),
+                                          QtConcurrent::run(&doPredicates),
+                                          QtConcurrent::run(&doPredicates)};
     for (QFuture<void> f : futures) {
         f.waitForFinished();
     }
@@ -84,4 +89,3 @@ void SolidMtTest::testThreadedPredicate()
 }
 
 #include "solidmttest.moc"
-

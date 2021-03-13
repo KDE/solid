@@ -9,8 +9,8 @@
 #ifndef SOLID_BACKENDS_FAKEHW_FAKEBATTERY_H
 #define SOLID_BACKENDS_FAKEHW_FAKEBATTERY_H
 
-#include <solid/devices/ifaces/battery.h>
 #include "fakedeviceinterface.h"
+#include <solid/devices/ifaces/battery.h>
 
 namespace Solid
 {

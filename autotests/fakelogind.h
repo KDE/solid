@@ -7,16 +7,16 @@
 #ifndef SOLID_FAKE_LOGIND_H
 #define SOLID_FAKE_LOGIND_H
 
-#include <QString>
-#include <QDBusUnixFileDescriptor>
 #include <QDBusObjectPath>
+#include <QDBusUnixFileDescriptor>
+#include <QString>
 
 class FakeLogind : public QObject
 {
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "org.freedesktop.login1.Manager")
 public:
-    explicit FakeLogind(QObject* parent);
+    explicit FakeLogind(QObject *parent);
 
 public Q_SLOTS:
     QDBusUnixFileDescriptor Inhibit(const QString &what, const QString &who, const QString &why, const QString &mode);
@@ -31,4 +31,4 @@ private:
     int m_fd;
 };
 
-#endif //SOLID_FAKE_LOGIND_H
+#endif // SOLID_FAKE_LOGIND_H

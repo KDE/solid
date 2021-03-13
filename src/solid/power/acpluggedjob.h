@@ -27,15 +27,15 @@ public:
 private Q_SLOTS:
     void doStart() override;
 
-/**
- * We have to re-declare the signal because
- * if not, Q_PROPERTY wouldn't work.
- */
+    /**
+     * We have to re-declare the signal because
+     * if not, Q_PROPERTY wouldn't work.
+     */
 Q_SIGNALS:
     void result(Solid::Job *);
 
 private:
     Q_DECLARE_PRIVATE(AcPluggedJob)
 };
-} //Solid namespace
-#endif //SOLID_AC_PLUGGED_JOB_H
+} // Solid namespace
+#endif // SOLID_AC_PLUGGED_JOB_H

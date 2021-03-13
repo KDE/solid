@@ -15,7 +15,6 @@ namespace Backends
 {
 namespace Shared
 {
-
 Solid::Processor::InstructionSets cpuFeatures();
 
 }

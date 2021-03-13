@@ -7,8 +7,8 @@
 #ifndef SOLID_PREDICATE_H
 #define SOLID_PREDICATE_H
 
-#include <QVariant>
 #include <QSet>
+#include <QVariant>
 
 #include <solid/solid_export.h>
 
@@ -70,9 +70,7 @@ public:
      * @param value the value the property must have to make the device match
      * @param compOperator the operator to apply between the property and the value when matching
      */
-    Predicate(const DeviceInterface::Type &ifaceType,
-              const QString &property, const QVariant &value,
-              ComparisonOperator compOperator = Equals);
+    Predicate(const DeviceInterface::Type &ifaceType, const QString &property, const QVariant &value, ComparisonOperator compOperator = Equals);
 
     /**
      * Constructs a predicate matching the value of a property in
@@ -83,9 +81,7 @@ public:
      * @param value the value the property must have to make the device match
      * @param compOperator the operator to apply between the property and the value when matching
      */
-    Predicate(const QString &ifaceName,
-              const QString &property, const QVariant &value,
-              ComparisonOperator compOperator = Equals);
+    Predicate(const QString &ifaceName, const QString &property, const QVariant &value, ComparisonOperator compOperator = Equals);
 
     /**
      * Constructs a predicate matching devices being of a particular device interface
@@ -120,7 +116,7 @@ public:
      * @param other the second operand
      * @return a new 'and' predicate having 'this' and 'other' as operands
      */
-    Predicate operator &(const Predicate &other);
+    Predicate operator&(const Predicate &other);
 
     /**
      * 'AndEquals' operator.
@@ -128,7 +124,7 @@ public:
      * @param other the second operand
      * @return assigns to 'this' a new 'and' predicate having 'this' and 'other' as operands
      */
-    Predicate &operator &=(const Predicate &other);
+    Predicate &operator&=(const Predicate &other);
 
     /**
      * 'Or' operator.
@@ -187,11 +183,11 @@ public:
     static Predicate fromString(const QString &predicate);
 
     /**
-    * Retrieves the predicate type, used to determine how to handle the predicate
-    *
-    * @since 4.4
-    * @return the predicate type
-    */
+     * Retrieves the predicate type, used to determine how to handle the predicate
+     *
+     * @since 4.4
+     * @return the predicate type
+     */
     Type type() const;
 
     /**

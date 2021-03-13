@@ -12,12 +12,10 @@ using namespace Solid::Backends::Fake;
 FakeVolume::FakeVolume(FakeDevice *device)
     : FakeBlock(device)
 {
-
 }
 
 FakeVolume::~FakeVolume()
 {
-
 }
 
 bool FakeVolume::isIgnored() const
@@ -66,4 +64,3 @@ QString Solid::Backends::Fake::FakeVolume::encryptedContainerUdi() const
 {
     return QString();
 }
-

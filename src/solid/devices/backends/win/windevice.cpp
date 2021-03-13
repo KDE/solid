@@ -7,15 +7,15 @@
 #include "windevice.h"
 #include <solid/deviceinterface.h>
 
-#include "wingenericinterface.h"
-#include "winstoragevolume.h"
+#include "winbattery.h"
 #include "winblock.h"
+#include "wingenericinterface.h"
+#include "winopticaldisc.h"
+#include "winopticaldrive.h"
+#include "winprocessor.h"
 #include "winstorageaccess.h"
 #include "winstoragedrive.h"
-#include "winopticaldrive.h"
-#include "winopticaldisc.h"
-#include "winprocessor.h"
-#include "winbattery.h"
+#include "winstoragevolume.h"
 
 #include <batclass.h>
 
@@ -25,10 +25,10 @@
 
 using namespace Solid::Backends::Win;
 
-WinDevice::WinDevice(const QString &udi) :
-    Device(),
-    m_udi(udi),
-    m_type(Solid::DeviceInterface::Unknown)
+WinDevice::WinDevice(const QString &udi)
+    : Device()
+    , m_udi(udi)
+    , m_type(Solid::DeviceInterface::Unknown)
 {
     /*
      /org/kde/solid/win/volume/disk #%1, partition #%2
@@ -57,19 +57,16 @@ WinDevice::WinDevice(const QString &udi) :
     switch (m_type) {
     case Solid::DeviceInterface::StorageVolume: {
         m_parentUdi = QLatin1String("/org/kde/solid/win/storage/") + parentName;
-    }
-    break;
+    } break;
     case Solid::DeviceInterface::OpticalDisc: {
         m_parentUdi = QLatin1String("/org/kde/solid/win/storage.cdrom/") + parentName;
-    }
-    break;
+    } break;
     case Solid::DeviceInterface::StorageAccess: {
         m_parentUdi = WinBlock::udiFromDriveLetter(WinBlock::resolveVirtualDrive(udi).mid(0, 2));
         if (m_parentUdi.isEmpty()) {
             m_parentUdi = QLatin1String("/org/kde/solid/win/") + type;
         }
-    }
-    break;
+    } break;
     default:
         m_parentUdi = QLatin1String("/org/kde/solid/win/") + type;
     }
@@ -88,7 +85,6 @@ WinDevice::WinDevice(const QString &udi) :
             qWarning() << "Unknown device" << udi;
         }
     }
-
 }
 
 void WinDevice::initStorageDevice()
@@ -100,7 +96,7 @@ void WinDevice::initStorageDevice()
         m_product = QString("Virtual drive %1").arg(dev);
         m_description = QString("%1 (%2)").arg(dev, WinBlock::resolveVirtualDrive(udi()));
         return;
-    case  Solid::DeviceInterface::OpticalDrive:
+    case Solid::DeviceInterface::OpticalDrive:
         dev = WinBlock::driveLetterFromUdi(udi());
         break;
     case Solid::DeviceInterface::StorageDrive:
@@ -119,7 +115,7 @@ void WinDevice::initStorageDevice()
     STORAGE_PROPERTY_QUERY query;
     ZeroMemory(&query, sizeof(STORAGE_PROPERTY_QUERY));
     query.PropertyId = StorageDeviceProperty;
-    query.QueryType =  PropertyStandardQuery;
+    query.QueryType = PropertyStandardQuery;
 
     char buff[1024];
     WinDeviceManager::getDeviceInfo<char, STORAGE_PROPERTY_QUERY>(dev, IOCTL_STORAGE_QUERY_PROPERTY, buff, 1024, &query);
@@ -129,7 +125,7 @@ void WinDevice::initStorageDevice()
         if (info->ProductIdOffset != 0) {
             m_product = QString((char *)buff + info->ProductIdOffset).trimmed();
         }
-    } else if (info->ProductIdOffset != 0) { //fallback doesn't work for all devices
+    } else if (info->ProductIdOffset != 0) { // fallback doesn't work for all devices
         QStringList tmp = QString((char *)buff + info->ProductIdOffset).trimmed().split(" ");
         m_vendor = tmp.takeFirst();
         m_product = tmp.join(" ");
@@ -159,7 +155,7 @@ void WinDevice::initBatteryDevice()
         m_description = tr("Lithium Ion", "battery technology");
         break;
     case Solid::Battery::LeadAcid:
-        m_description =  tr("Lead Acid", "battery technology");
+        m_description = tr("Lead Acid", "battery technology");
         break;
     case Solid::Battery::NickelCadmium:
         m_description = tr("Nickel Cadmium", "battery technology");
@@ -215,14 +211,14 @@ QString WinDevice::icon() const
     QString icon;
     switch (type()) {
     case Solid::DeviceInterface::OpticalDrive:
-        icon =  QLatin1String("drive-optical");
+        icon = QLatin1String("drive-optical");
         break;
     case Solid::DeviceInterface::OpticalDisc: {
         WinOpticalDisc disk(const_cast<WinDevice *>(this));
         if (disk.availableContent() & Solid::OpticalDisc::Audio) {
-            icon =  QLatin1String("media-optical-audio");
+            icon = QLatin1String("media-optical-audio");
         } else {
-            icon =  QLatin1String("drive-optical");
+            icon = QLatin1String("drive-optical");
         }
         break;
     }
@@ -230,12 +226,11 @@ QString WinDevice::icon() const
     case Solid::DeviceInterface::StorageVolume: {
         WinStorageDrive storage(const_cast<WinDevice *>(this));
         if (storage.bus() == Solid::StorageDrive::Usb) {
-            icon =  QLatin1String("drive-removable-media-usb-pendrive");
+            icon = QLatin1String("drive-removable-media-usb-pendrive");
         } else {
-            icon =  QLatin1String("drive-harddisk");
+            icon = QLatin1String("drive-harddisk");
         }
-    }
-    break;
+    } break;
     case Solid::DeviceInterface::Processor:
         icon = QLatin1String("cpu");
         break;

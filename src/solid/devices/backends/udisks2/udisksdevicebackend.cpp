@@ -44,18 +44,28 @@ void DeviceBackend::destroyBackend(const QString &udi)
 DeviceBackend::DeviceBackend(const QString &udi)
     : m_udi(udi)
 {
-    //qDebug() << "Creating backend for device" << m_udi;
-    m_device = new QDBusInterface(UD2_DBUS_SERVICE, m_udi,
+    // qDebug() << "Creating backend for device" << m_udi;
+    m_device = new QDBusInterface(UD2_DBUS_SERVICE,
+                                  m_udi,
                                   QString(), // no interface, we aggregate them
-                                  QDBusConnection::systemBus(), this);
+                                  QDBusConnection::systemBus(),
+                                  this);
 
     if (m_device->isValid()) {
-        QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE, m_udi, DBUS_INTERFACE_PROPS, "PropertiesChanged", this,
-                                             SLOT(slotPropertiesChanged(QString,QVariantMap,QStringList)));
-        QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE, UD2_DBUS_PATH, DBUS_INTERFACE_MANAGER, "InterfacesAdded",
-                                             this, SLOT(slotInterfacesAdded(QDBusObjectPath,VariantMapMap)));
-        QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE, UD2_DBUS_PATH, DBUS_INTERFACE_MANAGER, "InterfacesRemoved",
-                                             this, SLOT(slotInterfacesRemoved(QDBusObjectPath,QStringList)));
+        QDBusConnection::systemBus()
+            .connect(UD2_DBUS_SERVICE, m_udi, DBUS_INTERFACE_PROPS, "PropertiesChanged", this, SLOT(slotPropertiesChanged(QString, QVariantMap, QStringList)));
+        QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE,
+                                             UD2_DBUS_PATH,
+                                             DBUS_INTERFACE_MANAGER,
+                                             "InterfacesAdded",
+                                             this,
+                                             SLOT(slotInterfacesAdded(QDBusObjectPath, VariantMapMap)));
+        QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE,
+                                             UD2_DBUS_PATH,
+                                             DBUS_INTERFACE_MANAGER,
+                                             "InterfacesRemoved",
+                                             this,
+                                             SLOT(slotInterfacesRemoved(QDBusObjectPath, QStringList)));
 
         initInterfaces();
     }
@@ -63,7 +73,7 @@ DeviceBackend::DeviceBackend(const QString &udi)
 
 DeviceBackend::~DeviceBackend()
 {
-    //qDebug() << "Destroying backend for device" << m_udi;
+    // qDebug() << "Destroying backend for device" << m_udi;
 }
 
 void DeviceBackend::initInterfaces()
@@ -89,7 +99,7 @@ void DeviceBackend::initInterfaces()
         }
     }
 
-    //qDebug() << m_udi << "has interfaces:" << m_interfaces;
+    // qDebug() << m_udi << "has interfaces:" << m_interfaces;
 }
 
 QStringList DeviceBackend::interfaces() const
@@ -133,7 +143,7 @@ QVariantMap DeviceBackend::allProperties() const
         } else {
             qCWarning(UDISKS2) << "Error getting props:" << reply.error().name() << reply.error().message();
         }
-        //qDebug() << "After iface" << iface << ", cache now contains" << m_propertyCache.size() << "items";
+        // qDebug() << "After iface" << iface << ", cache now contains" << m_propertyCache.size() << "items";
     }
 
     return m_propertyCache;
@@ -146,8 +156,7 @@ void DeviceBackend::invalidateProperties()
 
 QString DeviceBackend::introspect() const
 {
-    QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, m_udi,
-                        DBUS_INTERFACE_INTROSPECT, "Introspect");
+    QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, m_udi, DBUS_INTERFACE_INTROSPECT, "Introspect");
     QDBusPendingReply<QString> reply = QDBusConnection::systemBus().call(call);
 
     if (reply.isValid()) {
@@ -187,23 +196,23 @@ void DeviceBackend::slotPropertiesChanged(const QString &ifaceName, const QVaria
     if (!ifaceName.startsWith(UD2_DBUS_SERVICE)) {
         return;
     }
-    //qDebug() << m_udi << "'s interface" << ifaceName << "changed props:";
+    // qDebug() << m_udi << "'s interface" << ifaceName << "changed props:";
 
     QMap<QString, int> changeMap;
 
     for (const QString &key : invalidatedProps) {
         m_propertyCache.remove(key);
         changeMap.insert(key, Solid::GenericInterface::PropertyModified);
-        //qDebug() << "\t invalidated:" << key;
+        // qDebug() << "\t invalidated:" << key;
     }
 
     QMapIterator<QString, QVariant> i(changedProps);
     while (i.hasNext()) {
         i.next();
         const QString key = i.key();
-        m_propertyCache.insert(key, i.value());  // replace the value
+        m_propertyCache.insert(key, i.value()); // replace the value
         changeMap.insert(key, Solid::GenericInterface::PropertyModified);
-        //qDebug() << "\t modified:" << key << ":" << m_propertyCache.value(key);
+        // qDebug() << "\t modified:" << key << ":" << m_propertyCache.value(key);
     }
 
     Q_EMIT propertyChanged(changeMap);

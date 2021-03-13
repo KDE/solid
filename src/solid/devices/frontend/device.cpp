@@ -6,43 +6,42 @@
 
 #include "device.h"
 #include "device_p.h"
-#include "devicenotifier.h"
 #include "devicemanager_p.h"
+#include "devicenotifier.h"
 
 #include "deviceinterface_p.h"
 #include "soliddefs_p.h"
 
 #include <solid/devices/ifaces/device.h>
 
-#include <solid/genericinterface.h>
-#include <solid/devices/ifaces/genericinterface.h>
-#include <solid/processor.h>
-#include <solid/devices/ifaces/processor.h>
-#include <solid/block.h>
-#include <solid/devices/ifaces/block.h>
-#include <solid/storageaccess.h>
-#include <solid/devices/ifaces/storageaccess.h>
-#include <solid/storagedrive.h>
-#include <solid/devices/ifaces/storagedrive.h>
-#include <solid/opticaldrive.h>
-#include <solid/devices/ifaces/opticaldrive.h>
-#include <solid/storagevolume.h>
-#include <solid/devices/ifaces/storagevolume.h>
-#include <solid/opticaldisc.h>
-#include <solid/devices/ifaces/opticaldisc.h>
-#include <solid/camera.h>
-#include <solid/devices/ifaces/camera.h>
-#include <solid/portablemediaplayer.h>
-#include <solid/devices/ifaces/portablemediaplayer.h>
-#include <solid/networkshare.h>
-#include <solid/devices/ifaces/networkshare.h>
 #include <solid/battery.h>
+#include <solid/block.h>
+#include <solid/camera.h>
 #include <solid/devices/ifaces/battery.h>
+#include <solid/devices/ifaces/block.h>
+#include <solid/devices/ifaces/camera.h>
+#include <solid/devices/ifaces/genericinterface.h>
+#include <solid/devices/ifaces/networkshare.h>
+#include <solid/devices/ifaces/opticaldisc.h>
+#include <solid/devices/ifaces/opticaldrive.h>
+#include <solid/devices/ifaces/portablemediaplayer.h>
+#include <solid/devices/ifaces/processor.h>
+#include <solid/devices/ifaces/storageaccess.h>
+#include <solid/devices/ifaces/storagedrive.h>
+#include <solid/devices/ifaces/storagevolume.h>
+#include <solid/genericinterface.h>
+#include <solid/networkshare.h>
+#include <solid/opticaldisc.h>
+#include <solid/opticaldrive.h>
+#include <solid/portablemediaplayer.h>
+#include <solid/processor.h>
+#include <solid/storageaccess.h>
+#include <solid/storagedrive.h>
+#include <solid/storagevolume.h>
 
 Solid::Device::Device(const QString &udi)
 {
-    DeviceManagerPrivate *manager
-        = static_cast<DeviceManagerPrivate *>(Solid::DeviceNotifier::instance());
+    DeviceManagerPrivate *manager = static_cast<DeviceManagerPrivate *>(Solid::DeviceNotifier::instance());
     d = manager->findRegisteredDevice(udi);
 }
 
@@ -122,8 +121,7 @@ bool Solid::Device::isDeviceInterface(const DeviceInterface::Type &type) const
     return_SOLID_CALL(Ifaces::Device *, d->backendObject(), false, queryDeviceInterface(type));
 }
 
-#define deviceinterface_cast(IfaceType, DevType, backendObject) \
-    (qobject_cast<IfaceType *>(backendObject) ? new DevType(backendObject) : nullptr)
+#define deviceinterface_cast(IfaceType, DevType, backendObject) (qobject_cast<IfaceType *>(backendObject) ? new DevType(backendObject) : nullptr)
 
 Solid::DeviceInterface *Solid::Device::asDeviceInterface(const DeviceInterface::Type &type)
 {
@@ -203,7 +201,9 @@ const Solid::DeviceInterface *Solid::Device::asDeviceInterface(const DeviceInter
 //////////////////////////////////////////////////////////////////////
 
 Solid::DevicePrivate::DevicePrivate(const QString &udi)
-    : QObject(), QSharedData(), m_udi(udi)
+    : QObject()
+    , QSharedData()
+    , m_udi(udi)
 {
 }
 
@@ -220,7 +220,6 @@ void Solid::DevicePrivate::_k_destroyed(QObject *object)
 
 void Solid::DevicePrivate::setBackendObject(Ifaces::Device *object)
 {
-
     if (m_backendObject) {
         m_backendObject.data()->disconnect(this);
     }
@@ -229,8 +228,7 @@ void Solid::DevicePrivate::setBackendObject(Ifaces::Device *object)
     m_backendObject = object;
 
     if (object) {
-        connect(object, SIGNAL(destroyed(QObject*)),
-                this, SLOT(_k_destroyed(QObject*)));
+        connect(object, SIGNAL(destroyed(QObject *)), this, SLOT(_k_destroyed(QObject *)));
     }
 
     if (!m_ifaces.isEmpty()) {
@@ -255,4 +253,3 @@ void Solid::DevicePrivate::setInterface(const DeviceInterface::Type &type, Devic
     }
     m_ifaces[type] = interface;
 }
-

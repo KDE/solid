@@ -59,6 +59,4 @@ Solid::Processor::InstructionSets FakeProcessor::instructionSets() const
     }
 
     return result;
-
 }
-

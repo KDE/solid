@@ -7,8 +7,8 @@
 #ifndef SOLID_BACKENDS_FAKE_NETWORKSHARE_H
 #define SOLID_BACKENDS_FAKE_NETWORKSHARE_H
 
-#include <solid/devices/ifaces/networkshare.h>
 #include "fakedeviceinterface.h"
+#include <solid/devices/ifaces/networkshare.h>
 
 namespace Solid
 {

@@ -9,11 +9,8 @@
 Solid::Ifaces::DeviceManager::DeviceManager(QObject *parent)
     : QObject(parent)
 {
-
 }
 
 Solid::Ifaces::DeviceManager::~DeviceManager()
 {
-
 }
-

@@ -14,8 +14,8 @@
 
 using namespace Solid::Backends::Win;
 
-WinStorageDrive::WinStorageDrive(WinDevice *device):
-    WinBlock(device)
+WinStorageDrive::WinStorageDrive(WinDevice *device)
+    : WinBlock(device)
 {
     updateCache();
 }
@@ -63,11 +63,11 @@ void WinStorageDrive::updateCache()
 
     QString dev;
     if (m_device->type() == Solid::DeviceInterface::OpticalDrive) {
-        dev =  WinBlock::driveLetterFromUdi(m_device->udi());
+        dev = WinBlock::driveLetterFromUdi(m_device->udi());
     } else {
         dev = QLatin1String("PhysicalDrive") + QString::number(deviceMajor());
     }
-    STORAGE_ADAPTER_DESCRIPTOR  busInfo = WinDeviceManager::getDeviceInfo<STORAGE_ADAPTER_DESCRIPTOR>(dev, IOCTL_STORAGE_QUERY_PROPERTY, &storageProperty);
+    STORAGE_ADAPTER_DESCRIPTOR busInfo = WinDeviceManager::getDeviceInfo<STORAGE_ADAPTER_DESCRIPTOR>(dev, IOCTL_STORAGE_QUERY_PROPERTY, &storageProperty);
 
     switch (busInfo.BusType) {
     case BusTypeUsb:
@@ -84,11 +84,10 @@ void WinStorageDrive::updateCache()
         m_bus = Solid::StorageDrive::Ide;
     }
 
-    DISK_GEOMETRY  sizeInfo = WinDeviceManager::getDeviceInfo<DISK_GEOMETRY>(dev, IOCTL_DISK_GET_DRIVE_GEOMETRY);
+    DISK_GEOMETRY sizeInfo = WinDeviceManager::getDeviceInfo<DISK_GEOMETRY>(dev, IOCTL_DISK_GET_DRIVE_GEOMETRY);
     m_size = sizeInfo.Cylinders.QuadPart * sizeInfo.TracksPerCylinder * sizeInfo.SectorsPerTrack * sizeInfo.BytesPerSector;
 
     STORAGE_HOTPLUG_INFO plugInfo = WinDeviceManager::getDeviceInfo<STORAGE_HOTPLUG_INFO>(dev, IOCTL_STORAGE_GET_HOTPLUG_INFO);
     m_isHotplugges = plugInfo.DeviceHotplug;
     m_isRemovable = plugInfo.MediaRemovable;
-
 }

@@ -8,8 +8,8 @@
 #ifndef SOLID_BACKENDS_IOKIT_DEVICEINTERFACE_H
 #define SOLID_BACKENDS_IOKIT_DEVICEINTERFACE_H
 
-#include <solid/devices/ifaces/deviceinterface.h>
 #include "iokitdevice.h"
+#include <solid/devices/ifaces/deviceinterface.h>
 
 #include <QObject>
 

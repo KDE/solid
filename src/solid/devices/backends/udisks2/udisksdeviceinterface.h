@@ -7,8 +7,8 @@
 #ifndef UDISKSDEVICEINTERFACE_H
 #define UDISKSDEVICEINTERFACE_H
 
-#include <ifaces/deviceinterface.h>
 #include "udisksdevice.h"
+#include <ifaces/deviceinterface.h>
 
 #include <QObject>
 #include <QStringList>
@@ -19,7 +19,6 @@ namespace Backends
 {
 namespace UDisks2
 {
-
 class DeviceInterface : public QObject, virtual public Solid::Ifaces::DeviceInterface
 {
     Q_OBJECT

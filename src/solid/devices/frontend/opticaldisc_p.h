@@ -15,7 +15,9 @@ class OpticalDiscPrivate : public StorageVolumePrivate
 {
 public:
     OpticalDiscPrivate()
-        : StorageVolumePrivate() { }
+        : StorageVolumePrivate()
+    {
+    }
 };
 }
 

@@ -14,12 +14,10 @@ using namespace Solid::Backends::Fake;
 FakeOpticalDisc::FakeOpticalDisc(FakeDevice *device)
     : FakeVolume(device)
 {
-
 }
 
 FakeOpticalDisc::~FakeOpticalDisc()
 {
-
 }
 
 Solid::OpticalDisc::ContentTypes FakeOpticalDisc::availableContent() const
@@ -106,4 +104,3 @@ qulonglong FakeOpticalDisc::capacity() const
 {
     return fakeDevice()->property("capacity").toULongLong();
 }
-

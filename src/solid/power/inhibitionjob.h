@@ -38,8 +38,7 @@ public:
      * At least one action to inhibit and description should be
      * added.
      */
-    explicit InhibitionJob(QObject* parent = nullptr);
-
+    explicit InhibitionJob(QObject *parent = nullptr);
 
     /**
      * Sets th list of action to inhibit
@@ -76,15 +75,15 @@ public:
      * If this method is called before result(Solid::Job*) is emitted,
      * it will return nullptr.
      */
-    Inhibition* inhibition() const;
+    Inhibition *inhibition() const;
 
 private Q_SLOTS:
     void doStart() override;
 
-/**
- * We have to re-declare the signal because
- * if not, Q_PROPERTY wouldn't work.
- */
+    /**
+     * We have to re-declare the signal because
+     * if not, Q_PROPERTY wouldn't work.
+     */
 Q_SIGNALS:
     void result(Solid::Job *);
 
@@ -92,4 +91,4 @@ private:
     Q_DECLARE_PRIVATE(InhibitionJob)
 };
 }
-#endif //SOLID_ADD_INHIBITION_JOB
+#endif // SOLID_ADD_INHIBITION_JOB

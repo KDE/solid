@@ -7,21 +7,19 @@
 
 #include "udisksdevice.h"
 #include "udisks_debug.h"
-#include "udisksdevicebackend.h"
 #include "udisksblock.h"
+#include "udisksdevicebackend.h"
 #include "udisksdeviceinterface.h"
-#include "udisksstoragevolume.h"
+#include "udisksgenericinterface.h"
 #include "udisksopticaldisc.h"
 #include "udisksopticaldrive.h"
 #include "udisksstorageaccess.h"
-#include "udisksgenericinterface.h"
+#include "udisksstoragevolume.h"
 
-#include <solid/genericinterface.h>
 #include <solid/device.h>
+#include <solid/genericinterface.h>
 
 #include <QMimeDatabase>
-
-
 
 using namespace Solid::Backends::UDisks2;
 
@@ -31,10 +29,10 @@ static QString formatByteSize(double size)
     // Per IEC 60027-2
 
     // Binary prefixes
-    //Tebi-byte             TiB             2^40    1,099,511,627,776 bytes
-    //Gibi-byte             GiB             2^30    1,073,741,824 bytes
-    //Mebi-byte             MiB             2^20    1,048,576 bytes
-    //Kibi-byte             KiB             2^10    1,024 bytes
+    // Tebi-byte             TiB             2^40    1,099,511,627,776 bytes
+    // Gibi-byte             GiB             2^30    1,073,741,824 bytes
+    // Mebi-byte             MiB             2^20    1,048,576 bytes
+    // Kibi-byte             KiB             2^10    1,024 bytes
 
     QString s;
     // Gibi-byte
@@ -73,7 +71,7 @@ Device::Device(const QString &udi)
 {
     if (m_backend) {
         connect(m_backend, SIGNAL(changed()), this, SIGNAL(changed()));
-        connect(m_backend, SIGNAL(propertyChanged(QMap<QString,int>)), this, SIGNAL(propertyChanged(QMap<QString,int>)));
+        connect(m_backend, SIGNAL(propertyChanged(QMap<QString, int>)), this, SIGNAL(propertyChanged(QMap<QString, int>)));
     } else {
         qCDebug(UDISKS2) << "Created invalid Device for udi" << udi;
     }
@@ -589,7 +587,7 @@ QString Device::volumeDescription() const
 
 QString Device::icon() const
 {
-    QString iconName = property("HintIconName").toString();   // non-cached
+    QString iconName = property("HintIconName").toString(); // non-cached
 
     if (!iconName.isEmpty()) {
         return iconName;
@@ -622,7 +620,7 @@ QString Device::icon() const
     } else if (isBlock()) {
         const QString drv = drivePath();
         if (drv.isEmpty() || drv == "/") {
-            return "drive-harddisk";    // stuff like loop devices or swap which don't have the Drive prop set
+            return "drive-harddisk"; // stuff like loop devices or swap which don't have the Drive prop set
         }
 
         Device drive(drv);
@@ -631,7 +629,7 @@ QString Device::icon() const
         const QString media = drive.prop("Media").toString();
 
         if (!media.isEmpty()) {
-            if (drive.prop("Optical").toBool()) {    // optical stuff
+            if (drive.prop("Optical").toBool()) { // optical stuff
                 bool isWritable = drive.prop("OpticalBlank").toBool();
 
                 const UDisks2::OpticalDisc disc(const_cast<Device *>(this));
@@ -650,7 +648,7 @@ QString Device::icon() const
                 } else if (isWritable) {
                     return "media-optical-recordable";
                 } else {
-                    if (media.startsWith("optical_dvd") || media.startsWith("optical_hddvd")) {     // DVD
+                    if (media.startsWith("optical_dvd") || media.startsWith("optical_hddvd")) { // DVD
                         return "media-optical-dvd";
                     } else if (media.startsWith("optical_bd")) { // BluRay
                         return "media-optical-blu-ray";
@@ -683,7 +681,7 @@ QString Device::icon() const
         return drive.icon();
     }
 
-    return "drive-harddisk";    // general fallback
+    return "drive-harddisk"; // general fallback
 }
 
 QString Device::product() const

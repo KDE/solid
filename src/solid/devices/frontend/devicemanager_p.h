@@ -42,7 +42,7 @@ private:
     Ifaces::Device *createBackendObject(const QString &udi);
 
     QExplicitlySharedDataPointer<DevicePrivate> m_nullDevice;
-    QHash<QString, QPointer<DevicePrivate> > m_devicesMap;
+    QHash<QString, QPointer<DevicePrivate>> m_devicesMap;
     QHash<QObject *, QString> m_reverseMap;
 };
 

@@ -57,7 +57,7 @@ public:
     virtual bool propertyExists(const QString &key) const = 0;
 
 protected:
-    //Q_SIGNALS:
+    // Q_SIGNALS:
     /**
      * This signal is emitted when a property is changed in the device.
      *

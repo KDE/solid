@@ -23,10 +23,9 @@ namespace Backends
 {
 namespace UDisks2
 {
-
 class DeviceBackend;
 
-class Device: public Solid::Ifaces::Device
+class Device : public Solid::Ifaces::Device
 {
     Q_OBJECT
 public:

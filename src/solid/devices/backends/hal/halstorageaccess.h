@@ -7,12 +7,12 @@
 #ifndef SOLID_BACKENDS_HAL_STORAGEACCESS_H
 #define SOLID_BACKENDS_HAL_STORAGEACCESS_H
 
-#include <solid/devices/ifaces/storageaccess.h>
 #include "haldeviceinterface.h"
+#include <solid/devices/ifaces/storageaccess.h>
 
-#include <QProcess>
-#include <QDBusMessage>
 #include <QDBusError>
+#include <QDBusMessage>
+#include <QProcess>
 
 namespace Solid
 {

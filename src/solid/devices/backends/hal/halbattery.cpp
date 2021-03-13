@@ -13,13 +13,11 @@ using namespace Solid::Backends::Hal;
 Battery::Battery(HalDevice *device)
     : DeviceInterface(device)
 {
-    connect(device, SIGNAL(propertyChanged(QMap<QString,int>)),
-            this, SLOT(slotPropertyChanged(QMap<QString,int>)));
+    connect(device, SIGNAL(propertyChanged(QMap<QString, int>)), this, SLOT(slotPropertyChanged(QMap<QString, int>)));
 }
 
 Battery::~Battery()
 {
-
 }
 
 bool Battery::isPresent() const
@@ -189,13 +187,11 @@ void Battery::slotPropertyChanged(const QMap<QString, int> &changes)
         Q_EMIT chargePercentChanged(chargePercent(), m_device->udi());
     }
 
-    if (changes.contains("battery.charge_level.last_full")
-            || changes.contains("battery.charge_level.design")) {
+    if (changes.contains("battery.charge_level.last_full") || changes.contains("battery.charge_level.design")) {
         Q_EMIT capacityChanged(capacity(), m_device->udi());
     }
 
-    if (changes.contains("battery.rechargeable.is_charging")
-            || changes.contains("battery.rechargeable.is_discharging")) {
+    if (changes.contains("battery.rechargeable.is_charging") || changes.contains("battery.rechargeable.is_discharging")) {
         Q_EMIT chargeStateChanged(chargeState(), m_device->udi());
     }
 
@@ -224,5 +220,4 @@ void Battery::slotPropertyChanged(const QMap<QString, int> &changes)
     if (changes.contains("battery.voltage.current")) {
         Q_EMIT voltageChanged(voltage(), m_device->udi());
     }
-
 }

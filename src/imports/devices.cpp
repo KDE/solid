@@ -7,16 +7,14 @@
 #include "devices.h"
 #include "devices_p.h"
 
-
 #include <solid/device.h>
 #include <solid/devicenotifier.h>
 #include <solid/genericinterface.h>
 
 namespace Solid
 {
-
 // Maps queries to the handler objects
-QHash<QString, QWeakPointer<DevicesQueryPrivate> > DevicesQueryPrivate::handlers;
+QHash<QString, QWeakPointer<DevicesQueryPrivate>> DevicesQueryPrivate::handlers;
 
 QSharedPointer<DevicesQueryPrivate> DevicesQueryPrivate::forQuery(const QString &query)
 {
@@ -41,10 +39,8 @@ DevicesQueryPrivate::DevicesQueryPrivate(const QString &query)
     , predicate(Solid::Predicate::fromString(query))
     , notifier(Solid::DeviceNotifier::instance())
 {
-    connect(notifier, &Solid::DeviceNotifier::deviceAdded,
-            this,     &DevicesQueryPrivate::addDevice);
-    connect(notifier, &Solid::DeviceNotifier::deviceRemoved,
-            this,     &DevicesQueryPrivate::removeDevice);
+    connect(notifier, &Solid::DeviceNotifier::deviceAdded, this, &DevicesQueryPrivate::addDevice);
+    connect(notifier, &Solid::DeviceNotifier::deviceRemoved, this, &DevicesQueryPrivate::removeDevice);
 
     if (!query.isEmpty() && !predicate.isValid()) {
         return;
@@ -90,12 +86,9 @@ void Devices::initialize() const
 
     m_backend = DevicesQueryPrivate::forQuery(m_query);
 
-    connect(m_backend.data(), &DevicesQueryPrivate::deviceAdded,
-            this, &Devices::addDevice);
-    connect(m_backend.data(), &DevicesQueryPrivate::deviceAdded,
-            this, &Devices::addDevice);
-    connect(m_backend.data(), &DevicesQueryPrivate::deviceRemoved,
-            this, &Devices::removeDevice);
+    connect(m_backend.data(), &DevicesQueryPrivate::deviceAdded, this, &Devices::addDevice);
+    connect(m_backend.data(), &DevicesQueryPrivate::deviceAdded, this, &Devices::addDevice);
+    connect(m_backend.data(), &DevicesQueryPrivate::deviceRemoved, this, &Devices::removeDevice);
 
     const int matchesCount = m_backend->devices().count();
 
@@ -207,4 +200,3 @@ QObject *Devices::device(const QString &udi, const QString &_type)
     return Solid::Device(udi).asDeviceInterface(type);
 }
 } // namespace Solid
-

@@ -31,4 +31,3 @@ QString Block::device() const
 {
     return m_device->property("DEVNAME").toString();
 }
-

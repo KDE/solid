@@ -14,12 +14,10 @@
 Solid::Ifaces::Device::Device(QObject *parent)
     : QObject(parent)
 {
-
 }
 
 Solid::Ifaces::Device::~Device()
 {
-
 }
 
 QString Solid::Ifaces::Device::parentUdi() const
@@ -27,24 +25,16 @@ QString Solid::Ifaces::Device::parentUdi() const
     return QString();
 }
 
-void Solid::Ifaces::Device::registerAction(const QString &actionName,
-        QObject *dest,
-        const char *requestSlot,
-        const char *doneSlot) const
+void Solid::Ifaces::Device::registerAction(const QString &actionName, QObject *dest, const char *requestSlot, const char *doneSlot) const
 {
 #ifdef QT_DBUS_LIB
-    QDBusConnection::sessionBus().connect(QString(), deviceDBusPath(),
-                                          "org.kde.Solid.Device", actionName + "Requested",
-                                          dest, requestSlot);
+    QDBusConnection::sessionBus().connect(QString(), deviceDBusPath(), "org.kde.Solid.Device", actionName + "Requested", dest, requestSlot);
 
-    QDBusConnection::sessionBus().connect(QString(), deviceDBusPath(),
-                                          "org.kde.Solid.Device", actionName + "Done",
-                                          dest, doneSlot);
+    QDBusConnection::sessionBus().connect(QString(), deviceDBusPath(), "org.kde.Solid.Device", actionName + "Done", dest, doneSlot);
 #endif
 }
 
-void Solid::Ifaces::Device::broadcastActionDone(const QString &actionName,
-        int error, const QString &errorString) const
+void Solid::Ifaces::Device::broadcastActionDone(const QString &actionName, int error, const QString &errorString) const
 {
 #ifdef QT_DBUS_LIB
     QDBusMessage signal = QDBusMessage::createSignal(deviceDBusPath(), "org.kde.Solid.Device", actionName + "Done");
@@ -72,4 +62,3 @@ QString Solid::Ifaces::Device::displayName() const
 {
     return description();
 }
-

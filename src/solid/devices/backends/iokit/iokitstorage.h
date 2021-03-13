@@ -7,8 +7,8 @@
 #ifndef SOLID_BACKENDS_IOKIT_IOKITSTORAGE_H
 #define SOLID_BACKENDS_IOKIT_IOKITSTORAGE_H
 
-#include "iokitblock.h"
 #include "dadictionary_p.h"
+#include "iokitblock.h"
 
 #include <solid/devices/ifaces/storagedrive.h>
 
@@ -39,6 +39,7 @@ public Q_SLOTS:
     bool isRemovable() const override;
     bool isHotpluggable() const override;
     qulonglong size() const override;
+
 private:
     DADictionary *daDict;
 };

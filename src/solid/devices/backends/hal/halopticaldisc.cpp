@@ -11,12 +11,10 @@ using namespace Solid::Backends::Hal;
 OpticalDisc::OpticalDisc(HalDevice *device)
     : Volume(device)
 {
-
 }
 
 OpticalDisc::~OpticalDisc()
 {
-
 }
 
 Solid::OpticalDisc::ContentTypes OpticalDisc::availableContent() const
@@ -103,4 +101,3 @@ qulonglong OpticalDisc::capacity() const
 {
     return m_device->prop("volume.disc.capacity").toULongLong();
 }
-

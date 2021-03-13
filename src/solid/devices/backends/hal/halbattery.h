@@ -7,8 +7,8 @@
 #ifndef SOLID_BACKENDS_HAL_BATTERY_H
 #define SOLID_BACKENDS_HAL_BATTERY_H
 
-#include <solid/devices/ifaces/battery.h>
 #include "haldeviceinterface.h"
+#include <solid/devices/ifaces/battery.h>
 
 namespace Solid
 {

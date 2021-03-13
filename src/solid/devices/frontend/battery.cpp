@@ -15,52 +15,37 @@
 Solid::Battery::Battery(QObject *backendObject)
     : DeviceInterface(*new BatteryPrivate(), backendObject)
 {
-    connect(backendObject, SIGNAL(presentStateChanged(bool,QString)),
-            this, SIGNAL(presentStateChanged(bool,QString)));
+    connect(backendObject, SIGNAL(presentStateChanged(bool, QString)), this, SIGNAL(presentStateChanged(bool, QString)));
 
-    connect(backendObject, SIGNAL(chargePercentChanged(int,QString)),
-            this, SIGNAL(chargePercentChanged(int,QString)));
+    connect(backendObject, SIGNAL(chargePercentChanged(int, QString)), this, SIGNAL(chargePercentChanged(int, QString)));
 
-    connect(backendObject, SIGNAL(capacityChanged(int,QString)),
-            this, SIGNAL(capacityChanged(int,QString)));
+    connect(backendObject, SIGNAL(capacityChanged(int, QString)), this, SIGNAL(capacityChanged(int, QString)));
 
-    connect(backendObject, SIGNAL(powerSupplyStateChanged(bool,QString)),
-            this, SIGNAL(powerSupplyStateChanged(bool,QString)));
+    connect(backendObject, SIGNAL(powerSupplyStateChanged(bool, QString)), this, SIGNAL(powerSupplyStateChanged(bool, QString)));
 
-    connect(backendObject, SIGNAL(chargeStateChanged(int,QString)),
-            this, SIGNAL(chargeStateChanged(int,QString)));
+    connect(backendObject, SIGNAL(chargeStateChanged(int, QString)), this, SIGNAL(chargeStateChanged(int, QString)));
 
-    connect(backendObject, SIGNAL(timeToEmptyChanged(qlonglong,QString)),
-            this, SIGNAL(timeToEmptyChanged(qlonglong,QString)));
+    connect(backendObject, SIGNAL(timeToEmptyChanged(qlonglong, QString)), this, SIGNAL(timeToEmptyChanged(qlonglong, QString)));
 
-    connect(backendObject, SIGNAL(timeToFullChanged(qlonglong,QString)),
-            this, SIGNAL(timeToFullChanged(qlonglong,QString)));
+    connect(backendObject, SIGNAL(timeToFullChanged(qlonglong, QString)), this, SIGNAL(timeToFullChanged(qlonglong, QString)));
 
-    connect(backendObject, SIGNAL(energyChanged(double,QString)),
-            this, SIGNAL(energyChanged(double,QString)));
+    connect(backendObject, SIGNAL(energyChanged(double, QString)), this, SIGNAL(energyChanged(double, QString)));
 
-    connect(backendObject, SIGNAL(energyFullChanged(double,QString)),
-            this, SIGNAL(energyFullChanged(double,QString)));
+    connect(backendObject, SIGNAL(energyFullChanged(double, QString)), this, SIGNAL(energyFullChanged(double, QString)));
 
-    connect(backendObject, SIGNAL(energyFullDesignChanged(double,QString)),
-            this, SIGNAL(energyFullDesignChanged(double,QString)));
+    connect(backendObject, SIGNAL(energyFullDesignChanged(double, QString)), this, SIGNAL(energyFullDesignChanged(double, QString)));
 
-    connect(backendObject, SIGNAL(energyRateChanged(double,QString)),
-            this, SIGNAL(energyRateChanged(double,QString)));
+    connect(backendObject, SIGNAL(energyRateChanged(double, QString)), this, SIGNAL(energyRateChanged(double, QString)));
 
-    connect(backendObject, SIGNAL(voltageChanged(double,QString)),
-            this, SIGNAL(voltageChanged(double,QString)));
+    connect(backendObject, SIGNAL(voltageChanged(double, QString)), this, SIGNAL(voltageChanged(double, QString)));
 
-    connect(backendObject, SIGNAL(temperatureChanged(double,QString)),
-            this, SIGNAL(temperatureChanged(double,QString)));
+    connect(backendObject, SIGNAL(temperatureChanged(double, QString)), this, SIGNAL(temperatureChanged(double, QString)));
 
-    connect(backendObject, SIGNAL(remainingTimeChanged(qlonglong,QString)),
-            this, SIGNAL(remainingTimeChanged(qlonglong,QString)));
+    connect(backendObject, SIGNAL(remainingTimeChanged(qlonglong, QString)), this, SIGNAL(remainingTimeChanged(qlonglong, QString)));
 }
 
 Solid::Battery::~Battery()
 {
-
 }
 
 bool Solid::Battery::isPresent() const

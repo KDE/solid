@@ -11,12 +11,10 @@ using namespace Solid::Backends::Hal;
 Camera::Camera(HalDevice *device)
     : DeviceInterface(device)
 {
-
 }
 
 Camera::~Camera()
 {
-
 }
 
 QStringList Camera::supportedProtocols() const
@@ -43,17 +41,13 @@ QStringList Camera::supportedDrivers(QString /*protocol*/) const
 
 QVariant Solid::Backends::Hal::Camera::driverHandle(const QString &driver) const
 {
-    if (driver == "gphoto"
-            && m_device->prop("info.subsystem").toString() == "usb") {
+    if (driver == "gphoto" && m_device->prop("info.subsystem").toString() == "usb") {
         QVariantList list;
 
-        list << "usb"
-             << m_device->prop("usb.vendor_id")
-             << m_device->prop("usb.product_id");
+        list << "usb" << m_device->prop("usb.vendor_id") << m_device->prop("usb.product_id");
 
         return list;
     }
 
     return QVariant();
 }
-

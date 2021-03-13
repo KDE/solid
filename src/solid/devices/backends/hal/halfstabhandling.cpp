@@ -6,6 +6,7 @@
 
 #include "halfstabhandling.h"
 
+#include <QElapsedTimer>
 #include <QFile>
 #include <QMultiHash>
 #include <QObject>
@@ -13,10 +14,9 @@
 #include <QRegularExpression>
 #include <QTextStream>
 #include <QWriteLocker>
-#include <QElapsedTimer>
 
-#include <soliddefs_p.h>
 #include <config-solid.h>
+#include <soliddefs_p.h>
 
 #if HAVE_MNTENT_H
 #include <mntent.h>
@@ -129,7 +129,7 @@ void _k_updateMountPointsCache()
             continue;
         }
 #endif
-        //prevent accessing a blocking directory
+        // prevent accessing a blocking directory
         if (!_k_isNetworkFileSystem(items.at(2), items.at(0))) {
             const QString device = _k_resolveSymLink(items.at(0));
             const QString mountpoint = _k_resolveSymLink(items.at(1));
@@ -160,19 +160,15 @@ QStringList Solid::Backends::Hal::FstabHandling::possibleMountPoints(const QStri
     return globalMountPointsCache->values.values(deviceToFind);
 }
 
-QProcess *Solid::Backends::Hal::FstabHandling::callSystemCommand(const QString &commandName,
-        const QStringList &args,
-        QObject *obj, const char *slot)
+QProcess *Solid::Backends::Hal::FstabHandling::callSystemCommand(const QString &commandName, const QStringList &args, QObject *obj, const char *slot)
 {
     QStringList env = QProcess::systemEnvironment();
-    env.replaceInStrings(
-        QRegularExpression(QStringLiteral("^PATH=(.*)"), QRegularExpression::CaseInsensitiveOption),
-        QStringLiteral("PATH=/sbin:/bin:/usr/sbin/:/usr/bin"));
+    env.replaceInStrings(QRegularExpression(QStringLiteral("^PATH=(.*)"), QRegularExpression::CaseInsensitiveOption),
+                         QStringLiteral("PATH=/sbin:/bin:/usr/sbin/:/usr/bin"));
 
     QProcess *process = new QProcess(obj);
 
-    QObject::connect(process, SIGNAL(finished(int,QProcess::ExitStatus)),
-                     obj, slot);
+    QObject::connect(process, SIGNAL(finished(int, QProcess::ExitStatus)), obj, slot);
 
     process->setEnvironment(env);
     process->start(commandName, args);
@@ -185,10 +181,7 @@ QProcess *Solid::Backends::Hal::FstabHandling::callSystemCommand(const QString &
     }
 }
 
-QProcess *Solid::Backends::Hal::FstabHandling::callSystemCommand(const QString &commandName,
-        const QString &device,
-        QObject *obj, const char *slot)
+QProcess *Solid::Backends::Hal::FstabHandling::callSystemCommand(const QString &commandName, const QString &device, QObject *obj, const char *slot)
 {
     return callSystemCommand(commandName, QStringList() << device, obj, slot);
 }
-

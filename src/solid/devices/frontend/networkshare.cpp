@@ -17,7 +17,6 @@ Solid::NetworkShare::NetworkShare(QObject *backendObject)
 
 Solid::NetworkShare::~NetworkShare()
 {
-
 }
 
 Solid::NetworkShare::ShareType Solid::NetworkShare::type() const
@@ -31,4 +30,3 @@ QUrl Solid::NetworkShare::url() const
     Q_D(const NetworkShare);
     return_SOLID_CALL(Ifaces::NetworkShare *, d->backendObject(), QUrl(), url());
 }
-

@@ -64,10 +64,10 @@ public:
     virtual bool isHotpluggable() const = 0;
 
     /**
-    * Retrieves this drives size in bytes.
-    *
-    * @return the size of this drive
-    */
+     * Retrieves this drives size in bytes.
+     *
+     * @return the size of this drive
+     */
     virtual qulonglong size() const = 0;
 };
 }

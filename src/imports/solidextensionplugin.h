@@ -9,7 +9,7 @@
 
 #include <QQmlExtensionPlugin>
 
-class SolidExtensionPlugin: public QQmlExtensionPlugin
+class SolidExtensionPlugin : public QQmlExtensionPlugin
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.kde.solid")
@@ -18,8 +18,6 @@ public:
     SolidExtensionPlugin(QObject *parent = nullptr);
 
     void registerTypes(const char *uri) override;
-
 };
 
 #endif
-

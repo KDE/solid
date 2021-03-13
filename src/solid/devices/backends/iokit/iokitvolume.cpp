@@ -7,7 +7,6 @@
 #include "iokitvolume.h"
 #include "iokitgenericinterface.h"
 
-
 #include <CoreFoundation/CoreFoundation.h>
 
 using namespace Solid::Backends::IOKit;

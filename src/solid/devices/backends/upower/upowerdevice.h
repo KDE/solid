@@ -20,7 +20,6 @@ namespace Backends
 {
 namespace UPower
 {
-
 class UPowerDevice : public Solid::Ifaces::Device
 {
     Q_OBJECT

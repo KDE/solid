@@ -18,7 +18,7 @@ namespace Backends
 {
 namespace Win
 {
-class WinStorageAccess : public WinInterface,  public virtual Solid::Ifaces::StorageAccess
+class WinStorageAccess : public WinInterface, public virtual Solid::Ifaces::StorageAccess
 {
     Q_OBJECT
     Q_INTERFACES(Solid::Ifaces::StorageAccess)
@@ -31,7 +31,7 @@ public:
     virtual QString filePath() const;
 
     virtual bool isIgnored() const;
-    
+
     virtual bool isEncrypted() const;
 
     virtual bool setup();

@@ -6,7 +6,6 @@
 
 #include "iokitopticaldisc.h"
 
-
 #include <CoreFoundation/CoreFoundation.h>
 
 using namespace Solid::Backends::IOKit;

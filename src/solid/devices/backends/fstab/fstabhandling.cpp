@@ -45,20 +45,20 @@
 #define FSTAB "/etc/fstab"
 #endif
 
-#if ! HAVE_GETMNTINFO
-# ifdef _PATH_MOUNTED
+#if !HAVE_GETMNTINFO
+#ifdef _PATH_MOUNTED
 // On some Linux, MNTTAB points to /etc/fstab !
-#  undef MNTTAB
-#  define MNTTAB _PATH_MOUNTED
-# else
-#  ifndef MNTTAB
-#   ifdef MTAB_FILE
-#    define MNTTAB MTAB_FILE
-#   else
-#    define MNTTAB "/etc/mnttab"
-#   endif
-#  endif
-# endif
+#undef MNTTAB
+#define MNTTAB _PATH_MOUNTED
+#else
+#ifndef MNTTAB
+#ifdef MTAB_FILE
+#define MNTTAB MTAB_FILE
+#else
+#define MNTTAB "/etc/mnttab"
+#endif
+#endif
+#endif
 #endif
 
 // There are (at least) four kind of APIs:
@@ -92,9 +92,10 @@
 Q_GLOBAL_STATIC(QThreadStorage<Solid::Backends::Fstab::FstabHandling>, globalFstabCache)
 
 Solid::Backends::Fstab::FstabHandling::FstabHandling()
-    : m_fstabCacheValid(false),
-      m_mtabCacheValid(false)
-{ }
+    : m_fstabCacheValid(false)
+    , m_mtabCacheValid(false)
+{
+}
 
 bool _k_isFstabNetworkFileSystem(const QString &fstype, const QString &devName)
 {
@@ -119,12 +120,10 @@ bool _k_isFstabSupportedLocalFileSystem(const QString &fstype)
     return false;
 }
 
-QString _k_deviceNameForMountpoint(const QString &source, const QString &fstype,
-                                   const QString &mountpoint)
+QString _k_deviceNameForMountpoint(const QString &source, const QString &fstype, const QString &mountpoint)
 {
-    if (fstype.startsWith("fuse.") ||
-        fstype == QLatin1String("overlay")) {
-            return fstype + mountpoint;
+    if (fstype.startsWith("fuse.") || fstype == QLatin1String("overlay")) {
+        return fstype + mountpoint;
     }
     // A source may be mounted several times, e.g. with different
     // options, often a network share with different credentials
@@ -153,8 +152,7 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateFstabMountPointsCache()
     while ((fe = getmntent(fstab)) != nullptr) {
         const QString fsname = QFile::decodeName(fe->mnt_fsname);
         const QString fstype = QFile::decodeName(fe->mnt_type);
-        if (_k_isFstabNetworkFileSystem(fstype, fsname) ||
-            _k_isFstabSupportedLocalFileSystem(fstype)) {
+        if (_k_isFstabNetworkFileSystem(fstype, fsname) || _k_isFstabSupportedLocalFileSystem(fstype)) {
             const QString mountpoint = QFile::decodeName(fe->mnt_dir);
             const QString device = _k_deviceNameForMountpoint(fsname, fstype, mountpoint);
             QStringList options = QFile::decodeName(fe->mnt_opts).split(QLatin1Char(','));
@@ -197,9 +195,8 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateFstabMountPointsCache()
             continue;
         }
 #endif
-        //prevent accessing a blocking directory
-        if (_k_isFstabNetworkFileSystem(items.at(2), items.at(0)) ||
-            _k_isFstabSupportedLocalFileSystem(items.at(2))) {
+        // prevent accessing a blocking directory
+        if (_k_isFstabNetworkFileSystem(items.at(2), items.at(0)) || _k_isFstabSupportedLocalFileSystem(items.at(2))) {
             const QString device = items.at(0);
             const QString mountpoint = items.at(1);
 
@@ -222,10 +219,7 @@ QStringList Solid::Backends::Fstab::FstabHandling::deviceList()
     // Ensure that regardless an fstab device ends with a slash
     // it will match its eventual mounted device regardless whether or not its path
     // ends with a slash
-    for (auto it = globalFstabCache->localData().m_fstabCache.constBegin(),
-         end = globalFstabCache->localData().m_fstabCache.constEnd();
-         it != end; ++it) {
-
+    for (auto it = globalFstabCache->localData().m_fstabCache.constBegin(), end = globalFstabCache->localData().m_fstabCache.constEnd(); it != end; ++it) {
         auto device = it.key();
         // the device is already known
         if (devices.contains(device)) {
@@ -272,23 +266,26 @@ QString Solid::Backends::Fstab::FstabHandling::fstype(const QString &device)
     return globalFstabCache->localData().m_fstabFstypeCache.value(device);
 }
 
-bool Solid::Backends::Fstab::FstabHandling::callSystemCommand(const QString &commandName, const QStringList &args,
-                                                              const QObject *receiver, std::function<void(QProcess *)> callback)
+bool Solid::Backends::Fstab::FstabHandling::callSystemCommand(const QString &commandName,
+                                                              const QStringList &args,
+                                                              const QObject *receiver,
+                                                              std::function<void(QProcess *)> callback)
 {
     QStringList env = QProcess::systemEnvironment();
-    env.replaceInStrings(
-        QRegularExpression(QStringLiteral("^PATH=(.*)"), QRegularExpression::CaseInsensitiveOption),
-        QStringLiteral("PATH=/sbin:/bin:/usr/sbin/:/usr/bin"));
+    env.replaceInStrings(QRegularExpression(QStringLiteral("^PATH=(.*)"), QRegularExpression::CaseInsensitiveOption),
+                         QStringLiteral("PATH=/sbin:/bin:/usr/sbin/:/usr/bin"));
 
     QProcess *process = new QProcess();
 
-    QObject::connect(process, static_cast<void(QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished), receiver,
-        [process, callback](int exitCode, QProcess::ExitStatus exitStatus) {
-            Q_UNUSED(exitCode);
-            Q_UNUSED(exitStatus);
-            callback(process);
-            process->deleteLater();
-    });
+    QObject::connect(process,
+                     static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished),
+                     receiver,
+                     [process, callback](int exitCode, QProcess::ExitStatus exitStatus) {
+                         Q_UNUSED(exitCode);
+                         Q_UNUSED(exitStatus);
+                         callback(process);
+                         process->deleteLater();
+                     });
 
     process->setEnvironment(env);
     process->start(commandName, args);
@@ -321,8 +318,7 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateMtabMountPointsCache()
 
     for (int i = 0; i < num_fs; i++) {
         QString type = QFile::decodeName(mounted[i].f_fstypename);
-        if (_k_isFstabNetworkFileSystem(type, QString()) ||
-            _k_isFstabSupportedLocalFileSystem(type)) {
+        if (_k_isFstabNetworkFileSystem(type, QString()) || _k_isFstabSupportedLocalFileSystem(type)) {
             const QString fsname = QFile::decodeName(mounted[i].f_mntfromname);
             const QString mountpoint = QFile::decodeName(mounted[i].f_mntonname);
             const QString device = _k_deviceNameForMountpoint(fsname, type, mountpoint);
@@ -340,8 +336,7 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateMtabMountPointsCache()
     STRUCT_MNTENT fe;
     while (GETMNTENT(mnttab, fe)) {
         QString type = QFile::decodeName(MOUNTTYPE(fe));
-        if (_k_isFstabNetworkFileSystem(type, QString()) ||
-            _k_isFstabSupportedLocalFileSystem(type)) {
+        if (_k_isFstabNetworkFileSystem(type, QString()) || _k_isFstabSupportedLocalFileSystem(type)) {
             const QString fsname = QFile::decodeName(FSNAME(fe));
             const QString mountpoint = QFile::decodeName(MOUNTPOINT(fe));
             const QString device = _k_deviceNameForMountpoint(fsname, type, mountpoint);

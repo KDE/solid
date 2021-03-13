@@ -5,8 +5,8 @@
 */
 
 #include "halvolume.h"
-#include "halstorageaccess.h"
 #include "halgenericinterface.h"
+#include "halstorageaccess.h"
 
 using namespace Solid::Backends::Hal;
 
@@ -17,7 +17,6 @@ Volume::Volume(HalDevice *device)
 
 Volume::~Volume()
 {
-
 }
 
 bool Volume::isIgnored() const
@@ -94,4 +93,3 @@ QString Solid::Backends::Hal::Volume::encryptedContainerUdi() const
 {
     return m_device->prop("volume.crypto_luks.clear.backing_volume").toString();
 }
-

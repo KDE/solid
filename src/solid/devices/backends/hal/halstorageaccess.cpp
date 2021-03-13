@@ -9,16 +9,16 @@
 #include "halfstabhandling.h"
 #include "halgenericinterface.h"
 
-#include <QDebug>
-#include <QTimer>
 #include <QDBusConnection>
 #include <QDBusInterface>
 #include <QDBusReply>
+#include <QDebug>
 #include <QGuiApplication>
+#include <QTimer>
 #include <QWindow>
 
-#include <unistd.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 #ifdef Q_OS_FREEBSD
 #include <langinfo.h>
@@ -27,11 +27,13 @@
 using namespace Solid::Backends::Hal;
 
 StorageAccess::StorageAccess(HalDevice *device)
-    : DeviceInterface(device), m_setupInProgress(false), m_teardownInProgress(false), m_ejectInProgress(false),
-      m_passphraseRequested(false)
+    : DeviceInterface(device)
+    , m_setupInProgress(false)
+    , m_teardownInProgress(false)
+    , m_ejectInProgress(false)
+    , m_passphraseRequested(false)
 {
-    connect(device, SIGNAL(propertyChanged(QMap<QString,int>)),
-            this, SLOT(slotPropertyChanged(QMap<QString,int>)));
+    connect(device, SIGNAL(propertyChanged(QMap<QString, int>)), this, SLOT(slotPropertyChanged(QMap<QString, int>)));
     // Delay connecting to DBus signals to avoid the related time penalty
     // in hot paths such as predicate matching
     QTimer::singleShot(0, this, SLOT(connectDBusSignals()));
@@ -39,22 +41,15 @@ StorageAccess::StorageAccess(HalDevice *device)
 
 StorageAccess::~StorageAccess()
 {
-
 }
 
 void StorageAccess::connectDBusSignals()
 {
-    m_device->registerAction("setup", this,
-                             SLOT(slotSetupRequested()),
-                             SLOT(slotSetupDone(int,QString)));
+    m_device->registerAction("setup", this, SLOT(slotSetupRequested()), SLOT(slotSetupDone(int, QString)));
 
-    m_device->registerAction("teardown", this,
-                             SLOT(slotTeardownRequested()),
-                             SLOT(slotTeardownDone(int,QString)));
+    m_device->registerAction("teardown", this, SLOT(slotTeardownRequested()), SLOT(slotTeardownDone(int, QString)));
 
-    m_device->registerAction("eject", this,
-                             SLOT(slotEjectRequested()),
-                             SLOT(slotEjectDone(int,QString)));
+    m_device->registerAction("eject", this, SLOT(slotEjectRequested()), SLOT(slotEjectDone(int, QString)));
 }
 
 void StorageAccess::slotSetupDone(int error, const QString &errorString)
@@ -78,16 +73,10 @@ void StorageAccess::slotEjectDone(int error, const QString &errorString)
 bool StorageAccess::isAccessible() const
 {
     if (m_device->prop("info.interfaces").toStringList().contains("org.freedesktop.Hal.Device.Volume.Crypto")) {
-
         // Might be a bit slow, but I see no cleaner way to do this with HAL...
-        QDBusInterface manager("org.freedesktop.Hal",
-                               "/org/freedesktop/Hal/Manager",
-                               "org.freedesktop.Hal.Manager",
-                               QDBusConnection::systemBus());
+        QDBusInterface manager("org.freedesktop.Hal", "/org/freedesktop/Hal/Manager", "org.freedesktop.Hal.Manager", QDBusConnection::systemBus());
 
-        QDBusReply<QStringList> reply = manager.call("FindDeviceStringMatch",
-                                        "volume.crypto_luks.clear.backing_volume",
-                                        m_device->udi());
+        QDBusReply<QStringList> reply = manager.call("FindDeviceStringMatch", "volume.crypto_luks.clear.backing_volume", m_device->udi());
 
         QStringList list = reply;
 
@@ -103,8 +92,7 @@ QString StorageAccess::filePath() const
     QString result = m_device->prop("volume.mount_point").toString();
 
     if (result.isEmpty()) {
-        QStringList mountpoints
-            = FstabHandling::possibleMountPoints(m_device->prop("block.device").toString());
+        QStringList mountpoints = FstabHandling::possibleMountPoints(m_device->prop("block.device").toString());
         if (mountpoints.size() == 1) {
             result = mountpoints.first();
         }
@@ -191,7 +179,7 @@ void StorageAccess::slotPropertyChanged(const QMap<QString, int> &changes)
     }
 }
 
-void StorageAccess::slotDBusReply(const QDBusMessage &/*reply*/)
+void StorageAccess::slotDBusReply(const QDBusMessage & /*reply*/)
 {
     if (m_setupInProgress) {
         m_setupInProgress = false;
@@ -201,9 +189,7 @@ void StorageAccess::slotDBusReply(const QDBusMessage &/*reply*/)
         m_device->broadcastActionDone("teardown");
 
         HalDevice drive(m_device->prop("block.storage_device").toString());
-        if (drive.prop("storage.drive_type").toString() != "cdrom"
-                && drive.prop("storage.requires_eject").toBool()) {
-
+        if (drive.prop("storage.drive_type").toString() != "cdrom" && drive.prop("storage.requires_eject").toBool()) {
             QString devnode = m_device->prop("block.device").toString();
 
 #if defined(Q_OS_OPENBSD)
@@ -223,8 +209,7 @@ void StorageAccess::slotDBusReply(const QDBusMessage &/*reply*/)
 
             m_ejectInProgress = true;
             m_device->broadcastActionRequested("eject");
-            m_process = FstabHandling::callSystemCommand("eject", args,
-                        this, SLOT(slotProcessFinished(int,QProcess::ExitStatus)));
+            m_process = FstabHandling::callSystemCommand("eject", args, this, SLOT(slotProcessFinished(int, QProcess::ExitStatus)));
         }
     } else if (m_ejectInProgress) {
         m_ejectInProgress = false;
@@ -237,16 +222,13 @@ void StorageAccess::slotDBusError(const QDBusError &error)
     // TODO: Better error reporting here
     if (m_setupInProgress) {
         m_setupInProgress = false;
-        m_device->broadcastActionDone("setup", Solid::UnauthorizedOperation,
-                                      QString(error.name() + ": " + error.message()));
+        m_device->broadcastActionDone("setup", Solid::UnauthorizedOperation, QString(error.name() + ": " + error.message()));
     } else if (m_teardownInProgress) {
         m_teardownInProgress = false;
-        m_device->broadcastActionDone("teardown", Solid::UnauthorizedOperation,
-                                      QString(error.name() + ": " + error.message()));
+        m_device->broadcastActionDone("teardown", Solid::UnauthorizedOperation, QString(error.name() + ": " + error.message()));
     } else if (m_ejectInProgress) {
         m_ejectInProgress = false;
-        m_device->broadcastActionDone("eject", Solid::UnauthorizedOperation,
-                                      QString(error.name() + ": " + error.message()));
+        m_device->broadcastActionDone("eject", Solid::UnauthorizedOperation, QString(error.name() + ": " + error.message()));
     }
 }
 
@@ -259,19 +241,17 @@ void Solid::Backends::Hal::StorageAccess::slotProcessFinished(int exitCode, QPro
         if (exitCode == 0) {
             m_device->broadcastActionDone("setup");
         } else {
-            m_device->broadcastActionDone("setup", Solid::UnauthorizedOperation,
-                                          m_process->readAllStandardError());
+            m_device->broadcastActionDone("setup", Solid::UnauthorizedOperation, m_process->readAllStandardError());
         }
     } else if (m_teardownInProgress) {
         m_teardownInProgress = false;
         if (exitCode == 0) {
             m_device->broadcastActionDone("teardown");
         } else {
-            m_device->broadcastActionDone("teardown", Solid::UnauthorizedOperation,
-                                          m_process->readAllStandardError());
+            m_device->broadcastActionDone("teardown", Solid::UnauthorizedOperation, m_process->readAllStandardError());
         }
     } else if (m_ejectInProgress) {
-        if (exitCode == 0)  {
+        if (exitCode == 0) {
             m_ejectInProgress = false;
             m_device->broadcastActionDone("eject");
         } else {
@@ -312,8 +292,7 @@ bool StorageAccess::requestPassphrase()
     QString returnService = QDBusConnection::sessionBus().baseService();
     m_lastReturnObject = generateReturnObjectPath();
 
-    QDBusConnection::sessionBus().registerObject(m_lastReturnObject, this,
-            QDBusConnection::ExportScriptableSlots);
+    QDBusConnection::sessionBus().registerObject(m_lastReturnObject, this, QDBusConnection::ExportScriptableSlots);
 
     auto activeWindow = QGuiApplication::focusWindow();
     uint wId = 0;
@@ -324,9 +303,7 @@ bool StorageAccess::requestPassphrase()
     QString appId = QCoreApplication::applicationName();
 
     QDBusInterface soliduiserver("org.kde.kded5", "/modules/soliduiserver", "org.kde.SolidUiServer");
-    QDBusReply<void> reply = soliduiserver.call("showPassphraseDialog", udi,
-                             returnService, m_lastReturnObject,
-                             wId, appId);
+    QDBusReply<void> reply = soliduiserver.call("showPassphraseDialog", udi, returnService, m_lastReturnObject, wId, appId);
     m_passphraseRequested = reply.isValid();
     if (!m_passphraseRequested) {
         qWarning() << "Failed to call the SolidUiServer, D-Bus said:" << reply.error();
@@ -352,9 +329,7 @@ bool StorageAccess::callHalVolumeMount()
 {
     QDBusConnection c = QDBusConnection::systemBus();
     QString udi = m_device->udi();
-    QDBusMessage msg = QDBusMessage::createMethodCall("org.freedesktop.Hal", udi,
-                       "org.freedesktop.Hal.Device.Volume",
-                       "Mount");
+    QDBusMessage msg = QDBusMessage::createMethodCall("org.freedesktop.Hal", udi, "org.freedesktop.Hal.Device.Volume", "Mount");
 
     // HAL 0.5.12 supports using alternative drivers for the same filesystem.
     // This is mainly used to integrate the ntfs-3g driver.
@@ -423,24 +398,18 @@ bool StorageAccess::callHalVolumeMount()
 
     msg << "" << fstype << options;
 
-    return c.callWithCallback(msg, this,
-                              SLOT(slotDBusReply(QDBusMessage)),
-                              SLOT(slotDBusError(QDBusError)));
+    return c.callWithCallback(msg, this, SLOT(slotDBusReply(QDBusMessage)), SLOT(slotDBusError(QDBusError)));
 }
 
 bool StorageAccess::callHalVolumeUnmount()
 {
     QDBusConnection c = QDBusConnection::systemBus();
     QString udi = m_device->udi();
-    QDBusMessage msg = QDBusMessage::createMethodCall("org.freedesktop.Hal", udi,
-                       "org.freedesktop.Hal.Device.Volume",
-                       "Unmount");
+    QDBusMessage msg = QDBusMessage::createMethodCall("org.freedesktop.Hal", udi, "org.freedesktop.Hal.Device.Volume", "Unmount");
 
     msg << QStringList();
 
-    return c.callWithCallback(msg, this,
-                              SLOT(slotDBusReply(QDBusMessage)),
-                              SLOT(slotDBusError(QDBusError)));
+    return c.callWithCallback(msg, this, SLOT(slotDBusReply(QDBusMessage)), SLOT(slotDBusError(QDBusError)));
 }
 
 bool StorageAccess::callHalVolumeEject()
@@ -449,21 +418,17 @@ bool StorageAccess::callHalVolumeEject()
     QString interface = "org.freedesktop.Hal.Device.Volume";
 
     QDBusConnection c = QDBusConnection::systemBus();
-    QDBusMessage msg = QDBusMessage::createMethodCall("org.freedesktop.Hal", udi,
-                       interface, "Eject");
+    QDBusMessage msg = QDBusMessage::createMethodCall("org.freedesktop.Hal", udi, interface, "Eject");
 
     msg << QStringList();
 
-    return c.callWithCallback(msg, this,
-                              SLOT(slotDBusReply(QDBusMessage)),
-                              SLOT(slotDBusError(QDBusError)));
+    return c.callWithCallback(msg, this, SLOT(slotDBusReply(QDBusMessage)), SLOT(slotDBusError(QDBusError)));
 }
 
 bool Solid::Backends::Hal::StorageAccess::callSystemMount()
 {
     const QString device = m_device->prop("block.device").toString();
-    m_process = FstabHandling::callSystemCommand("mount", device,
-                this, SLOT(slotProcessFinished(int,QProcess::ExitStatus)));
+    m_process = FstabHandling::callSystemCommand("mount", device, this, SLOT(slotProcessFinished(int, QProcess::ExitStatus)));
 
     return m_process != nullptr;
 }
@@ -471,8 +436,7 @@ bool Solid::Backends::Hal::StorageAccess::callSystemMount()
 bool Solid::Backends::Hal::StorageAccess::callSystemUnmount()
 {
     const QString device = m_device->prop("block.device").toString();
-    m_process = FstabHandling::callSystemCommand("umount", device,
-                this, SLOT(slotProcessFinished(int,QProcess::ExitStatus)));
+    m_process = FstabHandling::callSystemCommand("umount", device, this, SLOT(slotProcessFinished(int, QProcess::ExitStatus)));
 
     return m_process != nullptr;
 }
@@ -481,27 +445,18 @@ void StorageAccess::callCryptoSetup(const QString &passphrase)
 {
     QDBusConnection c = QDBusConnection::systemBus();
     QString udi = m_device->udi();
-    QDBusMessage msg = QDBusMessage::createMethodCall("org.freedesktop.Hal", udi,
-                       "org.freedesktop.Hal.Device.Volume.Crypto",
-                       "Setup");
+    QDBusMessage msg = QDBusMessage::createMethodCall("org.freedesktop.Hal", udi, "org.freedesktop.Hal.Device.Volume.Crypto", "Setup");
 
     msg << passphrase;
 
-    c.callWithCallback(msg, this,
-                       SLOT(slotDBusReply(QDBusMessage)),
-                       SLOT(slotDBusError(QDBusError)));
+    c.callWithCallback(msg, this, SLOT(slotDBusReply(QDBusMessage)), SLOT(slotDBusError(QDBusError)));
 }
 
 bool StorageAccess::callCryptoTeardown()
 {
     QDBusConnection c = QDBusConnection::systemBus();
     QString udi = m_device->udi();
-    QDBusMessage msg = QDBusMessage::createMethodCall("org.freedesktop.Hal", udi,
-                       "org.freedesktop.Hal.Device.Volume.Crypto",
-                       "Teardown");
+    QDBusMessage msg = QDBusMessage::createMethodCall("org.freedesktop.Hal", udi, "org.freedesktop.Hal.Device.Volume.Crypto", "Teardown");
 
-    return c.callWithCallback(msg, this,
-                              SLOT(slotDBusReply(QDBusMessage)),
-                              SLOT(slotDBusError(QDBusError)));
+    return c.callWithCallback(msg, this, SLOT(slotDBusReply(QDBusMessage)), SLOT(slotDBusError(QDBusError)));
 }
-

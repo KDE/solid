@@ -66,12 +66,20 @@ public:
      *                     mouse would normally show up as a MouseBattery), @since 5.54
      * - UnknownBattery : A battery in an unknown device
      */
-    enum BatteryType { UnknownBattery, PdaBattery, UpsBattery,
-                       PrimaryBattery, MouseBattery, KeyboardBattery,
-                       KeyboardMouseBattery, CameraBattery,
-                       PhoneBattery, MonitorBattery, GamingInputBattery,
-                       BluetoothBattery,
-                     };
+    enum BatteryType {
+        UnknownBattery,
+        PdaBattery,
+        UpsBattery,
+        PrimaryBattery,
+        MouseBattery,
+        KeyboardBattery,
+        KeyboardMouseBattery,
+        CameraBattery,
+        PhoneBattery,
+        MonitorBattery,
+        GamingInputBattery,
+        BluetoothBattery,
+    };
     Q_ENUM(BatteryType)
 
     /**
@@ -88,19 +96,25 @@ public:
     Q_ENUM(ChargeState)
 
     /**
-      * Technology used in the battery
-      *
-      * 0: Unknown
-      * 1: Lithium ion
-      * 2: Lithium polymer
-      * 3: Lithium iron phosphate
-      * 4: Lead acid
-      * 5: Nickel cadmium
-      * 6: Nickel metal hydride
-      */
-    enum Technology { UnknownTechnology = 0, LithiumIon, LithiumPolymer, LithiumIronPhosphate,
-                      LeadAcid, NickelCadmium, NickelMetalHydride,
-                    };
+     * Technology used in the battery
+     *
+     * 0: Unknown
+     * 1: Lithium ion
+     * 2: Lithium polymer
+     * 3: Lithium iron phosphate
+     * 4: Lead acid
+     * 5: Nickel cadmium
+     * 6: Nickel metal hydride
+     */
+    enum Technology {
+        UnknownTechnology = 0,
+        LithiumIon,
+        LithiumPolymer,
+        LithiumIronPhosphate,
+        LeadAcid,
+        NickelCadmium,
+        NickelMetalHydride,
+    };
     Q_ENUM(Technology)
 
 private:
@@ -145,7 +159,10 @@ public:
      * @deprecated Since 5.0, use isPresent() instead.
      */
     SOLID_DEPRECATED_VERSION(5, 0, "Use Battery::isPresent()")
-    bool isPlugged() const { return isPresent(); }
+    bool isPlugged() const
+    {
+        return isPresent();
+    }
 #endif
 
     /**
@@ -215,18 +232,18 @@ public:
     qlonglong timeToFull() const;
 
     /**
-      * Retrieves the technology used to manufacture the battery.
-      *
-      * @return the battery technology
-      * @see Solid::Battery::Technology
-      */
+     * Retrieves the technology used to manufacture the battery.
+     *
+     * @return the battery technology
+     * @see Solid::Battery::Technology
+     */
     Solid::Battery::Technology technology() const;
 
     /**
-      * Amount of energy (measured in Wh) currently available in the power source.
-      *
-      * @return amount of battery energy in Wh
-      */
+     * Amount of energy (measured in Wh) currently available in the power source.
+     *
+     * @return amount of battery energy in Wh
+     */
     double energy() const;
 
     /**
@@ -246,19 +263,19 @@ public:
     double energyFullDesign() const;
 
     /**
-      * Amount of energy being drained from the source, measured in W.
-      * If positive, the source is being discharged, if negative it's being charged.
-      *
-      * @return battery rate in Watts
-      *
-      */
+     * Amount of energy being drained from the source, measured in W.
+     * If positive, the source is being discharged, if negative it's being charged.
+     *
+     * @return battery rate in Watts
+     *
+     */
     double energyRate() const;
 
     /**
-      * Voltage in the Cell or being recorded by the meter.
-      *
-      * @return voltage in Volts
-      */
+     * Voltage in the Cell or being recorded by the meter.
+     *
+     * @return voltage in Volts
+     */
     double voltage() const;
 
     /**
@@ -435,13 +452,13 @@ Q_SIGNALS:
     void temperatureChanged(double temperature, const QString &udi);
 
     /**
-      * This signal is emitted when the estimated battery remaining time changes.
-      *
-      * @param time the new remaining time
-      * @param udi the UDI of the battery with the new remaining time
-      * @since 5.8
-      */
-     void remainingTimeChanged(qlonglong time, const QString &udi);
+     * This signal is emitted when the estimated battery remaining time changes.
+     *
+     * @param time the new remaining time
+     * @param udi the UDI of the battery with the new remaining time
+     * @since 5.8
+     */
+    void remainingTimeChanged(qlonglong time, const QString &udi);
 };
 }
 

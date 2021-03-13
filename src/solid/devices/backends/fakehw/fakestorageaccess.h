@@ -7,8 +7,8 @@
 #ifndef SOLID_BACKENDS_FAKEHW_FAKESTORAGEACCESS_H
 #define SOLID_BACKENDS_FAKEHW_FAKESTORAGEACCESS_H
 
-#include <solid/devices/ifaces/storageaccess.h>
 #include "fakedeviceinterface.h"
+#include <solid/devices/ifaces/storageaccess.h>
 
 namespace Solid
 {

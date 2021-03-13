@@ -44,10 +44,9 @@ Q_SIGNALS:
 
 private:
     Solid::OpticalDrive::MediumTypes m_supportedTypes;
-
 };
 
-class MediaProfiles//TODO: cleanup
+class MediaProfiles // TODO: cleanup
 {
 public:
     MediaProfiles();
@@ -59,7 +58,6 @@ public:
     static QMap<ulong, MediaProfiles> profiles(const QString &drive);
 
 private:
-
     MediaProfiles(ulong profile, Solid::OpticalDrive::MediumTypes type, QString name = "");
 
     MediaProfiles(FEATURE_DATA_PROFILE_LIST_EX *feature);

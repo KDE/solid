@@ -8,7 +8,6 @@
 #define SOLID_BACKENDS_FSTAB_SERVICE_H
 
 /* FStab */
-#define FSTAB_UDI_PREFIX             "/org/kde/fstab"
+#define FSTAB_UDI_PREFIX "/org/kde/fstab"
 
 #endif // SOLID_BACKENDS_FSTAB_H
-

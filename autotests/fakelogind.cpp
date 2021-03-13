@@ -6,21 +6,21 @@
 
 #include "fakelogind.h"
 
-#include <sys/stat.h>
 #include <fcntl.h>
-#include <unistd.h>
 #include <qtemporaryfile.h>
+#include <sys/stat.h>
+#include <unistd.h>
 
 #include <QDebug>
-#include <QTimer>
 #include <QTemporaryFile>
+#include <QTimer>
 
-FakeLogind::FakeLogind(QObject* parent) : QObject(parent)
+FakeLogind::FakeLogind(QObject *parent)
+    : QObject(parent)
 {
-
 }
 
-QDBusUnixFileDescriptor FakeLogind::Inhibit(const QString& what, const QString& who, const QString& why, const QString& mode)
+QDBusUnixFileDescriptor FakeLogind::Inhibit(const QString &what, const QString &who, const QString &why, const QString &mode)
 {
     Q_EMIT newInhibition(what, who, why, mode);
 
@@ -36,7 +36,7 @@ QDBusUnixFileDescriptor FakeLogind::Inhibit(const QString& what, const QString& 
     m_fd = file.handle();
     foo.giveFileDescriptor(m_fd);
 
-    //We could use epoll for this, but it will make the code harder to read for a test.
+    // We could use epoll for this, but it will make the code harder to read for a test.
     auto t = new QTimer();
     t->setInterval(100);
     connect(t, SIGNAL(timeout()), SLOT(checkFd()));

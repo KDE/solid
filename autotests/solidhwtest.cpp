@@ -6,20 +6,20 @@
 
 #include "solidhwtest.h"
 
-#include <QTest>
 #include <QSignalSpy>
+#include <QTest>
 
-#include <solid/devicenotifier.h>
+#include "solid/devices/managerbase_p.h"
 #include <solid/device.h>
+#include <solid/devicenotifier.h>
 #include <solid/genericinterface.h>
+#include <solid/predicate.h>
 #include <solid/processor.h>
 #include <solid/storageaccess.h>
 #include <solid/storagevolume.h>
-#include <solid/predicate.h>
-#include "solid/devices/managerbase_p.h"
 
-#include <fakemanager.h>
 #include <fakedevice.h>
+#include <fakemanager.h>
 
 #include <stdlib.h>
 
@@ -37,8 +37,7 @@ QTEST_MAIN(SolidHwTest)
 void SolidHwTest::initTestCase()
 {
     qputenv("SOLID_FAKEHW", FAKE_COMPUTER_XML);
-    Solid::ManagerBasePrivate *manager
-        = dynamic_cast<Solid::ManagerBasePrivate *>(Solid::DeviceNotifier::instance());
+    Solid::ManagerBasePrivate *manager = dynamic_cast<Solid::ManagerBasePrivate *>(Solid::DeviceNotifier::instance());
     fakeManager = qobject_cast<Solid::Backends::Fake::FakeManager *>(manager->managerBackends().first());
 }
 
@@ -153,9 +152,8 @@ void SolidHwTest::testDeviceSignals()
     Solid::Device device("/org/kde/solid/fakehw/platform_floppy_0_storage_virt_volume");
 
     // We'll spy our floppy
-    connect(device.as<Solid::GenericInterface>(), SIGNAL(propertyChanged(QMap<QString,int>)),
-            this, SLOT(slotPropertyChanged(QMap<QString,int>)));
-    QSignalSpy condition_raised(device.as<Solid::GenericInterface>(), SIGNAL(conditionRaised(QString,QString)));
+    connect(device.as<Solid::GenericInterface>(), SIGNAL(propertyChanged(QMap<QString, int>)), this, SLOT(slotPropertyChanged(QMap<QString, int>)));
+    QSignalSpy condition_raised(device.as<Solid::GenericInterface>(), SIGNAL(conditionRaised(QString, QString)));
 
     fake->setProperty("mountPoint", "/tmp.foo"); // The button is now pressed (modified property)
     fake->raiseCondition("Floppy Closed", "Why not?"); // Since it's a LID we notify this change
@@ -284,7 +282,7 @@ void SolidHwTest::testDeviceInterfaceIntrospection()
 
 void SolidHwTest::testDeviceInterfaceIntrospectionCornerCases()
 {
-    QCOMPARE(Solid::DeviceInterface::typeToString((Solid::DeviceInterface::Type) - 1), QString());
+    QCOMPARE(Solid::DeviceInterface::typeToString((Solid::DeviceInterface::Type)-1), QString());
     QCOMPARE((int)Solid::DeviceInterface::stringToType("blup"), -1);
 }
 
@@ -313,15 +311,16 @@ void SolidHwTest::testPredicate()
 {
     Solid::Device dev("/org/kde/solid/fakehw/acpi_CPU0");
 
-    Solid::Predicate p1 = Solid::Predicate(Solid::DeviceInterface::Processor, "maxSpeed", 3200)
-                          & Solid::Predicate(Solid::DeviceInterface::Processor, "canChangeFrequency", true);
+    Solid::Predicate p1 =
+        Solid::Predicate(Solid::DeviceInterface::Processor, "maxSpeed", 3200) & Solid::Predicate(Solid::DeviceInterface::Processor, "canChangeFrequency", true);
     Solid::Predicate p2 = Solid::Predicate(Solid::DeviceInterface::Processor, "maxSpeed", 3200)
-                          & Solid::Predicate(Solid::DeviceInterface::Processor, "canChangeFrequency", false);
-    Solid::Predicate p3 = Solid::Predicate(Solid::DeviceInterface::Processor, "maxSpeed", 3201)
-                          | Solid::Predicate(Solid::DeviceInterface::Processor, "canChangeFrequency", true);
+        & Solid::Predicate(Solid::DeviceInterface::Processor, "canChangeFrequency", false);
+    Solid::Predicate p3 =
+        Solid::Predicate(Solid::DeviceInterface::Processor, "maxSpeed", 3201) | Solid::Predicate(Solid::DeviceInterface::Processor, "canChangeFrequency", true);
     Solid::Predicate p4 = Solid::Predicate(Solid::DeviceInterface::Processor, "maxSpeed", 3201)
-                          | Solid::Predicate(Solid::DeviceInterface::Processor, "canChangeFrequency", false);
-    Solid::Predicate p5 = Solid::Predicate::fromString("[[Processor.maxSpeed == 3201 AND Processor.canChangeFrequency == false] OR StorageVolume.mountPoint == '/media/blup']");
+        | Solid::Predicate(Solid::DeviceInterface::Processor, "canChangeFrequency", false);
+    Solid::Predicate p5 =
+        Solid::Predicate::fromString("[[Processor.maxSpeed == 3201 AND Processor.canChangeFrequency == false] OR StorageVolume.mountPoint == '/media/blup']");
 
     QVERIFY(p1.matches(dev));
     QVERIFY(!p2.matches(dev));
@@ -339,8 +338,7 @@ void SolidHwTest::testPredicate()
     QList<Solid::Device> list;
 
     QStringList cpuSet;
-    cpuSet << QString("/org/kde/solid/fakehw/acpi_CPU0")
-           << QString("/org/kde/solid/fakehw/acpi_CPU1");
+    cpuSet << QString("/org/kde/solid/fakehw/acpi_CPU0") << QString("/org/kde/solid/fakehw/acpi_CPU1");
 
     list = Solid::Device::listFromQuery(p1);
     QCOMPARE(list.size(), 2);
@@ -359,7 +357,6 @@ void SolidHwTest::testPredicate()
     list = Solid::Device::listFromQuery("[Processor.canChangeFrequency==true AND Processor.number==1]");
     QCOMPARE(list.size(), 1);
     QCOMPARE(list.at(0).udi(), QString("/org/kde/solid/fakehw/acpi_CPU1"));
-
 }
 
 void SolidHwTest::testQueryStorageVolumeOrProcessor()
@@ -367,22 +364,21 @@ void SolidHwTest::testQueryStorageVolumeOrProcessor()
     auto list = Solid::Device::listFromQuery("[Processor.number==1 OR IS StorageVolume]");
     QCOMPARE(list.size(), 10);
 
-    //make sure predicate case-insensitiveness is sane
+    // make sure predicate case-insensitiveness is sane
     list = Solid::Device::listFromQuery("[Processor.number==1 or is StorageVolume]");
     QCOMPARE(list.size(), 10);
     list = Solid::Device::listFromQuery("[Processor.number==1 oR Is StorageVolume]");
     QCOMPARE(list.size(), 10);
-    QStringList expected{
-        "/org/kde/solid/fakehw/acpi_CPU1",
-        "/org/kde/solid/fakehw/platform_floppy_0_storage_virt_volume",
-        "/org/kde/solid/fakehw/volume_label_SOLIDMAN_BEGINS",
-        "/org/kde/solid/fakehw/volume_part1_size_993284096",
-        "/org/kde/solid/fakehw/volume_part2_size_1024",
-        "/org/kde/solid/fakehw/volume_part5_size_1048576",
-        "/org/kde/solid/fakehw/volume_uuid_5011",
-        "/org/kde/solid/fakehw/volume_uuid_c0ffee",
-        "/org/kde/solid/fakehw/volume_uuid_f00ba7",
-        "/org/kde/solid/fakehw/volume_uuid_feedface"};
+    QStringList expected{"/org/kde/solid/fakehw/acpi_CPU1",
+                         "/org/kde/solid/fakehw/platform_floppy_0_storage_virt_volume",
+                         "/org/kde/solid/fakehw/volume_label_SOLIDMAN_BEGINS",
+                         "/org/kde/solid/fakehw/volume_part1_size_993284096",
+                         "/org/kde/solid/fakehw/volume_part2_size_1024",
+                         "/org/kde/solid/fakehw/volume_part5_size_1048576",
+                         "/org/kde/solid/fakehw/volume_uuid_5011",
+                         "/org/kde/solid/fakehw/volume_uuid_c0ffee",
+                         "/org/kde/solid/fakehw/volume_uuid_f00ba7",
+                         "/org/kde/solid/fakehw/volume_uuid_feedface"};
     QCOMPARE(to_string_list(list), expected);
 
     list = Solid::Device::listFromQuery("[IS Processor OR IS StorageVolume]");
@@ -394,19 +390,19 @@ void SolidHwTest::testQueryStorageVolumeOrProcessor()
 void SolidHwTest::testQueryStorageVolumeOrStorageAccess()
 {
     // the query from KFilePlacesModel
-    const auto list = Solid::Device::listFromQuery("[[[[ StorageVolume.ignored == false AND [ StorageVolume.usage == 'FileSystem' OR StorageVolume.usage == 'Encrypted' ]]"
-            " OR "
-            "[ IS StorageAccess AND StorageDrive.driveType == 'Floppy' ]]"
-            " OR "
-            "OpticalDisc.availableContent & 'Audio' ]"
-            " OR "
-            "StorageAccess.ignored == false ]");
-    const QStringList expected{
-            "/org/kde/solid/fakehw/fstab/thehost/solidpath",
-            "/org/kde/solid/fakehw/platform_floppy_0_storage_virt_volume",
-            "/org/kde/solid/fakehw/volume_part1_size_993284096",
-            "/org/kde/solid/fakehw/volume_uuid_5011",
-            "/org/kde/solid/fakehw/volume_uuid_f00ba7"};
+    const auto list = Solid::Device::listFromQuery(
+        "[[[[ StorageVolume.ignored == false AND [ StorageVolume.usage == 'FileSystem' OR StorageVolume.usage == 'Encrypted' ]]"
+        " OR "
+        "[ IS StorageAccess AND StorageDrive.driveType == 'Floppy' ]]"
+        " OR "
+        "OpticalDisc.availableContent & 'Audio' ]"
+        " OR "
+        "StorageAccess.ignored == false ]");
+    const QStringList expected{"/org/kde/solid/fakehw/fstab/thehost/solidpath",
+                               "/org/kde/solid/fakehw/platform_floppy_0_storage_virt_volume",
+                               "/org/kde/solid/fakehw/volume_part1_size_993284096",
+                               "/org/kde/solid/fakehw/volume_uuid_5011",
+                               "/org/kde/solid/fakehw/volume_uuid_f00ba7"};
     QCOMPARE(to_string_list(list), expected);
 }
 
@@ -415,18 +411,15 @@ void SolidHwTest::testQueryWithParentUdi()
     QString parentUdi = "/org/kde/solid/fakehw/storage_model_solid_reader";
     Solid::DeviceInterface::Type ifaceType = Solid::DeviceInterface::Unknown;
     QCOMPARE(fakeManager->devicesFromQuery(parentUdi, ifaceType).size(), 1);
-    QCOMPARE(fakeManager->devicesFromQuery(parentUdi, ifaceType).at(0),
-             QString("/org/kde/solid/fakehw/volume_label_SOLIDMAN_BEGINS"));
+    QCOMPARE(fakeManager->devicesFromQuery(parentUdi, ifaceType).at(0), QString("/org/kde/solid/fakehw/volume_label_SOLIDMAN_BEGINS"));
 
     ifaceType = Solid::DeviceInterface::Processor;
     QCOMPARE(fakeManager->devicesFromQuery(parentUdi, ifaceType).size(), 0);
 
     parentUdi = "/org/kde/solid/fakehw/computer";
     QCOMPARE(fakeManager->devicesFromQuery(parentUdi, ifaceType).size(), 2);
-    QCOMPARE(fakeManager->devicesFromQuery(parentUdi, ifaceType).at(0),
-             QString("/org/kde/solid/fakehw/acpi_CPU0"));
-    QCOMPARE(fakeManager->devicesFromQuery(parentUdi, ifaceType).at(1),
-             QString("/org/kde/solid/fakehw/acpi_CPU1"));
+    QCOMPARE(fakeManager->devicesFromQuery(parentUdi, ifaceType).at(0), QString("/org/kde/solid/fakehw/acpi_CPU0"));
+    QCOMPARE(fakeManager->devicesFromQuery(parentUdi, ifaceType).at(1), QString("/org/kde/solid/fakehw/acpi_CPU1"));
 }
 
 void SolidHwTest::testListFromTypeProcessor()
@@ -453,7 +446,7 @@ void SolidHwTest::testSetupTeardown()
     }
 
     QList<QVariant> args;
-    QSignalSpy spy(access, SIGNAL(accessibilityChanged(bool,QString)));
+    QSignalSpy spy(access, SIGNAL(accessibilityChanged(bool, QString)));
 
     access->teardown();
 
@@ -466,7 +459,6 @@ void SolidHwTest::testSetupTeardown()
     QCOMPARE(spy.count(), 1);
     args = spy.takeFirst();
     QCOMPARE(args.at(0).toBool(), true);
-
 }
 
 void SolidHwTest::slotPropertyChanged(const QMap<QString, int> &changes)
@@ -475,4 +467,3 @@ void SolidHwTest::slotPropertyChanged(const QMap<QString, int> &changes)
 }
 
 #include "moc_solidhwtest.cpp"
-

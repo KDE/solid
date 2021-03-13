@@ -7,10 +7,10 @@
 #ifndef SOLID_BACKENDS_FSTAB_FSTABMANAGER_H
 #define SOLID_BACKENDS_FSTAB_FSTABMANAGER_H
 
-#include <solid/devices/ifaces/devicemanager.h>
-#include <solid/deviceinterface.h>
-#include <QStringList>
 #include <QSet>
+#include <QStringList>
+#include <solid/deviceinterface.h>
+#include <solid/devices/ifaces/devicemanager.h>
 
 namespace Solid
 {

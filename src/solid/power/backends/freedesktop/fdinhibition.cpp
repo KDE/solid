@@ -9,21 +9,20 @@
 
 #include <unistd.h>
 
-#include <QVariant>
-#include <QDebug>
 #include <QCoreApplication>
 #include <QDBusConnection>
 #include <QDBusUnixFileDescriptor>
+#include <QDebug>
+#include <QVariant>
 
 using namespace Solid;
 
-FdInhibition::FdInhibition(Power::InhibitionTypes inhibitions, const QString &description, QObject* parent)
+FdInhibition::FdInhibition(Power::InhibitionTypes inhibitions, const QString &description, QObject *parent)
     : AbstractInhibition(parent)
     , m_state(Inhibition::Stopped)
     , m_description(description)
     , m_inhibitions(inhibitions)
 {
-
 }
 
 FdInhibition::~FdInhibition()
@@ -33,16 +32,13 @@ FdInhibition::~FdInhibition()
 
 void FdInhibition::start()
 {
-    QDBusMessage msg = QDBusMessage::createMethodCall(
-            QStringLiteral("org.freedesktop.login1"),
-            QStringLiteral("/org/freedesktop/login1"),
-            QStringLiteral("org.freedesktop.login1.Manager"),
-            QStringLiteral("Inhibit"));
+    QDBusMessage msg = QDBusMessage::createMethodCall(QStringLiteral("org.freedesktop.login1"),
+                                                      QStringLiteral("/org/freedesktop/login1"),
+                                                      QStringLiteral("org.freedesktop.login1.Manager"),
+                                                      QStringLiteral("Inhibit"));
 
     QList<QVariant> args;
-    args << LogindInhibitionArgument::fromPowerState(m_inhibitions)
-         << QCoreApplication::instance()->applicationName()
-         << m_description
+    args << LogindInhibitionArgument::fromPowerState(m_inhibitions) << QCoreApplication::instance()->applicationName() << m_description
          << QStringLiteral("block");
     msg.setArguments(args);
 
@@ -55,23 +51,23 @@ void FdInhibition::stop()
     setState(Inhibition::Stopped);
 }
 
-void FdInhibition::setDescription(const QString& description)
+void FdInhibition::setDescription(const QString &description)
 {
     m_description = description;
 }
 
-void FdInhibition::slotDBusReply(const QDBusMessage& msg)
+void FdInhibition::slotDBusReply(const QDBusMessage &msg)
 {
     m_fd = msg.arguments().first().value<QDBusUnixFileDescriptor>().fileDescriptor();
     setState(Inhibition::Started);
 }
 
-void FdInhibition::slotDBusError(const QDBusError& error)
+void FdInhibition::slotDBusError(const QDBusError &error)
 {
     qDebug() << error.message();
 }
 
-void FdInhibition::setState(const Inhibition::State& state)
+void FdInhibition::setState(const Inhibition::State &state)
 {
     if (m_state == state) {
         return;
@@ -85,4 +81,3 @@ Inhibition::State FdInhibition::state() const
 {
     return m_state;
 }
-

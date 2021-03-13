@@ -8,7 +8,6 @@
 #include "iokitbattery.h"
 #include "iokitdevice.h"
 
-
 // TODO - emit the signals
 
 using namespace Solid::Backends::IOKit;
@@ -96,7 +95,6 @@ double Battery::temperature() const
     return m_device->property(QStringLiteral("Temperature")).toInt() / 100.0;
 }
 
-
 QString Battery::serial() const
 {
     return m_device->property(QStringLiteral("BatterySerialNumber")).toString();
@@ -119,15 +117,14 @@ int Battery::chargePercent() const
     // always calculate since FullyCharged remains true down to 92% or so.
     int maxCapacity = m_device->property(QStringLiteral("MaxCapacity")).toInt();
     if (maxCapacity == 0) {
-        return 0;    // prevent divide by 0
+        return 0; // prevent divide by 0
     }
     return int(m_device->property(QStringLiteral("CurrentCapacity")).toInt() * 100.0 / maxCapacity + 0.5);
 }
 
 int Battery::capacity() const
 {
-    if (m_device->iOKitPropertyExists(QStringLiteral("PermanentFailureStatus"))
-        && m_device->property(QStringLiteral("PermanentFailureStatus")).toInt()) {
+    if (m_device->iOKitPropertyExists(QStringLiteral("PermanentFailureStatus")) && m_device->property(QStringLiteral("PermanentFailureStatus")).toInt()) {
         return 0;
     }
     return 100;
@@ -140,9 +137,7 @@ bool Battery::isRechargeable() const
 
 bool Battery::isPowerSupply() const
 {
-    return m_device->iOKitPropertyExists(QStringLiteral("BatteryInstalled"))
-        ? m_device->property(QStringLiteral("BatteryInstalled")).toBool()
-        : true;
+    return m_device->iOKitPropertyExists(QStringLiteral("BatteryInstalled")) ? m_device->property(QStringLiteral("BatteryInstalled")).toBool() : true;
 }
 
 Solid::Battery::ChargeState Battery::chargeState() const
@@ -155,4 +150,3 @@ Solid::Battery::ChargeState Battery::chargeState() const
     }
     return Solid::Battery::Discharging;
 }
-

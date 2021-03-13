@@ -15,7 +15,9 @@ class CameraPrivate : public DeviceInterfacePrivate
 {
 public:
     CameraPrivate()
-        : DeviceInterfacePrivate() { }
+        : DeviceInterfacePrivate()
+    {
+    }
 };
 }
 

@@ -6,19 +6,19 @@
 #include "fakedevice.h"
 #include "fakedevice_p.h"
 
+#include "fakebattery.h"
+#include "fakeblock.h"
+#include "fakecamera.h"
+#include "fakecdrom.h"
 #include "fakedeviceinterface.h"
 #include "fakegenericinterface.h"
-#include "fakeprocessor.h"
-#include "fakeblock.h"
-#include "fakestorage.h"
-#include "fakecdrom.h"
-#include "fakevolume.h"
-#include "fakeopticaldisc.h"
-#include "fakestorageaccess.h"
-#include "fakecamera.h"
-#include "fakeportablemediaplayer.h"
 #include "fakenetworkshare.h"
-#include "fakebattery.h"
+#include "fakeopticaldisc.h"
+#include "fakeportablemediaplayer.h"
+#include "fakeprocessor.h"
+#include "fakestorage.h"
+#include "fakestorageaccess.h"
+#include "fakevolume.h"
 
 #include <QStringList>
 #ifdef QT_DBUS_LIB
@@ -30,7 +30,8 @@
 using namespace Solid::Backends::Fake;
 
 FakeDevice::FakeDevice(const QString &udi, const QMap<QString, QVariant> &propertyMap)
-    : Solid::Ifaces::Device(), d(new Private)
+    : Solid::Ifaces::Device()
+    , d(new Private)
 {
     d->udi = udi;
     d->propertyMap = propertyMap;
@@ -52,19 +53,16 @@ FakeDevice::FakeDevice(const QString &udi, const QMap<QString, QVariant> &proper
         createDeviceInterface(type);
     }
 
-    connect(d.data(), SIGNAL(propertyChanged(QMap<QString,int>)),
-            this, SIGNAL(propertyChanged(QMap<QString,int>)));
-    connect(d.data(), SIGNAL(conditionRaised(QString,QString)),
-            this, SIGNAL(conditionRaised(QString,QString)));
+    connect(d.data(), SIGNAL(propertyChanged(QMap<QString, int>)), this, SIGNAL(propertyChanged(QMap<QString, int>)));
+    connect(d.data(), SIGNAL(conditionRaised(QString, QString)), this, SIGNAL(conditionRaised(QString, QString)));
 }
 
 FakeDevice::FakeDevice(const FakeDevice &dev)
-    : Solid::Ifaces::Device(), d(dev.d)
+    : Solid::Ifaces::Device()
+    , d(dev.d)
 {
-    connect(d.data(), SIGNAL(propertyChanged(QMap<QString,int>)),
-            this, SIGNAL(propertyChanged(QMap<QString,int>)));
-    connect(d.data(), SIGNAL(conditionRaised(QString,QString)),
-            this, SIGNAL(conditionRaised(QString,QString)));
+    connect(d.data(), SIGNAL(propertyChanged(QMap<QString, int>)), this, SIGNAL(propertyChanged(QMap<QString, int>)));
+    connect(d.data(), SIGNAL(conditionRaised(QString, QString)), this, SIGNAL(conditionRaised(QString, QString)));
 }
 
 FakeDevice::~FakeDevice()
@@ -296,11 +294,11 @@ QObject *FakeDevice::createDeviceInterface(const Solid::DeviceInterface::Type &t
 
 #ifdef QT_DBUS_LIB
     if (iface) {
-        QDBusConnection::sessionBus().registerObject(d->udi + '/' + Solid::DeviceInterface::typeToString(type), iface,
-                QDBusConnection::ExportNonScriptableSlots);
+        QDBusConnection::sessionBus().registerObject(d->udi + '/' + Solid::DeviceInterface::typeToString(type),
+                                                     iface,
+                                                     QDBusConnection::ExportNonScriptableSlots);
     }
 #endif
 
     return iface;
 }
-

@@ -11,7 +11,8 @@
 
 class QEventLoop;
 
-namespace Solid {
+namespace Solid
+{
 class JobPrivate
 {
 public:
@@ -24,4 +25,4 @@ public:
     Q_DECLARE_PUBLIC(Job)
 };
 }
-#endif //SOLID_JOB_PRIVATE
+#endif // SOLID_JOB_PRIVATE

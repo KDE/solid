@@ -9,8 +9,8 @@
 
 #include <Solid/Job>
 
-#include "solid_export.h"
 #include "power.h"
+#include "solid_export.h"
 
 namespace Solid
 {
@@ -42,15 +42,15 @@ public:
 private Q_SLOTS:
     void doStart() override;
 
-/**
- * We have to re-declare the signal because
- * if not, Q_PROPERTY wouldn't work.
- */
+    /**
+     * We have to re-declare the signal because
+     * if not, Q_PROPERTY wouldn't work.
+     */
 Q_SIGNALS:
     void result(Solid::Job *);
 
 private:
     Q_DECLARE_PRIVATE(RequestStateJob)
 };
-} //Solid namespace
-#endif //SOLID_REQUEST_STATE_JOB_H
+} // Solid namespace
+#endif // SOLID_REQUEST_STATE_JOB_H

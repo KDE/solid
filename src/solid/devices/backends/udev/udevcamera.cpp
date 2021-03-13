@@ -11,12 +11,10 @@ using namespace Solid::Backends::UDev;
 Camera::Camera(UDevDevice *device)
     : DeviceInterface(device)
 {
-
 }
 
 Camera::~Camera()
 {
-
 }
 
 QStringList Camera::supportedProtocols() const
@@ -48,13 +46,10 @@ QVariant Camera::driverHandle(const QString &driver) const
     if (driver == "gphoto" && m_device->property("SUBSYSTEM").toString() == "usb") {
         QVariantList list;
 
-        list << "usb"
-             << m_device->property("ID_VENDOR_ID")
-             << m_device->property("ID_MODEL_ID");
+        list << "usb" << m_device->property("ID_VENDOR_ID") << m_device->property("ID_MODEL_ID");
 
         return list;
     }
 
     return QVariant();
 }
-

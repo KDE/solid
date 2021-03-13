@@ -84,12 +84,10 @@ QString Solid::DeviceInterface::typeDescription(Type type)
 Solid::DeviceInterfacePrivate::DeviceInterfacePrivate()
     : m_devicePrivate(nullptr)
 {
-
 }
 
 Solid::DeviceInterfacePrivate::~DeviceInterfacePrivate()
 {
-
 }
 
 QObject *Solid::DeviceInterfacePrivate::backendObject() const
@@ -111,4 +109,3 @@ void Solid::DeviceInterfacePrivate::setDevicePrivate(DevicePrivate *devicePrivat
 {
     m_devicePrivate = devicePrivate;
 }
-

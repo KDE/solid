@@ -7,8 +7,8 @@
 #ifndef SOLID_BACKENDS_UDEV_PORTABLEMEDIAPLAYER_H
 #define SOLID_BACKENDS_UDEV_PORTABLEMEDIAPLAYER_H
 
-#include <solid/devices/ifaces/portablemediaplayer.h>
 #include "udevdeviceinterface.h"
+#include <solid/devices/ifaces/portablemediaplayer.h>
 
 #include <QStringList>
 

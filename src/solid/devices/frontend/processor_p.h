@@ -15,7 +15,9 @@ class ProcessorPrivate : public DeviceInterfacePrivate
 {
 public:
     ProcessorPrivate()
-        : DeviceInterfacePrivate() { }
+        : DeviceInterfacePrivate()
+    {
+    }
 };
 }
 

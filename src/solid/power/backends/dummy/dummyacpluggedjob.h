@@ -22,4 +22,4 @@ private Q_SLOTS:
 };
 }
 
-#endif //UPOWER_DUMMY_AC_PLUGGED_JOB_H
+#endif // UPOWER_DUMMY_AC_PLUGGED_JOB_H

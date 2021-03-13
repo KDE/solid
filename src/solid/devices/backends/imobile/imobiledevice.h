@@ -8,8 +8,8 @@
 #ifndef SOLID_BACKENDS_IMOBILE_IMOBILEDEVICE_H
 #define SOLID_BACKENDS_IMOBILE_IMOBILEDEVICE_H
 
-#include <solid/devices/ifaces/device.h>
 #include <QStringList>
+#include <solid/devices/ifaces/device.h>
 
 namespace Solid
 {
@@ -17,7 +17,6 @@ namespace Backends
 {
 namespace IMobile
 {
-
 class IMobileDevice : public Solid::Ifaces::Device
 {
     Q_OBJECT
@@ -44,7 +43,6 @@ private:
 
     QString m_name;
     QString m_deviceClass;
-
 };
 
 } // namespace IMobile

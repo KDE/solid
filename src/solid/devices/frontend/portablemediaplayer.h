@@ -37,7 +37,6 @@ class SOLID_EXPORT PortableMediaPlayer : public DeviceInterface
     friend class Device;
 
 public:
-
 private:
     /**
      * Creates a new PortableMediaPlayer object.

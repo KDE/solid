@@ -9,8 +9,8 @@
 #ifndef SOLID_BACKENDS_UPOWER_BATTERY_H
 #define SOLID_BACKENDS_UPOWER_BATTERY_H
 
-#include <solid/devices/ifaces/battery.h>
 #include "upowerdeviceinterface.h"
+#include <solid/devices/ifaces/battery.h>
 
 namespace Solid
 {

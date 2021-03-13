@@ -15,7 +15,6 @@ namespace Backends
 {
 namespace UDev
 {
-
 /**
  * Extracts vendor from /proc/cpuinfo for a given processor
  */

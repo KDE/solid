@@ -33,7 +33,7 @@ public:
     QString filePath() const override;
 
     bool isIgnored() const override;
-    
+
     bool isEncrypted() const override;
 
     bool setup() override;

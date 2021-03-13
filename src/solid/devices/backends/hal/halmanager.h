@@ -7,8 +7,8 @@
 #ifndef SOLID_BACKENDS_HAL_HALMANAGER_H
 #define SOLID_BACKENDS_HAL_HALMANAGER_H
 
-#include <solid/devices/ifaces/devicemanager.h>
 #include <solid/deviceinterface.h>
+#include <solid/devices/ifaces/devicemanager.h>
 
 #include <QStringList>
 
@@ -34,8 +34,7 @@ public:
     bool deviceExists(const QString &udi);
     QStringList allDevices() override;
 
-    virtual QStringList devicesFromQuery(const QString &parentUdi,
-                                         Solid::DeviceInterface::Type type) override;
+    virtual QStringList devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type) override;
 
     QObject *createDevice(const QString &udi) override;
 

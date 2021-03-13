@@ -7,12 +7,12 @@
 #ifndef SOLID_BACKENDS_HAL_CDROM_H
 #define SOLID_BACKENDS_HAL_CDROM_H
 
-#include <solid/devices/ifaces/opticaldrive.h>
 #include "halstorage.h"
+#include <solid/devices/ifaces/opticaldrive.h>
 
-#include <QProcess>
-#include <QDBusMessage>
 #include <QDBusError>
+#include <QDBusMessage>
+#include <QProcess>
 
 namespace Solid
 {

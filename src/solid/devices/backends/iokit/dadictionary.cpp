@@ -57,7 +57,7 @@ const QString DADictionary::stringForKey(const CFStringRef key)
 {
     QString ret;
     if (getDict()) {
-        ret = QString::fromCFString((const CFStringRef) CFDictionaryGetValue(daDict, key));
+        ret = QString::fromCFString((const CFStringRef)CFDictionaryGetValue(daDict, key));
         releaseDict();
     }
     return ret;
@@ -67,7 +67,7 @@ CFURLRef DADictionary::cfUrLRefForKey(const CFStringRef key)
 {
     CFURLRef ret = nullptr;
     if (getDict()) {
-        ret = (const CFURLRef) CFDictionaryGetValue(daDict, key);
+        ret = (const CFURLRef)CFDictionaryGetValue(daDict, key);
     }
     // we cannot release the dictionary here, or else we'd need to
     // copy the CFURLRef and oblige our caller to release the return value.
@@ -77,7 +77,7 @@ CFURLRef DADictionary::cfUrLRefForKey(const CFStringRef key)
 bool DADictionary::boolForKey(const CFStringRef key, bool &value)
 {
     if (getDict()) {
-        const CFBooleanRef boolRef = (const CFBooleanRef) CFDictionaryGetValue(daDict, key);
+        const CFBooleanRef boolRef = (const CFBooleanRef)CFDictionaryGetValue(daDict, key);
         if (boolRef) {
             value = CFBooleanGetValue(boolRef);
         }

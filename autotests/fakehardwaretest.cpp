@@ -14,8 +14,8 @@
 #include <solid/devices/ifaces/processor.h>
 
 // Local includes
-#include "solid/devices/backends/fakehw/fakemanager.h"
 #include "solid/devices/backends/fakehw/fakedevice.h"
+#include "solid/devices/backends/fakehw/fakemanager.h"
 
 QTEST_MAIN(FakeHardwareTest)
 

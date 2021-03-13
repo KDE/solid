@@ -6,19 +6,16 @@
 #ifndef WINDEVICEMANAGER_P_H
 #define WINDEVICEMANAGER_P_H
 
-
 namespace Solid
 {
 namespace Backends
 {
 namespace Win
 {
-
 class SolidWinEventFilter : public QObject
 {
     Q_OBJECT
 public:
-
     SolidWinEventFilter();
     ~SolidWinEventFilter();
     void promoteAddedDevice(const QSet<QString> &udi);
@@ -27,11 +24,7 @@ public:
 
     static SolidWinEventFilter *instance();
 
-
     static LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
-
-
-
 
 Q_SIGNALS:
     void powerChanged();
@@ -40,7 +33,6 @@ Q_SIGNALS:
 
 private:
     HWND m_windowID;
-
 };
 }
 }

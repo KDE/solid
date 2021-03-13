@@ -35,4 +35,3 @@ QUrl FakeNetworkShare::url() const
     QString url = fakeDevice()->property("url").toString();
     return QUrl(url);
 }
-

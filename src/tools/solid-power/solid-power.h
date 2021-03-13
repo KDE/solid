@@ -19,4 +19,4 @@ public:
     void listen();
 };
 
-#endif //SOLID_POWER_TOOL_H
+#endif // SOLID_POWER_TOOL_H

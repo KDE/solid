@@ -6,27 +6,27 @@
 
 #include "haldevice.h"
 
-#include <QDebug>
+#include <QDBusArgument>
 #include <QDBusConnection>
 #include <QDBusInterface>
-#include <QDBusReply>
-#include <QDBusArgument>
 #include <QDBusMetaType>
+#include <QDBusReply>
+#include <QDebug>
 
 #include <solid/genericinterface.h>
 
+#include "halbattery.h"
+#include "halblock.h"
+#include "halcamera.h"
+#include "halcdrom.h"
 #include "haldeviceinterface.h"
 #include "halgenericinterface.h"
-#include "halprocessor.h"
-#include "halblock.h"
-#include "halstorageaccess.h"
-#include "halstorage.h"
-#include "halcdrom.h"
-#include "halvolume.h"
 #include "halopticaldisc.h"
-#include "halcamera.h"
 #include "halportablemediaplayer.h"
-#include "halbattery.h"
+#include "halprocessor.h"
+#include "halstorage.h"
+#include "halstorageaccess.h"
+#include "halvolume.h"
 
 using namespace Solid::Backends::Hal;
 
@@ -36,10 +36,10 @@ static QString formatByteSize(double size)
     // Per IEC 60027-2
 
     // Binary prefixes
-    //Tebi-byte             TiB             2^40    1,099,511,627,776 bytes
-    //Gibi-byte             GiB             2^30    1,073,741,824 bytes
-    //Mebi-byte             MiB             2^20    1,048,576 bytes
-    //Kibi-byte             KiB             2^10    1,024 bytes
+    // Tebi-byte             TiB             2^40    1,099,511,627,776 bytes
+    // Gibi-byte             GiB             2^30    1,073,741,824 bytes
+    // Mebi-byte             MiB             2^20    1,048,576 bytes
+    // Kibi-byte             KiB             2^10    1,024 bytes
 
     QString s;
     // Gibi-byte
@@ -76,11 +76,11 @@ class Solid::Backends::Hal::HalDevicePrivate
 {
 public:
     HalDevicePrivate(const QString &udi)
-        : device("org.freedesktop.Hal",
-                 udi,
-                 "org.freedesktop.Hal.Device",
-                 QDBusConnection::systemBus()),
-        cacheSynced(false), parent(nullptr) { }
+        : device("org.freedesktop.Hal", udi, "org.freedesktop.Hal.Device", QDBusConnection::systemBus())
+        , cacheSynced(false)
+        , parent(nullptr)
+    {
+    }
     void checkCache(const QString &key = QString());
 
     QDBusInterface device;
@@ -111,19 +111,15 @@ const QDBusArgument &operator>>(const QDBusArgument &arg, ChangeDescription &cha
 }
 
 HalDevice::HalDevice(const QString &udi)
-    : Device(), d(new HalDevicePrivate(udi))
+    : Device()
+    , d(new HalDevicePrivate(udi))
 {
     qDBusRegisterMetaType<ChangeDescription>();
-    qDBusRegisterMetaType< QList<ChangeDescription> >();
+    qDBusRegisterMetaType<QList<ChangeDescription>>();
 
-    d->device.connection().connect("org.freedesktop.Hal",
-                                   udi, "org.freedesktop.Hal.Device",
-                                   "PropertyModified",
-                                   this, SLOT(slotPropertyModified(int,QList<ChangeDescription>)));
-    d->device.connection().connect("org.freedesktop.Hal",
-                                   udi, "org.freedesktop.Hal.Device",
-                                   "Condition",
-                                   this, SLOT(slotCondition(QString,QString)));
+    d->device.connection()
+        .connect("org.freedesktop.Hal", udi, "org.freedesktop.Hal.Device", "PropertyModified", this, SLOT(slotPropertyModified(int, QList<ChangeDescription>)));
+    d->device.connection().connect("org.freedesktop.Hal", udi, "org.freedesktop.Hal.Device", "Condition", this, SLOT(slotCondition(QString, QString)));
 }
 
 HalDevice::~HalDevice()
@@ -163,7 +159,6 @@ QString HalDevice::icon() const
     QString category = prop("info.category").toString();
 
     if (parentUdi().isEmpty()) {
-
         QString formfactor = prop("system.formfactor").toString();
         if (formfactor == "laptop") {
             return "computer-laptop";
@@ -172,7 +167,6 @@ QString HalDevice::icon() const
         }
 
     } else if (category == "storage" || category == "storage.cdrom") {
-
         if (prop("storage.drive_type").toString() == "floppy") {
             return "media-floppy";
         } else if (prop("storage.drive_type").toString() == "cdrom") {
@@ -195,7 +189,6 @@ QString HalDevice::icon() const
         return "drive-harddisk";
 
     } else if (category == "volume" || category == "volume.disc") {
-
         QStringList capabilities = prop("info.capabilities").toStringList();
 
         if (capabilities.contains("volume.disc")) {
@@ -333,14 +326,13 @@ void HalDevicePrivate::checkCache(const QString &key)
     if (reply.isValid()) {
         cache = reply;
     } else {
-        qWarning() << Q_FUNC_INFO << " error: " << reply.error().name()
-                   << ", " << reply.error().message() << endl;
+        qWarning() << Q_FUNC_INFO << " error: " << reply.error().name() << ", " << reply.error().message() << endl;
         cache = QVariantMap();
     }
 
     invalidKeys.clear();
     cacheSynced = true;
-    //qDebug( )<< q << udi() << "failure";
+    // qDebug( )<< q << udi() << "failure";
 }
 
 QMap<QString, QVariant> HalDevice::allProperties() const
@@ -362,7 +354,7 @@ bool HalDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type) c
         return true;
     } else if (type == Solid::DeviceInterface::StorageAccess) {
         return prop("org.freedesktop.Hal.Device.Volume.method_names").toStringList().contains("Mount")
-               || prop("info.interfaces").toStringList().contains("org.freedesktop.Hal.Device.Volume.Crypto");
+            || prop("info.interfaces").toStringList().contains("org.freedesktop.Hal.Device.Volume.Crypto");
     } else if (d->capListCache.contains(type)) {
         return d->capListCache.value(type);
     }
@@ -466,7 +458,7 @@ void HalDevice::slotPropertyModified(int /*count */, const QList<ChangeDescripti
         }
     }
 
-    //qDebug() << this << "unsyncing the cache";
+    // qDebug() << this << "unsyncing the cache";
     Q_EMIT propertyChanged(result);
 }
 
@@ -796,4 +788,3 @@ QString HalDevice::volumeDescription() const
 
     return description;
 }
-

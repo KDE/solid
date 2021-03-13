@@ -15,7 +15,9 @@ class BatteryPrivate : public DeviceInterfacePrivate
 {
 public:
     BatteryPrivate()
-        : DeviceInterfacePrivate() { }
+        : DeviceInterfacePrivate()
+    {
+    }
 };
 }
 

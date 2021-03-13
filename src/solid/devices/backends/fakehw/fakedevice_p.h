@@ -7,9 +7,9 @@
 #define SOLID_BACKENDS_FAKEHW_FAKEDEVICE_P_H
 
 #include <QMap>
+#include <QObject>
 #include <QString>
 #include <QVariant>
-#include <QObject>
 
 #include "fakedevice.h"
 

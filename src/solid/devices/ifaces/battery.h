@@ -101,18 +101,18 @@ public:
     virtual qlonglong timeToFull() const = 0;
 
     /**
-      * Retrieves the technology used to manufacture the battery.
-      *
-      * @return the battery technology
-      * @see Solid::Battery::Technology
-      */
+     * Retrieves the technology used to manufacture the battery.
+     *
+     * @return the battery technology
+     * @see Solid::Battery::Technology
+     */
     virtual Solid::Battery::Technology technology() const = 0;
 
     /**
-      * Amount of energy (measured in Wh) currently available in the power source.
-      *
-      * @return amount of battery energy in Wh
-      */
+     * Amount of energy (measured in Wh) currently available in the power source.
+     *
+     * @return amount of battery energy in Wh
+     */
     virtual double energy() const = 0;
 
     /**
@@ -132,19 +132,19 @@ public:
     virtual double energyFullDesign() const = 0;
 
     /**
-      * Amount of energy being drained from the source, measured in W.
-      * If positive, the source is being discharged, if negative it's being charged.
-      *
-      * @return battery rate in Watts
-      *
-      */
+     * Amount of energy being drained from the source, measured in W.
+     * If positive, the source is being discharged, if negative it's being charged.
+     *
+     * @return battery rate in Watts
+     *
+     */
     virtual double energyRate() const = 0;
 
     /**
-      * Voltage in the Cell or being recorded by the meter.
-      *
-      * @return voltage in Volts
-      */
+     * Voltage in the Cell or being recorded by the meter.
+     *
+     * @return voltage in Volts
+     */
     virtual double voltage() const = 0;
 
     /**
@@ -196,7 +196,7 @@ public:
     virtual qlonglong remainingTime() const = 0;
 
 protected:
-    //Q_SIGNALS:
+    // Q_SIGNALS:
     /**
      * This signal is emitted if the battery gets plugged in/out of the
      * battery bay.
@@ -322,13 +322,13 @@ protected:
     virtual void temperatureChanged(double temperature, const QString &udi) = 0;
 
     /**
-      * This signal is emitted when the estimated battery remaining time changes.
-      *
-      * @param time the new remaining time
-      * @param udi the UDI of the battery with the new remaining time
-      * @since 5.8
-      */
-     virtual void remainingTimeChanged(qlonglong time, const QString &udi) = 0;
+     * This signal is emitted when the estimated battery remaining time changes.
+     *
+     * @param time the new remaining time
+     * @param udi the UDI of the battery with the new remaining time
+     * @since 5.8
+     */
+    virtual void remainingTimeChanged(qlonglong time, const QString &udi) = 0;
 };
 }
 }

@@ -15,28 +15,22 @@ using namespace Solid::Backends::IMobile;
 PortableMediaPlayer::PortableMediaPlayer(IMobileDevice *device)
     : DeviceInterface(device)
 {
-
 }
 
 PortableMediaPlayer::~PortableMediaPlayer()
 {
-
 }
 
 QStringList PortableMediaPlayer::supportedProtocols() const
 {
-    return {
-        QStringLiteral("afc")
-    };
+    return {QStringLiteral("afc")};
 }
 
 QStringList PortableMediaPlayer::supportedDrivers(QString protocol) const
 {
     Q_UNUSED(protocol)
-    return {
-        // libimobiledevice goes via usbmuxd
-        QStringLiteral("usbmux")
-    };
+    return {// libimobiledevice goes via usbmuxd
+            QStringLiteral("usbmux")};
 }
 
 QVariant PortableMediaPlayer::driverHandle(const QString &driver) const

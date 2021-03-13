@@ -67,7 +67,6 @@ Solid::Battery::BatteryType Battery::type() const
         }
         break;
     }
-
     }
     return result;
 }

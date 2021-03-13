@@ -8,14 +8,13 @@
 #define SOLID_DECALARATIVE_DEVICES_H
 
 #include <QObject>
-#include <solid/predicate.h>
 #include <solid/deviceinterface.h>
+#include <solid/predicate.h>
 
 #include <QSharedPointer>
 
 namespace Solid
 {
-
 class DeviceNotifier;
 class DevicesQueryPrivate;
 
@@ -55,7 +54,7 @@ class DevicesQueryPrivate;
  *    }
  * @endcode
  */
-class Devices: public QObject
+class Devices : public QObject
 {
     Q_OBJECT
 
@@ -175,4 +174,3 @@ private:
 } // namespace Solid
 
 #endif
-

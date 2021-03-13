@@ -8,11 +8,11 @@
 #ifndef UDISKSSTORAGEACCESS_H
 #define UDISKSSTORAGEACCESS_H
 
-#include <solid/devices/ifaces/storageaccess.h>
 #include "udisksdeviceinterface.h"
+#include <solid/devices/ifaces/storageaccess.h>
 
-#include <QDBusMessage>
 #include <QDBusError>
+#include <QDBusMessage>
 
 namespace Solid
 {

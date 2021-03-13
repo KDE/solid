@@ -85,7 +85,6 @@ public:
      * @return the url of network share
      */
     QUrl url() const;
-
 };
 }
 

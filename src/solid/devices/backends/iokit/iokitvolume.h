@@ -7,9 +7,9 @@
 #ifndef SOLID_BACKENDS_IOKIT_VOLUME_H
 #define SOLID_BACKENDS_IOKIT_VOLUME_H
 
-#include <solid/devices/ifaces/storagevolume.h>
-#include "iokitblock.h"
 #include "dadictionary_p.h"
+#include "iokitblock.h"
+#include <solid/devices/ifaces/storagevolume.h>
 
 #include <DiskArbitration/DiskArbitration.h>
 

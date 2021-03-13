@@ -7,8 +7,8 @@
 #ifndef SOLID_BACKENDS_IOKIT_OPTICALDRIVE_H
 #define SOLID_BACKENDS_IOKIT_OPTICALDRIVE_H
 
-#include <solid/devices/ifaces/opticaldrive.h>
 #include "iokitstorage.h"
+#include <solid/devices/ifaces/opticaldrive.h>
 
 namespace Solid
 {

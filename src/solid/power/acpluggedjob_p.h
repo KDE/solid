@@ -22,6 +22,6 @@ public:
     AbstractAcPluggedJob *backendJob;
     Q_DECLARE_PUBLIC(AcPluggedJob)
 };
-}//Solid namespace
+} // Solid namespace
 
-#endif //SOLID_AC_PLUGGED_JOB_P_H
+#endif // SOLID_AC_PLUGGED_JOB_P_H

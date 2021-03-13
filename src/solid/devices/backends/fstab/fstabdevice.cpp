@@ -5,24 +5,24 @@
 */
 
 #include "fstabdevice.h"
+#include "fstab_debug.h"
 #include "fstabhandling.h"
 #include "fstabnetworkshare.h"
 #include "fstabservice.h"
-#include "fstab_debug.h"
 #include <QCoreApplication>
 #include <QDir>
 #include <QUrl>
 
 using namespace Solid::Backends::Fstab;
 
-FstabDevice::FstabDevice(QString uid) :
-    Solid::Ifaces::Device(),
-    m_uid(uid)
+FstabDevice::FstabDevice(QString uid)
+    : Solid::Ifaces::Device()
+    , m_uid(uid)
 {
     m_device = m_uid;
     m_device.remove(parentUdi() + "/");
 
-    const QString& fstype = FstabHandling::fstype(m_device);
+    const QString &fstype = FstabHandling::fstype(m_device);
     qCDebug(FSTAB) << "Adding " << m_device << "type:" << fstype;
 
     if (m_device.startsWith("//")) {
@@ -33,22 +33,20 @@ FstabDevice::FstabDevice(QString uid) :
         m_vendor = m_device.left(m_device.indexOf(":/"));
         m_product = m_device.mid(m_device.indexOf(":/") + 1);
         m_storageType = StorageType::NetworkShare;
-    } else if (fstype.startsWith("fuse.") ||
-               fstype == QLatin1String("overlay")) {
+    } else if (fstype.startsWith("fuse.") || fstype == QLatin1String("overlay")) {
         m_vendor = fstype;
         m_product = m_device.mid(m_device.indexOf(fstype) + fstype.length());
         QString home = QDir::homePath();
         if (m_product.startsWith(home)) {
             m_product = "~" + m_product.mid(home.length());
         }
-        if ((fstype == QLatin1String("fuse.encfs")) ||
-            (fstype == QLatin1String("fuse.cryfs"))) {
+        if ((fstype == QLatin1String("fuse.encfs")) || (fstype == QLatin1String("fuse.cryfs"))) {
             m_storageType = StorageType::Encrypted;
         }
     }
 
-    const QStringList& gvfsOptions = FstabHandling::options(m_device);
-    for  (const QString &option : gvfsOptions) {
+    const QStringList &gvfsOptions = FstabHandling::options(m_device);
+    for (const QString &option : gvfsOptions) {
         if (option.startsWith(QLatin1String("x-gvfs-name="))) {
             QStringRef encoded = option.midRef(12);
             m_displayName = QUrl::fromPercentEncoding(encoded.toLatin1());
@@ -59,11 +57,9 @@ FstabDevice::FstabDevice(QString uid) :
     }
 
     if (m_storageType == StorageType::NetworkShare) {
-        m_description = QCoreApplication::translate("", "%1 on %2",
-        "%1 is sharename, %2 is servername").arg(m_product, m_vendor);
+        m_description = QCoreApplication::translate("", "%1 on %2", "%1 is sharename, %2 is servername").arg(m_product, m_vendor);
     } else {
-        m_description = QCoreApplication::translate("", "%1 (%2)",
-        "%1 is mountpoint, %2 is fs type").arg(m_product, m_vendor);
+        m_description = QCoreApplication::translate("", "%1 (%2)", "%1 is mountpoint, %2 is fs type").arg(m_product, m_vendor);
     }
 
     if (m_displayName.isEmpty()) {
@@ -82,7 +78,7 @@ FstabDevice::FstabDevice(QString uid) :
         } else if (m_storageType == StorageType::Encrypted) {
             m_iconName = QLatin1String("folder-decrypted");
         } else {
-            const QStringList& mountPoints = FstabHandling::mountPoints(m_device);
+            const QStringList &mountPoints = FstabHandling::mountPoints(m_device);
             const QString home = QDir::homePath();
             if (mountPoints.contains("/")) {
                 m_iconName = QStringLiteral("drive-harddisk-root");
@@ -160,8 +156,7 @@ bool FstabDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &inter
     if (interfaceType == Solid::DeviceInterface::StorageAccess) {
         return true;
     }
-    if ((m_storageType == StorageType::NetworkShare) &&
-        (interfaceType == Solid::DeviceInterface::NetworkShare)) {
+    if ((m_storageType == StorageType::NetworkShare) && (interfaceType == Solid::DeviceInterface::NetworkShare)) {
         return true;
     }
     return false;
@@ -174,8 +169,7 @@ QObject *FstabDevice::createDeviceInterface(const Solid::DeviceInterface::Type &
             m_storageAccess = new FstabStorageAccess(this);
         }
         return m_storageAccess;
-    } else if ((m_storageType == StorageType::NetworkShare) &&
-               (interfaceType == Solid::DeviceInterface::NetworkShare)) {
+    } else if ((m_storageType == StorageType::NetworkShare) && (interfaceType == Solid::DeviceInterface::NetworkShare)) {
         return new FstabNetworkShare(this);
     }
     return nullptr;

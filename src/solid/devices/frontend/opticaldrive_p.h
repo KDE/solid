@@ -15,7 +15,9 @@ class OpticalDrivePrivate : public StorageDrivePrivate
 {
 public:
     OpticalDrivePrivate()
-        : StorageDrivePrivate() { }
+        : StorageDrivePrivate()
+    {
+    }
 };
 }
 

@@ -18,7 +18,11 @@ class SolidHardware : public QCoreApplication
 {
     Q_OBJECT
 public:
-    SolidHardware(int &argc, char **argv) : QCoreApplication(argc, argv), m_error(0) {}
+    SolidHardware(int &argc, char **argv)
+        : QCoreApplication(argc, argv)
+        , m_error(0)
+    {
+    }
 
     bool hwList(bool interfaces, bool system);
     bool hwCapabilities(const QString &udi);

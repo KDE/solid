@@ -6,8 +6,8 @@
 
 #include "acpluggedjob.h"
 #include "acpluggedjob_p.h"
-#include "powerbackendloader.h"
 #include "backends/abstractacpluggedjob.h"
+#include "powerbackendloader.h"
 
 #include <QDebug>
 
@@ -20,7 +20,8 @@ AcPluggedJobPrivate::AcPluggedJobPrivate()
     backendJobFinished = false;
 }
 
-AcPluggedJob::AcPluggedJob(QObject* parent) : Job(*new AcPluggedJobPrivate(), parent)
+AcPluggedJob::AcPluggedJob(QObject *parent)
+    : Job(*new AcPluggedJobPrivate(), parent)
 {
 }
 
@@ -39,7 +40,7 @@ void AcPluggedJob::doStart()
 
 bool AcPluggedJob::isPlugged() const
 {
-    if(d_func()->backendJobFinished) {
+    if (d_func()->backendJobFinished) {
         return d_func()->plugged;
     }
     qWarning() << "isPlugged called without having called start";

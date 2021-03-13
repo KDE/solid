@@ -7,8 +7,8 @@
 #ifndef SOLID_BACKENDS_HAL_OPTICALDISC_H
 #define SOLID_BACKENDS_HAL_OPTICALDISC_H
 
-#include <solid/devices/ifaces/opticaldisc.h>
 #include "halvolume.h"
+#include <solid/devices/ifaces/opticaldisc.h>
 
 namespace Solid
 {

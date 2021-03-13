@@ -14,16 +14,13 @@ Solid::GenericInterface::GenericInterface(QObject *backendObject)
     : DeviceInterface(*new GenericInterfacePrivate(), backendObject)
 {
     if (backendObject) {
-        connect(backendObject, SIGNAL(propertyChanged(QMap<QString,int>)),
-                this, SIGNAL(propertyChanged(QMap<QString,int>)));
-        connect(backendObject, SIGNAL(conditionRaised(QString,QString)),
-                this, SIGNAL(conditionRaised(QString,QString)));
+        connect(backendObject, SIGNAL(propertyChanged(QMap<QString, int>)), this, SIGNAL(propertyChanged(QMap<QString, int>)));
+        connect(backendObject, SIGNAL(conditionRaised(QString, QString)), this, SIGNAL(conditionRaised(QString, QString)));
     }
 }
 
 Solid::GenericInterface::~GenericInterface()
 {
-
 }
 
 QVariant Solid::GenericInterface::property(const QString &key) const
@@ -43,4 +40,3 @@ bool Solid::GenericInterface::propertyExists(const QString &key) const
     Q_D(const GenericInterface);
     return_SOLID_CALL(Ifaces::GenericInterface *, d->backendObject(), false, propertyExists(key));
 }
-

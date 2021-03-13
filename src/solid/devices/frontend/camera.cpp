@@ -17,7 +17,6 @@ Solid::Camera::Camera(QObject *backendObject)
 
 Solid::Camera::~Camera()
 {
-
 }
 
 QStringList Solid::Camera::supportedProtocols() const
@@ -37,4 +36,3 @@ QVariant Solid::Camera::driverHandle(const QString &driver) const
     Q_D(const Camera);
     return_SOLID_CALL(Ifaces::Camera *, d->backendObject(), QVariant(), driverHandle(driver));
 }
-

@@ -4,7 +4,6 @@
     SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
-
 #ifndef LOGIND_INHIBITION_ARGUMENT_H
 #define LOGIND_INHIBITION_ARGUMENT_H
 
@@ -21,4 +20,4 @@ public:
     static QString fromPowerState(Power::InhibitionTypes states);
 };
 }
-#endif //LOGIND_INHIBITION_ARGUMENT_H
+#endif // LOGIND_INHIBITION_ARGUMENT_H

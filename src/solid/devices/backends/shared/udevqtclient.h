@@ -16,7 +16,6 @@
 
 namespace UdevQt
 {
-
 class ClientPrivate;
 class Client : public QObject
 {

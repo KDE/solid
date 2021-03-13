@@ -6,24 +6,24 @@
 */
 
 #include "iokitdevice.h"
-#include "iokitgenericinterface.h"
-#include "iokitprocessor.h"
 #include "iokitbattery.h"
+#include "iokitgenericinterface.h"
+#include "iokitopticaldisc.h"
+#include "iokitopticaldrive.h"
+#include "iokitprocessor.h"
 #include "iokitstorage.h"
 #include "iokitstorageaccess.h"
 #include "iokitvolume.h"
-#include "iokitopticaldrive.h"
-#include "iokitopticaldisc.h"
 
 #include <QDebug>
 #include <QSet>
 #include <QUrl>
 
-#include <sys/types.h>
 #include <sys/sysctl.h>
+#include <sys/types.h>
 
-#include <IOKit/usb/IOUSBLib.h>
 #include <IOKit/network/IOEthernetInterface.h>
+#include <IOKit/usb/IOUSBLib.h>
 
 #include <CoreFoundation/CoreFoundation.h>
 
@@ -39,11 +39,8 @@ namespace Backends
 {
 namespace IOKit
 {
-
 // returns a solid type from an entry and its properties
-static DeviceInterfaceTypes typesFromEntry(const io_registry_entry_t &entry,
-        const QMap<QString, QVariant> &properties,
-        Solid::DeviceInterface::Type &mainType)
+static DeviceInterfaceTypes typesFromEntry(const io_registry_entry_t &entry, const QMap<QString, QVariant> &properties, Solid::DeviceInterface::Type &mainType)
 {
     DeviceInterfaceTypes types;
     mainType = Solid::DeviceInterface::Unknown;
@@ -55,14 +52,12 @@ static DeviceInterfaceTypes typesFromEntry(const io_registry_entry_t &entry,
         mainType = Solid::DeviceInterface::Battery;
         types << mainType;
     }
-    const QString bsdName = QStringLiteral("BSD Name"),
-        leaf = QStringLiteral("Leaf");
+    const QString bsdName = QStringLiteral("BSD Name"), leaf = QStringLiteral("Leaf");
     if (IOObjectConformsTo(entry, "IOCDMedia") //
         || IOObjectConformsTo(entry, "IODVDMedia") //
         || IOObjectConformsTo(entry, "IOBDMedia")) {
         mainType = Solid::DeviceInterface::OpticalDrive;
-        types << mainType
-            << Solid::DeviceInterface::OpticalDisc;
+        types << mainType << Solid::DeviceInterface::OpticalDisc;
     }
     if (properties.contains(bsdName) && properties.value(bsdName).toString().startsWith(QStringLiteral("disk"))) {
         if ((properties.contains(leaf) && properties.value(leaf).toBool() == false) //
@@ -79,7 +74,7 @@ static DeviceInterfaceTypes typesFromEntry(const io_registry_entry_t &entry,
 
     if (types.isEmpty()) {
         types << mainType;
-//         qWarning() << "unsupported entry" << entry << "with properties" << properties;
+        //         qWarning() << "unsupported entry" << entry << "with properties" << properties;
     }
 
     return types;
@@ -152,7 +147,7 @@ public:
     }
 
     void init(const QString &udiString, const io_registry_entry_t &entry);
-    IOKitDevice* getParentDevice();
+    IOKitDevice *getParentDevice();
 
     QString udi;
     QString parentUdi;
@@ -173,16 +168,14 @@ void IOKitDevicePrivate::init(const QString &udiString, const io_registry_entry_
     parentUdi = getParentDeviceUdi(entry);
     type = typesFromEntry(entry, properties, mainType);
     if (udi.contains(QStringLiteral("IOBD")) || udi.contains(QStringLiteral("BD PX"))) {
-        qWarning() << "Solid: BlueRay entry" << entry << "mainType=" << mainType << "typeList:" << type
-            << "with properties" << properties;
+        qWarning() << "Solid: BlueRay entry" << entry << "mainType=" << mainType << "typeList:" << type << "with properties" << properties;
     }
-    if (mainType != Solid::DeviceInterface::Unknown) {
-    }
+    if (mainType != Solid::DeviceInterface::Unknown) { }
 
     IOObjectRelease(entry);
 }
 
-IOKitDevice* IOKitDevicePrivate::getParentDevice()
+IOKitDevice *IOKitDevicePrivate::getParentDevice()
 {
     if (!parentDevice) {
         parentDevice = new IOKitDevice(parentUdi);
@@ -204,9 +197,7 @@ IOKitDevice::IOKitDevice(const QString &udi)
         return;
     }
 
-    io_registry_entry_t entry = IORegistryEntryFromPath(
-                                    kIOMasterPortDefault,
-                                    udi.toLocal8Bit().constData());
+    io_registry_entry_t entry = IORegistryEntryFromPath(kIOMasterPortDefault, udi.toLocal8Bit().constData());
 
     if (entry == MACH_PORT_NULL) {
         qWarning() << Q_FUNC_INFO << "Tried to create Device from invalid UDI" << udi;
@@ -224,9 +215,7 @@ IOKitDevice::IOKitDevice(const IOKitDevice &device)
         return;
     }
 
-    io_registry_entry_t entry = IORegistryEntryFromPath(
-                                    kIOMasterPortDefault,
-                                    device.udi().toLocal8Bit().constData());
+    io_registry_entry_t entry = IORegistryEntryFromPath(kIOMasterPortDefault, device.udi().toLocal8Bit().constData());
 
     if (entry == MACH_PORT_NULL) {
         qWarning() << Q_FUNC_INFO << "Tried to create Device from invalid UDI" << device.udi();
@@ -245,9 +234,7 @@ bool IOKitDevice::conformsToIOKitClass(const QString &className) const
 {
     bool conforms = false;
     if (!className.isEmpty()) {
-        io_registry_entry_t entry = IORegistryEntryFromPath(
-                                    kIOMasterPortDefault,
-                                    udi().toLocal8Bit().constData());
+        io_registry_entry_t entry = IORegistryEntryFromPath(kIOMasterPortDefault, udi().toLocal8Bit().constData());
         if (entry != MACH_PORT_NULL) {
             conforms = IOObjectConformsTo(entry, className.toLocal8Bit().constData());
             IOObjectRelease(entry);
@@ -369,9 +356,10 @@ QString IOKitDevice::icon() const
             break;
         case Solid::StorageDrive::CdromDrive: {
             const IOKitOpticalDisc disc(this);
-            if (disc.availableContent() == Solid::OpticalDisc::Audio ) {
+            if (disc.availableContent() == Solid::OpticalDisc::Audio) {
                 return QStringLiteral("media-optical-audio");
-            } else switch (disc.discType()) {
+            } else
+                switch (disc.discType()) {
                 case Solid::OpticalDisc::CdRom:
                     return QStringLiteral("media-optical-data");
                     break;
@@ -384,7 +372,7 @@ QString IOKitDevice::icon() const
                 case Solid::OpticalDisc::BluRayRewritable:
                     return QStringLiteral("media-optical-blu-ray");
                     break;
-            }
+                }
             break;
         }
         case Solid::StorageDrive::SdMmc:
@@ -449,8 +437,7 @@ bool IOKitDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type)
         return true;
         break;
     case Solid::DeviceInterface::StorageAccess:
-        if (d->type.contains(Solid::DeviceInterface::StorageDrive)
-            || d->type.contains(Solid::DeviceInterface::StorageVolume)) {
+        if (d->type.contains(Solid::DeviceInterface::StorageDrive) || d->type.contains(Solid::DeviceInterface::StorageVolume)) {
             return true;
         }
         break;
@@ -511,8 +498,7 @@ QObject *IOKitDevice::createDeviceInterface(const Solid::DeviceInterface::Type &
         }
         break;
     case Solid::DeviceInterface::StorageAccess:
-        if (d->type.contains(Solid::DeviceInterface::StorageDrive)
-            || d->type.contains(Solid::DeviceInterface::StorageVolume)) {
+        if (d->type.contains(Solid::DeviceInterface::StorageDrive) || d->type.contains(Solid::DeviceInterface::StorageVolume)) {
             iface = new IOKitStorageAccess(this);
         }
         break;
@@ -525,4 +511,3 @@ QObject *IOKitDevice::createDeviceInterface(const Solid::DeviceInterface::Type &
 }
 }
 } // namespaces
-

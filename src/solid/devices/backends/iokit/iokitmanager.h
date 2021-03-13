@@ -7,8 +7,8 @@
 #ifndef SOLID_BACKENDS_IOKIT_IOKITMANAGER_H
 #define SOLID_BACKENDS_IOKIT_IOKITMANAGER_H
 
-#include <solid/devices/ifaces/devicemanager.h>
 #include <solid/deviceinterface.h>
+#include <solid/devices/ifaces/devicemanager.h>
 
 #include <QStringList>
 
@@ -32,8 +32,7 @@ public:
     virtual QSet<Solid::DeviceInterface::Type> supportedInterfaces() const;
 
     virtual QStringList allDevices();
-    virtual QStringList devicesFromQuery(const QString &parentUdi,
-                                         Solid::DeviceInterface::Type type);
+    virtual QStringList devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type);
     virtual QObject *createDevice(const QString &udi);
 
 private:
@@ -44,4 +43,3 @@ private:
 }
 
 #endif // SOLID_BACKENDS_IOKIT_IOKITMANAGER_H
-

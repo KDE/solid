@@ -5,8 +5,8 @@
 */
 
 #include <QObject>
-#include <QTest>
 #include <QSignalSpy>
+#include <QTest>
 
 #include <Solid/Job>
 
@@ -24,9 +24,11 @@ public:
     void startWithError();
 private Q_SLOTS:
     virtual void doStart();
-    void emitQueued() {
+    void emitQueued()
+    {
         emitResult();
     }
+
 private:
     Q_DECLARE_PRIVATE(Job)
 };
@@ -65,35 +67,35 @@ private Q_SLOTS:
 void testSolidJob::testAsyncAndResult()
 {
     MockSolidJob *job = new MockSolidJob();
-    QSignalSpy spy(job, SIGNAL(result(Solid::Job*)));
+    QSignalSpy spy(job, SIGNAL(result(Solid::Job *)));
 
     job->start();
 
     QVERIFY(spy.wait());
-    //Result is emitted
+    // Result is emitted
     QCOMPARE(spy.count(), 1);
-    //Result argument is the job that emitted it
-    QCOMPARE(spy.takeFirst().first().value<MockSolidJob*>(), job);
+    // Result argument is the job that emitted it
+    QCOMPARE(spy.takeFirst().first().value<MockSolidJob *>(), job);
 }
 
 void testSolidJob::testAsyncWithError()
 {
     MockSolidJob *job = new MockSolidJob();
-    QSignalSpy spy(job, SIGNAL(result(Solid::Job*)));
+    QSignalSpy spy(job, SIGNAL(result(Solid::Job *)));
 
     job->startWithError();
-    QVERIFY(spy.wait()); //Even on error, we get a result
+    QVERIFY(spy.wait()); // Even on error, we get a result
 
-    MockSolidJob *rJob = spy.takeFirst().first().value<MockSolidJob*>();
-    QCOMPARE(rJob->error(), (int) MockSolidJob::Foo);
+    MockSolidJob *rJob = spy.takeFirst().first().value<MockSolidJob *>();
+    QCOMPARE(rJob->error(), (int)MockSolidJob::Foo);
     QCOMPARE(rJob->errorText(), QStringLiteral("Error Foo happened"));
 }
 
 void testSolidJob::testAutoDelete()
 {
     MockSolidJob *job = new MockSolidJob();
-    QSignalSpy spy(job, SIGNAL(destroyed(QObject*)));
-    QSignalSpy spyResult(job, SIGNAL(destroyed(QObject*)));
+    QSignalSpy spy(job, SIGNAL(destroyed(QObject *)));
+    QSignalSpy spyResult(job, SIGNAL(destroyed(QObject *)));
 
     job->start();
     QVERIFY(spy.wait());
@@ -103,10 +105,10 @@ void testSolidJob::testAutoDelete()
 void testSolidJob::testSync()
 {
     MockSolidJob *job = new MockSolidJob();
-    QSignalSpy spy(job, SIGNAL(destroyed(QObject*)));
+    QSignalSpy spy(job, SIGNAL(destroyed(QObject *)));
 
     QVERIFY(job->exec());
-    QVERIFY(spy.wait()); //Jobs started with exec should also autodelete
+    QVERIFY(spy.wait()); // Jobs started with exec should also autodelete
 }
 
 void testSolidJob::testError()

@@ -12,11 +12,11 @@
 
 using namespace Solid::Backends::Win;
 
-typedef BOOL (WINAPI *GLPI_fn)(SYSTEM_LOGICAL_PROCESSOR_INFORMATION *Buffer, DWORD *ReturnLength);
+typedef BOOL(WINAPI *GLPI_fn)(SYSTEM_LOGICAL_PROCESSOR_INFORMATION *Buffer, DWORD *ReturnLength);
 GLPI_fn pGetLogicalProcessorInformation = (GLPI_fn)GetProcAddress(LoadLibraryA("kernel32.dll"), "GetLogicalProcessorInformation");
 
-WinProcessor::WinProcessor(WinDevice *device):
-    WinInterface(device)
+WinProcessor::WinProcessor(WinDevice *device)
+    : WinInterface(device)
 {
     m_number = m_device->udi().mid(m_device->udi().length() - 1).toInt();
 }
@@ -37,7 +37,7 @@ int WinProcessor::maxSpeed() const
 
 bool WinProcessor::canChangeFrequency() const
 {
-    //TODO:implement
+    // TODO:implement
     return false;
 }
 
@@ -95,7 +95,8 @@ const QMap<int, WinProcessor::ProcessorInfo> &WinProcessor::updateCache()
                 uint old = logicalProcessorCount;
                 logicalProcessorCount += countSetBits(info[i].ProcessorMask);
                 for (; old < logicalProcessorCount; ++old) {
-                    QSettings settings(QLatin1String("HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\") + QString::number(old),  QSettings::NativeFormat);
+                    QSettings settings(QLatin1String("HKEY_LOCAL_MACHINE\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\") + QString::number(old),
+                                       QSettings::NativeFormat);
                     ProcessorInfo proc;
                     proc.id = processorCoreCount;
                     proc.lgicalId = old;
@@ -108,10 +109,8 @@ const QMap<int, WinProcessor::ProcessorInfo> &WinProcessor::updateCache()
                 }
                 processorCoreCount++;
             }
-
         }
-        delete [] buff;
+        delete[] buff;
     }
     return p;
-
 }

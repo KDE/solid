@@ -15,7 +15,9 @@ class BlockPrivate : public DeviceInterfacePrivate
 {
 public:
     BlockPrivate()
-        : DeviceInterfacePrivate() { }
+        : DeviceInterfacePrivate()
+    {
+    }
 };
 }
 

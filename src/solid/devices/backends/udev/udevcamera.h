@@ -7,8 +7,8 @@
 #ifndef SOLID_BACKENDS_UDEV_CAMERA_H
 #define SOLID_BACKENDS_UDEV_CAMERA_H
 
-#include <solid/devices/ifaces/camera.h>
 #include "udevdeviceinterface.h"
+#include <solid/devices/ifaces/camera.h>
 
 namespace Solid
 {

@@ -7,7 +7,8 @@
 #include "dummypowernotifier.h"
 
 using namespace Solid;
-DummyPowerNotifier::DummyPowerNotifier(QObject* parent) : PowerNotifier(parent)
+DummyPowerNotifier::DummyPowerNotifier(QObject *parent)
+    : PowerNotifier(parent)
 {
     QMetaObject::invokeMethod(this, "emitEverythingChanged", Qt::QueuedConnection);
 }

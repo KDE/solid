@@ -15,7 +15,9 @@ class StorageAccessPrivate : public DeviceInterfacePrivate
 {
 public:
     StorageAccessPrivate()
-        : DeviceInterfacePrivate() { }
+        : DeviceInterfacePrivate()
+    {
+    }
 };
 }
 

@@ -15,7 +15,6 @@ namespace Backends
 {
 namespace Win
 {
-
 class WinProcessor : public WinInterface, public Solid::Ifaces::Processor
 {
     friend class WinDevice;
@@ -47,7 +46,6 @@ private:
         QString vendor;
         QString name;
         QString produuct;
-
     };
 
     static DWORD countSetBits(ULONG_PTR bitMask);

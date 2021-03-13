@@ -5,9 +5,9 @@
 */
 
 #include "statesjob.h"
-#include "statesjob_p.h"
-#include "powerbackendloader.h"
 #include "backends/abstractstatesjob.h"
+#include "powerbackendloader.h"
+#include "statesjob_p.h"
 
 #include <QDebug>
 
@@ -18,7 +18,8 @@ StatesJobPrivate::StatesJobPrivate()
     backendJob = nullptr;
 }
 
-StatesJob::StatesJob(QObject* parent) : Job(*new StatesJobPrivate(), parent)
+StatesJob::StatesJob(QObject *parent)
+    : Job(*new StatesJobPrivate(), parent)
 {
 }
 
@@ -35,7 +36,7 @@ void StatesJob::doStart()
 
 Power::InhibitionTypes StatesJob::states() const
 {
-    if(d_func()->backendJob) {
+    if (d_func()->backendJob) {
         return d_func()->backendJob->states();
     }
     qWarning() << "statesJob called without having called start";

@@ -8,8 +8,8 @@
 #ifndef SOLID_BACKENDS_HAL_PORTABLEMEDIAPLAYER_H
 #define SOLID_BACKENDS_HAL_PORTABLEMEDIAPLAYER_H
 
-#include <solid/devices/ifaces/portablemediaplayer.h>
 #include "haldeviceinterface.h"
+#include <solid/devices/ifaces/portablemediaplayer.h>
 
 #include <QStringList>
 

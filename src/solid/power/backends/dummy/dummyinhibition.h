@@ -4,7 +4,6 @@
     SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
-
 #ifndef SOLID_DUMMY_INHIBITION_H
 #define SOLID_DUMMY_INHIBITION_H
 
@@ -21,7 +20,7 @@ class DummyInhibition : public AbstractInhibition
 {
     Q_OBJECT
 public:
-    explicit DummyInhibition(QObject* parent = nullptr);
+    explicit DummyInhibition(QObject *parent = nullptr);
     virtual ~DummyInhibition();
 
     void start() override;
@@ -34,4 +33,4 @@ public:
 };
 }
 
-#endif //SOLID_DUMMY_INHIBITION_H
+#endif // SOLID_DUMMY_INHIBITION_H

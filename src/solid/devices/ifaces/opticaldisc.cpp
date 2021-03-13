@@ -9,4 +9,3 @@
 Solid::Ifaces::OpticalDisc::~OpticalDisc()
 {
 }
-

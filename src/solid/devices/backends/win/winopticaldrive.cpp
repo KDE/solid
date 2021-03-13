@@ -11,8 +11,8 @@
 
 using namespace Solid::Backends::Win;
 
-WinOpticalDrive::WinOpticalDrive(WinDevice *device) :
-    WinStorageDrive(device)
+WinOpticalDrive::WinOpticalDrive(WinDevice *device)
+    : WinStorageDrive(device)
 {
     const QMap<ulong, MediaProfiles> profiles = MediaProfiles::profiles(WinBlock::driveLetterFromUdi(m_device->udi()));
     for (const MediaProfiles &p : profiles) {
@@ -50,33 +50,33 @@ int WinOpticalDrive::readSpeed() const
     return 0;
 }
 
-MediaProfiles::MediaProfiles() :
-    profile(0),
-    type(0),
-    active(false)
+MediaProfiles::MediaProfiles()
+    : profile(0)
+    , type(0)
+    , active(false)
 {
 }
 
-MediaProfiles::MediaProfiles(ulong profile, Solid::OpticalDrive::MediumTypes type, QString name):
-    profile(profile),
-    type(type),
-    name(name),
-    active(false)
+MediaProfiles::MediaProfiles(ulong profile, Solid::OpticalDrive::MediumTypes type, QString name)
+    : profile(profile)
+    , type(type)
+    , name(name)
+    , active(false)
 {
 }
 
-MediaProfiles::MediaProfiles(FEATURE_DATA_PROFILE_LIST_EX *feature) :
-    profile(0),
-    type(0),
-    active(false)
+MediaProfiles::MediaProfiles(FEATURE_DATA_PROFILE_LIST_EX *feature)
+    : profile(0)
+    , type(0)
+    , active(false)
 {
     ulong val = (feature->ProfileNumber[0] << 8 | feature->ProfileNumber[1] << 0);
-    MediaProfiles p =  MediaProfiles::getProfile(val);
+    MediaProfiles p = MediaProfiles::getProfile(val);
     if (!p.isNull()) {
         profile = p.profile;
         type = p.type;
         name = p.name;
-        active =  feature->Current;
+        active = feature->Current;
     }
 }
 
@@ -87,8 +87,7 @@ bool MediaProfiles::isNull()
 
 QMap<ulong, MediaProfiles> MediaProfiles::profiles(const QString &drive)
 {
-
-    //thx to http://www.adras.com/Determine-optical-drive-type-and-capabilities.t6826-144-1.html
+    // thx to http://www.adras.com/Determine-optical-drive-type-and-capabilities.t6826-144-1.html
 
     QMap<ulong, MediaProfiles> out;
     DWORD buffSize = 1024;
@@ -115,7 +114,7 @@ QMap<ulong, MediaProfiles> MediaProfiles::profiles(const QString &drive)
 
 const MediaProfiles MediaProfiles::getProfile(ulong val)
 {
-#define AddProfile(profile,type) profiles.insert(profile,MediaProfiles(profile,type,#profile))
+#define AddProfile(profile, type) profiles.insert(profile, MediaProfiles(profile, type, #profile))
     static QMap<ulong, MediaProfiles> profiles;
     if (profiles.isEmpty()) {
         AddProfile(ProfileCdrom, 0);

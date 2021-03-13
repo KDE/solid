@@ -7,8 +7,8 @@
 #ifndef SOLID_BACKENDS_IOKIT_IOKITDEVICE_H
 #define SOLID_BACKENDS_IOKIT_IOKITDEVICE_H
 
-#include <solid/devices/ifaces/device.h>
 #include <IOKit/IOKitLib.h>
+#include <solid/devices/ifaces/device.h>
 
 namespace Solid
 {

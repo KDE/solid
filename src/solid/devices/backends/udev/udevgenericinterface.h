@@ -7,9 +7,9 @@
 #ifndef SOLID_BACKENDS_UDEV_GENERICINTERFACE_H
 #define SOLID_BACKENDS_UDEV_GENERICINTERFACE_H
 
+#include "udevdeviceinterface.h"
 #include <solid/devices/ifaces/genericinterface.h>
 #include <solid/genericinterface.h>
-#include "udevdeviceinterface.h"
 
 namespace Solid
 {

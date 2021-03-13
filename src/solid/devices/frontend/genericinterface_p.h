@@ -15,7 +15,9 @@ class GenericInterfacePrivate : public DeviceInterfacePrivate
 {
 public:
     GenericInterfacePrivate()
-        : DeviceInterfacePrivate() { }
+        : DeviceInterfacePrivate()
+    {
+    }
 };
 }
 

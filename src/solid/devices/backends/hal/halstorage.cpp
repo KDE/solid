@@ -11,12 +11,10 @@ using namespace Solid::Backends::Hal;
 Storage::Storage(HalDevice *device)
     : Block(device)
 {
-
 }
 
 Storage::~Storage()
 {
-
 }
 
 Solid::StorageDrive::Bus Storage::bus() const
@@ -77,4 +75,3 @@ qulonglong Storage::size() const
 {
     return m_device->prop("storage.size").toULongLong();
 }
-

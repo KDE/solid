@@ -10,11 +10,11 @@
 
 #include "solid/devices/backends/hal/halmanager.h"
 
+#include "solid/devices/backends/hal/halprocessor.h"
 #include <solid/device.h>
 #include <solid/devices/ifaces/device.h>
 #include <solid/devices/ifaces/deviceinterface.h>
 #include <solid/devices/ifaces/processor.h>
-#include "solid/devices/backends/hal/halprocessor.h"
 
 #include <QDBusConnection>
 
@@ -91,7 +91,7 @@ void HalBasicTest::testDeviceCreation()
 {
     // Uncomment to check if the "still reachable" number grows in
     // valgrind, which probably indicates a memory leak.
-    //for (int i=0; i<1000; i++)
+    // for (int i=0; i<1000; i++)
     {
         Solid::Device dev("/org/freedesktop/Hal/devices/computer");
         QVERIFY(dev.isValid());
@@ -131,4 +131,3 @@ void HalBasicTest::slotPropertyChanged(const QMap<QString, int> &changes)
 }
 
 #include "moc_halbasictest.cpp"
-

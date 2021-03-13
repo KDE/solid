@@ -6,25 +6,23 @@
 
 #include "udevprocessor.h"
 
-#include "udevdevice.h"
-#include "cpuinfo.h"
 #include "../shared/cpufeatures.h"
+#include "cpuinfo.h"
+#include "udevdevice.h"
 
 #include <QFile>
 
 using namespace Solid::Backends::UDev;
 
 Processor::Processor(UDevDevice *device)
-    : DeviceInterface(device),
-      m_canChangeFrequency(NotChecked),
-      m_maxSpeed(-1)
+    : DeviceInterface(device)
+    , m_canChangeFrequency(NotChecked)
+    , m_maxSpeed(-1)
 {
-
 }
 
 Processor::~Processor()
 {
-
 }
 
 int Processor::number() const
@@ -91,4 +89,3 @@ QString Processor::prefix() const
 
     return QString();
 }
-

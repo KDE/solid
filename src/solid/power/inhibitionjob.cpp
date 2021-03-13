@@ -5,9 +5,9 @@
 */
 
 #include "inhibitionjob.h"
+#include "backends/abstractinhibitionjob.h"
 #include "inhibitionjob_p.h"
 #include "powerbackendloader.h"
-#include "backends/abstractinhibitionjob.h"
 
 #include "inhibition.h"
 
@@ -21,19 +21,18 @@ InhibitionJobPrivate::InhibitionJobPrivate()
     , inhibition(nullptr)
     , backendJob(nullptr)
 {
-
 }
 
-InhibitionJob::InhibitionJob(QObject* parent) : Job(*new InhibitionJobPrivate(), parent)
+InhibitionJob::InhibitionJob(QObject *parent)
+    : Job(*new InhibitionJobPrivate(), parent)
 {
-
 }
 
-Inhibition* InhibitionJob::inhibition() const
+Inhibition *InhibitionJob::inhibition() const
 {
     Q_ASSERT_X(d_func()->inhibition, "addInhibitionJob", "::inhibition() called before result() has been emitted");
 
-    if(d_func()->inhibition) {
+    if (d_func()->inhibition) {
         return d_func()->inhibition;
     }
 
@@ -76,7 +75,7 @@ Power::InhibitionTypes InhibitionJob::inhibitions() const
     return d_func()->inhibitions;
 }
 
-void InhibitionJob::setDescription(const QString& description)
+void InhibitionJob::setDescription(const QString &description)
 {
     Q_D(InhibitionJob);
     d->description = description;

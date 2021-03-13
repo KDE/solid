@@ -7,8 +7,8 @@
 #ifndef SOLID_BACKENDS_UDEV_PROCESSOR_H
 #define SOLID_BACKENDS_UDEV_PROCESSOR_H
 
-#include <solid/devices/ifaces/processor.h>
 #include "udevdeviceinterface.h"
+#include <solid/devices/ifaces/processor.h>
 
 namespace Solid
 {

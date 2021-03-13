@@ -18,7 +18,7 @@ class FDAcPluggedJob : public AbstractAcPluggedJob
 {
     Q_OBJECT
 public:
-    explicit FDAcPluggedJob(QObject* parent = nullptr);
+    explicit FDAcPluggedJob(QObject *parent = nullptr);
     bool isPlugged() const override;
 
 private Q_SLOTS:
@@ -32,4 +32,4 @@ private:
 };
 }
 
-#endif //FD_AC_PLUGGED_JOB_H
+#endif // FD_AC_PLUGGED_JOB_H

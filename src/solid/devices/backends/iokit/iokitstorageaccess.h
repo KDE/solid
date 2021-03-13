@@ -7,9 +7,9 @@
 #ifndef SOLID_BACKENDS_IOKIT_STORAGEACCESS_H
 #define SOLID_BACKENDS_IOKIT_STORAGEACCESS_H
 
-#include <solid/devices/ifaces/storageaccess.h>
-#include "iokitdeviceinterface.h"
 #include "dadictionary_p.h"
+#include "iokitdeviceinterface.h"
+#include <solid/devices/ifaces/storageaccess.h>
 
 namespace Solid
 {
@@ -44,6 +44,7 @@ Q_SIGNALS:
 
 private Q_SLOTS:
     void onPropertyChanged(const QMap<QString, int> &changes);
+
 private:
     DADictionary *daDict;
 };

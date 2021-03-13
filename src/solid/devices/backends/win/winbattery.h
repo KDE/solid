@@ -54,8 +54,6 @@ public:
 
     virtual double temperature() const;
 
-
-
     virtual QString serial() const;
 
     // not yet implemented
@@ -121,8 +119,6 @@ private:
     QString m_serial;
     ulong m_temperature;
     ulong m_timeUntilEmpty;
-
-
 };
 }
 }

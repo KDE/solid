@@ -9,9 +9,9 @@
 #ifndef UDISKSDEVICEBACKEND_H
 #define UDISKSDEVICEBACKEND_H
 
-#include <QObject>
-#include <QDBusObjectPath>
 #include <QDBusInterface>
+#include <QDBusObjectPath>
+#include <QObject>
 #include <QStringList>
 #include <QThreadStorage>
 
@@ -23,10 +23,8 @@ namespace Backends
 {
 namespace UDisks2
 {
-
-class DeviceBackend: public QObject
+class DeviceBackend : public QObject
 {
-
     Q_OBJECT
 
 public:
@@ -65,7 +63,6 @@ private:
     QString m_udi;
 
     static QThreadStorage<QMap<QString, DeviceBackend *>> s_backends;
-
 };
 
 } /* namespace UDisks2 */

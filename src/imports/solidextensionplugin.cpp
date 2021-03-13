@@ -22,6 +22,5 @@ void SolidExtensionPlugin::registerTypes(const char *uri)
 
     Q_ASSERT(QLatin1String(uri) == QLatin1String("org.kde.solid"));
 
-    qmlRegisterType<Devices> (uri, 1, 0, "Devices");
+    qmlRegisterType<Devices>(uri, 1, 0, "Devices");
 }
-

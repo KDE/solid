@@ -10,8 +10,8 @@
 #include <qdebug.h>
 
 #include <IOKit/IOKitLib.h>
-#include <IOKit/usb/IOUSBLib.h>
 #include <IOKit/network/IOEthernetInterface.h>
+#include <IOKit/usb/IOUSBLib.h>
 
 #include <CoreFoundation/CoreFoundation.h>
 
@@ -21,13 +21,14 @@ namespace Backends
 {
 namespace IOKit
 {
-
 class IOKitManagerPrivate
 {
 public:
     inline IOKitManagerPrivate()
-        : port(nullptr), source(nullptr)
-    {}
+        : port(nullptr)
+        , source(nullptr)
+    {
+    }
 
     IONotificationPortRef port;
     CFRunLoopSourceRef source;
@@ -73,8 +74,8 @@ const char *IOKitManagerPrivate::typeToName(Solid::DeviceInterface::Type type)
     case Solid::DeviceInterface::Battery:
         return "AppleSmartBattery";
 
-        //Solid::DeviceInterface::GenericInterface:
-        //Solid::DeviceInterface::Block:
+        // Solid::DeviceInterface::GenericInterface:
+        // Solid::DeviceInterface::Block:
     case Solid::DeviceInterface::StorageAccess:
     case Solid::DeviceInterface::StorageDrive:
     case Solid::DeviceInterface::StorageVolume:
@@ -82,15 +83,16 @@ const char *IOKitManagerPrivate::typeToName(Solid::DeviceInterface::Type type)
     case Solid::DeviceInterface::OpticalDrive:
     case Solid::DeviceInterface::OpticalDisc:
         return "IOCDMedia";
-        //Solid::DeviceInterface::Camera:
-        //Solid::DeviceInterface::PortableMediaPlayer:
+        // Solid::DeviceInterface::Camera:
+        // Solid::DeviceInterface::PortableMediaPlayer:
     }
 
     return 0;
 }
 
 IOKitManager::IOKitManager(QObject *parent)
-    : Solid::Ifaces::DeviceManager(parent), d(new IOKitManagerPrivate)
+    : Solid::Ifaces::DeviceManager(parent)
+    , d(new IOKitManagerPrivate)
 {
     d->port = IONotificationPortCreate(kIOMasterPortDefault);
     if (!d->port) {
@@ -134,7 +136,7 @@ IOKitManager::~IOKitManager()
 
 QString IOKitManager::udiPrefix() const
 {
-    return QString(); //FIXME: We should probably use a prefix there... has to be tested on Mac
+    return QString(); // FIXME: We should probably use a prefix there... has to be tested on Mac
 }
 
 QSet<Solid::DeviceInterface::Type> IOKitManager::supportedInterfaces() const
@@ -147,11 +149,7 @@ QStringList IOKitManager::allDevices()
     // use an IORegistry Iterator to iterate over all devices in the service plane
 
     io_iterator_t it;
-    kern_return_t ret = IORegistryCreateIterator(
-                            kIOMasterPortDefault,
-                            kIOServicePlane,
-                            kIORegistryIterateRecursively,
-                            &it);
+    kern_return_t ret = IORegistryCreateIterator(kIOMasterPortDefault, kIOServicePlane, kIORegistryIterateRecursively, &it);
     if (ret != KERN_SUCCESS) {
         qWarning() << Q_FUNC_INFO << "unable to create iterator";
         return QStringList();
@@ -160,8 +158,7 @@ QStringList IOKitManager::allDevices()
     return IOKitManagerPrivate::devicesFromRegistry(it);
 }
 
-QStringList IOKitManager::devicesFromQuery(const QString &parentUdi,
-        Solid::DeviceInterface::Type type)
+QStringList IOKitManager::devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type)
 {
     QStringList result;
 
@@ -183,10 +180,7 @@ QStringList IOKitManager::devicesFromQuery(const QString &parentUdi,
         io_iterator_t it = 0;
 
         // note - IOServiceGetMatchingServices dereferences the dict
-        kern_return_t ret = IOServiceGetMatchingServices(
-                                kIOMasterPortDefault,
-                                matchingDict,
-                                &it);
+        kern_return_t ret = IOServiceGetMatchingServices(kIOMasterPortDefault, matchingDict, &it);
 
         result = IOKitManagerPrivate::devicesFromRegistry(it);
     }
@@ -209,12 +203,10 @@ QStringList IOKitManager::devicesFromQuery(const QString &parentUdi,
 
 QObject *IOKitManager::createDevice(const QString &udi)
 {
-    io_registry_entry_t entry = IORegistryEntryFromPath(
-                                    kIOMasterPortDefault,
-                                    udi.toLocal8Bit().constData());
+    io_registry_entry_t entry = IORegistryEntryFromPath(kIOMasterPortDefault, udi.toLocal8Bit().constData());
 
     // we have to do IOObjectConformsTo - comparing the class names is not good enough
-    //if (IOObjectConformsTo(entry, kIOEthernetInterfaceClass)) {
+    // if (IOObjectConformsTo(entry, kIOEthernetInterfaceClass)) {
     //}
 
     if (entry == MACH_PORT_NULL) {
@@ -227,4 +219,3 @@ QObject *IOKitManager::createDevice(const QString &udi)
 }
 }
 } // namespaces
-

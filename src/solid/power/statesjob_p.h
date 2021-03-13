@@ -21,6 +21,6 @@ public:
     AbstractStatesJob *backendJob;
     Q_DECLARE_PUBLIC(StatesJob)
 };
-}//Solid namespace
+} // Solid namespace
 
-#endif //SOLID_SLEEP_STATES_JOB_P_H
+#endif // SOLID_SLEEP_STATES_JOB_P_H

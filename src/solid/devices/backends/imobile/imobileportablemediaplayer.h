@@ -19,7 +19,6 @@ namespace Backends
 {
 namespace IMobile
 {
-
 class IMobileDevice;
 
 class PortableMediaPlayer : public DeviceInterface, virtual public Solid::Ifaces::PortableMediaPlayer
@@ -34,7 +33,6 @@ public:
     QStringList supportedProtocols() const override;
     QStringList supportedDrivers(QString protocol = QString()) const override;
     QVariant driverHandle(const QString &driver) const override;
-
 };
 
 } // namespace IMobile

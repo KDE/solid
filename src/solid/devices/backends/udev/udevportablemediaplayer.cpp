@@ -31,17 +31,17 @@ static QString readMpiValue(QIODevice &file, const QString &group, const QString
     QString currGroup;
 
     while (!mpiStream.atEnd()) {
-        line = mpiStream.readLine().trimmed();  // trimmed is needed for possible indentation
+        line = mpiStream.readLine().trimmed(); // trimmed is needed for possible indentation
         if (line.isEmpty() || line.startsWith(QChar(';'))) {
             // skip empty and comment lines
         } else if (line.startsWith(QChar('[')) && line.endsWith(QChar(']'))) {
-            currGroup = line.mid(1, line.length() - 2);  // strip [ and ]
+            currGroup = line.mid(1, line.length() - 2); // strip [ and ]
         } else if (line.indexOf(QChar('=')) != -1) {
             int index = line.indexOf(QChar('='));
             if (currGroup == group && line.left(index) == key) {
                 line = line.right(line.length() - index - 1);
                 if (line.startsWith(QChar('"')) && line.endsWith(QChar('"'))) {
-                    line = line.mid(1, line.length() - 2);  // strip enclosing double quotes
+                    line = line.mid(1, line.length() - 2); // strip enclosing double quotes
                 }
                 return line;
             }
@@ -55,12 +55,10 @@ static QString readMpiValue(QIODevice &file, const QString &group, const QString
 PortableMediaPlayer::PortableMediaPlayer(UDevDevice *device)
     : DeviceInterface(device)
 {
-
 }
 
 PortableMediaPlayer::~PortableMediaPlayer()
 {
-
 }
 
 QStringList PortableMediaPlayer::supportedProtocols() const
@@ -118,8 +116,7 @@ QString PortableMediaPlayer::mediaPlayerInfoFilePath() const
 {
     QString relativeFilename = m_device->property("ID_MEDIA_PLAYER").toString();
     if (relativeFilename.isEmpty()) {
-        qWarning() << "We attached PortableMediaPlayer interface to device" << m_device->udi()
-                   << "but m_device->property(\"ID_MEDIA_PLAYER\") is empty???";
+        qWarning() << "We attached PortableMediaPlayer interface to device" << m_device->udi() << "but m_device->property(\"ID_MEDIA_PLAYER\") is empty???";
         return QString();
     }
     relativeFilename.prepend("media-player-info/");

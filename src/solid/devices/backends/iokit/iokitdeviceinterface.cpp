@@ -17,7 +17,8 @@ DeviceInterface::DeviceInterface(IOKitDevice *device)
 }
 
 DeviceInterface::DeviceInterface(const IOKitDevice *device)
-    : QObject(device->parent()), m_deviceCopy(new IOKitDevice(*device))
+    : QObject(device->parent())
+    , m_deviceCopy(new IOKitDevice(*device))
 {
     m_device = m_deviceCopy;
 }
@@ -29,4 +30,3 @@ DeviceInterface::~DeviceInterface()
         m_deviceCopy = nullptr;
     }
 }
-

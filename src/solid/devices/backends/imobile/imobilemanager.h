@@ -18,7 +18,6 @@ namespace Backends
 {
 namespace IMobile
 {
-
 class Manager : public Solid::Ifaces::DeviceManager
 {
     Q_OBJECT
@@ -37,7 +36,6 @@ public:
 
 private:
     QStringList m_deviceUdis;
-
 };
 
 } // namespace IMobile

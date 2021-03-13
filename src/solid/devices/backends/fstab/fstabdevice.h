@@ -7,10 +7,10 @@
 #ifndef SOLID_BACKENDS_FSTAB_FSTAB_DEVICE_H
 #define SOLID_BACKENDS_FSTAB_FSTAB_DEVICE_H
 
-#include <solid/devices/ifaces/device.h>
-#include <QStringList>
-#include <QPointer>
 #include "fstabstorageaccess.h"
+#include <QPointer>
+#include <QStringList>
+#include <solid/devices/ifaces/device.h>
 
 namespace Solid
 {
@@ -18,7 +18,6 @@ namespace Backends
 {
 namespace Fstab
 {
-
 class FstabDevice : public Solid::Ifaces::Device
 {
     Q_OBJECT
@@ -43,7 +42,7 @@ public:
     QString displayName() const override;
 
     QString description() const override;
-    
+
     bool isEncrypted() const;
 
     bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const override;

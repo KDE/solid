@@ -7,9 +7,9 @@
 #ifndef SOLID_BACKENDS_UPOWER_GENERICINTERFACE_H
 #define SOLID_BACKENDS_UPOWER_GENERICINTERFACE_H
 
+#include "upowerdeviceinterface.h"
 #include <solid/devices/ifaces/genericinterface.h>
 #include <solid/genericinterface.h>
-#include "upowerdeviceinterface.h"
 
 namespace Solid
 {

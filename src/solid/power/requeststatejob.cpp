@@ -5,10 +5,9 @@
 */
 
 #include "requeststatejob.h"
-#include "requeststatejob_p.h"
-#include "powerbackendloader.h"
 #include "backends/abstractrequeststatejob.h"
-
+#include "powerbackendloader.h"
+#include "requeststatejob_p.h"
 
 using namespace Solid;
 
@@ -18,7 +17,8 @@ RequestStateJobPrivate::RequestStateJobPrivate()
     state = Power::None;
 }
 
-RequestStateJob::RequestStateJob(QObject* parent) : Job(*new RequestStateJobPrivate(), parent)
+RequestStateJob::RequestStateJob(QObject *parent)
+    : Job(*new RequestStateJobPrivate(), parent)
 {
 }
 

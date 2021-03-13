@@ -15,7 +15,10 @@ class PowerNotifier : public QObject
 {
     Q_OBJECT
 public:
-    explicit PowerNotifier(QObject* parent = nullptr) : QObject(parent) {}
+    explicit PowerNotifier(QObject *parent = nullptr)
+        : QObject(parent)
+    {
+    }
 
 Q_SIGNALS:
     void acPluggedChanged(bool plugged);
@@ -24,4 +27,4 @@ Q_SIGNALS:
 };
 }
 
-#endif //SOLID_POWER_NOTIFIER_H
+#endif // SOLID_POWER_NOTIFIER_H

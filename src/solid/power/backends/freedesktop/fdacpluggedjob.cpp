@@ -6,14 +6,13 @@
 
 #include "fdacpluggedjob.h"
 
-
 #include <QDBusConnection>
 #include <QDBusMessage>
 #include <QDBusVariant>
 
 using namespace Solid;
 
-FDAcPluggedJob::FDAcPluggedJob(QObject* parent)
+FDAcPluggedJob::FDAcPluggedJob(QObject *parent)
     : AbstractAcPluggedJob(parent)
     , m_isPlugged(false)
 {
@@ -21,11 +20,10 @@ FDAcPluggedJob::FDAcPluggedJob(QObject* parent)
 
 void FDAcPluggedJob::doStart()
 {
-    QDBusMessage msg = QDBusMessage::createMethodCall(
-            QStringLiteral("org.freedesktop.UPower"),
-            QStringLiteral("/org/freedesktop/UPower"),
-            QStringLiteral("org.freedesktop.DBus.Properties"),
-            QStringLiteral("Get"));
+    QDBusMessage msg = QDBusMessage::createMethodCall(QStringLiteral("org.freedesktop.UPower"),
+                                                      QStringLiteral("/org/freedesktop/UPower"),
+                                                      QStringLiteral("org.freedesktop.DBus.Properties"),
+                                                      QStringLiteral("Get"));
 
     msg << QStringLiteral("org.freedesktop.UPower");
     msg << QStringLiteral("OnBattery");
@@ -33,7 +31,7 @@ void FDAcPluggedJob::doStart()
     QDBusConnection::systemBus().callWithCallback(msg, this, SLOT(slotDBusReply(QDBusMessage)), SLOT(slotDBusError(QDBusError)));
 }
 
-void FDAcPluggedJob::slotDBusReply(const QDBusMessage & msg)
+void FDAcPluggedJob::slotDBusReply(const QDBusMessage &msg)
 {
     Q_ASSERT(!msg.arguments().isEmpty());
 
@@ -41,7 +39,7 @@ void FDAcPluggedJob::slotDBusReply(const QDBusMessage & msg)
     emitResult();
 }
 
-void FDAcPluggedJob::slotDBusError(const QDBusError& error)
+void FDAcPluggedJob::slotDBusError(const QDBusError &error)
 {
     setError(error.type());
     setErrorText(error.message());

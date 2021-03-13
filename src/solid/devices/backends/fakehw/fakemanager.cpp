@@ -8,10 +8,10 @@
 #include "fakedevice.h"
 
 // Qt includes
+#include <QDebug>
 #include <QDomDocument>
 #include <QDomElement>
 #include <QDomNode>
-#include <QDebug>
 #include <QFile>
 #include <QString>
 #ifdef QT_DBUS_LIB
@@ -24,13 +24,14 @@ class FakeManager::Private
 {
 public:
     QMap<QString, FakeDevice *> loadedDevices;
-    QMap<QString, QMap<QString, QVariant> > hiddenDevices;
+    QMap<QString, QMap<QString, QVariant>> hiddenDevices;
     QString xmlFile;
     QSet<Solid::DeviceInterface::Type> supportedInterfaces;
 };
 
 FakeManager::FakeManager(QObject *parent, const QString &xmlFile)
-    : Solid::Ifaces::DeviceManager(parent), d(new Private)
+    : Solid::Ifaces::DeviceManager(parent)
+    , d(new Private)
 {
     QString machineXmlFile = xmlFile;
     d->xmlFile = machineXmlFile;
@@ -236,4 +237,3 @@ FakeDevice *FakeManager::parseDeviceElement(const QDomElement &deviceElement)
 
     return device;
 }
-

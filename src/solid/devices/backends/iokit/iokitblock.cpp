@@ -41,4 +41,3 @@ QString Block::device() const
     }
     return QString();
 }
-

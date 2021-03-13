@@ -23,6 +23,6 @@ public:
     AbstractRequestStateJob *backendJob;
     Q_DECLARE_PUBLIC(RequestStateJob)
 };
-}//Solid namespace
+} // Solid namespace
 
-#endif //SOLID_REQUEST_STATE_JOB_PRIVATE_H
+#endif // SOLID_REQUEST_STATE_JOB_PRIVATE_H

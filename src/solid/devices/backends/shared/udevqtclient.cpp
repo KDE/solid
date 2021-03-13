@@ -12,9 +12,11 @@
 
 namespace UdevQt
 {
-
 ClientPrivate::ClientPrivate(Client *q_)
-    : udev(nullptr), monitor(nullptr), q(q_), monitorNotifier(nullptr)
+    : udev(nullptr)
+    , monitor(nullptr)
+    , q(q_)
+    , monitorNotifier(nullptr)
 {
 }
 
@@ -99,11 +101,11 @@ void ClientPrivate::_uq_monitorReadyRead(int fd)
         Q_EMIT q->deviceChanged(device);
     } else if (action == "online") {
         Q_EMIT q->deviceOnlined(device);
-    } else  if (action == "offline") {
+    } else if (action == "offline") {
         Q_EMIT q->deviceOfflined(device);
-    } else  if (action == "bind") {
+    } else if (action == "bind") {
         Q_EMIT q->deviceBound(device);
-    } else  if (action == "unbind") {
+    } else if (action == "unbind") {
         Q_EMIT q->deviceUnbound(device);
     } else {
         qWarning("UdevQt: unhandled device action \"%s\"", action.constData());
@@ -117,9 +119,9 @@ DeviceList ClientPrivate::deviceListFromEnumerate(struct udev_enumerate *en)
 
     udev_enumerate_scan_devices(en);
     list = udev_enumerate_get_list_entry(en);
-    udev_list_entry_foreach(entry, list) {
-        struct udev_device *ud = udev_device_new_from_syspath(udev_enumerate_get_udev(en),
-                                 udev_list_entry_get_name(entry));
+    udev_list_entry_foreach(entry, list)
+    {
+        struct udev_device *ud = udev_device_new_from_syspath(udev_enumerate_get_udev(en), udev_list_entry_get_name(entry));
 
         if (!ud) {
             continue;

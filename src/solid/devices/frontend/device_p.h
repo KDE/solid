@@ -7,10 +7,10 @@
 #ifndef SOLID_DEVICE_P_H
 #define SOLID_DEVICE_P_H
 
-#include <QObject>
-#include <QSharedData>
-#include <QPointer>
 #include <QMap>
+#include <QObject>
+#include <QPointer>
+#include <QSharedData>
 
 #include <ifaces/device.h>
 

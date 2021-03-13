@@ -5,13 +5,13 @@
 */
 
 #include "udisksmanager.h"
-#include "udisksdevicebackend.h"
 #include "udisks_debug.h"
+#include "udisksdevicebackend.h"
 
 #include <QDBusConnection>
-#include <QDBusObjectPath>
-#include <QDBusMetaType>
 #include <QDBusConnectionInterface>
+#include <QDBusMetaType>
+#include <QDBusObjectPath>
 #include <QDomDocument>
 
 #include "../shared/rootdevice.h"
@@ -20,21 +20,14 @@ using namespace Solid::Backends::UDisks2;
 using namespace Solid::Backends::Shared;
 
 Manager::Manager(QObject *parent)
-    : Solid::Ifaces::DeviceManager(parent),
-      m_manager(UD2_DBUS_SERVICE,
-                UD2_DBUS_PATH,
-                QDBusConnection::systemBus())
+    : Solid::Ifaces::DeviceManager(parent)
+    , m_manager(UD2_DBUS_SERVICE, UD2_DBUS_PATH, QDBusConnection::systemBus())
 {
-    m_supportedInterfaces
-            << Solid::DeviceInterface::GenericInterface
-            << Solid::DeviceInterface::Block
-            << Solid::DeviceInterface::StorageAccess
-            << Solid::DeviceInterface::StorageDrive
-            << Solid::DeviceInterface::OpticalDrive
-            << Solid::DeviceInterface::OpticalDisc
-            << Solid::DeviceInterface::StorageVolume;
+    m_supportedInterfaces << Solid::DeviceInterface::GenericInterface << Solid::DeviceInterface::Block << Solid::DeviceInterface::StorageAccess
+                          << Solid::DeviceInterface::StorageDrive << Solid::DeviceInterface::OpticalDrive << Solid::DeviceInterface::OpticalDisc
+                          << Solid::DeviceInterface::StorageVolume;
 
-    qDBusRegisterMetaType<QList<QDBusObjectPath> >();
+    qDBusRegisterMetaType<QList<QDBusObjectPath>>();
     qDBusRegisterMetaType<QVariantMap>();
     qDBusRegisterMetaType<VariantMapMap>();
     qDBusRegisterMetaType<DBUSManagerStruct>();
@@ -42,10 +35,7 @@ Manager::Manager(QObject *parent)
     bool serviceFound = m_manager.isValid();
     if (!serviceFound) {
         // find out whether it will be activated automatically
-        QDBusMessage message = QDBusMessage::createMethodCall("org.freedesktop.DBus",
-                               "/org/freedesktop/DBus",
-                               "org.freedesktop.DBus",
-                               "ListActivatableNames");
+        QDBusMessage message = QDBusMessage::createMethodCall("org.freedesktop.DBus", "/org/freedesktop/DBus", "org.freedesktop.DBus", "ListActivatableNames");
 
         QDBusReply<QStringList> reply = QDBusConnection::systemBus().call(message);
         if (reply.isValid() && reply.value().contains(UD2_DBUS_SERVICE)) {
@@ -55,10 +45,8 @@ Manager::Manager(QObject *parent)
     }
 
     if (serviceFound) {
-        connect(&m_manager, SIGNAL(InterfacesAdded(QDBusObjectPath,VariantMapMap)),
-                this, SLOT(slotInterfacesAdded(QDBusObjectPath,VariantMapMap)));
-        connect(&m_manager, SIGNAL(InterfacesRemoved(QDBusObjectPath,QStringList)),
-                this, SLOT(slotInterfacesRemoved(QDBusObjectPath,QStringList)));
+        connect(&m_manager, SIGNAL(InterfacesAdded(QDBusObjectPath, VariantMapMap)), this, SLOT(slotInterfacesAdded(QDBusObjectPath, VariantMapMap)));
+        connect(&m_manager, SIGNAL(InterfacesRemoved(QDBusObjectPath, QStringList)), this, SLOT(slotInterfacesRemoved(QDBusObjectPath, QStringList)));
     }
 }
 
@@ -127,8 +115,7 @@ QStringList Manager::allDevices()
 
 void Manager::introspect(const QString &path, bool checkOptical)
 {
-    QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, path,
-                        DBUS_INTERFACE_INTROSPECT, "Introspect");
+    QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, path, DBUS_INTERFACE_INTROSPECT, "Introspect");
     QDBusPendingReply<QString> reply = QDBusConnection::systemBus().call(call);
 
     if (reply.isValid()) {
@@ -143,8 +130,8 @@ void Manager::introspect(const QString &path, bool checkOptical)
                 if (checkOptical) {
                     Device device(udi);
                     if (device.mightBeOpticalDisc()) {
-                        QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE, udi, DBUS_INTERFACE_PROPS, "PropertiesChanged", this,
-                                                             SLOT(slotMediaChanged(QDBusMessage)));
+                        QDBusConnection::systemBus()
+                            .connect(UD2_DBUS_SERVICE, udi, DBUS_INTERFACE_PROPS, "PropertiesChanged", this, SLOT(slotMediaChanged(QDBusMessage)));
                         if (!device.isOpticalDisc()) { // skip empty CD disc
                             continue;
                         }
@@ -159,7 +146,7 @@ void Manager::introspect(const QString &path, bool checkOptical)
     }
 }
 
-QSet< Solid::DeviceInterface::Type > Manager::supportedInterfaces() const
+QSet<Solid::DeviceInterface::Type> Manager::supportedInterfaces() const
 {
     return m_supportedInterfaces;
 }
@@ -187,8 +174,7 @@ void Manager::slotInterfacesAdded(const QDBusObjectPath &object_path, const Vari
     if (interfaces_and_properties.contains("org.freedesktop.UDisks2.Block")) {
         Device device(udi);
         if (device.mightBeOpticalDisc()) {
-            QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE, udi, DBUS_INTERFACE_PROPS, "PropertiesChanged", this,
-                SLOT(slotMediaChanged(QDBusMessage)));
+            QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE, udi, DBUS_INTERFACE_PROPS, "PropertiesChanged", this, SLOT(slotMediaChanged(QDBusMessage)));
         }
     }
 
@@ -263,7 +249,7 @@ void Manager::slotMediaChanged(const QDBusMessage &msg)
         Q_EMIT deviceAdded(udi);
     }
 
-    if (m_deviceCache.contains(udi) && size == 0) {  // we know the optdisc, got removed
+    if (m_deviceCache.contains(udi) && size == 0) { // we know the optdisc, got removed
         Q_EMIT deviceRemoved(udi);
         m_deviceCache.removeAll(udi);
         DeviceBackend::destroyBackend(udi);
@@ -286,7 +272,7 @@ void Manager::updateBackend(const QString &udi)
         return;
     }
 
-    //This doesn't emit "changed" signals. Signals are emitted later by DeviceBackend's slots
+    // This doesn't emit "changed" signals. Signals are emitted later by DeviceBackend's slots
     backend->allProperties();
 
     QVariant driveProp = backend->prop("Drive");

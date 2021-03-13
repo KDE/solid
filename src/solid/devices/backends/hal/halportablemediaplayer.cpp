@@ -12,12 +12,10 @@ using namespace Solid::Backends::Hal;
 PortableMediaPlayer::PortableMediaPlayer(HalDevice *device)
     : DeviceInterface(device)
 {
-
 }
 
 PortableMediaPlayer::~PortableMediaPlayer()
 {
-
 }
 
 QStringList PortableMediaPlayer::supportedProtocols() const
@@ -51,4 +49,3 @@ QVariant PortableMediaPlayer::driverHandle(const QString &driver) const
 
     return QVariant();
 }
-

@@ -8,11 +8,11 @@
 
 using namespace Solid::Backends::Shared;
 
-RootDevice::RootDevice(const QString &udi, const QString &parentUdi) :
-    Solid::Ifaces::Device(),
-    m_udi(udi),
-    m_parentUdi(parentUdi),
-    m_vendor("KDE")
+RootDevice::RootDevice(const QString &udi, const QString &parentUdi)
+    : Solid::Ifaces::Device()
+    , m_udi(udi)
+    , m_parentUdi(parentUdi)
+    , m_vendor("KDE")
 {
 }
 

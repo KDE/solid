@@ -6,13 +6,13 @@
 
 #include "fstabstorageaccess.h"
 #include "fstabwatcher.h"
+#include <QStringList>
 #include <solid/devices/backends/fstab/fstabdevice.h>
 #include <solid/devices/backends/fstab/fstabhandling.h>
 #include <solid/devices/backends/fstab/fstabservice.h>
-#include <QStringList>
 
-#include <QProcess>
 #include <QDir>
+#include <QProcess>
 #include <QTimer>
 
 #include <errno.h>
@@ -21,9 +21,9 @@
 
 using namespace Solid::Backends::Fstab;
 
-FstabStorageAccess::FstabStorageAccess(Solid::Backends::Fstab::FstabDevice *device) :
-    QObject(device),
-    m_fstabDevice(device)
+FstabStorageAccess::FstabStorageAccess(Solid::Backends::Fstab::FstabDevice *device)
+    : QObject(device)
+    , m_fstabDevice(device)
 {
     QStringList currentMountPoints = FstabHandling::currentMountPoints(device->device());
     if (currentMountPoints.isEmpty()) {
@@ -35,18 +35,15 @@ FstabStorageAccess::FstabStorageAccess(Solid::Backends::Fstab::FstabDevice *devi
         m_isAccessible = true;
     }
 
-    const bool inUserPath = m_filePath.startsWith(QLatin1String("/media/")) ||
-            m_filePath.startsWith(QLatin1String("/run/media/")) ||
-            m_filePath.startsWith(QDir::homePath());
+    const bool inUserPath =
+        m_filePath.startsWith(QLatin1String("/media/")) || m_filePath.startsWith(QLatin1String("/run/media/")) || m_filePath.startsWith(QDir::homePath());
 
     const bool gvfsHidden = FstabHandling::options(device->device()).contains(QLatin1String("x-gvfs-hide"));
     const bool fsIsOverlay = FstabHandling::fstype(device->device()) == QLatin1String("overlay");
 
     m_isIgnored = gvfsHidden ||
-            // ignore overlay fs not pointing to / or seemingly mounted by user
-            (fsIsOverlay &&
-             m_filePath != QLatin1String("/") &&
-            !inUserPath);
+        // ignore overlay fs not pointing to / or seemingly mounted by user
+        (fsIsOverlay && m_filePath != QLatin1String("/") && !inUserPath);
 
     connect(device, SIGNAL(mtabChanged(QString)), this, SLOT(onMtabChanged(QString)));
     QTimer::singleShot(0, this, SLOT(connectDBusSignals()));
@@ -58,13 +55,9 @@ FstabStorageAccess::~FstabStorageAccess()
 
 void FstabStorageAccess::connectDBusSignals()
 {
-    m_fstabDevice->registerAction("setup", this,
-                                  SLOT(slotSetupRequested()),
-                                  SLOT(slotSetupDone(int,QString)));
+    m_fstabDevice->registerAction("setup", this, SLOT(slotSetupRequested()), SLOT(slotSetupDone(int, QString)));
 
-    m_fstabDevice->registerAction("teardown", this,
-                                  SLOT(slotTeardownRequested()),
-                                  SLOT(slotTeardownDone(int,QString)));
+    m_fstabDevice->registerAction("teardown", this, SLOT(slotTeardownRequested()), SLOT(slotTeardownDone(int, QString)));
 }
 
 const Solid::Backends::Fstab::FstabDevice *FstabStorageAccess::fstabDevice() const

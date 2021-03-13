@@ -42,7 +42,6 @@ private:
     bool m_isRewritable;
     bool m_isBlank;
     bool m_isAppendable;
-
 };
 }
 }

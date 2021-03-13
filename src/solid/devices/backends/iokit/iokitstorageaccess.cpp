@@ -6,7 +6,6 @@
 
 #include "iokitstorageaccess.h"
 
-
 #include <CoreFoundation/CoreFoundation.h>
 #include <DiskArbitration/DiskArbitration.h>
 
@@ -16,16 +15,14 @@ IOKitStorageAccess::IOKitStorageAccess(IOKitDevice *device)
     : DeviceInterface(device)
     , daDict(new DADictionary(device))
 {
-    connect(device, SIGNAL(propertyChanged(QMap<QString,int>)),
-            this, SLOT(onPropertyChanged(QMap<QString,int>)));
+    connect(device, SIGNAL(propertyChanged(QMap<QString, int>)), this, SLOT(onPropertyChanged(QMap<QString, int>)));
 }
 
 IOKitStorageAccess::IOKitStorageAccess(const IOKitDevice *device)
     : DeviceInterface(device)
     , daDict(new DADictionary(device))
 {
-    connect(device, SIGNAL(propertyChanged(QMap<QString,int>)),
-            this, SLOT(onPropertyChanged(QMap<QString,int>)));
+    connect(device, SIGNAL(propertyChanged(QMap<QString, int>)), this, SLOT(onPropertyChanged(QMap<QString, int>)));
 }
 
 IOKitStorageAccess::~IOKitStorageAccess()
@@ -44,7 +41,7 @@ QString IOKitStorageAccess::filePath() const
 {
     // mount points can change (but can they between invocations of filePath()?)
     QString mountPoint;
-    if (const CFURLRef urlRef  = daDict->cfUrLRefForKey(kDADiskDescriptionVolumePathKey)) {
+    if (const CFURLRef urlRef = daDict->cfUrLRefForKey(kDADiskDescriptionVolumePathKey)) {
         const CFStringRef mpRef = CFURLCopyFileSystemPath(urlRef, kCFURLPOSIXPathStyle);
         mountPoint = QString::fromCFString(mpRef);
         CFRelease(mpRef);
@@ -53,7 +50,7 @@ QString IOKitStorageAccess::filePath() const
         const QString isMountedKey = QStringLiteral("isMounted");
         const QVariant wasMounted = m_device->property(isMountedKey);
         if (wasMounted.isValid() && wasMounted.toBool() != isMounted) {
-            IOKitStorageAccess(m_device).onPropertyChanged(QMap<QString,int>{{isMountedKey,isMounted}});
+            IOKitStorageAccess(m_device).onPropertyChanged(QMap<QString, int>{{isMountedKey, isMounted}});
         }
         m_device->setProperty("isMounted", QVariant(isMounted));
     }
@@ -74,7 +71,7 @@ bool IOKitStorageAccess::isIgnored() const
 
 bool IOKitStorageAccess::isEncrypted() const
 {
-    //TODO: Implementation left for IOKit developer
+    // TODO: Implementation left for IOKit developer
     return false;
 }
 
@@ -98,4 +95,3 @@ void IOKitStorageAccess::onPropertyChanged(const QMap<QString, int> &changes)
         }
     }
 }
-

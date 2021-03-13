@@ -7,8 +7,8 @@
 #ifndef SOLID_STATES_JOB_H
 #define SOLID_STATES_JOB_H
 
-#include "solid_export.h"
 #include "power.h"
+#include "solid_export.h"
 
 #include <Solid/Job>
 
@@ -37,15 +37,15 @@ public:
 private Q_SLOTS:
     void doStart() override;
 
-/**
- * We have to re-declare the signal because
- * if not, Q_PROPERTY wouldn't work.
- */
+    /**
+     * We have to re-declare the signal because
+     * if not, Q_PROPERTY wouldn't work.
+     */
 Q_SIGNALS:
     void result(Solid::Job *job);
 
 private:
     Q_DECLARE_PRIVATE(StatesJob)
 };
-} //Solid namespace
-#endif //SOLID_STATES_JOB_H
+} // Solid namespace
+#endif // SOLID_STATES_JOB_H

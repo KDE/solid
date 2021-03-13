@@ -6,19 +6,23 @@
 
 #include "predicate.h"
 
-#include <solid/device.h>
-#include <QStringList>
 #include <QMetaEnum>
+#include <QStringList>
+#include <solid/device.h>
 
 namespace Solid
 {
 class Predicate::Private
 {
 public:
-
-    Private() : isValid(false), type(PropertyCheck),
-        compOperator(Predicate::Equals),
-        operand1(nullptr), operand2(nullptr) {}
+    Private()
+        : isValid(false)
+        , type(PropertyCheck)
+        , compOperator(Predicate::Equals)
+        , operand1(nullptr)
+        , operand2(nullptr)
+    {
+    }
 
     bool isValid;
     Type type;
@@ -44,9 +48,7 @@ Solid::Predicate::Predicate(const Predicate &other)
     *this = other;
 }
 
-Solid::Predicate::Predicate(const DeviceInterface::Type &ifaceType,
-                            const QString &property, const QVariant &value,
-                            ComparisonOperator compOperator)
+Solid::Predicate::Predicate(const DeviceInterface::Type &ifaceType, const QString &property, const QVariant &value, ComparisonOperator compOperator)
     : d(new Private())
 {
     d->isValid = true;
@@ -56,9 +58,7 @@ Solid::Predicate::Predicate(const DeviceInterface::Type &ifaceType,
     d->compOperator = compOperator;
 }
 
-Solid::Predicate::Predicate(const QString &ifaceName,
-                            const QString &property, const QVariant &value,
-                            ComparisonOperator compOperator)
+Solid::Predicate::Predicate(const QString &ifaceName, const QString &property, const QVariant &value, ComparisonOperator compOperator)
     : d(new Private())
 {
     DeviceInterface::Type ifaceType = DeviceInterface::stringToType(ifaceName);
@@ -124,7 +124,7 @@ Solid::Predicate &Solid::Predicate::operator=(const Predicate &other)
     return *this;
 }
 
-Solid::Predicate Solid::Predicate::operator &(const Predicate &other)
+Solid::Predicate Solid::Predicate::operator&(const Predicate &other)
 {
     Predicate result;
 
@@ -136,7 +136,7 @@ Solid::Predicate Solid::Predicate::operator &(const Predicate &other)
     return result;
 }
 
-Solid::Predicate &Solid::Predicate::operator &=(const Predicate &other)
+Solid::Predicate &Solid::Predicate::operator&=(const Predicate &other)
 {
     *this = *this & other;
     return *this;
@@ -154,7 +154,7 @@ Solid::Predicate Solid::Predicate::operator|(const Predicate &other)
     return result;
 }
 
-Solid::Predicate &Solid::Predicate::operator |=(const Predicate &other)
+Solid::Predicate &Solid::Predicate::operator|=(const Predicate &other)
 {
     *this = *this | other;
     return *this;
@@ -173,11 +173,9 @@ bool Solid::Predicate::matches(const Device &device) const
 
     switch (d->type) {
     case Disjunction:
-        return d->operand1->matches(device)
-               || d->operand2->matches(device);
+        return d->operand1->matches(device) || d->operand2->matches(device);
     case Conjunction:
-        return d->operand1->matches(device)
-               && d->operand2->matches(device);
+        return d->operand1->matches(device) && d->operand2->matches(device);
     case PropertyCheck: {
         const DeviceInterface *iface = device.asDeviceInterface(d->ifaceType);
 
@@ -222,7 +220,6 @@ QSet<Solid::DeviceInterface::Type> Solid::Predicate::usedTypes() const
     QSet<DeviceInterface::Type> res;
 
     if (d->isValid) {
-
         switch (d->type) {
         case Disjunction:
         case Conjunction:
@@ -234,7 +231,6 @@ QSet<Solid::DeviceInterface::Type> Solid::Predicate::usedTypes() const
             res << d->ifaceType;
             break;
         }
-
     }
 
     return res;
@@ -349,4 +345,3 @@ Solid::Predicate Solid::Predicate::secondOperand() const
     }
     return Predicate();
 }
-

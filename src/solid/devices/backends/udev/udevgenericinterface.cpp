@@ -23,7 +23,6 @@ GenericInterface::GenericInterface(UDevDevice *device)
 
 GenericInterface::~GenericInterface()
 {
-
 }
 
 QVariant GenericInterface::property(const QString &key) const
@@ -40,4 +39,3 @@ bool GenericInterface::propertyExists(const QString &key) const
 {
     return m_device->propertyExists(key);
 }
-

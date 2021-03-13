@@ -12,12 +12,10 @@ using namespace Solid::Backends::Fake;
 FakeCamera::FakeCamera(FakeDevice *device)
     : FakeDeviceInterface(device)
 {
-
 }
 
 FakeCamera::~FakeCamera()
 {
-
 }
 
 QStringList FakeCamera::supportedProtocols() const
@@ -46,4 +44,3 @@ QVariant Solid::Backends::Fake::FakeCamera::driverHandle(const QString &driver) 
     Q_UNUSED(driver);
     return QVariant();
 }
-

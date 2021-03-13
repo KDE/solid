@@ -10,16 +10,16 @@
 #include <linux/kdev_t.h>
 #else
 // taken from linux/kdev_t.h
-#define MINORBITS       20
-#define MINORMASK       ((1U << MINORBITS) - 1)
-#define MAJOR(dev)      ((unsigned int) ((dev) >> MINORBITS))
-#define MINOR(dev)      ((unsigned int) ((dev) & MINORMASK))
+#define MINORBITS 20
+#define MINORMASK ((1U << MINORBITS) - 1)
+#define MAJOR(dev) ((unsigned int)((dev) >> MINORBITS))
+#define MINOR(dev) ((unsigned int)((dev)&MINORMASK))
 #endif
 
-#include <QFile>
 #include <QDBusConnection>
 #include <QDBusPendingReply>
 #include <QDomDocument>
+#include <QFile>
 
 #include "udisks_debug.h"
 
@@ -34,8 +34,7 @@ Block::Block(Device *dev)
     // we have a drive (non-block device for udisks), so let's find the corresponding (real) block device
     if (m_devNum == 0 || m_devFile.isEmpty()) {
         const QString path = "/org/freedesktop/UDisks2/block_devices";
-        QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, path,
-                            DBUS_INTERFACE_INTROSPECT, "Introspect");
+        QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, path, DBUS_INTERFACE_INTROSPECT, "Introspect");
         QDBusPendingReply<QString> reply = QDBusConnection::systemBus().asyncCall(call);
         reply.waitForFinished();
 
@@ -61,7 +60,7 @@ Block::Block(Device *dev)
         }
     }
 
-    //qDebug() << "devnum:" << m_devNum << "dev file:" << m_devFile;
+    // qDebug() << "devnum:" << m_devNum << "dev file:" << m_devFile;
 }
 
 Block::~Block()

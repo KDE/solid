@@ -25,6 +25,6 @@ public:
     AbstractInhibitionJob *backendJob;
     Q_DECLARE_PUBLIC(InhibitionJob)
 };
-}//Solid namespace
+} // Solid namespace
 
-#endif //SOLID_ADD_INHIBITION_JOB_PRIVATE_H
+#endif // SOLID_ADD_INHIBITION_JOB_PRIVATE_H

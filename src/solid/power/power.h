@@ -7,8 +7,8 @@
 #ifndef SOLID_POWER_H
 #define SOLID_POWER_H
 
-#include <QObject>
 #include "solid_export.h"
+#include <QObject>
 
 namespace Solid
 {
@@ -60,7 +60,7 @@ public:
      * only interested for a short period of time, consider instantiating your own
      * Solid::Power so you can free the memory at any point.
      */
-    static Power* self();
+    static Power *self();
 
     /**
      * Returns an AcPluggedJob
@@ -68,26 +68,26 @@ public:
      * The returned AcPluggedJob has to be started, when finished
      * the Job::result() signal will be emitted.
      */
-    static AcPluggedJob* isAcPlugged(QObject *parent = nullptr);
+    static AcPluggedJob *isAcPlugged(QObject *parent = nullptr);
 
     /**
      * Returns an InhibitionJob
      *
      * The returned job is initialized with the given @p states and @p description
      */
-    static InhibitionJob* inhibit(Power::InhibitionTypes states, const QString &description, QObject *parent = nullptr);
+    static InhibitionJob *inhibit(Power::InhibitionTypes states, const QString &description, QObject *parent = nullptr);
 
     /**
      * Query the supported states (like Sleep or Hibernation)
      * @return a StatesJob
      */
-    static StatesJob* supportedStates(QObject *parent = nullptr);
+    static StatesJob *supportedStates(QObject *parent = nullptr);
 
     /**
      * Set the computer in a desired @p state (like Sleep or Hibernation)
      * @return a RequestStateJob
      */
-    static RequestStateJob* requestState(Power::InhibitionType state, QObject *parent = nullptr);
+    static RequestStateJob *requestState(Power::InhibitionType state, QObject *parent = nullptr);
 
     /**
      * If you are not going to destroy this object for the entire
@@ -97,7 +97,7 @@ public:
      * application is only interested in power management during a small
      * period of time and you want to free the memory after using it.
      */
-    explicit Power(QObject* parent = nullptr);
+    explicit Power(QObject *parent = nullptr);
 
 Q_SIGNALS:
     /**
@@ -120,7 +120,7 @@ Q_SIGNALS:
 
 private:
     class Private;
-    Private * const d;
+    Private *const d;
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(Power::InhibitionTypes)
@@ -129,4 +129,4 @@ Q_DECLARE_OPERATORS_FOR_FLAGS(Power::InhibitionTypes)
 
 Q_DECLARE_METATYPE(Solid::Power::InhibitionType)
 
-#endif //SOLID_POWER_H
+#endif // SOLID_POWER_H

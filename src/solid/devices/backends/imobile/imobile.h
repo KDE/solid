@@ -16,7 +16,6 @@ namespace Backends
 {
 namespace IMobile
 {
-
 QString udiPrefix();
 
 } // namespace IMobile

@@ -16,7 +16,9 @@ JobPrivate::JobPrivate()
     error = Job::NoError;
 }
 
-Job::Job(QObject* parent) : QObject(parent), d_ptr(new JobPrivate)
+Job::Job(QObject *parent)
+    : QObject(parent)
+    , d_ptr(new JobPrivate)
 {
     d_ptr->q_ptr = this;
 }
@@ -57,7 +59,7 @@ void Job::setError(int errorCode)
     d_func()->error = errorCode;
 }
 
-void Job::setErrorText(const QString& errorText)
+void Job::setErrorText(const QString &errorText)
 {
     d_func()->errorText = errorText;
 }
@@ -77,7 +79,8 @@ bool Job::exec()
     return (d->error == NoError);
 }
 
-Job::Job(JobPrivate& dd, QObject* parent) : QObject(parent), d_ptr(&dd)
+Job::Job(JobPrivate &dd, QObject *parent)
+    : QObject(parent)
+    , d_ptr(&dd)
 {
-
 }

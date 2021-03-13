@@ -6,8 +6,8 @@
 
 #include "solid-power.h"
 
-#include <QCoreApplication>
 #include <QCommandLineParser>
+#include <QCoreApplication>
 #include <QTextStream>
 
 static QTextStream sOut(stdout);
@@ -28,14 +28,14 @@ int main(int argc, char **argv)
 
     parser.process(app);
 
-    if (parser.isSet(commands))
-    {
+    if (parser.isSet(commands)) {
         sOut << endl << QCoreApplication::translate("solid-hardware", "Syntax:") << endl << endl;
 
         sOut << "  solid-power show" << endl;
         sOut << QCoreApplication::translate("solid-power",
-                "             # Show all the power management information from the system.\n"
-                "             # - acPlugged: whether the device is connected to the AC or not\n") << endl;
+                                            "             # Show all the power management information from the system.\n"
+                                            "             # - acPlugged: whether the device is connected to the AC or not\n")
+             << endl;
         return 1;
     }
 
@@ -53,7 +53,7 @@ int main(int argc, char **argv)
 
     if (command == QLatin1String("show")) {
         power.show();
-    } else if(command == QLatin1String("listen")) {
+    } else if (command == QLatin1String("listen")) {
         sOut << "Listening to events:" << endl;
         power.listen();
         app.exec();

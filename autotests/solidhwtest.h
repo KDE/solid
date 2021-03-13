@@ -7,8 +7,8 @@
 #ifndef SOLIDHWTEST_H
 #define SOLIDHWTEST_H
 
-#include <QObject>
 #include <QMap>
+#include <QObject>
 
 namespace Solid
 {
@@ -45,9 +45,10 @@ private Q_SLOTS:
     void testSetupTeardown();
 
     void slotPropertyChanged(const QMap<QString, int> &changes);
+
 private:
     Solid::Backends::Fake::FakeManager *fakeManager;
-    QList< QMap<QString, int> > m_changesList;
+    QList<QMap<QString, int>> m_changesList;
 };
 
 #endif

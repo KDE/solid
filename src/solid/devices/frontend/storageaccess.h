@@ -9,9 +9,9 @@
 
 #include <solid/solid_export.h>
 
-#include <solid/solidnamespace.h>
-#include <solid/deviceinterface.h>
 #include <QVariant>
+#include <solid/deviceinterface.h>
+#include <solid/solidnamespace.h>
 
 namespace Solid
 {
@@ -88,11 +88,10 @@ public:
      * @return true if the volume should be ignored
      */
     bool isIgnored() const;
-    
-    
+
     /**
      * Checks if source of the storage is encrypted.
-     * 
+     *
      * @return true if storage is encrypted one
      *
      * @since 5.80

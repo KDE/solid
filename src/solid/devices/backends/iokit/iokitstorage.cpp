@@ -6,7 +6,6 @@
 
 #include "iokitstorage.h"
 
-
 #include <CoreFoundation/CoreFoundation.h>
 #include <DiskArbitration/DiskArbitration.h>
 

@@ -7,9 +7,9 @@
 #ifndef SOLID_BACKENDS_IOKIT_GENERICINTERFACE_H
 #define SOLID_BACKENDS_IOKIT_GENERICINTERFACE_H
 
+#include "iokitdeviceinterface.h"
 #include <solid/devices/ifaces/genericinterface.h>
 #include <solid/genericinterface.h>
-#include "iokitdeviceinterface.h"
 
 namespace Solid
 {

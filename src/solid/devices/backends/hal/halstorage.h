@@ -7,8 +7,8 @@
 #ifndef SOLID_BACKENDS_HAL_STORAGE_H
 #define SOLID_BACKENDS_HAL_STORAGE_H
 
-#include <solid/devices/ifaces/storagedrive.h>
 #include "halblock.h"
+#include <solid/devices/ifaces/storagedrive.h>
 
 namespace Solid
 {

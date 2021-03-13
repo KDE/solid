@@ -9,9 +9,9 @@
 using namespace Solid::Backends::UPower;
 
 DeviceInterface::DeviceInterface(UPowerDevice *device)
-    : QObject(device), m_device(device)
+    : QObject(device)
+    , m_device(device)
 {
-
 }
 
 DeviceInterface::~DeviceInterface()

@@ -7,9 +7,9 @@
 #ifndef SOLID_BACKENDS_HAL_GENERICINTERFACE_H
 #define SOLID_BACKENDS_HAL_GENERICINTERFACE_H
 
+#include "haldeviceinterface.h"
 #include <solid/devices/ifaces/genericinterface.h>
 #include <solid/genericinterface.h>
-#include "haldeviceinterface.h"
 
 namespace Solid
 {

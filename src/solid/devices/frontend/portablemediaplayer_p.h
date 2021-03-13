@@ -16,7 +16,9 @@ class PortableMediaPlayerPrivate : public DeviceInterfacePrivate
 {
 public:
     PortableMediaPlayerPrivate()
-        : DeviceInterfacePrivate() { }
+        : DeviceInterfacePrivate()
+    {
+    }
 };
 }
 

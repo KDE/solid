@@ -8,9 +8,9 @@
 #ifndef UDISKSMANAGER_H
 #define UDISKSMANAGER_H
 
+#include "dbus/manager.h"
 #include "udisks2.h"
 #include "udisksdevice.h"
-#include "dbus/manager.h"
 
 #include <solid/devices/ifaces/devicemanager.h>
 
@@ -22,8 +22,7 @@ namespace Backends
 {
 namespace UDisks2
 {
-
-class Manager: public Solid::Ifaces::DeviceManager
+class Manager : public Solid::Ifaces::DeviceManager
 {
     Q_OBJECT
 
@@ -32,7 +31,7 @@ public:
     QObject *createDevice(const QString &udi) override;
     QStringList devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type) override;
     QStringList allDevices() override;
-    QSet< Solid::DeviceInterface::Type > supportedInterfaces() const override;
+    QSet<Solid::DeviceInterface::Type> supportedInterfaces() const override;
     QString udiPrefix() const override;
     virtual ~Manager();
 

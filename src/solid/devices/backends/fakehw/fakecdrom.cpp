@@ -13,12 +13,10 @@ using namespace Solid::Backends::Fake;
 FakeCdrom::FakeCdrom(FakeDevice *device)
     : FakeStorage(device)
 {
-
 }
 
 FakeCdrom::~FakeCdrom()
 {
-
 }
 
 Solid::OpticalDrive::MediumTypes FakeCdrom::supportedMedia() const
@@ -80,4 +78,3 @@ bool FakeCdrom::eject()
 {
     return false;
 }
-

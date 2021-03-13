@@ -15,7 +15,9 @@ class StorageVolumePrivate : public DeviceInterfacePrivate
 {
 public:
     StorageVolumePrivate()
-        : DeviceInterfacePrivate() { }
+        : DeviceInterfacePrivate()
+    {
+    }
 };
 }
 

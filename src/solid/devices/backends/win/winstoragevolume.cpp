@@ -16,8 +16,8 @@
 using namespace Solid::Backends::Win;
 
 WinStorageVolume::WinStorageVolume(WinDevice *device)
-    : WinBlock(device),
-      m_size(0)
+    : WinBlock(device)
+    , m_size(0)
 {
     updateCache();
 }
@@ -33,7 +33,7 @@ bool WinStorageVolume::isIgnored() const
 
 Solid::StorageVolume::UsageType WinStorageVolume::usage() const
 {
-    return Solid::StorageVolume::FileSystem;//TODO:???
+    return Solid::StorageVolume::FileSystem; // TODO:???
 }
 
 void WinStorageVolume::updateCache()
@@ -42,7 +42,7 @@ void WinStorageVolume::updateCache()
     wchar_t fs[MAX_PATH];
     DWORD serial;
     DWORD flags;
-    //TODO:get correct name
+    // TODO:get correct name
     wchar_t dLetter[MAX_PATH];
     int dLetterSize = WinBlock::driveLetterFromUdi(m_device->udi()).toWCharArray(dLetter);
     dLetter[dLetterSize] = (wchar_t)'\\';
@@ -54,7 +54,7 @@ void WinStorageVolume::updateCache()
     if (GetVolumeInformation(dLetter, label, MAX_PATH, &serial, NULL, &flags, fs, MAX_PATH)) {
         m_label = QString::fromWCharArray(label);
         m_fs = QString::fromWCharArray(fs);
-        m_uuid =  QString::number(serial, 16);
+        m_uuid = QString::number(serial, 16);
     }
 
     ULARGE_INTEGER size;

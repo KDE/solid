@@ -7,21 +7,21 @@
 
 #include "udisksopticaldrive.h"
 
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <string.h>
 #include <errno.h>
-#include <unistd.h>
+#include <fcntl.h>
 #include <stdlib.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <unistd.h>
 
-#include <QFile>
 #include <QDebug>
+#include <QFile>
 
-#include "udisks_debug.h"
-#include "udisks2.h"
-#include "udisksdevice.h"
 #include "dbus/manager.h"
+#include "udisks2.h"
+#include "udisks_debug.h"
+#include "udisksdevice.h"
 
 using namespace Solid::Backends::UDisks2;
 
@@ -32,9 +32,7 @@ OpticalDrive::OpticalDrive(Device *device)
     , m_writeSpeed(0)
     , m_speedsInit(false)
 {
-    m_device->registerAction("eject", this,
-                             SLOT(slotEjectRequested()),
-                             SLOT(slotEjectDone(int,QString)));
+    m_device->registerAction("eject", this, SLOT(slotEjectRequested()), SLOT(slotEjectDone(int, QString)));
 
     connect(m_device, SIGNAL(changed()), this, SLOT(slotChanged()));
 }
@@ -59,12 +57,12 @@ bool OpticalDrive::eject()
     org::freedesktop::DBus::ObjectManager manager(UD2_DBUS_SERVICE, UD2_DBUS_PATH, c);
     QDBusPendingReply<DBUSManagerStruct> reply = manager.GetManagedObjects();
     reply.waitForFinished();
-    if (!reply.isError()) {  // enum devices
+    if (!reply.isError()) { // enum devices
         const auto objPathMap = reply.value();
         for (auto it = objPathMap.cbegin(); it != objPathMap.cend(); ++it) {
             const QString udi = it.key().path();
 
-            //qDebug() << "Inspecting" << udi;
+            // qDebug() << "Inspecting" << udi;
 
             if (udi == UD2_DBUS_PATH_MANAGER || udi == UD2_UDI_DISKS_PREFIX || udi.startsWith(UD2_DBUS_PATH_JOBS)) {
                 continue;
@@ -72,7 +70,7 @@ bool OpticalDrive::eject()
 
             Device device(udi);
             if (device.drivePath() == path && device.isMounted()) {
-                //qDebug() << "Got mounted block device:" << udi;
+                // qDebug() << "Got mounted block device:" << udi;
                 blockPath = udi;
                 break;
             }
@@ -82,9 +80,9 @@ bool OpticalDrive::eject()
     }
 
     if (!blockPath.isEmpty()) {
-        //qDebug() << "Calling unmount on" << blockPath;
+        // qDebug() << "Calling unmount on" << blockPath;
         QDBusMessage msg = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, blockPath, UD2_DBUS_INTERFACE_FILESYSTEM, "Unmount");
-        msg << QVariantMap();   // options, unused now
+        msg << QVariantMap(); // options, unused now
         c.call(msg, QDBus::BlockWithGui);
     }
 
@@ -93,7 +91,7 @@ bool OpticalDrive::eject()
     return c.callWithCallback(msg, this, SLOT(slotDBusReply(QDBusMessage)), SLOT(slotDBusError(QDBusError)));
 }
 
-void OpticalDrive::slotDBusReply(const QDBusMessage &/*reply*/)
+void OpticalDrive::slotDBusReply(const QDBusMessage & /*reply*/)
 {
     m_ejectInProgress = false;
     m_device->broadcastActionDone("eject");
@@ -102,8 +100,7 @@ void OpticalDrive::slotDBusReply(const QDBusMessage &/*reply*/)
 void OpticalDrive::slotDBusError(const QDBusError &error)
 {
     m_ejectInProgress = false;
-    m_device->broadcastActionDone("eject", m_device->errorToSolidError(error.name()),
-                                  m_device->errorToString(error.name()) + ": " + error.message());
+    m_device->broadcastActionDone("eject", m_device->errorToSolidError(error.name()), m_device->errorToString(error.name()) + ": " + error.message());
 }
 
 void OpticalDrive::slotEjectRequested()
@@ -155,7 +152,7 @@ QList<int> OpticalDrive::writeSpeeds() const
     if (!m_speedsInit) {
         initReadWriteSpeeds();
     }
-    //qDebug() << "solid write speeds:" << m_writeSpeeds;
+    // qDebug() << "solid write speeds:" << m_writeSpeeds;
     return m_writeSpeeds;
 }
 
@@ -201,9 +198,9 @@ Solid::OpticalDrive::MediumTypes OpticalDrive::supportedMedia() const
     // clang-format on
 
     // TODO add these to Solid
-    //map[Solid::OpticalDrive::Mo] ="optical_mo";
-    //map[Solid::OpticalDrive::Mr] ="optical_mrw";
-    //map[Solid::OpticalDrive::Mrw] ="optical_mrw_w";
+    // map[Solid::OpticalDrive::Mo] ="optical_mo";
+    // map[Solid::OpticalDrive::Mr] ="optical_mrw";
+    // map[Solid::OpticalDrive::Mrw] ="optical_mrw_w";
 
     for (const QString &media : mediaTypes) {
         supported |= map.value(media, Solid::OpticalDrive::UnknownMediumType);

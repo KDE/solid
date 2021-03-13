@@ -91,4 +91,3 @@ QList<QObject *> Solid::ManagerBasePrivate::managerBackends() const
 {
     return m_backends;
 }
-

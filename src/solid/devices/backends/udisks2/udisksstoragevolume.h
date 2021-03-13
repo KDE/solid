@@ -7,8 +7,8 @@
 #ifndef UDISKSSTORAGEVOLUME_H
 #define UDISKSSTORAGEVOLUME_H
 
-#include <ifaces/storagevolume.h>
 #include "udisksblock.h"
+#include <ifaces/storagevolume.h>
 
 namespace Solid
 {
@@ -16,8 +16,7 @@ namespace Backends
 {
 namespace UDisks2
 {
-
-class StorageVolume: public Block, virtual public Solid::Ifaces::StorageVolume
+class StorageVolume : public Block, virtual public Solid::Ifaces::StorageVolume
 {
     Q_OBJECT
     Q_INTERFACES(Solid::Ifaces::StorageVolume)

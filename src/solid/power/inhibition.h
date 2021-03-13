@@ -13,7 +13,6 @@
 
 namespace Solid
 {
-
 class InhibitionPrivate;
 class AbstractInhibition;
 /**
@@ -41,7 +40,7 @@ public:
      * AbstractInhibition is not part of Solid public API so this
      * constructor is meant to be used only by backends.
      */
-    explicit Inhibition(AbstractInhibition *backend, QObject *parent=nullptr);
+    explicit Inhibition(AbstractInhibition *backend, QObject *parent = nullptr);
     virtual ~Inhibition();
 
     /**
@@ -80,4 +79,4 @@ Q_SIGNALS:
 };
 }
 Q_DECLARE_METATYPE(Solid::Inhibition::State)
-#endif //SOLID_INHIBITION_H
+#endif // SOLID_INHIBITION_H

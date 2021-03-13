@@ -7,8 +7,8 @@
 #ifndef SOLID_BACKENDS_HAL_CAMERA_H
 #define SOLID_BACKENDS_HAL_CAMERA_H
 
-#include <solid/devices/ifaces/camera.h>
 #include "haldeviceinterface.h"
+#include <solid/devices/ifaces/camera.h>
 
 namespace Solid
 {

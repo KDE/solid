@@ -7,15 +7,14 @@
 #ifndef WINGENERICINTERFACE_H
 #define WINGENERICINTERFACE_H
 
-#include <solid/devices/ifaces/genericinterface.h>
 #include "wininterface.h"
+#include <solid/devices/ifaces/genericinterface.h>
 namespace Solid
 {
 namespace Backends
 {
 namespace Win
 {
-
 class WinGenericInterface : public WinInterface, virtual public Solid::Ifaces::GenericInterface
 {
     Q_OBJECT

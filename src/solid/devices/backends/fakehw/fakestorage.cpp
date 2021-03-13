@@ -12,12 +12,10 @@ using namespace Solid::Backends::Fake;
 FakeStorage::FakeStorage(FakeDevice *device)
     : FakeBlock(device)
 {
-
 }
 
 FakeStorage::~FakeStorage()
 {
-
 }
 
 Solid::StorageDrive::Bus FakeStorage::bus() const
@@ -78,4 +76,3 @@ qulonglong FakeStorage::size() const
 {
     return fakeDevice()->property("size").toULongLong();
 }
-

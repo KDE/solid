@@ -7,8 +7,8 @@
 #ifndef SOLID_BACKENDS_FAKEHW_FAKECDROM_H
 #define SOLID_BACKENDS_FAKEHW_FAKECDROM_H
 
-#include <solid/devices/ifaces/opticaldrive.h>
 #include "fakestorage.h"
+#include <solid/devices/ifaces/opticaldrive.h>
 
 namespace Solid
 {

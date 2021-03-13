@@ -19,7 +19,6 @@ namespace Backends
 {
 namespace IMobile
 {
-
 class IMobileDevice;
 
 class DeviceInterface : public QObject, virtual public Solid::Ifaces::DeviceInterface
@@ -33,7 +32,6 @@ public:
 
 protected:
     IMobileDevice *m_device;
-
 };
 
 }

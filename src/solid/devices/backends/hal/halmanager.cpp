@@ -8,21 +8,21 @@
 #include "haldevice.h"
 #include "haldeviceinterface.h"
 
-#include <QDebug>
 #include <QDBusConnection>
 #include <QDBusInterface>
 #include <QDBusReply>
+#include <QDebug>
 
 using namespace Solid::Backends::Hal;
 
 class Solid::Backends::Hal::HalManagerPrivate
 {
 public:
-    HalManagerPrivate() : manager("org.freedesktop.Hal",
-                                      "/org/freedesktop/Hal/Manager",
-                                      "org.freedesktop.Hal.Manager",
-                                      QDBusConnection::systemBus()),
-        cacheSynced(false) { }
+    HalManagerPrivate()
+        : manager("org.freedesktop.Hal", "/org/freedesktop/Hal/Manager", "org.freedesktop.Hal.Manager", QDBusConnection::systemBus())
+        , cacheSynced(false)
+    {
+    }
 
     QDBusInterface manager;
     QList<QString> devicesCache;
@@ -31,19 +31,14 @@ public:
 };
 
 HalManager::HalManager(QObject *parent)
-    : DeviceManager(parent),  d(new HalManagerPrivate())
+    : DeviceManager(parent)
+    , d(new HalManagerPrivate())
 {
-    d->manager.connection().connect("org.freedesktop.Hal",
-                                    "/org/freedesktop/Hal/Manager",
-                                    "org.freedesktop.Hal.Manager",
-                                    "DeviceAdded",
-                                    this, SLOT(slotDeviceAdded(QString)));
+    d->manager.connection()
+        .connect("org.freedesktop.Hal", "/org/freedesktop/Hal/Manager", "org.freedesktop.Hal.Manager", "DeviceAdded", this, SLOT(slotDeviceAdded(QString)));
 
-    d->manager.connection().connect("org.freedesktop.Hal",
-                                    "/org/freedesktop/Hal/Manager",
-                                    "org.freedesktop.Hal.Manager",
-                                    "DeviceRemoved",
-                                    this, SLOT(slotDeviceRemoved(QString)));
+    d->manager.connection()
+        .connect("org.freedesktop.Hal", "/org/freedesktop/Hal/Manager", "org.freedesktop.Hal.Manager", "DeviceRemoved", this, SLOT(slotDeviceRemoved(QString)));
     // clang-format off
     d->supportedInterfaces << Solid::DeviceInterface::GenericInterface
                            << Solid::DeviceInterface::Processor
@@ -115,8 +110,7 @@ bool HalManager::deviceExists(const QString &udi)
     return reply;
 }
 
-QStringList HalManager::devicesFromQuery(const QString &parentUdi,
-        Solid::DeviceInterface::Type type)
+QStringList HalManager::devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type)
 {
     if ((parentUdi.isEmpty()) && (type == Solid::DeviceInterface::Unknown)) {
         return allDevices();
@@ -162,4 +156,3 @@ void HalManager::slotDeviceRemoved(const QString &udi)
     d->devicesCache.removeAll(udi);
     Q_EMIT deviceRemoved(udi);
 }
-

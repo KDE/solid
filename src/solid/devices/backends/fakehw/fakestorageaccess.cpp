@@ -11,13 +11,11 @@ using namespace Solid::Backends::Fake;
 FakeStorageAccess::FakeStorageAccess(FakeDevice *device)
     : FakeDeviceInterface(device)
 {
-    connect(device, SIGNAL(propertyChanged(QMap<QString,int>)),
-            this, SLOT(onPropertyChanged(QMap<QString,int>)));
+    connect(device, SIGNAL(propertyChanged(QMap<QString, int>)), this, SLOT(onPropertyChanged(QMap<QString, int>)));
 }
 
 FakeStorageAccess::~FakeStorageAccess()
 {
-
 }
 
 bool FakeStorageAccess::isAccessible() const
@@ -68,4 +66,3 @@ void Solid::Backends::Fake::FakeStorageAccess::onPropertyChanged(const QMap<QStr
         }
     }
 }
-

@@ -16,11 +16,16 @@ class AbstractStatesJob : public Job
 {
     Q_OBJECT
 public:
-    explicit AbstractStatesJob(QObject* parent = nullptr) : Job(parent) { }
-    virtual ~AbstractStatesJob() {}
+    explicit AbstractStatesJob(QObject *parent = nullptr)
+        : Job(parent)
+    {
+    }
+    virtual ~AbstractStatesJob()
+    {
+    }
 
     virtual Power::InhibitionTypes states() const = 0;
 };
 }
 
-#endif //ABSTRACT_STATES_JOB_H
+#endif // ABSTRACT_STATES_JOB_H

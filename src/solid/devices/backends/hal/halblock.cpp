@@ -13,12 +13,10 @@ using namespace Solid::Backends::Hal;
 Block::Block(HalDevice *device)
     : DeviceInterface(device)
 {
-
 }
 
 Block::~Block()
 {
-
 }
 
 int Block::deviceMajor() const
@@ -35,4 +33,3 @@ QString Block::device() const
 {
     return m_device->prop("block.device").toString();
 }
-

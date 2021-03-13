@@ -7,12 +7,12 @@
 #include "storagedrive.h"
 #include "storagedrive_p.h"
 
-#include "soliddefs_p.h"
-#include <solid/devices/ifaces/storagedrive.h>
-#include "predicate.h"
-#include "storageaccess.h"
 #include "device.h"
 #include "device_p.h"
+#include "predicate.h"
+#include "soliddefs_p.h"
+#include "storageaccess.h"
+#include <solid/devices/ifaces/storagedrive.h>
 
 Solid::StorageDrive::StorageDrive(QObject *backendObject)
     : DeviceInterface(*new StorageDrivePrivate(), backendObject)
@@ -22,12 +22,10 @@ Solid::StorageDrive::StorageDrive(QObject *backendObject)
 Solid::StorageDrive::StorageDrive(StorageDrivePrivate &dd, QObject *backendObject)
     : DeviceInterface(dd, backendObject)
 {
-
 }
 
 Solid::StorageDrive::~StorageDrive()
 {
-
 }
 
 Solid::StorageDrive::Bus Solid::StorageDrive::bus() const
@@ -67,7 +65,7 @@ bool Solid::StorageDrive::isInUse() const
     const QList<Device> devices = Device::listFromQuery(p, d->devicePrivate()->udi());
 
     bool inUse = false;
-    for (const Device &dev : devices)  {
+    for (const Device &dev : devices) {
         if (dev.is<Solid::StorageAccess>()) {
             const Solid::StorageAccess *access = dev.as<Solid::StorageAccess>();
             inUse |= (access->isAccessible());
@@ -75,4 +73,3 @@ bool Solid::StorageDrive::isInUse() const
     }
     return inUse;
 }
-

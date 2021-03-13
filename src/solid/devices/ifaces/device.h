@@ -12,8 +12,8 @@
 
 #include <QMap>
 
-#include <solid/deviceinterface.h>
 #include <solid/device.h>
+#include <solid/deviceinterface.h>
 #include <solid/solidnamespace.h>
 
 namespace Solid
@@ -90,19 +90,19 @@ public:
     virtual QStringList emblems() const = 0;
 
     /**
-      * Retrieves the display name to use for this device.
-      * Same as description when not defined.
-      *
-      * @return the display name
-      * @since 5.71
-      */
+     * Retrieves the display name to use for this device.
+     * Same as description when not defined.
+     *
+     * @return the display name
+     * @since 5.71
+     */
     virtual QString displayName() const;
 
     /**
-      * Retrieves the description of device.
-      *
-      * @return the description
-      */
+     * Retrieves the description of device.
+     *
+     * @return the description
+     */
     virtual QString description() const = 0;
 
     /**
@@ -150,9 +150,7 @@ public:
      * @param error error code if the action failed
      * @param errorString message describing a potential error
      */
-    void broadcastActionDone(const QString &actionName,
-                             int error = Solid::NoError,
-                             const QString &errorString = QString()) const;
+    void broadcastActionDone(const QString &actionName, int error = Solid::NoError, const QString &errorString = QString()) const;
 
 private:
     QString deviceDBusPath() const;

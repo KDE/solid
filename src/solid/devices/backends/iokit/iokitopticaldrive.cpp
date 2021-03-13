@@ -22,7 +22,6 @@
 
 using namespace Solid::Backends::IOKit;
 
-
 class IOKitOpticalDrive::Private
 {
 public:
@@ -66,19 +65,18 @@ public:
         CFRunLoopSourceRef cancel_signal;
     } DAContext;
 
-    static void cancelEjectRunloop(void*) {};
+    static void cancelEjectRunloop(void *){};
 
     static void daEjectCallback(DADiskRef disk, DADissenterRef dissenter, void *context)
     {
         Q_UNUSED(disk);
-        DAContext *daContext = static_cast<DAContext*>(context);
+        DAContext *daContext = static_cast<DAContext *>(context);
 
         if (dissenter) {
             CFStringRef status = DADissenterGetStatusString(dissenter);
-            if (status){
-                qWarning() << "Warning while ejecting" << daContext->device->property("BSD Name").toString()
-                    << ":" << QString::fromCFString(status);
-                CFRelease( status );
+            if (status) {
+                qWarning() << "Warning while ejecting" << daContext->device->property("BSD Name").toString() << ":" << QString::fromCFString(status);
+                CFRelease(status);
             }
         }
 
@@ -95,8 +93,7 @@ public:
         if (!dissenter) {
             DADiskEject(disk, kDADiskEjectOptionDefault, daEjectCallback, context);
             daContext->success = (daContext->success == -1 ? true : daContext->success);
-        }
-        else {
+        } else {
             daContext->success = false;
             daContext->completed = true;
             CFRunLoopSourceSignal(daContext->cancel_signal);
@@ -107,11 +104,8 @@ public:
     bool eject(double timeoutSeconds)
     {
         CFDictionaryRef description = nullptr;
-        CFRunLoopSourceContext cancelRunLoopSourceContext = {
-            .perform = cancelEjectRunloop
-        };
-        DAContext daContext = {m_device, -1 , false, 0,
-            CFRunLoopGetCurrent(), 0};
+        CFRunLoopSourceContext cancelRunLoopSourceContext = {.perform = cancelEjectRunloop};
+        DAContext daContext = {m_device, -1, false, 0, CFRunLoopGetCurrent(), 0};
         QCFType<CFRunLoopSourceRef> cancel = CFRunLoopSourceCreate(kCFAllocatorDefault, 0, &cancelRunLoopSourceContext);
         if (!(daContext.cancel_signal = cancel)) {
             qWarning() << Q_FUNC_INFO << "failed to create cancel runloop source";
@@ -129,7 +123,7 @@ public:
             return false;
         }
         description = DADiskCopyDescription(daRef);
-        if (description ){
+        if (description) {
             DASessionScheduleWithRunLoop(daContext.session, daContext.runloop, kCFRunLoopDefaultMode);
             CFRunLoopAddSource(daContext.runloop, daContext.cancel_signal, kCFRunLoopDefaultMode);
             if (CFDictionaryGetValueIfPresent(description, kDADiskDescriptionVolumePathKey, nullptr)) {
@@ -144,7 +138,7 @@ public:
             }
             if (daContext.completed) {
                 qWarning() << Q_FUNC_INFO << "ejected" << devName;
-            } else{
+            } else {
                 qWarning() << Q_FUNC_INFO << "timeout ejecting" << devName;
             }
             CFRunLoopRemoveSource(daContext.runloop, daContext.cancel_signal, kCFRunLoopDefaultMode);
@@ -156,7 +150,7 @@ public:
         }
         return daContext.success == -1 ? false : daContext.success;
     }
-#endif //EJECT_USING_DISKARBITRATION
+#endif // EJECT_USING_DISKARBITRATION
 };
 // clang-format off
 const QMap<Solid::OpticalDrive::MediumType, uint32_t> IOKitOpticalDrive::Private::cdTypeMap = {
@@ -189,8 +183,7 @@ IOKitOpticalDrive::IOKitOpticalDrive(IOKitDevice *device)
     IOKitDevice ioDVDServices(IOKitDevice(device->parentUdi()).parentUdi());
     QVariantMap devCharMap;
     if (!ioDVDServices.iOKitPropertyExists(QStringLiteral("Device Characteristics"))) {
-        qWarning() << Q_FUNC_INFO << "Grandparent of" << m_device->udi()
-            << "doesn't have the \"Device Characteristics\" but is" << ioDVDServices.udi();
+        qWarning() << Q_FUNC_INFO << "Grandparent of" << m_device->udi() << "doesn't have the \"Device Characteristics\" but is" << ioDVDServices.udi();
     } else {
         const QVariant devCharVar = ioDVDServices.property(QStringLiteral("Device Characteristics"));
         devCharMap = devCharVar.toMap();
@@ -218,7 +211,11 @@ IOKitOpticalDrive::~IOKitOpticalDrive()
 //     ("Preferred Block Size", QVariant(qlonglong, 2352))
 //     ("Removable", QVariant(bool, true))
 //     ("Size", QVariant(qlonglong, 750932448))
-//     ("TOC", QVariant(QByteArray, "\x00\xA7\x01\x01\x01\x10\x00\xA0\x00\x00\x00\x00\x01\x00\x00\x01\x12\x00\xA1\x00\x00\x00\x00\f\x00\x00\x01\x12\x00\xA2\x00\x00\x00\x00""F:J\x01\x12\x00\x01\x00\x00\x00\x00\x00\x02\x00\x01\x12\x00\x02\x00\x00\x00\x00\x07/\b\x01\x12\x00\x03\x00\x00\x00\x00\x12\b\x0E\x01\x12\x00\x04\x00\x00\x00\x00\x17\x12""0\x01\x12\x00\x05\x00\x00\x00\x00\x1B+ \x01\x12\x00\x06\x00\x00\x00\x00 \x11\n\x01\x12\x00\x07\x00\x00\x00\x00!-\n\x01\x12\x00\b\x00\x00\x00\x00'\f\x1F\x01\x12\x00\t\x00\x00\x00\x00-\x13;\x01\x12\x00\n\x00\x00\x00\x00""4%\x1E\x01\x12\x00\x0B\x00\x00\x00\x00""62 \x01\x12\x00\f\x00\x00\x00\x00""C\x06""E"))
+//     ("TOC", QVariant(QByteArray,
+//     "\x00\xA7\x01\x01\x01\x10\x00\xA0\x00\x00\x00\x00\x01\x00\x00\x01\x12\x00\xA1\x00\x00\x00\x00\f\x00\x00\x01\x12\x00\xA2\x00\x00\x00\x00""F:J\x01\x12\x00\x01\x00\x00\x00\x00\x00\x02\x00\x01\x12\x00\x02\x00\x00\x00\x00\x07/\b\x01\x12\x00\x03\x00\x00\x00\x00\x12\b\x0E\x01\x12\x00\x04\x00\x00\x00\x00\x17\x12""0\x01\x12\x00\x05\x00\x00\x00\x00\x1B+
+//     \x01\x12\x00\x06\x00\x00\x00\x00
+//     \x11\n\x01\x12\x00\x07\x00\x00\x00\x00!-\n\x01\x12\x00\b\x00\x00\x00\x00'\f\x1F\x01\x12\x00\t\x00\x00\x00\x00-\x13;\x01\x12\x00\n\x00\x00\x00\x00""4%\x1E\x01\x12\x00\x0B\x00\x00\x00\x00""62
+//     \x01\x12\x00\f\x00\x00\x00\x00""C\x06""E"))
 //     ("Type", QVariant(QString, "CD-ROM"))
 //     ("Whole", QVariant(bool, true))
 //     ("Writable", QVariant(bool, false))
@@ -234,7 +231,8 @@ IOKitOpticalDrive::~IOKitOpticalDrive()
 //         ("Product Name", QVariant(QString, "DVD-R   UJ-8A8"))
 //         ("Product Revision Level", QVariant(QString, "HA13"))
 //         ("Vendor Name", QVariant(QString, "MATSHITA")))))
-//     ("IOCFPlugInTypes", QVariant(QVariantMap, QMap(("97ABCF2C-23CC-11D5-A0E8-003065704866", QVariant(QString, "IOSCSIArchitectureModelFamily.kext/Contents/PlugIns/SCSITaskUserClient.kext/Contents/PlugIns/SCSITaskLib.plugin")))))
+//     ("IOCFPlugInTypes", QVariant(QVariantMap, QMap(("97ABCF2C-23CC-11D5-A0E8-003065704866", QVariant(QString,
+//     "IOSCSIArchitectureModelFamily.kext/Contents/PlugIns/SCSITaskUserClient.kext/Contents/PlugIns/SCSITaskLib.plugin")))))
 //     ("IOGeneralInterest", QVariant(QString, "IOCommand is not serializable"))
 //     ("IOMatchCategory", QVariant(QString, "SCSITaskUserClientIniter"))
 //     ("IOMinimumSegmentAlignmentByteCount", QVariant(qlonglong, 4))
@@ -327,13 +325,13 @@ bool IOKitOpticalDrive::eject()
     int error = !d->eject(30.0);
 #else
     QProcess ejectJob;
-    int error = ejectJob.execute(QStandardPaths::findExecutable(QStringLiteral("hdiutil")),
-        {QStringLiteral("detach"), QStringLiteral("-verbose"),
-            QStringLiteral("/dev/") + m_device->property(QStringLiteral("BSD Name")).toString()});
+    int error = ejectJob.execute(
+        QStandardPaths::findExecutable(QStringLiteral("hdiutil")),
+        {QStringLiteral("detach"), QStringLiteral("-verbose"), QStringLiteral("/dev/") + m_device->property(QStringLiteral("BSD Name")).toString()});
     if (error) {
         qWarning() << "hdiutil returned" << error << "trying to eject" << m_device->product();
     }
-#endif //EJECT_USING_DISKARBITRATION
+#endif // EJECT_USING_DISKARBITRATION
     if (error) {
         Q_EMIT ejectDone(Solid::ErrorType::OperationFailed, QVariant(), m_device->udi());
         return false;
@@ -342,4 +340,3 @@ bool IOKitOpticalDrive::eject()
         return true;
     }
 }
-

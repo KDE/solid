@@ -8,5 +8,4 @@
 
 Solid::Ifaces::PortableMediaPlayer::~PortableMediaPlayer()
 {
-
 }

@@ -7,15 +7,14 @@
 
 #include "solid-hardware.h"
 
-
 #if defined QT_DBUS_LIB
 #include <QDBusArgument>
 #include <QDBusObjectPath>
 #endif
+#include <QMetaEnum>
+#include <QMetaProperty>
 #include <QString>
 #include <QStringList>
-#include <QMetaProperty>
-#include <QMetaEnum>
 #include <QTextStream>
 
 #include <QCommandLineParser>
@@ -91,10 +90,8 @@ std::ostream &operator<<(std::ostream &out, const QDBusArgument &arg)
 
 std::ostream &operator<<(std::ostream &out, const QVariant &value)
 {
-    switch (value.type())
-    {
-    case QVariant::StringList:
-    {
+    switch (value.type()) {
+    case QVariant::StringList: {
         out << "{";
 
         const QStringList list = value.toStringList();
@@ -102,12 +99,10 @@ std::ostream &operator<<(std::ostream &out, const QVariant &value)
         QStringList::ConstIterator it = list.constBegin();
         QStringList::ConstIterator end = list.constEnd();
 
-        for (; it!=end; ++it)
-        {
+        for (; it != end; ++it) {
             out << "'" << *it << "'";
 
-            if (it+1!=end)
-            {
+            if (it + 1 != end) {
                 out << ", ";
             }
         }
@@ -119,17 +114,15 @@ std::ostream &operator<<(std::ostream &out, const QVariant &value)
         out << "'" << value.toString() << "' (string)";
         break;
     case QVariant::Bool:
-        out << (value.toBool()?"true":"false") << " (bool)";
+        out << (value.toBool() ? "true" : "false") << " (bool)";
         break;
     case QVariant::Int:
     case QVariant::LongLong:
-        out << value.toString()
-            << "  (0x" << QString::number(value.toLongLong(), 16) << ")  (" << QVariant::typeToName(value.type()) << ")";
+        out << value.toString() << "  (0x" << QString::number(value.toLongLong(), 16) << ")  (" << QVariant::typeToName(value.type()) << ")";
         break;
     case QVariant::UInt:
     case QVariant::ULongLong:
-        out << value.toString()
-            << "  (0x" << QString::number(value.toULongLong(), 16) << ")  (" << QVariant::typeToName(value.type()) << ")";
+        out << value.toString() << "  (0x" << QString::number(value.toULongLong(), 16) << ")  (" << QVariant::typeToName(value.type()) << ")";
         break;
     case QVariant::Double:
         out << value.toString() << " (double)";
@@ -138,9 +131,8 @@ std::ostream &operator<<(std::ostream &out, const QVariant &value)
         out << "'" << value.toString() << "' (bytes)";
         break;
     case QVariant::UserType:
-        //qDebug() << "got variant type:" << value.typeName();
-        if (value.canConvert<QList<int> >())
-        {
+        // qDebug() << "got variant type:" << value.typeName();
+        if (value.canConvert<QList<int>>()) {
             const QList<int> intlist = value.value<QList<int>>();
             QStringList tmp;
             for (const int val : intlist) {
@@ -179,20 +171,16 @@ std::ostream &operator<<(std::ostream &out, const Solid::Device &device)
     int index = Solid::DeviceInterface::staticMetaObject.indexOfEnumerator("Type");
     QMetaEnum typeEnum = Solid::DeviceInterface::staticMetaObject.enumerator(index);
 
-    for (int i=0; i<typeEnum.keyCount(); i++)
-    {
+    for (int i = 0; i < typeEnum.keyCount(); i++) {
         Solid::DeviceInterface::Type type = (Solid::DeviceInterface::Type)typeEnum.value(i);
         const Solid::DeviceInterface *interface = device.asDeviceInterface(type);
 
-        if (interface)
-        {
+        if (interface) {
             const QMetaObject *meta = interface->metaObject();
 
-            for (int i=meta->propertyOffset(); i<meta->propertyCount(); i++)
-            {
+            for (int i = meta->propertyOffset(); i < meta->propertyCount(); i++) {
                 QMetaProperty property = meta->property(i);
-                out << "  " << QString(meta->className()).mid(7) << "." << property.name()
-                    << " = ";
+                out << "  " << QString(meta->className()).mid(7) << "." << property.name() << " = ";
 
                 QVariant value = property.read(interface);
 
@@ -216,7 +204,7 @@ std::ostream &operator<<(std::ostream &out, const Solid::Device &device)
     return out;
 }
 
-std::ostream &operator<<(std::ostream &out, const QMap<QString,QVariant> &properties)
+std::ostream &operator<<(std::ostream &out, const QMap<QString, QVariant> &properties)
 {
     for (auto it = properties.cbegin(); it != properties.cend(); ++it) {
         out << "  " << it.key() << " = " << it.value() << endl;
@@ -243,47 +231,47 @@ static QString commandsHelp()
 
     cout << "  solid-hardware list [details|nonportableinfo]" << '\n';
     cout << QCoreApplication::translate("solid-hardware",
-            "             # List the hardware available in the system.\n"
-            "             # - If the 'nonportableinfo' option is specified, the device\n"
-            "             # properties are listed (be careful, in this case property names\n"
-            "             # are backend dependent),\n"
-            "             # - If the 'details' option is specified, the device interfaces\n"
-            "             # and the corresponding properties are listed in a platform\n"
-            "             # neutral fashion,\n"
-            "             # - Otherwise only device UDIs are listed.\n") << '\n';
+                                        "             # List the hardware available in the system.\n"
+                                        "             # - If the 'nonportableinfo' option is specified, the device\n"
+                                        "             # properties are listed (be careful, in this case property names\n"
+                                        "             # are backend dependent),\n"
+                                        "             # - If the 'details' option is specified, the device interfaces\n"
+                                        "             # and the corresponding properties are listed in a platform\n"
+                                        "             # neutral fashion,\n"
+                                        "             # - Otherwise only device UDIs are listed.\n")
+         << '\n';
 
     cout << "  solid-hardware details 'udi'" << '\n';
     cout << QCoreApplication::translate("solid-hardware",
-            "             # Display all the interfaces and properties of the device\n"
-            "             # corresponding to 'udi' in a platform neutral fashion.\n") << '\n';
+                                        "             # Display all the interfaces and properties of the device\n"
+                                        "             # corresponding to 'udi' in a platform neutral fashion.\n")
+         << '\n';
 
     cout << "  solid-hardware nonportableinfo 'udi'" << '\n';
     cout << QCoreApplication::translate("solid-hardware",
-            "             # Display all the properties of the device corresponding to 'udi'\n"
-            "             # (be careful, in this case property names are backend dependent).\n") << '\n';
+                                        "             # Display all the properties of the device corresponding to 'udi'\n"
+                                        "             # (be careful, in this case property names are backend dependent).\n")
+         << '\n';
 
     cout << "  solid-hardware query 'predicate' ['parentUdi']" << '\n';
     cout << QCoreApplication::translate("solid-hardware",
-            "             # List the UDI of devices corresponding to 'predicate'.\n"
-            "             # - If 'parentUdi' is specified, the search is restricted to the\n"
-            "             # branch of the corresponding device,\n"
-            "             # - Otherwise the search is done on all the devices.\n") << '\n';
+                                        "             # List the UDI of devices corresponding to 'predicate'.\n"
+                                        "             # - If 'parentUdi' is specified, the search is restricted to the\n"
+                                        "             # branch of the corresponding device,\n"
+                                        "             # - Otherwise the search is done on all the devices.\n")
+         << '\n';
 
     cout << "  solid-hardware mount 'udi'" << '\n';
-    cout << QCoreApplication::translate("solid-hardware",
-            "             # If applicable, mount the device corresponding to 'udi'.\n") << '\n';
+    cout << QCoreApplication::translate("solid-hardware", "             # If applicable, mount the device corresponding to 'udi'.\n") << '\n';
 
     cout << "  solid-hardware unmount 'udi'" << '\n';
-    cout << QCoreApplication::translate("solid-hardware",
-            "             # If applicable, unmount the device corresponding to 'udi'.\n") << '\n';
+    cout << QCoreApplication::translate("solid-hardware", "             # If applicable, unmount the device corresponding to 'udi'.\n") << '\n';
 
     cout << "  solid-hardware eject 'udi'" << '\n';
-    cout << QCoreApplication::translate("solid-hardware",
-            "             # If applicable, eject the device corresponding to 'udi'.\n") << '\n';
+    cout << QCoreApplication::translate("solid-hardware", "             # If applicable, eject the device corresponding to 'udi'.\n") << '\n';
 
     cout << "  solid-hardware listen" << '\n';
-    cout << QCoreApplication::translate("solid-hardware",
-            "             # Listen to all add/remove events on supported hardware.") << '\n';
+    cout << QCoreApplication::translate("solid-hardware", "             # Listen to all add/remove events on supported hardware.") << '\n';
 
     return data;
 }
@@ -307,8 +295,7 @@ int main(int argc, char **argv)
     parser.addOption(commands);
 
     parser.process(app);
-    if (parser.isSet(commands))
-    {
+    if (parser.isSet(commands)) {
         cout << commandsHelp() << endl;
         return 0;
     }
@@ -322,8 +309,7 @@ int main(int argc, char **argv)
 
     QString command(args.at(0));
 
-    if (command == "list")
-    {
+    if (command == "list") {
         parser.addPositionalArgument("details", QCoreApplication::translate("solid-hardware", "Show device details"));
         parser.addPositionalArgument("nonportableinfo", QCoreApplication::translate("solid-hardware", "Show non portable information"));
         parser.process(app);
@@ -347,8 +333,7 @@ int main(int argc, char **argv)
         QString query = args.at(1);
         QString parent;
 
-        if (args.count() == 3)
-        {
+        if (args.count() == 3) {
             parent = args.at(2);
         }
 
@@ -375,17 +360,13 @@ bool SolidHardware::hwList(bool interfaces, bool system)
 {
     const QList<Solid::Device> all = Solid::Device::allDevices();
 
-    for (const Solid::Device &device : all)
-    {
+    for (const Solid::Device &device : all) {
         cout << "udi = '" << device.udi() << "'" << endl;
 
-        if (interfaces)
-        {
+        if (interfaces) {
             cout << device << endl;
-        }
-        else if (system && device.is<Solid::GenericInterface>())
-        {
-            QMap<QString,QVariant> properties = device.as<Solid::GenericInterface>()->allProperties();
+        } else if (system && device.is<Solid::GenericInterface>()) {
+            QMap<QString, QVariant> properties = device.as<Solid::GenericInterface>()->allProperties();
             cout << properties << endl;
         }
     }
@@ -409,7 +390,7 @@ bool SolidHardware::hwProperties(const QString &udi)
 
     cout << "udi = '" << device.udi() << "'" << endl;
     if (device.is<Solid::GenericInterface>()) {
-        QMap<QString,QVariant> properties = device.as<Solid::GenericInterface>()->allProperties();
+        QMap<QString, QVariant> properties = device.as<Solid::GenericInterface>()->allProperties();
         cout << properties << endl;
     }
 
@@ -418,8 +399,7 @@ bool SolidHardware::hwProperties(const QString &udi)
 
 bool SolidHardware::hwQuery(const QString &parentUdi, const QString &query)
 {
-    const QList<Solid::Device> devices
-        = Solid::Device::listFromQuery(query, parentUdi);
+    const QList<Solid::Device> devices = Solid::Device::listFromQuery(query, parentUdi);
 
     for (const Solid::Device &device : devices) {
         cout << "udi = '" << device.udi() << "'" << endl;
@@ -432,46 +412,41 @@ bool SolidHardware::hwVolumeCall(SolidHardware::VolumeCallType type, const QStri
 {
     Solid::Device device(udi);
 
-    if (!device.is<Solid::StorageAccess>() && type!=Eject)
-    {
+    if (!device.is<Solid::StorageAccess>() && type != Eject) {
         cerr << tr("Error: %1 does not have the interface StorageAccess.").arg(udi) << endl;
         return false;
-    }
-    else if (!device.is<Solid::OpticalDrive>() && type==Eject)
-    {
+    } else if (!device.is<Solid::OpticalDrive>() && type == Eject) {
         cerr << tr("Error: %1 does not have the interface OpticalDrive.").arg(udi) << endl;
         return false;
     }
 
-    switch(type)
-    {
+    switch (type) {
     case Mount:
         connect(device.as<Solid::StorageAccess>(),
-                SIGNAL(setupDone(Solid::ErrorType,QVariant,QString)),
+                SIGNAL(setupDone(Solid::ErrorType, QVariant, QString)),
                 this,
-                SLOT(slotStorageResult(Solid::ErrorType,QVariant)));
+                SLOT(slotStorageResult(Solid::ErrorType, QVariant)));
         device.as<Solid::StorageAccess>()->setup();
         break;
     case Unmount:
         connect(device.as<Solid::StorageAccess>(),
-                SIGNAL(teardownDone(Solid::ErrorType,QVariant,QString)),
+                SIGNAL(teardownDone(Solid::ErrorType, QVariant, QString)),
                 this,
-                SLOT(slotStorageResult(Solid::ErrorType,QVariant)));
+                SLOT(slotStorageResult(Solid::ErrorType, QVariant)));
         device.as<Solid::StorageAccess>()->teardown();
         break;
     case Eject:
         connect(device.as<Solid::OpticalDrive>(),
-                SIGNAL(ejectDone(Solid::ErrorType,QVariant,QString)),
+                SIGNAL(ejectDone(Solid::ErrorType, QVariant, QString)),
                 this,
-                SLOT(slotStorageResult(Solid::ErrorType,QVariant)));
+                SLOT(slotStorageResult(Solid::ErrorType, QVariant)));
         device.as<Solid::OpticalDrive>()->eject();
         break;
     }
 
     m_loop.exec();
 
-    if (m_error)
-    {
+    if (m_error) {
         cerr << tr("Error: %1").arg(m_errorString) << endl;
         return false;
     }
@@ -514,4 +489,3 @@ void SolidHardware::slotStorageResult(Solid::ErrorType error, const QVariant &er
     }
     m_loop.exit();
 }
-

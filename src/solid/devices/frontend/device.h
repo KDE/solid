@@ -7,7 +7,6 @@
 #ifndef SOLID_DEVICE_H
 #define SOLID_DEVICE_H
 
-
 #include <QList>
 #include <QSharedData>
 
@@ -50,8 +49,7 @@ public:
      * @return the list of devices corresponding to the given constraints
      * @see Solid::Predicate
      */
-    static QList<Device> listFromType(const DeviceInterface::Type &type,
-                                      const QString &parentUdi = QString());
+    static QList<Device> listFromType(const DeviceInterface::Type &type, const QString &parentUdi = QString());
 
     /**
      * Retrieves a list of devices of the system given matching the given
@@ -63,8 +61,7 @@ public:
      * @return the list of devices corresponding to the given constraints
      * @see Solid::Predicate
      */
-    static QList<Device> listFromQuery(const Predicate &predicate,
-                                       const QString &parentUdi = QString());
+    static QList<Device> listFromQuery(const Predicate &predicate, const QString &parentUdi = QString());
 
     /**
      * Convenience function see above.
@@ -73,12 +70,11 @@ public:
      * @param parentUdi
      * @return the list of devices
      */
-    static QList<Device> listFromQuery(const QString &predicate,
-                                       const QString &parentUdi = QString());
-    
+    static QList<Device> listFromQuery(const QString &predicate, const QString &parentUdi = QString());
+
     /**
      * Returns storage volume for given canonical path to file stored on that device
-     * 
+     *
      * @param canonical path to an existing file
      * @return StorageVolume Device containing file to which path was given or an empty Device, if no device could be found
      * @since 5.73
@@ -230,7 +226,8 @@ public:
      *
      * @returns a pointer to the device interface if it exists, 0 otherwise
      */
-    template <class DevIface> DevIface *as()
+    template<class DevIface>
+    DevIface *as()
     {
         DeviceInterface::Type type = DevIface::deviceInterfaceType();
         DeviceInterface *iface = asDeviceInterface(type);
@@ -243,7 +240,8 @@ public:
      *
      * @returns a pointer to the device interface if it exists, 0 otherwise
      */
-    template <class DevIface> const DevIface *as() const
+    template<class DevIface>
+    const DevIface *as() const
     {
         DeviceInterface::Type type = DevIface::deviceInterfaceType();
         const DeviceInterface *iface = asDeviceInterface(type);
@@ -255,7 +253,8 @@ public:
      *
      * @returns true if the interface is available, false otherwise
      */
-    template <class DevIface> bool is() const
+    template<class DevIface>
+    bool is() const
     {
         return isDeviceInterface(DevIface::deviceInterfaceType());
     }
