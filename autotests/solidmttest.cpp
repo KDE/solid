@@ -74,14 +74,16 @@ void SolidMtTest::testWorkerThread()
 void SolidMtTest::testThreadedPredicate()
 {
     QThreadPool::globalInstance()->setMaxThreadCount(10);
-    const QList<QFuture<void>> futures = {QtConcurrent::run(&doPredicates),
-                                          QtConcurrent::run(&doPredicates),
-                                          QtConcurrent::run(&doPredicates),
-                                          QtConcurrent::run(&doPredicates),
-                                          QtConcurrent::run(&doPredicates),
-                                          QtConcurrent::run(&doPredicates),
-                                          QtConcurrent::run(&doPredicates),
-                                          QtConcurrent::run(&doPredicates)};
+    const QList<QFuture<void>> futures = {
+        QtConcurrent::run(&doPredicates),
+        QtConcurrent::run(&doPredicates),
+        QtConcurrent::run(&doPredicates),
+        QtConcurrent::run(&doPredicates),
+        QtConcurrent::run(&doPredicates),
+        QtConcurrent::run(&doPredicates),
+        QtConcurrent::run(&doPredicates),
+        QtConcurrent::run(&doPredicates),
+    };
     for (QFuture<void> f : futures) {
         f.waitForFinished();
     }

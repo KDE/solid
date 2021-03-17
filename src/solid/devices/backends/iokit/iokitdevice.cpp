@@ -52,7 +52,8 @@ static DeviceInterfaceTypes typesFromEntry(const io_registry_entry_t &entry, con
         mainType = Solid::DeviceInterface::Battery;
         types << mainType;
     }
-    const QString bsdName = QStringLiteral("BSD Name"), leaf = QStringLiteral("Leaf");
+    const QString bsdName = QStringLiteral("BSD Name");
+    const QString leaf = QStringLiteral("Leaf");
     if (IOObjectConformsTo(entry, "IOCDMedia") //
         || IOObjectConformsTo(entry, "IODVDMedia") //
         || IOObjectConformsTo(entry, "IOBDMedia")) {
@@ -437,7 +438,8 @@ bool IOKitDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type)
         return true;
         break;
     case Solid::DeviceInterface::StorageAccess:
-        if (d->type.contains(Solid::DeviceInterface::StorageDrive) || d->type.contains(Solid::DeviceInterface::StorageVolume)) {
+        if (d->type.contains(Solid::DeviceInterface::StorageDrive) //
+            || d->type.contains(Solid::DeviceInterface::StorageVolume)) {
             return true;
         }
         break;
@@ -498,7 +500,8 @@ QObject *IOKitDevice::createDeviceInterface(const Solid::DeviceInterface::Type &
         }
         break;
     case Solid::DeviceInterface::StorageAccess:
-        if (d->type.contains(Solid::DeviceInterface::StorageDrive) || d->type.contains(Solid::DeviceInterface::StorageVolume)) {
+        if (d->type.contains(Solid::DeviceInterface::StorageDrive) //
+            || d->type.contains(Solid::DeviceInterface::StorageVolume)) {
             iface = new IOKitStorageAccess(this);
         }
         break;

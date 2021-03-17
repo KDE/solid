@@ -152,10 +152,11 @@ public:
     }
 #endif // EJECT_USING_DISKARBITRATION
 };
-// clang-format off
+
 const QMap<Solid::OpticalDrive::MediumType, uint32_t> IOKitOpticalDrive::Private::cdTypeMap = {
     {Solid::OpticalDrive::Cdr, kCDFeaturesWriteOnceMask},
-    {Solid::OpticalDrive::Cdrw, kCDFeaturesReWriteableMask}};
+    {Solid::OpticalDrive::Cdrw, kCDFeaturesReWriteableMask},
+};
 const QMap<Solid::OpticalDrive::MediumType, uint32_t> IOKitOpticalDrive::Private::dvdTypeMap = {
     {Solid::OpticalDrive::Dvd, kDVDFeaturesReadStructuresMask},
     {Solid::OpticalDrive::Dvdr, kDVDFeaturesWriteOnceMask},
@@ -163,16 +164,17 @@ const QMap<Solid::OpticalDrive::MediumType, uint32_t> IOKitOpticalDrive::Private
     {Solid::OpticalDrive::Dvdram, kDVDFeaturesRandomWriteableMask},
     {Solid::OpticalDrive::Dvdplusr, kDVDFeaturesPlusRMask},
     {Solid::OpticalDrive::Dvdplusrw, kDVDFeaturesPlusRWMask},
-// not supported:
-//         {Solid::OpticalDrive::Dvdplusdl, "dvdplusrdl"}
-//         {Solid::OpticalDrive::Dvdplusdlrw, "dvdplusrwdl"}
+    // not supported:
+    //         {Solid::OpticalDrive::Dvdplusdl, "dvdplusrdl"}
+    //         {Solid::OpticalDrive::Dvdplusdlrw, "dvdplusrwdl"}
     {Solid::OpticalDrive::HdDvd, kDVDFeaturesHDReadMask},
     {Solid::OpticalDrive::HdDvdr, kDVDFeaturesHDRMask},
-    {Solid::OpticalDrive::HdDvdrw, kDVDFeaturesHDRWMask}};
+    {Solid::OpticalDrive::HdDvdrw, kDVDFeaturesHDRWMask},
+};
 const QMap<Solid::OpticalDrive::MediumType, uint32_t> IOKitOpticalDrive::Private::bdTypeMap = {
     {Solid::OpticalDrive::Bd, kBDFeaturesReadMask},
-    {Solid::OpticalDrive::Bdr, kBDFeaturesWriteMask}}; // also Solid::OpticalDrive::Bdre
-// clang-format on
+    {Solid::OpticalDrive::Bdr, kBDFeaturesWriteMask},
+}; // also Solid::OpticalDrive::Bdre
 
 IOKitOpticalDrive::IOKitOpticalDrive(IOKitDevice *device)
     : IOKitStorage(device)
@@ -195,6 +197,7 @@ IOKitOpticalDrive::~IOKitOpticalDrive()
 {
 }
 
+/* clang-format off */
 // // Example properties: QMap(("BSD Major", QVariant(int, 1))
 //     ("BSD Minor", QVariant(int, 12))
 //     ("BSD Name", QVariant(QString, "disk3"))
@@ -211,11 +214,7 @@ IOKitOpticalDrive::~IOKitOpticalDrive()
 //     ("Preferred Block Size", QVariant(qlonglong, 2352))
 //     ("Removable", QVariant(bool, true))
 //     ("Size", QVariant(qlonglong, 750932448))
-//     ("TOC", QVariant(QByteArray,
-//     "\x00\xA7\x01\x01\x01\x10\x00\xA0\x00\x00\x00\x00\x01\x00\x00\x01\x12\x00\xA1\x00\x00\x00\x00\f\x00\x00\x01\x12\x00\xA2\x00\x00\x00\x00""F:J\x01\x12\x00\x01\x00\x00\x00\x00\x00\x02\x00\x01\x12\x00\x02\x00\x00\x00\x00\x07/\b\x01\x12\x00\x03\x00\x00\x00\x00\x12\b\x0E\x01\x12\x00\x04\x00\x00\x00\x00\x17\x12""0\x01\x12\x00\x05\x00\x00\x00\x00\x1B+
-//     \x01\x12\x00\x06\x00\x00\x00\x00
-//     \x11\n\x01\x12\x00\x07\x00\x00\x00\x00!-\n\x01\x12\x00\b\x00\x00\x00\x00'\f\x1F\x01\x12\x00\t\x00\x00\x00\x00-\x13;\x01\x12\x00\n\x00\x00\x00\x00""4%\x1E\x01\x12\x00\x0B\x00\x00\x00\x00""62
-//     \x01\x12\x00\f\x00\x00\x00\x00""C\x06""E"))
+//     ("TOC", QVariant(QByteArray, "\x00\xA7\x01\x01\x01\x10\x00\xA0\x00\x00\x00\x00\x01\x00\x00\x01\x12\x00\xA1\x00\x00\x00\x00\f\x00\x00\x01\x12\x00\xA2\x00\x00\x00\x00""F:J\x01\x12\x00\x01\x00\x00\x00\x00\x00\x02\x00\x01\x12\x00\x02\x00\x00\x00\x00\x07/\b\x01\x12\x00\x03\x00\x00\x00\x00\x12\b\x0E\x01\x12\x00\x04\x00\x00\x00\x00\x17\x12""0\x01\x12\x00\x05\x00\x00\x00\x00\x1B+ \x01\x12\x00\x06\x00\x00\x00\x00 \x11\n\x01\x12\x00\x07\x00\x00\x00\x00!-\n\x01\x12\x00\b\x00\x00\x00\x00'\f\x1F\x01\x12\x00\t\x00\x00\x00\x00-\x13;\x01\x12\x00\n\x00\x00\x00\x00""4%\x1E\x01\x12\x00\x0B\x00\x00\x00\x00""62 \x01\x12\x00\f\x00\x00\x00\x00""C\x06""E"))
 //     ("Type", QVariant(QString, "CD-ROM"))
 //     ("Whole", QVariant(bool, true))
 //     ("Writable", QVariant(bool, false))
@@ -231,8 +230,7 @@ IOKitOpticalDrive::~IOKitOpticalDrive()
 //         ("Product Name", QVariant(QString, "DVD-R   UJ-8A8"))
 //         ("Product Revision Level", QVariant(QString, "HA13"))
 //         ("Vendor Name", QVariant(QString, "MATSHITA")))))
-//     ("IOCFPlugInTypes", QVariant(QVariantMap, QMap(("97ABCF2C-23CC-11D5-A0E8-003065704866", QVariant(QString,
-//     "IOSCSIArchitectureModelFamily.kext/Contents/PlugIns/SCSITaskUserClient.kext/Contents/PlugIns/SCSITaskLib.plugin")))))
+//     ("IOCFPlugInTypes", QVariant(QVariantMap, QMap(("97ABCF2C-23CC-11D5-A0E8-003065704866", QVariant(QString,     "IOSCSIArchitectureModelFamily.kext/Contents/PlugIns/SCSITaskUserClient.kext/Contents/PlugIns/SCSITaskLib.plugin")))))
 //     ("IOGeneralInterest", QVariant(QString, "IOCommand is not serializable"))
 //     ("IOMatchCategory", QVariant(QString, "SCSITaskUserClientIniter"))
 //     ("IOMinimumSegmentAlignmentByteCount", QVariant(qlonglong, 4))
@@ -269,6 +267,7 @@ IOKitOpticalDrive::~IOKitOpticalDrive()
 //         ("Total Time (Read)", QVariant(qlonglong, 219944025102))
 //         ("Total Time (Write)", QVariant(qlonglong, 0)))))
 //     ("className", QVariant(QString, "IODVDBlockStorageDriver")))
+/* clang-format on */
 
 Solid::OpticalDrive::MediumTypes IOKitOpticalDrive::supportedMedia() const
 {
@@ -326,7 +325,7 @@ bool IOKitOpticalDrive::eject()
 #else
     QProcess ejectJob;
     int error = ejectJob.execute(
-        QStandardPaths::findExecutable(QStringLiteral("hdiutil")),
+        QStandardPaths::findExecutable(QStringLiteral("hdiutil")), //
         {QStringLiteral("detach"), QStringLiteral("-verbose"), QStringLiteral("/dev/") + m_device->property(QStringLiteral("BSD Name")).toString()});
     if (error) {
         qWarning() << "hdiutil returned" << error << "trying to eject" << m_device->product();

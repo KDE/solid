@@ -23,9 +23,15 @@ Manager::Manager(QObject *parent)
     : Solid::Ifaces::DeviceManager(parent)
     , m_manager(UD2_DBUS_SERVICE, UD2_DBUS_PATH, QDBusConnection::systemBus())
 {
-    m_supportedInterfaces << Solid::DeviceInterface::GenericInterface << Solid::DeviceInterface::Block << Solid::DeviceInterface::StorageAccess
-                          << Solid::DeviceInterface::StorageDrive << Solid::DeviceInterface::OpticalDrive << Solid::DeviceInterface::OpticalDisc
-                          << Solid::DeviceInterface::StorageVolume;
+    m_supportedInterfaces = {
+        Solid::DeviceInterface::GenericInterface,
+        Solid::DeviceInterface::Block,
+        Solid::DeviceInterface::StorageAccess,
+        Solid::DeviceInterface::StorageDrive,
+        Solid::DeviceInterface::OpticalDrive,
+        Solid::DeviceInterface::OpticalDisc,
+        Solid::DeviceInterface::StorageVolume,
+    };
 
     qDBusRegisterMetaType<QList<QDBusObjectPath>>();
     qDBusRegisterMetaType<QVariantMap>();
@@ -35,7 +41,10 @@ Manager::Manager(QObject *parent)
     bool serviceFound = m_manager.isValid();
     if (!serviceFound) {
         // find out whether it will be activated automatically
-        QDBusMessage message = QDBusMessage::createMethodCall("org.freedesktop.DBus", "/org/freedesktop/DBus", "org.freedesktop.DBus", "ListActivatableNames");
+        QDBusMessage message = QDBusMessage::createMethodCall("org.freedesktop.DBus", //
+                                                              "/org/freedesktop/DBus",
+                                                              "org.freedesktop.DBus",
+                                                              "ListActivatableNames");
 
         QDBusReply<QStringList> reply = QDBusConnection::systemBus().call(message);
         if (reply.isValid() && reply.value().contains(UD2_DBUS_SERVICE)) {
@@ -130,8 +139,12 @@ void Manager::introspect(const QString &path, bool checkOptical)
                 if (checkOptical) {
                     Device device(udi);
                     if (device.mightBeOpticalDisc()) {
-                        QDBusConnection::systemBus()
-                            .connect(UD2_DBUS_SERVICE, udi, DBUS_INTERFACE_PROPS, "PropertiesChanged", this, SLOT(slotMediaChanged(QDBusMessage)));
+                        QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE, //
+                                                             udi,
+                                                             DBUS_INTERFACE_PROPS,
+                                                             "PropertiesChanged",
+                                                             this,
+                                                             SLOT(slotMediaChanged(QDBusMessage)));
                         if (!device.isOpticalDisc()) { // skip empty CD disc
                             continue;
                         }
@@ -174,7 +187,12 @@ void Manager::slotInterfacesAdded(const QDBusObjectPath &object_path, const Vari
     if (interfaces_and_properties.contains("org.freedesktop.UDisks2.Block")) {
         Device device(udi);
         if (device.mightBeOpticalDisc()) {
-            QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE, udi, DBUS_INTERFACE_PROPS, "PropertiesChanged", this, SLOT(slotMediaChanged(QDBusMessage)));
+            QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE, //
+                                                 udi,
+                                                 DBUS_INTERFACE_PROPS,
+                                                 "PropertiesChanged",
+                                                 this,
+                                                 SLOT(slotMediaChanged(QDBusMessage)));
         }
     }
 

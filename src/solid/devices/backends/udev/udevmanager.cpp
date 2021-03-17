@@ -104,17 +104,23 @@ bool UDevManager::Private::checkOfInterest(const UdevQt::Device &device)
     }
 
     if (subsystem == QLatin1String("input")) {
-        if (device.deviceProperty("ID_INPUT_MOUSE").toInt() == 1 || device.deviceProperty("ID_INPUT_TOUCHPAD").toInt() == 1
-            || device.deviceProperty("ID_INPUT_TABLET").toInt() == 1 || device.deviceProperty("ID_INPUT_TOUCHSCREEN").toInt() == 1) {
+        /* clang-format off */
+        if (device.deviceProperty("ID_INPUT_MOUSE").toInt() == 1
+            || device.deviceProperty("ID_INPUT_TOUCHPAD").toInt() == 1
+            || device.deviceProperty("ID_INPUT_TABLET").toInt() == 1
+            || device.deviceProperty("ID_INPUT_TOUCHSCREEN").toInt() == 1) { /* clang-format on */
             return true;
         }
     }
 
-    return subsystem == QLatin1String("dvb") || //
-        subsystem == QLatin1String("net") || //
-        (!device.deviceProperty("ID_MEDIA_PLAYER").toString().isEmpty() && device.parent().deviceProperty("ID_MEDIA_PLAYER").toString().isEmpty())
-        || // media-player-info recognized devices
-        (device.deviceProperty("ID_GPHOTO2").toInt() == 1 && device.parent().deviceProperty("ID_GPHOTO2").toInt() != 1); // GPhoto2 cameras
+    /* clang-format off */
+    return subsystem == QLatin1String("dvb")
+        || subsystem == QLatin1String("net")
+        || (!device.deviceProperty("ID_MEDIA_PLAYER").toString().isEmpty()
+            && device.parent().deviceProperty("ID_MEDIA_PLAYER").toString().isEmpty()) // media-player-info recognized devices
+        || (device.deviceProperty("ID_GPHOTO2").toInt() == 1
+            && device.parent().deviceProperty("ID_GPHOTO2").toInt() != 1); // GPhoto2 cameras
+    /* clang-format on */
 }
 
 UDevManager::UDevManager(QObject *parent)
@@ -183,30 +189,22 @@ QStringList UDevManager::devicesFromQuery(const QString &parentUdi, Solid::Devic
 
     // Already limit the number of devices we query and have to create wrapper items for here
     if (type == Solid::DeviceInterface::Processor) {
-        deviceList = d->m_client->devicesBySubsystem(QStringLiteral("processor")) + d->m_client->devicesBySubsystem(QStringLiteral("cpu"));
+        deviceList = (d->m_client->devicesBySubsystem(QStringLiteral("processor")) //
+                      + d->m_client->devicesBySubsystem(QStringLiteral("cpu")));
     } else if (type == Solid::DeviceInterface::Camera) {
-        deviceList = d->m_client->devicesBySubsystemsAndProperties(
-            {
-                QStringLiteral("usb"),
-            },
-            {
-                {QStringLiteral("ID_GPHOTO2"), QStringLiteral("*")} // match any
-            });
+        deviceList = d->m_client->devicesBySubsystemsAndProperties({QStringLiteral("usb")}, //
+                                                                   {{QStringLiteral("ID_GPHOTO2"), QStringLiteral("*")}}); // match any
     } else if (type == Solid::DeviceInterface::PortableMediaPlayer) {
-        deviceList = d->m_client->devicesBySubsystemsAndProperties(
-            {
-                QStringLiteral("usb"),
-            },
-            {
-                {QStringLiteral("ID_MEDIA_PLAYER"), QStringLiteral("*")} // match any
-            });
+        deviceList = d->m_client->devicesBySubsystemsAndProperties({QStringLiteral("usb")}, //
+                                                                   {{QStringLiteral("ID_MEDIA_PLAYER"), QStringLiteral("*")}}); // match any
     } else {
         deviceList = d->m_client->allDevices();
     }
 
     for (const UdevQt::Device &dev : qAsConst(deviceList)) {
         UDevDevice device(dev);
-        if (device.queryDeviceInterface(type) && d->isOfInterest(udiPrefix() + dev.sysfsPath(), dev)) {
+        if (device.queryDeviceInterface(type) //
+            && d->isOfInterest(udiPrefix() + dev.sysfsPath(), dev)) {
             result << udiPrefix() + dev.sysfsPath();
         }
     }

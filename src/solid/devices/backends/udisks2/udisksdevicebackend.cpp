@@ -52,8 +52,12 @@ DeviceBackend::DeviceBackend(const QString &udi)
                                   this);
 
     if (m_device->isValid()) {
-        QDBusConnection::systemBus()
-            .connect(UD2_DBUS_SERVICE, m_udi, DBUS_INTERFACE_PROPS, "PropertiesChanged", this, SLOT(slotPropertiesChanged(QString, QVariantMap, QStringList)));
+        QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE, //
+                                             m_udi,
+                                             DBUS_INTERFACE_PROPS,
+                                             "PropertiesChanged",
+                                             this,
+                                             SLOT(slotPropertiesChanged(QString, QVariantMap, QStringList)));
         QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE,
                                              UD2_DBUS_PATH,
                                              DBUS_INTERFACE_MANAGER,
@@ -128,7 +132,10 @@ bool DeviceBackend::propertyExists(const QString &key) const
 
 QVariantMap DeviceBackend::allProperties() const
 {
-    QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, m_udi, DBUS_INTERFACE_PROPS, "GetAll");
+    QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, //
+                                                       m_udi,
+                                                       DBUS_INTERFACE_PROPS,
+                                                       "GetAll");
 
     for (const QString &iface : qAsConst(m_interfaces)) {
         call.setArguments(QVariantList() << iface);

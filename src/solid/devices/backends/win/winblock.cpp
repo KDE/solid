@@ -28,7 +28,8 @@ WinBlock::WinBlock(WinDevice *device)
             WinDeviceManager::getDeviceInfo<STORAGE_DEVICE_NUMBER>(driveLetterFromUdi(m_device->udi()), IOCTL_STORAGE_GET_DEVICE_NUMBER);
         m_major = info.DeviceNumber;
         m_minor = info.PartitionNumber;
-    } else if (m_device->type() == Solid::DeviceInterface::StorageDrive || m_device->type() == Solid::DeviceInterface::OpticalDrive
+    } else if (m_device->type() == Solid::DeviceInterface::StorageDrive //
+               || m_device->type() == Solid::DeviceInterface::OpticalDrive //
                || m_device->type() == Solid::DeviceInterface::OpticalDisc) {
         m_major = m_device->udi().mid(m_device->udi().length() - 1).toInt();
     } else {
@@ -133,8 +134,8 @@ QSet<QString> WinBlock::updateUdiFromBitMask(const DWORD unitmask)
                 case FILE_DEVICE_DISK: {
                     udis << QString("/org/kde/solid/win/volume/disk#%1,partition#%2").arg(info.DeviceNumber).arg(info.PartitionNumber);
                     udis << QString("/org/kde/solid/win/storage/disk#%1").arg(info.DeviceNumber);
-
-                } break;
+                    break;
+                }
                 case FILE_DEVICE_CD_ROM:
                 case FILE_DEVICE_DVD: {
                     udis << QString("/org/kde/solid/win/storage.cdrom/disk#%1").arg(info.DeviceNumber);
@@ -142,7 +143,8 @@ QSet<QString> WinBlock::updateUdiFromBitMask(const DWORD unitmask)
                     if (out.DiskSize.QuadPart != 0) {
                         udis << QString("/org/kde/solid/win/volume.cdrom/disk#%1").arg(info.DeviceNumber);
                     }
-                } break;
+                    break;
+                }
                 default:
                     qDebug() << "unknown device" << drive << info.DeviceType << info.DeviceNumber << info.PartitionNumber;
                 }

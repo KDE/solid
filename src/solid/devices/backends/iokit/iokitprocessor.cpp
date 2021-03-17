@@ -54,7 +54,8 @@ bool Processor::canChangeFrequency() const
     uint64_t minFreq = 0, maxFreq = 0;
     size_t size = sizeof(uint64_t);
 
-    if (sysctlbyname("hw.cpufrequency_min", &minFreq, &size, nullptr, 0) == 0 && sysctlbyname("hw.cpufrequency_max", &maxFreq, &size, nullptr, 0) == 0) {
+    if (sysctlbyname("hw.cpufrequency_min", &minFreq, &size, nullptr, 0) == 0 //
+        && sysctlbyname("hw.cpufrequency_max", &maxFreq, &size, nullptr, 0) == 0) {
         return maxFreq > minFreq;
     }
     return false;

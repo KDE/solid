@@ -314,7 +314,11 @@ OpticalDisc::Identity::Identity(const Device &device, const Device &drive)
 
 bool OpticalDisc::Identity::operator==(const OpticalDisc::Identity &b) const
 {
-    return m_detectTime == b.m_detectTime && m_size == b.m_size && m_labelHash == b.m_labelHash;
+    /* clang-format off */
+    return m_detectTime == b.m_detectTime
+        && m_size == b.m_size
+        && m_labelHash == b.m_labelHash;
+    /* clang-format on */
 }
 
 OpticalDisc::OpticalDisc(Device *dev)
@@ -344,8 +348,15 @@ bool OpticalDisc::isRewritable() const
 {
     // the hard way, udisks has no notion of a disc "rewritability"
     const QString mediaType = media();
-    return mediaType == "optical_cd_rw" || mediaType == "optical_dvd_rw" || mediaType == "optical_dvd_ram" || mediaType == "optical_dvd_plus_rw"
-        || mediaType == "optical_dvd_plus_rw_dl" || mediaType == "optical_bd_re" || mediaType == "optical_hddvd_rw";
+    /* clang-format off */
+    return mediaType == "optical_cd_rw"
+        || mediaType == "optical_dvd_rw"
+        || mediaType == "optical_dvd_ram"
+        || mediaType == "optical_dvd_plus_rw"
+        || mediaType == "optical_dvd_plus_rw_dl"
+        || mediaType == "optical_bd_re"
+        || mediaType == "optical_hddvd_rw";
+    /* clang-format on */
 }
 
 bool OpticalDisc::isBlank() const

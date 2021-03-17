@@ -310,17 +310,18 @@ void SolidHwTest::testInvalidPredicate()
 void SolidHwTest::testPredicate()
 {
     Solid::Device dev("/org/kde/solid/fakehw/acpi_CPU0");
-
-    Solid::Predicate p1 =
-        Solid::Predicate(Solid::DeviceInterface::Processor, "maxSpeed", 3200) & Solid::Predicate(Solid::DeviceInterface::Processor, "canChangeFrequency", true);
+    /* clang-format off */
+    Solid::Predicate p1 = (Solid::Predicate(Solid::DeviceInterface::Processor, "maxSpeed", 3200)
+                           & Solid::Predicate(Solid::DeviceInterface::Processor, "canChangeFrequency", true));
     Solid::Predicate p2 = Solid::Predicate(Solid::DeviceInterface::Processor, "maxSpeed", 3200)
-        & Solid::Predicate(Solid::DeviceInterface::Processor, "canChangeFrequency", false);
-    Solid::Predicate p3 =
-        Solid::Predicate(Solid::DeviceInterface::Processor, "maxSpeed", 3201) | Solid::Predicate(Solid::DeviceInterface::Processor, "canChangeFrequency", true);
+                          & Solid::Predicate(Solid::DeviceInterface::Processor, "canChangeFrequency", false);
+    Solid::Predicate p3 = Solid::Predicate(Solid::DeviceInterface::Processor, "maxSpeed", 3201)
+                          | Solid::Predicate(Solid::DeviceInterface::Processor, "canChangeFrequency", true);
     Solid::Predicate p4 = Solid::Predicate(Solid::DeviceInterface::Processor, "maxSpeed", 3201)
-        | Solid::Predicate(Solid::DeviceInterface::Processor, "canChangeFrequency", false);
+                          | Solid::Predicate(Solid::DeviceInterface::Processor, "canChangeFrequency", false);
     Solid::Predicate p5 =
         Solid::Predicate::fromString("[[Processor.maxSpeed == 3201 AND Processor.canChangeFrequency == false] OR StorageVolume.mountPoint == '/media/blup']");
+    /* clang-format on */
 
     QVERIFY(p1.matches(dev));
     QVERIFY(!p2.matches(dev));

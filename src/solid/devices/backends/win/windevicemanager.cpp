@@ -40,7 +40,17 @@ SolidWinEventFilter::SolidWinEventFilter()
         return;
     }
 
-    m_windowID = CreateWindow(title, title, WS_ICONIC, 0, 0, CW_USEDEFAULT, 0, NULL, NULL, wcex.hInstance, NULL);
+    m_windowID = CreateWindow(title, //
+                              title,
+                              WS_ICONIC,
+                              0,
+                              0,
+                              CW_USEDEFAULT,
+                              0,
+                              NULL,
+                              NULL,
+                              wcex.hInstance,
+                              NULL);
     if (m_windowID == NULL) {
         qWarning() << "Failed to initialize KDEWinDeviceManager we will be unable to detect device changes";
         return;
@@ -81,22 +91,27 @@ LRESULT CALLBACK SolidWinEventFilter::WndProc(HWND hWnd, UINT message, WPARAM wP
                 case DBT_DEVICEREMOVECOMPLETE: {
                     QSet<QString> udis = WinBlock::getFromBitMask(devNot->dbcv_unitmask);
                     solidWineventFilter->promoteRemovedDevice(udis);
-                } break;
+                    break;
+                }
                 case DBT_DEVICEARRIVAL: {
                     QSet<QString> udis = WinBlock::updateUdiFromBitMask(devNot->dbcv_unitmask);
                     solidWineventFilter->promoteAddedDevice(udis);
-                } break;
+                    break;
+                }
                 }
                 break;
             }
         }
-    } break;
+        break;
+    }
     case WM_POWERBROADCAST: {
         solidWineventFilter->promotePowerChange();
-    } break;
+        break;
+    }
     case WM_DESTROY: {
         PostQuitMessage(0);
-    } break;
+        break;
+    }
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);
     }

@@ -23,7 +23,6 @@ Solid::OpticalDrive::MediumTypes FakeCdrom::supportedMedia() const
 {
     Solid::OpticalDrive::MediumTypes supported;
 
-    // clang-format off
     const QMap<QString, Solid::OpticalDrive::MediumType> map = {
         {QStringLiteral("cdr"), Solid::OpticalDrive::Cdr},
         {QStringLiteral("cdrw"), Solid::OpticalDrive::Cdrw},
@@ -40,8 +39,8 @@ Solid::OpticalDrive::MediumTypes FakeCdrom::supportedMedia() const
         {QStringLiteral("bdre"), Solid::OpticalDrive::Bdre},
         {QStringLiteral("hddvd"), Solid::OpticalDrive::HdDvd},
         {QStringLiteral("hddvdr"), Solid::OpticalDrive::HdDvdr},
-        {QStringLiteral("hddvdrw"), Solid::OpticalDrive::HdDvdrw}};
-    // clang-format on
+        {QStringLiteral("hddvdrw"), Solid::OpticalDrive::HdDvdrw},
+    };
 
     const QStringList supported_medialist = fakeDevice()->property("supportedMedia").toString().simplified().split(',');
 

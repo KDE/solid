@@ -105,7 +105,9 @@ bool StorageAccess::isIgnored() const
 
     const QString path = filePath();
 
-    bool inUserPath = path.startsWith(QLatin1String("/media/")) || path.startsWith(QLatin1String("/run/media/")) || path.startsWith(QDir::homePath());
+    const bool inUserPath = (path.startsWith(QLatin1String("/media/")) //
+                             || path.startsWith(QLatin1String("/run/media/")) //
+                             || path.startsWith(QDir::homePath()));
     return !inUserPath;
 }
 
@@ -176,12 +178,14 @@ void StorageAccess::slotDBusReply(const QDBusMessage & /*reply*/)
                 Device drive(drivePath);
                 QDBusConnection c = QDBusConnection::systemBus();
 
-                if (drive.prop("MediaRemovable").toBool() && drive.prop("MediaAvailable").toBool()
+                if (drive.prop("MediaRemovable").toBool() //
+                    && drive.prop("MediaAvailable").toBool() //
                     && !m_device->isOpticalDisc()) { // optical drives have their Eject method
                     QDBusMessage msg = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, drivePath, UD2_DBUS_INTERFACE_DRIVE, "Eject");
                     msg << QVariantMap(); // options, unused now
                     c.call(msg, QDBus::NoBlock);
-                } else if (drive.prop("CanPowerOff").toBool() && !m_device->isOpticalDisc()) { // avoid disconnecting optical drives from the bus
+                } else if (drive.prop("CanPowerOff").toBool() //
+                           && !m_device->isOpticalDisc()) { // avoid disconnecting optical drives from the bus
                     qCDebug(UDISKS2) << "Drive can power off:" << drivePath;
                     QDBusMessage msg = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, drivePath, UD2_DBUS_INTERFACE_DRIVE, "PowerOff");
                     msg << QVariantMap(); // options, unused now
@@ -204,12 +208,16 @@ void StorageAccess::slotDBusError(const QDBusError &error)
 
     if (m_setupInProgress) {
         m_setupInProgress = false;
-        m_device->broadcastActionDone("setup", m_device->errorToSolidError(error.name()), m_device->errorToString(error.name()) + ": " + error.message());
+        m_device->broadcastActionDone("setup", //
+                                      m_device->errorToSolidError(error.name()),
+                                      m_device->errorToString(error.name()) + ": " + error.message());
 
         checkAccessibility();
     } else if (m_teardownInProgress) {
         m_teardownInProgress = false;
-        m_device->broadcastActionDone("teardown", m_device->errorToSolidError(error.name()), m_device->errorToString(error.name()) + ": " + error.message());
+        m_device->broadcastActionDone("teardown", //
+                                      m_device->errorToSolidError(error.name()),
+                                      m_device->errorToString(error.name()) + ": " + error.message());
         checkAccessibility();
     }
 }
@@ -296,7 +304,10 @@ QString StorageAccess::generateReturnObjectPath()
 QString StorageAccess::clearTextPath() const
 {
     const QString prefix = "/org/freedesktop/UDisks2/block_devices";
-    QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, prefix, DBUS_INTERFACE_INTROSPECT, "Introspect");
+    QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, //
+                                                       prefix,
+                                                       DBUS_INTERFACE_INTROSPECT,
+                                                       "Introspect");
     QDBusPendingReply<QString> reply = QDBusConnection::systemBus().asyncCall(call);
     reply.waitForFinished();
 

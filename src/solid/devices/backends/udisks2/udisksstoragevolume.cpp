@@ -84,9 +84,12 @@ bool StorageVolume::isIgnored() const
         return true;
     }
 
+    /* clang-format off */
     if (m_device->isSwap()
-        || ((usg == Solid::StorageVolume::Unused || usg == Solid::StorageVolume::Other || usg == Solid::StorageVolume::PartitionTable)
-            && !m_device->isOpticalDisc())) {
+        || ((usg == Solid::StorageVolume::Unused
+                || usg == Solid::StorageVolume::Other
+                || usg == Solid::StorageVolume::PartitionTable)
+            && !m_device->isOpticalDisc())) { /* clang-format on */
         return true;
     }
 

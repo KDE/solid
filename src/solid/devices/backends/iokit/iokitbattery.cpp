@@ -124,7 +124,8 @@ int Battery::chargePercent() const
 
 int Battery::capacity() const
 {
-    if (m_device->iOKitPropertyExists(QStringLiteral("PermanentFailureStatus")) && m_device->property(QStringLiteral("PermanentFailureStatus")).toInt()) {
+    if (m_device->iOKitPropertyExists(QStringLiteral("PermanentFailureStatus")) //
+        && m_device->property(QStringLiteral("PermanentFailureStatus")).toInt()) {
         return 0;
     }
     return 100;
@@ -137,7 +138,11 @@ bool Battery::isRechargeable() const
 
 bool Battery::isPowerSupply() const
 {
-    return m_device->iOKitPropertyExists(QStringLiteral("BatteryInstalled")) ? m_device->property(QStringLiteral("BatteryInstalled")).toBool() : true;
+    /* clang-format off */
+    return m_device->iOKitPropertyExists(QStringLiteral("BatteryInstalled"))
+           ? m_device->property(QStringLiteral("BatteryInstalled")).toBool()
+           : true;
+    /* clang-format on */
 }
 
 Solid::Battery::ChargeState Battery::chargeState() const

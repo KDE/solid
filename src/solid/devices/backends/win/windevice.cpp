@@ -57,16 +57,19 @@ WinDevice::WinDevice(const QString &udi)
     switch (m_type) {
     case Solid::DeviceInterface::StorageVolume: {
         m_parentUdi = QLatin1String("/org/kde/solid/win/storage/") + parentName;
-    } break;
+        break;
+    }
     case Solid::DeviceInterface::OpticalDisc: {
         m_parentUdi = QLatin1String("/org/kde/solid/win/storage.cdrom/") + parentName;
-    } break;
+        break;
+    }
     case Solid::DeviceInterface::StorageAccess: {
         m_parentUdi = WinBlock::udiFromDriveLetter(WinBlock::resolveVirtualDrive(udi).mid(0, 2));
         if (m_parentUdi.isEmpty()) {
             m_parentUdi = QLatin1String("/org/kde/solid/win/") + type;
         }
-    } break;
+        break;
+    }
     default:
         m_parentUdi = QLatin1String("/org/kde/solid/win/") + type;
     }
@@ -230,7 +233,8 @@ QString WinDevice::icon() const
         } else {
             icon = QLatin1String("drive-harddisk");
         }
-    } break;
+        break;
+    }
     case Solid::DeviceInterface::Processor:
         icon = QLatin1String("cpu");
         break;

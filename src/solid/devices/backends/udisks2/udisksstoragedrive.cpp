@@ -34,8 +34,12 @@ bool StorageDrive::isHotpluggable() const
 {
     const Solid::StorageDrive::Bus _bus = bus();
 #if UDEV_FOUND
-    return _bus == Solid::StorageDrive::Usb || _bus == Solid::StorageDrive::Ieee1394
-        || (m_udevDevice.deviceProperty("UDISKS_SYSTEM").isValid() && !m_udevDevice.deviceProperty("UDISKS_SYSTEM").toBool());
+    /* clang-format off */
+    return _bus == Solid::StorageDrive::Usb
+        || _bus == Solid::StorageDrive::Ieee1394
+        || (m_udevDevice.deviceProperty("UDISKS_SYSTEM").isValid()
+            && !m_udevDevice.deviceProperty("UDISKS_SYSTEM").toBool());
+    /* clang-format on */
 #elif defined(Q_OS_FREEBSD)
     return m_device->prop("bsdisks_IsHotpluggable").toBool();
 #else
@@ -72,7 +76,10 @@ Solid::StorageDrive::DriveType StorageDrive::driveType() const
         return Solid::StorageDrive::MemoryStick;
     } else if (mediaTypes.contains("flash_sm")) {
         return Solid::StorageDrive::SmartMedia;
-    } else if (mediaTypes.contains("flash_sd") || mediaTypes.contains("flash_sdhc") || mediaTypes.contains("flash_mmc") || mediaTypes.contains("flash_sdxc")) {
+    } else if (mediaTypes.contains("flash_sd") //
+               || mediaTypes.contains("flash_sdhc") //
+               || mediaTypes.contains("flash_mmc") //
+               || mediaTypes.contains("flash_sdxc")) {
         return Solid::StorageDrive::SdMmc;
     }
     // FIXME: udisks2 doesn't know about xD cards
