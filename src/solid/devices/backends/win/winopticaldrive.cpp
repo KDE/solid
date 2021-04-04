@@ -117,7 +117,7 @@ const MediaProfiles MediaProfiles::getProfile(ulong val)
 #define AddProfile(profile, type) profiles.insert(profile, MediaProfiles(profile, type, #profile))
     static QMap<ulong, MediaProfiles> profiles;
     if (profiles.isEmpty()) {
-        AddProfile(ProfileCdrom, 0);
+        AddProfile(ProfileCdrom, Solid::OpticalDrive::UnknownMediumType);
         AddProfile(ProfileCdRecordable, Solid::OpticalDrive::Cdr);
         AddProfile(ProfileCdRewritable, Solid::OpticalDrive::Cdrw);
         AddProfile(ProfileDvdRom, Solid::OpticalDrive::Dvd);
