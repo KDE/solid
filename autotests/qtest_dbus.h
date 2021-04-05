@@ -17,7 +17,7 @@
 int main(int argc, char *argv[]) \
 { \
     QProcess dbus; \
-    dbus.start("dbus-launch"); \
+    dbus.start("dbus-launch", QStringList()); \
     dbus.waitForFinished(10000);    \
     QByteArray session = dbus.readLine(); \
     if (session.isEmpty()) { \
