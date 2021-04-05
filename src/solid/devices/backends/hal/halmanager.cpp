@@ -78,7 +78,7 @@ QStringList HalManager::allDevices()
     QDBusReply<QStringList> reply = d->manager.call("GetAllDevices");
 
     if (!reply.isValid()) {
-        qWarning() << Q_FUNC_INFO << " error: " << reply.error().name() << endl;
+        qWarning() << Q_FUNC_INFO << " error: " << reply.error().name() << Qt::endl;
         return QStringList();
     }
 
@@ -99,7 +99,7 @@ bool HalManager::deviceExists(const QString &udi)
     QDBusReply<bool> reply = d->manager.call("DeviceExists", udi);
 
     if (!reply.isValid()) {
-        qWarning() << Q_FUNC_INFO << " error: " << reply.error().name() << endl;
+        qWarning() << Q_FUNC_INFO << " error: " << reply.error().name() << Qt::endl;
         return false;
     }
 

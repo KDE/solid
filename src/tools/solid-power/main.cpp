@@ -29,13 +29,13 @@ int main(int argc, char **argv)
     parser.process(app);
 
     if (parser.isSet(commands)) {
-        sOut << endl << QCoreApplication::translate("solid-hardware", "Syntax:") << endl << endl;
+        sOut << Qt::endl << QCoreApplication::translate("solid-hardware", "Syntax:") << Qt::endl << Qt::endl;
 
-        sOut << "  solid-power show" << endl;
+        sOut << "  solid-power show" << Qt::endl;
         sOut << QCoreApplication::translate("solid-power",
                                             "             # Show all the power management information from the system.\n"
                                             "             # - acPlugged: whether the device is connected to the AC or not\n")
-             << endl;
+             << Qt::endl;
         return 1;
     }
 
@@ -54,10 +54,10 @@ int main(int argc, char **argv)
     if (command == QLatin1String("show")) {
         power.show();
     } else if (command == QLatin1String("listen")) {
-        sOut << "Listening to events:" << endl;
+        sOut << "Listening to events:" << Qt::endl;
         power.listen();
         app.exec();
     } else {
-        sOut << "Not recognized command" << endl;
+        sOut << "Not recognized command" << Qt::endl;
     }
 }

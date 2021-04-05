@@ -28,7 +28,7 @@ void SolidPower::show()
 
     QString status = job->isPlugged() ? "yes" : "no";
 
-    sCout << "is AC plugged:\t" << status << endl;
+    sCout << "is AC plugged:\t" << status << Qt::endl;
 }
 
 void SolidPower::listen()
@@ -38,16 +38,16 @@ void SolidPower::listen()
     connect(power, &Power::acPluggedChanged, [](bool plugged) {
         QTextStream lOut(stdout);
         QString status = plugged ? "yes" : "no";
-        lOut << "\tAC plugged changed:\t" << status << endl;
+        lOut << "\tAC plugged changed:\t" << status << Qt::endl;
     });
 
     connect(power, &Power::aboutToSuspend, []() {
         QTextStream lOut(stdout);
-        lOut << "\tAbout to suspend" << endl;
+        lOut << "\tAbout to suspend" << Qt::endl;
     });
 
     connect(power, &Power::resumeFromSuspend, []() {
         QTextStream lOut(stdout);
-        lOut << "\tResume from suspend" << endl;
+        lOut << "\tResume from suspend" << Qt::endl;
     });
 }
