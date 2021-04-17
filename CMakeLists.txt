@@ -19,8 +19,10 @@ include(ECMQtDeclareLoggingCategory)
 
 set(REQUIRED_QT_VERSION 5.15.0)
 find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Xml Gui)
-if (NOT ANDROID)
-  find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED DBus)
+
+# Android has no DBus, and Windows & Mac have backends that don't use DBus
+if(NOT ANDROID AND NOT WIN32 AND NOT APPLE)
+    find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED DBus)
 endif()
 
 if(WIN32)
