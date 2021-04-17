@@ -138,7 +138,7 @@ endif()
 add_device_backends_cmake()
 
 add_subdirectory(src)
-if (TARGET Qt5::DBus AND BUILD_TESTING)
+if (BUILD_TESTING)
     add_subdirectory(autotests)
 endif()
 
