@@ -48,10 +48,10 @@ FstabDevice::FstabDevice(QString uid)
     const QStringList &gvfsOptions = FstabHandling::options(m_device);
     for (const QString &option : gvfsOptions) {
         if (option.startsWith(QLatin1String("x-gvfs-name="))) {
-            QStringRef encoded = option.midRef(12);
+            const QStringView encoded = QStringView(option).mid(12);
             m_displayName = QUrl::fromPercentEncoding(encoded.toLatin1());
         } else if (option.startsWith(QLatin1String("x-gvfs-icon="))) {
-            QStringRef encoded = option.midRef(12);
+            const QStringView encoded = QStringView(option).mid(12);
             m_iconName = QUrl::fromPercentEncoding(encoded.toLatin1());
         }
     }
