@@ -37,7 +37,7 @@ if (TARGET Qt5::DBus)
   target_link_libraries(KF5Solid PRIVATE Qt5::DBus)
 endif()
 
-set_target_properties(KF5Solid PROPERTIES  VERSION ${SOLID_VERSION_STRING}
+set_target_properties(KF5Solid PROPERTIES  VERSION ${SOLID_VERSION}
                                            SOVERSION ${SOLID_SOVERSION}
                                            EXPORT_NAME Solid
 )
