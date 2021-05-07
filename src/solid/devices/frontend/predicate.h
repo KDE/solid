@@ -26,7 +26,40 @@ class Device;
  * interface, or any combination (conjunction, disjunction) of such
  * constraints.
  *
- * FIXME: Add an example.
+ * A predicate can be:
+ * - a single comparison, or
+ * - a conjunction ("AND") of exactly two predicates, or
+ * - a disjunction ("OR") of exactly two predicates.
+ *
+ * Since these can be nested, it is possible to express "a StorageVolume
+ * that is not ignored AND that StorageVolume contains a FileSystem
+ * AND that StorageVolume is removable". Since conjunctions use exactly
+ * two predicates (and this expression has three), square brackets are
+ * used to group the nested predicates when writing them out in full:
+ *
+ * ```
+ *   [ [ StorageVolume.ignored == false AND StorageVolume.usage == 'FileSystem' ]
+ *     AND StorageVolume.removable == true ]
+ * ```
+ *
+ * Predicates can be constructed programmatically by creating single
+ * comparisons with the Predicate constructor, and then building
+ * conjunctions with `operator&` and disjunctions with `operator|`.
+ *
+ * Predicates can be constructed from a string by calling `fromString()`
+ * which parses the given string and returns a predicate. If there
+ * are any errors in parsing the string, an empty predicate is returned;
+ * use `isValid()` to detect whether that is the case.
+ *
+ * The string language is described exactly in `predicate_parser.y`,
+ * but boils down to:
+ *
+ * - a single comparison is written as `<interface>.<property> == <value>`
+ * - a single bitmask check is written as `<interface>.<property> & <value>`
+ * - a conjunction is written as `[ <predicate> AND <predicate> ]`
+ * - a disjunction is written as `[ <predicate> OR <predicate> ]`
+ *
+ * Note the mandatory use of `[` and `]` around conjunctions and disjunctions.
  */
 class SOLID_EXPORT Predicate
 {
