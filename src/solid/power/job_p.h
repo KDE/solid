@@ -17,6 +17,7 @@ class JobPrivate
 {
 public:
     JobPrivate();
+    virtual ~JobPrivate() = default;
 
     Job *q_ptr;
     int error;
