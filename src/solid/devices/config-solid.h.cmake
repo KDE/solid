@@ -16,6 +16,8 @@
 #cmakedefine01   HAVE_GETMNTINFO
 #cmakedefine01   HAVE_SETMNTENT
 
+#cmakedefine01 HAVE_LIBMOUNT
+
 #cmakedefine01 GETMNTINFO_USES_STATVFS
 
 #cmakedefine01 UDEV_HAVE_GET_SYSATTR_LIST_ENTRY

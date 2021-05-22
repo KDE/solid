@@ -16,6 +16,11 @@
 #include <QGuiApplication>
 #include <QWindow>
 
+#include <solid/config-solid.h>
+#if HAVE_LIBMOUNT
+#include <libmount/libmount.h>
+#endif
+
 using namespace Solid::Backends::UDisks2;
 
 StorageAccess::StorageAccess(Device *device)
@@ -70,17 +75,48 @@ bool StorageAccess::isEncrypted() const
     return isLuksDevice() || m_device->isEncryptedCleartext();
 }
 
+static QString baseMountPoint(const QByteArray &dev)
+{
+    QString mp;
+
+#if HAVE_LIBMOUNT
+    // "MountPoints" property returned by UDisks contains multiple paths, indicating the
+    // device has some bind mounts; try finding the base/canonical mount point
+    if (struct libmnt_table *table = mnt_new_table_from_file("/proc/self/mountinfo")) {
+        struct libmnt_iter *itr = mnt_new_iter(MNT_ITER_BACKWARD);
+        struct libmnt_fs *fs = mnt_new_fs();
+
+        const QByteArray devicePath = dev.endsWith('\x00') ? dev.chopped(1) : dev;
+
+        while (mnt_table_next_fs(table, itr, &fs) == 0) {
+            const char *srcPath = mnt_fs_get_srcpath(fs);
+            if (srcPath == devicePath) {
+                const char *root = mnt_fs_get_root(fs);
+                // Base mount point will have "/" as root fs
+                if (strcmp(root, "/") == 0) {
+                    mp = QFile::decodeName(mnt_fs_get_target(fs));
+                    break;
+                }
+            }
+        }
+
+        mnt_unref_table(table);
+        mnt_free_iter(itr);
+    }
+#endif
+
+    return mp;
+}
+
 QString StorageAccess::filePath() const
 {
-    QByteArrayList mntPoints;
-
     if (isLuksDevice()) { // encrypted (and unlocked) device
         const QString path = clearTextPath();
         if (path.isEmpty() || path == "/") {
             return QString();
         }
         Device holderDevice(path);
-        mntPoints = qdbus_cast<QByteArrayList>(holderDevice.prop("MountPoints"));
+        const auto mntPoints = qdbus_cast<QByteArrayList>(holderDevice.prop("MountPoints"));
         if (!mntPoints.isEmpty()) {
             return QFile::decodeName(mntPoints.first()); // FIXME Solid doesn't support multiple mount points
         } else {
@@ -88,13 +124,22 @@ QString StorageAccess::filePath() const
         }
     }
 
-    mntPoints = qdbus_cast<QByteArrayList>(m_device->prop("MountPoints"));
-
-    if (!mntPoints.isEmpty()) {
-        return QFile::decodeName(mntPoints.first()); // FIXME Solid doesn't support multiple mount points
-    } else {
-        return QString();
+    const auto mntPoints = qdbus_cast<QByteArrayList>(m_device->prop("MountPoints"));
+    if (mntPoints.isEmpty()) {
+        return {};
     }
+
+    QString firstMP = QFile::decodeName(mntPoints.first());
+    if (mntPoints.size() == 1) {
+        return firstMP;
+    }
+
+    const QString baseMP = baseMountPoint(m_device->prop("Device").toByteArray());
+    if (!baseMP.isEmpty()) {
+        firstMP = baseMP;
+    }
+
+    return firstMP;
 }
 
 bool StorageAccess::isIgnored() const

@@ -127,8 +127,18 @@ check_cxx_source_compiles("
   }
 " GETMNTINFO_USES_STATVFS )
 
+find_package(PkgConfig)
+pkg_check_modules(LibMount IMPORTED_TARGET mount)
+add_feature_info(LibMount ${LibMount_FOUND} "libmount support for querying mounted filesystems info")
+
+set(HAVE_LIBMOUNT ${LibMount_FOUND})
+
+if (LibMount_FOUND)
+    set(solid_OPTIONAL_LIBS ${solid_OPTIONAL_LIBS} PkgConfig::LibMount)
+endif()
+
 configure_file(devices/config-solid.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-solid.h )
 
-set(solid_OPTIONAL_LIBS)
+set(solid_OPTIONAL_LIBS ${solid_OPTIONAL_LIBS})
 
 add_device_backends_build("${CMAKE_CURRENT_SOURCE_DIR}/devices/backends" solid_LIB_SRCS solid_OPTIONAL_LIBS)
