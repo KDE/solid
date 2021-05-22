@@ -16,4 +16,6 @@
 #cmakedefine01   HAVE_GETMNTINFO
 #cmakedefine01   HAVE_SETMNTENT
 
+#cmakedefine01 HAVE_LIBMOUNT
+
 #cmakedefine01 GETMNTINFO_USES_STATVFS

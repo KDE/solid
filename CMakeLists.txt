@@ -65,6 +65,10 @@ set_package_properties(PList PROPERTIES
                        PURPOSE "Needed to build the iOS device support backend"
                       )
 
+# Used by the UDisks backend on Linux
+find_package(LibMount)
+set_package_properties(LibMount PROPERTIES
+                       TYPE OPTIONAL)
 
 include(ECMPoQmTools)
 
@@ -111,6 +115,7 @@ if (CMAKE_SYSTEM_NAME MATCHES Linux)
         set(UDEV_FOUND TRUE) # for config-solid.h
         add_device_backend(udev)
     endif()
+    set(HAVE_LIBMOUNT ${LibMount_FOUND})
     add_device_backend(udisks2)
     add_device_backend(fstab)
     add_device_backend(upower)
