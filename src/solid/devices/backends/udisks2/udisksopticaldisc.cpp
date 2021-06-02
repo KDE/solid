@@ -369,7 +369,7 @@ bool OpticalDisc::isAppendable() const
     // qDebug() << "appendable prop" << m_udevDevice.deviceProperty("ID_CDROM_MEDIA_STATE");
 #if UDEV_FOUND
     return m_udevDevice.deviceProperty("ID_CDROM_MEDIA_STATE").toString() == QLatin1String("appendable");
-#elif defined(Q_OS_FREEBSD)
+#elif defined(Q_OS_FREEBSD) || defined(Q_OS_OPENBSD)
     return m_device->prop("bsdisks_IsAppendable").toBool();
 #else
 #error Implement this or stub this out for your platform
