@@ -350,18 +350,20 @@ QString Device::storageDescription() const
     const bool drive_is_removable = storageDrive.isRemovable();
 
     if (drive_type == Solid::StorageDrive::HardDisk && !drive_is_removable) {
-        QString size_str = formatByteSize(storageDrive.size());
+        const QString size_str = formatByteSize(storageDrive.size());
+        QString devName = storageDrive.device();
+        devName.remove(QLatin1String("/dev/"));
         if (storageDrive.size() > 0) {
             if (drive_is_hotpluggable) {
-                description = tr("%1 External Hard Drive", "%1 is the size").arg(size_str);
+                description = tr("%1 External Drive (%2)", "%1 is the size, %2 is the device name e.g. sdX").arg(size_str, devName);
             } else {
-                description = tr("%1 Hard Drive", "%1 is the size").arg(size_str);
+                description = tr("%1 Internal Drive (%2)", "%1 is the size, %2 is the device name e.g. sdX").arg(size_str, devName);
             }
         } else {
             if (drive_is_hotpluggable) {
-                description = tr("External Hard Drive");
+                description = tr("External Drive (%1)", "%1 is the device name e.g. sdX").arg(devName);
             } else {
-                description = tr("Hard Drive");
+                description = tr("Internal Drive (%1)", "%1 is the device name e.g. sdX").arg(devName);
             }
         }
 
@@ -552,6 +554,8 @@ QString Device::volumeDescription() const
     const bool drive_is_hotpluggable = storageDrive.isHotpluggable();
 
     QString size_str = formatByteSize(storageVolume.size());
+    QString volumeName = storageVolume.device();
+    volumeName.remove(QLatin1String("/dev/"));
     if (isEncryptedContainer()) {
         if (storageVolume.size() > 0) {
             description = tr("%1 Encrypted Drive", "%1 is the size").arg(size_str);
@@ -561,15 +565,15 @@ QString Device::volumeDescription() const
     } else if (drive_type == Solid::StorageDrive::HardDisk && !drive_is_removable) {
         if (storageVolume.size() > 0) {
             if (drive_is_hotpluggable) {
-                description = tr("%1 External Hard Drive", "%1 is the size").arg(size_str);
+                description = tr("%1 External Drive (%2)", "%1 is the size, %2 is the device name e.g. sdXY").arg(size_str, volumeName);
             } else {
-                description = tr("%1 Hard Drive", "%1 is the size").arg(size_str);
+                description = tr("%1 Internal Drive (%2)", "%1 is the size, %2 is the device name e.g. sdXY").arg(size_str, volumeName);
             }
         } else {
             if (drive_is_hotpluggable) {
-                description = tr("External Hard Drive");
+                description = tr("External Drive (%1)", "%1 is the device name e.g. sdXY").arg(volumeName);
             } else {
-                description = tr("Hard Drive");
+                description = tr("Internal Drive (%1)", "%1 is the device name e.g. sdXY").arg(volumeName);
             }
         }
     } else if (drive_type == Solid::StorageDrive::Floppy) {
