@@ -10,13 +10,6 @@ if (BUILD_DEVICE_BACKEND_fakehw)
     target_compile_definitions(fakehardwaretest PRIVATE SOLID_STATIC_DEFINE=1 TEST_DATA="${CMAKE_CURRENT_SOURCE_DIR}/../src/solid/devices/backends/fakehw/fakecomputer.xml")
 endif()
 
-
-########### halbasictest ###############
-
-if (BUILD_DEVICE_BACKEND_hal)
-    ecm_add_test(halbasictest.cpp LINK_LIBRARIES KF5Solid_static Qt5::DBus Qt5::Xml Qt5::Test)
-endif()
-
 ########### solidhwtest ###############
 
 if (BUILD_DEVICE_BACKEND_fakehw)

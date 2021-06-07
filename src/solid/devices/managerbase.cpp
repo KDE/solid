@@ -18,9 +18,6 @@
 #ifdef BUILD_DEVICE_BACKEND_fstab
 #include "backends/fstab/fstabmanager.h"
 #endif
-#ifdef BUILD_DEVICE_BACKEND_hal
-#include "backends/hal/halmanager.h"
-#endif
 #ifdef BUILD_DEVICE_BACKEND_imobile
 #include "backends/imobile/imobilemanager.h"
 #endif
@@ -62,9 +59,6 @@ void Solid::ManagerBasePrivate::loadBackends()
     } else {
 #ifdef BUILD_DEVICE_BACKEND_fstab
         m_backends << new Solid::Backends::Fstab::FstabManager(nullptr);
-#endif
-#ifdef BUILD_DEVICE_BACKEND_hal
-        m_backends << new Solid::Backends::Hal::HalManager(nullptr);
 #endif
 #ifdef BUILD_DEVICE_BACKEND_imobile
         m_backends << new Solid::Backends::IMobile::Manager(nullptr);

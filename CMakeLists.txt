@@ -130,8 +130,6 @@ elseif (NOT ANDROID)
 
     if (CMAKE_SYSTEM_NAME MATCHES FreeBSD OR CMAKE_SYSTEM_NAME MATCHES OpenBSD)
         add_device_backend(udisks2)
-    else()
-        add_device_backend(hal)
     endif()
 endif()
 
