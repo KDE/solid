@@ -2,7 +2,7 @@
     SPDX-FileCopyrightText: 2006 Kevin Ottens <ervin@kde.org>
     SPDX-FileCopyrightText: 2014 Alejandro Fiestas Olivares <afiestas@kde.org>
 
-    SPDX-License-Identifier: LGPL-2.0-only
+    SPDX-License-Identifier: LGPL-2.1-or-later
 */
 
 #include "solid-hardware.h"
