@@ -45,7 +45,7 @@ set_package_properties(FLEX PROPERTIES
     PURPOSE "Required for the Predicate parser"
 )
 
-find_package(BISON REQUIRED)
+find_package(BISON 3.0 REQUIRED)
 set_package_properties(BISON PROPERTIES
     URL "http://www.gnu.org/software/bison"
     DESCRIPTION "general-purpose parser generator"
