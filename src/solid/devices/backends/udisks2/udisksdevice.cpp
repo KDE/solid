@@ -19,6 +19,7 @@
 #include <solid/device.h>
 #include <solid/genericinterface.h>
 
+#include <QLocale>
 #include <QMimeDatabase>
 
 using namespace Solid::Backends::UDisks2;
