@@ -7,6 +7,8 @@
 #include "udevqtclient.h"
 #include "udevqt_p.h"
 
+#include "devices_debug.h"
+
 #include <QSocketNotifier>
 #include <qplatformdefs.h>
 
@@ -108,7 +110,7 @@ void ClientPrivate::_uq_monitorReadyRead(int fd)
     } else if (action == "unbind") {
         Q_EMIT q->deviceUnbound(device);
     } else {
-        qWarning("UdevQt: unhandled device action \"%s\"", action.constData());
+        qCDebug(Solid::Frontend::DeviceManager::DEVICEMANAGER) << "UdevQt: unhandled action:" << action.constData() << "for device:" << device.sysfsPath();
     }
 }
 
