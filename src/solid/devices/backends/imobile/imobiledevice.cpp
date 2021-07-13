@@ -123,7 +123,7 @@ QString IMobileDevice::description() const
 bool IMobileDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type) const
 {
     switch (type) {
-        // TOOD would be cool to support GenericInterface for reading
+        // TODO would be cool to support GenericInterface for reading
         // arbitrary plist configuration, cf. what ideviceinfo tool does
 
     case Solid::DeviceInterface::PortableMediaPlayer:

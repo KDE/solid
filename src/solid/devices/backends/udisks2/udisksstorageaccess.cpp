@@ -215,7 +215,7 @@ void StorageAccess::slotDBusReply(const QDBusMessage & /*reply*/)
         if (isLuksDevice() && !ctPath.isEmpty() && ctPath != "/") { // unlocked device, lock it
             callCryptoTeardown();
         } else if (!ctPath.isEmpty() && ctPath != "/") {
-            callCryptoTeardown(true); // Lock crypted parent
+            callCryptoTeardown(true); // Lock encrypted parent
         } else {
             // try to "eject" (aka safely remove) from the (parent) drive, e.g. SD card from a reader
             QString drivePath = m_device->drivePath();

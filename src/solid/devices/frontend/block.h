@@ -19,7 +19,7 @@ class Device;
 /**
  * This device interface is available on block devices.
  *
- * A block device is an adressable device such as drive or partition.
+ * A block device is an addressable device such as drive or partition.
  * It is possible to interact with such a device using a special file
  * in the system.
  */

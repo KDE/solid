@@ -57,7 +57,7 @@ public:
     /**
      * Retrieves this volume label.
      *
-     * @return the volume lavel if available, QString() otherwise
+     * @return the volume level if available, QString() otherwise
      */
     virtual QString label() const = 0;
 
@@ -83,7 +83,7 @@ public:
     /**
      * Retrieves the crypto container UDI of this volume.
      *
-     * @return the encrypted volume UDI containing the current volume if appliable,
+     * @return the encrypted volume UDI containing the current volume if applicable,
      * an empty string otherwise
      */
     virtual QString encryptedContainerUdi() const = 0;

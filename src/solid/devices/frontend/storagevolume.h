@@ -133,7 +133,7 @@ public:
     /**
      * Retrieves the crypto container of this volume.
      *
-     * @return the encrypted volume containing the current volume if appliable,
+     * @return the encrypted volume containing the current volume if applicable,
      * an invalid device otherwise
      */
     Device encryptedContainer() const;

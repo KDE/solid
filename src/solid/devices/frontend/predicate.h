@@ -103,7 +103,7 @@ public:
     ~Predicate();
 
     /**
-     * Assignement operator.
+     * Assignment operator.
      *
      * @param other the predicate to assign
      * @return this predicate after having assigned 'other' to it
