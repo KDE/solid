@@ -48,6 +48,10 @@ QString extractCpuModel(int processorNumber)
         model = info.extractInfoLine("Processor\\s+:\\s+(\\S.+)");
     }
 
+    if (model.isEmpty()) {
+        model = info.extractInfoLine("cpu\\s+:\\s+(\\S.+)");
+    }
+
     return model;
 }
 
