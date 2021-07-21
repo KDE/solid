@@ -92,9 +92,9 @@ static QString baseMountPoint(const QByteArray &dev)
             const QByteArray devicePath = dev.endsWith('\x00') ? dev.chopped(1) : dev;
 
             while (mnt_table_next_fs(table, itr, &fs) == 0) {
-                if (mnt_fs_get_srcpath(fs) == devicePath
-                    // Base mount point will have "/" as root fs
-                    && (strcmp(mnt_fs_get_root(fs), "/") == 0)) {
+                if (mnt_fs_get_srcpath(fs) == devicePath //
+                    && (qstrcmp(mnt_fs_get_root(fs), "/") == 0) // Base mount point will have "/" as root fs
+                ) {
                     mountPoint = QFile::decodeName(mnt_fs_get_target(fs));
                     break;
                 }
