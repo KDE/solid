@@ -5,6 +5,7 @@
 */
 
 #include "cpuinfo.h"
+#include "cpuinfo_arm.h"
 
 #include <QFile>
 #include <QRegularExpression>
@@ -30,11 +31,25 @@ private:
 QString extractCpuVendor(int processorNumber)
 {
     CpuInfo info;
-    QString vendor = info.extractCpuInfoLine(processorNumber, "vendor_id\\s+:\\s+(\\S.+)");
+    QString vendor;
 
+#ifndef BUILDING_FOR_ARM_TARGET
+    vendor = info.extractCpuInfoLine(processorNumber, "vendor_id\\s+:\\s+(\\S.+)");
     if (vendor.isEmpty()) {
         vendor = info.extractInfoLine("Hardware\\s+:\\s+(\\S.+)");
     }
+#else
+    // ARM ? "CPU implementer : 0x41"
+    vendor = info.extractCpuInfoLine(processorNumber, "CPU implementer\\s+:\\s+(\\S.+)");
+    bool ok = false;
+    const int vendorId = vendor.toInt(&ok, 16);
+    if (ok) {
+        const ArmCpuImplementer *impl = findArmCpuImplementer(vendorId);
+        if (impl) {
+            vendor = QString::fromUtf8(impl->name);
+        }
+    }
+#endif
 
     return vendor;
 }
@@ -42,15 +57,31 @@ QString extractCpuVendor(int processorNumber)
 QString extractCpuModel(int processorNumber)
 {
     CpuInfo info;
-    QString model = info.extractCpuInfoLine(processorNumber, "model name\\s+:\\s+(\\S.+)");
+    QString model;
 
+#ifndef BUILDING_FOR_ARM_TARGET
+    model = info.extractCpuInfoLine(processorNumber, "model name\\s+:\\s+(\\S.+)");
     if (model.isEmpty()) {
         model = info.extractInfoLine("Processor\\s+:\\s+(\\S.+)");
     }
 
+    // for ppc64, extract from "cpu:" line
     if (model.isEmpty()) {
         model = info.extractInfoLine("cpu\\s+:\\s+(\\S.+)");
     }
+#else
+    // ARM? "CPU part        : 0xd03"
+    const QString vendor = info.extractCpuInfoLine(processorNumber, "CPU implementer\\s+:\\s+(\\S.+)");
+    model = info.extractCpuInfoLine(processorNumber, "CPU part\\s+:\\s+(\\S.+)");
+    if (!model.isEmpty() && !vendor.isEmpty()) {
+        bool vendorOk = false, modelOk = false;
+        const int vendorId = vendor.toInt(&vendorOk, 16);
+        const int modelId = model.toInt(&modelOk, 16);
+        if (vendorOk && modelOk) {
+            model = findArmCpuModel(vendorId, modelId);
+        }
+    }
+#endif
 
     return model;
 }

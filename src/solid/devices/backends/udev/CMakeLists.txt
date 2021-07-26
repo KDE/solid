@@ -4,6 +4,7 @@ set(backend_sources
     udevdeviceinterface.cpp
     udevgenericinterface.cpp
     cpuinfo.cpp
+    cpuinfo_arm.cpp
     udevprocessor.cpp
     udevcamera.cpp
     udevportablemediaplayer.cpp
