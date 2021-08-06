@@ -255,8 +255,14 @@ void SolidMtTest::testDeviceMatching()
             bothCount += (volumeIface && driveIface) ? 1 : 0;
         }
         QCOMPARE(bothCount, 0);
-        QVERIFY(volumeCount > 0);
-        QVERIFY(driveCount > 0);
+        if (volumeCount + driveCount > 0)
+        {
+            // On Linux CI, there is no DBus connection, so no drives or volumes at all.
+            // On a local machine, or on FreeBSD CI, there are volumes and/or drives,
+            // so verify that there's at least one of each.
+            QVERIFY(volumeCount > 0);
+            QVERIFY(driveCount > 0);
+        }
     }
 }
 
