@@ -23,6 +23,8 @@
 #include <QFileInfo>
 #include <QLoggingCategory>
 
+#include <set>
+
 Q_GLOBAL_STATIC(Solid::DeviceManagerStorage, globalDeviceStorage)
 
 Solid::DeviceManagerPrivate::DeviceManagerPrivate()
@@ -139,12 +141,12 @@ QList<Solid::Device> Solid::Device::listFromQuery(const Predicate &predicate, co
             udis += backend->allDevices();
         }
 
-        QSet<QString> seen;
+        std::set<QString> seen;
         for (const QString &udi : qAsConst(udis)) {
-            if (seen.contains(udi)) {
+            const auto [it, isInserted] = seen.insert(udi);
+            if (!isInserted) {
                 continue;
             }
-            seen.insert(udi);
             Device dev(udi);
 
             bool matches = false;
