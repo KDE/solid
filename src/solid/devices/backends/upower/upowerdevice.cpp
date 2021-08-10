@@ -102,6 +102,7 @@ bool UPowerDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type
         case UP_DEVICE_KIND_LAST:
             return false;
         }
+        Q_FALLTHROUGH();
     default:
         return false;
     }
