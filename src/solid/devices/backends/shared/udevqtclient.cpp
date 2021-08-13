@@ -117,7 +117,8 @@ void ClientPrivate::_uq_monitorReadyRead(int fd)
 DeviceList ClientPrivate::deviceListFromEnumerate(struct udev_enumerate *en)
 {
     DeviceList ret;
-    struct udev_list_entry *list, *entry;
+    struct udev_list_entry *list;
+    struct udev_list_entry *entry;
 
     udev_enumerate_scan_devices(en);
     list = udev_enumerate_get_list_entry(en);

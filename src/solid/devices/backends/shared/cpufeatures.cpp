@@ -87,7 +87,8 @@ Solid::Processor::InstructionSets cpuFeatures()
 #if defined( HAVE_GNU_INLINE_ASM )
 #if defined( __i386__ ) || defined( __x86_64__ )
     bool haveCPUID = false;
-    unsigned int result = 0, result2 = 0;
+    unsigned int result = 0;
+    unsigned int result2 = 0;
 
     // First check if the CPU supports the CPUID instruction
     __asm__ __volatile__(
