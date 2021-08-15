@@ -17,7 +17,7 @@ include(KDECMakeSettings)
 include(KDEGitCommitHooks)
 include(ECMQtDeclareLoggingCategory)
 
-set(REQUIRED_QT_VERSION 5.15.0)
+set(REQUIRED_QT_VERSION 5.15.2)
 find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Xml Gui)
 
 # Android has no DBus, and Windows & Mac have backends that don't use DBus
@@ -86,7 +86,7 @@ ecm_setup_version(PROJECT VARIABLE_PREFIX SOLID
 remove_definitions(-DQT_NO_CAST_FROM_ASCII)
 remove_definitions(-DQT_NO_CAST_FROM_BYTEARRAY)
 
-add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f00)
+add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f02)
 ecm_install_po_files_as_qm(po)
 
 option(WITH_NEW_SOLID_JOB "WIP: base Job class" Off)
