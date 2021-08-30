@@ -188,8 +188,7 @@ void SolidMtTest::testDeviceMatching()
     QVERIFY(volumesPredicate.isValid());
 
     int volumes = 0;
-    for(const auto& device : qAsConst(deviceList))
-    {
+    for (const auto &device : std::as_const(deviceList)) {
         if(volumesPredicate.matches(device))
         {
             volumes++;
@@ -219,8 +218,7 @@ void SolidMtTest::testDeviceMatching()
         Solid::Predicate removablePredicate = Solid::Predicate::fromString("StorageDrive.removable == true");
         Solid::Predicate removableFSVolumesPredicate = Solid::Predicate::fromString("[[StorageVolume.ignored == false AND StorageVolume.usage == 'FileSystem'] AND StorageDrive.removable == true]");
         volumes = 0;
-        for(const auto& device : qAsConst(deviceList))
-        {
+        for (const auto &device : std::as_const(deviceList)) {
             qDebug() << device.displayName() << "fs?" << fsVolumesPredicate.matches(device) << "removable?" << removablePredicate.matches(device) << "removableFS?" << removableFSVolumesPredicate.matches(device);
             if (removableFSVolumesPredicate.matches(device))
             {
@@ -244,8 +242,7 @@ void SolidMtTest::testDeviceMatching()
         int driveCount = 0;
         int bothCount = 0;
 
-        for(const auto& device : qAsConst(deviceList))
-        {
+        for (const auto &device : std::as_const(deviceList)) {
             // Copied from internals in predicate.cpp:
             //        const DeviceInterface *iface = device.asDeviceInterface(d->ifaceType);
             const Solid::DeviceInterface *volumeIface = device.asDeviceInterface(storageVolume);

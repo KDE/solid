@@ -134,7 +134,7 @@ QList<Solid::Device> Solid::Device::listFromQuery(const Predicate &predicate, co
 
             QList<DeviceInterface::Type> sortedTypes = supportedTypes.values();
             std::sort(sortedTypes.begin(), sortedTypes.end());
-            for (DeviceInterface::Type type : qAsConst(sortedTypes)) {
+            for (DeviceInterface::Type type : std::as_const(sortedTypes)) {
                 udis += backend->devicesFromQuery(parentUdi, type);
             }
         } else {
@@ -142,7 +142,7 @@ QList<Solid::Device> Solid::Device::listFromQuery(const Predicate &predicate, co
         }
 
         std::set<QString> seen;
-        for (const QString &udi : qAsConst(udis)) {
+        for (const QString &udi : std::as_const(udis)) {
             const auto [it, isInserted] = seen.insert(udi);
             if (!isInserted) {
                 continue;

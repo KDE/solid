@@ -192,7 +192,7 @@ QStringList IOKitManager::devicesFromQuery(const QString &parentUdi, Solid::Devi
 
     // return only matches that start with the parent's UDI
     QStringList filtered;
-    for (const QString &udi : qAsConst(result)) {
+    for (const QString &udi : std::as_const(result)) {
         if (udi.startsWith(parentUdi)) {
             filtered += udi;
         }

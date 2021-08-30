@@ -201,7 +201,7 @@ QStringList UDevManager::devicesFromQuery(const QString &parentUdi, Solid::Devic
         deviceList = d->m_client->allDevices();
     }
 
-    for (const UdevQt::Device &dev : qAsConst(deviceList)) {
+    for (const UdevQt::Device &dev : std::as_const(deviceList)) {
         UDevDevice device(dev);
         if (device.queryDeviceInterface(type) //
             && d->isOfInterest(udiPrefix() + dev.sysfsPath(), dev)) {

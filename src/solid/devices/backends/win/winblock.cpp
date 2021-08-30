@@ -151,7 +151,7 @@ QSet<QString> WinBlock::updateUdiFromBitMask(const DWORD unitmask)
             }
         }
         m_driveUDIS[drive] = udis;
-        for (const QString &str : qAsConst(udis)) {
+        for (const QString &str : std::as_const(udis)) {
             m_driveLetters[str] = drive;
         }
         list += udis;

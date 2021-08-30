@@ -137,7 +137,7 @@ QVariantMap DeviceBackend::allProperties() const
                                                        DBUS_INTERFACE_PROPS,
                                                        "GetAll");
 
-    for (const QString &iface : qAsConst(m_interfaces)) {
+    for (const QString &iface : std::as_const(m_interfaces)) {
         call.setArguments(QVariantList() << iface);
         QDBusPendingReply<QVariantMap> reply = QDBusConnection::systemBus().call(call);
 

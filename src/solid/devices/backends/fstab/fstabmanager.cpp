@@ -42,7 +42,7 @@ QStringList FstabManager::allDevices()
     QStringList result;
 
     result << udiPrefix();
-    for (const QString &device : qAsConst(m_deviceList)) {
+    for (const QString &device : std::as_const(m_deviceList)) {
         result << udiPrefix() + "/" + device;
     }
 
@@ -54,12 +54,12 @@ QStringList FstabManager::devicesFromQuery(const QString &parentUdi, Solid::Devi
     if ((parentUdi == udiPrefix()) || parentUdi.isEmpty()) {
         QStringList result;
         if (type == Solid::DeviceInterface::StorageAccess) {
-            for (const QString &device : qAsConst(m_deviceList)) {
+            for (const QString &device : std::as_const(m_deviceList)) {
                 result << udiPrefix() + "/" + device;
             }
             return result;
         } else if (type == Solid::DeviceInterface::NetworkShare) {
-            for (const QString &device : qAsConst(m_deviceList)) {
+            for (const QString &device : std::as_const(m_deviceList)) {
                 result << udiPrefix() + "/" + device;
             }
             return result;
@@ -132,7 +132,7 @@ void FstabManager::onMtabChanged()
 
     _k_updateDeviceList(); // devicelist is union of mtab and fstab
 
-    for (const QString &device : qAsConst(m_deviceList)) {
+    for (const QString &device : std::as_const(m_deviceList)) {
         // notify storageaccess objects via device ...
         Q_EMIT mtabChanged(device);
     }
