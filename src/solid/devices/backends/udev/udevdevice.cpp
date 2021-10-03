@@ -13,8 +13,9 @@
 #include "udevportablemediaplayer.h"
 #include "udevprocessor.h"
 
-#include <linux/if_arp.h>
 #include <sys/socket.h>
+#include <sys/types.h>
+#include <linux/if_arp.h>
 
 using namespace Solid::Backends::UDev;
 
