@@ -86,6 +86,7 @@ bool UPowerDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type
         case UP_DEVICE_KIND_KEYBOARD:
         case UP_DEVICE_KIND_PDA:
         case UP_DEVICE_KIND_PHONE:
+        case UP_DEVICE_KIND_TABLET:
         case UP_DEVICE_KIND_GAMING_INPUT:
             return true;
         case UP_DEVICE_KIND_UNKNOWN:
@@ -97,7 +98,6 @@ bool UPowerDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type
         case UP_DEVICE_KIND_LINE_POWER:
         case UP_DEVICE_KIND_MONITOR:
         case UP_DEVICE_KIND_MEDIA_PLAYER:
-        case UP_DEVICE_KIND_TABLET:
         case UP_DEVICE_KIND_COMPUTER:
         case UP_DEVICE_KIND_LAST:
             return false;
