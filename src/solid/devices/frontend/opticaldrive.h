@@ -100,7 +100,7 @@ public:
     /**
      * Destroys an OpticalDrive object.
      */
-    virtual ~OpticalDrive();
+    ~OpticalDrive() override;
 
     /**
      * Get the Solid::DeviceInterface::Type of the OpticalDrive device interface.

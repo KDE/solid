@@ -23,7 +23,7 @@ class FakeProcessor : public FakeDeviceInterface, public Solid::Ifaces::Processo
 
 public:
     explicit FakeProcessor(FakeDevice *device);
-    ~FakeProcessor();
+    ~FakeProcessor() override;
 
 public Q_SLOTS:
     int number() const override;

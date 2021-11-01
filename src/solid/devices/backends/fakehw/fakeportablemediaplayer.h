@@ -24,7 +24,7 @@ class FakePortableMediaPlayer : public FakeDeviceInterface, virtual public Solid
 
 public:
     explicit FakePortableMediaPlayer(FakeDevice *device);
-    ~FakePortableMediaPlayer();
+    ~FakePortableMediaPlayer() override;
 
 public Q_SLOTS:
     QStringList supportedProtocols() const override;

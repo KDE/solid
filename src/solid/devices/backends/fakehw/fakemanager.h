@@ -32,7 +32,7 @@ class FakeManager : public Solid::Ifaces::DeviceManager
     Q_OBJECT
 public:
     FakeManager(QObject *parent, const QString &xmlFile);
-    virtual ~FakeManager();
+    ~FakeManager() override;
 
     QString udiPrefix() const override;
     QSet<Solid::DeviceInterface::Type> supportedInterfaces() const override;

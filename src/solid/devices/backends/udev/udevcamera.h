@@ -23,7 +23,7 @@ class Camera : public DeviceInterface, virtual public Solid::Ifaces::Camera
 
 public:
     Camera(UDevDevice *device);
-    virtual ~Camera();
+    ~Camera() override;
 
     QStringList supportedProtocols() const override;
     QStringList supportedDrivers(QString protocol = QString()) const override;

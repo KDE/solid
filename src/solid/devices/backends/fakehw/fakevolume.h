@@ -23,7 +23,7 @@ class FakeVolume : public FakeBlock, virtual public Solid::Ifaces::StorageVolume
 
 public:
     explicit FakeVolume(FakeDevice *device);
-    virtual ~FakeVolume();
+    ~FakeVolume() override;
 
 public Q_SLOTS:
     bool isIgnored() const override;

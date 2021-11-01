@@ -64,7 +64,7 @@ public:
     /**
      * Destroys a Processor object.
      */
-    virtual ~GenericInterface();
+    ~GenericInterface() override;
 
     /**
      * Get the Solid::DeviceInterface::Type of the GenericInterface device interface.

@@ -24,7 +24,7 @@ class RootDevice : public Solid::Ifaces::Device
 public:
     explicit RootDevice(const QString &udi, const QString &parentUdi = QString());
 
-    virtual ~RootDevice();
+    ~RootDevice() override;
 
     QString udi() const override;
     QString parentUdi() const override;

@@ -23,7 +23,7 @@ class UDevManager : public Solid::Ifaces::DeviceManager
 
 public:
     UDevManager(QObject *parent);
-    virtual ~UDevManager();
+    ~UDevManager() override;
 
     QString udiPrefix() const override;
     QSet<Solid::DeviceInterface::Type> supportedInterfaces() const override;

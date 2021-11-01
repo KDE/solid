@@ -29,7 +29,7 @@ class OpticalDisc : public StorageVolume, virtual public Solid::Ifaces::OpticalD
 
 public:
     OpticalDisc(Device *dev);
-    virtual ~OpticalDisc();
+    ~OpticalDisc() override;
 
     qulonglong capacity() const override;
     bool isRewritable() const override;

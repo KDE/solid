@@ -50,7 +50,7 @@ public:
     /**
      * Destroys a StorageAccess object.
      */
-    virtual ~StorageAccess();
+    ~StorageAccess() override;
 
     /**
      * Get the Solid::DeviceInterface::Type of the StorageAccess device interface.

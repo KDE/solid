@@ -26,7 +26,7 @@ class FstabManager : public Solid::Ifaces::DeviceManager
 
 public:
     explicit FstabManager(QObject *parent);
-    virtual ~FstabManager();
+    ~FstabManager() override;
 
     QString udiPrefix() const override;
     QSet<Solid::DeviceInterface::Type> supportedInterfaces() const override;

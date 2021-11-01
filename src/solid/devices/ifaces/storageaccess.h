@@ -26,7 +26,7 @@ public:
     /**
      * Destroys a StorageVolume object.
      */
-    virtual ~StorageAccess();
+    ~StorageAccess() override;
 
     /**
      * Indicates if this volume is mounted.

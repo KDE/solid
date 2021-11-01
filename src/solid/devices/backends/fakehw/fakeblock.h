@@ -23,7 +23,7 @@ class FakeBlock : public FakeDeviceInterface, virtual public Solid::Ifaces::Bloc
 
 public:
     explicit FakeBlock(FakeDevice *device);
-    ~FakeBlock();
+    ~FakeBlock() override;
 
 public Q_SLOTS:
     int deviceMajor() const override;

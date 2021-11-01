@@ -25,7 +25,7 @@ class DevicePrivate : public QObject, public QSharedData
     Q_OBJECT
 public:
     explicit DevicePrivate(const QString &udi);
-    ~DevicePrivate();
+    ~DevicePrivate() override;
 
     QString udi() const
     {

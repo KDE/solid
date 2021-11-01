@@ -47,7 +47,7 @@ public:
     /**
      * Destroys a Block object.
      */
-    virtual ~Block();
+    ~Block() override;
 
     /**
      * Get the Solid::DeviceInterface::Type of the Block device interface.

@@ -28,7 +28,7 @@ class StorageDrive : public Block, virtual public Solid::Ifaces::StorageDrive
 
 public:
     StorageDrive(Device *dev);
-    virtual ~StorageDrive();
+    ~StorageDrive() override;
 
     qulonglong size() const override;
     bool isHotpluggable() const override;

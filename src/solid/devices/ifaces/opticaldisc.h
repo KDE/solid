@@ -25,7 +25,7 @@ public:
     /**
      * Destroys an OpticalDisc object.
      */
-    virtual ~OpticalDisc();
+    ~OpticalDisc() override;
 
     /**
      * Retrieves the content types this disc contains (audio, video,

@@ -48,7 +48,7 @@ public:
     /**
      * Destroys a NetworkShare object.
      */
-    virtual ~NetworkShare();
+    ~NetworkShare() override;
 
     /**
      * This enum type defines the type of networkShare device can be.

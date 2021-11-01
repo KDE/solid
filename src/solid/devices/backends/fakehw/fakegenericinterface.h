@@ -23,7 +23,7 @@ class FakeGenericInterface : public FakeDeviceInterface, public Solid::Ifaces::G
 
 public:
     explicit FakeGenericInterface(FakeDevice *device);
-    ~FakeGenericInterface();
+    ~FakeGenericInterface() override;
 
     QVariant property(const QString &key) const override;
     QMap<QString, QVariant> allProperties() const override;

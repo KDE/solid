@@ -62,7 +62,7 @@ public:
     /**
      * Destroys a StorageVolume object.
      */
-    virtual ~StorageVolume();
+    ~StorageVolume() override;
 
     /**
      * Get the Solid::DeviceInterface::Type of the StorageVolume device interface.

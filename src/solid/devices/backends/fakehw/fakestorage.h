@@ -23,7 +23,7 @@ class FakeStorage : public FakeBlock, virtual public Solid::Ifaces::StorageDrive
 
 public:
     explicit FakeStorage(FakeDevice *device);
-    ~FakeStorage();
+    ~FakeStorage() override;
 
 public Q_SLOTS:
     Solid::StorageDrive::Bus bus() const override;

@@ -23,7 +23,7 @@ class FakeStorageAccess : public FakeDeviceInterface, virtual public Solid::Ifac
 
 public:
     FakeStorageAccess(FakeDevice *device);
-    virtual ~FakeStorageAccess();
+    ~FakeStorageAccess() override;
 
     bool isAccessible() const override;
     QString filePath() const override;

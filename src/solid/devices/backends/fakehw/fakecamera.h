@@ -23,7 +23,7 @@ class FakeCamera : public FakeDeviceInterface, virtual public Solid::Ifaces::Cam
 
 public:
     explicit FakeCamera(FakeDevice *device);
-    ~FakeCamera();
+    ~FakeCamera() override;
 
 public Q_SLOTS:
     QStringList supportedProtocols() const override;

@@ -25,7 +25,7 @@ class FstabDevice : public Solid::Ifaces::Device
 public:
     FstabDevice(QString uid);
 
-    virtual ~FstabDevice();
+    ~FstabDevice() override;
 
     QString udi() const override;
 

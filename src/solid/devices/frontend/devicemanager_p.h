@@ -29,7 +29,7 @@ class DeviceManagerPrivate : public DeviceNotifier, public ManagerBasePrivate
     Q_OBJECT
 public:
     DeviceManagerPrivate();
-    ~DeviceManagerPrivate();
+    ~DeviceManagerPrivate() override;
 
     DevicePrivate *findRegisteredDevice(const QString &udi);
 

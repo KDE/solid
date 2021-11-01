@@ -23,7 +23,7 @@ class FakeCdrom : public FakeStorage, virtual public Solid::Ifaces::OpticalDrive
 
 public:
     explicit FakeCdrom(FakeDevice *device);
-    virtual ~FakeCdrom();
+    ~FakeCdrom() override;
 
 public Q_SLOTS:
     Solid::OpticalDrive::MediumTypes supportedMedia() const override;

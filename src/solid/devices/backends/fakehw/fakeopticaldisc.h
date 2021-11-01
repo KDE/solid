@@ -23,7 +23,7 @@ class FakeOpticalDisc : public FakeVolume, virtual public Solid::Ifaces::Optical
 
 public:
     explicit FakeOpticalDisc(FakeDevice *device);
-    virtual ~FakeOpticalDisc();
+    ~FakeOpticalDisc() override;
 
 public Q_SLOTS:
     Solid::OpticalDisc::ContentTypes availableContent() const override;

@@ -25,7 +25,7 @@ class UPowerDevice : public Solid::Ifaces::Device
     Q_OBJECT
 public:
     UPowerDevice(const QString &udi);
-    virtual ~UPowerDevice();
+    ~UPowerDevice() override;
 
     QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type) override;
     bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const override;

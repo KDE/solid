@@ -23,7 +23,7 @@ class StorageVolume : public Block, virtual public Solid::Ifaces::StorageVolume
 
 public:
     StorageVolume(Device *device);
-    virtual ~StorageVolume();
+    ~StorageVolume() override;
 
     QString encryptedContainerUdi() const override;
     qulonglong size() const override;

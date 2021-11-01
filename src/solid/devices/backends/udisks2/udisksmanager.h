@@ -33,7 +33,7 @@ public:
     QStringList allDevices() override;
     QSet<Solid::DeviceInterface::Type> supportedInterfaces() const override;
     QString udiPrefix() const override;
-    virtual ~Manager();
+    ~Manager() override;
 
 private Q_SLOTS:
     void slotInterfacesAdded(const QDBusObjectPath &object_path, const VariantMapMap &interfaces_and_properties);

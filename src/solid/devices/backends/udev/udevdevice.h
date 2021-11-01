@@ -24,7 +24,7 @@ class UDevDevice : public Solid::Ifaces::Device
 
 public:
     UDevDevice(const UdevQt::Device device);
-    virtual ~UDevDevice();
+    ~UDevDevice() override;
 
     QString udi() const override;
 

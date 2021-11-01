@@ -52,7 +52,7 @@ public:
     /**
      * Destroys a Camera object.
      */
-    virtual ~Camera();
+    ~Camera() override;
 
     /**
      * Get the Solid::DeviceInterface::Type of the Camera device interface.

@@ -66,7 +66,7 @@ public:
     /**
      * Destroys a DeviceInterface object.
      */
-    virtual ~DeviceInterface();
+    ~DeviceInterface() override;
 
     /**
      * Indicates if this device interface is valid.

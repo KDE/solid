@@ -25,7 +25,7 @@ public:
     /**
      * Destroys a Battery object.
      */
-    virtual ~Battery();
+    ~Battery() override;
 
     /**
      * Indicates if this battery is currently present in its bay.

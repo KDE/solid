@@ -25,7 +25,7 @@ class Block : public DeviceInterface, virtual public Solid::Ifaces::Block
 
 public:
     Block(Device *dev);
-    virtual ~Block();
+    ~Block() override;
 
     QString device() const override;
     int deviceMinor() const override;

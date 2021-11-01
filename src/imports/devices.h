@@ -65,7 +65,7 @@ class Devices : public QObject
 
 public:
     explicit Devices(QObject *parent = nullptr);
-    ~Devices();
+    ~Devices() override;
 
 Q_SIGNALS:
     /**

@@ -40,7 +40,7 @@ public:
      */
     static QSharedPointer<DevicesQueryPrivate> forQuery(const QString &query);
 
-    ~DevicesQueryPrivate();
+    ~DevicesQueryPrivate() override;
 
     /**
      * Returns a list of devices that match the query

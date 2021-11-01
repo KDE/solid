@@ -26,7 +26,7 @@ class FstabStorageAccess : public QObject, public Solid::Ifaces::StorageAccess
 public:
     explicit FstabStorageAccess(Solid::Backends::Fstab::FstabDevice *device);
 
-    virtual ~FstabStorageAccess();
+    ~FstabStorageAccess() override;
 
     bool isAccessible() const override;
 

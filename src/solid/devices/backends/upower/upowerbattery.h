@@ -25,7 +25,7 @@ class Battery : public DeviceInterface, virtual public Solid::Ifaces::Battery
 
 public:
     Battery(UPowerDevice *device);
-    virtual ~Battery();
+    ~Battery() override;
 
     bool isPresent() const override;
 

@@ -79,7 +79,7 @@ public:
     /**
      * Destroys a StorageDrive object.
      */
-    virtual ~StorageDrive();
+    ~StorageDrive() override;
 
     /**
      * Get the Solid::DeviceInterface::Type of the StorageDrive device interface.

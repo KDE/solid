@@ -24,7 +24,7 @@ class FstabWatcher : public QObject
     Q_OBJECT
 public:
     FstabWatcher();
-    virtual ~FstabWatcher();
+    ~FstabWatcher() override;
 
     static FstabWatcher *instance();
 

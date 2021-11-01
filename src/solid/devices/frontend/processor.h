@@ -71,7 +71,7 @@ public:
     /**
      * Destroys a Processor object.
      */
-    virtual ~Processor();
+    ~Processor() override;
 
     /**
      * Get the Solid::DeviceInterface::Type of the Processor device interface.

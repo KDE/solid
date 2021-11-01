@@ -134,7 +134,7 @@ public:
     /**
      * Destroys a Battery object.
      */
-    virtual ~Battery();
+    ~Battery() override;
 
     /**
      * Get the Solid::DeviceInterface::Type of the Battery device interface.

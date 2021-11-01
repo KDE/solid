@@ -27,7 +27,7 @@ class StorageAccess : public DeviceInterface, virtual public Solid::Ifaces::Stor
 
 public:
     StorageAccess(Device *device);
-    virtual ~StorageAccess();
+    ~StorageAccess() override;
 
     bool isAccessible() const override;
     QString filePath() const override;

@@ -25,7 +25,7 @@ class FakeBattery : public FakeDeviceInterface, virtual public Solid::Ifaces::Ba
 
 public:
     explicit FakeBattery(FakeDevice *device);
-    virtual ~FakeBattery();
+    ~FakeBattery() override;
 
 public Q_SLOTS:
     bool isPresent() const override;

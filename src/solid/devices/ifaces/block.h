@@ -26,7 +26,7 @@ public:
     /**
      * Destroys a Block object.
      */
-    virtual ~Block();
+    ~Block() override;
 
     /**
      * Retrieves the major number of the node file to interact with

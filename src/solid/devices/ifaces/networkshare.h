@@ -26,7 +26,7 @@ public:
     /**
      * Destroys a NetworkShare object.
      */
-    virtual ~NetworkShare();
+    ~NetworkShare() override;
 
     /**
      * Retrieves the type of network

@@ -37,7 +37,7 @@ public:
     /**
      * Destructs a DeviceManager object
      */
-    virtual ~DeviceManager();
+    ~DeviceManager() override;
 
     /**
      * Retrieves the prefix used for the UDIs off all the devices

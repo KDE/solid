@@ -24,7 +24,7 @@ class OpticalDrive : public StorageDrive, virtual public Solid::Ifaces::OpticalD
 
 public:
     OpticalDrive(Device *device);
-    virtual ~OpticalDrive();
+    ~OpticalDrive() override;
 
 Q_SIGNALS:
     void ejectPressed(const QString &udi) override;

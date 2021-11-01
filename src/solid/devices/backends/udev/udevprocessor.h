@@ -25,7 +25,7 @@ class Processor : public DeviceInterface, virtual public Solid::Ifaces::Processo
 
 public:
     Processor(UDevDevice *device);
-    virtual ~Processor();
+    ~Processor() override;
 
     int number() const override;
     int maxSpeed() const override;

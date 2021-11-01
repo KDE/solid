@@ -32,7 +32,7 @@ public:
     static void destroyBackend(const QString &udi);
 
     DeviceBackend(const QString &udi);
-    ~DeviceBackend();
+    ~DeviceBackend() override;
 
     QVariant prop(const QString &key) const;
     bool propertyExists(const QString &key) const;

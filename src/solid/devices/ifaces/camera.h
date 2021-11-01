@@ -31,7 +31,7 @@ public:
     /**
      * Destroys a Camera object.
      */
-    virtual ~Camera();
+    ~Camera() override;
 
     /**
      * Retrieves known protocols this device can speak.  This list may be dependent

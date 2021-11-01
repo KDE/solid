@@ -23,7 +23,7 @@ class FakeDevice : public Solid::Ifaces::Device
 public:
     FakeDevice(const QString &udi, const QMap<QString, QVariant> &propertyMap);
     FakeDevice(const FakeDevice &dev);
-    ~FakeDevice();
+    ~FakeDevice() override;
 
 public Q_SLOTS:
     QString udi() const override;

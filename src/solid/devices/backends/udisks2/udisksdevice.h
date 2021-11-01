@@ -30,7 +30,7 @@ class Device : public Solid::Ifaces::Device
     Q_OBJECT
 public:
     Device(const QString &udi);
-    virtual ~Device();
+    ~Device() override;
 
     QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type) override;
     bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const override;

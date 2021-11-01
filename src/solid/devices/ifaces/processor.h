@@ -23,7 +23,7 @@ public:
     /**
      * Destroys a Processor object.
      */
-    virtual ~Processor();
+    ~Processor() override;
 
     /**
      * Retrieves the processor number in the system.

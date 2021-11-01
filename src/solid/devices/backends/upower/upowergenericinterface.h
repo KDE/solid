@@ -26,7 +26,7 @@ class GenericInterface : public DeviceInterface, virtual public Solid::Ifaces::G
 
 public:
     GenericInterface(UPowerDevice *device);
-    virtual ~GenericInterface();
+    ~GenericInterface() override;
 
     QVariant property(const QString &key) const override;
     QMap<QString, QVariant> allProperties() const override;

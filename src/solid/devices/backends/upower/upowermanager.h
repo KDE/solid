@@ -26,7 +26,7 @@ class UPowerManager : public Solid::Ifaces::DeviceManager
 
 public:
     UPowerManager(QObject *parent);
-    virtual ~UPowerManager();
+    ~UPowerManager() override;
     QObject *createDevice(const QString &udi) override;
     QStringList devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type) override;
     QStringList allDevices() override;

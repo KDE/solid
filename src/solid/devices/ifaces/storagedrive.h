@@ -26,7 +26,7 @@ public:
     /**
      * Destroys a StorageDrive object.
      */
-    virtual ~StorageDrive();
+    ~StorageDrive() override;
 
     /**
      * Retrieves the type of physical interface this storage device is

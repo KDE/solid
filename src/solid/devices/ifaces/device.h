@@ -41,7 +41,7 @@ public:
     /**
      * Destruct the Device object
      */
-    virtual ~Device();
+    ~Device() override;
 
     /**
      * Retrieves the Universal Device Identifier (UDI) of the Device.

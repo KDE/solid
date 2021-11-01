@@ -24,7 +24,7 @@ class FakeNetworkShare : public FakeDeviceInterface, public Solid::Ifaces::Netwo
 public:
     explicit FakeNetworkShare(FakeDevice *device);
 
-    virtual ~FakeNetworkShare();
+    ~FakeNetworkShare() override;
 
     Solid::NetworkShare::ShareType type() const override;
 

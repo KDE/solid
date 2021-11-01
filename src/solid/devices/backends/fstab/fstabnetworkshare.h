@@ -26,7 +26,7 @@ class FstabNetworkShare : public QObject, public Solid::Ifaces::NetworkShare
 public:
     explicit FstabNetworkShare(Solid::Backends::Fstab::FstabDevice *device);
 
-    virtual ~FstabNetworkShare();
+    ~FstabNetworkShare() override;
 
     Solid::NetworkShare::ShareType type() const override;
 

@@ -26,7 +26,7 @@ public:
     /**
      * Destroys a StorageVolume object.
      */
-    virtual ~StorageVolume();
+    ~StorageVolume() override;
 
     /**
      * Indicates if this volume should be ignored by applications.
