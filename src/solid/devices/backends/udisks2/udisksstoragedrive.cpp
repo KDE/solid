@@ -32,8 +32,8 @@ qulonglong StorageDrive::size() const
 
 bool StorageDrive::isHotpluggable() const
 {
-    const Solid::StorageDrive::Bus _bus = bus();
 #if UDEV_FOUND
+    const Solid::StorageDrive::Bus _bus = bus();
     /* clang-format off */
     return _bus == Solid::StorageDrive::Usb
         || _bus == Solid::StorageDrive::Ieee1394
