@@ -105,6 +105,8 @@ static QString baseMountPoint(const QByteArray &dev)
 
         mnt_free_table(table);
     }
+#else
+    Q_UNUSED(dev);
 #endif
 
     return mountPoint;
