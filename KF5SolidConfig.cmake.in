@@ -27,6 +27,10 @@ if (NOT @BUILD_SHARED_LIBS@)
         find_dependency(Qt5DBus @REQUIRED_QT_VERSION@)
     endif()
 
+    if (@HAVE_LIBMOUNT@)
+        find_dependency(LibMount)
+    endif()
+
     if (@UDev_FOUND@)
         find_dependency(UDev)
     endif()
