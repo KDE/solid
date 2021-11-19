@@ -576,9 +576,17 @@ QString Device::volumeDescription() const
         description = tr("Floppy Disk");
     } else {
         if (drive_is_removable) {
-            description = tr("%1 Removable Media", "%1 is the size").arg(size_str);
+            if (storageVolume.size() > 0) {
+                description = tr("%1 Removable Media", "%1 is the size").arg(size_str);
+            } else {
+                description = tr("Removable Media");
+            }
         } else {
-            description = tr("%1 Media", "%1 is the size").arg(size_str);
+            if (storageVolume.size() > 0) {
+                description = tr("%1 Media", "%1 is the size").arg(size_str);
+            } else {
+                description = tr("Storage Media");
+            }
         }
     }
 
