@@ -26,15 +26,15 @@ ecm_generate_export_header(KF5Solid
 add_library(KF5::Solid ALIAS KF5Solid)
 
 # Apps must include <Solid/File> or <solid/file.h>
-target_include_directories(KF5Solid INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/Solid>")
+target_include_directories(KF5Solid INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/Solid>")
 
-target_link_libraries(KF5Solid PUBLIC Qt5::Core
-                               PRIVATE Qt5::Xml
-                                       Qt5::Gui
+target_link_libraries(KF5Solid PUBLIC Qt${QT_MAJOR_VERSION}::Core
+                               PRIVATE Qt${QT_MAJOR_VERSION}::Xml
+                                       Qt${QT_MAJOR_VERSION}::Gui
                                        ${solid_OPTIONAL_LIBS}
  )
-if (TARGET Qt5::DBus)
-  target_link_libraries(KF5Solid PRIVATE Qt5::DBus)
+if (TARGET Qt${QT_MAJOR_VERSION}::DBus)
+  target_link_libraries(KF5Solid PRIVATE Qt${QT_MAJOR_VERSION}::DBus)
 endif()
 
 set_target_properties(KF5Solid PROPERTIES  VERSION ${SOLID_VERSION}
@@ -94,7 +94,7 @@ if(WITH_NEW_SOLID_JOB AND WITH_NEW_POWER_ASYNC_API)
     )
 endif()
 
-install(FILES ${Solid_CamelCase_HEADERS} DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/Solid/Solid COMPONENT Devel)
+install(FILES ${Solid_CamelCase_HEADERS} DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/Solid/Solid COMPONENT Devel)
 
 install(TARGETS KF5Solid EXPORT KF5SolidTargets ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
 
@@ -104,10 +104,10 @@ if (BUILD_TESTING)
   add_library(KF5Solid_static STATIC ${solid_LIB_SRCS})
   set_target_properties(KF5Solid_static PROPERTIES COMPILE_FLAGS -DSOLID_STATIC_DEFINE=1)
 
-  target_link_libraries(KF5Solid_static PUBLIC Qt5::Core)
-  target_link_libraries(KF5Solid_static PRIVATE Qt5::Xml Qt5::Gui ${solid_OPTIONAL_LIBS})
-  if (TARGET Qt5::DBus)
-    target_link_libraries(KF5Solid_static PRIVATE Qt5::DBus)
+  target_link_libraries(KF5Solid_static PUBLIC Qt${QT_MAJOR_VERSION}::Core)
+  target_link_libraries(KF5Solid_static PRIVATE Qt${QT_MAJOR_VERSION}::Xml Qt${QT_MAJOR_VERSION}::Gui ${solid_OPTIONAL_LIBS})
+  if (TARGET Qt${QT_MAJOR_VERSION}::DBus)
+    target_link_libraries(KF5Solid_static PRIVATE Qt${QT_MAJOR_VERSION}::DBus)
   endif()
   target_include_directories(KF5Solid_static PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR};${CMAKE_CURRENT_SOURCE_DIR}/..;${CMAKE_CURRENT_BINARY_DIR}/..>")
 endif()
@@ -117,7 +117,7 @@ endif()
 install(FILES
   ${CMAKE_CURRENT_BINARY_DIR}/solid_export.h
   ${Solid_HEADERS}
-  DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/Solid/solid COMPONENT Devel
+  DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/Solid/solid COMPONENT Devel
 )
 
 if(BUILD_QCH)
@@ -147,5 +147,5 @@ if(BUILD_QCH)
 endif()
 
 include(ECMGeneratePriFile)
-ecm_generate_pri_file(BASE_NAME Solid LIB_NAME KF5Solid DEPS "core" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KDE_INSTALL_INCLUDEDIR_KF5}/Solid)
+ecm_generate_pri_file(BASE_NAME Solid LIB_NAME KF5Solid DEPS "core" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KDE_INSTALL_INCLUDEDIR_KF}/Solid)
 install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})

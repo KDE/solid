@@ -18,15 +18,15 @@ include(KDEGitCommitHooks)
 include(ECMQtDeclareLoggingCategory)
 
 set(REQUIRED_QT_VERSION 5.15.2)
-find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Xml Gui)
+find_package(Qt${QT_MAJOR_VERSION} ${REQUIRED_QT_VERSION} CONFIG REQUIRED Xml Gui)
 
 # Android has no DBus, and Windows & Mac have backends that don't use DBus
 if(NOT ANDROID AND NOT WIN32 AND NOT APPLE)
-    find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED DBus)
+    find_package(Qt${QT_MAJOR_VERSION} ${REQUIRED_QT_VERSION} CONFIG REQUIRED DBus)
 endif()
 
 if(WIN32)
-    find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Network)
+    find_package(Qt${QT_MAJOR_VERSION} ${REQUIRED_QT_VERSION} CONFIG REQUIRED Network)
 endif()
 
 
@@ -171,7 +171,7 @@ install(FILES  "${CMAKE_CURRENT_BINARY_DIR}/KF5SolidConfig.cmake"
 
 install(EXPORT KF5SolidTargets  DESTINATION "${CMAKECONFIG_INSTALL_DIR}"  FILE KF5SolidTargets.cmake  NAMESPACE KF5:: )
 
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/solid_version.h  DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}  COMPONENT Devel )
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/solid_version.h  DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}  COMPONENT Devel )
 
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
 

@@ -17,14 +17,14 @@
 set(SOLID_DBUS_INTERFACES_DIR "@PACKAGE_KDE_INSTALL_DBUSINTERFACEDIR@")
 
 include(CMakeFindDependencyMacro)
-find_dependency(Qt5Core @REQUIRED_QT_VERSION@)
+find_dependency(Qt@QT_MAJOR_VERSION@Core @REQUIRED_QT_VERSION@)
 
 if (NOT @BUILD_SHARED_LIBS@)
-    find_dependency(Qt5Xml @REQUIRED_QT_VERSION@)
-    find_dependency(Qt5Gui @REQUIRED_QT_VERSION@)
+    find_dependency(Qt@QT_MAJOR_VERSION@Xml @REQUIRED_QT_VERSION@)
+    find_dependency(Qt@QT_MAJOR_VERSION@Gui @REQUIRED_QT_VERSION@)
 
-    if (@Qt5DBus_FOUND@)
-        find_dependency(Qt5DBus @REQUIRED_QT_VERSION@)
+    if (@Qt@QT_MAJOR_VERSION@DBus_FOUND@)
+        find_dependency(Qt@QT_MAJOR_VERSION@DBus @REQUIRED_QT_VERSION@)
     endif()
 
     if (@HAVE_LIBMOUNT@)
