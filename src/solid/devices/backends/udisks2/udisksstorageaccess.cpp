@@ -133,7 +133,12 @@ QString StorageAccess::filePath() const
         return {};
     }
 
-    const QString potentialMountPoint = QFile::decodeName(mntPoints.first());
+    QByteArray first = mntPoints.first();
+    if (first.endsWith('\x00')) {
+        first.chop(1);
+    }
+    const QString potentialMountPoint = QFile::decodeName(first);
+
     if (mntPoints.size() == 1) {
         return potentialMountPoint;
     }
