@@ -74,7 +74,7 @@ FstabDevice::FstabDevice(QString uid)
 
     if (m_iconName.isEmpty()) {
         if (m_storageType == StorageType::NetworkShare) {
-            m_iconName = QLatin1String("network-server");
+            m_iconName = QLatin1String("folder-cloud");
         } else if (m_storageType == StorageType::Encrypted) {
             m_iconName = QLatin1String("folder-decrypted");
         } else {
