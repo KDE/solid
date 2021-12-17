@@ -32,14 +32,14 @@ public:
 
 Q_SIGNALS:
     /**
-     * This signal is emitted when a new device appear in the underlying system.
+     * This signal is emitted when a new device appears in the underlying system.
      *
      * @param udi the new device UDI
      */
     void deviceAdded(const QString &udi);
 
     /**
-     * This signal is emitted when a device disappear from the underlying system.
+     * This signal is emitted when a device disappears from the underlying system.
      *
      * @param udi the old device UDI
      */
