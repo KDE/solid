@@ -83,8 +83,8 @@ static QString baseMountPoint(const QByteArray &dev)
     // UDisks "MountPoints" property contains multiple paths, this happens with
     // devices with bind mounts; try finding the "base" mount point
     if (struct libmnt_table *table = mnt_new_table()) {
-        // This parses "/proc/self/mountinfo" by default
-        if (mnt_table_parse_mtab(table, nullptr) == 0) {
+        // This parses "/etc/mtab" if present or "/proc/self/mountinfo" by default
+        if (mnt_table_parse_mtab(table, "/proc/self/mountinfo") == 0) {
             // BACKWARD because the fs's we're interested in, /dev/sdXY, are typically at the end
             struct libmnt_iter *itr = mnt_new_iter(MNT_ITER_BACKWARD);
             struct libmnt_fs *fs;
