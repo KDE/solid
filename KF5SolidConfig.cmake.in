@@ -23,7 +23,7 @@ if (NOT @BUILD_SHARED_LIBS@)
     find_dependency(Qt@QT_MAJOR_VERSION@Xml @REQUIRED_QT_VERSION@)
     find_dependency(Qt@QT_MAJOR_VERSION@Gui @REQUIRED_QT_VERSION@)
 
-    if (@Qt@QT_MAJOR_VERSION@DBus_FOUND@)
+    if ("@Qt5DBus_FOUND@" OR "@Qt6DBus_FOUND@")
         find_dependency(Qt@QT_MAJOR_VERSION@DBus @REQUIRED_QT_VERSION@)
     endif()
 
