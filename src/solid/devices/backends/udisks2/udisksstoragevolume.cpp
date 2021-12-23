@@ -79,10 +79,16 @@ Solid::StorageVolume::UsageType StorageVolume::usage() const
 
 bool StorageVolume::isIgnored() const
 {
-    const Solid::StorageVolume::UsageType usg = usage();
     if (m_device->prop("HintIgnore").toBool()) {
         return true;
     }
+
+    const QStringList mountOptions = m_device->prop("UserspaceMountOptions").toStringList();
+    if (mountOptions.contains(QLatin1String("x-gdu.hide"))) {
+        return true;
+    }
+
+    const Solid::StorageVolume::UsageType usg = usage();
 
     /* clang-format off */
     if (m_device->isSwap()

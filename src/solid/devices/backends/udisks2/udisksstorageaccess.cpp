@@ -155,6 +155,11 @@ bool StorageAccess::isIgnored() const
         return true;
     }
 
+    const QStringList mountOptions = m_device->prop("UserspaceMountOptions").toStringList();
+    if (mountOptions.contains(QLatin1String("x-gdu.hide"))) {
+        return true;
+    }
+
     const QString path = filePath();
 
     const bool inUserPath = (path.startsWith(QLatin1String("/media/")) //
