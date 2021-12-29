@@ -100,25 +100,27 @@ bool Battery::isPowerSupply() const
 Solid::Battery::ChargeState Battery::chargeState() const
 {
     Solid::Battery::ChargeState result = Solid::Battery::NoCharge;
-    const uint state = m_device.data()->prop("State").toUInt();
+    const UpDeviceState state = static_cast<UpDeviceState>(m_device.data()->prop("State").toUInt());
     switch (state) {
-    case 0:
+    case UP_DEVICE_STATE_UNKNOWN:
         result = Solid::Battery::NoCharge; // stable or unknown
         break;
-    case 1:
+    case UP_DEVICE_STATE_CHARGING:
         result = Solid::Battery::Charging;
         break;
-    case 2:
+    case UP_DEVICE_STATE_DISCHARGING:
         result = Solid::Battery::Discharging;
         break;
-    case 3: // TODO "Empty"
+    case UP_DEVICE_STATE_EMPTY: // TODO "Empty"
         break;
-    case 4:
+    case UP_DEVICE_STATE_FULLY_CHARGED:
         result = Solid::Battery::FullyCharged;
         break;
-    case 5: // TODO "Pending charge"
+    case UP_DEVICE_STATE_PENDING_CHARGE: // TODO "Pending charge"
         break;
-    case 6: // TODO "Pending discharge"
+    case UP_DEVICE_STATE_PENDING_DISCHARGE: // TODO "Pending discharge"
+        break;
+    case UP_DEVICE_STATE_LAST:
         break;
     }
     return result;
@@ -136,23 +138,26 @@ qlonglong Battery::timeToFull() const
 
 Solid::Battery::Technology Battery::technology() const
 {
-    const uint tech = m_device.data()->prop("Technology").toUInt();
+    const UpDeviceTechnology tech = static_cast<UpDeviceTechnology>(m_device.data()->prop("Technology").toUInt());
     switch (tech) {
-    case 1:
+    case UP_DEVICE_TECHNOLOGY_UNKNOWN:
+        return Solid::Battery::UnknownTechnology;
+    case UP_DEVICE_TECHNOLOGY_LITHIUM_ION:
         return Solid::Battery::LithiumIon;
-    case 2:
+    case UP_DEVICE_TECHNOLOGY_LITHIUM_POLYMER:
         return Solid::Battery::LithiumPolymer;
-    case 3:
+    case UP_DEVICE_TECHNOLOGY_LITHIUM_IRON_PHOSPHATE:
         return Solid::Battery::LithiumIronPhosphate;
-    case 4:
+    case UP_DEVICE_TECHNOLOGY_LEAD_ACID:
         return Solid::Battery::LeadAcid;
-    case 5:
+    case UP_DEVICE_TECHNOLOGY_NICKEL_CADMIUM:
         return Solid::Battery::NickelCadmium;
-    case 6:
+    case UP_DEVICE_TECHNOLOGY_NICKEL_METAL_HYDRIDE:
         return Solid::Battery::NickelMetalHydride;
-    default:
+    case UP_DEVICE_TECHNOLOGY_LAST:
         return Solid::Battery::UnknownTechnology;
     }
+    return Solid::Battery::UnknownTechnology;
 }
 
 double Battery::energy() const

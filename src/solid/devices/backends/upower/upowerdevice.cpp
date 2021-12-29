@@ -74,7 +74,7 @@ QObject *UPowerDevice::createDeviceInterface(const Solid::DeviceInterface::Type 
 
 bool UPowerDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type) const
 {
-    const uint uptype = prop("Type").toUInt();
+    const UpDeviceKind uptype = static_cast<UpDeviceKind>(prop("Type").toUInt());
     switch (type) {
     case Solid::DeviceInterface::GenericInterface:
         return true;
@@ -132,23 +132,26 @@ QString UPowerDevice::description() const
 
 QString UPowerDevice::batteryTechnology() const
 {
-    const uint tech = prop("Technology").toUInt();
+    const UpDeviceTechnology tech = static_cast<UpDeviceTechnology>(prop("Technology").toUInt());
     switch (tech) {
-    case 1:
+    case UP_DEVICE_TECHNOLOGY_UNKNOWN:
+        return tr("Unknown", "battery technology");
+    case UP_DEVICE_TECHNOLOGY_LITHIUM_ION:
         return tr("Lithium Ion", "battery technology");
-    case 2:
+    case UP_DEVICE_TECHNOLOGY_LITHIUM_POLYMER:
         return tr("Lithium Polymer", "battery technology");
-    case 3:
+    case UP_DEVICE_TECHNOLOGY_LITHIUM_IRON_PHOSPHATE:
         return tr("Lithium Iron Phosphate", "battery technology");
-    case 4:
+    case UP_DEVICE_TECHNOLOGY_LEAD_ACID:
         return tr("Lead Acid", "battery technology");
-    case 5:
+    case UP_DEVICE_TECHNOLOGY_NICKEL_CADMIUM:
         return tr("Nickel Cadmium", "battery technology");
-    case 6:
+    case UP_DEVICE_TECHNOLOGY_NICKEL_METAL_HYDRIDE:
         return tr("Nickel Metal Hydride", "battery technology");
-    default:
+    case UP_DEVICE_TECHNOLOGY_LAST:
         return tr("Unknown", "battery technology");
     }
+    return tr("Unknown", "battery technology");
 }
 
 QString UPowerDevice::icon() const
