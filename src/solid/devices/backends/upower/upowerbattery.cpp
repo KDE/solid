@@ -63,14 +63,17 @@ Solid::Battery::BatteryType Battery::type() const
     case UP_DEVICE_KIND_GAMING_INPUT:
         result = Solid::Battery::GamingInputBattery;
         break;
-    case UP_DEVICE_KIND_UNKNOWN: {
-        // There is currently no "Bluetooth battery" type, so check if it comes from Bluez
+    case UP_DEVICE_KIND_UNKNOWN:
+        break;
+    }
+
+    if (result == Solid::Battery::UnknownBattery) {
+        // Check if the battery came from Bluez, which is more useful than unknown battery type
         if (m_device.data()->prop("NativePath").toString().startsWith(QLatin1String("/org/bluez/"))) {
             result = Solid::Battery::BluetoothBattery;
         }
-        break;
     }
-    }
+
     return result;
 }
 
