@@ -108,6 +108,7 @@ bool UDevManager::Private::checkOfInterest(const UdevQt::Device &device)
         if (device.deviceProperty("ID_INPUT_MOUSE").toInt() == 1
             || device.deviceProperty("ID_INPUT_TOUCHPAD").toInt() == 1
             || device.deviceProperty("ID_INPUT_TABLET").toInt() == 1
+            || device.deviceProperty("ID_INPUT_JOYSTICK").toInt() == 1
             || device.deviceProperty("ID_INPUT_TOUCHSCREEN").toInt() == 1) { /* clang-format on */
             return true;
         }
