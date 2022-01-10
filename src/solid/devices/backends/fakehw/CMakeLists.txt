@@ -14,4 +14,5 @@ set(backend_sources
     fakestorage.cpp
     fakestorageaccess.cpp
     fakevolume.cpp
+    fakeinput.cpp
 )

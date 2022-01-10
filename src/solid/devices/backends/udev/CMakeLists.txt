@@ -9,6 +9,7 @@ set(backend_sources
     udevcamera.cpp
     udevportablemediaplayer.cpp
     udevblock.cpp
+    udevinput.cpp
     ../shared/udevqtclient.cpp
     ../shared/udevqtdevice.cpp
 )

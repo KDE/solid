@@ -10,6 +10,7 @@
 #include "udevblock.h"
 #include "udevcamera.h"
 #include "udevgenericinterface.h"
+#include "udevinput.h"
 #include "udevportablemediaplayer.h"
 #include "udevprocessor.h"
 
@@ -116,6 +117,8 @@ QString UDevDevice::description() const
         }
     } else if (queryDeviceInterface(Solid::DeviceInterface::Camera)) {
         return tr("Camera");
+    } else if (queryDeviceInterface(Solid::DeviceInterface::Input)) {
+        return tr("Input Device");
     }
 
     return QString();
@@ -138,6 +141,9 @@ bool UDevDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type) 
 
     case Solid::DeviceInterface::Block:
         return !property("MAJOR").toString().isEmpty();
+
+    case Solid::DeviceInterface::Input:
+        return m_device.subsystem() == QLatin1String("input");
 
     default:
         return false;
@@ -165,6 +171,9 @@ QObject *UDevDevice::createDeviceInterface(const Solid::DeviceInterface::Type &t
 
     case Solid::DeviceInterface::Block:
         return new Block(this);
+
+    case Solid::DeviceInterface::Input:
+        return new Input(this);
 
     default:
         qFatal("Shouldn't happen");

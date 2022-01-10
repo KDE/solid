@@ -61,6 +61,7 @@ public:
         PortableMediaPlayer = 10,
         Battery = 12,
         NetworkShare = 14,
+        Input = 15,
         Last = 0xffff,
     };
     Q_ENUM(Type)

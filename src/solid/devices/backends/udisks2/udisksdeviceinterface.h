@@ -62,6 +62,7 @@ public:
         case Solid::DeviceInterface::PortableMediaPlayer:
         case Solid::DeviceInterface::Battery:
         case Solid::DeviceInterface::NetworkShare:
+        case Solid::DeviceInterface::Input:
         case Solid::DeviceInterface::Unknown:
             break;
         case Solid::DeviceInterface::Last:

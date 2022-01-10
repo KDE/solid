@@ -71,6 +71,7 @@ public:
             list << "battery";
             break;
         case Solid::DeviceInterface::NetworkShare:
+        case Solid::DeviceInterface::Input:
             // Doesn't exist with UPower
             break;
         case Solid::DeviceInterface::Unknown:

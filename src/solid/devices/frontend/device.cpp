@@ -21,6 +21,7 @@
 #include <solid/devices/ifaces/block.h>
 #include <solid/devices/ifaces/camera.h>
 #include <solid/devices/ifaces/genericinterface.h>
+#include <solid/devices/ifaces/input.h>
 #include <solid/devices/ifaces/networkshare.h>
 #include <solid/devices/ifaces/opticaldisc.h>
 #include <solid/devices/ifaces/opticaldrive.h>
@@ -30,6 +31,7 @@
 #include <solid/devices/ifaces/storagedrive.h>
 #include <solid/devices/ifaces/storagevolume.h>
 #include <solid/genericinterface.h>
+#include <solid/input.h>
 #include <solid/networkshare.h>
 #include <solid/opticaldisc.h>
 #include <solid/opticaldrive.h>
@@ -179,6 +181,9 @@ const Solid::DeviceInterface *Solid::Device::asDeviceInterface(const DeviceInter
                 break;
             case DeviceInterface::NetworkShare:
                 iface = deviceinterface_cast(Ifaces::NetworkShare, NetworkShare, dev_iface);
+                break;
+            case DeviceInterface::Input:
+                iface = deviceinterface_cast(Ifaces::Input, Input, dev_iface);
                 break;
             case DeviceInterface::Unknown:
             case DeviceInterface::Last:

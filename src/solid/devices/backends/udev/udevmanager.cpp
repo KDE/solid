@@ -136,6 +136,7 @@ UDevManager::UDevManager(QObject *parent)
                              << Solid::DeviceInterface::Processor
                              << Solid::DeviceInterface::Camera
                              << Solid::DeviceInterface::PortableMediaPlayer
+                             << Solid::DeviceInterface::Input
                              << Solid::DeviceInterface::Block;
     // clang-format on
 }
@@ -198,6 +199,8 @@ QStringList UDevManager::devicesFromQuery(const QString &parentUdi, Solid::Devic
     } else if (type == Solid::DeviceInterface::PortableMediaPlayer) {
         deviceList = d->m_client->devicesBySubsystemsAndProperties({QStringLiteral("usb")}, //
                                                                    {{QStringLiteral("ID_MEDIA_PLAYER"), QStringLiteral("*")}}); // match any
+    } else if (type == Solid::DeviceInterface::Input) {
+        deviceList = d->m_client->devicesBySubsystem({QStringLiteral("input")});
     } else {
         deviceList = d->m_client->allDevices();
     }
