@@ -189,10 +189,19 @@ bool Solid::Predicate::matches(const Device &device) const
                 QMetaEnum metaEnum = metaProp.enumerator();
                 int value = metaEnum.keysToValue(d->value.toString().toLatin1());
                 if (value >= 0) { // No value found for these keys, resetting expected to invalid
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
                     expected = value;
+#else
+                    expected = QVariant(metaProp.metaType(), &value);
+#endif
                 } else {
                     expected = QVariant();
                 }
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+            } else if (metaProp.isEnumType() && expected.type() == QVariant::Int) {
+                int expectedValue = expected.toInt();
+                expected = QVariant(metaProp.metaType(), &expectedValue);
+#endif
             }
 
             if (d->compOperator == Mask) {
