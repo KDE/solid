@@ -119,7 +119,7 @@ private:
                 err = GetLastError();
             }
             if (handle == INVALID_HANDLE_VALUE) {
-                qWarning() << "Invalid Handle" << dev << "reason:" << qGetLastError(err) << " this should not happen.";
+                qWarning() << "Invalid Handle" << dev << "reason:" << qGetLastError(err) << "this should not happen.";
                 return;
             }
         }
@@ -129,7 +129,7 @@ private:
         }
 
         if (handle == INVALID_HANDLE_VALUE) {
-            qWarning() << " Invalid Handle" << devName << "reason:" << qGetLastError() << " is probaply a subst path or more seriously there is  bug!";
+            qWarning() << "Invalid Handle" << devName << "reason:" << qGetLastError() << "is probaply a subst path or more seriously there is bug!";
             return;
         }
 
