@@ -19,6 +19,8 @@ class Predicate;
 class DeviceInterfacePrivate;
 
 /**
+ * @class Solid::DeviceInterface deviceinterface.h <Solid/DeviceInterface>
+ *
  * Base class of all the device interfaces.
  *
  * A device interface describes what a device can do. A device generally has

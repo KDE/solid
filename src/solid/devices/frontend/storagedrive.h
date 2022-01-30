@@ -17,6 +17,8 @@ class StorageDrivePrivate;
 class Device;
 
 /**
+ * @class Solid::StorageDrive storagedrive.h <Solid/StorageDrive>
+ *
  * This device interface is available on storage devices.
  *
  * A storage is anything that can contain a set of volumes (card reader,

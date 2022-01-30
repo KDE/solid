@@ -17,6 +17,8 @@ class BlockPrivate;
 class Device;
 
 /**
+ * @class Solid::Block block.h <Solid/Block>
+ *
  * This device interface is available on block devices.
  *
  * A block device is an addressable device such as drive or partition.

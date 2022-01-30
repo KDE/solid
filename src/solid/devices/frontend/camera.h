@@ -20,6 +20,8 @@ class CameraPrivate;
 class Device;
 
 /**
+ * @class Solid::Camera camera.h <Solid/Camera>
+ *
  * This device interface is available on digital camera devices.
  *
  * A digital camera is a device used to transform images into

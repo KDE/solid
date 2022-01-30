@@ -17,6 +17,8 @@ class OpticalDiscPrivate;
 class Device;
 
 /**
+ * @class Solid::OpticalDisc opticaldisc.h <Solid/OpticalDisc>
+ *
  * This device interface is available on optical discs.
  *
  * An optical disc is a volume that can be inserted in CD-R*,DVD*,Blu-Ray,HD-DVD drives.

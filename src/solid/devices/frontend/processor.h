@@ -17,6 +17,8 @@ class ProcessorPrivate;
 class Device;
 
 /**
+ * @class Solid::Processor processor.h <Solid/Processor>
+ *
  * This device interface is available on processors.
  */
 class SOLID_EXPORT Processor : public DeviceInterface

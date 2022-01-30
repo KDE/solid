@@ -19,6 +19,8 @@ namespace Solid
 class DevicePrivate;
 
 /**
+ * @class Solid::Device device.h <Solid/Device>
+ *
  * This class allows applications to deal with devices available in the
  * underlying system.
  *

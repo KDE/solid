@@ -19,6 +19,8 @@ class StorageAccessPrivate;
 class Device;
 
 /**
+ * @class Solid::StorageAccess storageaccess.h <Solid/StorageAccess>
+ *
  * This device interface is available on volume devices to access them
  * (i.e. mount or unmount them).
  *

@@ -19,6 +19,8 @@ namespace Solid
 class Device;
 
 /**
+ * @class Solid::Predicate predicate.h <Solid/Predicate>
+ *
  * This class implements predicates for devices.
  *
  * A predicate is a logical condition that a given device can match or not.

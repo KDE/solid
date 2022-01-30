@@ -14,6 +14,8 @@
 namespace Solid
 {
 /**
+ * @class Solid::DeviceNotifier devicenotifier.h <Solid/DeviceNotifier>
+ *
  * This class allow to query the underlying system to obtain information
  * about the hardware available.
  *

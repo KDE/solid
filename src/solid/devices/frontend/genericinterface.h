@@ -19,6 +19,8 @@ class GenericInterfacePrivate;
 class Device;
 
 /**
+ * @class Solid::GenericInterface genericinterface.h <Solid/GenericInterface>
+ *
  * Generic interface to deal with a device. It exposes a set of properties
  * and is organized as a key/value set.
  *

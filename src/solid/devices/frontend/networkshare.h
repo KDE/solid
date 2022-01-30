@@ -19,6 +19,8 @@ class Device;
 class NetworkSharePrivate;
 
 /**
+ * @class Solid::NetworkShare networkshare.h <Solid/NetworkShare>
+ *
  * NetworkShare interface.
  *
  * a NetworkShare interface is used to determine the type of

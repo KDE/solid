@@ -17,6 +17,8 @@ class StorageVolumePrivate;
 class Device;
 
 /**
+ * @class Solid::StorageVolume storagevolume.h <Solid/StorageVolume>
+ *
  * This device interface is available on volume devices.
  *
  * A volume is anything that can contain data (partition, optical disc,

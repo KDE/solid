@@ -22,6 +22,8 @@ class PortableMediaPlayerPrivate;
 class Device;
 
 /**
+ * @class Solid::PortableMediaPlayer portablemediaplayer.h <Solid/PortableMediaPlayer>
+ *
  * This class implements Portable Media Player device interface and represents
  * a portable media player attached to the system.
  * A portable media player is a portable device able to play multimedia files.

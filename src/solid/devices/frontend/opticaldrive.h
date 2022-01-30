@@ -21,6 +21,8 @@ class OpticalDrivePrivate;
 class Device;
 
 /**
+ * @class Solid::OpticalDrive opticaldrive.h <Solid/OpticalDrive>
+ *
  * This device interface is available on CD-R*,DVD*,Blu-Ray,HD-DVD drives.
  *
  * An OpticalDrive is a storage that can handle optical discs.
