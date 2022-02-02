@@ -111,7 +111,7 @@ void FstabManager::_k_updateDeviceList()
 
     m_deviceList = deviceList;
 
-    qCDebug(FSTAB) << oldlist << "->" << newlist;
+    qCDebug(FSTAB_LOG) << oldlist << "->" << newlist;
 
     for (const QString &device : newlist) {
         if (!oldlist.contains(device)) {

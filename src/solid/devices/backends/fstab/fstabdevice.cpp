@@ -23,7 +23,7 @@ FstabDevice::FstabDevice(QString uid)
     m_device.remove(parentUdi() + "/");
 
     const QString &fstype = FstabHandling::fstype(m_device);
-    qCDebug(FSTAB) << "Adding " << m_device << "type:" << fstype;
+    qCDebug(FSTAB_LOG) << "Adding " << m_device << "type:" << fstype;
 
     if (m_device.startsWith("//")) {
         m_vendor = m_device.mid(2, m_device.indexOf("/", 2) - 2);
