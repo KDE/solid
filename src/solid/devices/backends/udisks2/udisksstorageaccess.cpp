@@ -361,9 +361,8 @@ QString StorageAccess::generateReturnObjectPath()
 
 QString StorageAccess::clearTextPath() const
 {
-    const QString prefix = "/org/freedesktop/UDisks2/block_devices";
     QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, //
-                                                       prefix,
+                                                       UD2_DBUS_PATH_BLOCKDEVICES,
                                                        DBUS_INTERFACE_INTROSPECT,
                                                        "Introspect");
     QDBusPendingReply<QString> reply = QDBusConnection::systemBus().asyncCall(call);
@@ -376,7 +375,7 @@ QString StorageAccess::clearTextPath() const
         for (int i = 0; i < nodeList.count(); i++) {
             QDomElement nodeElem = nodeList.item(i).toElement();
             if (!nodeElem.isNull() && nodeElem.hasAttribute("name")) {
-                const QString udi = prefix + "/" + nodeElem.attribute("name");
+                const QString udi = UD2_DBUS_PATH_BLOCKDEVICES + QStringLiteral("/") + nodeElem.attribute("name");
                 DeviceBackend *backend = DeviceBackend::backendForUDI(udi);
 
                 if (m_device->udi() == backend->property("CryptoBackingDevice").value<QDBusObjectPath>().path()) {

@@ -116,8 +116,8 @@ QStringList Manager::allDevices()
 {
     m_deviceCache.clear();
 
-    introspect("/org/freedesktop/UDisks2/block_devices", true /*checkOptical*/);
-    introspect("/org/freedesktop/UDisks2/drives");
+    introspect(UD2_DBUS_PATH_BLOCKDEVICES, true /*checkOptical*/);
+    introspect(UD2_DBUS_PATH_DRIVES);
 
     return m_deviceCache;
 }

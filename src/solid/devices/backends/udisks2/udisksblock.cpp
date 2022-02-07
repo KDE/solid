@@ -33,8 +33,7 @@ Block::Block(Device *dev)
 
     // we have a drive (non-block device for udisks), so let's find the corresponding (real) block device
     if (m_devNum == 0 || m_devFile.isEmpty()) {
-        const QString path = "/org/freedesktop/UDisks2/block_devices";
-        QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, path, DBUS_INTERFACE_INTROSPECT, "Introspect");
+        QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, UD2_DBUS_PATH_BLOCKDEVICES, DBUS_INTERFACE_INTROSPECT, "Introspect");
         QDBusPendingReply<QString> reply = QDBusConnection::systemBus().asyncCall(call);
         reply.waitForFinished();
 
@@ -45,7 +44,7 @@ Block::Block(Device *dev)
             for (int i = 0; i < nodeList.count(); i++) {
                 QDomElement nodeElem = nodeList.item(i).toElement();
                 if (!nodeElem.isNull() && nodeElem.hasAttribute("name")) {
-                    const QString udi = path + "/" + nodeElem.attribute("name");
+                    const QString udi = UD2_DBUS_PATH_BLOCKDEVICES + QStringLiteral("/") + nodeElem.attribute("name");
 
                     Device device(udi);
                     if (device.drivePath() == dev->udi()) {
