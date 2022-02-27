@@ -44,7 +44,7 @@ Block::Block(Device *dev)
             for (int i = 0; i < nodeList.count(); i++) {
                 QDomElement nodeElem = nodeList.item(i).toElement();
                 if (!nodeElem.isNull() && nodeElem.hasAttribute("name")) {
-                    const QString udi = UD2_DBUS_PATH_BLOCKDEVICES + QStringLiteral("/") + nodeElem.attribute("name");
+                    const QString udi = UD2_DBUS_PATH_BLOCKDEVICES + QLatin1Char('/') + nodeElem.attribute("name");
 
                     Device device(udi);
                     if (device.drivePath() == dev->udi()) {

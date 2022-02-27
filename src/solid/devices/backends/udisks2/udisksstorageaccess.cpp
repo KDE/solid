@@ -375,7 +375,7 @@ QString StorageAccess::clearTextPath() const
         for (int i = 0; i < nodeList.count(); i++) {
             QDomElement nodeElem = nodeList.item(i).toElement();
             if (!nodeElem.isNull() && nodeElem.hasAttribute("name")) {
-                const QString udi = UD2_DBUS_PATH_BLOCKDEVICES + QStringLiteral("/") + nodeElem.attribute("name");
+                const QString udi = UD2_DBUS_PATH_BLOCKDEVICES + QLatin1Char('/') + nodeElem.attribute("name");
                 DeviceBackend *backend = DeviceBackend::backendForUDI(udi);
 
                 if (m_device->udi() == backend->property("CryptoBackingDevice").value<QDBusObjectPath>().path()) {
