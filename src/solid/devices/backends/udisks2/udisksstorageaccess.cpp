@@ -8,7 +8,6 @@
 #include "udisksstorageaccess.h"
 #include "udisks2.h"
 #include "udisks_debug.h"
-#include "udisksdevicebackend.h"
 
 #include <QDBusConnection>
 #include <QDBusInterface>
@@ -376,9 +375,9 @@ QString StorageAccess::clearTextPath() const
             QDomElement nodeElem = nodeList.item(i).toElement();
             if (!nodeElem.isNull() && nodeElem.hasAttribute("name")) {
                 const QString udi = UD2_DBUS_PATH_BLOCKDEVICES + QLatin1Char('/') + nodeElem.attribute("name");
-                DeviceBackend *backend = DeviceBackend::backendForUDI(udi);
+                Device holderDevice(udi);
 
-                if (m_device->udi() == backend->property("CryptoBackingDevice").value<QDBusObjectPath>().path()) {
+                if (m_device->udi() == holderDevice.prop("CryptoBackingDevice").value<QDBusObjectPath>().path()) {
                     // qDebug() << Q_FUNC_INFO << "CLEARTEXT device path: " << udi;
                     return udi;
                 }
