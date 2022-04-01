@@ -40,7 +40,7 @@ FstabDevice::FstabDevice(QString uid)
         if (m_product.startsWith(home)) {
             m_product = "~" + m_product.mid(home.length());
         }
-        if ((fstype == QLatin1String("fuse.encfs")) || (fstype == QLatin1String("fuse.cryfs"))) {
+        if ((fstype == QLatin1String("fuse.encfs")) || (fstype == QLatin1String("fuse.cryfs")) || (fstype == QLatin1String("fuse.gocryptfs"))) {
             m_storageType = StorageType::Encrypted;
         }
     }

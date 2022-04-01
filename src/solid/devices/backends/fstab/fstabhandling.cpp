@@ -116,6 +116,7 @@ bool _k_isFstabSupportedLocalFileSystem(const QString &fstype)
 {
     if (fstype == "fuse.encfs" //
         || fstype == "fuse.cryfs" //
+        || fstype == "fuse.gocryptfs" //
         || fstype == "overlay") {
         return true;
     }
