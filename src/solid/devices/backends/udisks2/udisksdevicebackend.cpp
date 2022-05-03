@@ -141,7 +141,7 @@ QVariantMap DeviceBackend::allProperties() const
                 m_propertyCache.insert(it.key(), it.value());
             }
         } else {
-            qCWarning(UDISKS2) << "Error getting props:" << reply.error().name() << reply.error().message();
+            qCWarning(UDISKS2) << "Error getting props:" << reply.error().name() << reply.error().message() << "for" << m_udi;
         }
         // qDebug() << "After iface" << iface << ", cache now contains" << m_propertyCache.size() << "items";
     }
