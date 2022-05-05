@@ -118,6 +118,7 @@ static const struct ArmIdPart qcomParts[] = {
     {0x211, "Kryo"},
     {0x800, "Falkor V1/Kryo 2xx Gold"},
     {0x801, "Kryo 2xx Silver"},
+    {0x802, "Kryo 3xx Gold"},
     {0x803, "Kryo 3xx Silver"},
     {0x804, "Kryo 4xx Gold"},
     {0x805, "Kryo 4xx/5xx Silver"},
