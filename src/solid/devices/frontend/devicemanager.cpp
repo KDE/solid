@@ -182,6 +182,11 @@ Solid::Device Solid::Device::storageAccessFromPath(const QString &path)
     Device match;
     int match_length = 0;
     for (const Device &device : list) {
+        auto storageVolume = device.as<StorageVolume>();
+        if (storageVolume->usage() != StorageVolume::UsageType::FileSystem) {
+            continue;
+        }
+
         auto storageAccess = device.as<StorageAccess>();
         QString mountPath = storageAccess->filePath();
         if (!mountPath.endsWith(QDir::separator())) {
