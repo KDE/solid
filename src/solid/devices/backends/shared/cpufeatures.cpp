@@ -35,7 +35,7 @@ typedef void (*kde_sighandler_t)(int);
 #if defined( __i386__ ) || defined( __x86_64__ )
 static jmp_buf env;
 
-#ifdef HAVE_X86_SSE
+#if HAVE_X86_SSE
 // Sighandler for the SSE OS support check
 static void sighandler(int)
 {
@@ -142,7 +142,7 @@ Solid::Processor::InstructionSets cpuFeatures()
             features |= 0x80000000;
         }
 
-#ifdef HAVE_X86_SSE
+#if HAVE_X86_SSE
         // Test bit 25 (SSE support)
         if (features & 0x02000000) {
             // OS support test for SSE.
@@ -164,7 +164,7 @@ Solid::Processor::InstructionSets cpuFeatures()
         }
 #endif // HAVE_X86_SSE
     }
-#elif defined __PPC__ && defined HAVE_PPC_ALTIVEC
+#elif defined __PPC__ && HAVE_PPC_ALTIVEC
     signal(SIGILL, sigill_handler);
     if (sigsetjmp(jmpbuf, 1)) {
         signal(SIGILL, SIG_DFL);
