@@ -105,9 +105,9 @@ bool UPowerDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type
         case UP_DEVICE_KIND_MEDIA_PLAYER:
         case UP_DEVICE_KIND_COMPUTER:
         case UP_DEVICE_KIND_LAST:
+        default:
             return false;
         }
-        Q_FALLTHROUGH();
     default:
         return false;
     }
