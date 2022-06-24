@@ -92,6 +92,7 @@ bool UPowerDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type
         case UP_DEVICE_KIND_HEADSET:
         case UP_DEVICE_KIND_HEADPHONES:
         case UP_DEVICE_KIND_BLUETOOTH_GENERIC:
+        case UP_DEVICE_KIND_TOUCHPAD:
             return true;
         case UP_DEVICE_KIND_UNKNOWN:
             // There is currently no "Bluetooth battery" type, so check if it comes from Bluez
