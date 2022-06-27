@@ -183,7 +183,7 @@ Solid::Device Solid::Device::storageAccessFromPath(const QString &path)
     int match_length = 0;
     for (const Device &device : list) {
         auto storageVolume = device.as<StorageVolume>();
-        if (storageVolume->usage() != StorageVolume::UsageType::FileSystem) {
+        if (storageVolume && storageVolume->usage() != StorageVolume::UsageType::FileSystem) {
             continue;
         }
 
