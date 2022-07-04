@@ -754,6 +754,10 @@ QString Device::errorToString(const QString &error) const
         return tr("The operation would wake up a disk that is in a deep-sleep state");
     } else if (error == UD2_ERROR_ALREADY_CANCELLED) {
         return tr("The operation has already been canceled");
+    } else if (error == UD2_ERROR_NOT_AUTHORIZED_CAN_OBTAIN) {
+        return tr("Cannot request authentication for this action. The PolicyKit authentication system appears to be not available.");
+    } else if (error == UD2_ERROR_NOT_AUTHORIZED_DISMISSED) {
+        return tr("The authentication prompt was canceled");
     } else {
         return tr("An unspecified error has occurred");
     }
@@ -771,6 +775,8 @@ Solid::ErrorType Device::errorToSolidError(const QString &error) const
         return Solid::InvalidOption;
     } else if (error == UD2_ERROR_MISSING_DRIVER) {
         return Solid::MissingDriver;
+    } else if (error == UD2_ERROR_NOT_AUTHORIZED_DISMISSED) {
+        return Solid::UserCanceled;
     } else {
         return Solid::UnauthorizedOperation;
     }
