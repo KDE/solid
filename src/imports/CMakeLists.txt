@@ -27,6 +27,10 @@ target_link_libraries(
     Qt${QT_MAJOR_VERSION}::Qml
 )
 
+if(MINGW)
+    set_target_properties(solidextensionplugin PROPERTIES PREFIX "")
+endif()
+
 install(TARGETS solidextensionplugin DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/solid)
 install(FILES qmldir DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/solid)
 
