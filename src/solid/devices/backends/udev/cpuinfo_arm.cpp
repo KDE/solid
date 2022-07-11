@@ -190,8 +190,8 @@ static const struct ArmIdPart hisiParts[] = {
 };
 
 static const struct ArmIdPart appleParts[] = {
-    {0x022, "M1 Icestorm"},
-    {0x023, "M1 Firestorm"},
+    {0x022, "Icestorm (M1)"},
+    {0x023, "Firestorm (M1)"},
     {-1, "unknown"},
 };
 
