@@ -10,7 +10,7 @@
 #include "udisks_debug.h"
 
 #include <QDBusConnection>
-#include <QDomDocument>
+#include <QXmlStreamReader>
 
 #include "solid/deviceinterface.h"
 #include "solid/genericinterface.h"
@@ -83,16 +83,16 @@ void DeviceBackend::initInterfaces()
         return;
     }
 
-    QDomDocument dom;
-    dom.setContent(xmlData);
-
-    QDomNodeList ifaceNodeList = dom.elementsByTagName("interface");
-    for (int i = 0; i < ifaceNodeList.count(); i++) {
-        QDomElement ifaceElem = ifaceNodeList.item(i).toElement();
-        /* Accept only org.freedesktop.UDisks2.* interfaces so that when the device is unplugged,
-         * m_interfaces goes empty and we can easily verify that the device is gone. */
-        if (!ifaceElem.isNull() && ifaceElem.attribute("name").startsWith(UD2_DBUS_SERVICE)) {
-            m_interfaces.append(ifaceElem.attribute("name"));
+    QXmlStreamReader xml(xmlData);
+    while (!xml.atEnd() && !xml.hasError()) {
+        xml.readNext();
+        if (xml.isStartElement() && xml.name() == QLatin1String("interface")) {
+            const auto name = xml.attributes().value(QLatin1String("name")).toString();
+            /* Accept only org.freedesktop.UDisks2.* interfaces so that when the device is unplugged,
+             * m_interfaces goes empty and we can easily verify that the device is gone. */
+            if (name.startsWith(UD2_DBUS_SERVICE)) {
+                m_interfaces.append(name);
+            }
         }
     }
 
