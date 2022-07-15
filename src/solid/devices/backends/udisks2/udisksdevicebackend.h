@@ -9,7 +9,6 @@
 #ifndef UDISKSDEVICEBACKEND_H
 #define UDISKSDEVICEBACKEND_H
 
-#include <QDBusInterface>
 #include <QDBusObjectPath>
 #include <QObject>
 #include <QStringList>
@@ -55,8 +54,6 @@ private:
     void initInterfaces();
     QString introspect() const;
     void checkCache(const QString &key) const;
-
-    QDBusInterface *m_device;
 
     mutable QVariantMap m_propertyCache;
     QStringList m_interfaces;

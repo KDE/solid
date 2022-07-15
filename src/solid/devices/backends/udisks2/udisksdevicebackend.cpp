@@ -45,34 +45,27 @@ DeviceBackend::DeviceBackend(const QString &udi)
     : m_udi(udi)
 {
     // qDebug() << "Creating backend for device" << m_udi;
-    m_device = new QDBusInterface(UD2_DBUS_SERVICE,
-                                  m_udi,
-                                  QString(), // no interface, we aggregate them
-                                  QDBusConnection::systemBus(),
-                                  this);
 
-    if (m_device->isValid()) {
-        QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE, //
-                                             m_udi,
-                                             DBUS_INTERFACE_PROPS,
-                                             "PropertiesChanged",
-                                             this,
-                                             SLOT(slotPropertiesChanged(QString, QVariantMap, QStringList)));
-        QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE,
-                                             UD2_DBUS_PATH,
-                                             DBUS_INTERFACE_MANAGER,
-                                             "InterfacesAdded",
-                                             this,
-                                             SLOT(slotInterfacesAdded(QDBusObjectPath, VariantMapMap)));
-        QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE,
-                                             UD2_DBUS_PATH,
-                                             DBUS_INTERFACE_MANAGER,
-                                             "InterfacesRemoved",
-                                             this,
-                                             SLOT(slotInterfacesRemoved(QDBusObjectPath, QStringList)));
+    QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE, //
+                                         m_udi,
+                                         DBUS_INTERFACE_PROPS,
+                                         "PropertiesChanged",
+                                         this,
+                                         SLOT(slotPropertiesChanged(QString, QVariantMap, QStringList)));
+    QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE,
+                                         UD2_DBUS_PATH,
+                                         DBUS_INTERFACE_MANAGER,
+                                         "InterfacesAdded",
+                                         this,
+                                         SLOT(slotInterfacesAdded(QDBusObjectPath, VariantMapMap)));
+    QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE,
+                                         UD2_DBUS_PATH,
+                                         DBUS_INTERFACE_MANAGER,
+                                         "InterfacesRemoved",
+                                         this,
+                                         SLOT(slotInterfacesRemoved(QDBusObjectPath, QStringList)));
 
-        initInterfaces();
-    }
+    initInterfaces();
 }
 
 DeviceBackend::~DeviceBackend()
