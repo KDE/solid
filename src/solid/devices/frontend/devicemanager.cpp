@@ -174,8 +174,8 @@ Solid::Device Solid::Device::storageAccessFromPath(const QString &path)
     }
     // We ensure file and all mount paths are with trailing dir separators, to avoid false positive matches later
     QString trailing_path(path);
-    if (!trailing_path.endsWith(QDir::separator())) {
-        trailing_path.append(QDir::separator());
+    if (!trailing_path.endsWith(QLatin1Char('/'))) {
+        trailing_path.append(QLatin1Char('/'));
     }
 
     const QList<Device> list = Solid::Device::listFromType(DeviceInterface::Type::StorageAccess);
@@ -193,8 +193,8 @@ Solid::Device Solid::Device::storageAccessFromPath(const QString &path)
             continue;
         }
 
-        if (!mountPath.endsWith(QDir::separator())) {
-            mountPath.append(QDir::separator());
+        if (!mountPath.endsWith(QLatin1Char('/'))) {
+            mountPath.append(QLatin1Char('/'));
         }
         if (mountPath.size() > match_length && trailing_path.startsWith(mountPath)) {
             match_length = mountPath.size();
