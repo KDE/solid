@@ -25,29 +25,34 @@ Solid::OpticalDrive::~OpticalDrive()
 Solid::OpticalDrive::MediumTypes Solid::OpticalDrive::supportedMedia() const
 {
     Q_D(const OpticalDrive);
-    return_SOLID_CALL(Ifaces::OpticalDrive *, d->backendObject(), MediumTypes(), supportedMedia());
+    auto *p = iface_cast<Ifaces::OpticalDrive>(d->backendObject());
+    return p ? p->supportedMedia() : MediumTypes();
 }
 
 int Solid::OpticalDrive::readSpeed() const
 {
     Q_D(const OpticalDrive);
-    return_SOLID_CALL(Ifaces::OpticalDrive *, d->backendObject(), 0, readSpeed());
+    auto *p = iface_cast<Ifaces::OpticalDrive>(d->backendObject());
+    return p ? p->readSpeed() : 0;
 }
 
 int Solid::OpticalDrive::writeSpeed() const
 {
     Q_D(const OpticalDrive);
-    return_SOLID_CALL(Ifaces::OpticalDrive *, d->backendObject(), 0, writeSpeed());
+    auto *p = iface_cast<Ifaces::OpticalDrive>(d->backendObject());
+    return p ? p->writeSpeed() : 0;
 }
 
 QList<int> Solid::OpticalDrive::writeSpeeds() const
 {
     Q_D(const OpticalDrive);
-    return_SOLID_CALL(Ifaces::OpticalDrive *, d->backendObject(), QList<int>(), writeSpeeds());
+    auto *p = iface_cast<Ifaces::OpticalDrive>(d->backendObject());
+    return p ? p->writeSpeeds() : QList<int>();
 }
 
 bool Solid::OpticalDrive::eject()
 {
     Q_D(OpticalDrive);
-    return_SOLID_CALL(Ifaces::OpticalDrive *, d->backendObject(), false, eject());
+    auto *p = iface_cast<Ifaces::OpticalDrive>(d->backendObject());
+    return p ? p->eject() : false;
 }

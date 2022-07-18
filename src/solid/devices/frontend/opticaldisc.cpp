@@ -22,35 +22,41 @@ Solid::OpticalDisc::~OpticalDisc()
 Solid::OpticalDisc::ContentTypes Solid::OpticalDisc::availableContent() const
 {
     Q_D(const OpticalDisc);
-    return_SOLID_CALL(Ifaces::OpticalDisc *, d->backendObject(), ContentTypes(), availableContent());
+    auto *p = iface_cast<Ifaces::OpticalDisc>(d->backendObject());
+    return p ? p->availableContent() : ContentTypes();
 }
 
 Solid::OpticalDisc::DiscType Solid::OpticalDisc::discType() const
 {
     Q_D(const OpticalDisc);
-    return_SOLID_CALL(Ifaces::OpticalDisc *, d->backendObject(), UnknownDiscType, discType());
+    auto *p = iface_cast<Ifaces::OpticalDisc>(d->backendObject());
+    return p ? p->discType() : UnknownDiscType;
 }
 
 bool Solid::OpticalDisc::isAppendable() const
 {
     Q_D(const OpticalDisc);
-    return_SOLID_CALL(Ifaces::OpticalDisc *, d->backendObject(), false, isAppendable());
+    auto *p = iface_cast<Ifaces::OpticalDisc>(d->backendObject());
+    return p ? p->isAppendable() : false;
 }
 
 bool Solid::OpticalDisc::isBlank() const
 {
     Q_D(const OpticalDisc);
-    return_SOLID_CALL(Ifaces::OpticalDisc *, d->backendObject(), false, isBlank());
+    auto *p = iface_cast<Ifaces::OpticalDisc>(d->backendObject());
+    return p ? p->isBlank() : false;
 }
 
 bool Solid::OpticalDisc::isRewritable() const
 {
     Q_D(const OpticalDisc);
-    return_SOLID_CALL(Ifaces::OpticalDisc *, d->backendObject(), false, isRewritable());
+    auto *p = iface_cast<Ifaces::OpticalDisc>(d->backendObject());
+    return p ? p->isRewritable() : false;
 }
 
 qulonglong Solid::OpticalDisc::capacity() const
 {
     Q_D(const OpticalDisc);
-    return_SOLID_CALL(Ifaces::OpticalDisc *, d->backendObject(), 0, capacity());
+    auto *p = iface_cast<Ifaces::OpticalDisc>(d->backendObject());
+    return p ? p->capacity() : 0;
 }

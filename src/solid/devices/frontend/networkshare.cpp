@@ -22,11 +22,13 @@ Solid::NetworkShare::~NetworkShare()
 Solid::NetworkShare::ShareType Solid::NetworkShare::type() const
 {
     Q_D(const NetworkShare);
-    return_SOLID_CALL(Ifaces::NetworkShare *, d->backendObject(), Solid::NetworkShare::Unknown, type());
+    auto *p = iface_cast<Ifaces::NetworkShare>(d->backendObject());
+    return p ? p->type() : Solid::NetworkShare::Unknown;
 }
 
 QUrl Solid::NetworkShare::url() const
 {
     Q_D(const NetworkShare);
-    return_SOLID_CALL(Ifaces::NetworkShare *, d->backendObject(), QUrl(), url());
+    auto *p = iface_cast<Ifaces::NetworkShare>(d->backendObject());
+    return p ? p->url() : QUrl();
 }

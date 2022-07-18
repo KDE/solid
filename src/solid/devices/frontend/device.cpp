@@ -72,7 +72,8 @@ QString Solid::Device::udi() const
 
 QString Solid::Device::parentUdi() const
 {
-    return_SOLID_CALL(Ifaces::Device *, d->backendObject(), QString(), parentUdi());
+    auto *p = iface_cast<Ifaces::Device>(d->backendObject());
+    return p ? p->parentUdi() : QString();
 }
 
 Solid::Device Solid::Device::parent() const
@@ -88,37 +89,44 @@ Solid::Device Solid::Device::parent() const
 
 QString Solid::Device::vendor() const
 {
-    return_SOLID_CALL(Ifaces::Device *, d->backendObject(), QString(), vendor());
+    auto *p = iface_cast<Ifaces::Device>(d->backendObject());
+    return p ? p->vendor() : QString();
 }
 
 QString Solid::Device::product() const
 {
-    return_SOLID_CALL(Ifaces::Device *, d->backendObject(), QString(), product());
+    auto *p = iface_cast<Ifaces::Device>(d->backendObject());
+    return p ? p->product() : QString();
 }
 
 QString Solid::Device::icon() const
 {
-    return_SOLID_CALL(Ifaces::Device *, d->backendObject(), QString(), icon());
+    auto *p = iface_cast<Ifaces::Device>(d->backendObject());
+    return p ? p->icon() : QString();
 }
 
 QStringList Solid::Device::emblems() const
 {
-    return_SOLID_CALL(Ifaces::Device *, d->backendObject(), QStringList(), emblems());
+    auto *p = iface_cast<Ifaces::Device>(d->backendObject());
+    return p ? p->emblems() : QStringList();
 }
 
 QString Solid::Device::displayName() const
 {
-    return_SOLID_CALL(Ifaces::Device *, d->backendObject(), QString(), displayName());
+    auto *p = iface_cast<Ifaces::Device>(d->backendObject());
+    return p ? p->displayName() : QString();
 }
 
 QString Solid::Device::description() const
 {
-    return_SOLID_CALL(Ifaces::Device *, d->backendObject(), QString(), description());
+    auto *p = iface_cast<Ifaces::Device>(d->backendObject());
+    return p ? p->description() : QString();
 }
 
 bool Solid::Device::isDeviceInterface(const DeviceInterface::Type &type) const
 {
-    return_SOLID_CALL(Ifaces::Device *, d->backendObject(), false, queryDeviceInterface(type));
+    auto *p = iface_cast<Ifaces::Device>(d->backendObject());
+    return p ? p->queryDeviceInterface(type) : false;
 }
 
 #define deviceinterface_cast(IfaceType, DevType, backendObject) (qobject_cast<IfaceType *>(backendObject) ? new DevType(backendObject) : nullptr)
@@ -131,7 +139,7 @@ Solid::DeviceInterface *Solid::Device::asDeviceInterface(const DeviceInterface::
 
 const Solid::DeviceInterface *Solid::Device::asDeviceInterface(const DeviceInterface::Type &type) const
 {
-    Ifaces::Device *device = qobject_cast<Ifaces::Device *>(d->backendObject());
+    auto *device = iface_cast<Ifaces::Device>(d->backendObject());
 
     if (device != nullptr) {
         DeviceInterface *iface = d->interface(type);

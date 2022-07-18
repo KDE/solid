@@ -22,17 +22,20 @@ Solid::Camera::~Camera()
 QStringList Solid::Camera::supportedProtocols() const
 {
     Q_D(const Camera);
-    return_SOLID_CALL(Ifaces::Camera *, d->backendObject(), QStringList(), supportedProtocols());
+    auto *p = iface_cast<Ifaces::Camera>(d->backendObject());
+    return p ? p->supportedProtocols() : QStringList();
 }
 
 QStringList Solid::Camera::supportedDrivers(QString protocol) const
 {
     Q_D(const Camera);
-    return_SOLID_CALL(Ifaces::Camera *, d->backendObject(), QStringList(), supportedDrivers(protocol));
+    auto *p = iface_cast<Ifaces::Camera>(d->backendObject());
+    return p ? p->supportedDrivers(protocol) : QStringList();
 }
 
 QVariant Solid::Camera::driverHandle(const QString &driver) const
 {
     Q_D(const Camera);
-    return_SOLID_CALL(Ifaces::Camera *, d->backendObject(), QVariant(), driverHandle(driver));
+    auto *p = iface_cast<Ifaces::Camera>(d->backendObject());
+    return p ? p->driverHandle(driver) : QVariant();
 }

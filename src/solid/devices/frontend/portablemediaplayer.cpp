@@ -24,17 +24,20 @@ Solid::PortableMediaPlayer::~PortableMediaPlayer()
 QStringList Solid::PortableMediaPlayer::supportedProtocols() const
 {
     Q_D(const PortableMediaPlayer);
-    return_SOLID_CALL(Ifaces::PortableMediaPlayer *, d->backendObject(), QStringList(), supportedProtocols());
+    auto *p = iface_cast<Ifaces::PortableMediaPlayer>(d->backendObject());
+    return p ? p->supportedProtocols() : QStringList();
 }
 
 QStringList Solid::PortableMediaPlayer::supportedDrivers(QString protocol) const
 {
     Q_D(const PortableMediaPlayer);
-    return_SOLID_CALL(Ifaces::PortableMediaPlayer *, d->backendObject(), QStringList(), supportedDrivers(protocol));
+    auto *p = iface_cast<Ifaces::PortableMediaPlayer>(d->backendObject());
+    return p ? p->supportedDrivers(protocol) : QStringList();
 }
 
 QVariant Solid::PortableMediaPlayer::driverHandle(const QString &driver) const
 {
     Q_D(const PortableMediaPlayer);
-    return_SOLID_CALL(Ifaces::PortableMediaPlayer *, d->backendObject(), QVariant(), driverHandle(driver));
+    auto *p = iface_cast<Ifaces::PortableMediaPlayer>(d->backendObject());
+    return p ? p->driverHandle(driver) : QVariant();
 }

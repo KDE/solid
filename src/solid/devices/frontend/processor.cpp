@@ -22,23 +22,27 @@ Solid::Processor::~Processor()
 int Solid::Processor::number() const
 {
     Q_D(const Processor);
-    return_SOLID_CALL(Ifaces::Processor *, d->backendObject(), 0, number());
+    auto *p = iface_cast<Ifaces::Processor>(d->backendObject());
+    return p ? p->number() : 0;
 }
 
 int Solid::Processor::maxSpeed() const
 {
     Q_D(const Processor);
-    return_SOLID_CALL(Ifaces::Processor *, d->backendObject(), 0, maxSpeed());
+    auto *p = iface_cast<Ifaces::Processor>(d->backendObject());
+    return p ? p->maxSpeed() : 0;
 }
 
 bool Solid::Processor::canChangeFrequency() const
 {
     Q_D(const Processor);
-    return_SOLID_CALL(Ifaces::Processor *, d->backendObject(), false, canChangeFrequency());
+    auto *p = iface_cast<Ifaces::Processor>(d->backendObject());
+    return p ? p->canChangeFrequency() : false;
 }
 
 Solid::Processor::InstructionSets Solid::Processor::instructionSets() const
 {
     Q_D(const Processor);
-    return_SOLID_CALL(Ifaces::Processor *, d->backendObject(), InstructionSets(), instructionSets());
+    auto *p = iface_cast<Ifaces::Processor>(d->backendObject());
+    return p ? p->instructionSets() : InstructionSets();
 }

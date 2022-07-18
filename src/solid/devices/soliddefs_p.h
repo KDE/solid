@@ -7,24 +7,12 @@
 #ifndef SOLID_SOLIDDEFS_P_H
 #define SOLID_SOLIDDEFS_P_H
 
-// clang-format off
+#include <QObject>
 
-#define return_SOLID_CALL(Type, Object, Default, Method) \
-    Type t = qobject_cast<Type>(Object); \
-    if (t!=nullptr) \
-    { \
-        return t->Method; \
-    } \
-    else \
-    { \
-        return Default; \
-    }
-
-#define SOLID_CALL(Type, Object, Method) \
-    Type t = qobject_cast<Type>(Object); \
-    if (t!=nullptr) \
-    { \
-        t->Method; \
-    }
+template<typename T, typename Object>
+T *iface_cast(Object *obj)
+{
+    return qobject_cast<T *>(obj);
+}
 
 #endif

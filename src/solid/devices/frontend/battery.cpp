@@ -51,125 +51,146 @@ Solid::Battery::~Battery()
 bool Solid::Battery::isPresent() const
 {
     Q_D(const Battery);
-    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), false, isPresent());
+    auto *p = iface_cast<Ifaces::Battery>(d->backendObject());
+    return p ? p->isPresent() : false;
 }
 
 Solid::Battery::BatteryType Solid::Battery::type() const
 {
     Q_D(const Battery);
-    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), UnknownBattery, type());
+    auto *p = iface_cast<Ifaces::Battery>(d->backendObject());
+    return p ? p->type() : UnknownBattery;
 }
 
 int Solid::Battery::chargePercent() const
 {
     Q_D(const Battery);
-    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), 0, chargePercent());
+    auto *p = iface_cast<Ifaces::Battery>(d->backendObject());
+    return p ? p->chargePercent() : 0;
 }
 
 int Solid::Battery::capacity() const
 {
     Q_D(const Battery);
-    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), 100, capacity());
+    auto *p = iface_cast<Ifaces::Battery>(d->backendObject());
+    return p ? p->capacity() : 100;
 }
 
 bool Solid::Battery::isRechargeable() const
 {
     Q_D(const Battery);
-    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), false, isRechargeable());
+    auto *p = iface_cast<Ifaces::Battery>(d->backendObject());
+    return p ? p->isRechargeable() : false;
 }
 
 bool Solid::Battery::isPowerSupply() const
 {
     Q_D(const Battery);
-    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), true, isPowerSupply());
+    auto *p = iface_cast<Ifaces::Battery>(d->backendObject());
+    return p ? p->isPowerSupply() : true;
 }
 
 Solid::Battery::ChargeState Solid::Battery::chargeState() const
 {
     Q_D(const Battery);
-    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), NoCharge, chargeState());
+    auto *p = iface_cast<Ifaces::Battery>(d->backendObject());
+    return p ? p->chargeState() : NoCharge;
 }
 
 qlonglong Solid::Battery::timeToEmpty() const
 {
     Q_D(const Battery);
-    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), 0, timeToEmpty());
+    auto *p = iface_cast<Ifaces::Battery>(d->backendObject());
+    return p ? p->timeToEmpty() : 0;
 }
 
 qlonglong Solid::Battery::timeToFull() const
 {
     Q_D(const Battery);
-    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), 0, timeToFull());
+    auto *p = iface_cast<Ifaces::Battery>(d->backendObject());
+    return p ? p->timeToFull() : 0;
 }
 
 Solid::Battery::Technology Solid::Battery::technology() const
 {
     Q_D(const Battery);
-    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), UnknownTechnology, technology());
+    auto *p = iface_cast<Ifaces::Battery>(d->backendObject());
+    return p ? p->technology() : UnknownTechnology;
 }
 
 double Solid::Battery::energy() const
 {
     Q_D(const Battery);
-    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), 0.0, energy());
+    auto *p = iface_cast<Ifaces::Battery>(d->backendObject());
+    return p ? p->energy() : 0.0;
 }
 
 double Solid::Battery::energyFull() const
 {
     Q_D(const Battery);
-    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), 0.0, energyFull());
+    auto *p = iface_cast<Ifaces::Battery>(d->backendObject());
+    return p ? p->energyFull() : 0.0;
 }
 
 double Solid::Battery::energyFullDesign() const
 {
     Q_D(const Battery);
-    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), 0.0, energyFullDesign());
+    auto *p = iface_cast<Ifaces::Battery>(d->backendObject());
+    return p ? p->energyFullDesign() : 0.0;
 }
 
 double Solid::Battery::energyRate() const
 {
     Q_D(const Battery);
-    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), 0.0, energyRate());
+    auto *p = iface_cast<Ifaces::Battery>(d->backendObject());
+    return p ? p->energyRate() : 0.0;
 }
 
 double Solid::Battery::voltage() const
 {
     Q_D(const Battery);
-    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), 0.0, voltage());
+    auto *p = iface_cast<Ifaces::Battery>(d->backendObject());
+    return p ? p->voltage() : 0.0;
 }
 
 double Solid::Battery::temperature() const
 {
     Q_D(const Battery);
-    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), 0.0, temperature());
+    auto *p = iface_cast<Ifaces::Battery>(d->backendObject());
+    return p ? p->temperature() : 0.0;
 }
 
 bool Solid::Battery::isRecalled() const
 {
     Q_D(const Battery);
-    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), false, isRecalled());
+    auto *p = iface_cast<Ifaces::Battery>(d->backendObject());
+    return p ? p->isRecalled() : false;
 }
 
 QString Solid::Battery::recallVendor() const
 {
     Q_D(const Battery);
-    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), QString(), recallVendor());
+    auto *p = iface_cast<Ifaces::Battery>(d->backendObject());
+    return p ? p->recallVendor() : QString();
 }
 
 QString Solid::Battery::recallUrl() const
 {
     Q_D(const Battery);
-    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), QString(), recallUrl());
+    auto *p = iface_cast<Ifaces::Battery>(d->backendObject());
+    return p ? p->recallUrl() : QString();
 }
 
 QString Solid::Battery::serial() const
 {
     Q_D(const Battery);
-    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), QString(), serial());
+    auto *p = iface_cast<Ifaces::Battery>(d->backendObject());
+    return p ? p->serial() : QString();
 }
 
 qlonglong Solid::Battery::remainingTime() const
 {
     Q_D(const Battery);
-    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), -1, remainingTime());
+    auto *p = iface_cast<Ifaces::Battery>(d->backendObject());
+    return p ? p->remainingTime() : -1;
 }

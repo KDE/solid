@@ -45,35 +45,41 @@ Solid::StorageAccess::~StorageAccess()
 bool Solid::StorageAccess::isAccessible() const
 {
     Q_D(const StorageAccess);
-    return_SOLID_CALL(Ifaces::StorageAccess *, d->backendObject(), false, isAccessible());
+    auto *p = iface_cast<Ifaces::StorageAccess>(d->backendObject());
+    return p ? p->isAccessible() : false;
 }
 
 QString Solid::StorageAccess::filePath() const
 {
     Q_D(const StorageAccess);
-    return_SOLID_CALL(Ifaces::StorageAccess *, d->backendObject(), QString(), filePath());
+    auto *p = iface_cast<Ifaces::StorageAccess>(d->backendObject());
+    return p ? p->filePath() : QString();
 }
 
 bool Solid::StorageAccess::setup()
 {
     Q_D(StorageAccess);
-    return_SOLID_CALL(Ifaces::StorageAccess *, d->backendObject(), false, setup());
+    auto *p = iface_cast<Ifaces::StorageAccess>(d->backendObject());
+    return p ? p->setup() : false;
 }
 
 bool Solid::StorageAccess::teardown()
 {
     Q_D(StorageAccess);
-    return_SOLID_CALL(Ifaces::StorageAccess *, d->backendObject(), false, teardown());
+    auto *p = iface_cast<Ifaces::StorageAccess>(d->backendObject());
+    return p ? p->teardown() : false;
 }
 
 bool Solid::StorageAccess::isIgnored() const
 {
     Q_D(const StorageAccess);
-    return_SOLID_CALL(Ifaces::StorageAccess *, d->backendObject(), true, isIgnored());
+    auto *p = iface_cast<Ifaces::StorageAccess>(d->backendObject());
+    return p ? p->isIgnored() : true;
 }
 
 bool Solid::StorageAccess::isEncrypted() const
 {
     Q_D(const StorageAccess);
-    return_SOLID_CALL(Ifaces::StorageAccess *, d->backendObject(), false, isEncrypted());
+    auto *p = iface_cast<Ifaces::StorageAccess>(d->backendObject());
+    return p ? p->isEncrypted() : false;
 }

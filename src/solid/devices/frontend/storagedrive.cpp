@@ -31,31 +31,36 @@ Solid::StorageDrive::~StorageDrive()
 Solid::StorageDrive::Bus Solid::StorageDrive::bus() const
 {
     Q_D(const StorageDrive);
-    return_SOLID_CALL(Ifaces::StorageDrive *, d->backendObject(), Platform, bus());
+    auto *p = iface_cast<Ifaces::StorageDrive>(d->backendObject());
+    return p ? p->bus() : Platform;
 }
 
 Solid::StorageDrive::DriveType Solid::StorageDrive::driveType() const
 {
     Q_D(const StorageDrive);
-    return_SOLID_CALL(Ifaces::StorageDrive *, d->backendObject(), HardDisk, driveType());
+    auto *p = iface_cast<Ifaces::StorageDrive>(d->backendObject());
+    return p ? p->driveType() : HardDisk;
 }
 
 bool Solid::StorageDrive::isRemovable() const
 {
     Q_D(const StorageDrive);
-    return_SOLID_CALL(Ifaces::StorageDrive *, d->backendObject(), false, isRemovable());
+    auto *p = iface_cast<Ifaces::StorageDrive>(d->backendObject());
+    return p ? p->isRemovable() : false;
 }
 
 bool Solid::StorageDrive::isHotpluggable() const
 {
     Q_D(const StorageDrive);
-    return_SOLID_CALL(Ifaces::StorageDrive *, d->backendObject(), false, isHotpluggable());
+    auto *p = iface_cast<Ifaces::StorageDrive>(d->backendObject());
+    return p ? p->isHotpluggable() : false;
 }
 
 qulonglong Solid::StorageDrive::size() const
 {
     Q_D(const StorageDrive);
-    return_SOLID_CALL(Ifaces::StorageDrive *, d->backendObject(), false, size());
+    auto *p = iface_cast<Ifaces::StorageDrive>(d->backendObject());
+    return p ? p->size() : 0;
 }
 
 bool Solid::StorageDrive::isInUse() const

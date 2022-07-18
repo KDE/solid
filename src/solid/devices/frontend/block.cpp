@@ -22,17 +22,20 @@ Solid::Block::~Block()
 int Solid::Block::deviceMajor() const
 {
     Q_D(const Block);
-    return_SOLID_CALL(Ifaces::Block *, d->backendObject(), 0, deviceMajor());
+    auto *p = iface_cast<Ifaces::Block>(d->backendObject());
+    return p ? p->deviceMajor() : 0;
 }
 
 int Solid::Block::deviceMinor() const
 {
     Q_D(const Block);
-    return_SOLID_CALL(Ifaces::Block *, d->backendObject(), 0, deviceMinor());
+    auto *p = iface_cast<Ifaces::Block>(d->backendObject());
+    return p ? p->deviceMinor() : 0;
 }
 
 QString Solid::Block::device() const
 {
     Q_D(const Block);
-    return_SOLID_CALL(Ifaces::Block *, d->backendObject(), QString(), device());
+    auto *p = iface_cast<Ifaces::Block>(d->backendObject());
+    return p ? p->device() : QString();
 }

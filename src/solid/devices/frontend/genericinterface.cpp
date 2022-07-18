@@ -26,17 +26,20 @@ Solid::GenericInterface::~GenericInterface()
 QVariant Solid::GenericInterface::property(const QString &key) const
 {
     Q_D(const GenericInterface);
-    return_SOLID_CALL(Ifaces::GenericInterface *, d->backendObject(), QVariant(), property(key));
+    auto *p = iface_cast<Ifaces::GenericInterface>(d->backendObject());
+    return p ? p->property(key) : QVariant();
 }
 
 QMap<QString, QVariant> Solid::GenericInterface::allProperties() const
 {
     Q_D(const GenericInterface);
-    return_SOLID_CALL(Ifaces::GenericInterface *, d->backendObject(), QVariantMap(), allProperties());
+    auto *p = iface_cast<Ifaces::GenericInterface>(d->backendObject());
+    return p ? p->allProperties() : QVariantMap();
 }
 
 bool Solid::GenericInterface::propertyExists(const QString &key) const
 {
     Q_D(const GenericInterface);
-    return_SOLID_CALL(Ifaces::GenericInterface *, d->backendObject(), false, propertyExists(key));
+    auto *p = iface_cast<Ifaces::GenericInterface>(d->backendObject());
+    return p ? p->propertyExists(key) : false;
 }
