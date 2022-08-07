@@ -25,6 +25,8 @@ Solid::NetworkShare::ShareType FakeNetworkShare::type() const
         return Solid::NetworkShare::Nfs;
     } else if (type == "cifs") {
         return Solid::NetworkShare::Cifs;
+    } else if (type == "smb3") {
+        return Solid::NetworkShare::Cifs;
     } else {
         return Solid::NetworkShare::Unknown;
     }

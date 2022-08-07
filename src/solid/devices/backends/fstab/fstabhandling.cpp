@@ -105,6 +105,7 @@ bool _k_isFstabNetworkFileSystem(const QString &fstype, const QString &devName)
         || fstype == "nfs4" //
         || fstype == "smbfs" //
         || fstype == "cifs" //
+        || fstype == "smb3" //
         || fstype == "fuse.sshfs" //
         || devName.startsWith(QLatin1String("//"))) {
         return true;
