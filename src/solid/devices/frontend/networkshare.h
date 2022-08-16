@@ -60,7 +60,7 @@ public:
      * - Cifs : samba protocol
      */
 
-    enum ShareType { Unknown, Nfs, Cifs };
+    enum ShareType { Unknown, Nfs, Cifs, Smb3 };
     Q_ENUM(ShareType)
 
     /**

@@ -5,6 +5,7 @@
 */
 
 #include "fstabnetworkshare.h"
+#include "fstabhandling.h"
 #include <solid/devices/backends/fstab/fstabdevice.h>
 
 using namespace Solid::Backends::Fstab;
@@ -15,7 +16,12 @@ FstabNetworkShare::FstabNetworkShare(Solid::Backends::Fstab::FstabDevice *device
 {
     QString url;
     if (m_fstabDevice->device().startsWith("//")) {
-        m_type = Solid::NetworkShare::Cifs;
+        QString fsType = FstabHandling::fstype(m_fstabDevice->device());
+        if (fsType == "cifs") {
+            m_type = Solid::NetworkShare::Cifs;
+        } else if (fsType == "smb3") {
+            m_type = Solid::NetworkShare::Smb3;
+        }
         url = "smb:";
         url += m_fstabDevice->device();
     } else if (m_fstabDevice->device().contains(":/")) {
