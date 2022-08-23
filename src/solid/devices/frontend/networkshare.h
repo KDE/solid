@@ -58,6 +58,7 @@ public:
      * - Unknown : a unsupported network protocol
      * - Nfs : nfs protocol
      * - Cifs : samba protocol
+     * - Smb3 : samba protocol (version 3)
      */
 
     enum ShareType { Unknown, Nfs, Cifs, Smb3 };
