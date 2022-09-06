@@ -95,7 +95,7 @@ bool FstabStorageAccess::setup()
         if (process->exitCode() == 0) {
             m_fstabDevice->broadcastActionDone("setup", Solid::NoError, QString());
         } else {
-            m_fstabDevice->broadcastActionDone("setup", Solid::UnauthorizedOperation, process->readAllStandardError());
+            m_fstabDevice->broadcastActionDone("setup", Solid::UnauthorizedOperation, process->readAllStandardError().trimmed());
         }
     });
 }
@@ -117,9 +117,9 @@ bool FstabStorageAccess::teardown()
         } else if (process->exitCode() == EBUSY) {
             m_fstabDevice->broadcastActionDone("teardown", Solid::DeviceBusy);
         } else if (process->exitCode() == EPERM) {
-            m_fstabDevice->broadcastActionDone("teardown", Solid::UnauthorizedOperation, process->readAllStandardError());
+            m_fstabDevice->broadcastActionDone("teardown", Solid::UnauthorizedOperation, process->readAllStandardError().trimmed());
         } else {
-            m_fstabDevice->broadcastActionDone("teardown", Solid::OperationFailed, process->readAllStandardError());
+            m_fstabDevice->broadcastActionDone("teardown", Solid::OperationFailed, process->readAllStandardError().trimmed());
         }
     });
 }
