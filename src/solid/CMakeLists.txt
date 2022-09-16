@@ -96,7 +96,7 @@ endif()
 
 install(FILES ${Solid_CamelCase_HEADERS} DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/Solid/Solid COMPONENT Devel)
 
-install(TARGETS KF5Solid EXPORT KF5SolidTargets ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS KF5Solid EXPORT KF5SolidTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})
 
 ########### static lib for tests  ###############
 
