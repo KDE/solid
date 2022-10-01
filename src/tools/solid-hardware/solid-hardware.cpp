@@ -314,7 +314,7 @@ int main(int argc, char **argv)
         parser.addPositionalArgument("nonportableinfo", QCoreApplication::translate("solid-hardware", "Show non portable information"));
         parser.process(app);
         args = parser.positionalArguments();
-        QByteArray extra(args.count() == 2 ? args.at(1).toLocal8Bit() : "");
+        QByteArray extra(args.count() == 2 ? args.at(1).toLocal8Bit() : QByteArray());
         return app.hwList(extra == "details", extra == "nonportableinfo");
     } else if (command == "details") {
         const QString udi = getUdiFromArguments(app, parser);
