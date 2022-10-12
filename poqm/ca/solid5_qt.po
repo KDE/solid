@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: solid\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2014-01-24 18:50+0000\n"
-"PO-Revision-Date: 2022-09-06 12:58+0200\n"
+"PO-Revision-Date: 2022-10-11 13:45+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -73,7 +73,7 @@ msgstr "Processador"
 #: solid/devices/backends/udev/udevdevice.cpp:115
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Portable Media Player"
-msgstr "Reproductor de suports portàtil"
+msgstr "Reproductor multimèdia portàtil"
 
 #: solid/devices/backends/udev/udevdevice.cpp:118
 msgctxt "Solid::Backends::UDev::UDevDevice|"
@@ -713,7 +713,7 @@ msgstr "Càmera"
 #: solid/devices/frontend/deviceinterface.cpp:73
 msgctxt "Solid::DeviceInterface|Portable Media Player device type"
 msgid "Portable Media Player"
-msgstr "Reproductor de suports portàtil"
+msgstr "Reproductor multimèdia portàtil"
 
 #: solid/devices/frontend/deviceinterface.cpp:75
 msgctxt "Solid::DeviceInterface|Battery device type"
