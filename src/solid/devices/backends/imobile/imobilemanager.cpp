@@ -40,7 +40,7 @@ Manager::Manager(QObject *parent)
     m_deviceUdis.reserve(count);
 
     for (int i = 0; i < count; ++i) {
-        m_deviceUdis.append(udiPrefix() + QLatin1Char('/') + QString::fromLatin1(devices[i]));
+        m_deviceUdis.append(Solid::Backends::IMobile::udiPrefix() + QLatin1Char('/') + QString::fromLatin1(devices[i]));
     }
 
     if (devices) {
