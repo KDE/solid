@@ -21,6 +21,7 @@ Manager::Manager(QObject *parent)
 {
     auto ret = idevice_event_subscribe(
         [](const idevice_event_t *event, void *user_data) {
+            // NOTE this is called from a different thread.
             static_cast<Manager *>(user_data)->onDeviceEvent(event);
         },
         this);
@@ -109,19 +110,24 @@ QString Manager::udiPrefix() const
 
 void Manager::onDeviceEvent(const idevice_event_t *event)
 {
-    const QString udi = udiPrefix() + QLatin1Char('/') + QString::fromLatin1(event->udid);
+    const QString udi = Solid::Backends::IMobile::udiPrefix() + QLatin1Char('/') + QString::fromLatin1(event->udid);
 
     switch (event->event) {
     case IDEVICE_DEVICE_ADD:
-        if (!m_deviceUdis.contains(udi)) {
-            m_deviceUdis.append(udi);
-            Q_EMIT deviceAdded(udi);
-        }
+        // Post it to the right thread.
+        QMetaObject::invokeMethod(this, [this, udi] {
+            if (!m_deviceUdis.contains(udi)) {
+                m_deviceUdis.append(udi);
+                Q_EMIT deviceAdded(udi);
+            }
+        });
         return;
     case IDEVICE_DEVICE_REMOVE:
-        if (m_deviceUdis.removeOne(udi)) {
-            Q_EMIT deviceRemoved(udi);
-        }
+        QMetaObject::invokeMethod(this, [this, udi] {
+            if (m_deviceUdis.removeOne(udi)) {
+                Q_EMIT deviceRemoved(udi);
+            }
+        });
         return;
 #if IMOBILEDEVICE_API >= QT_VERSION_CHECK(1, 3, 0)
     case IDEVICE_DEVICE_PAIRED:
