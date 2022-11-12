@@ -44,12 +44,12 @@ msgctxt "imobiledevice|Company name"
 msgid "Apple"
 msgstr "أبل"
 
-#: solid/devices/backends/imobile/imobilemanager.cpp:60
+#: solid/devices/backends/imobile/imobilemanager.cpp:61
 msgctxt "Solid::Backends::IMobile::Manager|"
 msgid "iDevice"
 msgstr "أي دفايس"
 
-#: solid/devices/backends/imobile/imobilemanager.cpp:61
+#: solid/devices/backends/imobile/imobilemanager.cpp:62
 msgctxt "Solid::Backends::IMobile::Manager|"
 msgid "iOS devices"
 msgstr "أجهزة أي او اس"

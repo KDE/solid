@@ -46,12 +46,12 @@ msgctxt "imobiledevice|Company name"
 msgid "Apple"
 msgstr ""
 
-#: solid/devices/backends/imobile/imobilemanager.cpp:60
+#: solid/devices/backends/imobile/imobilemanager.cpp:61
 msgctxt "Solid::Backends::IMobile::Manager|"
 msgid "iDevice"
 msgstr ""
 
-#: solid/devices/backends/imobile/imobilemanager.cpp:61
+#: solid/devices/backends/imobile/imobilemanager.cpp:62
 #, fuzzy
 #| msgctxt "Storage Access device type"
 #| msgid "Storage Access"
