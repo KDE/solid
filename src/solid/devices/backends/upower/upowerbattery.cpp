@@ -63,12 +63,16 @@ Solid::Battery::BatteryType Battery::type() const
     case UP_DEVICE_KIND_GAMING_INPUT:
         result = Solid::Battery::GamingInputBattery;
         break;
+    case UP_DEVICE_KIND_BLUETOOTH_GENERIC:
+        result = Solid::Battery::BluetoothBattery;
+        break;
     case UP_DEVICE_KIND_UNKNOWN:
         break;
     }
 
     if (result == Solid::Battery::UnknownBattery) {
         // Check if the battery came from Bluez, which is more useful than unknown battery type
+        // UP_DEVICE_KIND_BLUETOOTH_GENERIC is only in UPower 0.99.12
         if (m_device.data()->prop("NativePath").toString().startsWith(QLatin1String("/org/bluez/"))) {
             result = Solid::Battery::BluetoothBattery;
         }
