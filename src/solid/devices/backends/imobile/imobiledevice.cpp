@@ -27,9 +27,9 @@ IMobileDevice::IMobileDevice(const QString &udi)
     const QString deviceId = udi.mid(udiPrefix().length() + 1);
 
     idevice_t device;
-    idevice_new(&device, deviceId.toUtf8().constData());
-    if (!device) {
-        qCWarning(IMOBILE) << "Failed to create device instance for" << deviceId;
+    auto ret = idevice_new(&device, deviceId.toUtf8().constData());
+    if (ret != IDEVICE_E_SUCCESS) {
+        qCWarning(IMOBILE) << "Failed to create device instance for" << deviceId << ret;
         return;
     }
 
@@ -38,8 +38,8 @@ IMobileDevice::IMobileDevice(const QString &udi)
     });
 
     lockdownd_client_t lockdowndClient = nullptr;
-    auto ret = lockdownd_client_new(device, &lockdowndClient, "kde_solid_imobile");
-    if (ret != LOCKDOWN_E_SUCCESS || !lockdowndClient) {
+    auto lockdownRet = lockdownd_client_new(device, &lockdowndClient, "kde_solid_imobile");
+    if (lockdownRet != LOCKDOWN_E_SUCCESS || !lockdowndClient) {
         qCWarning(IMOBILE) << "Failed to create lockdownd client for" << deviceId;
         return;
     }
@@ -49,7 +49,7 @@ IMobileDevice::IMobileDevice(const QString &udi)
     });
 
     char *name = nullptr;
-    auto lockdownRet = lockdownd_get_device_name(lockdowndClient, &name);
+    lockdownRet = lockdownd_get_device_name(lockdowndClient, &name);
     if (lockdownRet != LOCKDOWN_E_SUCCESS) {
         qCWarning(IMOBILE) << "Failed to get device name for" << deviceId << lockdownRet;
     } else if (name) {
