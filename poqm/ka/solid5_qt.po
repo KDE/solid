@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Qt-Contexts: true\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2\n"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:60
 #, qt-format
@@ -479,7 +479,7 @@ msgstr "საცავის მედია"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:732
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "You are not authorized to perform this operation"
-msgstr ""
+msgstr "ამ ქმედებისთვის საჭირო ავტორიზაცია არ გაგაჩნიათ"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:734
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -494,17 +494,17 @@ msgstr "მოთხოვნილი ოპერაცია ავარი�
 #: solid/devices/backends/udisks2/udisksdevice.cpp:738
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The requested operation has been canceled"
-msgstr ""
+msgstr "მოთხოვნილი ოპერაცია გაუქმდა"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:740
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "An invalid or malformed option has been given"
-msgstr ""
+msgstr "მითითებული პარამეტრი არასწორი ან დაუსრულებელია"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:742
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The kernel driver for this filesystem type is not available"
-msgstr ""
+msgstr "ამ ფაილური სისტემისთვის ბირთვის დრაივერი არ არსებობს"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:744
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -534,7 +534,7 @@ msgstr "ოპერაციის ვადა გავიდა"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:754
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The operation would wake up a disk that is in a deep-sleep state"
-msgstr ""
+msgstr "ოპერაციას შეეძლო გაეღვიძებინა დისკი, რომელიც ღრმა ძილის მდგომარეობაშია"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:756
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -547,6 +547,8 @@ msgid ""
 "Cannot request authentication for this action. The PolicyKit authentication "
 "system appears to be not available."
 msgstr ""
+"ამ ქმედებისთვის ავთენტიკაციის მოთხოვნა შეუძლებელია. PolicyKit-ის "
+"ავთენტიკაციის სისტემა, როგორც ჩანს, მიუწვდომელია."
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:760
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -785,11 +787,13 @@ msgstr ""
 msgctxt "solid-hardware|"
 msgid "             # Listen to all add/remove events on supported hardware."
 msgstr ""
+"             # მხარდაჭერილ აპარატურაზე ყველა ჩამატება/მოხსნის მოვლენის "
+"მოსმენა."
 
 #: tools/solid-hardware/solid-hardware.cpp:286
 msgctxt "solid-hardware|"
 msgid "KDE tool for querying your hardware from the command line"
-msgstr ""
+msgstr "KDE-ის პროგრამა აპარატურის ბრძანებების სტრიქონიდან გამოსათხოვად"
 
 #: tools/solid-hardware/solid-hardware.cpp:289
 msgctxt "solid-hardware|"
@@ -804,35 +808,35 @@ msgstr "ხელმისაწვდომი ბრძანებები�
 #: tools/solid-hardware/solid-hardware.cpp:313
 msgctxt "solid-hardware|"
 msgid "Show device details"
-msgstr ""
+msgstr "მოწყობილობის დეტალების ჩვენება"
 
 #: tools/solid-hardware/solid-hardware.cpp:314
 msgctxt "solid-hardware|"
 msgid "Show non portable information"
-msgstr ""
+msgstr "არაპორტაბელური ინფორმაციის ჩვენება"
 
 #: tools/solid-hardware/solid-hardware.cpp:327
 msgctxt "solid-hardware|"
 msgid "Parent device udi"
-msgstr ""
+msgstr "მშობელი მოწყობილობის UDI"
 
 #: tools/solid-hardware/solid-hardware.cpp:354
 #, qt-format
 msgctxt "solid-hardware|"
 msgid "Syntax Error: Unknown command '%1'"
-msgstr ""
+msgstr "სინტაქსის შეცდომა. უცნობი ბრძანება: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:416
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1 does not have the interface StorageAccess."
-msgstr ""
+msgstr "შეცდომა: %1-ს StorageAccess ინტერფეისი არ გააჩნია."
 
 #: tools/solid-hardware/solid-hardware.cpp:419
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1 does not have the interface OpticalDrive."
-msgstr ""
+msgstr "შეცდომა: %1-ს OpticalDrive ინტერფეისი არ გააჩნია."
 
 #: tools/solid-hardware/solid-hardware.cpp:450
 #, qt-format
@@ -844,6 +848,8 @@ msgstr "შეცდომა: %1"
 msgctxt "solid-power|"
 msgid "Tool to know and set the power management state of your device"
 msgstr ""
+"ხელსაწყო თქვენი მოწყობილობის კვების მართვის დასაყენებლად და მდგომარეობის "
+"გამოსათხოვად"
 
 #: tools/solid-power/main.cpp:24
 msgctxt "solid-power|"
