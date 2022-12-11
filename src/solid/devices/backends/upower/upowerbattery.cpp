@@ -32,7 +32,7 @@ bool Battery::isPresent() const
 Solid::Battery::BatteryType Battery::type() const
 {
     Solid::Battery::BatteryType result = Solid::Battery::UnknownBattery;
-    const uint t = m_device.data()->prop("Type").toUInt();
+    const auto t = static_cast<UpDeviceKind>(m_device.data()->prop("Type").toUInt());
     switch (t) {
     case UP_DEVICE_KIND_LINE_POWER: // TODO
         break;
