@@ -10,8 +10,8 @@ using namespace Solid;
 
 DummyInhibition::DummyInhibition(QObject *parent)
     : AbstractInhibition(parent)
+    , m_state(Inhibition::Started)
 {
-    m_state = Inhibition::Started;
 }
 
 DummyInhibition::~DummyInhibition()

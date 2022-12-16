@@ -27,10 +27,9 @@ using namespace Solid::Backends::UDisks2;
 
 Block::Block(Device *dev)
     : DeviceInterface(dev)
+    , m_devNum(m_device->prop("DeviceNumber").toULongLong())
+    , m_devFile(QFile::decodeName(m_device->prop("Device").toByteArray()))
 {
-    m_devNum = m_device->prop("DeviceNumber").toULongLong();
-    m_devFile = QFile::decodeName(m_device->prop("Device").toByteArray());
-
     // we have a drive (non-block device for udisks), so let's find the corresponding (real) block device
     if (m_devNum == 0 || m_devFile.isEmpty()) {
         QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, UD2_DBUS_PATH_BLOCKDEVICES, DBUS_INTERFACE_INTROSPECT, "Introspect");

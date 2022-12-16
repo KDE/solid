@@ -10,9 +10,9 @@ using namespace Solid::Backends::IOKit;
 
 DADictionary::DADictionary(const IOKitDevice *device)
     : device(device)
+    , daSession(DASessionCreate(kCFAllocatorDefault))
     , daDict(nullptr)
 {
-    daSession = DASessionCreate(kCFAllocatorDefault);
     if (daSession) {
         const QString devName = device->property(QStringLiteral("BSD Name")).toString();
         daRef = DADiskCreateFromBSDName(kCFAllocatorDefault, daSession, devName.toStdString().c_str());
