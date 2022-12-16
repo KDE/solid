@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Qt-Contexts: true\n"
-"X-Generator: Poedit 3.2\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:60
 #, qt-format
@@ -738,6 +738,18 @@ msgid ""
 "             # neutral fashion,\n"
 "             # - Otherwise only device UDIs are listed.\n"
 msgstr ""
+"             # სისტემაში არსებული აპარატურის სია\n"
+"             # - თუ 'nonportableinfo' პარამეტრი მითითებულია, ასევე "
+"ჩამოთვლილი\n"
+"             # იქნება მოწყობილობის  თვისებებიც. (ფრთხილად. ამ შემთხვევაში "
+"ფუნქციის სახელები\n"
+"             # უკანაბოლოზეა დამოკიდებული),\n"
+"             # - თუ მითითებულია 'details' პარამეტრი, ნაჩვენები იქნება "
+"მოწყობილობის\n"
+"             # ინტერფეისები და შესაბამისი თვისებები პლატფორმისგან "
+"დამოუკიდებელი\n"
+"             # სახით იქნება ნაჩვენები,\n"
+"             # - სხვა შემთხვევაში ნაჩვენებია მხოლოდ მოწყობილობის UUID-ები.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:245
 msgctxt "solid-hardware|"
@@ -745,6 +757,8 @@ msgid ""
 "             # Display all the interfaces and properties of the device\n"
 "             # corresponding to 'udi' in a platform neutral fashion.\n"
 msgstr ""
+"             # მოწყობილობის ყველა ინტერფეისისა და თვისებების ჩვენება\n"
+"             # 'udi' პლატფორმისგან დამოუკიდებელი სახით.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:251
 msgctxt "solid-hardware|"
@@ -754,6 +768,9 @@ msgid ""
 "             # (be careful, in this case property names are backend "
 "dependent).\n"
 msgstr ""
+"             #  'udi'-ის შესაბამისი მოწყობილობის ყველა თვისების ჩვენება\n"
+"             # (დაიმახსოვრეთ, ამ შემთხვევაში თვისების სახელები უკანაბოლოზეა "
+"დამოკიდებული).\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:257
 msgctxt "solid-hardware|"
@@ -764,24 +781,35 @@ msgid ""
 "             # branch of the corresponding device,\n"
 "             # - Otherwise the search is done on all the devices.\n"
 msgstr ""
+"             # 'predicate'-ის შესაბამისი მოწყობილობების UDI-ებს სია.\n"
+"             # - თუ მითითებულია 'parentUdi', ძებნა შესაბამისი მოწყობილობის\n"
+"             # ტოტითაა შეზღუდული.\n"
+"             # - წინააღმდეგ შემთხვევაში ძებნა ყველა მოწყობილობებზე "
+"ხორციელდება.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:265
 msgctxt "solid-hardware|"
 msgid ""
 "             # If applicable, mount the device corresponding to 'udi'.\n"
 msgstr ""
+"             # შესაბამისობის შემთხვევაში 'udi'-ის შესაბამისი მოწყობილობის "
+"მიმაგრება.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:268
 msgctxt "solid-hardware|"
 msgid ""
 "             # If applicable, unmount the device corresponding to 'udi'.\n"
 msgstr ""
+"             # შესაბამისობის შემთხვევაში 'udi'-სთან თავსებადი მოწყობილობების "
+"მოხსნა.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:271
 msgctxt "solid-hardware|"
 msgid ""
 "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgstr ""
+"             # შესაბამისობის შემთხვევაში 'udi'-სთან თავსებადი მოწყობილობის "
+"გამოღება.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:274
 msgctxt "solid-hardware|"
@@ -868,3 +896,5 @@ msgid ""
 "             # - acPlugged: whether the device is connected to the AC or "
 "not\n"
 msgstr ""
+"             # სისტემიდან კვების მართვის სრული ინფორმაციის ჩვენება.\n"
+"             # - acPlugged: არის თუ არა მოწყობილობა მიერთებული 220V-ზე\n"
