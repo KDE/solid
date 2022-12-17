@@ -25,12 +25,12 @@ msgctxt "%1 is mountpoint, %2 is fs type"
 msgid "%1 (%2)"
 msgstr ""
 
-#: solid/devices/backends/fstab/fstabmanager.cpp:81
+#: solid/devices/backends/fstab/fstabmanager.cpp:80
 msgctxt "Solid::Backends::Fstab::FstabManager|"
 msgid "Filesystem Volumes"
 msgstr ""
 
-#: solid/devices/backends/fstab/fstabmanager.cpp:82
+#: solid/devices/backends/fstab/fstabmanager.cpp:81
 #, fuzzy
 #| msgctxt "Solid::Backends::UDev::UDevManager|"
 #| msgid "Devices declared in your system"
