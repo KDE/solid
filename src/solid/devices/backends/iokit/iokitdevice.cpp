@@ -256,7 +256,6 @@ QString IOKitDevice::parentUdi() const
 
 QString IOKitDevice::vendor() const
 {
-    QString vendor;
     if (parentUdi().isEmpty()) {
         return QStringLiteral("Apple");
     }
