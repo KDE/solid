@@ -14,8 +14,8 @@ deprecated: false
 release: true
 libraries:
  - qmake: Solid
-   cmake: "KF5::Solid"
-cmakename: KF5Solid
+   cmake: "KF6::Solid"
+cmakename: KF6Solid
 
 public_lib: true
 group: Frameworks

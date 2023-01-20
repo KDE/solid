@@ -8,14 +8,14 @@ endif()
 
 set(solid_LIB_SRCS ${solid_LIB_SRCS} ${solid_QM_LOADER})
 
-add_library(KF5Solid  ${solid_LIB_SRCS})
+add_library(KF6Solid  ${solid_LIB_SRCS})
 set(solid_BUILD_INCLUDE_DIRS
     ${CMAKE_CURRENT_BINARY_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/..
     ${CMAKE_CURRENT_BINARY_DIR}/..
 )
-target_include_directories(KF5Solid PUBLIC "$<BUILD_INTERFACE:${solid_BUILD_INCLUDE_DIRS}>")
-ecm_generate_export_header(KF5Solid
+target_include_directories(KF6Solid PUBLIC "$<BUILD_INTERFACE:${solid_BUILD_INCLUDE_DIRS}>")
+ecm_generate_export_header(KF6Solid
     BASE_NAME Solid
     GROUP_BASE_NAME KF
     VERSION ${KF_VERSION}
@@ -23,21 +23,21 @@ ecm_generate_export_header(KF5Solid
     DEPRECATION_VERSIONS 5.0
     EXCLUDE_DEPRECATED_BEFORE_AND_AT ${EXCLUDE_DEPRECATED_BEFORE_AND_AT}
 )
-add_library(KF5::Solid ALIAS KF5Solid)
+add_library(KF6::Solid ALIAS KF6Solid)
 
 # Apps must include <Solid/File> or <solid/file.h>
-target_include_directories(KF5Solid INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/Solid>")
+target_include_directories(KF6Solid INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/Solid>")
 
-target_link_libraries(KF5Solid PUBLIC Qt${QT_MAJOR_VERSION}::Core
+target_link_libraries(KF6Solid PUBLIC Qt${QT_MAJOR_VERSION}::Core
                                PRIVATE Qt${QT_MAJOR_VERSION}::Xml
                                        Qt${QT_MAJOR_VERSION}::Gui
                                        ${solid_OPTIONAL_LIBS}
  )
 if (TARGET Qt${QT_MAJOR_VERSION}::DBus)
-  target_link_libraries(KF5Solid PRIVATE Qt${QT_MAJOR_VERSION}::DBus)
+  target_link_libraries(KF6Solid PRIVATE Qt${QT_MAJOR_VERSION}::DBus)
 endif()
 
-set_target_properties(KF5Solid PROPERTIES  VERSION ${SOLID_VERSION}
+set_target_properties(KF6Solid PROPERTIES  VERSION ${SOLID_VERSION}
                                            SOVERSION ${SOLID_SOVERSION}
                                            EXPORT_NAME Solid
 )
@@ -96,20 +96,20 @@ endif()
 
 install(FILES ${Solid_CamelCase_HEADERS} DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/Solid/Solid COMPONENT Devel)
 
-install(TARGETS KF5Solid EXPORT KF5SolidTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS KF6Solid EXPORT KF6SolidTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})
 
 ########### static lib for tests  ###############
 
 if (BUILD_TESTING)
-  add_library(KF5Solid_static STATIC ${solid_LIB_SRCS})
-  set_target_properties(KF5Solid_static PROPERTIES COMPILE_FLAGS -DSOLID_STATIC_DEFINE=1)
+  add_library(KF6Solid_static STATIC ${solid_LIB_SRCS})
+  set_target_properties(KF6Solid_static PROPERTIES COMPILE_FLAGS -DSOLID_STATIC_DEFINE=1)
 
-  target_link_libraries(KF5Solid_static PUBLIC Qt${QT_MAJOR_VERSION}::Core)
-  target_link_libraries(KF5Solid_static PRIVATE Qt${QT_MAJOR_VERSION}::Xml Qt${QT_MAJOR_VERSION}::Gui ${solid_OPTIONAL_LIBS})
+  target_link_libraries(KF6Solid_static PUBLIC Qt${QT_MAJOR_VERSION}::Core)
+  target_link_libraries(KF6Solid_static PRIVATE Qt${QT_MAJOR_VERSION}::Xml Qt${QT_MAJOR_VERSION}::Gui ${solid_OPTIONAL_LIBS})
   if (TARGET Qt${QT_MAJOR_VERSION}::DBus)
-    target_link_libraries(KF5Solid_static PRIVATE Qt${QT_MAJOR_VERSION}::DBus)
+    target_link_libraries(KF6Solid_static PRIVATE Qt${QT_MAJOR_VERSION}::DBus)
   endif()
-  target_include_directories(KF5Solid_static PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR};${CMAKE_CURRENT_SOURCE_DIR}/..;${CMAKE_CURRENT_BINARY_DIR}/..>")
+  target_include_directories(KF6Solid_static PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR};${CMAKE_CURRENT_SOURCE_DIR}/..;${CMAKE_CURRENT_BINARY_DIR}/..>")
 endif()
 
 ########### install files ###############
@@ -122,9 +122,9 @@ install(FILES
 
 if(BUILD_QCH)
     ecm_add_qch(
-        KF5Solid_QCH
+        KF6Solid_QCH
         NAME Solid
-        BASE_NAME KF5Solid
+        BASE_NAME KF6Solid
         VERSION ${KF_VERSION}
         ORG_DOMAIN org.kde
         SOURCES # using only public headers, to cover only public API
@@ -147,5 +147,5 @@ if(BUILD_QCH)
 endif()
 
 include(ECMGeneratePriFile)
-ecm_generate_pri_file(BASE_NAME Solid LIB_NAME KF5Solid DEPS "core" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KDE_INSTALL_INCLUDEDIR_KF}/Solid)
+ecm_generate_pri_file(BASE_NAME Solid LIB_NAME KF6Solid DEPS "core" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KDE_INSTALL_INCLUDEDIR_KF}/Solid)
 install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})

@@ -22,7 +22,7 @@ add_library(solidextensionplugin SHARED ${solidextensionplugin_SRCS})
 
 target_link_libraries(
     solidextensionplugin
-    KF5::Solid
+    KF6::Solid
     Qt${QT_MAJOR_VERSION}::Core
     Qt${QT_MAJOR_VERSION}::Qml
 )

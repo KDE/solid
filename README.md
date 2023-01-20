@@ -18,9 +18,9 @@ It provides the following features for application developers:
 
 If you are using CMake, you need to have
 
-    find_package(KF5Solid NO_MODULE)
+    find_package(KF6Solid NO_MODULE)
 
-(or similar) in your CMakeLists.txt file, and you need to link to KF5::Solid.
+(or similar) in your CMakeLists.txt file, and you need to link to KF6::Solid.
 
 See the documentation for the Solid namespace, and the [tutorials on
 TechBase][tutorials].

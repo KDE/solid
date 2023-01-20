@@ -1,6 +1,6 @@
 add_executable(solid-hardware5 solid-hardware.cpp)
 ecm_mark_nongui_executable(solid-hardware5)
-target_link_libraries(solid-hardware5 PUBLIC KF5::Solid)
+target_link_libraries(solid-hardware5 PUBLIC KF6::Solid)
 if (TARGET Qt${QT_MAJOR_VERSION}::DBus)
   target_link_libraries(solid-hardware5 PRIVATE Qt${QT_MAJOR_VERSION}::DBus)
 endif()

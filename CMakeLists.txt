@@ -81,8 +81,8 @@ add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt 
 
 ecm_setup_version(PROJECT VARIABLE_PREFIX SOLID
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/solid_version.h"
-                        PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5SolidConfigVersion.cmake"
-                        SOVERSION 5)
+                        PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF6SolidConfigVersion.cmake"
+                        SOVERSION 6)
 
 # TODO: Remove these
 remove_definitions(-DQT_NO_CAST_FROM_ASCII)
@@ -150,31 +150,31 @@ if (BUILD_TESTING)
 endif()
 
 # create a Config.cmake and a ConfigVersion.cmake file and install them
-set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF5Solid")
+set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF6Solid")
 
 if (BUILD_QCH)
     ecm_install_qch_export(
-        TARGETS KF5Solid_QCH
-        FILE KF5SolidQchTargets.cmake
+        TARGETS KF6Solid_QCH
+        FILE KF6SolidQchTargets.cmake
         DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
         COMPONENT Devel
     )
-    set(PACKAGE_INCLUDE_QCHTARGETS "include(\"\${CMAKE_CURRENT_LIST_DIR}/KF5SolidQchTargets.cmake\")")
+    set(PACKAGE_INCLUDE_QCHTARGETS "include(\"\${CMAKE_CURRENT_LIST_DIR}/KF6SolidQchTargets.cmake\")")
 endif()
 
 configure_package_config_file(
-    "${CMAKE_CURRENT_SOURCE_DIR}/KF5SolidConfig.cmake.in"
-    "${CMAKE_CURRENT_BINARY_DIR}/KF5SolidConfig.cmake"
+    "${CMAKE_CURRENT_SOURCE_DIR}/KF6SolidConfig.cmake.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/KF6SolidConfig.cmake"
     PATH_VARS KDE_INSTALL_DBUSINTERFACEDIR
     INSTALL_DESTINATION  ${CMAKECONFIG_INSTALL_DIR}
 )
 
-install(FILES  "${CMAKE_CURRENT_BINARY_DIR}/KF5SolidConfig.cmake"
-               "${CMAKE_CURRENT_BINARY_DIR}/KF5SolidConfigVersion.cmake"
+install(FILES  "${CMAKE_CURRENT_BINARY_DIR}/KF6SolidConfig.cmake"
+               "${CMAKE_CURRENT_BINARY_DIR}/KF6SolidConfigVersion.cmake"
         DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
         COMPONENT Devel )
 
-install(EXPORT KF5SolidTargets  DESTINATION "${CMAKECONFIG_INSTALL_DIR}"  FILE KF5SolidTargets.cmake  NAMESPACE KF5:: )
+install(EXPORT KF6SolidTargets  DESTINATION "${CMAKECONFIG_INSTALL_DIR}"  FILE KF6SolidTargets.cmake  NAMESPACE KF6:: )
 
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/solid_version.h
         DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/Solid COMPONENT Devel
