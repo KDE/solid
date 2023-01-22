@@ -90,8 +90,8 @@ std::ostream &operator<<(std::ostream &out, const QDBusArgument &arg)
 
 std::ostream &operator<<(std::ostream &out, const QVariant &value)
 {
-    switch (value.type()) {
-    case QVariant::StringList: {
+    switch (value.userType()) {
+    case QMetaType::QStringList: {
         out << "{";
 
         const QStringList list = value.toStringList();
@@ -110,27 +110,27 @@ std::ostream &operator<<(std::ostream &out, const QVariant &value)
         out << "} (string list)";
         break;
     }
-    case QVariant::String:
+    case QMetaType::QString:
         out << "'" << value.toString() << "' (string)";
         break;
-    case QVariant::Bool:
+    case QMetaType::Bool:
         out << (value.toBool() ? "true" : "false") << " (bool)";
         break;
-    case QVariant::Int:
-    case QVariant::LongLong:
-        out << value.toString() << "  (0x" << QString::number(value.toLongLong(), 16) << ")  (" << QVariant::typeToName(value.type()) << ")";
+    case QMetaType::Int:
+    case QMetaType::LongLong:
+        out << value.toString() << "  (0x" << QString::number(value.toLongLong(), 16) << ")  (" << value.typeName() << ")";
         break;
-    case QVariant::UInt:
-    case QVariant::ULongLong:
-        out << value.toString() << "  (0x" << QString::number(value.toULongLong(), 16) << ")  (" << QVariant::typeToName(value.type()) << ")";
+    case QMetaType::UInt:
+    case QMetaType::ULongLong:
+        out << value.toString() << "  (0x" << QString::number(value.toULongLong(), 16) << ")  (" << value.typeName() << ")";
         break;
-    case QVariant::Double:
+    case QMetaType::Double:
         out << value.toString() << " (double)";
         break;
-    case QVariant::ByteArray:
+    case QMetaType::QByteArray:
         out << "'" << value.toString() << "' (bytes)";
         break;
-    case QVariant::UserType:
+    case QMetaType::User:
         // qDebug() << "got variant type:" << value.typeName();
         if (value.canConvert<QList<int>>()) {
             const QList<int> intlist = value.value<QList<int>>();
@@ -153,7 +153,7 @@ std::ostream &operator<<(std::ostream &out, const QVariant &value)
 
         break;
     default:
-        out << "'" << value.toString() << "' (" << QVariant::typeToName(value.type()) << ")";
+        out << "'" << value.toString() << "' (" << value.typeName() << ")";
         break;
     }
 

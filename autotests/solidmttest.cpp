@@ -150,7 +150,7 @@ void SolidMtTest::testTextPredicatesExtended()
         auto atom = p.firstOperand().firstOperand();
         QVERIFY(atom.isValid());
         QCOMPARE(atom.propertyName(), QStringLiteral("ignored"));
-        QCOMPARE(atom.matchingValue().type(), QVariant::Bool);
+        QCOMPARE(atom.matchingValue().userType(), QMetaType::Bool);
         QCOMPARE(atom.matchingValue().toBool(), false);
     }
     {
@@ -158,7 +158,7 @@ void SolidMtTest::testTextPredicatesExtended()
         QVERIFY(atom.isValid());
         QCOMPARE(atom.interfaceType(), Solid::DeviceInterface::StorageVolume);
         QCOMPARE(atom.propertyName(), QStringLiteral("usage"));
-        QCOMPARE(atom.matchingValue().type(), QVariant::String);
+        QCOMPARE(atom.matchingValue().userType(), QMetaType::QString);
         QCOMPARE(atom.matchingValue().toString(), QStringLiteral("FileSystem"));
     }
     {
@@ -166,7 +166,7 @@ void SolidMtTest::testTextPredicatesExtended()
         QVERIFY(atom.isValid());
         QCOMPARE(atom.interfaceType(), Solid::DeviceInterface::StorageVolume);
         QCOMPARE(atom.propertyName(), QStringLiteral("ignored"));
-        QCOMPARE(atom.matchingValue().type(), QVariant::Bool);
+        QCOMPARE(atom.matchingValue().userType(), QMetaType::Bool);
         QCOMPARE(atom.matchingValue().toBool(), false);
     }
     {
@@ -174,7 +174,7 @@ void SolidMtTest::testTextPredicatesExtended()
         QVERIFY(atom.isValid());
         QCOMPARE(atom.interfaceType(), Solid::DeviceInterface::StorageDrive);
         QCOMPARE(atom.propertyName(), QStringLiteral("removable"));
-        QCOMPARE(atom.matchingValue().type(), QVariant::Bool);
+        QCOMPARE(atom.matchingValue().userType(), QMetaType::Bool);
         QCOMPARE(atom.matchingValue().toBool(), true);
     }
 }
