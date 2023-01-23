@@ -20,15 +20,15 @@ include(ECMQtDeclareLoggingCategory)
 include(ECMDeprecationSettings)
 
 set(REQUIRED_QT_VERSION 6.4.0)
-find_package(Qt${QT_MAJOR_VERSION} ${REQUIRED_QT_VERSION} CONFIG REQUIRED Xml Gui)
+find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Xml Gui)
 
 # Android has no DBus, and Windows & Mac have backends that don't use DBus
 if(NOT ANDROID AND NOT WIN32 AND NOT APPLE)
-    find_package(Qt${QT_MAJOR_VERSION} ${REQUIRED_QT_VERSION} CONFIG REQUIRED DBus)
+    find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED DBus)
 endif()
 
 if(WIN32)
-    find_package(Qt${QT_MAJOR_VERSION} ${REQUIRED_QT_VERSION} CONFIG REQUIRED Network)
+    find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Network)
 endif()
 
 

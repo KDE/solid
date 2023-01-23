@@ -28,13 +28,13 @@ add_library(KF6::Solid ALIAS KF6Solid)
 # Apps must include <Solid/File> or <solid/file.h>
 target_include_directories(KF6Solid INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF}/Solid>")
 
-target_link_libraries(KF6Solid PUBLIC Qt${QT_MAJOR_VERSION}::Core
-                               PRIVATE Qt${QT_MAJOR_VERSION}::Xml
-                                       Qt${QT_MAJOR_VERSION}::Gui
+target_link_libraries(KF6Solid PUBLIC Qt6::Core
+                               PRIVATE Qt6::Xml
+                                       Qt6::Gui
                                        ${solid_OPTIONAL_LIBS}
  )
-if (TARGET Qt${QT_MAJOR_VERSION}::DBus)
-  target_link_libraries(KF6Solid PRIVATE Qt${QT_MAJOR_VERSION}::DBus)
+if (TARGET Qt6::DBus)
+  target_link_libraries(KF6Solid PRIVATE Qt6::DBus)
 endif()
 
 set_target_properties(KF6Solid PROPERTIES  VERSION ${SOLID_VERSION}
@@ -104,10 +104,10 @@ if (BUILD_TESTING)
   add_library(KF6Solid_static STATIC ${solid_LIB_SRCS})
   set_target_properties(KF6Solid_static PROPERTIES COMPILE_FLAGS -DSOLID_STATIC_DEFINE=1)
 
-  target_link_libraries(KF6Solid_static PUBLIC Qt${QT_MAJOR_VERSION}::Core)
-  target_link_libraries(KF6Solid_static PRIVATE Qt${QT_MAJOR_VERSION}::Xml Qt${QT_MAJOR_VERSION}::Gui ${solid_OPTIONAL_LIBS})
-  if (TARGET Qt${QT_MAJOR_VERSION}::DBus)
-    target_link_libraries(KF6Solid_static PRIVATE Qt${QT_MAJOR_VERSION}::DBus)
+  target_link_libraries(KF6Solid_static PUBLIC Qt6::Core)
+  target_link_libraries(KF6Solid_static PRIVATE Qt6::Xml Qt6::Gui ${solid_OPTIONAL_LIBS})
+  if (TARGET Qt6::DBus)
+    target_link_libraries(KF6Solid_static PRIVATE Qt6::DBus)
   endif()
   target_include_directories(KF6Solid_static PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR};${CMAKE_CURRENT_SOURCE_DIR}/..;${CMAKE_CURRENT_BINARY_DIR}/..>")
 endif()
@@ -132,7 +132,7 @@ if(BUILD_QCH)
             "${CMAKE_SOURCE_DIR}/docs/song.md"
         MD_MAINPAGE "${CMAKE_SOURCE_DIR}/README.md"
         LINK_QCHS
-            Qt5Core_QCH
+            Qt6Core_QCH
         INCLUDE_DIRS
             ${solid_BUILD_INCLUDE_DIRS}
         BLANK_MACROS

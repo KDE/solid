@@ -1,7 +1,3 @@
-include_directories(
-    ${Qt5Core_PRIVATE_INCLUDE_DIRS}
-)
-
 set(backend_sources
     iokitmanager.cpp
     iokitdevice.cpp

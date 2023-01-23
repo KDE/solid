@@ -13,4 +13,4 @@ set(backend_sources
     winstoragevolume.cpp
     winbattery.cpp
 )
-set(backend_libs Qt${QT_MAJOR_VERSION}::Network setupapi)
+set(backend_libs Qt6::Network setupapi)

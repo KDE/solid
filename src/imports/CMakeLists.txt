@@ -1,14 +1,14 @@
-find_package(Qt${QT_MAJOR_VERSION}Qml ${REQUIRED_QT_VERSION} CONFIG QUIET)
+find_package(Qt6Qml ${REQUIRED_QT_VERSION} CONFIG QUIET)
 
-set_package_properties(Qt${QT_MAJOR_VERSION}Qml PROPERTIES  URL "git://gitorious.org/qt/qtdeclarative.git"
+set_package_properties(Qt6Qml PROPERTIES  URL "git://gitorious.org/qt/qtdeclarative.git"
                                           DESCRIPTION "QML support for Solid"
                                           TYPE OPTIONAL
                                           PURPOSE "Allows to use Solid in QML code"
                          )
 
 
-if(NOT TARGET Qt${QT_MAJOR_VERSION}::Qml)
-    message(STATUS "Qt${QT_MAJOR_VERSION}Qml not found, qml imports will not be built.")
+if(NOT TARGET Qt6::Qml)
+    message(STATUS "Qt6Qml not found, qml imports will not be built.")
     return()
 endif()
 
@@ -23,8 +23,8 @@ add_library(solidextensionplugin SHARED ${solidextensionplugin_SRCS})
 target_link_libraries(
     solidextensionplugin
     KF6::Solid
-    Qt${QT_MAJOR_VERSION}::Core
-    Qt${QT_MAJOR_VERSION}::Qml
+    Qt6::Core
+    Qt6::Qml
 )
 
 if(MINGW)
