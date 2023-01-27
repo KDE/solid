@@ -1,11 +1,11 @@
 # Safa Alfulaij <safa1996alfulaij@gmail.com>, 2014.
-# Zayed Al-Saidi <zayed.alsaidi@gmail.com>, 2021, 2022.
+# Zayed Al-Saidi <zayed.alsaidi@gmail.com>, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-06-28 15:38+0300\n"
-"PO-Revision-Date: 2022-09-06 20:27+0400\n"
+"PO-Revision-Date: 2023-01-26 13:08+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -741,16 +741,23 @@ msgid ""
 "             # neutral fashion,\n"
 "             # - Otherwise only device UDIs are listed.\n"
 msgstr ""
+"             #تسرد كل الأجهزة المتوفرة في النظام.\n"
+"             # - إذا كان الخيار 'nonportableinfo' محدداً، فإن \n"
+"             # خصائص الجهاز ستعرض (كن حذراً، في هذه الحالة\n"
+"             # تكون أسماء الخصائص معتمدة على الخلفية)\n"
+"             # - إذا كان الخيار 'details' محدداً فإن واجهات الجهاز\n"
+"             # وجميع الخصائص المقابلة ستسرد بطريقة \n"
+"             # محايدة للمنصات،\n"
+"             # - غير ذلك ستسرد أرقام تعريف UDI الأجهزة فقط.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:245
-#, fuzzy
 msgctxt "solid-hardware|"
 msgid ""
 "             # Display all the interfaces and properties of the device\n"
 "             # corresponding to 'udi' in a platform neutral fashion.\n"
 msgstr ""
-"             # اعرض كل الواجهات وخصائص الجهاز\n"
-"             # corresponding to 'udi' in a platform neutral fashion.\n"
+"             # تعرض كل الواجهات وخصائص الجهاز\n"
+"             # المقابلة لـ 'udi' بطريقة محايدة للمنصات.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:251
 msgctxt "solid-hardware|"
@@ -760,6 +767,8 @@ msgid ""
 "             # (be careful, in this case property names are backend "
 "dependent).\n"
 msgstr ""
+"             # تعرض كل الخصائص للجهاز المقابل لـ'udi'\n"
+"             # (كن حذرا، فهذه الحالة فإن أسماء الخصائص تعتمد على الخلفية).\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:257
 msgctxt "solid-hardware|"
@@ -770,34 +779,37 @@ msgid ""
 "             # branch of the corresponding device,\n"
 "             # - Otherwise the search is done on all the devices.\n"
 msgstr ""
+"             # يسرد المعرف UDI لكل الأجهزة التي تستجيب لـ 'predicate'.\n"
+"             # - إذا حدد 'parentUdi' ، سيقيد البحث فرع الجهاز \n"
+"             # المقابل، غير ذلك سيبحث في جميع الأجهزة \n"
 
 #: tools/solid-hardware/solid-hardware.cpp:265
 msgctxt "solid-hardware|"
 msgid ""
 "             # If applicable, mount the device corresponding to 'udi'.\n"
-msgstr ""
+msgstr "             # إذا كان ممكناً سيضم الجهاز المقابل لـ 'udi'.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:268
 msgctxt "solid-hardware|"
 msgid ""
 "             # If applicable, unmount the device corresponding to 'udi'.\n"
-msgstr ""
+msgstr "             # إذا كان ممكناً سيزيل ضم الجهاز المقابل لـ 'udi'.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:271
 msgctxt "solid-hardware|"
 msgid ""
 "             # If applicable, eject the device corresponding to 'udi'.\n"
-msgstr ""
+msgstr "             # إذا كان ممكناً ستخرج الجهاز المقابل لـ 'udi'.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:274
 msgctxt "solid-hardware|"
 msgid "             # Listen to all add/remove events on supported hardware."
-msgstr ""
+msgstr "             # تستمع لكل أحداث الإضافة/الحذف على العتاد المدعوم."
 
 #: tools/solid-hardware/solid-hardware.cpp:286
 msgctxt "solid-hardware|"
 msgid "KDE tool for querying your hardware from the command line"
-msgstr ""
+msgstr "أداة كدي لاستعلام عتادك من سطر الأوامر."
 
 #: tools/solid-hardware/solid-hardware.cpp:289
 msgctxt "solid-hardware|"
@@ -822,7 +834,7 @@ msgstr "اعرض المعلومات غير المنقولة"
 #: tools/solid-hardware/solid-hardware.cpp:327
 msgctxt "solid-hardware|"
 msgid "Parent device udi"
-msgstr ""
+msgstr "معرف الجهاز الأم"
 
 #: tools/solid-hardware/solid-hardware.cpp:354
 #, qt-format
@@ -834,13 +846,13 @@ msgstr "خطأ صياغي: الأمر '%1' مجهول"
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1 does not have the interface StorageAccess."
-msgstr ""
+msgstr "خطأ: %1 يملك واجهة StorageAccess."
 
 #: tools/solid-hardware/solid-hardware.cpp:419
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1 does not have the interface OpticalDrive."
-msgstr ""
+msgstr "خطأ: %1 يملك واجهة OpticalDrive."
 
 #: tools/solid-hardware/solid-hardware.cpp:450
 #, qt-format
@@ -851,7 +863,7 @@ msgstr "خطأ: %1"
 #: tools/solid-power/main.cpp:22
 msgctxt "solid-power|"
 msgid "Tool to know and set the power management state of your device"
-msgstr ""
+msgstr "أداة لمعرفة وضبط  حالة إدارة الطاقة على جهازك."
 
 #: tools/solid-power/main.cpp:24
 msgctxt "solid-power|"
@@ -870,6 +882,8 @@ msgid ""
 "             # - acPlugged: whether the device is connected to the AC or "
 "not\n"
 msgstr ""
+"             # تظهر كل معلومات إدارة الطاقة من الجهاز.\n"
+"             # - acPlugged: إذا ما كان الجهاز موصول بالكهرباء أم لا\n"
 
 #~ msgctxt "Solid::Backends::Hal::HalDevice|"
 #~ msgid "%1 TiB"
