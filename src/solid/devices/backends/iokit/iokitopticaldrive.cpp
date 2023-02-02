@@ -50,7 +50,7 @@ public:
     // DiskArbitration-based ejection based on the implementation in libcdio's osx.c
     // in turn based on VideoLAN (VLC) code.
     // Not activated by default ATM because I have only been able to test it with the
-    // solid-hardware5 utility and that one remains stuck after a successful return
+    // solid-hardware6 utility and that one remains stuck after a successful return
     // from IOKitOpticalDrive::eject(). It does so too when using the hdiutil external
     // utility which cannot be due to using QProcess (to the best of my knowledge).
     // NB: the full-fledged approach using a cancel sourc ref (cancel_signal) etc. may
