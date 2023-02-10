@@ -44,15 +44,17 @@ QStringList IOKitManagerPrivate::devicesFromRegistry(io_iterator_t it)
 {
     QStringList result;
     io_object_t obj;
-    io_string_t pathName;
     while ((obj = IOIteratorNext(it))) {
-        kern_return_t ret = IORegistryEntryGetPath(obj, kIOServicePlane, pathName);
-        if (ret != KERN_SUCCESS) {
-            qWarning() << Q_FUNC_INFO << "IORegistryEntryGetPath failed";
+        CFStringRef pathRef = IORegistryEntryCopyPath(obj, kIOServicePlane);
+        const QString path = QString::fromCFString(pathRef);
+        CFRelease(pathRef);
+
+        if (path.isEmpty()) {
+            qWarning() << Q_FUNC_INFO << "IORegistryEntryCopyPath failed";
             continue;
         }
-        result += QString::fromUtf8(pathName);
-        ret = IOObjectRelease(obj);
+        result += path;
+        const kern_return_t ret = IOObjectRelease(obj);
         if (ret != KERN_SUCCESS) {
             // very unlikely to happen - keep it a qDebug just in case.
             // compiler will nuke this code in release builds.
@@ -203,7 +205,9 @@ QStringList IOKitManager::devicesFromQuery(const QString &parentUdi, Solid::Devi
 
 QObject *IOKitManager::createDevice(const QString &udi)
 {
-    io_registry_entry_t entry = IORegistryEntryFromPath(kIOMasterPortDefault, udi.toLocal8Bit().constData());
+    CFStringRef path = udi.toCFString();
+    io_registry_entry_t entry = IORegistryEntryCopyFromPath(kIOMasterPortDefault, path);
+    CFRelease(path);
 
     // we have to do IOObjectConformsTo - comparing the class names is not good enough
     // if (IOObjectConformsTo(entry, kIOEthernetInterfaceClass)) {

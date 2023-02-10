@@ -111,12 +111,9 @@ static QString getParentDeviceUdi(const io_registry_entry_t &entry)
         return QString();
     }
 
-    QString result;
-    io_string_t pathName;
-    ret = IORegistryEntryGetPath(parent, kIOServicePlane, pathName);
-    if (ret == KERN_SUCCESS) {
-        result = QString::fromUtf8(pathName);
-    }
+    CFStringRef path = IORegistryEntryCopyPath(parent, kIOServicePlane);
+    QString result = QString::fromCFString(path);
+    CFRelease(path);
 
     // now we can release the parent
     IOObjectRelease(parent);
@@ -198,7 +195,9 @@ IOKitDevice::IOKitDevice(const QString &udi)
         return;
     }
 
-    io_registry_entry_t entry = IORegistryEntryFromPath(kIOMasterPortDefault, udi.toLocal8Bit().constData());
+    CFStringRef path = udi.toCFString();
+    io_registry_entry_t entry = IORegistryEntryCopyFromPath(kIOMasterPortDefault, path);
+    CFRelease(path);
 
     if (entry == MACH_PORT_NULL) {
         qWarning() << Q_FUNC_INFO << "Tried to create Device from invalid UDI" << udi;
@@ -216,7 +215,9 @@ IOKitDevice::IOKitDevice(const IOKitDevice &device)
         return;
     }
 
-    io_registry_entry_t entry = IORegistryEntryFromPath(kIOMasterPortDefault, device.udi().toLocal8Bit().constData());
+    CFStringRef path = device.udi().toCFString();
+    io_registry_entry_t entry = IORegistryEntryCopyFromPath(kIOMasterPortDefault, path);
+    CFRelease(path);
 
     if (entry == MACH_PORT_NULL) {
         qWarning() << Q_FUNC_INFO << "Tried to create Device from invalid UDI" << device.udi();
@@ -235,7 +236,9 @@ bool IOKitDevice::conformsToIOKitClass(const QString &className) const
 {
     bool conforms = false;
     if (!className.isEmpty()) {
-        io_registry_entry_t entry = IORegistryEntryFromPath(kIOMasterPortDefault, udi().toLocal8Bit().constData());
+        CFStringRef path = udi().toCFString();
+        io_registry_entry_t entry = IORegistryEntryCopyFromPath(kIOMasterPortDefault, path);
+        CFRelease(path);
         if (entry != MACH_PORT_NULL) {
             conforms = IOObjectConformsTo(entry, className.toLocal8Bit().constData());
             IOObjectRelease(entry);
