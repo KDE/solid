@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
-"PO-Revision-Date: 2023-01-02 07:12\n"
+"PO-Revision-Date: 2023-02-24 12:44\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -548,12 +548,12 @@ msgctxt "Solid::Backends::UDisks2::Device|"
 msgid ""
 "Cannot request authentication for this action. The PolicyKit authentication "
 "system appears to be not available."
-msgstr ""
+msgstr "无法为此操作请求身份验证。PolicyKit 身份验证系统不可用。"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:760
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The authentication prompt was canceled"
-msgstr ""
+msgstr "身份验证提示已取消"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:762
 msgctxt "Solid::Backends::UDisks2::Device|"
