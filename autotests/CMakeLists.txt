@@ -35,15 +35,21 @@ endif()
 
 ########### solidpowertest ###############
 if(WITH_NEW_POWER_ASYNC_API AND WITH_NEW_POWER_ASYNC_FREEDESKTOP)
-    set(solidFreedesktopTest_SRCS solidfreedesktoptest.cpp fakeUpower.cpp fakelogind.cpp)
-    ecm_add_test(${solidFreedesktopTest_SRCS} TEST_NAME "solidfreedesktopbackend" LINK_LIBRARIES Qt6::Test Qt6::DBus ${LIBS} KF6Solid_static)
+    ecm_add_test(
+        solidfreedesktoptest.cpp
+        fakeUpower.cpp
+        fakelogind.cpp
+        TEST_NAME "solidfreedesktopbackend"
+        LINK_LIBRARIES Qt6::Test Qt6::DBus ${LIBS} KF6Solid_static
+    )
 endif()
 
 ########### logindinhibitionargument ###########
 if(WITH_NEW_POWER_ASYNC_API AND WITH_NEW_POWER_ASYNC_FREEDESKTOP)
-set(solidLogindInhibitionArgument_SRCS
-    logindinhibitionargumenttest.cpp
-    ../src/solid/power/backends/freedesktop/logindinhibitionargument.cpp
-)
-ecm_add_test(${solidLogindInhibitionArgument_SRCS} TEST_NAME "logindinhibitionargument" LINK_LIBRARIES Qt6::Test KF6Solid_static)
+    ecm_add_test(
+        logindinhibitionargumenttest.cpp
+        ../src/solid/power/backends/freedesktop/logindinhibitionargument.cpp
+        TEST_NAME "logindinhibitionargument"
+        LINK_LIBRARIES Qt6::Test KF6Solid_static
+    )
 endif()

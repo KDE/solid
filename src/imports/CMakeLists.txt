@@ -12,16 +12,12 @@ if(NOT TARGET Qt6::Qml)
     return()
 endif()
 
-set(solidextensionplugin_SRCS
-    ${solid_common_SRCS}
+add_library(solidextensionplugin SHARED
     solidextensionplugin.cpp
     devices.cpp
-    )
+)
 
-add_library(solidextensionplugin SHARED ${solidextensionplugin_SRCS})
-
-target_link_libraries(
-    solidextensionplugin
+target_link_libraries(solidextensionplugin
     KF6::Solid
     Qt6::Core
     Qt6::Qml
