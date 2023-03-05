@@ -809,7 +809,7 @@ msgstr "             # تستمع لكل أحداث الإضافة/الحذف ع
 #: tools/solid-hardware/solid-hardware.cpp:286
 msgctxt "solid-hardware|"
 msgid "KDE tool for querying your hardware from the command line"
-msgstr "أداة كدي لاستعلام عتادك من سطر الأوامر."
+msgstr "أداة كِيدِي لاستعلام عتادك من سطر الأوامر."
 
 #: tools/solid-hardware/solid-hardware.cpp:289
 msgctxt "solid-hardware|"
