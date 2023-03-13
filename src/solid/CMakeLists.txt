@@ -1,4 +1,4 @@
-ecm_create_qm_loader(solid_QM_LOADER solid5_qt)
+ecm_create_qm_loader(solid_QM_LOADER solid6_qt)
 
 include(devices/CMakeLists.txt)
 
