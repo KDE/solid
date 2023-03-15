@@ -1,4 +1,4 @@
-# Translation of solid5_qt to Norwegian Nynorsk
+# Translation of solid6_qt to Norwegian Nynorsk
 #
 # Karl Ove Hufthammer <karl@huftis.org>, 2010, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
 # Øystein Steffensen-Alværvik <oysteins.omsetting@protonmail.com>, 2022.
