@@ -149,7 +149,7 @@ protected:
     /**
      * @internal
      */
-    StorageDrive(StorageDrivePrivate &dd, QObject *backendObject);
+    SOLID_NO_EXPORT StorageDrive(StorageDrivePrivate &dd, QObject *backendObject);
 };
 }
 

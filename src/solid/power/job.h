@@ -161,7 +161,7 @@ protected:
     void emitResult();
 
     JobPrivate *const d_ptr;
-    Job(JobPrivate &dd, QObject *parent);
+    SOLID_NO_EXPORT Job(JobPrivate &dd, QObject *parent);
 
 private:
     Q_DECLARE_PRIVATE(Job)
