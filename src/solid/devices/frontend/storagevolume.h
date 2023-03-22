@@ -144,7 +144,7 @@ protected:
     /**
      * @internal
      */
-    StorageVolume(StorageVolumePrivate &dd, QObject *backendObject);
+    SOLID_NO_EXPORT StorageVolume(StorageVolumePrivate &dd, QObject *backendObject);
 };
 }
 

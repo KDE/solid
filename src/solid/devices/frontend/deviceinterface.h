@@ -105,7 +105,7 @@ protected:
      * @param dd the private d member. It will take care of deleting it upon destruction.
      * @param backendObject the device interface object provided by the backend
      */
-    DeviceInterface(DeviceInterfacePrivate &dd, QObject *backendObject);
+    SOLID_NO_EXPORT DeviceInterface(DeviceInterfacePrivate &dd, QObject *backendObject);
 
     DeviceInterfacePrivate *d_ptr;
 

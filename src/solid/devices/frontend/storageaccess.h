@@ -170,7 +170,7 @@ protected:
     /**
      * @internal
      */
-    StorageAccess(StorageAccessPrivate &dd, QObject *backendObject);
+    SOLID_NO_EXPORT StorageAccess(StorageAccessPrivate &dd, QObject *backendObject);
 };
 }
 
