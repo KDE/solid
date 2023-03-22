@@ -48,7 +48,7 @@ private:
      * @param backendObject the device interface object provided by the backend
      * @see Solid::Device::as()
      */
-    explicit Camera(QObject *backendObject);
+    SOLID_NO_EXPORT explicit Camera(QObject *backendObject);
 
 public:
     /**

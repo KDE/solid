@@ -117,7 +117,7 @@ private:
      * @param backendObject the device interface object provided by the backend
      * @see Solid::Device::as()
      */
-    explicit OpticalDisc(QObject *backendObject);
+    SOLID_NO_EXPORT explicit OpticalDisc(QObject *backendObject);
 
 public:
     /**
