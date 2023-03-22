@@ -75,7 +75,7 @@ private:
      * @param backendObject the device interface object provided by the backend
      * @see Solid::Device::as()
      */
-    explicit StorageDrive(QObject *backendObject);
+    SOLID_NO_EXPORT explicit StorageDrive(QObject *backendObject);
 
 public:
     /**

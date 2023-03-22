@@ -128,7 +128,7 @@ private:
      * @param backendObject the device interface object provided by the backend
      * @see Solid::Device::as()
      */
-    explicit Battery(QObject *backendObject);
+    SOLID_NO_EXPORT explicit Battery(QObject *backendObject);
 
 public:
     /**

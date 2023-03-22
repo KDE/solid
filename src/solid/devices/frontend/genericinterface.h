@@ -60,7 +60,7 @@ private:
      * @param backendObject the device interface object provided by the backend
      * @see Solid::Device::as()
      */
-    explicit GenericInterface(QObject *backendObject);
+    SOLID_NO_EXPORT explicit GenericInterface(QObject *backendObject);
 
 public:
     /**
