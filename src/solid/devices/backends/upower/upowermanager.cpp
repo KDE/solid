@@ -21,10 +21,9 @@ using namespace Solid::Backends::Shared;
 
 UPowerManager::UPowerManager(QObject *parent)
     : Solid::Ifaces::DeviceManager(parent)
+    , m_supportedInterfaces({Solid::DeviceInterface::GenericInterface, Solid::DeviceInterface::Battery})
     , m_manager(QDBusConnection::systemBus())
 {
-    m_supportedInterfaces << Solid::DeviceInterface::GenericInterface << Solid::DeviceInterface::Battery;
-
     qDBusRegisterMetaType<QList<QDBusObjectPath>>();
     qDBusRegisterMetaType<QVariantMap>();
 
