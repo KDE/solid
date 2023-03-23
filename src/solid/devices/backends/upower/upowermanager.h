@@ -40,6 +40,7 @@ private Q_SLOTS:
 private:
     QSet<Solid::DeviceInterface::Type> m_supportedInterfaces;
     UPower::DBusInterface m_manager;
+    QStringList m_knownDevices;
 };
 
 }

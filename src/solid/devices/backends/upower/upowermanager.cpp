@@ -23,6 +23,7 @@ UPowerManager::UPowerManager(QObject *parent)
     : Solid::Ifaces::DeviceManager(parent)
     , m_supportedInterfaces({Solid::DeviceInterface::GenericInterface, Solid::DeviceInterface::Battery})
     , m_manager(QDBusConnection::systemBus())
+    , m_knownDevices(udiPrefix())
 {
     qDBusRegisterMetaType<QList<QDBusObjectPath>>();
     qDBusRegisterMetaType<QVariantMap>();
@@ -63,7 +64,7 @@ QObject *UPowerManager::createDevice(const QString &udi)
 
         return root;
 
-    } else if (allDevices().contains(udi)) {
+    } else if (m_knownDevices.contains(udi) || allDevices().contains(udi)) {
         return new UPowerDevice(udi);
 
     } else {
@@ -109,6 +110,10 @@ QStringList UPowerManager::devicesFromQuery(const QString &parentUdi, Solid::Dev
 
 QStringList UPowerManager::allDevices()
 {
+    static bool initialized = false;
+    if (initialized)
+        return m_knownDevices;
+
     auto reply = m_manager.EnumerateDevices();
     reply.waitForFinished();
 
@@ -116,16 +121,24 @@ QStringList UPowerManager::allDevices()
         qWarning() << Q_FUNC_INFO << " error: " << reply.error().name();
         return QStringList();
     }
+    const auto pathList = reply.value();
 
     QStringList retList;
-    retList << udiPrefix();
+    retList.reserve(pathList.size() + m_knownDevices.size());
 
-    const auto pathList = reply.value();
     for (const QDBusObjectPath &path : pathList) {
         retList << path.path();
     }
+    retList += m_knownDevices;
 
-    return retList;
+    std::sort(retList.begin(), retList.end());
+    auto end = std::unique(retList.begin(), retList.end());
+    retList.erase(end, retList.end());
+
+    m_knownDevices = retList;
+    initialized = true;
+
+    return m_knownDevices;
 }
 
 QSet<Solid::DeviceInterface::Type> UPowerManager::supportedInterfaces() const
@@ -140,10 +153,19 @@ QString UPowerManager::udiPrefix() const
 
 void UPowerManager::onDeviceAdded(const QDBusObjectPath &path)
 {
-    Q_EMIT deviceAdded(path.path());
+    auto pathString = path.path();
+    if (m_knownDevices.indexOf(pathString) < 0)
+        m_knownDevices.append(pathString);
+
+    Q_EMIT deviceAdded(pathString);
 }
 
 void UPowerManager::onDeviceRemoved(const QDBusObjectPath &path)
 {
-    Q_EMIT deviceRemoved(path.path());
+    auto pathString = path.path();
+    auto index = m_knownDevices.indexOf(pathString);
+    if (index >= 0) {
+        m_knownDevices.removeAt(index);
+        Q_EMIT deviceRemoved(pathString);
+    }
 }
