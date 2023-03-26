@@ -271,7 +271,10 @@ static QString commandsHelp()
     cout << QCoreApplication::translate("solid-hardware", "             # If applicable, eject the device corresponding to 'udi'.\n") << '\n';
 
     cout << "  solid-hardware listen" << '\n';
-    cout << QCoreApplication::translate("solid-hardware", "             # Listen to all add/remove events on supported hardware.") << '\n';
+    cout << QCoreApplication::translate("solid-hardware", "             # Listen to all add/remove events on supported hardware.\n") << '\n';
+
+    cout << "  solid-hardware monitor 'udi'" << '\n';
+    cout << QCoreApplication::translate("solid-hardware", "             # Monitor a devices for changes.\n");
 
     return data;
 }
@@ -349,6 +352,9 @@ int main(int argc, char **argv)
         return app.hwVolumeCall(SolidHardware::Eject, udi);
     } else if (command == "listen") {
         return app.listen();
+    } else if (command == "monitor") {
+        const QString udi = getUdiFromArguments(app, parser);
+        return app.monitor(udi);
     }
 
     cerr << QCoreApplication::translate("solid-hardware", "Syntax Error: Unknown command '%1'").arg(command) << endl;
@@ -465,6 +471,30 @@ bool SolidHardware::listen()
     }
 
     cout << "Listening to add/remove events: " << endl;
+    m_loop.exec();
+    return true;
+}
+
+bool SolidHardware::monitor(const QString &udi)
+{
+    Solid::Device device(udi);
+
+    if (!device.is<Solid::GenericInterface>())
+	return false;
+
+    auto genericInterface = device.as<Solid::GenericInterface>();
+
+    cout << "udi = '" << device.udi() << "'" << endl;
+    cout << genericInterface->allProperties();
+
+    connect(genericInterface, &Solid::GenericInterface::propertyChanged,
+            this, [genericInterface](const auto &changes) {
+	cout << endl;
+	for (auto it = changes.begin(); it != changes.end(); ++it) {
+            cout << "  " << it.key() << " =  " << genericInterface->property(it.key()) << endl;
+	}
+    });
+
     m_loop.exec();
     return true;
 }

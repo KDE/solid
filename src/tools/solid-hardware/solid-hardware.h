@@ -29,6 +29,7 @@ public:
     bool hwProperties(const QString &udi);
     bool hwQuery(const QString &parentUdi, const QString &query);
     bool listen();
+    bool monitor(const QString &udi);
 
     enum VolumeCallType { Mount, Unmount, Eject };
     bool hwVolumeCall(VolumeCallType type, const QString &udi);
