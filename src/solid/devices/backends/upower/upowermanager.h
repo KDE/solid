@@ -10,8 +10,8 @@
 #define UPOWERMANAGER_H
 
 #include "solid/devices/ifaces/devicemanager.h"
+#include "upowerdbusinterface.h"
 
-#include <QDBusInterface>
 #include <QSet>
 
 namespace Solid
@@ -39,7 +39,7 @@ private Q_SLOTS:
 
 private:
     QSet<Solid::DeviceInterface::Type> m_supportedInterfaces;
-    QDBusInterface m_manager;
+    UPower::DBusInterface m_manager;
 };
 
 }

@@ -21,7 +21,7 @@ using namespace Solid::Backends::Shared;
 
 UPowerManager::UPowerManager(QObject *parent)
     : Solid::Ifaces::DeviceManager(parent)
-    , m_manager(UP_DBUS_SERVICE, UP_DBUS_PATH, UP_DBUS_INTERFACE, QDBusConnection::systemBus())
+    , m_manager(QDBusConnection::systemBus())
 {
     m_supportedInterfaces << Solid::DeviceInterface::GenericInterface << Solid::DeviceInterface::Battery;
 
@@ -44,8 +44,8 @@ UPowerManager::UPowerManager(QObject *parent)
     }
 
     if (serviceFound) {
-        connect(&m_manager, SIGNAL(DeviceAdded(QDBusObjectPath)), this, SLOT(onDeviceAdded(QDBusObjectPath)));
-        connect(&m_manager, SIGNAL(DeviceRemoved(QDBusObjectPath)), this, SLOT(onDeviceRemoved(QDBusObjectPath)));
+        connect(&m_manager, &UPower::DBusInterface::DeviceAdded, this, &UPowerManager::onDeviceAdded);
+        connect(&m_manager, &UPower::DBusInterface::DeviceRemoved, this, &UPowerManager::onDeviceRemoved);
     }
 }
 
@@ -110,7 +110,8 @@ QStringList UPowerManager::devicesFromQuery(const QString &parentUdi, Solid::Dev
 
 QStringList UPowerManager::allDevices()
 {
-    QDBusReply<QList<QDBusObjectPath>> reply = m_manager.call("EnumerateDevices");
+    auto reply = m_manager.EnumerateDevices();
+    reply.waitForFinished();
 
     if (!reply.isValid()) {
         qWarning() << Q_FUNC_INFO << " error: " << reply.error().name();
