@@ -256,10 +256,10 @@ void UPowerDevice::slotChanged()
 
 void UPowerDevice::login1Resuming(bool active)
 {
-    if (!active) {
-        QDBusReply<void> refreshCall = m_device.asyncCall("Refresh");
-        if (refreshCall.isValid()) {
-            slotChanged();
-        }
-    }
+    // Nothing to do when going into sleep
+    if (active)
+        return;
+
+    m_cache.clear();
+    Q_EMIT changed();
 }
