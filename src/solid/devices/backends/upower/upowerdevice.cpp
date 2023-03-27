@@ -25,17 +25,12 @@ UPowerDevice::UPowerDevice(const QString &udi)
     , m_udi(udi)
 {
     if (m_device.isValid()) {
-        if (m_device.metaObject()->indexOfSignal("Changed()") != -1) {
-            connect(&m_device, SIGNAL(Changed()), this, SLOT(slotChanged()));
-        } else {
-            // for UPower >= 0.99.0, missing Changed() signal
-            QDBusConnection::systemBus().connect(UP_DBUS_SERVICE,
-                                                 m_udi,
-                                                 "org.freedesktop.DBus.Properties",
-                                                 "PropertiesChanged",
-                                                 this,
-                                                 SLOT(onPropertiesChanged(QString, QVariantMap, QStringList)));
-        }
+        QDBusConnection::systemBus().connect(UP_DBUS_SERVICE,
+                                             m_udi,
+                                             "org.freedesktop.DBus.Properties",
+                                             "PropertiesChanged",
+                                             this,
+                                             SLOT(onPropertiesChanged(QString, QVariantMap, QStringList)));
 
         // TODO port this to Solid::Power, we can't link against kdelibs4support for this signal
         // older upower versions not affected
@@ -243,15 +238,9 @@ void UPowerDevice::onPropertiesChanged(const QString &ifaceName, const QVariantM
     Q_UNUSED(invalidatedProps);
 
     if (ifaceName == UP_DBUS_INTERFACE_DEVICE) {
-        slotChanged(); // TODO maybe process the properties separately?
+        m_cache.clear();
+        Q_EMIT changed();
     }
-}
-
-void UPowerDevice::slotChanged()
-{
-    // given we cannot know which property/ies changed, clear the cache
-    m_cache.clear();
-    Q_EMIT changed();
 }
 
 void UPowerDevice::login1Resuming(bool active)
