@@ -53,6 +53,7 @@ private:
     mutable QDBusInterface m_device;
     QString m_udi;
     mutable QVariantMap m_cache;
+    mutable QStringList m_negativeCache;
 
     void checkCache(const QString &key) const;
 };
