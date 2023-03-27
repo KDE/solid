@@ -191,7 +191,7 @@ void UPowerDevice::checkCache(const QString &key) const
         allProperties();
     }
 
-    if (m_cache.contains(key)) {
+    if (m_cache.contains(key) || m_negativeCache.contains(key)) {
         return;
     }
 
@@ -200,7 +200,7 @@ void UPowerDevice::checkCache(const QString &key) const
     if (reply.isValid()) {
         m_cache[key] = reply;
     } else {
-        m_cache[key] = QVariant();
+        m_negativeCache.append(key);
     }
 }
 
@@ -234,13 +234,16 @@ QMap<QString, QVariant> UPowerDevice::allProperties() const
 
 void UPowerDevice::onPropertiesChanged(const QString &ifaceName, const QVariantMap &changedProps, const QStringList &invalidatedProps)
 {
-    Q_UNUSED(changedProps);
-    Q_UNUSED(invalidatedProps);
+    if (ifaceName != UP_DBUS_INTERFACE_DEVICE)
+	return;
 
-    if (ifaceName == UP_DBUS_INTERFACE_DEVICE) {
-        m_cache.clear();
-        Q_EMIT changed();
+    for (auto it = changedProps.begin(); it != changedProps.end(); ++it) {
+        m_cache[it.key()] = it.value();
     }
+    for (const auto &propName : invalidatedProps) {
+        m_cache.remove(propName);
+    }
+    Q_EMIT changed();
 }
 
 void UPowerDevice::login1Resuming(bool active)
@@ -250,5 +253,6 @@ void UPowerDevice::login1Resuming(bool active)
         return;
 
     m_cache.clear();
+    m_negativeCache.clear();
     Q_EMIT changed();
 }
