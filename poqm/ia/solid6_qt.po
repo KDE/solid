@@ -577,55 +577,55 @@ msgctxt "Solid::Backends::UDisks2::Manager|"
 msgid "Storage devices"
 msgstr "Dispositivos de immagazinage"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:124
+#: solid/devices/backends/upower/upowerdevice.cpp:119
 #, qt-format
 msgctxt "Solid::Backends::UPower::UPowerDevice|%1 is battery technology"
 msgid "%1 Battery"
 msgstr "%1 Batteria"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:139
-#: solid/devices/backends/upower/upowerdevice.cpp:153
-#: solid/devices/backends/upower/upowerdevice.cpp:155
+#: solid/devices/backends/upower/upowerdevice.cpp:134
+#: solid/devices/backends/upower/upowerdevice.cpp:148
+#: solid/devices/backends/upower/upowerdevice.cpp:150
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Unknown"
 msgstr "Incognite"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:141
+#: solid/devices/backends/upower/upowerdevice.cpp:136
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Ion"
 msgstr "Ion de Lithium"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:143
+#: solid/devices/backends/upower/upowerdevice.cpp:138
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Polymer"
 msgstr "Polymero de Lithium"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:145
+#: solid/devices/backends/upower/upowerdevice.cpp:140
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Iron Phosphate"
 msgstr "Phosphato de Ferro de Lithium"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:147
+#: solid/devices/backends/upower/upowerdevice.cpp:142
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lead Acid"
 msgstr "Acido de Plumbo"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:149
+#: solid/devices/backends/upower/upowerdevice.cpp:144
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Cadmium"
 msgstr "Nickel Cadmium"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:151
+#: solid/devices/backends/upower/upowerdevice.cpp:146
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Metal Hydride"
 msgstr "Nickel metal hydride"
 
-#: solid/devices/backends/upower/upowermanager.cpp:67
+#: solid/devices/backends/upower/upowermanager.cpp:61
 msgctxt "Solid::Backends::UPower::UPowerManager|"
 msgid "Power Management"
 msgstr "Gestion de Energia"
 
-#: solid/devices/backends/upower/upowermanager.cpp:68
+#: solid/devices/backends/upower/upowermanager.cpp:62
 msgctxt "Solid::Backends::UPower::UPowerManager|"
 msgid "Batteries and other sources of power"
 msgstr "Batterias e altere fontes de energia"

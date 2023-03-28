@@ -643,63 +643,63 @@ msgctxt "Solid::Backends::UDisks2::Manager|"
 msgid "Storage devices"
 msgstr "സംഭരണ ഉപകരണങ്ങള്‍"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:124
+#: solid/devices/backends/upower/upowerdevice.cpp:119
 #, fuzzy, qt-format
 msgctxt "Solid::Backends::UPower::UPowerDevice|%1 is battery technology"
 msgid "%1 Battery"
 msgstr "%1 ബാറ്ററി"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:139
-#: solid/devices/backends/upower/upowerdevice.cpp:153
-#: solid/devices/backends/upower/upowerdevice.cpp:155
+#: solid/devices/backends/upower/upowerdevice.cpp:134
+#: solid/devices/backends/upower/upowerdevice.cpp:148
+#: solid/devices/backends/upower/upowerdevice.cpp:150
 #, fuzzy
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Unknown"
 msgstr "അജ്ഞാതം"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:141
+#: solid/devices/backends/upower/upowerdevice.cpp:136
 #, fuzzy
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Ion"
 msgstr "ലിഥിയം അയോണ്‍"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:143
+#: solid/devices/backends/upower/upowerdevice.cpp:138
 #, fuzzy
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Polymer"
 msgstr "ലിഥിയം പോളിമര്‍"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:145
+#: solid/devices/backends/upower/upowerdevice.cpp:140
 #, fuzzy
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Iron Phosphate"
 msgstr "ലിഥിയം അയണ്‍ ഫോസ്ഫേറ്റ്"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:147
+#: solid/devices/backends/upower/upowerdevice.cpp:142
 #, fuzzy
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lead Acid"
 msgstr "ലെഡ് ആസിഡ്"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:149
+#: solid/devices/backends/upower/upowerdevice.cpp:144
 #, fuzzy
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Cadmium"
 msgstr "നിക്കല്‍ കാഡ്മിയം"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:151
+#: solid/devices/backends/upower/upowerdevice.cpp:146
 #, fuzzy
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Metal Hydride"
 msgstr "നിക്കല്‍ മെറ്റല്‍ ഹൈഡ്രൈഡ്"
 
-#: solid/devices/backends/upower/upowermanager.cpp:67
+#: solid/devices/backends/upower/upowermanager.cpp:61
 #, fuzzy
 msgctxt "Solid::Backends::UPower::UPowerManager|"
 msgid "Power Management"
 msgstr "ഊര്‍ജ്ജ നടത്തിപ്പ്"
 
-#: solid/devices/backends/upower/upowermanager.cpp:68
+#: solid/devices/backends/upower/upowermanager.cpp:62
 #, fuzzy
 msgctxt "Solid::Backends::UPower::UPowerManager|"
 msgid "Batteries and other sources of power"
