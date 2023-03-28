@@ -800,7 +800,7 @@ msgctxt "Solid::Backends::UDisks2::Manager|"
 msgid "Storage devices"
 msgstr "Gléasanna stórais"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:124
+#: solid/devices/backends/upower/upowerdevice.cpp:119
 #, fuzzy, qt-format
 #| msgctxt "%1 is battery technology"
 #| msgid "%1 Battery"
@@ -808,9 +808,9 @@ msgctxt "Solid::Backends::UPower::UPowerDevice|%1 is battery technology"
 msgid "%1 Battery"
 msgstr "Cadhnra %1"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:139
-#: solid/devices/backends/upower/upowerdevice.cpp:153
-#: solid/devices/backends/upower/upowerdevice.cpp:155
+#: solid/devices/backends/upower/upowerdevice.cpp:134
+#: solid/devices/backends/upower/upowerdevice.cpp:148
+#: solid/devices/backends/upower/upowerdevice.cpp:150
 #, fuzzy
 #| msgctxt "battery technology"
 #| msgid "Unknown"
@@ -818,7 +818,7 @@ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Unknown"
 msgstr "Anaithnid"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:141
+#: solid/devices/backends/upower/upowerdevice.cpp:136
 #, fuzzy
 #| msgctxt "battery technology"
 #| msgid "Lithium Ion"
@@ -826,7 +826,7 @@ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Ion"
 msgstr "Ian Litiam"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:143
+#: solid/devices/backends/upower/upowerdevice.cpp:138
 #, fuzzy
 #| msgctxt "battery technology"
 #| msgid "Lithium Polymer"
@@ -834,7 +834,7 @@ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Polymer"
 msgstr "Polaiméir Litiam"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:145
+#: solid/devices/backends/upower/upowerdevice.cpp:140
 #, fuzzy
 #| msgctxt "battery technology"
 #| msgid "Lithium Iron Phosphate"
@@ -842,7 +842,7 @@ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Iron Phosphate"
 msgstr "Fosfáit Iarainn Litiam"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:147
+#: solid/devices/backends/upower/upowerdevice.cpp:142
 #, fuzzy
 #| msgctxt "battery technology"
 #| msgid "Lead Acid"
@@ -850,7 +850,7 @@ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lead Acid"
 msgstr "Luaidhe-Aigéadach"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:149
+#: solid/devices/backends/upower/upowerdevice.cpp:144
 #, fuzzy
 #| msgctxt "battery technology"
 #| msgid "Nickel Cadmium"
@@ -858,7 +858,7 @@ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Cadmium"
 msgstr "Caidmiam Nicile"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:151
+#: solid/devices/backends/upower/upowerdevice.cpp:146
 #, fuzzy
 #| msgctxt "battery technology"
 #| msgid "Nickel Metal Hydride"
@@ -866,14 +866,14 @@ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Metal Hydride"
 msgstr "Hidríd Mhiotail Nicile"
 
-#: solid/devices/backends/upower/upowermanager.cpp:67
+#: solid/devices/backends/upower/upowermanager.cpp:61
 #, fuzzy
 #| msgid "Power Management"
 msgctxt "Solid::Backends::UPower::UPowerManager|"
 msgid "Power Management"
 msgstr "Bainisteoireacht Cumhachta"
 
-#: solid/devices/backends/upower/upowermanager.cpp:68
+#: solid/devices/backends/upower/upowermanager.cpp:62
 #, fuzzy
 #| msgid "Batteries and other sources of power"
 msgctxt "Solid::Backends::UPower::UPowerManager|"
