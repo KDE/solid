@@ -60,12 +60,6 @@ public:
     // ------------
     virtual bool isPresent() const;
 
-    virtual bool isRecalled() const;
-
-    virtual QString recallVendor() const;
-
-    virtual QString recallUrl() const;
-
     virtual qlonglong remainingTime() const;
 
     // ------------

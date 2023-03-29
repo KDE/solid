@@ -171,21 +171,6 @@ double FakeBattery::temperature() const
     return fakeDevice()->property("temperature").toDouble();
 }
 
-bool FakeBattery::isRecalled() const
-{
-    return fakeDevice()->property("isRecalled").toBool();
-}
-
-QString FakeBattery::recallVendor() const
-{
-    return fakeDevice()->property("recallVendor").toString();
-}
-
-QString FakeBattery::recallUrl() const
-{
-    return fakeDevice()->property("recallUrl").toString();
-}
-
 QString FakeBattery::serial() const
 {
     return fakeDevice()->property("serial").toString();

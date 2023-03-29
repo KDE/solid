@@ -40,9 +40,6 @@ class SOLID_EXPORT Battery : public DeviceInterface
     Q_PROPERTY(double voltage READ voltage NOTIFY voltageChanged)
     Q_PROPERTY(double temperature READ temperature NOTIFY temperatureChanged)
     Q_PROPERTY(Technology technology READ technology CONSTANT)
-    Q_PROPERTY(bool recalled READ isRecalled)
-    Q_PROPERTY(QString recallVendor READ recallVendor)
-    Q_PROPERTY(QString recallUrl READ recallUrl)
     Q_PROPERTY(QString serial READ serial CONSTANT)
     Q_PROPERTY(qlonglong remainingTime READ remainingTime NOTIFY remainingTimeChanged)
     Q_DECLARE_PRIVATE(Battery)
@@ -274,30 +271,6 @@ public:
      * @since 5.0
      */
     double temperature() const;
-
-    /**
-     * The battery may have been recalled by the vendor due to a suspected fault.
-     *
-     * @return true if the battery has been recalled, false otherwise
-     * @since 5.0
-     */
-    bool isRecalled() const;
-
-    /**
-     * The vendor that has recalled the battery.
-     *
-     * @return the vendor name that has recalled the battery
-     * @since 5.0
-     */
-    QString recallVendor() const;
-
-    /**
-     * The website URL of the vendor that has recalled the battery.
-     *
-     * @return the website URL of the vendor that has recalled the battery
-     * @since 5.0
-     */
-    QString recallUrl() const;
 
     /**
      * The serial number of the battery

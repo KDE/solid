@@ -194,21 +194,6 @@ double Battery::temperature() const
     return m_device.data()->prop("Temperature").toDouble();
 }
 
-bool Battery::isRecalled() const
-{
-    return m_device.data()->prop("RecallNotice").toBool();
-}
-
-QString Battery::recallVendor() const
-{
-    return m_device.data()->prop("RecallVendor").toString();
-}
-
-QString Battery::recallUrl() const
-{
-    return m_device.data()->prop("RecallUrl").toString();
-}
-
 QString Battery::serial() const
 {
     return m_device.data()->prop("Serial").toString();

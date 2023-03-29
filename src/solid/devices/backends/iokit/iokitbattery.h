@@ -52,10 +52,6 @@ public:
     double energyFullDesign() const override { return 0.0; }
     double energyRate() const override { return 0.0; }
 
-    bool isRecalled() const override { return false; }
-    QString recallVendor() const override { return QString(); }
-    QString recallUrl() const override { return QString(); }
-
     qlonglong remainingTime() const override { return -1; }
     // clang-format on
 

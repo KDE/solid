@@ -156,30 +156,6 @@ public:
     virtual double temperature() const = 0;
 
     /**
-     * The battery may have been recalled by the vendor due to a suspected fault.
-     *
-     * @return true if the battery has been recalled, false otherwise
-     * @since 5.0
-     */
-    virtual bool isRecalled() const = 0;
-
-    /**
-     * The vendor that has recalled the battery.
-     *
-     * @return the vendor name that has recalled the battery
-     * @since 5.0
-     */
-    virtual QString recallVendor() const = 0;
-
-    /**
-     * The website URL of the vendor that has recalled the battery.
-     *
-     * @return the website URL of the vendor that has recalled the battery
-     * @since 5.0
-     */
-    virtual QString recallUrl() const = 0;
-
-    /**
      * The serial number of the battery
      *
      * @return the serial number of the battery

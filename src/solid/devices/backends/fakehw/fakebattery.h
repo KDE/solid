@@ -54,10 +54,6 @@ public Q_SLOTS:
     double voltage() const override;
     double temperature() const override;
 
-    bool isRecalled() const override;
-    QString recallVendor() const override;
-    QString recallUrl() const override;
-
     QString serial() const override;
 
     qlonglong remainingTime() const override;
