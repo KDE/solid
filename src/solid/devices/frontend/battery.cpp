@@ -146,20 +146,17 @@ double Solid::Battery::temperature() const
 
 bool Solid::Battery::isRecalled() const
 {
-    Q_D(const Battery);
-    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), false, isRecalled());
+    return false;
 }
 
 QString Solid::Battery::recallVendor() const
 {
-    Q_D(const Battery);
-    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), QString(), recallVendor());
+    return QString();
 }
 
 QString Solid::Battery::recallUrl() const
 {
-    Q_D(const Battery);
-    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), QString(), recallUrl());
+    return QString();
 }
 
 QString Solid::Battery::serial() const

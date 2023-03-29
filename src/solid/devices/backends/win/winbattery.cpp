@@ -306,21 +306,6 @@ double WinBattery::temperature() const
     return m_temperature;
 }
 
-bool WinBattery::isRecalled() const
-{
-    return false;
-}
-
-QString WinBattery::recallVendor() const
-{
-    return QString();
-}
-
-QString WinBattery::recallUrl() const
-{
-    return QString();
-}
-
 qlonglong WinBattery::remainingTime() const
 {
     return m_timeUntilEmpty; // FIXME

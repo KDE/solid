@@ -288,12 +288,15 @@ public:
      */
     double temperature() const;
 
+#if SOLID_ENABLE_DEPRECATED_SINCE(5, 105)
     /**
      * The battery may have been recalled by the vendor due to a suspected fault.
      *
      * @return true if the battery has been recalled, false otherwise
      * @since 5.0
+     * @deprecated Since 5.105, not supported by any backend for a long time
      */
+    SOLID_DEPRECATED_VERSION(5, 105, "No longer supported by any backend")
     bool isRecalled() const;
 
     /**
@@ -301,7 +304,9 @@ public:
      *
      * @return the vendor name that has recalled the battery
      * @since 5.0
+     * @deprecated Since 5.105, not supported by any backend for a long time
      */
+    SOLID_DEPRECATED_VERSION(5, 105, "No longer supported by any backend")
     QString recallVendor() const;
 
     /**
@@ -309,8 +314,11 @@ public:
      *
      * @return the website URL of the vendor that has recalled the battery
      * @since 5.0
+     * @deprecated Since 5.105, not supported by any backend for a long time
      */
+    SOLID_DEPRECATED_VERSION(5, 105, "No longer supported by any backend")
     QString recallUrl() const;
+#endif
 
     /**
      * The serial number of the battery
