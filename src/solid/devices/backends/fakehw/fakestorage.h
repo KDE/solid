@@ -32,6 +32,9 @@ public Q_SLOTS:
     bool isRemovable() const override;
     bool isHotpluggable() const override;
     qulonglong size() const override;
+
+    QDateTime timeDetected() const override;
+    QDateTime timeMediaDetected() const override;
 };
 }
 }

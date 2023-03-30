@@ -73,3 +73,15 @@ bool Solid::StorageDrive::isInUse() const
     }
     return inUse;
 }
+
+QDateTime Solid::StorageDrive::timeDetected() const
+{
+    Q_D(const StorageDrive);
+    return_SOLID_CALL(Ifaces::StorageDrive *, d->backendObject(), QDateTime(), timeDetected());
+}
+
+QDateTime Solid::StorageDrive::timeMediaDetected() const
+{
+    Q_D(const StorageDrive);
+    return_SOLID_CALL(Ifaces::StorageDrive *, d->backendObject(), QDateTime(), timeMediaDetected());
+}

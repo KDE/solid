@@ -76,3 +76,13 @@ qulonglong FakeStorage::size() const
 {
     return fakeDevice()->property("size").toULongLong();
 }
+
+QDateTime FakeStorage::timeDetected() const
+{
+    return fakeDevice()->property("timeDetected").toDateTime();
+}
+
+QDateTime FakeStorage::timeMediaDetected() const
+{
+    return fakeDevice()->property("timeMediaDetected").toDateTime();
+}

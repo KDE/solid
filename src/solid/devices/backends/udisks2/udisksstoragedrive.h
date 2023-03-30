@@ -8,6 +8,7 @@
 #ifndef UDISKSSTORAGEDRIVE_H
 #define UDISKSSTORAGEDRIVE_H
 
+#include <QDateTime>
 #include <ifaces/storagedrive.h>
 
 #include "../shared/udevqt.h"
@@ -35,6 +36,8 @@ public:
     bool isRemovable() const override;
     Solid::StorageDrive::DriveType driveType() const override;
     Solid::StorageDrive::Bus bus() const override;
+    QDateTime timeDetected() const override;
+    QDateTime timeMediaDetected() const override;
 
 private:
 #if UDEV_FOUND

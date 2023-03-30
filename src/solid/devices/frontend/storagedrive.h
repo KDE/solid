@@ -33,6 +33,9 @@ class SOLID_EXPORT StorageDrive : public DeviceInterface
     Q_PROPERTY(bool hotpluggable READ isHotpluggable)
     Q_PROPERTY(bool inUse READ isInUse)
     Q_PROPERTY(qulonglong size READ size)
+    Q_PROPERTY(QDateTime timeDetected READ timeDetected CONSTANT)
+    Q_PROPERTY(QDateTime timeMediaDetected READ timeDetected)
+
     Q_DECLARE_PRIVATE(StorageDrive)
     friend class Device;
 
@@ -144,6 +147,24 @@ public:
      * @return true if at least one child storage access is mounted
      */
     bool isInUse() const;
+
+    /**
+     * Returns the time the drive was deteced.
+     * Typically this means the time a drive was plugged in, or the computer rebooted
+     *
+     * An invalid datetime may be returned if the underlying information is not available
+     * @since 6.0
+     */
+    QDateTime timeDetected() const;
+
+    /**
+     * Returns the time media in the drive was deteced.
+     * Typically this means the time a card was inserted into a reader, or the computer rebooted
+     *
+     * An invalid datetime may be returned if the underlying information is not available
+     * @since 6.0
+     */
+    QDateTime timeMediaDetected() const;
 
 protected:
     /**

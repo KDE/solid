@@ -9,3 +9,13 @@
 Solid::Ifaces::StorageDrive::~StorageDrive()
 {
 }
+
+QDateTime Solid::Ifaces::StorageDrive::timeDetected() const
+{
+    return QDateTime();
+}
+
+QDateTime Solid::Ifaces::StorageDrive::timeMediaDetected() const
+{
+    return QDateTime();
+}

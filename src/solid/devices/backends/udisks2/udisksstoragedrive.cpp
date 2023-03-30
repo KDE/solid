@@ -136,3 +136,23 @@ Solid::StorageDrive::Bus StorageDrive::bus() const
         return Solid::StorageDrive::Platform;
     }
 }
+
+QDateTime StorageDrive::timeDetected() const
+{
+    bool conversionValid;
+    const qulonglong microSecondsSinceEpoch = m_device->prop("TimeDetected").toULongLong(&conversionValid);
+    if (!conversionValid) {
+        return QDateTime();
+    }
+    return QDateTime::fromMSecsSinceEpoch(microSecondsSinceEpoch / 1000);
+}
+
+QDateTime StorageDrive::timeMediaDetected() const
+{
+    bool conversionValid;
+    const qulonglong microSecondsSinceEpoch = m_device->prop("TimeMediaDetected").toULongLong(&conversionValid);
+    if (!conversionValid) {
+        return QDateTime();
+    }
+    return QDateTime::fromMSecsSinceEpoch(microSecondsSinceEpoch / 1000);
+}

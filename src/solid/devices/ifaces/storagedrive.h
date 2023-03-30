@@ -7,6 +7,8 @@
 #ifndef SOLID_IFACES_STORAGEDRIVE_H
 #define SOLID_IFACES_STORAGEDRIVE_H
 
+#include <QDateTime>
+
 #include <solid/devices/ifaces/block.h>
 #include <solid/storagedrive.h>
 
@@ -69,6 +71,16 @@ public:
      * @return the size of this drive
      */
     virtual qulonglong size() const = 0;
+
+    /**
+     * Retrieves the time the drive was detected
+     */
+    virtual QDateTime timeDetected() const;
+
+    /**
+     * Retrieves the time media in the drive was detected
+     */
+    virtual QDateTime timeMediaDetected() const;
 };
 }
 }
