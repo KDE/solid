@@ -15,7 +15,7 @@ using namespace Solid::Backends::UPower;
 Battery::Battery(UPowerDevice *device)
     : DeviceInterface(device)
 {
-    connect(device, SIGNAL(changed()), this, SLOT(slotChanged()));
+    connect(device, &UPowerDevice::propertyChanged, this, &Battery::slotChanged);
 
     updateCache();
 }

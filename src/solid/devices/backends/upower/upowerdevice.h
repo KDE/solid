@@ -42,7 +42,7 @@ public:
     QMap<QString, QVariant> allProperties() const;
 
 Q_SIGNALS:
-    void changed();
+    void propertyChanged(const QMap<QString, int> &changes);
 
 private Q_SLOTS:
     void onPropertiesChanged(const QString &ifaceName, const QVariantMap &changedProps, const QStringList &invalidatedProps);

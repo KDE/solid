@@ -247,14 +247,17 @@ void UPowerDevice::onPropertiesChanged(const QString &ifaceName, const QVariantM
     if (ifaceName != UP_DBUS_INTERFACE_DEVICE)
 	return;
 
+    QMap<QString, int> changeMap;
     for (auto it = changedProps.begin(); it != changedProps.end(); ++it) {
         m_cache[it.key()] = it.value();
+        changeMap.insert(it.key(), Solid::GenericInterface::PropertyModified);
     }
     for (const auto &propName : invalidatedProps) {
         m_cache.remove(propName);
+        changeMap.insert(propName, Solid::GenericInterface::PropertyModified);
         m_cacheComplete = false;
     }
-    Q_EMIT changed();
+    Q_EMIT propertyChanged(changeMap);
 }
 
 void UPowerDevice::login1Resuming(bool active)
@@ -263,8 +266,14 @@ void UPowerDevice::login1Resuming(bool active)
     if (active)
         return;
 
+    QMap<QString, int> changeMap;
+    for (auto it = m_cache.begin(); it != m_cache.end(); ++it) {
+        if (it.value().isValid()) {
+            changeMap.insert(it.key(), Solid::GenericInterface::PropertyModified);
+	}
+    }
     m_cache.clear();
     m_negativeCache.clear();
     m_cacheComplete = false;
-    Q_EMIT changed();
+    Q_EMIT propertyChanged(changeMap);
 }
