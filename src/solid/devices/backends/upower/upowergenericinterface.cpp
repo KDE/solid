@@ -13,6 +13,12 @@ using namespace Solid::Backends::UPower;
 GenericInterface::GenericInterface(UPowerDevice *device)
     : DeviceInterface(device)
 {
+    connect(device, &UPowerDevice::propertyChanged,
+            this, &GenericInterface::propertyChanged);
+#if 0 // not used/implemented
+    connect(device, &UPowerDevice::conditionRaised,
+            this, &UPowerDevice::conditionRaised);
+#endif
 }
 
 GenericInterface::~GenericInterface()
