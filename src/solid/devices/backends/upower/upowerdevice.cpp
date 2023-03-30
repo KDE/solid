@@ -187,11 +187,13 @@ QString UPowerDevice::parentUdi() const
 
 void UPowerDevice::checkCache(const QString &key) const
 {
-    if (m_cache.isEmpty()) { // recreate the cache
-        allProperties();
+    if (m_cache.contains(key) || m_negativeCache.contains(key)) {
+        return;
     }
 
-    if (m_cache.contains(key) || m_negativeCache.contains(key)) {
+    loadCache();
+
+    if (m_cache.contains(key)) {
         return;
     }
 
@@ -216,7 +218,7 @@ bool UPowerDevice::propertyExists(const QString &key) const
     return m_cache.contains(key);
 }
 
-QMap<QString, QVariant> UPowerDevice::allProperties() const
+void UPowerDevice::loadCache() const
 {
     QDBusMessage call = QDBusMessage::createMethodCall(m_device.service(), m_device.path(), "org.freedesktop.DBus.Properties", "GetAll");
     call << m_device.interface();
@@ -225,8 +227,16 @@ QMap<QString, QVariant> UPowerDevice::allProperties() const
 
     if (reply.isValid()) {
         m_cache = reply.value();
+        m_cacheComplete = true;
     } else {
         m_cache.clear();
+    }
+}
+
+QMap<QString, QVariant> UPowerDevice::allProperties() const
+{
+    if (!m_cacheComplete) {
+        loadCache();
     }
 
     return m_cache;
@@ -242,6 +252,7 @@ void UPowerDevice::onPropertiesChanged(const QString &ifaceName, const QVariantM
     }
     for (const auto &propName : invalidatedProps) {
         m_cache.remove(propName);
+        m_cacheComplete = false;
     }
     Q_EMIT changed();
 }
@@ -254,5 +265,6 @@ void UPowerDevice::login1Resuming(bool active)
 
     m_cache.clear();
     m_negativeCache.clear();
+    m_cacheComplete = false;
     Q_EMIT changed();
 }
