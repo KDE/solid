@@ -54,8 +54,10 @@ private:
     QString m_udi;
     mutable QVariantMap m_cache;
     mutable QStringList m_negativeCache;
+    mutable bool m_cacheComplete = false;
 
     void checkCache(const QString &key) const;
+    void loadCache() const;
 };
 
 }
