@@ -274,7 +274,7 @@ static QString commandsHelp()
     cout << QCoreApplication::translate("solid-hardware", "             # Listen to all add/remove events on supported hardware.\n") << '\n';
 
     cout << "  solid-hardware monitor 'udi'" << '\n';
-    cout << QCoreApplication::translate("solid-hardware", "             # Monitor a devices for changes.\n");
+    cout << QCoreApplication::translate("solid-hardware", "             # Monitor devices for changes.\n");
 
     return data;
 }
