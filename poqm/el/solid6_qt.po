@@ -735,7 +735,7 @@ msgid "Network Share"
 msgstr "Κοινόχρηστος πόρος δικτύου"
 
 #: tools/solid-hardware/solid-hardware.cpp:218
-#: tools/solid-hardware/solid-hardware.cpp:326
+#: tools/solid-hardware/solid-hardware.cpp:329
 msgctxt "solid-hardware|"
 msgid "Device udi"
 msgstr "Συσκευή UDI"
@@ -833,63 +833,72 @@ msgstr ""
 "αντιστοιχεί στο 'udi'.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:274
+#, fuzzy
+#| msgctxt "solid-hardware|"
+#| msgid ""
+#| "             # Listen to all add/remove events on supported hardware."
 msgctxt "solid-hardware|"
-msgid "             # Listen to all add/remove events on supported hardware."
+msgid "             # Listen to all add/remove events on supported hardware.\n"
 msgstr ""
 "             # Ακρόαση όλων των γεγονότων πρόσθεσης/αφαίρεσης στο "
 "υποστηριζόμενο υλικό."
 
-#: tools/solid-hardware/solid-hardware.cpp:286
+#: tools/solid-hardware/solid-hardware.cpp:277
+msgctxt "solid-hardware|"
+msgid "             # Monitor a devices for changes.\n"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:289
 msgctxt "solid-hardware|"
 msgid "KDE tool for querying your hardware from the command line"
 msgstr ""
 "Ένα εργαλείο του KDE για τη λήψη πληροφοριών για το υλικό σας από τη γραμμή "
 "εντολών"
 
-#: tools/solid-hardware/solid-hardware.cpp:289
+#: tools/solid-hardware/solid-hardware.cpp:292
 msgctxt "solid-hardware|"
 msgid "Command to execute"
 msgstr "Εντολή για εκτέλεση"
 
-#: tools/solid-hardware/solid-hardware.cpp:291
+#: tools/solid-hardware/solid-hardware.cpp:294
 msgctxt "solid-hardware|"
 msgid "Show available commands"
 msgstr "Εμφάνιση διαθέσιμων εντολών"
 
-#: tools/solid-hardware/solid-hardware.cpp:313
+#: tools/solid-hardware/solid-hardware.cpp:316
 msgctxt "solid-hardware|"
 msgid "Show device details"
 msgstr "Εμφάνιση λεπτομερειών"
 
-#: tools/solid-hardware/solid-hardware.cpp:314
+#: tools/solid-hardware/solid-hardware.cpp:317
 msgctxt "solid-hardware|"
 msgid "Show non portable information"
 msgstr "Εμφάνιση μη φορητών πληροφοριών"
 
-#: tools/solid-hardware/solid-hardware.cpp:327
+#: tools/solid-hardware/solid-hardware.cpp:330
 msgctxt "solid-hardware|"
 msgid "Parent device udi"
 msgstr "Γονική συσκευή UDI"
 
-#: tools/solid-hardware/solid-hardware.cpp:354
+#: tools/solid-hardware/solid-hardware.cpp:360
 #, qt-format
 msgctxt "solid-hardware|"
 msgid "Syntax Error: Unknown command '%1'"
 msgstr "Σφάλμα σύνταξης: Άγνωστη εντολή '%1'"
 
-#: tools/solid-hardware/solid-hardware.cpp:416
+#: tools/solid-hardware/solid-hardware.cpp:422
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1 does not have the interface StorageAccess."
 msgstr "Σφάλμα: το %1 δε διαθέτει τη διασύνδεση StorageAccess."
 
-#: tools/solid-hardware/solid-hardware.cpp:419
+#: tools/solid-hardware/solid-hardware.cpp:425
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1 does not have the interface OpticalDrive."
 msgstr "Σφάλμα: το %1 δε διαθέτει τη διασύνδεση OpticalDrive."
 
-#: tools/solid-hardware/solid-hardware.cpp:450
+#: tools/solid-hardware/solid-hardware.cpp:456
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1"

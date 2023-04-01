@@ -726,7 +726,7 @@ msgid "Network Share"
 msgstr "Ağ Paylaşımı"
 
 #: tools/solid-hardware/solid-hardware.cpp:218
-#: tools/solid-hardware/solid-hardware.cpp:326
+#: tools/solid-hardware/solid-hardware.cpp:329
 msgctxt "solid-hardware|"
 msgid "Device udi"
 msgstr "Aygıt udi'si"
@@ -813,62 +813,71 @@ msgid ""
 msgstr "             # Olanaklıysa 'udi'ye karşılık gelen aygıtı çıkar.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:274
+#, fuzzy
+#| msgctxt "solid-hardware|"
+#| msgid ""
+#| "             # Listen to all add/remove events on supported hardware."
 msgctxt "solid-hardware|"
-msgid "             # Listen to all add/remove events on supported hardware."
+msgid "             # Listen to all add/remove events on supported hardware.\n"
 msgstr ""
 "             # Desteklenen donanımlar için tüm ekle/kaldır olaylarını dinle."
 
-#: tools/solid-hardware/solid-hardware.cpp:286
+#: tools/solid-hardware/solid-hardware.cpp:277
+msgctxt "solid-hardware|"
+msgid "             # Monitor a devices for changes.\n"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:289
 msgctxt "solid-hardware|"
 msgid "KDE tool for querying your hardware from the command line"
 msgstr ""
 "Donanımlarınızı komut satırından sorgulamanıza ve denetlemenize yarayan KDE "
 "aracı"
 
-#: tools/solid-hardware/solid-hardware.cpp:289
+#: tools/solid-hardware/solid-hardware.cpp:292
 msgctxt "solid-hardware|"
 msgid "Command to execute"
 msgstr "Çalıştırılacak komut"
 
-#: tools/solid-hardware/solid-hardware.cpp:291
+#: tools/solid-hardware/solid-hardware.cpp:294
 msgctxt "solid-hardware|"
 msgid "Show available commands"
 msgstr "Kullanılabilir komutları göster"
 
-#: tools/solid-hardware/solid-hardware.cpp:313
+#: tools/solid-hardware/solid-hardware.cpp:316
 msgctxt "solid-hardware|"
 msgid "Show device details"
 msgstr "Aygıt ayrıntılarını göster"
 
-#: tools/solid-hardware/solid-hardware.cpp:314
+#: tools/solid-hardware/solid-hardware.cpp:317
 msgctxt "solid-hardware|"
 msgid "Show non portable information"
 msgstr "Taşınabilir olmayan bilgiyi göster"
 
-#: tools/solid-hardware/solid-hardware.cpp:327
+#: tools/solid-hardware/solid-hardware.cpp:330
 msgctxt "solid-hardware|"
 msgid "Parent device udi"
 msgstr "Üst aygıt udi'si"
 
-#: tools/solid-hardware/solid-hardware.cpp:354
+#: tools/solid-hardware/solid-hardware.cpp:360
 #, qt-format
 msgctxt "solid-hardware|"
 msgid "Syntax Error: Unknown command '%1'"
 msgstr "Sözdizim Hatası: Bilinmeyen komut '%1'"
 
-#: tools/solid-hardware/solid-hardware.cpp:416
+#: tools/solid-hardware/solid-hardware.cpp:422
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1 does not have the interface StorageAccess."
 msgstr "Hata: %1 StorageAccess arayüzüne sahip değil."
 
-#: tools/solid-hardware/solid-hardware.cpp:419
+#: tools/solid-hardware/solid-hardware.cpp:425
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1 does not have the interface OpticalDrive."
 msgstr "Hata: %1 OpticalDrive arayüzüne sahip değil."
 
-#: tools/solid-hardware/solid-hardware.cpp:450
+#: tools/solid-hardware/solid-hardware.cpp:456
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1"

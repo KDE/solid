@@ -722,7 +722,7 @@ msgid "Network Share"
 msgstr "Síťový prostředek"
 
 #: tools/solid-hardware/solid-hardware.cpp:218
-#: tools/solid-hardware/solid-hardware.cpp:326
+#: tools/solid-hardware/solid-hardware.cpp:329
 msgctxt "solid-hardware|"
 msgid "Device udi"
 msgstr "UDI zařízení"
@@ -810,61 +810,70 @@ msgid ""
 msgstr "             # Pokud to jde, vysunout zařízení odpovídající 'udi'.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:274
+#, fuzzy
+#| msgctxt "solid-hardware|"
+#| msgid ""
+#| "             # Listen to all add/remove events on supported hardware."
 msgctxt "solid-hardware|"
-msgid "             # Listen to all add/remove events on supported hardware."
+msgid "             # Listen to all add/remove events on supported hardware.\n"
 msgstr ""
 "             # Poslouchat všechny události přidání/odebírání na podporovaném "
 "hardware."
 
-#: tools/solid-hardware/solid-hardware.cpp:286
+#: tools/solid-hardware/solid-hardware.cpp:277
+msgctxt "solid-hardware|"
+msgid "             # Monitor a devices for changes.\n"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:289
 msgctxt "solid-hardware|"
 msgid "KDE tool for querying your hardware from the command line"
 msgstr "Nástroj KDE pro dotazování se na hardware z příkazové řádky"
 
-#: tools/solid-hardware/solid-hardware.cpp:289
+#: tools/solid-hardware/solid-hardware.cpp:292
 msgctxt "solid-hardware|"
 msgid "Command to execute"
 msgstr "Příkaz ke spuštění"
 
-#: tools/solid-hardware/solid-hardware.cpp:291
+#: tools/solid-hardware/solid-hardware.cpp:294
 msgctxt "solid-hardware|"
 msgid "Show available commands"
 msgstr "Zobrazit dostupné příkazy"
 
-#: tools/solid-hardware/solid-hardware.cpp:313
+#: tools/solid-hardware/solid-hardware.cpp:316
 msgctxt "solid-hardware|"
 msgid "Show device details"
 msgstr "Zobrazit podrobnosti zařízení"
 
-#: tools/solid-hardware/solid-hardware.cpp:314
+#: tools/solid-hardware/solid-hardware.cpp:317
 msgctxt "solid-hardware|"
 msgid "Show non portable information"
 msgstr "Zobrazit nepřenositelné informace"
 
-#: tools/solid-hardware/solid-hardware.cpp:327
+#: tools/solid-hardware/solid-hardware.cpp:330
 msgctxt "solid-hardware|"
 msgid "Parent device udi"
 msgstr "UDI nadřazeného zařízení"
 
-#: tools/solid-hardware/solid-hardware.cpp:354
+#: tools/solid-hardware/solid-hardware.cpp:360
 #, qt-format
 msgctxt "solid-hardware|"
 msgid "Syntax Error: Unknown command '%1'"
 msgstr "Syntaktická chyba: Neznámý příkaz '%1'"
 
-#: tools/solid-hardware/solid-hardware.cpp:416
+#: tools/solid-hardware/solid-hardware.cpp:422
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1 does not have the interface StorageAccess."
 msgstr "Chyba: %1 nemá rozhraní StorageAccess."
 
-#: tools/solid-hardware/solid-hardware.cpp:419
+#: tools/solid-hardware/solid-hardware.cpp:425
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1 does not have the interface OpticalDrive."
 msgstr "Chyba: %1 nemá rozhraní OpticalDrive."
 
-#: tools/solid-hardware/solid-hardware.cpp:450
+#: tools/solid-hardware/solid-hardware.cpp:456
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1"

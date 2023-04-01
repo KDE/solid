@@ -722,7 +722,7 @@ msgid "Network Share"
 msgstr "Delt nettverksressurs"
 
 #: tools/solid-hardware/solid-hardware.cpp:218
-#: tools/solid-hardware/solid-hardware.cpp:326
+#: tools/solid-hardware/solid-hardware.cpp:329
 msgctxt "solid-hardware|"
 msgid "Device udi"
 msgstr "Einings-UDI"
@@ -811,61 +811,70 @@ msgid ""
 msgstr "             # Løys ut eininga som svarar til «udi», om mogleg.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:274
+#, fuzzy
+#| msgctxt "solid-hardware|"
+#| msgid ""
+#| "             # Listen to all add/remove events on supported hardware."
 msgctxt "solid-hardware|"
-msgid "             # Listen to all add/remove events on supported hardware."
+msgid "             # Listen to all add/remove events on supported hardware.\n"
 msgstr ""
 "             # Lytt til alle «legg til / fjern»-hendingar for støtta "
 "maskinvare."
 
-#: tools/solid-hardware/solid-hardware.cpp:286
+#: tools/solid-hardware/solid-hardware.cpp:277
+msgctxt "solid-hardware|"
+msgid "             # Monitor a devices for changes.\n"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:289
 msgctxt "solid-hardware|"
 msgid "KDE tool for querying your hardware from the command line"
 msgstr "KDE-verktøy for spørjing av maskinvare frå kommandolinja"
 
-#: tools/solid-hardware/solid-hardware.cpp:289
+#: tools/solid-hardware/solid-hardware.cpp:292
 msgctxt "solid-hardware|"
 msgid "Command to execute"
 msgstr "Kommando som skal køyrast"
 
-#: tools/solid-hardware/solid-hardware.cpp:291
+#: tools/solid-hardware/solid-hardware.cpp:294
 msgctxt "solid-hardware|"
 msgid "Show available commands"
 msgstr "Vis tilgjengelege kommandoar"
 
-#: tools/solid-hardware/solid-hardware.cpp:313
+#: tools/solid-hardware/solid-hardware.cpp:316
 msgctxt "solid-hardware|"
 msgid "Show device details"
 msgstr "Vis einingsdetaljar"
 
-#: tools/solid-hardware/solid-hardware.cpp:314
+#: tools/solid-hardware/solid-hardware.cpp:317
 msgctxt "solid-hardware|"
 msgid "Show non portable information"
 msgstr "Vis ikkje-portabel informasjon"
 
-#: tools/solid-hardware/solid-hardware.cpp:327
+#: tools/solid-hardware/solid-hardware.cpp:330
 msgctxt "solid-hardware|"
 msgid "Parent device udi"
 msgstr "UDI til foreldereining"
 
-#: tools/solid-hardware/solid-hardware.cpp:354
+#: tools/solid-hardware/solid-hardware.cpp:360
 #, qt-format
 msgctxt "solid-hardware|"
 msgid "Syntax Error: Unknown command '%1'"
 msgstr "Syntaksfeil: Ukjend kommando «%1»"
 
-#: tools/solid-hardware/solid-hardware.cpp:416
+#: tools/solid-hardware/solid-hardware.cpp:422
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1 does not have the interface StorageAccess."
 msgstr "Feil: %1 har ikkje grensesnittet StorageAccess."
 
-#: tools/solid-hardware/solid-hardware.cpp:419
+#: tools/solid-hardware/solid-hardware.cpp:425
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1 does not have the interface OpticalDrive."
 msgstr "Feil: %1 har ikkje grensesnittet OpticalDrive."
 
-#: tools/solid-hardware/solid-hardware.cpp:450
+#: tools/solid-hardware/solid-hardware.cpp:456
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1"
