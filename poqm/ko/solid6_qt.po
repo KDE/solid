@@ -817,7 +817,7 @@ msgstr "             # 지원하는 하드웨어의 모든 이벤트를 추가�
 
 #: tools/solid-hardware/solid-hardware.cpp:277
 msgctxt "solid-hardware|"
-msgid "             # Monitor a devices for changes.\n"
+msgid "             # Monitor devices for changes.\n"
 msgstr ""
 
 #: tools/solid-hardware/solid-hardware.cpp:289

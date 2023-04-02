@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: solid_qt\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2014-04-01 01:49+0000\n"
-"PO-Revision-Date: 2023-03-25 20:31+0100\n"
+"PO-Revision-Date: 2023-04-01 15:23+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -812,18 +812,15 @@ msgid ""
 msgstr "             # Se aplikeble, elĵetu la aparaton respondan al 'udi'.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:274
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # Listen to all add/remove events on supported hardware."
 msgctxt "solid-hardware|"
 msgid "             # Listen to all add/remove events on supported hardware.\n"
 msgstr ""
-"             # Aŭskultu ĉiujn aldoni/forigi eventojn sur subtenata aparataro."
+"             # Aŭskultu ĉiujn aldoni/forigi eventojn sur subtenata "
+"aparataro.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:277
 msgctxt "solid-hardware|"
-msgid "             # Monitor a devices for changes.\n"
+msgid "             # Monitor devices for changes.\n"
 msgstr ""
 
 #: tools/solid-hardware/solid-hardware.cpp:289

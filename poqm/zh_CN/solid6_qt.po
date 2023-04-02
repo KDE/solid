@@ -808,7 +808,7 @@ msgstr "             # 监听在支持的硬件上的所有添加/移除事件�
 
 #: tools/solid-hardware/solid-hardware.cpp:277
 msgctxt "solid-hardware|"
-msgid "             # Monitor a devices for changes.\n"
+msgid "             # Monitor devices for changes.\n"
 msgstr ""
 
 #: tools/solid-hardware/solid-hardware.cpp:289

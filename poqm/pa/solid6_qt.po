@@ -822,7 +822,7 @@ msgstr "             # ਸਹਾਇਤਾ ਪ੍ਰਾਪਤ ਹਾਰਡਵੇ�
 
 #: tools/solid-hardware/solid-hardware.cpp:277
 msgctxt "solid-hardware|"
-msgid "             # Monitor a devices for changes.\n"
+msgid "             # Monitor devices for changes.\n"
 msgstr ""
 
 #: tools/solid-hardware/solid-hardware.cpp:289

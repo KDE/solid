@@ -3,13 +3,13 @@
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2009, 2010, 2011, 2012, 2013, 2014, 2016, 2017, 2019, 2020, 2021, 2022.
+# Yuri Chornoivan <yurchor@ukr.net>, 2009, 2010, 2011, 2012, 2013, 2014, 2016, 2017, 2019, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: solid5_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-01 01:49+0000\n"
-"PO-Revision-Date: 2022-09-06 17:49+0300\n"
+"PO-Revision-Date: 2023-04-01 09:14+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -817,20 +817,19 @@ msgstr ""
 "             # Якщо застосовне, виштовхнути пристрій, що відповідає «udi».\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:274
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # Listen to all add/remove events on supported hardware."
 msgctxt "solid-hardware|"
 msgid "             # Listen to all add/remove events on supported hardware.\n"
 msgstr ""
 "             # Очікувати на всі події додавання або вилучення підтримуваного "
-"обладнання."
+"обладнання.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:277
+#, fuzzy
+#| msgctxt "solid-hardware|"
+#| msgid "             # Monitor a devices for changes.\n"
 msgctxt "solid-hardware|"
-msgid "             # Monitor a devices for changes.\n"
-msgstr ""
+msgid "             # Monitor devices for changes.\n"
+msgstr "             # Спостерігати за змінами у пристроях.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:289
 msgctxt "solid-hardware|"
