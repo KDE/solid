@@ -15,14 +15,17 @@ set(solid_BUILD_INCLUDE_DIRS
     ${CMAKE_CURRENT_BINARY_DIR}/..
 )
 target_include_directories(KF6Solid PUBLIC "$<BUILD_INTERFACE:${solid_BUILD_INCLUDE_DIRS}>")
+
 ecm_generate_export_header(KF6Solid
     BASE_NAME Solid
     GROUP_BASE_NAME KF
     VERSION ${KF_VERSION}
+    USE_VERSION_HEADER
     DEPRECATED_BASE_VERSION 0
     DEPRECATION_VERSIONS
     EXCLUDE_DEPRECATED_BEFORE_AND_AT ${EXCLUDE_DEPRECATED_BEFORE_AND_AT}
 )
+
 add_library(KF6::Solid ALIAS KF6Solid)
 
 # Apps must include <Solid/File> or <solid/file.h>
