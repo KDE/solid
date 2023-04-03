@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: solid5_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-01 01:49+0000\n"
-"PO-Revision-Date: 2023-04-01 09:14+0300\n"
+"PO-Revision-Date: 2023-04-02 19:37+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -824,9 +824,6 @@ msgstr ""
 "обладнання.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:277
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid "             # Monitor a devices for changes.\n"
 msgctxt "solid-hardware|"
 msgid "             # Monitor devices for changes.\n"
 msgstr "             # Спостерігати за змінами у пристроях.\n"

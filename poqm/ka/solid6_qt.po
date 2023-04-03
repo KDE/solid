@@ -812,20 +812,16 @@ msgstr ""
 "გამოღება.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:274
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # Listen to all add/remove events on supported hardware."
 msgctxt "solid-hardware|"
 msgid "             # Listen to all add/remove events on supported hardware.\n"
 msgstr ""
-"             # მხარდაჭერილ აპარატურაზე ყველა ჩამატება/მოხსნის მოვლენის "
-"მოსმენა."
+"             # მხარდაჭერილ აპარატურაზე ყველა დამატება/მოხსნის მოვლენის "
+"მოსმენა.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:277
 msgctxt "solid-hardware|"
 msgid "             # Monitor devices for changes.\n"
-msgstr ""
+msgstr "             # მოწყობილობების ცვლილებების თვალყურის დევნება.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:289
 msgctxt "solid-hardware|"

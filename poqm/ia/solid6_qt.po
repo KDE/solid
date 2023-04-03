@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-01 01:49+0000\n"
-"PO-Revision-Date: 2023-04-02 00:03+0200\n"
+"PO-Revision-Date: 2023-04-02 21:28+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -826,9 +826,6 @@ msgstr ""
 "           # Ascolta omne eventos de adder/remover sur hardware supportate.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:277
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid "             # Monitor a devices for changes.\n"
 msgctxt "solid-hardware|"
 msgid "             # Monitor devices for changes.\n"
 msgstr "             # Monitora un dispositivo per modificationes.\n"

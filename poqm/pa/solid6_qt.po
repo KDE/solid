@@ -1,20 +1,20 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# A S Alam <aalam@users.sf.net>, 2009, 2010, 2011, 2012, 2014, 2018, 2020.
+# A S Alam <aalam@users.sf.net>, 2009, 2010, 2011, 2012, 2014, 2018, 2020, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-01 01:49+0000\n"
-"PO-Revision-Date: 2020-10-13 21:40-0700\n"
-"Last-Translator: A S Alam <aalam.yellow@gmail.com>\n"
-"Language-Team: Punjabi <punjabi-users@lists.sf.net>\n"
+"PO-Revision-Date: 2023-04-01 21:05-0700\n"
+"Last-Translator: A S Alam <aalam@satluj.org>\n"
+"Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
 "Language: pa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 19.12.2\n"
+"X-Generator: Lokalize 22.12.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Qt-Contexts: true\n"
 
@@ -43,21 +43,17 @@ msgstr "ਤੁਹਾਡੇ ਸਿਸਟਮ ਵਿੱਚ ਐਲਾਨ ਕੀਤ�
 #: solid/devices/backends/imobile/imobiledevice.cpp:90
 msgctxt "imobiledevice|Company name"
 msgid "Apple"
-msgstr ""
+msgstr "ਐਪਲ"
 
 #: solid/devices/backends/imobile/imobilemanager.cpp:61
-#, fuzzy
-#| msgctxt "Solid::Backends::UDev::UDevManager|"
-#| msgid "Devices"
 msgctxt "Solid::Backends::IMobile::Manager|"
 msgid "iDevice"
-msgstr "ਜੰਤਰ"
+msgstr "iDevice"
 
 #: solid/devices/backends/imobile/imobilemanager.cpp:62
-#, fuzzy
 msgctxt "Solid::Backends::IMobile::Manager|"
 msgid "iOS devices"
-msgstr "UPnP ਜੰਤਰ"
+msgstr "iOS ਡਿਵਾਈਸ"
 
 #: solid/devices/backends/udev/udevdevice.cpp:100
 msgctxt "Solid::Backends::UDev::UDevDevice|"
@@ -125,40 +121,28 @@ msgid "0 B"
 msgstr "0 B"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:75
-#, fuzzy, qt-format
-#| msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
-#| msgid "%1 External Hard Drive"
+#, qt-format
 msgctxt "QObject|%1 is the size, %2 is the block device name e.g. sda, sda1"
 msgid "%1 External Drive (%2)"
-msgstr "%1 ਬਾਹਰੀ ਹਾਰਡ ਡਰਾਇਵ"
+msgstr "%1 ਬਾਹਰੀ ਡਰਾਇਵ (%2)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:77
-#, fuzzy, qt-format
-#| msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
-#| msgid "%1 External Hard Drive"
+#, qt-format
 msgctxt "QObject|%1 is the size, %2 is the block device name e.g. sda, sda1"
 msgid "%1 Internal Drive (%2)"
-msgstr "%1 ਬਾਹਰੀ ਹਾਰਡ ਡਰਾਇਵ"
+msgstr "%1 ਅੰਦਰੂਨੀ ਡਰਾਇਵ (%2)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:81
-#, fuzzy, qt-format
-#| msgctxt ""
-#| "Solid::Backends::Hal::HalDevice|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
-#| "DVD-R'/etc (with leading slash)"
-#| msgid "External %1%2 Drive"
+#, qt-format
 msgctxt "QObject|%1 is the block device name e.g. sda, sda1"
 msgid "External Drive (%1)"
-msgstr "ਬਾਹਰੀ %1%2 ਡਰਾਇਵ"
+msgstr "ਬਾਹਰੀ ਡਰਾਇਵ (%1)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:83
-#, fuzzy, qt-format
-#| msgctxt ""
-#| "Solid::Backends::Hal::HalDevice|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
-#| "DVD-R'/etc (with leading slash)"
-#| msgid "External %1%2 Drive"
+#, qt-format
 msgctxt "QObject|%1 is the block device name e.g. sda, sda1"
 msgid "Internal Drive (%1)"
-msgstr "ਬਾਹਰੀ %1%2 ਡਰਾਇਵ"
+msgstr "ਅੰਦਰੂਨੀ ਡਰਾਇਵ (%1)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:256
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -482,12 +466,9 @@ msgid "%1 Removable Media"
 msgstr "%1 ਹਟਾਉਣਯੋਗ ਮੀਡਿਆ"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:582
-#, fuzzy
-#| msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
-#| msgid "%1 Removable Media"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Removable Media"
-msgstr "%1 ਹਟਾਉਣਯੋਗ ਮੀਡਿਆ"
+msgstr "ਹਟਾਉਣਯੋਗ ਮੀਡਿਆ"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:586
 #, qt-format
@@ -496,12 +477,9 @@ msgid "%1 Media"
 msgstr "%1 ਮੀਡਿਆ"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:588
-#, fuzzy
-#| msgctxt "Solid::Backends::UDisks2::Manager|"
-#| msgid "Storage devices"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Storage Media"
-msgstr "ਸਟੋਰੇਜ਼ ਜੰਤਰ"
+msgstr "ਸਟੋਰੇਜ਼ ਮੀਡਿਆ"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:732
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -576,12 +554,9 @@ msgid ""
 msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:760
-#, fuzzy
-#| msgctxt "Solid::Backends::UDisks2::Device|"
-#| msgid "The requested operation has been canceled"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The authentication prompt was canceled"
-msgstr "ਮੰਗ ਕੀਤੀ ਕਾਰਵਾਈ ਰੱਦ ਕੀਤੀ ਗਈ"
+msgstr "ਪਰਮਾਣੀਕਰਨ ਕਾਰਵਾਈ ਰੱਦ ਕੀਤੀ ਗਈ"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:762
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -812,13 +787,9 @@ msgid ""
 msgstr ""
 
 #: tools/solid-hardware/solid-hardware.cpp:274
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # Listen to all add/remove events on supported hardware."
 msgctxt "solid-hardware|"
 msgid "             # Listen to all add/remove events on supported hardware.\n"
-msgstr "             # ਸਹਾਇਤਾ ਪ੍ਰਾਪਤ ਹਾਰਡਵੇਅਰ ਉੱਤੇ ਜੋੜਨ/ਹਟਾਉਣ ਦੇ ਸਭ ਈਵੈਂਟ ਸੁਣੋ।"
+msgstr "             # ਸਹਾਇਤਾ ਪ੍ਰਾਪਤ ਹਾਰਡਵੇਅਰ ਉੱਤੇ ਜੋੜਨ/ਹਟਾਉਣ ਦੇ ਸਭ ਈਵੈਂਟ ਸੁਣੋ।\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:277
 msgctxt "solid-hardware|"
@@ -851,11 +822,9 @@ msgid "Show non portable information"
 msgstr ""
 
 #: tools/solid-hardware/solid-hardware.cpp:330
-#, fuzzy
-#| msgid "UPnP devices"
 msgctxt "solid-hardware|"
 msgid "Parent device udi"
-msgstr "UPnP ਜੰਤਰ"
+msgstr ""
 
 #: tools/solid-hardware/solid-hardware.cpp:360
 #, qt-format

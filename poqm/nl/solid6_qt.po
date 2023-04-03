@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-01-24 18:50+0000\n"
-"PO-Revision-Date: 2023-04-01 10:42+0200\n"
+"PO-Revision-Date: 2023-04-02 17:03+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -827,12 +827,9 @@ msgstr ""
 "ondersteunde hardware.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:277
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid "             # Monitor a devices for changes.\n"
 msgctxt "solid-hardware|"
 msgid "             # Monitor devices for changes.\n"
-msgstr "             # Een apparaat monitoren op wijzigingen.\n"
+msgstr "             # Apparaten monitoren op wijzigingen.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:289
 msgctxt "solid-hardware|"
