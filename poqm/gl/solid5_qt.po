@@ -4,22 +4,22 @@
 # Xosé <xosecalvo@gmail.com>, 2010.
 # Marce Villarino <mvillarino@kde-espana.es>, 2011, 2012, 2013, 2014.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2015, 2017.
-# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2018, 2019, 2020.
+# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2018, 2019, 2020, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-01 01:49+0000\n"
-"PO-Revision-Date: 2020-01-05 18:41+0100\n"
+"PO-Revision-Date: 2023-04-06 20:52+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
-"Language-Team: Galician <kde-i18n-doc@kde.org>\n"
+"Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 19.08.3\n"
+"X-Generator: Lokalize 22.12.3\n"
 "X-Qt-Contexts: true\n"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:60
@@ -47,21 +47,17 @@ msgstr "Sistemas de ficheiros montábeis declarados no sistema"
 #: solid/devices/backends/imobile/imobiledevice.cpp:90
 msgctxt "imobiledevice|Company name"
 msgid "Apple"
-msgstr ""
+msgstr "Apple"
 
 #: solid/devices/backends/imobile/imobilemanager.cpp:61
-#, fuzzy
-#| msgctxt "Solid::Backends::UDev::UDevManager|"
-#| msgid "Devices"
 msgctxt "Solid::Backends::IMobile::Manager|"
 msgid "iDevice"
-msgstr "Dispositivos"
+msgstr "Dispositivo de Apple"
 
 #: solid/devices/backends/imobile/imobilemanager.cpp:62
-#, fuzzy
 msgctxt "Solid::Backends::IMobile::Manager|"
 msgid "iOS devices"
-msgstr "Dispositivos UPnP"
+msgstr "Dispositivos iOS"
 
 #: solid/devices/backends/udev/udevdevice.cpp:100
 msgctxt "Solid::Backends::UDev::UDevDevice|"
@@ -129,40 +125,28 @@ msgid "0 B"
 msgstr "0 B"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:75
-#, fuzzy, qt-format
-#| msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
-#| msgid "%1 External Hard Drive"
+#, qt-format
 msgctxt "QObject|%1 is the size, %2 is the block device name e.g. sda, sda1"
 msgid "%1 External Drive (%2)"
-msgstr "Disco duro externo de %1"
+msgstr "Disco externo de %1 (%2)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:77
-#, fuzzy, qt-format
-#| msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
-#| msgid "%1 External Hard Drive"
+#, qt-format
 msgctxt "QObject|%1 is the size, %2 is the block device name e.g. sda, sda1"
 msgid "%1 Internal Drive (%2)"
-msgstr "Disco duro externo de %1"
+msgstr "Disco interno de %1 (%2)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:81
-#, fuzzy, qt-format
-#| msgctxt ""
-#| "Solid::Backends::Hal::HalDevice|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
-#| "DVD-R'/etc (with leading slash)"
-#| msgid "External %1%2 Drive"
+#, qt-format
 msgctxt "QObject|%1 is the block device name e.g. sda, sda1"
 msgid "External Drive (%1)"
-msgstr "Unidade %1%2 externa"
+msgstr "Disco externo (%1)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:83
-#, fuzzy, qt-format
-#| msgctxt ""
-#| "Solid::Backends::Hal::HalDevice|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
-#| "DVD-R'/etc (with leading slash)"
-#| msgid "External %1%2 Drive"
+#, qt-format
 msgctxt "QObject|%1 is the block device name e.g. sda, sda1"
 msgid "Internal Drive (%1)"
-msgstr "Unidade %1%2 externa"
+msgstr "Disco interno (%1)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:256
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -486,12 +470,9 @@ msgid "%1 Removable Media"
 msgstr "Soporte extraíbel de %1"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:582
-#, fuzzy
-#| msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
-#| msgid "%1 Removable Media"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Removable Media"
-msgstr "Soporte extraíbel de %1"
+msgstr "Soporte extraíbel"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:586
 #, qt-format
@@ -500,12 +481,9 @@ msgid "%1 Media"
 msgstr "Soporte de %1"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:588
-#, fuzzy
-#| msgctxt "Solid::Backends::UDisks2::Manager|"
-#| msgid "Storage devices"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Storage Media"
-msgstr "Dispositivos de almacenamento"
+msgstr "Soporte de almacenamento"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:732
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -580,14 +558,13 @@ msgid ""
 "Cannot request authentication for this action. The PolicyKit authentication "
 "system appears to be not available."
 msgstr ""
+"Non se pode solicitar autenticación para esta acción. O sistema de "
+"autenticación PolicyKit non parece estar dispoñíbel."
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:760
-#, fuzzy
-#| msgctxt "Solid::Backends::UDisks2::Device|"
-#| msgid "The requested operation has been canceled"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The authentication prompt was canceled"
-msgstr "A operación pedida cancelouse."
+msgstr "Cancelouse a solicitude de autenticación"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:762
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -873,7 +850,7 @@ msgstr "Mostras detalles do dispositivo"
 #: tools/solid-hardware/solid-hardware.cpp:314
 msgctxt "solid-hardware|"
 msgid "Show non portable information"
-msgstr "Mostrar información non portábel"
+msgstr "Mostrar información non portátil"
 
 #: tools/solid-hardware/solid-hardware.cpp:327
 msgctxt "solid-hardware|"
