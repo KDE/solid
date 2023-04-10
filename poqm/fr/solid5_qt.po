@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-01-24 18:50+0000\n"
-"PO-Revision-Date: 2023-01-06 17:01+0100\n"
+"PO-Revision-Date: 2023-04-04 16:40+0200\n"
 "Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
@@ -827,15 +827,11 @@ msgstr ""
 "             # Si possible, éjecte le périphérique correspondant à « UDI ».\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:274
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # Listen to all add/remove events on supported hardware."
 msgctxt "solid-hardware|"
 msgid "             # Listen to all add/remove events on supported hardware.\n"
 msgstr ""
-"             # Écouter tous les évènements ajout/retrait sur le matériel "
-"pris en charge."
+"             # Prendre en compte tous les évènements d'ajout ou de "
+"suppression concernant les périphériques pris en charge.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:277
 msgctxt "solid-hardware|"
