@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
-"PO-Revision-Date: 2023-03-27 11:59\n"
+"PO-Revision-Date: 2023-04-10 14:10\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -798,18 +798,14 @@ msgid ""
 msgstr "             # 如果可能，弹出与“UDI”项对应的设备。\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:274
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # Listen to all add/remove events on supported hardware."
 msgctxt "solid-hardware|"
 msgid "             # Listen to all add/remove events on supported hardware.\n"
-msgstr "             # 监听在支持的硬件上的所有添加/移除事件。"
+msgstr "             # 监听在支持的硬件上的所有添加/移除事件。\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:277
 msgctxt "solid-hardware|"
 msgid "             # Monitor a devices for changes.\n"
-msgstr ""
+msgstr "             # 监视一个设备发生的更改。\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:289
 msgctxt "solid-hardware|"
