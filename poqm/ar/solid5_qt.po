@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-06-28 15:38+0300\n"
-"PO-Revision-Date: 2023-01-26 13:08+0400\n"
+"PO-Revision-Date: 2023-04-13 09:38+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -802,18 +802,14 @@ msgid ""
 msgstr "             # إذا كان ممكناً ستخرج الجهاز المقابل لـ 'udi'.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:274
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # Listen to all add/remove events on supported hardware."
 msgctxt "solid-hardware|"
 msgid "             # Listen to all add/remove events on supported hardware.\n"
-msgstr "             # تستمع لكل أحداث الإضافة/الحذف على العتاد المدعوم."
+msgstr "             # تستمع لكل أحداث الإضافة/الحذف على العتاد المدعوم.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:277
 msgctxt "solid-hardware|"
 msgid "             # Monitor a devices for changes.\n"
-msgstr ""
+msgstr "             # تراقب الأجهزة لأي تغيير.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:289
 msgctxt "solid-hardware|"
