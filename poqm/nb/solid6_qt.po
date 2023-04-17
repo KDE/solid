@@ -809,9 +809,6 @@ msgstr "             # Om det går an løs ut enheten som tilsvarer «udi».\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:274
 #, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # Listen to all add/remove events on supported hardware."
 msgctxt "solid-hardware|"
 msgid "             # Listen to all add/remove events on supported hardware.\n"
 msgstr ""
