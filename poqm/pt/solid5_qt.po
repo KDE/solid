@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: solid-hardware\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-01 01:49+0000\n"
-"PO-Revision-Date: 2022-09-06 09:58+0100\n"
+"PO-Revision-Date: 2023-04-17 16:08+0100\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-pt@kde.org>\n"
 "Language: pt\n"
@@ -813,20 +813,17 @@ msgstr ""
 "             # Se se aplicar, ejecta o dispositivo correspondente ao 'udi'.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:274
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # Listen to all add/remove events on supported hardware."
 msgctxt "solid-hardware|"
 msgid "             # Listen to all add/remove events on supported hardware.\n"
 msgstr ""
 "             # Atender todos os eventos de adição/remoção no 'hardware' "
-"suportado."
+"suportado.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:277
 msgctxt "solid-hardware|"
 msgid "             # Monitor a devices for changes.\n"
 msgstr ""
+"             # Monitorizar as alterações por parte de um dispositivo.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:289
 msgctxt "solid-hardware|"
