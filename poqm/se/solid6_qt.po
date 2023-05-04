@@ -1,4 +1,4 @@
-# Translation of solid5_qt to Northern Sami
+# Translation of solid6_qt to Northern Sami
 #
 # Børre Gaup <boerre@skolelinux.no>, 2010, 2011, 2012.
 msgid ""
