@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: solid\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2014-01-24 18:50+0000\n"
-"PO-Revision-Date: 2023-04-02 10:14+0200\n"
+"PO-Revision-Date: 2023-05-16 14:25+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -565,7 +565,7 @@ msgstr ""
 #: solid/devices/backends/udisks2/udisksdevice.cpp:760
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The authentication prompt was canceled"
-msgstr "L'indicador d'autenticació s'ha cancel·lat"
+msgstr "L'indicatiu d'autenticació s'ha cancel·lat"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:762
 msgctxt "Solid::Backends::UDisks2::Device|"
