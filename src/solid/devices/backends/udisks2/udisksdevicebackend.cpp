@@ -138,7 +138,7 @@ QVariantMap DeviceBackend::allProperties() const
             auto props = reply.value();
             // Can not use QMap<>::unite(), as it allows multiple values per key
             for (auto it = props.cbegin(); it != props.cend(); ++it) {
-                m_propertyCache.insert(it.key(), it.value());
+                cacheProperty(it.key(), it.value());
             }
         } else {
             qCWarning(UDISKS2) << "Error getting props:" << reply.error().name() << reply.error().message() << "for" << m_udi;
@@ -188,7 +188,7 @@ void DeviceBackend::checkCache(const QString &key) const
     /* We don't check for error here and store the item in the cache anyway so next time we don't have to
      * do the DBus call to find out it does not exist but just check whether
      * prop(key).isValid() */
-    m_propertyCache.insert(key, reply.value());
+    cacheProperty(key, reply.value());
 }
 
 void DeviceBackend::slotPropertiesChanged(const QString &ifaceName, const QVariantMap &changedProps, const QStringList &invalidatedProps)
@@ -210,7 +210,7 @@ void DeviceBackend::slotPropertiesChanged(const QString &ifaceName, const QVaria
     while (i.hasNext()) {
         i.next();
         const QString key = i.key();
-        m_propertyCache.insert(key, i.value()); // replace the value
+        cacheProperty(key, i.value()); // replace the value
         changeMap.insert(key, Solid::GenericInterface::PropertyModified);
         // qDebug() << "\t modified:" << key << ":" << m_propertyCache.value(key);
     }
@@ -248,5 +248,21 @@ void DeviceBackend::slotInterfacesRemoved(const QDBusObjectPath &object_path, co
     m_propertyCache.clear();
     if (!m_interfaces.isEmpty()) {
         allProperties();
+    }
+}
+
+// UDisks2 sends us null terminated strings, make sure to strip the extranous \0 in favor of the implicit \0.
+// Otherwise comparision becomes unnecessarily complicated because 'foo\0' != 'foo'. QByteArrays are implicitly
+// terminated already.
+void DeviceBackend::cacheProperty(const QString &key, const QVariant &value) const
+{
+    if (value.metaType() == QMetaType::fromType<QByteArray>()) {
+        auto blob = value.toByteArray();
+        while (blob.endsWith('\0')) {
+            blob.chop(1);
+        }
+        m_propertyCache.insert(key, blob);
+    } else {
+        m_propertyCache.insert(key, value);
     }
 }

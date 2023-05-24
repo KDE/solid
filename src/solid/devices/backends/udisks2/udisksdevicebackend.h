@@ -54,7 +54,9 @@ private:
     void initInterfaces();
     QString introspect() const;
     void checkCache(const QString &key) const;
+    void cacheProperty(const QString &key, const QVariant &value) const;
 
+    // NOTE: make sure to insert items only through cacheProperty
     mutable QVariantMap m_propertyCache;
     QStringList m_interfaces;
     QString m_udi;
