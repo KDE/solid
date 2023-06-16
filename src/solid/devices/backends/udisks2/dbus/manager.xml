@@ -4,13 +4,13 @@
   <interface name="org.freedesktop.DBus.ObjectManager">
     <method name="GetManagedObjects">
       <arg type="a{oa{sa{sv}}}" name="object_paths_interfaces_and_properties" direction="out">
-        <annotation name="com.trolltech.QtDBus.QtTypeName.Out0" value="DBUSManagerStruct"/>
+        <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="DBUSManagerStruct"/>
       </arg>
     </method>
     <signal name="InterfacesAdded">
       <arg type="o" name="object_path"/>
       <arg type="a{sa{sv}}" name="interfaces_and_properties">
-        <annotation name="com.trolltech.QtDBus.QtTypeName.In1" value="QVariantMapMap"/>
+        <annotation name="org.qtproject.QtDBus.QtTypeName.In1" value="QVariantMapMap"/>
       </arg>
     </signal>
     <signal name="InterfacesRemoved">
