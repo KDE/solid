@@ -6,7 +6,7 @@
 
 #include "solidextensionplugin.h"
 
-#include <QtQml>
+#include <QQmlEngine>
 
 #include "devices.h"
 #include "solid/deviceinterface.h"
