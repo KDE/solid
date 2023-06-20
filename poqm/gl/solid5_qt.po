@@ -845,7 +845,7 @@ msgstr "A orde que se vai executar"
 #: tools/solid-hardware/solid-hardware.cpp:294
 msgctxt "solid-hardware|"
 msgid "Show available commands"
-msgstr "Mostrar as ordes dispoñíbeis"
+msgstr "Amosar as ordes dispoñíbeis"
 
 #: tools/solid-hardware/solid-hardware.cpp:316
 msgctxt "solid-hardware|"
@@ -855,7 +855,7 @@ msgstr "Mostras detalles do dispositivo"
 #: tools/solid-hardware/solid-hardware.cpp:317
 msgctxt "solid-hardware|"
 msgid "Show non portable information"
-msgstr "Mostrar información non portátil"
+msgstr "Amosar información non portátil"
 
 #: tools/solid-hardware/solid-hardware.cpp:330
 msgctxt "solid-hardware|"
@@ -901,7 +901,7 @@ msgstr "A orde que se vai executar"
 #: tools/solid-power/main.cpp:26
 msgctxt "solid-power|"
 msgid "Show available commands"
-msgstr "Mostrar as ordes dispoñíbeis"
+msgstr "Amosar as ordes dispoñíbeis"
 
 #: tools/solid-power/main.cpp:35
 msgctxt "solid-power|"
@@ -910,7 +910,7 @@ msgid ""
 "             # - acPlugged: whether the device is connected to the AC or "
 "not\n"
 msgstr ""
-"             # Mostrar toda a información de xestión da enerxía do sistema.\n"
+"             # Amosar toda a información de xestión da enerxía do sistema.\n"
 "             # - acPlugged: se o dispositivo está conectado á corrente ou "
 "non.\n"
 
