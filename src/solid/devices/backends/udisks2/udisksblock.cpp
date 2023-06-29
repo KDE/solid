@@ -79,3 +79,5 @@ int Block::deviceMajor() const
 {
     return MAJOR(m_devNum);
 }
+
+#include "moc_udisksblock.cpp"

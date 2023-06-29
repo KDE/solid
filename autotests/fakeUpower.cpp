@@ -81,3 +81,5 @@ QList<QDBusObjectPath> FakeUpower::EnumerateDevices()
     QList<QDBusObjectPath> list;
     return list;
 }
+
+#include "moc_fakeUpower.cpp"

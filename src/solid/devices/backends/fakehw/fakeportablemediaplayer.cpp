@@ -36,3 +36,5 @@ QVariant Solid::Backends::Fake::FakePortableMediaPlayer::driverHandle(const QStr
     Q_UNUSED(driver);
     return QVariant();
 }
+
+#include "moc_fakeportablemediaplayer.cpp"

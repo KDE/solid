@@ -82,3 +82,5 @@ QString Processor::product()
     q_sysctlbyname("machdep.cpu.brand_string", product);
     return product;
 }
+
+#include "moc_iokitprocessor.cpp"

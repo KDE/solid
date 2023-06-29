@@ -102,3 +102,5 @@ bool StorageVolume::isIgnored() const
     const QString backingFile = m_device->prop("BackingFile").toString();
     return !backingFile.isEmpty() && !backingFile.startsWith(QDir::homePath());
 }
+
+#include "moc_udisksstoragevolume.cpp"

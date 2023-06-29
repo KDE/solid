@@ -30,3 +30,5 @@ DeviceInterface::~DeviceInterface()
         m_deviceCopy = nullptr;
     }
 }
+
+#include "moc_iokitdeviceinterface.cpp"

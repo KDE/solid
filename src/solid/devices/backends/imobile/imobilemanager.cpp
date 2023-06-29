@@ -137,3 +137,5 @@ void Manager::onDeviceEvent(const idevice_event_t *event)
 
     qCDebug(IMOBILE) << "Unhandled device event" << event->event << "for" << event->udid;
 }
+
+#include "moc_imobilemanager.cpp"

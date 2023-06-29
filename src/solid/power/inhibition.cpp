@@ -43,3 +43,5 @@ Inhibition::State Inhibition::state() const
 {
     return d_ptr->backendObject->state();
 }
+
+#include "moc_inhibition.cpp"

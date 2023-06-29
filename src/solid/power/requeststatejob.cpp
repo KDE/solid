@@ -44,3 +44,5 @@ void RequestStateJob::doStart()
 
     d->backendJob->start();
 }
+
+#include "moc_requeststatejob.cpp"

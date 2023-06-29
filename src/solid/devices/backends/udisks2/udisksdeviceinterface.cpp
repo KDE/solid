@@ -17,3 +17,5 @@ DeviceInterface::DeviceInterface(Device *device)
 DeviceInterface::~DeviceInterface()
 {
 }
+
+#include "moc_udisksdeviceinterface.cpp"

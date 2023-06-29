@@ -266,3 +266,5 @@ void DeviceBackend::cacheProperty(const QString &key, const QVariant &value) con
         m_propertyCache.insert(key, value);
     }
 }
+
+#include "moc_udisksdevicebackend.cpp"

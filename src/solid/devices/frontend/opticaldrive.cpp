@@ -51,3 +51,5 @@ bool Solid::OpticalDrive::eject()
     Q_D(OpticalDrive);
     return_SOLID_CALL(Ifaces::OpticalDrive *, d->backendObject(), false, eject());
 }
+
+#include "moc_opticaldrive.cpp"

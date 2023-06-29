@@ -140,3 +140,5 @@ void FstabManager::onMtabChanged()
 FstabManager::~FstabManager()
 {
 }
+
+#include "moc_fstabmanager.cpp"

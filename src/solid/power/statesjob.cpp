@@ -42,3 +42,5 @@ Power::InhibitionTypes StatesJob::states() const
     qWarning() << "statesJob called without having called start";
     return Power::None;
 }
+
+#include "moc_statesjob.cpp"

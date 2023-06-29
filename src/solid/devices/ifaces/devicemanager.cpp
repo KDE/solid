@@ -14,3 +14,5 @@ Solid::Ifaces::DeviceManager::DeviceManager(QObject *parent)
 Solid::Ifaces::DeviceManager::~DeviceManager()
 {
 }
+
+#include "moc_devicemanager.cpp"

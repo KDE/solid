@@ -516,3 +516,5 @@ QObject *IOKitDevice::createDeviceInterface(const Solid::DeviceInterface::Type &
 }
 }
 } // namespaces
+
+#include "moc_iokitdevice.cpp"

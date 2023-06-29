@@ -40,3 +40,5 @@ bool Solid::GenericInterface::propertyExists(const QString &key) const
     Q_D(const GenericInterface);
     return_SOLID_CALL(Ifaces::GenericInterface *, d->backendObject(), false, propertyExists(key));
 }
+
+#include "moc_genericinterface.cpp"

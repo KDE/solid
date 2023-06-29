@@ -883,3 +883,5 @@ QString Device::drivePath() const
 {
     return prop("Drive").value<QDBusObjectPath>().path();
 }
+
+#include "moc_udisksdevice.cpp"

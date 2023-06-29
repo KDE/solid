@@ -180,3 +180,5 @@ qlonglong FakeBattery::remainingTime() const
 {
     return fakeDevice()->property("remainingTime").toLongLong();
 }
+
+#include "moc_fakebattery.cpp"

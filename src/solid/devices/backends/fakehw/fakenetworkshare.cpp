@@ -37,3 +37,5 @@ QUrl FakeNetworkShare::url() const
     QString url = fakeDevice()->property("url").toString();
     return QUrl(url);
 }
+
+#include "moc_fakenetworkshare.cpp"

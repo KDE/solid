@@ -54,3 +54,5 @@ void FakeLogind::checkFd()
         delete sender();
     }
 }
+
+#include "moc_fakelogind.cpp"

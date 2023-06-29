@@ -62,3 +62,5 @@ QString Solid::Ifaces::Device::displayName() const
 {
     return description();
 }
+
+#include "moc_device.cpp"

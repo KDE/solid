@@ -33,3 +33,5 @@ bool GenericInterface::propertyExists(const QString &key) const
 {
     return m_device->iOKitPropertyExists(key);
 }
+
+#include "moc_iokitgenericinterface.cpp"

@@ -81,3 +81,5 @@ Inhibition::State FdInhibition::state() const
 {
     return m_state;
 }
+
+#include "moc_fdinhibition.cpp"

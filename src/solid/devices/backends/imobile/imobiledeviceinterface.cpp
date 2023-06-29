@@ -18,3 +18,5 @@ DeviceInterface::DeviceInterface(IMobileDevice *device)
 }
 
 DeviceInterface::~DeviceInterface() = default;
+
+#include "moc_imobiledeviceinterface.cpp"

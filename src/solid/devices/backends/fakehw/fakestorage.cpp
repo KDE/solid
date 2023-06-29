@@ -86,3 +86,5 @@ QDateTime FakeStorage::timeMediaDetected() const
 {
     return fakeDevice()->property("timeMediaDetected").toDateTime();
 }
+
+#include "moc_fakestorage.cpp"

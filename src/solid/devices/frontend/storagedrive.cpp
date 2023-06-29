@@ -85,3 +85,5 @@ QDateTime Solid::StorageDrive::timeMediaDetected() const
     Q_D(const StorageDrive);
     return_SOLID_CALL(Ifaces::StorageDrive *, d->backendObject(), QDateTime(), timeMediaDetected());
 }
+
+#include "moc_storagedrive.cpp"

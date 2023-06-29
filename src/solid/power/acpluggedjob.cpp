@@ -46,3 +46,5 @@ bool AcPluggedJob::isPlugged() const
     qWarning() << "isPlugged called without having called start";
     return false;
 }
+
+#include "moc_acpluggedjob.cpp"

@@ -103,3 +103,5 @@ qulonglong FakeOpticalDisc::capacity() const
 {
     return fakeDevice()->property("capacity").toULongLong();
 }
+
+#include "moc_fakeopticaldisc.cpp"

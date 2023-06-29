@@ -95,3 +95,5 @@ void IOKitStorageAccess::onPropertyChanged(const QMap<QString, int> &changes)
         }
     }
 }
+
+#include "moc_iokitstorageaccess.cpp"

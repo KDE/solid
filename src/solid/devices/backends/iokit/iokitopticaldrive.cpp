@@ -339,3 +339,5 @@ bool IOKitOpticalDrive::eject()
         return true;
     }
 }
+
+#include "moc_iokitopticaldrive.cpp"

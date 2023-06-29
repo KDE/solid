@@ -89,3 +89,5 @@ QString Processor::prefix() const
 
     return QString();
 }
+
+#include "moc_udevprocessor.cpp"

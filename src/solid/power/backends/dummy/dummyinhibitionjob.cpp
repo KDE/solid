@@ -29,3 +29,5 @@ Inhibition *DummyInhibitionJob::inhibition()
 
     return new Inhibition(dummyInhibition);
 }
+
+#include "moc_dummyinhibitionjob.cpp"

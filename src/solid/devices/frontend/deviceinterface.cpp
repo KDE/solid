@@ -109,3 +109,5 @@ void Solid::DeviceInterfacePrivate::setDevicePrivate(DevicePrivate *devicePrivat
 {
     m_devicePrivate = devicePrivate;
 }
+
+#include "moc_deviceinterface.cpp"

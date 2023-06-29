@@ -94,3 +94,5 @@ DADiskRef IOKitVolume::daRef() const
 {
     return daDict->daRef;
 }
+
+#include "moc_iokitvolume.cpp"

@@ -32,3 +32,5 @@ QString FakeBlock::device() const
 {
     return fakeDevice()->property("device").toString();
 }
+
+#include "moc_fakeblock.cpp"

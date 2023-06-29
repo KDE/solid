@@ -154,3 +154,5 @@ void FstabStorageAccess::onMtabChanged(const QString &device)
         Q_EMIT accessibilityChanged(true, QString(FSTAB_UDI_PREFIX) + "/" + device);
     }
 }
+
+#include "moc_fstabstorageaccess.cpp"

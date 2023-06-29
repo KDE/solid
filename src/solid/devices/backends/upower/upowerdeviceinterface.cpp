@@ -17,3 +17,5 @@ DeviceInterface::DeviceInterface(UPowerDevice *device)
 DeviceInterface::~DeviceInterface()
 {
 }
+
+#include "moc_upowerdeviceinterface.cpp"

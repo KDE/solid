@@ -156,3 +156,5 @@ QDateTime StorageDrive::timeMediaDetected() const
     }
     return QDateTime::fromMSecsSinceEpoch(microSecondsSinceEpoch / 1000);
 }
+
+#include "moc_udisksstoragedrive.cpp"

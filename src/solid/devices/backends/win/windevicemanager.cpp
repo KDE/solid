@@ -222,3 +222,6 @@ void WinDeviceManager::updateDeviceList()
     m_devicesList = QStringList(m_devices.begin(), m_devices.end());
     std::sort(m_devicesList.begin(), m_devicesList.end());
 }
+
+#include "moc_windevicemanager.cpp"
+#include "moc_windevicemanager_p.cpp"

@@ -18,3 +18,5 @@ Power::InhibitionTypes DummyStatesJob::states() const
 {
     return Power::Shutdown | Power::Sleep;
 }
+
+#include "moc_dummystatesjob.cpp"

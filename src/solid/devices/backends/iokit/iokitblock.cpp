@@ -41,3 +41,5 @@ QString Block::device() const
     }
     return QString();
 }
+
+#include "moc_iokitblock.cpp"

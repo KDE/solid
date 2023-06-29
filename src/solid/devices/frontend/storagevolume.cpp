@@ -73,3 +73,5 @@ Solid::Device Solid::StorageVolume::encryptedContainer() const
         return Device();
     }
 }
+
+#include "moc_storagevolume.cpp"

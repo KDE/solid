@@ -77,3 +77,5 @@ bool FakeCdrom::eject()
 {
     return false;
 }
+
+#include "moc_fakecdrom.cpp"

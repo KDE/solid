@@ -42,3 +42,5 @@ Solid::Processor::InstructionSets Solid::Processor::instructionSets() const
     Q_D(const Processor);
     return_SOLID_CALL(Ifaces::Processor *, d->backendObject(), InstructionSets(), instructionSets());
 }
+
+#include "moc_processor.cpp"

@@ -214,3 +214,5 @@ void OpticalDrive::slotChanged()
 {
     m_speedsInit = false; // reset the read/write speeds, changes eg. with an inserted media
 }
+
+#include "moc_udisksopticaldrive.cpp"

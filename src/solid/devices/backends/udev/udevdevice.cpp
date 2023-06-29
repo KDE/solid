@@ -225,3 +225,5 @@ UdevQt::Device UDevDevice::udevDevice()
 {
     return m_device;
 }
+
+#include "moc_udevdevice.cpp"
