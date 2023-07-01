@@ -237,3 +237,5 @@ FakeDevice *FakeManager::parseDeviceElement(const QDomElement &deviceElement)
 
     return device;
 }
+
+#include "moc_fakemanager.cpp"

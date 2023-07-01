@@ -437,3 +437,5 @@ QString OpticalDisc::media() const
 {
     return m_drive->prop("Media").toString();
 }
+
+#include "moc_udisksopticaldisc.cpp"

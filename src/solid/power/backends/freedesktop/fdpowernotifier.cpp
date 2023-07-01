@@ -53,3 +53,5 @@ void Solid::FDPowerNotifier::login1Resuming(bool active)
         Q_EMIT resumeFromSuspend();
     }
 }
+
+#include "moc_fdpowernotifier.cpp"

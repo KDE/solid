@@ -219,3 +219,5 @@ QObject *IOKitManager::createDevice(const QString &udi)
 }
 }
 } // namespaces
+
+#include "moc_iokitmanager.cpp"

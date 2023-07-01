@@ -89,3 +89,5 @@ QObject *RootDevice::createDeviceInterface(const Solid::DeviceInterface::Type &)
 {
     return nullptr;
 }
+
+#include "moc_rootdevice.cpp"

@@ -91,3 +91,5 @@ void WinStorageDrive::updateCache()
     m_isHotplugges = plugInfo.DeviceHotplug;
     m_isRemovable = plugInfo.MediaRemovable;
 }
+
+#include "moc_winstoragedrive.cpp"

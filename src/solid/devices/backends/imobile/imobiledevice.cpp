@@ -149,3 +149,5 @@ QObject *IMobileDevice::createDeviceInterface(const Solid::DeviceInterface::Type
         return nullptr;
     }
 }
+
+#include "moc_imobiledevice.cpp"

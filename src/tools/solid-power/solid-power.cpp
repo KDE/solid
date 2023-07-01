@@ -51,3 +51,5 @@ void SolidPower::listen()
         lOut << "\tResume from suspend" << Qt::endl;
     });
 }
+
+#include "moc_solid-power.cpp"

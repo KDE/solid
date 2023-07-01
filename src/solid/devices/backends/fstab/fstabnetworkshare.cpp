@@ -53,3 +53,5 @@ const Solid::Backends::Fstab::FstabDevice *FstabNetworkShare::fstabDevice() cons
 {
     return m_fstabDevice;
 }
+
+#include "moc_fstabnetworkshare.cpp"

@@ -83,3 +83,5 @@ qulonglong WinOpticalDisc::capacity() const
 {
     return size();
 }
+
+#include "moc_winopticaldisc.cpp"

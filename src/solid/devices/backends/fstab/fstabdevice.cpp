@@ -186,3 +186,5 @@ void FstabDevice::onMtabChanged(const QString &device)
         Q_EMIT mtabChanged(device);
     }
 }
+
+#include "moc_fstabdevice.cpp"

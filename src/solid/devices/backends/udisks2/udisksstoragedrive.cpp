@@ -136,3 +136,5 @@ Solid::StorageDrive::Bus StorageDrive::bus() const
         return Solid::StorageDrive::Platform;
     }
 }
+
+#include "moc_udisksstoragedrive.cpp"

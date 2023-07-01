@@ -248,3 +248,5 @@ void UDevManager::slotDeviceRemoved(const UdevQt::Device &device)
         d->m_devicesOfInterest.removeAll(udiPrefix() + device.sysfsPath());
     }
 }
+
+#include "moc_udevmanager.cpp"

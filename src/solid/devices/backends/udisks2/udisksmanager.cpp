@@ -308,3 +308,5 @@ void Manager::updateBackend(const QString &udi)
 
     driveBackend->invalidateProperties();
 }
+
+#include "moc_udisksmanager.cpp"

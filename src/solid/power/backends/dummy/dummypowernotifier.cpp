@@ -17,3 +17,5 @@ void DummyPowerNotifier::emitEverythingChanged()
 {
     Q_EMIT acPluggedChanged(true);
 }
+
+#include "moc_dummypowernotifier.cpp"

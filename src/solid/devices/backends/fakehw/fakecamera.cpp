@@ -44,3 +44,5 @@ QVariant Solid::Backends::Fake::FakeCamera::driverHandle(const QString &driver) 
     Q_UNUSED(driver);
     return QVariant();
 }
+
+#include "moc_fakecamera.cpp"

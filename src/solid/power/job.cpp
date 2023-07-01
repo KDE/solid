@@ -84,3 +84,5 @@ Job::Job(JobPrivate &dd, QObject *parent)
     , d_ptr(&dd)
 {
 }
+
+#include "moc_job.cpp"

@@ -452,3 +452,5 @@ bool StorageAccess::callCryptoTeardown(bool actOnParent)
 
     return c.callWithCallback(msg, this, SLOT(slotDBusReply(QDBusMessage)), SLOT(slotDBusError(QDBusError)));
 }
+
+#include "moc_udisksstorageaccess.cpp"

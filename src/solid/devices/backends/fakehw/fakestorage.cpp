@@ -76,3 +76,5 @@ qulonglong FakeStorage::size() const
 {
     return fakeDevice()->property("size").toULongLong();
 }
+
+#include "moc_fakestorage.cpp"

@@ -43,3 +43,5 @@ QVariant PortableMediaPlayer::driverHandle(const QString &driver) const
 
     return {};
 }
+
+#include "moc_imobileportablemediaplayer.cpp"

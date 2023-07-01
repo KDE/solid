@@ -77,3 +77,5 @@ bool Solid::StorageAccess::isEncrypted() const
     Q_D(const StorageAccess);
     return_SOLID_CALL(Ifaces::StorageAccess *, d->backendObject(), false, isEncrypted());
 }
+
+#include "moc_storageaccess.cpp"

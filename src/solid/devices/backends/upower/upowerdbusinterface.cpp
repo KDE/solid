@@ -32,3 +32,4 @@ QDBusPendingReply<QList<QDBusObjectPath>> DBusInterface::EnumerateDevices()
     return asyncCall(QStringLiteral("EnumerateDevices"));
 }
 
+#include "moc_upowerdbusinterface.cpp"

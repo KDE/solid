@@ -17,3 +17,5 @@ WinInterface::WinInterface(WinDevice *device)
 WinInterface::~WinInterface()
 {
 }
+
+#include "moc_wininterface.cpp"

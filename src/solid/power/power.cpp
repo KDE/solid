@@ -66,3 +66,5 @@ RequestStateJob *Power::requestState(Power::InhibitionType state, QObject *paren
 
     return job;
 }
+
+#include "moc_power.cpp"

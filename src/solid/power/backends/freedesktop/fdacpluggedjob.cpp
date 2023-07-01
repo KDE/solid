@@ -50,3 +50,5 @@ bool FDAcPluggedJob::isPlugged() const
 {
     return m_isPlugged;
 }
+
+#include "moc_fdacpluggedjob.cpp"

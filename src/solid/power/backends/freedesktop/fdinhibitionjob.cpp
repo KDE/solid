@@ -39,3 +39,5 @@ Inhibition *FdInhibitionJob::inhibition()
 {
     return new Inhibition(m_inhibition);
 }
+
+#include "moc_fdinhibitionjob.cpp"

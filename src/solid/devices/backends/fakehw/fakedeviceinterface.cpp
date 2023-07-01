@@ -16,3 +16,5 @@ FakeDeviceInterface::FakeDeviceInterface(FakeDevice *device)
 FakeDeviceInterface::~FakeDeviceInterface()
 {
 }
+
+#include "moc_fakedeviceinterface.cpp"

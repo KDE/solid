@@ -356,3 +356,5 @@ Solid::DeviceInterface::Type WinDevice::type() const
 {
     return m_type;
 }
+
+#include "moc_windevice.cpp"

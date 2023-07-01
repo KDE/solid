@@ -43,3 +43,5 @@ Inhibition::State DummyInhibition::state() const
 {
     return m_state;
 }
+
+#include "moc_dummyinhibition.cpp"

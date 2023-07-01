@@ -17,3 +17,5 @@ DeviceInterface::DeviceInterface(UDevDevice *device)
 DeviceInterface::~DeviceInterface()
 {
 }
+
+#include "moc_udevdeviceinterface.cpp"

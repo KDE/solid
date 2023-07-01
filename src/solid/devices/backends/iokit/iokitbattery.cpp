@@ -155,3 +155,5 @@ Solid::Battery::ChargeState Battery::chargeState() const
     }
     return Solid::Battery::Discharging;
 }
+
+#include "moc_iokitbattery.cpp"

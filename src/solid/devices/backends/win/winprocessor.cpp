@@ -114,3 +114,5 @@ const QMap<int, WinProcessor::ProcessorInfo> &WinProcessor::updateCache()
     }
     return p;
 }
+
+#include "moc_winprocessor.cpp"

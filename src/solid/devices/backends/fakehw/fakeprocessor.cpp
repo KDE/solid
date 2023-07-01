@@ -60,3 +60,5 @@ Solid::Processor::InstructionSets FakeProcessor::instructionSets() const
 
     return result;
 }
+
+#include "moc_fakeprocessor.cpp"

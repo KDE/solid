@@ -17,3 +17,5 @@ bool DummyAcPluggedJob::isPlugged() const
 {
     return true;
 }
+
+#include "moc_dummyacpluggedjob.cpp"

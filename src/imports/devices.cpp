@@ -200,3 +200,6 @@ QObject *Devices::device(const QString &udi, const QString &_type)
     return Solid::Device(udi).asDeviceInterface(type);
 }
 } // namespace Solid
+
+#include "moc_devices.cpp"
+#include "moc_devices_p.cpp"

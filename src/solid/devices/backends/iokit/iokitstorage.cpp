@@ -102,3 +102,5 @@ QString IOKitStorage::description() const
 {
     return daDict->stringForKey(kDADiskDescriptionMediaNameKey);
 }
+
+#include "moc_iokitstorage.cpp"

@@ -302,3 +302,5 @@ void Battery::updateCache()
     m_voltage = voltage();
     m_temperature = temperature();
 }
+
+#include "moc_upowerbattery.cpp"

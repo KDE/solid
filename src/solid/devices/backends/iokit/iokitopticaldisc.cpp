@@ -102,3 +102,5 @@ qulonglong IOKitOpticalDisc::capacity() const
 {
     return size();
 }
+
+#include "moc_iokitopticaldisc.cpp"

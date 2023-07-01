@@ -169,3 +169,5 @@ void UPowerManager::onDeviceRemoved(const QDBusObjectPath &path)
         Q_EMIT deviceRemoved(pathString);
     }
 }
+
+#include "moc_upowermanager.cpp"

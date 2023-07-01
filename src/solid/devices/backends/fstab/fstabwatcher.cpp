@@ -115,3 +115,5 @@ void FstabWatcher::onFileChanged(const QString &path)
 }
 }
 } // namespace Solid:Backends::Fstab
+
+#include "moc_fstabwatcher.cpp"

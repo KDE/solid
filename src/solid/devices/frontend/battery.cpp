@@ -170,3 +170,5 @@ qlonglong Solid::Battery::remainingTime() const
     Q_D(const Battery);
     return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), -1, remainingTime());
 }
+
+#include "moc_battery.cpp"

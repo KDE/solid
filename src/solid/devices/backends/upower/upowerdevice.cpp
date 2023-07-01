@@ -277,3 +277,5 @@ void UPowerDevice::login1Resuming(bool active)
     m_cacheComplete = false;
     Q_EMIT propertyChanged(changeMap);
 }
+
+#include "moc_upowerdevice.cpp"

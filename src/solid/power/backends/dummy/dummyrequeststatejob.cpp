@@ -18,3 +18,5 @@ void DummyRequestStateJob::doStart()
     }
     emitResult();
 }
+
+#include "moc_dummyrequeststatejob.cpp"

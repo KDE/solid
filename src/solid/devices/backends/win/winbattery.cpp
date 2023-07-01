@@ -315,3 +315,5 @@ QString WinBattery::serial() const
 {
     return m_serial;
 }
+
+#include "moc_winbattery.cpp"

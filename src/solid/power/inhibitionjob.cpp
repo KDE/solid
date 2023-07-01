@@ -85,3 +85,5 @@ QString InhibitionJob::description() const
 {
     return d_func()->description;
 }
+
+#include "moc_inhibitionjob.cpp"

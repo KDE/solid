@@ -250,3 +250,5 @@ void DeviceBackend::slotInterfacesRemoved(const QDBusObjectPath &object_path, co
         allProperties();
     }
 }
+
+#include "moc_udisksdevicebackend.cpp"
