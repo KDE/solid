@@ -170,6 +170,5 @@ Q_SIGNALS:
     void result(Solid::Job *job);
 };
 }
-Q_DECLARE_METATYPE(Solid::Job::Error)
 
 #endif // SOLID_JOB_H

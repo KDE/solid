@@ -78,5 +78,5 @@ Q_SIGNALS:
     void stateChanged(Inhibition::State newState);
 };
 }
-Q_DECLARE_METATYPE(Solid::Inhibition::State)
+
 #endif // SOLID_INHIBITION_H

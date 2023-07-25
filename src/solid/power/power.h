@@ -127,6 +127,4 @@ Q_DECLARE_OPERATORS_FOR_FLAGS(Power::InhibitionTypes)
 
 }
 
-Q_DECLARE_METATYPE(Solid::Power::InhibitionType)
-
 #endif // SOLID_POWER_H

@@ -45,6 +45,4 @@ private Q_SLOTS:
     void deviceRemoved(const QString &udi);
 };
 
-Q_DECLARE_METATYPE(QList<int>)
-
 #endif // SOLID_HARDWARE_H
