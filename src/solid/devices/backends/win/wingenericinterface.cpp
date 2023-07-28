@@ -16,21 +16,18 @@ WinGenericInterface::WinGenericInterface(WinDevice *device)
 QVariant WinGenericInterface::property(const QString &key) const
 {
     Q_UNUSED(key)
-    qFatal("Not implemented");
     return QVariant();
 }
 
 QMap<QString, QVariant> Solid::Backends::Win::WinGenericInterface::allProperties() const
 {
-    qFatal("Not implemented");
     return QMap<QString, QVariant>();
 }
 
 bool WinGenericInterface::propertyExists(const QString &key) const
 {
     Q_UNUSED(key)
-    qFatal("Not implemented");
-    return true;
+    return false;
 }
 
 #include "moc_wingenericinterface.cpp"
