@@ -267,4 +267,6 @@ private:
 };
 }
 
+Q_DECLARE_TYPEINFO(Solid::Device, Q_RELOCATABLE_TYPE);
+
 #endif
