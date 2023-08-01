@@ -1,8 +1,8 @@
-# Stefan Asserhäll <stefan.asserhall@bredband.net>, 2014, 2017, 2019, 2020, 2021, 2022.
+# Stefan Asserhäll <stefan.asserhall@bredband.net>, 2014, 2017, 2019, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2022-09-24 15:11+0200\n"
+"PO-Revision-Date: 2023-07-31 11:18+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -802,20 +802,16 @@ msgid ""
 msgstr "             # Om tillämpligt, matar ut enheten som motsvarar 'udi'.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:274
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # Listen to all add/remove events on supported hardware."
 msgctxt "solid-hardware|"
 msgid "             # Listen to all add/remove events on supported hardware.\n"
 msgstr ""
 "             # Lyssna på alla tilläggs- och borttagningshändelser på "
-"hårdvara som stöder det."
+"hårdvara som stöder det.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:277
 msgctxt "solid-hardware|"
 msgid "             # Monitor a devices for changes.\n"
-msgstr ""
+msgstr "             # Övervaka enheter för ändringar.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:289
 msgctxt "solid-hardware|"
