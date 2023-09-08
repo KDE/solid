@@ -71,4 +71,7 @@ macro(add_device_backends_build base_backends_dir sources_var libs_var)
     file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/config-backends-tmp.h" "${config_backends_output}")
     configure_file("${CMAKE_CURRENT_BINARY_DIR}/config-backends-tmp.h"
                    "${CMAKE_CURRENT_BINARY_DIR}/config-backends.h" COPYONLY)
+    set_source_files_properties("${CMAKE_CURRENT_BINARY_DIR}/config-backends-tmp.h"
+                                "${CMAKE_CURRENT_BINARY_DIR}/config-backends.h"
+                                PROPERTIES SKIP_AUTOGEN TRUE)
 endmacro()
