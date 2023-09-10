@@ -133,7 +133,15 @@ QString _k_deviceNameForMountpoint(const QString &source, const QString &fstype,
     // options, often a network share with different credentials
     // for different users. Make sure it is unique by appending the
     // mountpoint (which is unique).
-    return source + QLatin1Char(':') + mountpoint;
+
+    auto _mountpoint = mountpoint;
+    if (fstype == "nfs" || fstype == "nfs4") {
+        if (!mountpoint.startsWith(QLatin1Char('/'))) {
+            // making sure mount point starts with /
+            _mountpoint.prepend(QLatin1Char('/'));
+        }
+    }
+    return source + QLatin1Char(':') + _mountpoint;
 }
 
 void Solid::Backends::Fstab::FstabHandling::_k_updateFstabMountPointsCache()
@@ -202,7 +210,15 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateFstabMountPointsCache()
         // prevent accessing a blocking directory
         if (_k_isFstabNetworkFileSystem(items.at(2), items.at(0)) || _k_isFstabSupportedLocalFileSystem(items.at(2))) {
             const QString device = items.at(0);
-            const QString mountpoint = items.at(1);
+            const QString fsType = items.at(2);
+            QString mountpoint = items.at(1);
+
+            if (fsType == "nfs" || fsType == "nfs4") {
+                if (!mountpoint.startsWith(QLatin1Char('/'))) {
+                    // making sure mount point starts with /
+                    mountpoint.prepend(QLatin1Char('/'));
+                }
+            }
 
             globalFstabCache->localData().m_fstabCache.insert(device, mountpoint);
         }
