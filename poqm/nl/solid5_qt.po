@@ -1,13 +1,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Freek de Kruijf <freekdekruijf@kde.nl>, 2014, 2017, 2019, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2014, 2017, 2019, 2020, 2021, 2022, 2023 Freek de Kruijf <freekdekruijf@kde.nl>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-01-24 18:50+0000\n"
-"PO-Revision-Date: 2023-04-10 00:13+0200\n"
+"PO-Revision-Date: 2023-09-20 11:10+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.1\n"
 "X-Qt-Contexts: true\n"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:60
@@ -152,7 +152,7 @@ msgstr "Wisselruimte"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:278
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Loop Device"
-msgstr "Loop-apparaat"
+msgstr "Lus-apparaat"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:294
 msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
