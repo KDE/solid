@@ -558,7 +558,7 @@ msgid ""
 "Cannot request authentication for this action. The PolicyKit authentication "
 "system appears to be not available."
 msgstr ""
-"Non se pode solicitar autenticación para esta acción. O sistema de "
+"Non é posíbel solicitar autenticación para esta acción. O sistema de "
 "autenticación PolicyKit non parece estar dispoñíbel."
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:760
