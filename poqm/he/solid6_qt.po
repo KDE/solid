@@ -6,7 +6,9 @@
 # Elkana Bardugo <ttv200@gmail.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-05-16 06:50-0400\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2023-10-01 10:40+0300\n"
 "Last-Translator: Copied by Zanata <copied-by-zanata@zanata.org>\n"
 "Language-Team: Hebrew <kde-i18n-doc@kde.org>\n"
 "Language: he\n"
@@ -14,274 +16,242 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Zanata 3.9.6\n"
+"X-Generator: Poedit 3.3.2\n"
 "X-Qt-Contexts: true\n"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:60
 #, qt-format
 msgctxt "%1 is sharename, %2 is servername"
 msgid "%1 on %2"
-msgstr ""
+msgstr "%1 אצל %2"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:62
 #, qt-format
 msgctxt "%1 is mountpoint, %2 is fs type"
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: solid/devices/backends/fstab/fstabmanager.cpp:80
 msgctxt "Solid::Backends::Fstab::FstabManager|"
 msgid "Filesystem Volumes"
-msgstr ""
+msgstr "כרכי מערכת קבצים"
 
 #: solid/devices/backends/fstab/fstabmanager.cpp:81
-#, fuzzy
 msgctxt "Solid::Backends::Fstab::FstabManager|"
 msgid "Mountable filesystems declared in your system"
-msgstr "התקנים מוגדרים במערכת שלך"
+msgstr "מערכות קבצים שניתן לעגן ומוכרזות במערכת שלך"
 
 #: solid/devices/backends/imobile/imobiledevice.cpp:90
 msgctxt "imobiledevice|Company name"
 msgid "Apple"
-msgstr ""
+msgstr "Apple"
 
 #: solid/devices/backends/imobile/imobilemanager.cpp:61
-#, fuzzy
 msgctxt "Solid::Backends::IMobile::Manager|"
 msgid "iDevice"
-msgstr "התקנים"
+msgstr "התקני Apple"
 
 #: solid/devices/backends/imobile/imobilemanager.cpp:62
-#, fuzzy
-#| msgctxt "Solid::Backends::UDisks2::Manager|"
-#| msgid "Storage devices"
 msgctxt "Solid::Backends::IMobile::Manager|"
 msgid "iOS devices"
-msgstr "אמצעי אחסון"
+msgstr "התקני iOS"
 
 #: solid/devices/backends/udev/udevdevice.cpp:100
-#, fuzzy
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Computer"
 msgstr "מחשב"
 
 #: solid/devices/backends/udev/udevdevice.cpp:104
-#, fuzzy
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Processor"
 msgstr "מעבד"
 
 #: solid/devices/backends/udev/udevdevice.cpp:115
-#, fuzzy
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Portable Media Player"
-msgstr "נגן נדיה נייד"
+msgstr "נגן מדיה נייד"
 
 #: solid/devices/backends/udev/udevdevice.cpp:118
-#, fuzzy
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Camera"
 msgstr "מצלמה"
 
 #: solid/devices/backends/udev/udevmanager.cpp:220
-#, fuzzy
 msgctxt "Solid::Backends::UDev::UDevManager|"
 msgid "Devices"
 msgstr "התקנים"
 
 #: solid/devices/backends/udev/udevmanager.cpp:221
-#, fuzzy
 msgctxt "Solid::Backends::UDev::UDevManager|"
 msgid "Devices declared in your system"
-msgstr "התקנים מוגדרים במערכת שלך"
+msgstr "התקנים מוכרזים במערכת שלך"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:43
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 TiB"
-msgstr "%1 ט\"ב"
+msgstr "%1 TiB"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:45
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 GiB"
-msgstr "%1 ג\"ב"
+msgstr "%1 GiB"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:51
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 MiB"
-msgstr "%1 מ\"ב"
+msgstr "%1 MiB"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:56
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 KiB"
-msgstr "%1 ק\"ב"
+msgstr "%1 KiB"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:60
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 B"
-msgstr "%1 ב'"
+msgstr "%1 ב׳"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:64
-#, fuzzy
 msgctxt "udisksdevice|"
 msgid "0 B"
-msgstr "0 ב'"
+msgstr "0 ב׳"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:75
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "QObject|%1 is the size, %2 is the block device name e.g. sda, sda1"
 msgid "%1 External Drive (%2)"
-msgstr "כונן חיצוני בגודל %1"
+msgstr "כונן חיצוני בגודל %1 (%2)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:77
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "QObject|%1 is the size, %2 is the block device name e.g. sda, sda1"
 msgid "%1 Internal Drive (%2)"
-msgstr "כונן חיצוני בגודל %1"
+msgstr "כונן פנימי בגודל %1 (%2)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:81
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "QObject|%1 is the block device name e.g. sda, sda1"
 msgid "External Drive (%1)"
-msgstr "כונן %1%2 חיצוני"
+msgstr "כונן חיצוני (%1)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:83
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "QObject|%1 is the block device name e.g. sda, sda1"
 msgid "Internal Drive (%1)"
-msgstr "כונן %1%2 חיצוני"
+msgstr "כונן פנימי (%1)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:256
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Swap Space"
-msgstr ""
+msgstr "שטח החלפה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:278
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Loop Device"
-msgstr "התקנים"
+msgstr "התקן לולאה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:294
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
 msgid "CD-ROM"
 msgstr "תקליטור"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:296
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
 msgid "CD-R"
-msgstr "תקליטור"
+msgstr "תקליטור לצריבה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:299
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
 msgid "CD-RW"
 msgstr "תקליטור רב פעמי"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:303
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD-ROM"
-msgstr "/DVD-ROM"
+msgstr "/תקליטור DVD"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:306
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD+R"
-msgstr "/DVD-R"
+msgstr "/DVD+R"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:309
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD+RW"
-msgstr "/תקליטור רב פעמי"
+msgstr "/תקליטור DVD+‎ רב פעמי"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:312
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD-R"
 msgstr "/DVD-R"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:315
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD-RW"
-msgstr "/תקליטור רב פעמי"
+msgstr "/תקליטור DVD-‎ רב פעמי"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:318
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD-RAM"
-msgstr "/DVD-ROM"
+msgstr "/DVD-RAM"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:322
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD±R DL"
-msgstr "/DVD-R"
+msgstr "/DVD±R ד־שכבתי"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:324
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD±R"
-msgstr "/DVD-R"
+msgstr "/DVD±R"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:329
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD±RW DL"
-msgstr "/תקליטור רב פעמי"
+msgstr "/DVD±RW דו־שכבתי"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:331
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD±RW"
-msgstr "/תקליטור רב פעמי"
+msgstr "/DVD±RW"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:335
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/BD-ROM"
-msgstr "תקליטור"
+msgstr "/BD-ROM"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:338
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/BD-R"
-msgstr "תקליטור"
+msgstr "/BD-R"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:341
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/BD-RE"
-msgstr "תקליטור"
+msgstr "/BD-RE"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:344
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/HD DVD-ROM"
-msgstr "/DVD-ROM"
+msgstr "/HD DVD-ROM"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:347
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/HD DVD-R"
-msgstr "תקליטור רב פעמי"
+msgstr "/HD DVD-R"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:350
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/HD DVD-RW"
-msgstr "תקליטור רב פעמי"
+msgstr "/HD DVD-RW"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:354
-#, fuzzy, qt-format
+#, qt-format
 msgctxt ""
 "Solid::Backends::UDisks2::Device|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
 "DVD-R'/etc (with leading slash)"
@@ -289,7 +259,7 @@ msgid "External %1%2 Drive"
 msgstr "כונן %1%2 חיצוני"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:356
-#, fuzzy, qt-format
+#, qt-format
 msgctxt ""
 "Solid::Backends::UDisks2::Device|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
 "DVD-R'/etc (with leading slash)"
@@ -297,19 +267,17 @@ msgid "%1%2 Drive"
 msgstr "כונן %1%2"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:364
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "External Floppy Drive"
-msgstr "תקליטון חיצוני"
+msgstr "כונן תקליטונים חיצוני"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:366
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Floppy Drive"
-msgstr "תקליטון (דיסקט)"
+msgstr "כונן תקליטונים"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:398
-#, fuzzy, qt-format
+#, qt-format
 msgctxt ""
 "Solid::Backends::UDisks2::Device|%1 is the vendor, %2 is the model of the "
 "device"
@@ -317,335 +285,284 @@ msgid "%1 %2"
 msgstr "%1 %2"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:404
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Drive"
 msgstr "כונן"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:434
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "CD-ROM"
 msgstr "תקליטור"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:439
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank CD-R"
-msgstr "תקליטור ריק"
+msgstr "תקליטור ריק לצריבה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:441
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "CD-R"
-msgstr "תקליטור"
+msgstr "תקליטור לצריבה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:447
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank CD-RW"
 msgstr "תקליטור רב פעמי ריק"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:449
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "CD-RW"
 msgstr "תקליטור רב פעמי"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:454
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD-ROM"
-msgstr "/DVD-ROM"
+msgstr "DVD-ROM"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:459
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD-RAM"
-msgstr "תקליטור DVD רב פעמי ריק\\"
+msgstr "DVD-RAM ריק"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:461
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD-RAM"
-msgstr "/DVD-ROM"
+msgstr "DVD-RAM"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:467
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD-R"
-msgstr "תקליטור DVD רב פעמי ריק\\"
+msgstr "תקליטור DVD-‎ ריק לצריבה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:469
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD-R"
-msgstr "תקליטור רב פעמי"
+msgstr "תקליטור DVD-‎ לצריבה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:475
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD+R Dual-Layer"
-msgstr "תקליטור DVD רב פעמי ריק\\"
+msgstr "תקליטור DVD+‎ דו־שכבתי ריק לצריבה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:477
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD+R Dual-Layer"
-msgstr "תקליטור DVD רב פעמי ריק\\"
+msgstr "DVD+R דו־שכבתי"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:483
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD-RW"
-msgstr "תקליטור DVD רב פעמי ריק\\"
+msgstr "תקליטור DVD-‎ רב־פעמי ריק"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:485
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD-RW"
-msgstr "תקליטור רב פעמי"
+msgstr "תקליטור DVD-‎ רב־פעמי"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:491
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD+R"
-msgstr "תקליטור DVD רב פעמי ריק\\"
+msgstr "DVD+R ריק"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:493
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD+R"
-msgstr "/DVD-R"
+msgstr "DVD+R"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:499
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD+RW"
-msgstr "תקליטור DVD רב פעמי ריק\\"
+msgstr "DVD+RW ריק"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:501
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD+RW"
-msgstr "/תקליטור רב פעמי"
+msgstr "DVD+RW"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:507
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD+RW Dual-Layer"
-msgstr "תקליטור DVD רב פעמי ריק\\"
+msgstr "DVD+RW דו־שכבתי ריק"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:509
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD+RW Dual-Layer"
-msgstr "תקליטור DVD רב פעמי ריק\\"
+msgstr "DVD+RW דו־שכבתי"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:514
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "BD-ROM"
-msgstr "תקליטור"
+msgstr "BD-ROM"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:519
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank BD-R"
-msgstr "תקליטור ריק"
+msgstr "BD-R ריק"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:521
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "BD-R"
-msgstr "תקליטור"
+msgstr "BD-R"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:527
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank BD-RE"
-msgstr "תקליטור ריק"
+msgstr "BD-RE ריק"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:529
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "BD-RE"
-msgstr "תקליטור"
+msgstr "BD-RE"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:534
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "HD DVD-ROM"
-msgstr "/DVD-ROM"
+msgstr "HD DVD-ROM"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:539
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank HD DVD-R"
-msgstr "תקליטור DVD רב פעמי ריק\\"
+msgstr "HD DVD-R ריק"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:541
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "HD DVD-R"
-msgstr "תקליטור רב פעמי"
+msgstr "HD DVD-R"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:547
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank HD DVD-RW"
-msgstr "תקליטור DVD רב פעמי ריק\\"
+msgstr "HD DVD-RW ריק"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:549
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "HD DVD-RW"
-msgstr "תקליטור רב פעמי"
+msgstr "HD DVD-RW"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:556
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Audio CD"
 msgstr "תקליטור שמע"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:569
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
 msgid "%1 Encrypted Drive"
-msgstr "מיכל מוצפן %1"
+msgstr "כונן מוצפן בגודל %1"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:571
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Encrypted Drive"
-msgstr "מיכל מוצפן"
+msgstr "כונן מוצפן"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:576
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Floppy Disk"
-msgstr "תקליטון (דיסקט)"
+msgstr "תקליטון"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:580
 #, qt-format
 msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
 msgid "%1 Removable Media"
-msgstr "מדיה נשלפת בגודל %1"
+msgstr "מדיה נתיקה בגודל %1"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:582
-#, fuzzy
-#| msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
-#| msgid "%1 Removable Media"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Removable Media"
-msgstr "מדיה נשלפת בגודל %1"
+msgstr "מדיה נתיקה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:586
 #, qt-format
 msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
 msgid "%1 Media"
-msgstr "מדיה %1"
+msgstr "מדיה בגודל %1"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:588
-#, fuzzy
-#| msgctxt "Solid::Backends::UDisks2::Manager|"
-#| msgid "Storage devices"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Storage Media"
-msgstr "אמצעי אחסון"
+msgstr "מדיה לאחסון"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:732
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "You are not authorized to perform this operation"
-msgstr "אין לך הרשאות לבצע פעולה זו."
+msgstr "אין לך הרשאה לבצע את הפעולה הזאת"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:734
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is currently busy"
-msgstr "ההתקן בשימוש."
+msgstr "ההתקן בשימוש כרגע"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:736
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The requested operation has failed"
-msgstr "הפעולה המבוקשת נכשלה."
+msgstr "הפעולה המבוקשת נכשלה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:738
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The requested operation has been canceled"
-msgstr "הפעולה המתבקשת בוטלה."
+msgstr "הפעולה המבוקשת בוטלה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:740
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "An invalid or malformed option has been given"
-msgstr "ניתנה פעולה לא תקינה או משובת."
+msgstr "סופקה אפשרות שגויה או פגומה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:742
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The kernel driver for this filesystem type is not available"
-msgstr "מודול הליבה עבור מערכת הקבצים הזאת לא זמין."
+msgstr "מנהל ההתקן של הליבה לסוג מערכת קבצים זו אינו זמין"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:744
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is already mounted"
-msgstr "ההתקן בשימוש."
+msgstr "ההתקן כבר מעוגן"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:746
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is not mounted"
-msgstr "ההתקן בשימוש."
+msgstr "ההתקן לא מעוגן"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:748
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is mounted by another user"
-msgstr "ההתקן בשימוש."
+msgstr "ההתקן עוגן על ידי משתמש אחר"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:750
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is already unmounting"
-msgstr "ההתקן בשימוש."
+msgstr "עיגון ההתקן כבר מתנתק"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:752
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The operation timed out"
-msgstr ""
+msgstr "הזמן שהוקצב לפעולה תם"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:754
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The operation would wake up a disk that is in a deep-sleep state"
-msgstr ""
+msgstr "הפעולה תעיר כונן ממצב שינה עמוקה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:756
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The operation has already been canceled"
-msgstr "הפעולה המתבקשת בוטלה."
+msgstr "הפעולה כבר בוטלה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:758
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid ""
 "Cannot request authentication for this action. The PolicyKit authentication "
 "system appears to be not available."
-msgstr ""
+msgstr "לא ניתן לבקש אימות. נראה שמערכת האימות PolicyKit לא זמינה."
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:760
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The authentication prompt was canceled"
-msgstr "הפעולה המתבקשת בוטלה."
+msgstr "הבקשה לאימות בוטלה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:762
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "An unspecified error has occurred"
-msgstr "התרחשה שגיאה לא מוכרת"
+msgstr "התרחשה שגיאה לא מוגדרת"
 
 #: solid/devices/backends/udisks2/udisksmanager.cpp:75
 msgctxt "Solid::Backends::UDisks2::Manager|"
@@ -673,32 +590,32 @@ msgstr "לא ידוע"
 #: solid/devices/backends/upower/upowerdevice.cpp:136
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Ion"
-msgstr "ליתיום יון (Lithium Ion)"
+msgstr "ליתיום יון"
 
 #: solid/devices/backends/upower/upowerdevice.cpp:138
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Polymer"
-msgstr "ליתיום פולימר (Lithium Polymer)"
+msgstr "ליתיום פולימר"
 
 #: solid/devices/backends/upower/upowerdevice.cpp:140
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Iron Phosphate"
-msgstr "ליתיום יון (Lithium Ion)"
+msgstr "ליתיום יון"
 
 #: solid/devices/backends/upower/upowerdevice.cpp:142
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lead Acid"
-msgstr ""
+msgstr "עופרת חומצה"
 
 #: solid/devices/backends/upower/upowerdevice.cpp:144
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Cadmium"
-msgstr "ניקל קדמיום (Nickel Cadmium)"
+msgstr "ניקל קדמיום"
 
 #: solid/devices/backends/upower/upowerdevice.cpp:146
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Metal Hydride"
-msgstr "ניקל מטאל הידריד (Nickel Metal Hydride)"
+msgstr "ניקל מתכת הידריד"
 
 #: solid/devices/backends/upower/upowermanager.cpp:61
 msgctxt "Solid::Backends::UPower::UPowerManager|"
@@ -713,22 +630,22 @@ msgstr "סוללות ומקורות חשמל אחרים"
 #: solid/devices/backends/win/windevice.cpp:158
 msgctxt "Solid::Backends::Win::WinDevice|battery technology"
 msgid "Lithium Ion"
-msgstr "ליתיום יון (Lithium Ion)"
+msgstr "ליתיום יון"
 
 #: solid/devices/backends/win/windevice.cpp:161
 msgctxt "Solid::Backends::Win::WinDevice|battery technology"
 msgid "Lead Acid"
-msgstr ""
+msgstr "עופרת חומצה"
 
 #: solid/devices/backends/win/windevice.cpp:164
 msgctxt "Solid::Backends::Win::WinDevice|battery technology"
 msgid "Nickel Cadmium"
-msgstr "ניקל קדמיום (Nickel Cadmium)"
+msgstr "ניקל קדמיום"
 
 #: solid/devices/backends/win/windevice.cpp:167
 msgctxt "Solid::Backends::Win::WinDevice|battery technology"
 msgid "Nickel Metal Hydride"
-msgstr "ניקל מטאל הידריד (Nickel Metal Hydride)"
+msgstr "ניקל מתכת הידריד"
 
 #: solid/devices/backends/win/windevice.cpp:170
 msgctxt "Solid::Backends::Win::WinDevice|battery technology"
@@ -788,7 +705,7 @@ msgstr "מצלמה"
 #: solid/devices/frontend/deviceinterface.cpp:73
 msgctxt "Solid::DeviceInterface|Portable Media Player device type"
 msgid "Portable Media Player"
-msgstr "נגן נדיה נייד"
+msgstr "נגן מדיה נייד"
 
 #: solid/devices/frontend/deviceinterface.cpp:75
 msgctxt "Solid::DeviceInterface|Battery device type"
@@ -802,15 +719,14 @@ msgstr "שיתוף רשת"
 
 #: tools/solid-hardware/solid-hardware.cpp:218
 #: tools/solid-hardware/solid-hardware.cpp:329
-#, fuzzy
 msgctxt "solid-hardware|"
 msgid "Device udi"
-msgstr "התקנים"
+msgstr "מזהה ייחודי של התקן"
 
 #: tools/solid-hardware/solid-hardware.cpp:230 tools/solid-power/main.cpp:32
 msgctxt "solid-hardware|"
 msgid "Syntax:"
-msgstr ""
+msgstr "תחביר:"
 
 #: tools/solid-hardware/solid-hardware.cpp:233
 msgctxt "solid-hardware|"
@@ -826,6 +742,14 @@ msgid ""
 "             # neutral fashion,\n"
 "             # - Otherwise only device UDIs are listed.\n"
 msgstr ""
+"             # הצגת החומרה שזמינה במערכת.\n"
+"             # - אם צוינה האפשרות ‚nonportableinfo’ יופיעו מאפייני\n"
+"             # ההתקן (כדאי להיזהר, במקרה כזה שמות המאפיינים תלויים\n"
+"             # במנגנון),\n"
+"             # - אם צוינה האפשרות 'details' ממשקי ההתקן והמאפיינים\n"
+"             # המתאימים מופיעים בצורה שאינה\n"
+"             # תלויה בפלטפורמה,\n"
+"             # - אחרת יוצגו רק UDIs (מזהי התקן ייחודיים) של התקנים.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:245
 msgctxt "solid-hardware|"
@@ -833,6 +757,8 @@ msgid ""
 "             # Display all the interfaces and properties of the device\n"
 "             # corresponding to 'udi' in a platform neutral fashion.\n"
 msgstr ""
+"             # הצגת כל הממשקים והמאפיינים של ההתקן\n"
+"             # שעונה על ה־‚udi’ בצורה שמתעלמת מהבדלי פלטפורמות.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:251
 msgctxt "solid-hardware|"
@@ -842,6 +768,8 @@ msgid ""
 "             # (be careful, in this case property names are backend "
 "dependent).\n"
 msgstr ""
+"             # הצגת כל המאפיינים של ההתקן שעונה על ה־‚udi’\n"
+"             # (רצוי להיזהר, במקרה זה שמות המאפיינים תלויים במנגנון).\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:257
 msgctxt "solid-hardware|"
@@ -852,104 +780,112 @@ msgid ""
 "             # branch of the corresponding device,\n"
 "             # - Otherwise the search is done on all the devices.\n"
 msgstr ""
+"             # רשימת ה־UDI (מזהי התקנים ייחודיים) של התקנים שעונים על "
+"‚predicate’.\n"
+"             # - אם צוין ‚parentUdi’ החיפוש מוגבל לענף של\n"
+"             # ההתקן התואם,\n"
+"             # - אחרת החיפוש מתבצע מול כל ההתקנים.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:265
 msgctxt "solid-hardware|"
 msgid ""
 "             # If applicable, mount the device corresponding to 'udi'.\n"
 msgstr ""
+"             # אם אפשר, לעגן את ההתקן שתואם ל־‚udi’ (מזהה התקן ייחודי).\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:268
 msgctxt "solid-hardware|"
 msgid ""
 "             # If applicable, unmount the device corresponding to 'udi'.\n"
 msgstr ""
+"             # אם אפשר, לנתק את עיגון ההתקן שתואם ל־‚udi’ (מזהה התקן "
+"ייחודי).\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:271
 msgctxt "solid-hardware|"
 msgid ""
 "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgstr ""
+"             # אם אפשר, לשלוף את ההתקן שתואם ל־‚udi’ (מזהה התקן ייחודי).\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:274
 msgctxt "solid-hardware|"
 msgid "             # Listen to all add/remove events on supported hardware.\n"
-msgstr ""
+msgstr "             # האזנה לכל אירועי הוספה/הסרה של חומרה נתמכת.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:277
 msgctxt "solid-hardware|"
 msgid "             # Monitor devices for changes.\n"
-msgstr ""
+msgstr "             # מעקב אחר שינויים בהתקנים.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:289
 msgctxt "solid-hardware|"
 msgid "KDE tool for querying your hardware from the command line"
-msgstr ""
+msgstr "כלי של KDE לתשאול החומרה שלך משורת הפקודה"
 
 #: tools/solid-hardware/solid-hardware.cpp:292
 msgctxt "solid-hardware|"
 msgid "Command to execute"
-msgstr ""
+msgstr "פקודה להרצה"
 
 #: tools/solid-hardware/solid-hardware.cpp:294
 msgctxt "solid-hardware|"
 msgid "Show available commands"
-msgstr ""
+msgstr "הצגת פקודות זמינות"
 
 #: tools/solid-hardware/solid-hardware.cpp:316
 msgctxt "solid-hardware|"
 msgid "Show device details"
-msgstr ""
+msgstr "הצגת פרטי התקנים"
 
 #: tools/solid-hardware/solid-hardware.cpp:317
 msgctxt "solid-hardware|"
 msgid "Show non portable information"
-msgstr ""
+msgstr "הצגת מידע שאינו נייד"
 
 #: tools/solid-hardware/solid-hardware.cpp:330
-#, fuzzy
 msgctxt "solid-hardware|"
 msgid "Parent device udi"
-msgstr "התקני UPnP"
+msgstr "מזהה ייחודי של התקן ההורה"
 
 #: tools/solid-hardware/solid-hardware.cpp:360
 #, qt-format
 msgctxt "solid-hardware|"
 msgid "Syntax Error: Unknown command '%1'"
-msgstr ""
+msgstr "שגיאת תחביר: הפקודה ‚%1’ לא ידועה"
 
 #: tools/solid-hardware/solid-hardware.cpp:422
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1 does not have the interface StorageAccess."
-msgstr ""
+msgstr "שגיאה: ל־%1 אין את הממשק לגישה לאחסון."
 
 #: tools/solid-hardware/solid-hardware.cpp:425
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1 does not have the interface OpticalDrive."
-msgstr ""
+msgstr "שגיאה: ל־%1 אין את הממשק לכונן אופטי."
 
 #: tools/solid-hardware/solid-hardware.cpp:456
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1"
-msgstr ""
+msgstr "שגיאה: %1"
 
 #: tools/solid-power/main.cpp:22
 msgctxt "solid-power|"
 msgid "Tool to know and set the power management state of your device"
-msgstr ""
+msgstr "כלי לאיתור והגדרת מצב ניהול צריכת החשמל של המכשיר שלך"
 
 #: tools/solid-power/main.cpp:24
 msgctxt "solid-power|"
 msgid "Command to execute"
-msgstr ""
+msgstr "פקודה להרצה"
 
 #: tools/solid-power/main.cpp:26
 msgctxt "solid-power|"
 msgid "Show available commands"
-msgstr ""
+msgstr "הצגת פקודות זמינות"
 
 #: tools/solid-power/main.cpp:35
 msgctxt "solid-power|"
@@ -958,6 +894,8 @@ msgid ""
 "             # - acPlugged: whether the device is connected to the AC or "
 "not\n"
 msgstr ""
+"             # הצגת כל פרטי ניהול צריכת החשמל מהמערכת.\n"
+"             # - acPlugged: האם המחשב מחובר לחשמל או לא\n"
 
 #, fuzzy
 #~ msgctxt "Solid::Backends::Hal::HalDevice|"
