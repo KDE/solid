@@ -3,7 +3,7 @@
 # Julien Richard-Foy <julien.rf@no-log.org>, 2009, 2010.
 # Geoffray Levasseur <geoffray.levasseurbrandin@numericable.fr>, 2010, 2011, 2013, 2014.
 # Sébastien Renard <renard@kde.org>, 2012.
-# xavier <xavier.besnard@neuf.fr>, 2013, 2020, 2021, 2022.
+# SPDX-FileCopyrightText: 2013, 2020, 2021, 2022, 2023 xavier <xavier.besnard@neuf.fr>
 # Vincent Pinon <vpinon@kde.org>, 2015, 2017.
 # Simon Depiets <sdepiets@gmail.com>, 2017, 2019.
 # Xavier BESNARD <xavier.besnard@neuf.fr>, 2023.
@@ -13,15 +13,15 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-01-24 18:50+0000\n"
-"PO-Revision-Date: 2023-04-04 16:40+0200\n"
-"Last-Translator: Xavier BESNARD <xavier.besnard]neuf.fr>\n"
+"PO-Revision-Date: 2023-10-25 17:21+0200\n"
+"Last-Translator: Xavier BESNARD <xavier.besnard@neuf.fr>\n"
 "Language-Team: fr\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.1\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: qtrich\n"
@@ -181,82 +181,82 @@ msgstr "CD-RW"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:303
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD-ROM"
-msgstr "/DVD-ROM"
+msgstr " / DVD-ROM"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:306
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD+R"
-msgstr "/DVD+R"
+msgstr " / DVD+R"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:309
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD+RW"
-msgstr "/DVD+RW"
+msgstr " / DVD+RW"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:312
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD-R"
-msgstr "/DVD-R"
+msgstr " / DVD-R"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:315
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD-RW"
-msgstr "/DVD-RW"
+msgstr " / DVD-RW"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:318
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD-RAM"
-msgstr "/DVD-RAM"
+msgstr " / DVD-RAM"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:322
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD±R DL"
-msgstr "/DVD±R DL"
+msgstr " / DVD±R DL"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:324
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD±R"
-msgstr "/DVD±R"
+msgstr " / DVD±R"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:329
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD±RW DL"
-msgstr "/DVD±RW DL"
+msgstr " / DVD±RW DL"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:331
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD±RW"
-msgstr "/DVD±RW"
+msgstr " / DVD±RW"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:335
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/BD-ROM"
-msgstr "/BD-ROM"
+msgstr " / BD-ROM"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:338
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/BD-R"
-msgstr "/BD-R"
+msgstr " / BD-R"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:341
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/BD-RE"
-msgstr "/BD-RE"
+msgstr " / BD-RE"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:344
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/HD DVD-ROM"
-msgstr "/DVD-ROM HD"
+msgstr " / DVD-ROM HD"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:347
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/HD DVD-R"
-msgstr "/DVD-R HD"
+msgstr " / DVD-R HD"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:350
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/HD DVD-RW"
-msgstr "/DVD-RW HD"
+msgstr " / DVD-RW HD"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:354
 #, qt-format
