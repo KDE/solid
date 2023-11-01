@@ -1,8 +1,8 @@
-# Enol P. <enolp@softastur.org>, 2023.
+# SPDX-FileCopyrightText: 2023 Enol P. <enolp@softastur.org>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2023-05-14 23:22+0200\n"
+"PO-Revision-Date: 2023-11-01 00:16+0100\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: \n"
 "Language: ast\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Qt-Contexts: true\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.04.1\n"
+"X-Generator: Lokalize 23.08.2\n"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:60
 #, qt-format
@@ -73,12 +73,12 @@ msgstr "Cámara"
 #: solid/devices/backends/udev/udevmanager.cpp:220
 msgctxt "Solid::Backends::UDev::UDevManager|"
 msgid "Devices"
-msgstr ""
+msgstr "Preseos"
 
 #: solid/devices/backends/udev/udevmanager.cpp:221
 msgctxt "Solid::Backends::UDev::UDevManager|"
 msgid "Devices declared in your system"
-msgstr ""
+msgstr "Preseos declaraos nel sistema"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:43
 #, qt-format
@@ -113,41 +113,41 @@ msgstr "%1 B"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:64
 msgctxt "udisksdevice|"
 msgid "0 B"
-msgstr ""
+msgstr "0 B"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:75
 #, qt-format
 msgctxt "QObject|%1 is the size, %2 is the block device name e.g. sda, sda1"
 msgid "%1 External Drive (%2)"
-msgstr ""
+msgstr "Unidá esterna de %1 (%2)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:77
 #, qt-format
 msgctxt "QObject|%1 is the size, %2 is the block device name e.g. sda, sda1"
 msgid "%1 Internal Drive (%2)"
-msgstr ""
+msgstr "Unidá interna de %1 (%2)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:81
 #, qt-format
 msgctxt "QObject|%1 is the block device name e.g. sda, sda1"
 msgid "External Drive (%1)"
-msgstr ""
+msgstr "Unidá esterna (%1)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:83
 #, qt-format
 msgctxt "QObject|%1 is the block device name e.g. sda, sda1"
 msgid "Internal Drive (%1)"
-msgstr ""
+msgstr "Unidá interna (%1)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:256
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Swap Space"
-msgstr ""
+msgstr "Espaciu d'intercambéu"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:278
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Loop Device"
-msgstr ""
+msgstr "Preséu de bucles"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:294
 msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
@@ -281,7 +281,7 @@ msgstr ""
 #: solid/devices/backends/udisks2/udisksdevice.cpp:404
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Drive"
-msgstr ""
+msgstr "Unidá"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:434
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -447,7 +447,7 @@ msgstr "Unidá cifrada de %1"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:571
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Encrypted Drive"
-msgstr ""
+msgstr "Unidá cifrada"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:576
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -463,7 +463,7 @@ msgstr "Mediu estrayible de %1"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:582
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Removable Media"
-msgstr ""
+msgstr "Mediu estrayible"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:586
 #, qt-format
@@ -474,12 +474,12 @@ msgstr "Mediu de %1"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:588
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Storage Media"
-msgstr ""
+msgstr "Mediu d'almacenamientu"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:732
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "You are not authorized to perform this operation"
-msgstr ""
+msgstr "Nun tienes autorización pa facer esta operación"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:734
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -549,6 +549,8 @@ msgid ""
 "Cannot request authentication for this action. The PolicyKit authentication "
 "system appears to be not available."
 msgstr ""
+"Nun se pue solicitar l'autenticación pa esta aición. Paez que'l sistema "
+"d'autenticación de PolicyKit nun ta disponible."
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:760
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -563,7 +565,7 @@ msgstr "Prodúxose un error ensin especificar"
 #: solid/devices/backends/udisks2/udisksmanager.cpp:75
 msgctxt "Solid::Backends::UDisks2::Manager|"
 msgid "Storage"
-msgstr ""
+msgstr "Almacenamientu"
 
 #: solid/devices/backends/udisks2/udisksmanager.cpp:76
 msgctxt "Solid::Backends::UDisks2::Manager|"
@@ -616,12 +618,12 @@ msgstr "Níquel ya metal d'hidruru"
 #: solid/devices/backends/upower/upowermanager.cpp:61
 msgctxt "Solid::Backends::UPower::UPowerManager|"
 msgid "Power Management"
-msgstr ""
+msgstr "Xestión d'enerxía"
 
 #: solid/devices/backends/upower/upowermanager.cpp:62
 msgctxt "Solid::Backends::UPower::UPowerManager|"
 msgid "Batteries and other sources of power"
-msgstr ""
+msgstr "Batería ya otres fontes d'enerxía"
 
 #: solid/devices/backends/win/windevice.cpp:158
 msgctxt "Solid::Backends::Win::WinDevice|battery technology"
