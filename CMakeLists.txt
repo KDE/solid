@@ -90,7 +90,7 @@ remove_definitions(-DQT_NO_CAST_FROM_ASCII)
 remove_definitions(-DQT_NO_CAST_FROM_BYTEARRAY)
 
 ecm_set_disabled_deprecation_versions(
-    QT 6.4
+    QT 6.5
 )
 
 ecm_install_po_files_as_qm(poqm)
