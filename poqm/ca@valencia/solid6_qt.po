@@ -541,7 +541,7 @@ msgstr "El dispositiu ja s'està desmuntant"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:752
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The operation timed out"
-msgstr "L'operació ha excedit el temps límit"
+msgstr "L'operació ha excedit el temps"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:754
 msgctxt "Solid::Backends::UDisks2::Device|"
