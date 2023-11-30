@@ -52,6 +52,7 @@ private Q_SLOTS:
 
 private:
     void initInterfaces();
+    QVariantMap propertiesForInterface(const QString &interface) const;
     QString introspect() const;
     void checkCache(const QString &key) const;
     void cacheProperty(const QString &key, const QVariant &value) const;

@@ -123,25 +123,30 @@ bool DeviceBackend::propertyExists(const QString &key) const
     return m_propertyCache.value(key).isValid();
 }
 
-QVariantMap DeviceBackend::allProperties() const
+QVariantMap DeviceBackend::propertiesForInterface(const QString &interface) const
 {
     QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, //
                                                        m_udi,
                                                        DBUS_INTERFACE_PROPS,
                                                        "GetAll");
 
-    for (const QString &iface : std::as_const(m_interfaces)) {
-        call.setArguments(QVariantList() << iface);
-        QDBusPendingReply<QVariantMap> reply = QDBusConnection::systemBus().call(call);
+    call.setArguments(QVariantList() << interface);
+    QDBusPendingReply<QVariantMap> reply = QDBusConnection::systemBus().call(call);
 
-        if (reply.isValid()) {
-            auto props = reply.value();
-            // Can not use QMap<>::unite(), as it allows multiple values per key
-            for (auto it = props.cbegin(); it != props.cend(); ++it) {
-                cacheProperty(it.key(), it.value());
-            }
-        } else {
-            qCWarning(UDISKS2) << "Error getting props:" << reply.error().name() << reply.error().message() << "for" << m_udi;
+    if (reply.isValid()) {
+        return reply.value();
+    } else {
+        qCWarning(UDISKS2) << "Error getting props:" << reply.error().name() << reply.error().message() << "for" << m_udi;
+        return QVariantMap();
+    }
+}
+
+QVariantMap DeviceBackend::allProperties() const
+{
+    for (const QString &iface : std::as_const(m_interfaces)) {
+        auto props = propertiesForInterface(iface);
+        for (auto it = props.cbegin(); it != props.cend(); ++it) {
+            cacheProperty(it.key(), it.value());
         }
         // qDebug() << "After iface" << iface << ", cache now contains" << m_propertyCache.size() << "items";
     }
@@ -215,7 +220,9 @@ void DeviceBackend::slotPropertiesChanged(const QString &ifaceName, const QVaria
         // qDebug() << "\t modified:" << key << ":" << m_propertyCache.value(key);
     }
 
-    Q_EMIT propertyChanged(changeMap);
+    if (!changeMap.isEmpty()) {
+        Q_EMIT propertyChanged(changeMap);
+    }
     Q_EMIT changed();
 }
 
@@ -230,6 +237,8 @@ void DeviceBackend::slotInterfacesAdded(const QDBusObjectPath &object_path, cons
         /* Don't store generic DBus interfaces */
         if (iface.startsWith(UD2_DBUS_SERVICE)) {
             m_interfaces.append(iface);
+            auto props = propertiesForInterface(iface);
+            slotPropertiesChanged(iface, props, {});
         }
     }
 }
