@@ -1,11 +1,15 @@
 /*
     SPDX-FileCopyrightText: 2020 MBition GmbH
     SPDX-FileContributor: Kai Uwe Broulik <kai_uwe.broulik@mbition.io>
+    SPDX-FileCopyrightText: 2023 Harald Sitter <sitter@kde.org>
 
     SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
 #include "imobilemanager.h"
+
+#include <QFile>
+#include <QFileSystemWatcher>
 
 #include "imobile_debug.h"
 
@@ -15,10 +19,51 @@
 
 using namespace Solid::Backends::IMobile;
 using namespace Solid::Backends::Shared;
+using namespace Qt::StringLiterals;
+
+namespace
+{
+constexpr auto VAR_RUN = "/var/run/"_L1;
+constexpr auto MUXD_SOCKET = "/var/run/usbmuxd"_L1;
+} // namespace
 
 Manager::Manager(QObject *parent)
     : Solid::Ifaces::DeviceManager(parent)
+    , m_watcher(new QFileSystemWatcher)
 {
+    // Lazy initialize. If usbmuxd isn't running we don't need to do anything yet.
+    // This is in part to prevent libusbmuxd from setting up extra inotifies and polling when
+    // we know that it won't find anything yet. Works around a bunch of whoopsies.
+    // https://github.com/libimobiledevice/libusbmuxd/pull/133
+    // https://github.com/libimobiledevice/libusbmuxd/issues/135
+    connect(m_watcher.get(), &QFileSystemWatcher::directoryChanged, this, [this](const QString &) {
+        if (QFile::exists(MUXD_SOCKET)) {
+            spinUp();
+        }
+    });
+    m_watcher->addPath(VAR_RUN);
+    if (QFile::exists(MUXD_SOCKET)) {
+        spinUp();
+    }
+}
+
+Manager::~Manager()
+{
+    if (m_spunUp) {
+        idevice_event_unsubscribe();
+    }
+}
+
+void Manager::spinUp()
+{
+    if (m_spunUp) {
+        return;
+    }
+    m_spunUp = true;
+    // Handing over watching to libusbmuxd. Don't need our watcher anymore.
+    // Deleting later because this function gets called by a signal from m_watcher so we mustn't delete it just now.
+    m_watcher.release()->deleteLater();
+
     auto ret = idevice_event_subscribe(
         [](const idevice_event_t *event, void *user_data) {
             // NOTE this is called from a different thread.
@@ -47,11 +92,6 @@ Manager::Manager(QObject *parent)
     if (devices) {
         idevice_device_list_free(devices);
     }
-}
-
-Manager::~Manager()
-{
-    idevice_event_unsubscribe();
 }
 
 QObject *Manager::createDevice(const QString &udi)
