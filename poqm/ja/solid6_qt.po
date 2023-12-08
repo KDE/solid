@@ -49,7 +49,7 @@ msgctxt "imobiledevice|Company name"
 msgid "Apple"
 msgstr ""
 
-#: solid/devices/backends/imobile/imobilemanager.cpp:61
+#: solid/devices/backends/imobile/imobilemanager.cpp:101
 #, fuzzy
 #| msgctxt "Solid::Backends::UDev::UDevManager|"
 #| msgid "Devices"
@@ -57,7 +57,7 @@ msgctxt "Solid::Backends::IMobile::Manager|"
 msgid "iDevice"
 msgstr "デバイス"
 
-#: solid/devices/backends/imobile/imobilemanager.cpp:62
+#: solid/devices/backends/imobile/imobilemanager.cpp:102
 #, fuzzy
 #| msgctxt "Solid::Backends::UDisks2::Manager|"
 #| msgid "Storage devices"

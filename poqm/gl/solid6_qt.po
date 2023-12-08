@@ -49,12 +49,12 @@ msgctxt "imobiledevice|Company name"
 msgid "Apple"
 msgstr "Apple"
 
-#: solid/devices/backends/imobile/imobilemanager.cpp:61
+#: solid/devices/backends/imobile/imobilemanager.cpp:101
 msgctxt "Solid::Backends::IMobile::Manager|"
 msgid "iDevice"
 msgstr "Dispositivo de Apple"
 
-#: solid/devices/backends/imobile/imobilemanager.cpp:62
+#: solid/devices/backends/imobile/imobilemanager.cpp:102
 msgctxt "Solid::Backends::IMobile::Manager|"
 msgid "iOS devices"
 msgstr "Dispositivos iOS"
