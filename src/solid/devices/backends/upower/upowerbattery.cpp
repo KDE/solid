@@ -63,6 +63,15 @@ Solid::Battery::BatteryType Battery::type() const
     case UP_DEVICE_KIND_GAMING_INPUT:
         result = Solid::Battery::GamingInputBattery;
         break;
+    case UP_DEVICE_KIND_HEADPHONES:
+        result = Solid::Battery::HeadphoneBattery;
+        break;
+    case UP_DEVICE_KIND_HEADSET:
+        result = Solid::Battery::HeadsetBattery;
+        break;
+    case UP_DEVICE_KIND_TOUCHPAD:
+        result = Solid::Battery::TouchpadBattery;
+        break;
     case UP_DEVICE_KIND_BLUETOOTH_GENERIC:
         result = Solid::Battery::BluetoothBattery;
         break;

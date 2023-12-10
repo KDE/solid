@@ -62,6 +62,9 @@ public:
      * - BluetoothBattery: A generic Bluetooth device battery (if its type isn't known, a Bluetooth
      *                     mouse would normally show up as a MouseBattery), @since 5.54
      * - TabletBattery : A battery in a graphics tablet or pen, @since 5.88
+     * - HeadphoneBattery : A battery in a headphone, @since 6.0
+     * - HeadsetBattery : A battery in a headset, @since 6.0
+     * - TouchpadBattery : A battery in a touchpad. This is how the Dualsense Wireless Controller is categorized @since 6.0
      * - UnknownBattery : A battery in an unknown device
      */
     enum BatteryType {
@@ -78,6 +81,9 @@ public:
         GamingInputBattery,
         BluetoothBattery,
         TabletBattery,
+        HeadphoneBattery,
+        HeadsetBattery,
+        TouchpadBattery,
     };
     Q_ENUM(BatteryType)
 
