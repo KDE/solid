@@ -358,6 +358,11 @@ void SolidHwTest::testPredicate()
     list = Solid::Device::listFromQuery("[Processor.canChangeFrequency==true AND Processor.number==1]");
     QCOMPARE(list.size(), 1);
     QCOMPARE(list.at(0).udi(), QString("/org/kde/solid/fakehw/acpi_CPU1"));
+
+    // writeSpeeds is a QList, make sure we can match a single element.
+    list = Solid::Device::listFromQuery("[OpticalDrive.writeSpeeds==2117 AND OpticalDrive.removable==true]");
+    QCOMPARE(list.size(), 1);
+    QCOMPARE(list.at(0).udi(), QString("/org/kde/solid/fakehw/storage_model_solid_writer"));
 }
 
 void SolidHwTest::testQueryStorageVolumeOrProcessor()
