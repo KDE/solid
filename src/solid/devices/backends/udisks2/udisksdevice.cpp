@@ -27,37 +27,38 @@ using namespace Solid::Backends::UDisks2;
 // Adapted from KLocale as Solid needs to be Qt-only
 static QString formatByteSize(double size)
 {
-    // Per IEC 60027-2
+    // SI, Metric System
+    // Hard drives use SI units
 
     // Binary prefixes
-    // Tebi-byte             TiB             2^40    1,099,511,627,776 bytes
-    // Gibi-byte             GiB             2^30    1,073,741,824 bytes
-    // Mebi-byte             MiB             2^20    1,048,576 bytes
-    // Kibi-byte             KiB             2^10    1,024 bytes
+    // Tera-byte             TB             10^12    1,000,000,000,000 bytes
+    // Giga-byte             GB             10^9     1,000,000,000 bytes
+    // Mega-byte             MB             10^6     1,000,000 bytes
+    // Kilo-byte             KB             10^3     1,000 bytes
 
     QString s;
-    // Gibi-byte
-    if (size >= 1073741824.0) {
-        size /= 1073741824.0;
-        if (size > 1024) { // Tebi-byte
-            s = QCoreApplication::translate("udisksdevice", "%1 TiB").arg(QLocale().toString(size / 1024.0, 'f', 1));
+    // Giga-byte
+    if (size >= 1000000000.0) {
+        size /= 1000000000.0;
+        if (size > 1000) { // Tebi-byte
+            s = QCoreApplication::translate("udisksdevice", "%1 TB").arg(QLocale().toString(size / 1000.0, 'f', 0));
         } else {
-            s = QCoreApplication::translate("udisksdevice", "%1 GiB").arg(QLocale().toString(size, 'f', 1));
+            s = QCoreApplication::translate("udisksdevice", "%1 GB").arg(QLocale().toString(size, 'f', 0));
         }
     }
-    // Mebi-byte
-    else if (size >= 1048576.0) {
-        size /= 1048576.0;
-        s = QCoreApplication::translate("udisksdevice", "%1 MiB").arg(QLocale().toString(size, 'f', 1));
+    // Mega-byte
+    else if (size >= 1000000.0) {
+        size /= 1000000.0;
+        s = QCoreApplication::translate("udisksdevice", "%1 MB").arg(QLocale().toString(size, 'f', 0));
     }
-    // Kibi-byte
-    else if (size >= 1024.0) {
-        size /= 1024.0;
-        s = QCoreApplication::translate("udisksdevice", "%1 KiB").arg(QLocale().toString(size, 'f', 1));
+    // Kilo-byte
+    else if (size >= 1000.0) {
+        size /= 1000.0;
+        s = QCoreApplication::translate("udisksdevice", "%1 KB").arg(QLocale().toString(size, 'f', 0));
     }
     // Just byte
     else if (size > 0) {
-        s = QCoreApplication::translate("udisksdevice", "%1 B").arg(QLocale().toString(size, 'f', 1));
+        s = QCoreApplication::translate("udisksdevice", "%1 B").arg(QLocale().toString(size, 'f', 0));
     }
     // Nothing
     else {
