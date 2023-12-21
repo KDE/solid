@@ -5,19 +5,20 @@
 # Jeff Huang <s8321414@gmail.com>, 2017.
 # Frank Weng (a.k.a. Franklin) <franklin at goodhorse dot idv dot tw>, 2009, 2010.
 # pan93412 <pan93412@gmail.com>, 2019.
+# SPDX-FileCopyrightText: 2023 Kisaragi Hiu <mail@kisaragi-hiu.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-01 01:49+0000\n"
-"PO-Revision-Date: 2019-05-07 22:33+0800\n"
-"Last-Translator: pan93412 <pan93412@gmail.com>\n"
-"Language-Team: Chinese <zh-l10n@lists.linux.org.tw>\n"
+"PO-Revision-Date: 2023-12-20 17:40+0900\n"
+"Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
+"Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 19.04.0\n"
+"X-Generator: Lokalize 23.08.4\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Qt-Contexts: true\n"
 
@@ -46,23 +47,17 @@ msgstr "系統中已宣告之可掛載檔案系統"
 #: solid/devices/backends/imobile/imobiledevice.cpp:90
 msgctxt "imobiledevice|Company name"
 msgid "Apple"
-msgstr ""
+msgstr "Apple"
 
 #: solid/devices/backends/imobile/imobilemanager.cpp:61
-#, fuzzy
-#| msgctxt "Solid::Backends::UDev::UDevManager|"
-#| msgid "Devices"
 msgctxt "Solid::Backends::IMobile::Manager|"
 msgid "iDevice"
-msgstr "裝置"
+msgstr "蘋果裝置"
 
 #: solid/devices/backends/imobile/imobilemanager.cpp:62
-#, fuzzy
-#| msgctxt "Solid::Backends::UDisks2::Manager|"
-#| msgid "Storage devices"
 msgctxt "Solid::Backends::IMobile::Manager|"
 msgid "iOS devices"
-msgstr "儲存裝置"
+msgstr "iOS 裝置"
 
 #: solid/devices/backends/udev/udevdevice.cpp:100
 msgctxt "Solid::Backends::UDev::UDevDevice|"
@@ -130,40 +125,28 @@ msgid "0 B"
 msgstr "0 B"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:75
-#, fuzzy, qt-format
-#| msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
-#| msgid "%1 External Hard Drive"
+#, qt-format
 msgctxt "QObject|%1 is the size, %2 is the block device name e.g. sda, sda1"
 msgid "%1 External Drive (%2)"
-msgstr "%1 外部硬碟機"
+msgstr "%1 外部硬碟機 (%2)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:77
-#, fuzzy, qt-format
-#| msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
-#| msgid "%1 External Hard Drive"
+#, qt-format
 msgctxt "QObject|%1 is the size, %2 is the block device name e.g. sda, sda1"
 msgid "%1 Internal Drive (%2)"
-msgstr "%1 外部硬碟機"
+msgstr "%1 內部硬碟機 (%2)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:81
-#, fuzzy, qt-format
-#| msgctxt ""
-#| "Solid::Backends::Hal::HalDevice|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
-#| "DVD-R'/etc (with leading slash)"
-#| msgid "External %1%2 Drive"
+#, qt-format
 msgctxt "QObject|%1 is the block device name e.g. sda, sda1"
 msgid "External Drive (%1)"
-msgstr "外部 %1%2 磁碟機"
+msgstr "外部磁碟 (%1)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:83
-#, fuzzy, qt-format
-#| msgctxt ""
-#| "Solid::Backends::Hal::HalDevice|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
-#| "DVD-R'/etc (with leading slash)"
-#| msgid "External %1%2 Drive"
+#, qt-format
 msgctxt "QObject|%1 is the block device name e.g. sda, sda1"
 msgid "Internal Drive (%1)"
-msgstr "外部 %1%2 磁碟機"
+msgstr "內部磁碟 (%1)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:256
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -487,12 +470,9 @@ msgid "%1 Removable Media"
 msgstr "%1 可移除裝置"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:582
-#, fuzzy
-#| msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
-#| msgid "%1 Removable Media"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Removable Media"
-msgstr "%1 可移除裝置"
+msgstr "可移除裝置"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:586
 #, qt-format
@@ -501,9 +481,6 @@ msgid "%1 Media"
 msgstr "%1 媒體"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:588
-#, fuzzy
-#| msgctxt "Solid::Backends::UDisks2::Manager|"
-#| msgid "Storage devices"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Storage Media"
 msgstr "儲存裝置"
@@ -578,15 +555,12 @@ msgctxt "Solid::Backends::UDisks2::Device|"
 msgid ""
 "Cannot request authentication for this action. The PolicyKit authentication "
 "system appears to be not available."
-msgstr ""
+msgstr "無法為這個動作請求認證。PolicyKit 認證系統似乎並不可用。"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:760
-#, fuzzy
-#| msgctxt "Solid::Backends::UDisks2::Device|"
-#| msgid "The requested operation has been canceled"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The authentication prompt was canceled"
-msgstr "要求的操作已被中止"
+msgstr "認證對話框已被取消"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:762
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -829,18 +803,14 @@ msgid ""
 msgstr "            # 可以的話，跳出此裝置。\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:274
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # Listen to all add/remove events on supported hardware."
 msgctxt "solid-hardware|"
 msgid "             # Listen to all add/remove events on supported hardware.\n"
-msgstr "            # 監聽支援的硬體上所有新增或移除的事件。"
+msgstr "            # 監聽支援的硬體上所有新增或移除的事件。\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:277
 msgctxt "solid-hardware|"
 msgid "             # Monitor a devices for changes.\n"
-msgstr ""
+msgstr "             # 監控裝置變更。\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:289
 msgctxt "solid-hardware|"
