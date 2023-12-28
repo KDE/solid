@@ -4,13 +4,13 @@
 # Alexander Potashev <aspotashev@gmail.com>, 2010, 2011, 2014, 2015, 2017, 2019.
 # Andrey Cherepanov <skull@kde.ru>, 2011.
 # Alexander Lakhin <exclusion@gmail.com>, 2013.
-# Alexander Yavorsky <kekcuha@gmail.com>, 2020, 2021, 2022.
+# Alexander Yavorsky <kekcuha@gmail.com>, 2020, 2021, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-01-24 18:50+0000\n"
-"PO-Revision-Date: 2022-10-02 14:58+0300\n"
+"PO-Revision-Date: 2023-12-27 10:04+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -825,20 +825,16 @@ msgstr ""
 "             # Если возможно, извлечь устройство по указанному 'udi'.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:274
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # Listen to all add/remove events on supported hardware."
 msgctxt "solid-hardware|"
 msgid "             # Listen to all add/remove events on supported hardware.\n"
 msgstr ""
 "             # Ожидать все события добавления или удаления поддерживаемого "
-"оборудования."
+"оборудования.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:277
 msgctxt "solid-hardware|"
 msgid "             # Monitor devices for changes.\n"
-msgstr ""
+msgstr "             # Отслеживать изменения устройств.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:289
 msgctxt "solid-hardware|"
