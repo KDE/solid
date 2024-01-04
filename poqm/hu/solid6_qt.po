@@ -5,13 +5,13 @@
 # Kristóf Kiszel <ulysses@kubuntu.org>, 2010, 2011, 2014, 2019.
 # Balázs Úr <urbalazs@gmail.com>, 2012, 2013, 2014.
 # Kiszel Kristóf <kiszel.kristof@gmail.com>, 2017, 2018, 2020, 2021.
-# Kristof Kiszel <ulysses@fsf.hu>, 2021.
+# SPDX-FileCopyrightText: 2021, 2024 Kristof Kiszel <ulysses@fsf.hu>
 msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.4\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-01 01:49+0000\n"
-"PO-Revision-Date: 2021-11-23 11:40+0100\n"
+"PO-Revision-Date: 2024-01-03 09:49+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 21.08.3\n"
+"X-Generator: Lokalize 23.08.4\n"
 "X-Qt-Contexts: true\n"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:60
@@ -556,14 +556,13 @@ msgid ""
 "Cannot request authentication for this action. The PolicyKit authentication "
 "system appears to be not available."
 msgstr ""
+"Nem lehet hitelesítést kérni ehhez a művelethez. A PolicyKit "
+"hitelesítőrendszer nem érhető el."
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:760
-#, fuzzy
-#| msgctxt "Solid::Backends::UDisks2::Device|"
-#| msgid "The requested operation has been canceled"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The authentication prompt was canceled"
-msgstr "A kért művelet megszakításra került"
+msgstr "A hitelesítési kérést megszakították"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:762
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -816,20 +815,16 @@ msgid ""
 msgstr "             # Ha alkalmazható, kiadja az „udi” azonosítójú eszközt\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:274
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # Listen to all add/remove events on supported hardware."
 msgctxt "solid-hardware|"
 msgid "             # Listen to all add/remove events on supported hardware.\n"
 msgstr ""
 "             # Az összes hozzáadás/eltávolítás esemény figyelése támogatott "
-"hardveren."
+"hardveren.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:277
 msgctxt "solid-hardware|"
 msgid "             # Monitor devices for changes.\n"
-msgstr ""
+msgstr "             # Eszközök változásainak figyelése.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:289
 msgctxt "solid-hardware|"

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-01 01:49+0000\n"
-"PO-Revision-Date: 2024-01-01 08:22-0600\n"
+"PO-Revision-Date: 2024-01-03 14:00-0600\n"
 "Last-Translator: A S Alam <aalam@punlinux.org>\n"
 "Language-Team: Punjabi <kde-i18n-doc@kde.org>\n"
 "Language: pa\n"
@@ -509,7 +509,7 @@ msgstr "ਗਲਤ ਜਾਂ ਨਿਕਾਰਾ ਚੋਣ ਦਿੱਤੀ ਗਈ 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:742
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The kernel driver for this filesystem type is not available"
-msgstr "ਇਹ ਫਾਈਲ-ਸਿਸਟਮ ਕਿਸਮ ਲਈ ਕਰਨਲ ਡਰਾਇਵਰ ਉਪਲੱਬਧ ਨਹੀਂ ਹੈ"
+msgstr "ਇਹ ਫਾਇਲ-ਸਿਸਟਮ ਕਿਸਮ ਲਈ ਕਰਨਲ ਡਰਾਇਵਰ ਉਪਲੱਬਧ ਨਹੀਂ ਹੈ"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:744
 msgctxt "Solid::Backends::UDisks2::Device|"
