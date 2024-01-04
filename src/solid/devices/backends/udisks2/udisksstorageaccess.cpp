@@ -122,7 +122,11 @@ QString StorageAccess::filePath() const
         Device holderDevice(path);
         const auto mntPoints = qdbus_cast<QByteArrayList>(holderDevice.prop("MountPoints"));
         if (!mntPoints.isEmpty()) {
-            return QFile::decodeName(mntPoints.first()); // FIXME Solid doesn't support multiple mount points
+            QByteArray first = mntPoints.first();
+            if (first.endsWith('\x00')) {
+                first.chop(1);
+            }
+            return QFile::decodeName(first); // FIXME Solid doesn't support multiple mount points
         } else {
             return QString();
         }
