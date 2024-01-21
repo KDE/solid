@@ -32,6 +32,7 @@ Q_DECLARE_METATYPE(DBUSManagerStruct)
 #define UD2_DBUS_PATH                    "/org/freedesktop/UDisks2"
 #define UD2_UDI_DISKS_PREFIX             "/org/freedesktop/UDisks2"
 #define UD2_DBUS_PATH_MANAGER            "/org/freedesktop/UDisks2/Manager"
+#define UD2_DBUS_PATH_BLOCK_DEVICES      "/org/freedesktop/UDisks2/block_devices"
 #define UD2_DBUS_PATH_DRIVES             "/org/freedesktop/UDisks2/drives"
 #define UD2_DBUS_PATH_JOBS               "/org/freedesktop/UDisks2/jobs/"
 #define UD2_DBUS_PATH_BLOCKDEVICES       "/org/freedesktop/UDisks2/block_devices"

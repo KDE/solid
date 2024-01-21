@@ -8,9 +8,9 @@
 #include "udisksdevice.h"
 #include "udisks_debug.h"
 #include "udisksblock.h"
-#include "udisksdevicebackend.h"
 #include "udisksdeviceinterface.h"
 #include "udisksgenericinterface.h"
+#include "udisksmanager.h"
 #include "udisksopticaldisc.h"
 #include "udisksopticaldrive.h"
 #include "udisksstorageaccess.h"
@@ -87,16 +87,18 @@ static QString concatBlockDeviceDescription(const QString &name, qulonglong size
     return description;
 }
 
-Device::Device(const QString &udi)
+Device::Device(Manager *manager, const QString &udi)
     : Solid::Ifaces::Device()
-    , m_backend(DeviceBackend::backendForUDI(udi))
+    , m_manager(manager)
+    , m_udi(udi)
 {
-    if (m_backend) {
-        connect(m_backend, &DeviceBackend::changed, this, &Device::changed);
-        connect(m_backend, &DeviceBackend::propertyChanged, this, &Device::propertyChanged);
-    } else {
-        qCDebug(UDISKS2) << "Created invalid Device for udi" << udi;
-    }
+    connect(m_manager, &Manager::propertyChanged, this, [this](const QString &udi, const QMap<QString, int> &changes) {
+        if (udi == m_udi) {
+            Q_EMIT propertyChanged(changes);
+        }
+    });
+
+    connect(this, &Device::propertyChanged, this, &Device::changed);
 }
 
 Device::~Device()
@@ -105,63 +107,44 @@ Device::~Device()
 
 QString Device::udi() const
 {
-    if (m_backend) {
-        return m_backend->udi();
-    }
-
-    return QString();
+    return m_udi;
 }
 
 QVariant Device::prop(const QString &key) const
 {
-    if (m_backend) {
-        return m_backend->prop(key);
-    }
-
-    return QVariant();
+    return m_manager->deviceProperty(m_udi, key);
 }
 
 bool Device::propertyExists(const QString &key) const
 {
-    if (m_backend) {
-        return m_backend->propertyExists(key);
-    }
-
-    return false;
+    return m_manager->deviceProperty(m_udi, key, Manager::CachedOnly).isValid();
 }
 
 QVariantMap Device::allProperties() const
 {
-    if (m_backend) {
-        return m_backend->allProperties();
+    QVariantMap flattened;
+
+    const auto interfaces = m_manager->deviceProperties(m_udi);
+
+    // Flatten per-interface properties into a single map.
+    // We iterate the interfaces in reverse since Manager::prop() returns the *first*
+    // property found, so we'll override any other properties that way.
+    // FIXME actually reverse it lol, no rbegin on QMap :(
+    for (const auto &props : interfaces) {
+        flattened.insert(props);
     }
 
-    return QVariantMap();
+    return flattened;
 }
 
 bool Device::hasInterface(const QString &name) const
 {
-    if (m_backend) {
-        return m_backend->interfaces().contains(name);
-    }
-
-    return false;
+    return m_manager->hasInterface(m_udi, name);
 }
 
-QStringList Device::interfaces() const
+Manager *Device::manager() const
 {
-    if (m_backend) {
-        return m_backend->interfaces();
-    }
-
-    return QStringList();
-}
-
-void Device::invalidateCache()
-{
-    if (m_backend) {
-        return m_backend->invalidateProperties();
-    }
+    return m_manager;
 }
 
 QObject *Device::createDeviceInterface(const Solid::DeviceInterface::Type &type)
@@ -421,7 +404,7 @@ QString Device::volumeDescription() const
         return volume_label;
     }
 
-    UDisks2::Device storageDevice(drivePath());
+    UDisks2::Device storageDevice(manager(), drivePath());
     const UDisks2::StorageDrive storageDrive(&storageDevice);
     Solid::StorageDrive::DriveType drive_type = storageDrive.driveType();
 
@@ -631,7 +614,7 @@ QString Device::icon() const
             return "drive-harddisk"; // stuff like loop devices or swap which don't have the Drive prop set
         }
 
-        Device drive(drv);
+        Device drive(manager(), drv);
 
         // handle media
         const QString media = drive.prop("Media").toString();
@@ -695,7 +678,7 @@ QString Device::icon() const
 QString Device::product() const
 {
     if (!isDrive()) {
-        Device drive(drivePath());
+        Device drive(manager(), drivePath());
         return drive.prop("Model").toString();
     }
 
@@ -705,7 +688,7 @@ QString Device::product() const
 QString Device::vendor() const
 {
     if (!isDrive()) {
-        Device drive(drivePath());
+        Device drive(manager(), drivePath());
         return drive.prop("Vendor").toString();
     }
 
@@ -824,7 +807,7 @@ bool Device::isOpticalDisc() const
         return false;
     }
 
-    Device drive(drv);
+    Device drive(manager(), drv);
     return drive.prop("Optical").toBool();
 }
 
@@ -835,7 +818,7 @@ bool Device::mightBeOpticalDisc() const
         return false;
     }
 
-    Device drive(drv);
+    Device drive(manager(), drv);
     return drive.isOpticalDrive();
 }
 
