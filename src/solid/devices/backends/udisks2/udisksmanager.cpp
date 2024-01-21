@@ -5,8 +5,9 @@
 */
 
 #include "udisksmanager.h"
+#include "dbus/manager.h"
 #include "udisks_debug.h"
-#include "udisksdevicebackend.h"
+#include "udisksutils.h"
 
 #include <QDBusConnection>
 #include <QDBusConnectionInterface>
@@ -14,14 +15,17 @@
 #include <QDBusObjectPath>
 #include <QDomDocument>
 
+#include <algorithm>
+
 #include "../shared/rootdevice.h"
+#include "solid/genericinterface.h"
 
 using namespace Solid::Backends::UDisks2;
 using namespace Solid::Backends::Shared;
 
 Manager::Manager(QObject *parent)
     : Solid::Ifaces::DeviceManager(parent)
-    , m_manager(UD2_DBUS_SERVICE, UD2_DBUS_PATH, QDBusConnection::systemBus())
+    , m_manager(org::freedesktop::DBus::ObjectManager(UD2_DBUS_SERVICE, UD2_DBUS_PATH, QDBusConnection::systemBus()))
 {
     m_supportedInterfaces = {
         Solid::DeviceInterface::GenericInterface,
@@ -38,33 +42,60 @@ Manager::Manager(QObject *parent)
     qDBusRegisterMetaType<VariantMapMap>();
     qDBusRegisterMetaType<DBUSManagerStruct>();
 
-    bool serviceFound = m_manager.isValid();
-    if (!serviceFound) {
-        // find out whether it will be activated automatically
-        QDBusMessage message = QDBusMessage::createMethodCall("org.freedesktop.DBus", //
-                                                              "/org/freedesktop/DBus",
-                                                              "org.freedesktop.DBus",
-                                                              "ListActivatableNames");
+    connect(&m_manager, &org::freedesktop::DBus::ObjectManager::InterfacesAdded, this, &Manager::slotInterfacesAdded);
+    connect(&m_manager, &org::freedesktop::DBus::ObjectManager::InterfacesRemoved, this, &Manager::slotInterfacesRemoved);
 
-        QDBusReply<QStringList> reply = QDBusConnection::systemBus().call(message);
-        if (reply.isValid() && reply.value().contains(UD2_DBUS_SERVICE)) {
-            QDBusConnection::systemBus().interface()->startService(UD2_DBUS_SERVICE);
-            serviceFound = true;
-        }
-    }
-
-    if (serviceFound) {
-        connect(&m_manager, SIGNAL(InterfacesAdded(QDBusObjectPath, VariantMapMap)), this, SLOT(slotInterfacesAdded(QDBusObjectPath, VariantMapMap)));
-        connect(&m_manager, SIGNAL(InterfacesRemoved(QDBusObjectPath, QStringList)), this, SLOT(slotInterfacesRemoved(QDBusObjectPath, QStringList)));
-    }
+    QDBusConnection::systemBus()
+        .connect(UD2_DBUS_SERVICE, QString() /*any path*/, DBUS_INTERFACE_PROPS, "PropertiesChanged", this, SLOT(slotPropertiesChanged(QDBusMessage)));
 }
 
 Manager::~Manager()
 {
-    while (!m_deviceCache.isEmpty()) {
-        QString udi = m_deviceCache.takeFirst();
-        DeviceBackend::destroyBackend(udi);
+    m_cache.clear();
+}
+
+bool Manager::hasInterface(const QString &udi, const QString &interface)
+{
+    return deviceCache().value(udi).contains(interface);
+}
+
+QMap<QString, PropertyMap> Manager::allProperties()
+{
+    return deviceCache();
+}
+
+PropertyMap Manager::deviceProperties(const QString &udi)
+{
+    return deviceCache().value(udi);
+}
+
+QVariant Manager::deviceProperty(const QString &udi, const QString &name, Manager::FetchMode fetchMode)
+{
+    const auto &props = m_cache.value(udi);
+
+    // Loop through all interfaces looking for a property.
+    for (auto it = props.begin(), end = props.end(); it != end; ++it) {
+        const QString iface = it.key();
+        const auto valueIt = it->constFind(name);
+        if (valueIt != it->constEnd()) {
+            if (!valueIt->isValid() && fetchMode == FetchIfNeeded) {
+                QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, udi, DBUS_INTERFACE_PROPS, "Get");
+                call.setArguments({iface, name});
+                QDBusReply<QVariant> reply = QDBusConnection::systemBus().call(call);
+
+                /* We don't check for error here and store the item in the cache anyway so next time we don't have to
+                 * do the DBus call to find out it does not exist but just check whether
+                 * prop(key).isValid() */
+                const QVariant value = Utils::sanitizeValue(reply.value());
+                m_cache[udi][iface][name] = value;
+                return value;
+            }
+
+            return *valueIt;
+        }
     }
+
+    return QVariant();
 }
 
 QObject *Manager::createDevice(const QString &udi)
@@ -78,7 +109,7 @@ QObject *Manager::createDevice(const QString &udi)
 
         return root;
     } else if (deviceCache().contains(udi)) {
-        return new Device(udi);
+        return new Device(this, udi);
     } else {
         return nullptr;
     }
@@ -87,78 +118,57 @@ QObject *Manager::createDevice(const QString &udi)
 QStringList Manager::devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type)
 {
     QStringList result;
-    const QStringList deviceList = deviceCache();
+
+    const auto devices = deviceCache();
 
     if (!parentUdi.isEmpty()) {
-        for (const QString &udi : deviceList) {
-            Device device(udi);
+        for (auto it = devices.keyBegin(), end = devices.keyEnd(); it != end; ++it) {
+            Device device(this, *it);
             if (device.queryDeviceInterface(type) && device.parentUdi() == parentUdi) {
-                result << udi;
+                result << *it;
             }
         }
 
         return result;
     } else if (type != Solid::DeviceInterface::Unknown) {
-        for (const QString &udi : deviceList) {
-            Device device(udi);
+        for (auto it = devices.keyBegin(), end = devices.keyEnd(); it != end; ++it) {
+            Device device(this, *it);
             if (device.queryDeviceInterface(type)) {
-                result << udi;
+                result << *it;
             }
         }
 
         return result;
     }
 
-    return deviceCache();
+    return devices.keys();
 }
 
 QStringList Manager::allDevices()
 {
-    m_deviceCache.clear();
+    m_cache.clear();
 
-    introspect(UD2_DBUS_PATH_BLOCKDEVICES, true /*checkOptical*/);
-    introspect(UD2_DBUS_PATH_DRIVES);
+    org::freedesktop::DBus::ObjectManager manager(UD2_DBUS_SERVICE, UD2_DBUS_PATH, QDBusConnection::systemBus());
+    QDBusPendingReply<DBUSManagerStruct> reply = manager.GetManagedObjects();
+    reply.waitForFinished();
+    if (!reply.isError()) {
+        const auto items = reply.value();
+        for (auto it = items.begin(), end = items.end(); it != end; ++it) {
+            const QString udi = it.key().path();
 
-    return m_deviceCache;
-}
-
-void Manager::introspect(const QString &path, bool checkOptical)
-{
-    QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, path, DBUS_INTERFACE_INTROSPECT, "Introspect");
-    QDBusPendingReply<QString> reply = QDBusConnection::systemBus().call(call);
-
-    if (reply.isValid()) {
-        QDomDocument dom;
-        dom.setContent(reply.value());
-        QDomNodeList nodeList = dom.documentElement().elementsByTagName("node");
-        for (int i = 0; i < nodeList.count(); i++) {
-            QDomElement nodeElem = nodeList.item(i).toElement();
-            if (!nodeElem.isNull() && nodeElem.hasAttribute("name")) {
-                const QString name = nodeElem.attribute("name");
-                const QString udi = path + "/" + name;
-
-                // Optimization, a loop device cannot really have a physical drive associated with it
-                if (checkOptical && !name.startsWith(QLatin1String("loop"))) {
-                    Device device(udi);
-                    if (device.mightBeOpticalDisc()) {
-                        QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE, //
-                                                             udi,
-                                                             DBUS_INTERFACE_PROPS,
-                                                             "PropertiesChanged",
-                                                             this,
-                                                             SLOT(slotMediaChanged(QDBusMessage)));
-                        if (!device.isOpticalDisc()) { // skip empty CD disc
-                            continue;
-                        }
-                    }
-                }
-
-                m_deviceCache.append(udi);
+            if (!udi.startsWith(UD2_DBUS_PATH_BLOCK_DEVICES) && !udi.startsWith(UD2_DBUS_PATH_DRIVES)) {
+                continue;
             }
+
+            VariantMapMap mapMap = it.value();
+            for (QVariantMap &map : mapMap) {
+                map = Utils::sanitizeValue(map);
+            }
+            m_cache.insert(udi, mapMap);
         }
-    } else {
-        qCWarning(UDISKS2) << "Failed enumerating UDisks2 objects:" << reply.error().name() << "\n" << reply.error().message();
     }
+
+    return m_cache.keys();
 }
 
 QSet<Solid::DeviceInterface::Type> Manager::supportedInterfaces() const
@@ -182,33 +192,43 @@ void Manager::slotInterfacesAdded(const QDBusObjectPath &object_path, const Vari
 
     qCDebug(UDISKS2) << udi << "has new interfaces:" << interfaces_and_properties.keys();
 
-    // If device gained an org.freedesktop.UDisks2.Block interface, we
-    // should check if it is an optical drive, in order to properly
-    // register mediaChanged event handler with newly-plugged external
-    // drives
-    if (interfaces_and_properties.contains("org.freedesktop.UDisks2.Block")) {
-        Device device(udi);
-        if (device.mightBeOpticalDisc()) {
-            QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE, //
-                                                 udi,
-                                                 DBUS_INTERFACE_PROPS,
-                                                 "PropertiesChanged",
-                                                 this,
-                                                 SLOT(slotMediaChanged(QDBusMessage)));
+    auto cachedIt = m_cache.find(udi);
+    bool isNewDevice = (cachedIt == m_cache.end());
+
+    if (isNewDevice) {
+        qCDebug(UDISKS2) << "\tIt's a new device, emitting added";
+        cachedIt = m_cache.insert(udi, VariantMapMap{});
+    }
+
+    // We need to re-fetch all existing interfaces to ensure by the time we emit "add" for FileSystem
+    // the rest is up to date (e.g. if Loop gets updated after we gained FileSystem) some propertes aren't updated yet.
+    // We'll skip Block as every device we are interested in will be a Block device.
+    QStringList oldInterfaces = cachedIt->keys();
+    oldInterfaces.removeOne(UD2_DBUS_INTERFACE_BLOCK);
+
+    // Filters generic DBus interfaces.
+    for (auto it = interfaces_and_properties.begin(), end = interfaces_and_properties.end(); it != end; ++it) {
+        if (!it.key().startsWith(UD2_DBUS_SERVICE)) {
+            continue;
+        }
+        cachedIt->insert(it.key(), Utils::sanitizeValue(it.value()));
+    }
+
+    for (const QString &interface : oldInterfaces) {
+        QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, udi, DBUS_INTERFACE_PROPS, "GetAll");
+        call.setArguments({interface});
+        QDBusReply<QVariantMap> reply = QDBusConnection::systemBus().call(call);
+        if (reply.isValid()) {
+            cachedIt->insert(interface, Utils::sanitizeValue(reply.value()));
         }
     }
 
-    updateBackend(udi);
-
-    // new device, we don't know it yet
-    if (!m_deviceCache.contains(udi)) {
-        m_deviceCache.append(udi);
-        Q_EMIT deviceAdded(udi);
-    }
     // re-emit in case of 2-stage devices like N9 or some Android phones
-    else if (m_deviceCache.contains(udi) && interfaces_and_properties.keys().contains(UD2_DBUS_INTERFACE_FILESYSTEM)) {
+    if (isNewDevice || interfaces_and_properties.contains(UD2_DBUS_INTERFACE_FILESYSTEM)) {
         Q_EMIT deviceAdded(udi);
     }
+
+    // TODO invalidate drive? updateBackend did that
 }
 
 void Manager::slotInterfacesRemoved(const QDBusObjectPath &object_path, const QStringList &interfaces)
@@ -223,23 +243,26 @@ void Manager::slotInterfacesRemoved(const QDBusObjectPath &object_path, const QS
         return;
     }
 
+    auto cachedIt = m_cache.find(udi);
+    if (cachedIt == m_cache.end()) {
+        return;
+    }
+
     qCDebug(UDISKS2) << udi << "lost interfaces:" << interfaces;
+
+    for (const QString &iface : interfaces) {
+        cachedIt->remove(iface);
+    }
 
     /*
      * Determine left interfaces. The device backend may have processed the
      * InterfacesRemoved signal already, but the result set is the same
      * independent if the backend or the manager processes the signal first.
      */
-    Device device(udi);
-    const QStringList ifaceList = device.interfaces();
-    QSet<QString> leftInterfaces(ifaceList.begin(), ifaceList.end());
-    leftInterfaces.subtract(QSet<QString>(interfaces.begin(), interfaces.end()));
-
-    if (leftInterfaces.isEmpty()) {
-        // remove the device if the last interface is removed
+    if (cachedIt->isEmpty()) {
+        qCDebug(UDISKS2) << "\tThere are no more interface, emitting device removal";
         Q_EMIT deviceRemoved(udi);
-        m_deviceCache.removeAll(udi);
-        DeviceBackend::destroyBackend(udi);
+        m_cache.remove(udi);
     } else {
         /*
          * Changes in the interface composition may change if a device
@@ -251,62 +274,80 @@ void Manager::slotInterfacesRemoved(const QDBusObjectPath &object_path, const QS
     }
 }
 
-void Manager::slotMediaChanged(const QDBusMessage &msg)
+void Manager::slotPropertiesChanged(const QDBusMessage &msg)
 {
-    const QVariantMap properties = qdbus_cast<QVariantMap>(msg.arguments().at(1));
+    const QString udi = msg.path();
 
-    if (!properties.contains("Size")) { // react only on Size changes
+    if (udi.isEmpty() || !udi.startsWith(UD2_UDI_DISKS_PREFIX) || udi.startsWith(UD2_DBUS_PATH_JOBS)) {
         return;
     }
 
-    const QString udi = msg.path();
-    updateBackend(udi);
-    qulonglong size = properties.value("Size").toULongLong();
-    qCDebug(UDISKS2) << "MEDIA CHANGED in" << udi << "; size is:" << size;
-
-    if (!m_deviceCache.contains(udi) && size > 0) { // we don't know the optdisc, got inserted
-        m_deviceCache.append(udi);
-        Q_EMIT deviceAdded(udi);
+    const auto args = msg.arguments();
+    if (Q_UNLIKELY(args.size() != 3)) {
+        return;
     }
 
-    if (m_deviceCache.contains(udi) && size == 0) { // we know the optdisc, got removed
-        Q_EMIT deviceRemoved(udi);
-        m_deviceCache.removeAll(udi);
-        DeviceBackend::destroyBackend(udi);
+    const QString iface = qdbus_cast<QString>(args.at(0));
+    const QVariantMap changed = qdbus_cast<QVariantMap>(args.at(1));
+    const QStringList invalidated = qdbus_cast<QStringList>(args.at(2));
+
+    auto cachedIt = m_cache.find(udi);
+    const bool knownDevice = (cachedIt != m_cache.end());
+
+    if (knownDevice) {
+        QMap<QString, int> changeMap;
+
+        for (const QString &prop : invalidated) {
+            // Invalid QVariant() marks property that exists but needs to be fetched first.
+            (*cachedIt)[iface].insert(prop, QVariant());
+            changeMap.insert(prop, Solid::GenericInterface::PropertyModified);
+        }
+
+        for (auto it = changed.begin(), end = changed.end(); it != end; ++it) {
+            (*cachedIt)[iface].insert(it.key(), Utils::sanitizeValue(it.value()));
+            changeMap.insert(it.key(), Solid::GenericInterface::PropertyModified);
+        }
+
+        if (!changeMap.isEmpty()) {
+            Q_EMIT propertyChanged(udi, changeMap);
+        }
     }
+
+    // Special handling for Media insertion/removal.
+    if (iface == UD2_DBUS_INTERFACE_BLOCK && changed.contains("Size")) {
+        qulonglong size = changed.value("Size").toULongLong();
+
+        const bool mediaInserted = !knownDevice && size > 0;
+        const bool mediaRemoved = knownDevice && size == 0;
+
+        // Short-circuit, don't query Device if the conditions cheap to check aren't fulfilled.
+        if (mediaInserted || mediaRemoved) {
+            Device device(this, udi);
+            if (device.mightBeOpticalDisc()) {
+                if (!knownDevice && size > 0) { // we don't know the optdisc, got inserted
+                    // Populate at least the stuff we just got, rest has to be fetched on demand.
+                    PropertyMap map;
+                    map.insert(udi, changed);
+                    m_cache.insert(udi, map);
+                    Q_EMIT deviceAdded(udi);
+                } else if (knownDevice && size == 0) { // we know the optdisc, got removed
+                    Q_EMIT deviceRemoved(udi);
+                    m_cache.remove(udi);
+                }
+            }
+        }
+    }
+
+    // TODO invalidate drive? updateBackend did that
 }
 
-const QStringList &Manager::deviceCache()
+QMap<QString, PropertyMap> Manager::deviceCache()
 {
-    if (m_deviceCache.isEmpty()) {
+    if (m_cache.isEmpty()) {
         allDevices();
     }
 
-    return m_deviceCache;
-}
-
-void Manager::updateBackend(const QString &udi)
-{
-    DeviceBackend *backend = DeviceBackend::backendForUDI(udi);
-    if (!backend) {
-        return;
-    }
-
-    // This doesn't emit "changed" signals. Signals are emitted later by DeviceBackend's slots
-    backend->allProperties();
-
-    QVariant driveProp = backend->prop("Drive");
-    if (!driveProp.isValid()) {
-        return;
-    }
-
-    QDBusObjectPath drivePath = qdbus_cast<QDBusObjectPath>(driveProp);
-    DeviceBackend *driveBackend = DeviceBackend::backendForUDI(drivePath.path(), false);
-    if (!driveBackend) {
-        return;
-    }
-
-    driveBackend->invalidateProperties();
+    return m_cache;
 }
 
 #include "moc_udisksmanager.cpp"

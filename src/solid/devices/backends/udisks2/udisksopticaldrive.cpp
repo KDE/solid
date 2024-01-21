@@ -34,7 +34,7 @@ OpticalDrive::OpticalDrive(Device *device)
 {
     m_device->registerAction("eject", this, SLOT(slotEjectRequested()), SLOT(slotEjectDone(int, QString)));
 
-    connect(m_device, SIGNAL(changed()), this, SLOT(slotChanged()));
+    connect(m_device, &Device::changed, this, &OpticalDrive::slotChanged);
 }
 
 OpticalDrive::~OpticalDrive()
@@ -68,7 +68,7 @@ bool OpticalDrive::eject()
                 continue;
             }
 
-            Device device(udi);
+            Device device(m_device->manager(), udi);
             if (device.drivePath() == path && device.isMounted()) {
                 // qDebug() << "Got mounted block device:" << udi;
                 blockPath = udi;

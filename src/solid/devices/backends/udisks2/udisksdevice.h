@@ -24,13 +24,16 @@ namespace Backends
 namespace UDisks2
 {
 class DeviceBackend;
+class Manager;
 
 class Device : public Solid::Ifaces::Device
 {
     Q_OBJECT
 public:
-    Device(const QString &udi);
+    Device(Manager *manager, const QString &udi);
     ~Device() override;
+
+    Manager *manager() const;
 
     QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type) override;
     bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const override;
@@ -45,10 +48,8 @@ public:
     QVariant prop(const QString &key) const;
     bool propertyExists(const QString &key) const;
     QVariantMap allProperties() const;
-    void invalidateCache();
 
     bool hasInterface(const QString &name) const;
-    QStringList interfaces() const;
 
     QString errorToString(const QString &error) const;
     Solid::ErrorType errorToSolidError(const QString &error) const;
@@ -75,10 +76,10 @@ Q_SIGNALS:
     void changed();
     void propertyChanged(const QMap<QString, int> &changes);
 
-protected:
-    QPointer<DeviceBackend> m_backend;
-
 private:
+    Manager *m_manager;
+    QString m_udi;
+
     QString loopDescription() const;
     QString storageDescription() const;
     QString volumeDescription() const;

@@ -45,7 +45,7 @@ Block::Block(Device *dev)
                 if (!nodeElem.isNull() && nodeElem.hasAttribute("name")) {
                     const QString udi = UD2_DBUS_PATH_BLOCKDEVICES + QLatin1Char('/') + nodeElem.attribute("name");
 
-                    Device device(udi);
+                    Device device(dev->manager(), udi);
                     if (device.drivePath() == dev->udi()) {
                         m_devNum = device.prop("DeviceNumber").toULongLong();
                         m_devFile = QFile::decodeName(device.prop("Device").toByteArray());
