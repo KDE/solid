@@ -250,10 +250,12 @@ void UPowerDevice::onPropertiesChanged(const QString &ifaceName, const QVariantM
     QMap<QString, int> changeMap;
     for (auto it = changedProps.begin(); it != changedProps.end(); ++it) {
         m_cache[it.key()] = it.value();
+        m_negativeCache.removeOne(it.key());
         changeMap.insert(it.key(), Solid::GenericInterface::PropertyModified);
     }
     for (const auto &propName : invalidatedProps) {
         m_cache.remove(propName);
+        m_negativeCache.removeOne(propName);
         changeMap.insert(propName, Solid::GenericInterface::PropertyModified);
         m_cacheComplete = false;
     }
