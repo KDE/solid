@@ -14,6 +14,7 @@
 #include <solid/device.h>
 #include <solid/genericinterface.h>
 
+#include <QDBusConnection>
 #include <QDBusReply>
 #include <QStringList>
 
@@ -21,26 +22,23 @@ using namespace Solid::Backends::UPower;
 
 UPowerDevice::UPowerDevice(const QString &udi)
     : Solid::Ifaces::Device()
-    , m_device(UP_DBUS_SERVICE, udi, UP_DBUS_INTERFACE_DEVICE, QDBusConnection::systemBus())
     , m_udi(udi)
 {
-    if (m_device.isValid()) {
-        QDBusConnection::systemBus().connect(UP_DBUS_SERVICE,
-                                             m_udi,
-                                             "org.freedesktop.DBus.Properties",
-                                             "PropertiesChanged",
-                                             this,
-                                             SLOT(onPropertiesChanged(QString, QVariantMap, QStringList)));
+    QDBusConnection::systemBus().connect(UP_DBUS_SERVICE,
+                                         m_udi,
+                                         "org.freedesktop.DBus.Properties",
+                                         "PropertiesChanged",
+                                         this,
+                                         SLOT(onPropertiesChanged(QString, QVariantMap, QStringList)));
 
-        // TODO port this to Solid::Power, we can't link against kdelibs4support for this signal
-        // older upower versions not affected
-        QDBusConnection::systemBus().connect("org.freedesktop.login1",
-                                             "/org/freedesktop/login1",
-                                             "org.freedesktop.login1.Manager",
-                                             "PrepareForSleep",
-                                             this,
-                                             SLOT(login1Resuming(bool)));
-    }
+    // TODO port this to Solid::Power, we can't link against kdelibs4support for this signal
+    // older upower versions not affected
+    QDBusConnection::systemBus().connect("org.freedesktop.login1", //
+                                         "/org/freedesktop/login1",
+                                         "org.freedesktop.login1.Manager",
+                                         "PrepareForSleep",
+                                         this,
+                                         SLOT(login1Resuming(bool)));
 }
 
 UPowerDevice::~UPowerDevice()
@@ -197,10 +195,12 @@ void UPowerDevice::checkCache(const QString &key) const
         return;
     }
 
-    QVariant reply = m_device.property(key.toUtf8());
+    QDBusMessage call = QDBusMessage::createMethodCall(UP_DBUS_SERVICE, m_udi, "org.freedesktop.DBus.Properties", "Get");
+    call.setArguments({UP_DBUS_INTERFACE_DEVICE, key});
+    QDBusReply<QVariant> reply = QDBusConnection::systemBus().call(call);
 
     if (reply.isValid()) {
-        m_cache[key] = reply;
+        m_cache[key] = reply.value();
     } else {
         m_negativeCache.append(key);
     }
@@ -220,10 +220,9 @@ bool UPowerDevice::propertyExists(const QString &key) const
 
 void UPowerDevice::loadCache() const
 {
-    QDBusMessage call = QDBusMessage::createMethodCall(m_device.service(), m_device.path(), "org.freedesktop.DBus.Properties", "GetAll");
-    call << m_device.interface();
-    QDBusPendingReply<QVariantMap> reply = QDBusConnection::systemBus().asyncCall(call);
-    reply.waitForFinished();
+    QDBusMessage call = QDBusMessage::createMethodCall(UP_DBUS_SERVICE, m_udi, "org.freedesktop.DBus.Properties", "GetAll");
+    call.setArguments({UP_DBUS_INTERFACE_DEVICE});
+    QDBusReply<QVariantMap> reply = QDBusConnection::systemBus().call(call);
 
     if (reply.isValid()) {
         m_cache = reply.value();

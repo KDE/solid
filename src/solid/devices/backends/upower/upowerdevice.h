@@ -12,8 +12,6 @@
 #include <ifaces/device.h>
 #include <solid/deviceinterface.h>
 
-#include <QDBusInterface>
-
 namespace Solid
 {
 namespace Backends
@@ -50,7 +48,6 @@ private Q_SLOTS:
 
 private:
     QString batteryTechnology() const;
-    mutable QDBusInterface m_device;
     QString m_udi;
     mutable QVariantMap m_cache;
     mutable QStringList m_negativeCache;
