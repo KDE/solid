@@ -9,17 +9,17 @@ msgstr ""
 "Project-Id-Version: solid_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-01 01:49+0000\n"
-"PO-Revision-Date: 2020-01-11 23:50+0200\n"
+"PO-Revision-Date: 2024-01-26 14:15+0200\n"
 "Last-Translator: Moo\n"
 "Language-Team: lt <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-06-05 15:24+0000\n"
-"X-Generator: Poedit 2.0.6\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
+"X-Launchpad-Export-Date: 2010-06-05 15:24+0000\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Qt-Contexts: true\n"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:60
@@ -47,23 +47,17 @@ msgstr "Jūsų sistemoje deklaruotos prijungiamos failų sistemos"
 #: solid/devices/backends/imobile/imobiledevice.cpp:90
 msgctxt "imobiledevice|Company name"
 msgid "Apple"
-msgstr ""
+msgstr "„Apple“"
 
 #: solid/devices/backends/imobile/imobilemanager.cpp:101
-#, fuzzy
-#| msgctxt "Solid::Backends::UDev::UDevManager|"
-#| msgid "Devices"
 msgctxt "Solid::Backends::IMobile::Manager|"
 msgid "iDevice"
-msgstr "Įrenginiai"
+msgstr "„iDevice“"
 
 #: solid/devices/backends/imobile/imobilemanager.cpp:102
-#, fuzzy
-#| msgctxt "Solid::Backends::UDisks2::Manager|"
-#| msgid "Storage devices"
 msgctxt "Solid::Backends::IMobile::Manager|"
 msgid "iOS devices"
-msgstr "Saugojimo įrenginiai"
+msgstr "„iOS“ įrenginiai"
 
 #: solid/devices/backends/udev/udevdevice.cpp:100
 msgctxt "Solid::Backends::UDev::UDevDevice|"
@@ -78,7 +72,7 @@ msgstr "Procesorius"
 #: solid/devices/backends/udev/udevdevice.cpp:115
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Portable Media Player"
-msgstr "Nešiojamas muzikos grotuvas"
+msgstr "Nešiojama medijos leistuvė"
 
 #: solid/devices/backends/udev/udevdevice.cpp:118
 msgctxt "Solid::Backends::UDev::UDevDevice|"
@@ -93,7 +87,7 @@ msgstr "Įrenginiai"
 #: solid/devices/backends/udev/udevmanager.cpp:221
 msgctxt "Solid::Backends::UDev::UDevManager|"
 msgid "Devices declared in your system"
-msgstr "Įrenginiai deklaruoti Jūsų sistemoje"
+msgstr "Jūsų sistemoje deklaruoti įrenginiai"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:43
 #, qt-format
@@ -131,45 +125,33 @@ msgid "0 B"
 msgstr "0 B"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:75
-#, fuzzy, qt-format
-#| msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
-#| msgid "%1 External Hard Drive"
+#, qt-format
 msgctxt "QObject|%1 is the size, %2 is the block device name e.g. sda, sda1"
 msgid "%1 External Drive (%2)"
-msgstr "%1 išorinis standusis diskas"
+msgstr "%1 išorinis diskas (%2)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:77
-#, fuzzy, qt-format
-#| msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
-#| msgid "%1 External Hard Drive"
+#, qt-format
 msgctxt "QObject|%1 is the size, %2 is the block device name e.g. sda, sda1"
 msgid "%1 Internal Drive (%2)"
-msgstr "%1 išorinis standusis diskas"
+msgstr "%1 vidinis diskas (%2)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:81
-#, fuzzy, qt-format
-#| msgctxt ""
-#| "Solid::Backends::Hal::HalDevice|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
-#| "DVD-R'/etc (with leading slash)"
-#| msgid "External %1%2 Drive"
+#, qt-format
 msgctxt "QObject|%1 is the block device name e.g. sda, sda1"
 msgid "External Drive (%1)"
-msgstr "Išorinis %1%2 įrenginys"
+msgstr "Išorinis diskas (%1)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:83
-#, fuzzy, qt-format
-#| msgctxt ""
-#| "Solid::Backends::Hal::HalDevice|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
-#| "DVD-R'/etc (with leading slash)"
-#| msgid "External %1%2 Drive"
+#, qt-format
 msgctxt "QObject|%1 is the block device name e.g. sda, sda1"
 msgid "Internal Drive (%1)"
-msgstr "Išorinis %1%2 įrenginys"
+msgstr "Vidinis diskas (%1)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:256
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Swap Space"
-msgstr "Swap vieta"
+msgstr "Sukeitimų vieta"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:278
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -463,18 +445,18 @@ msgstr "HD DVD-RW"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:556
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Audio CD"
-msgstr "Audio CD"
+msgstr "Garso CD"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:569
 #, qt-format
 msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
 msgid "%1 Encrypted Drive"
-msgstr "%1 užšifruotas diskas"
+msgstr "%1 šifruotas diskas"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:571
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Encrypted Drive"
-msgstr "Užšifruotas diskas"
+msgstr "Šifruotas diskas"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:576
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -485,15 +467,12 @@ msgstr "Diskelis"
 #, qt-format
 msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
 msgid "%1 Removable Media"
-msgstr "%1 išorinė laikmena"
+msgstr "%1 keičiamoji laikmena"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:582
-#, fuzzy
-#| msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
-#| msgid "%1 Removable Media"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Removable Media"
-msgstr "%1 išorinė laikmena"
+msgstr "Keičiamoji laikmena"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:586
 #, qt-format
@@ -502,32 +481,29 @@ msgid "%1 Media"
 msgstr "%1 laikmena"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:588
-#, fuzzy
-#| msgctxt "Solid::Backends::UDisks2::Manager|"
-#| msgid "Storage devices"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Storage Media"
-msgstr "Saugojimo įrenginiai"
+msgstr "Saugyklos laikmena"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:732
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "You are not authorized to perform this operation"
-msgstr "Jums neleidžiama vykdyti šią operaciją"
+msgstr "Jūs neturite įgaliojimų atlikti šios operacijos"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:734
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is currently busy"
-msgstr "Įrenginio šuo metu užimtas"
+msgstr "Įrenginys šiuo metu yra užimtas"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:736
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The requested operation has failed"
-msgstr "Prašyta operacija nepavyko"
+msgstr "Prašyta operacija patyrė nesėkmę"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:738
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The requested operation has been canceled"
-msgstr "Prašyta operacija buvo atšaukta"
+msgstr "Prašyta operacija buvo nutraukta"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:740
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -580,14 +556,13 @@ msgid ""
 "Cannot request authentication for this action. The PolicyKit authentication "
 "system appears to be not available."
 msgstr ""
+"Nepavyksta prašyti patvirtinti tapatybę šiam veiksmui atlikti. Atrodo, kad "
+"PolicyKit tapatybės nustatymo sistema yra neprieinama."
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:760
-#, fuzzy
-#| msgctxt "Solid::Backends::UDisks2::Device|"
-#| msgid "The requested operation has been canceled"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The authentication prompt was canceled"
-msgstr "Prašyta operacija buvo atšaukta"
+msgstr "Užklausos nustatyti tapatybę buvo atsisakyta"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:762
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -602,13 +577,13 @@ msgstr "Saugykla"
 #: solid/devices/backends/udisks2/udisksmanager.cpp:76
 msgctxt "Solid::Backends::UDisks2::Manager|"
 msgid "Storage devices"
-msgstr "Saugojimo įrenginiai"
+msgstr "Saugyklos įrenginiai"
 
 #: solid/devices/backends/upower/upowerdevice.cpp:119
 #, qt-format
 msgctxt "Solid::Backends::UPower::UPowerDevice|%1 is battery technology"
 msgid "%1 Battery"
-msgstr "%1 Baterija"
+msgstr "%1 akumuliatorius"
 
 #: solid/devices/backends/upower/upowerdevice.cpp:134
 #: solid/devices/backends/upower/upowerdevice.cpp:148
@@ -735,7 +710,7 @@ msgstr "Fotoaparatas"
 #: solid/devices/frontend/deviceinterface.cpp:73
 msgctxt "Solid::DeviceInterface|Portable Media Player device type"
 msgid "Portable Media Player"
-msgstr "Nešiojamas medija grotuvas"
+msgstr "Nešiojama medijos leistuvė"
 
 #: solid/devices/frontend/deviceinterface.cpp:75
 msgctxt "Solid::DeviceInterface|Battery device type"
@@ -837,20 +812,16 @@ msgid ""
 msgstr "             # Jei įmanoma, prijunkite įrenginį atitinkantį „udi“.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:274
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # Listen to all add/remove events on supported hardware."
 msgctxt "solid-hardware|"
 msgid "             # Listen to all add/remove events on supported hardware.\n"
 msgstr ""
-"             # Klausyti visų prijungimo/atjungimo įvykių palaikomiems "
-"įrenginiams."
+"             # Klausyti visų pridėjimo/šalinimo įvykių palaikomoje "
+"aparatinėje įrangoje.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:277
 msgctxt "solid-hardware|"
 msgid "             # Monitor devices for changes.\n"
-msgstr ""
+msgstr "             # Stebėti, ar yra pakeitimų su įrenginiais.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:289
 msgctxt "solid-hardware|"
@@ -865,7 +836,7 @@ msgstr "Komanda vykdymui"
 #: tools/solid-hardware/solid-hardware.cpp:294
 msgctxt "solid-hardware|"
 msgid "Show available commands"
-msgstr "Rodyti galimas komandas"
+msgstr "Rodyti prieinamas komandas"
 
 #: tools/solid-hardware/solid-hardware.cpp:316
 msgctxt "solid-hardware|"
@@ -875,7 +846,7 @@ msgstr "Rodyti įrenginio informaciją"
 #: tools/solid-hardware/solid-hardware.cpp:317
 msgctxt "solid-hardware|"
 msgid "Show non portable information"
-msgstr "Rodyti ne perkeliamą informaciją"
+msgstr "Rodyti neperkeliamą informaciją"
 
 #: tools/solid-hardware/solid-hardware.cpp:330
 msgctxt "solid-hardware|"
@@ -909,7 +880,7 @@ msgstr "Klaida: %1"
 #: tools/solid-power/main.cpp:22
 msgctxt "solid-power|"
 msgid "Tool to know and set the power management state of your device"
-msgstr "Įrankis žinoti ir valdyti Jūsų įrenginio energijos būsenas"
+msgstr "Įrankis, pažinti ir valdyti įrenginio maitinimo būsenas"
 
 #: tools/solid-power/main.cpp:24
 msgctxt "solid-power|"
@@ -919,7 +890,7 @@ msgstr "Komanda vykdymui"
 #: tools/solid-power/main.cpp:26
 msgctxt "solid-power|"
 msgid "Show available commands"
-msgstr "Rodyti galimas komandas"
+msgstr "Rodyti prieinamas komandas"
 
 #: tools/solid-power/main.cpp:35
 msgctxt "solid-power|"
@@ -928,7 +899,7 @@ msgid ""
 "             # - acPlugged: whether the device is connected to the AC or "
 "not\n"
 msgstr ""
-"             # Rodyti visą sistemos energijos tvarkymo informaciją.\n"
+"             # Rodyti visą sistemos maitinimo valdymo informaciją.\n"
 "             # - acPrijungta: kai įrenginys yra ar nėra prijungtas prie "
 "maitinimo\n"
 
