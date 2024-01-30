@@ -575,45 +575,45 @@ msgctxt "Solid::Backends::UDisks2::Manager|"
 msgid "Storage devices"
 msgstr "저장소 장치"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:119
+#: solid/devices/backends/upower/upowerdevice.cpp:117
 #, qt-format
 msgctxt "Solid::Backends::UPower::UPowerDevice|%1 is battery technology"
 msgid "%1 Battery"
 msgstr "%1 배터리"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:134
+#: solid/devices/backends/upower/upowerdevice.cpp:132
+#: solid/devices/backends/upower/upowerdevice.cpp:146
 #: solid/devices/backends/upower/upowerdevice.cpp:148
-#: solid/devices/backends/upower/upowerdevice.cpp:150
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Unknown"
 msgstr "알 수 없음"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:136
+#: solid/devices/backends/upower/upowerdevice.cpp:134
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Ion"
 msgstr "리튬 이온"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:138
+#: solid/devices/backends/upower/upowerdevice.cpp:136
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Polymer"
 msgstr "리튬 이온 폴리머"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:140
+#: solid/devices/backends/upower/upowerdevice.cpp:138
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Iron Phosphate"
 msgstr "리튬 이온"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:142
+#: solid/devices/backends/upower/upowerdevice.cpp:140
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lead Acid"
 msgstr "납 산"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:144
+#: solid/devices/backends/upower/upowerdevice.cpp:142
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Cadmium"
 msgstr "니켈 카드뮴"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:146
+#: solid/devices/backends/upower/upowerdevice.cpp:144
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Metal Hydride"
 msgstr "니켈 수소"

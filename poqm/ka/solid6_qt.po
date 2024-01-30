@@ -570,45 +570,45 @@ msgctxt "Solid::Backends::UDisks2::Manager|"
 msgid "Storage devices"
 msgstr "საცავი მოწყობილობები"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:119
+#: solid/devices/backends/upower/upowerdevice.cpp:117
 #, qt-format
 msgctxt "Solid::Backends::UPower::UPowerDevice|%1 is battery technology"
 msgid "%1 Battery"
 msgstr "%1 ელემენტი"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:134
+#: solid/devices/backends/upower/upowerdevice.cpp:132
+#: solid/devices/backends/upower/upowerdevice.cpp:146
 #: solid/devices/backends/upower/upowerdevice.cpp:148
-#: solid/devices/backends/upower/upowerdevice.cpp:150
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Unknown"
 msgstr "უცნობი"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:136
+#: solid/devices/backends/upower/upowerdevice.cpp:134
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Ion"
 msgstr "ლითიუმის ელემენტი"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:138
+#: solid/devices/backends/upower/upowerdevice.cpp:136
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Polymer"
 msgstr "ლითიუმ-პოლიმერი"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:140
+#: solid/devices/backends/upower/upowerdevice.cpp:138
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Iron Phosphate"
 msgstr "ლითიუმ-რკინის ფოსფატი"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:142
+#: solid/devices/backends/upower/upowerdevice.cpp:140
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lead Acid"
 msgstr "ტყვია-მჟავა"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:144
+#: solid/devices/backends/upower/upowerdevice.cpp:142
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Cadmium"
 msgstr "ნიკელ კადმიუმი"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:146
+#: solid/devices/backends/upower/upowerdevice.cpp:144
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Metal Hydride"
 msgstr "ნიკელის ლითონის ჰიდრიდი"

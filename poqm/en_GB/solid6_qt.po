@@ -576,45 +576,45 @@ msgctxt "Solid::Backends::UDisks2::Manager|"
 msgid "Storage devices"
 msgstr "Storage devices"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:119
+#: solid/devices/backends/upower/upowerdevice.cpp:117
 #, qt-format
 msgctxt "Solid::Backends::UPower::UPowerDevice|%1 is battery technology"
 msgid "%1 Battery"
 msgstr "%1 Battery"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:134
+#: solid/devices/backends/upower/upowerdevice.cpp:132
+#: solid/devices/backends/upower/upowerdevice.cpp:146
 #: solid/devices/backends/upower/upowerdevice.cpp:148
-#: solid/devices/backends/upower/upowerdevice.cpp:150
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Unknown"
 msgstr "Unknown"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:136
+#: solid/devices/backends/upower/upowerdevice.cpp:134
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Ion"
 msgstr "Lithium Ion"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:138
+#: solid/devices/backends/upower/upowerdevice.cpp:136
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Polymer"
 msgstr "Lithium Polymer"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:140
+#: solid/devices/backends/upower/upowerdevice.cpp:138
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Iron Phosphate"
 msgstr "Lithium Iron Phosphate"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:142
+#: solid/devices/backends/upower/upowerdevice.cpp:140
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lead Acid"
 msgstr "Lead Acid"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:144
+#: solid/devices/backends/upower/upowerdevice.cpp:142
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Cadmium"
 msgstr "Nickel Cadmium"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:146
+#: solid/devices/backends/upower/upowerdevice.cpp:144
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Metal Hydride"
 msgstr "Nickel Metal Hydride"

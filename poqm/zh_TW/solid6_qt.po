@@ -577,45 +577,45 @@ msgctxt "Solid::Backends::UDisks2::Manager|"
 msgid "Storage devices"
 msgstr "儲存裝置"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:119
+#: solid/devices/backends/upower/upowerdevice.cpp:117
 #, qt-format
 msgctxt "Solid::Backends::UPower::UPowerDevice|%1 is battery technology"
 msgid "%1 Battery"
 msgstr "%1電池"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:134
+#: solid/devices/backends/upower/upowerdevice.cpp:132
+#: solid/devices/backends/upower/upowerdevice.cpp:146
 #: solid/devices/backends/upower/upowerdevice.cpp:148
-#: solid/devices/backends/upower/upowerdevice.cpp:150
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Unknown"
 msgstr "未知"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:136
+#: solid/devices/backends/upower/upowerdevice.cpp:134
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Ion"
 msgstr "鋰離子"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:138
+#: solid/devices/backends/upower/upowerdevice.cpp:136
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Polymer"
 msgstr "鋰聚合物"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:140
+#: solid/devices/backends/upower/upowerdevice.cpp:138
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Iron Phosphate"
 msgstr "鋰鐵磷化合物"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:142
+#: solid/devices/backends/upower/upowerdevice.cpp:140
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lead Acid"
 msgstr "鉛酸"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:144
+#: solid/devices/backends/upower/upowerdevice.cpp:142
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Cadmium"
 msgstr "鎳鎘"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:146
+#: solid/devices/backends/upower/upowerdevice.cpp:144
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Metal Hydride"
 msgstr "鎳金屬氫化物"

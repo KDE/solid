@@ -703,20 +703,20 @@ msgctxt "Solid::Backends::UDisks2::Manager|"
 msgid "Storage devices"
 msgstr "ストレージデバイス"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:119
+#: solid/devices/backends/upower/upowerdevice.cpp:117
 #, qt-format
 msgctxt "Solid::Backends::UPower::UPowerDevice|%1 is battery technology"
 msgid "%1 Battery"
 msgstr "%1 バッテリ"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:134
+#: solid/devices/backends/upower/upowerdevice.cpp:132
+#: solid/devices/backends/upower/upowerdevice.cpp:146
 #: solid/devices/backends/upower/upowerdevice.cpp:148
-#: solid/devices/backends/upower/upowerdevice.cpp:150
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Unknown"
 msgstr "不明"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:136
+#: solid/devices/backends/upower/upowerdevice.cpp:134
 #, fuzzy
 #| msgctxt "battery technology"
 #| msgid "Lithium Ion"
@@ -724,7 +724,7 @@ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Ion"
 msgstr "リチウムイオン"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:138
+#: solid/devices/backends/upower/upowerdevice.cpp:136
 #, fuzzy
 #| msgctxt "battery technology"
 #| msgid "Lithium Polymer"
@@ -732,7 +732,7 @@ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Polymer"
 msgstr "リチウムポリマー"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:140
+#: solid/devices/backends/upower/upowerdevice.cpp:138
 #, fuzzy
 #| msgctxt "battery technology"
 #| msgid "Lithium Ion"
@@ -740,12 +740,12 @@ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Iron Phosphate"
 msgstr "リチウムイオン"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:142
+#: solid/devices/backends/upower/upowerdevice.cpp:140
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lead Acid"
 msgstr ""
 
-#: solid/devices/backends/upower/upowerdevice.cpp:144
+#: solid/devices/backends/upower/upowerdevice.cpp:142
 #, fuzzy
 #| msgctxt "battery technology"
 #| msgid "Nickel Cadmium"
@@ -753,7 +753,7 @@ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Cadmium"
 msgstr "ニッカド"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:146
+#: solid/devices/backends/upower/upowerdevice.cpp:144
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Metal Hydride"
 msgstr ""

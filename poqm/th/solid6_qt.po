@@ -750,7 +750,7 @@ msgctxt "Solid::Backends::UDisks2::Manager|"
 msgid "Storage devices"
 msgstr "อุปกรณ์สื่อจัดเก็บข้อมูล"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:119
+#: solid/devices/backends/upower/upowerdevice.cpp:117
 #, fuzzy, qt-format
 #| msgctxt "%1 is battery technology"
 #| msgid "%1 Battery"
@@ -758,9 +758,9 @@ msgctxt "Solid::Backends::UPower::UPowerDevice|%1 is battery technology"
 msgid "%1 Battery"
 msgstr "แบตเตอรี่แบบ %1"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:134
+#: solid/devices/backends/upower/upowerdevice.cpp:132
+#: solid/devices/backends/upower/upowerdevice.cpp:146
 #: solid/devices/backends/upower/upowerdevice.cpp:148
-#: solid/devices/backends/upower/upowerdevice.cpp:150
 #, fuzzy
 #| msgctxt "battery technology"
 #| msgid "Unknown"
@@ -768,7 +768,7 @@ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Unknown"
 msgstr "ไม่ทราบ"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:136
+#: solid/devices/backends/upower/upowerdevice.cpp:134
 #, fuzzy
 #| msgctxt "battery technology"
 #| msgid "Lithium Ion"
@@ -776,7 +776,7 @@ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Ion"
 msgstr "ลิเธียมไอออน"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:138
+#: solid/devices/backends/upower/upowerdevice.cpp:136
 #, fuzzy
 #| msgctxt "battery technology"
 #| msgid "Lithium Polymer"
@@ -784,7 +784,7 @@ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Polymer"
 msgstr "ลิเธียมโพลิเมอร์"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:140
+#: solid/devices/backends/upower/upowerdevice.cpp:138
 #, fuzzy
 #| msgctxt "battery technology"
 #| msgid "Lithium Iron Phosphate"
@@ -792,7 +792,7 @@ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Iron Phosphate"
 msgstr "ลิเธียมไอออนฟอสเฟต"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:142
+#: solid/devices/backends/upower/upowerdevice.cpp:140
 #, fuzzy
 #| msgctxt "battery technology"
 #| msgid "Lead Acid"
@@ -800,7 +800,7 @@ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lead Acid"
 msgstr "ตะกั่วและกรด"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:144
+#: solid/devices/backends/upower/upowerdevice.cpp:142
 #, fuzzy
 #| msgctxt "battery technology"
 #| msgid "Nickel Cadmium"
@@ -808,7 +808,7 @@ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Cadmium"
 msgstr "นิกเกิลแคดเมียม"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:146
+#: solid/devices/backends/upower/upowerdevice.cpp:144
 #, fuzzy
 #| msgctxt "battery technology"
 #| msgid "Nickel Metal Hydride"
