@@ -12,7 +12,6 @@
 #include <QDBusConnection>
 #include <QDBusInterface>
 #include <QDir>
-#include <QDomDocument>
 #include <QGuiApplication>
 #include <QWindow>
 
@@ -364,32 +363,7 @@ QString StorageAccess::generateReturnObjectPath()
 
 QString StorageAccess::clearTextPath() const
 {
-    QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, //
-                                                       UD2_DBUS_PATH_BLOCKDEVICES,
-                                                       DBUS_INTERFACE_INTROSPECT,
-                                                       "Introspect");
-    QDBusPendingReply<QString> reply = QDBusConnection::systemBus().asyncCall(call);
-    reply.waitForFinished();
-
-    if (reply.isValid()) {
-        QDomDocument dom;
-        dom.setContent(reply.value());
-        QDomNodeList nodeList = dom.documentElement().elementsByTagName("node");
-        for (int i = 0; i < nodeList.count(); i++) {
-            QDomElement nodeElem = nodeList.item(i).toElement();
-            if (!nodeElem.isNull() && nodeElem.hasAttribute("name")) {
-                const QString udi = UD2_DBUS_PATH_BLOCKDEVICES + QLatin1Char('/') + nodeElem.attribute("name");
-                Device holderDevice(udi);
-
-                if (m_device->udi() == holderDevice.prop("CryptoBackingDevice").value<QDBusObjectPath>().path()) {
-                    // qDebug() << Q_FUNC_INFO << "CLEARTEXT device path: " << udi;
-                    return udi;
-                }
-            }
-        }
-    }
-
-    return QString();
+    return m_device->prop("CleartextDevice").value<QDBusObjectPath>().path();
 }
 
 bool StorageAccess::requestPassphrase()
