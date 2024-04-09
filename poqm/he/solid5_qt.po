@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2024-03-08 06:42+0200\n"
+"PO-Revision-Date: 2024-04-08 18:54+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.4\n"
+"X-Generator: Lokalize 23.08.5\n"
 "X-Qt-Contexts: true\n"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:60
@@ -37,10 +37,9 @@ msgid "Filesystem Volumes"
 msgstr "כרכי מערכת קבצים"
 
 #: solid/devices/backends/fstab/fstabmanager.cpp:81
-#, fuzzy
 msgctxt "Solid::Backends::Fstab::FstabManager|"
 msgid "Mountable filesystems declared in your system"
-msgstr "התקנים מוגדרים במערכת שלך"
+msgstr "מערכות קבצים שניתן לעגן ומוכרזות במערכת שלך"
 
 #: solid/devices/backends/imobile/imobiledevice.cpp:90
 msgctxt "imobiledevice|Company name"
@@ -48,90 +47,79 @@ msgid "Apple"
 msgstr "Apple"
 
 #: solid/devices/backends/imobile/imobilemanager.cpp:61
-#, fuzzy
 msgctxt "Solid::Backends::IMobile::Manager|"
 msgid "iDevice"
-msgstr "התקנים"
+msgstr "התקני Apple"
 
 #: solid/devices/backends/imobile/imobilemanager.cpp:62
-#, fuzzy
-#| msgctxt "Solid::Backends::UDisks2::Manager|"
-#| msgid "Storage devices"
 msgctxt "Solid::Backends::IMobile::Manager|"
 msgid "iOS devices"
-msgstr "אמצעי אחסון"
+msgstr "התקני iOS"
 
 #: solid/devices/backends/udev/udevdevice.cpp:100
-#, fuzzy
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Computer"
 msgstr "מחשב"
 
 #: solid/devices/backends/udev/udevdevice.cpp:104
-#, fuzzy
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Processor"
 msgstr "מעבד"
 
 #: solid/devices/backends/udev/udevdevice.cpp:115
-#, fuzzy
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Portable Media Player"
-msgstr "נגן נדיה נייד"
+msgstr "נגן מדיה נייד"
 
 #: solid/devices/backends/udev/udevdevice.cpp:118
-#, fuzzy
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Camera"
 msgstr "מצלמה"
 
 #: solid/devices/backends/udev/udevmanager.cpp:220
-#, fuzzy
 msgctxt "Solid::Backends::UDev::UDevManager|"
 msgid "Devices"
 msgstr "התקנים"
 
 #: solid/devices/backends/udev/udevmanager.cpp:221
-#, fuzzy
 msgctxt "Solid::Backends::UDev::UDevManager|"
 msgid "Devices declared in your system"
-msgstr "התקנים מוגדרים במערכת שלך"
+msgstr "התקנים מוכרזים במערכת שלך"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:43
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 TiB"
-msgstr "%1 ט\"ב"
+msgstr "%1 TiB"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:45
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 GiB"
-msgstr "%1 ג\"ב"
+msgstr "%1 GiB"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:51
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 MiB"
-msgstr "%1 מ\"ב"
+msgstr "%1 MiB"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:56
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 KiB"
-msgstr "%1 ק\"ב"
+msgstr "%1 KiB"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:60
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 B"
-msgstr "%1 ב'"
+msgstr "%1 ב׳"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:64
-#, fuzzy
 msgctxt "udisksdevice|"
 msgid "0 B"
-msgstr "0 ב'"
+msgstr "0 ב׳"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:75
 #, fuzzy, qt-format
@@ -619,12 +607,12 @@ msgstr "ההתקן בשימוש."
 #: solid/devices/backends/udisks2/udisksdevice.cpp:752
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The operation timed out"
-msgstr ""
+msgstr "הזמן שהוקצב לפעולה תם"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:754
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The operation would wake up a disk that is in a deep-sleep state"
-msgstr ""
+msgstr "הפעולה תעיר כונן ממצב שינה עמוקה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:756
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -636,7 +624,7 @@ msgctxt "Solid::Backends::UDisks2::Device|"
 msgid ""
 "Cannot request authentication for this action. The PolicyKit authentication "
 "system appears to be not available."
-msgstr ""
+msgstr "לא ניתן לבקש אימות. נראה שמערכת האימות PolicyKit לא זמינה."
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:760
 #, fuzzy
@@ -690,7 +678,7 @@ msgstr "ליתיום יון (Lithium Ion)"
 #: solid/devices/backends/upower/upowerdevice.cpp:142
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lead Acid"
-msgstr ""
+msgstr "עופרת חומצה"
 
 #: solid/devices/backends/upower/upowerdevice.cpp:144
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
@@ -720,7 +708,7 @@ msgstr "ליתיום יון (Lithium Ion)"
 #: solid/devices/backends/win/windevice.cpp:161
 msgctxt "Solid::Backends::Win::WinDevice|battery technology"
 msgid "Lead Acid"
-msgstr ""
+msgstr "עופרת חומצה"
 
 #: solid/devices/backends/win/windevice.cpp:164
 msgctxt "Solid::Backends::Win::WinDevice|battery technology"
@@ -812,7 +800,7 @@ msgstr "התקנים"
 #: tools/solid-hardware/solid-hardware.cpp:230 tools/solid-power/main.cpp:32
 msgctxt "solid-hardware|"
 msgid "Syntax:"
-msgstr ""
+msgstr "תחביר:"
 
 #: tools/solid-hardware/solid-hardware.cpp:233
 msgctxt "solid-hardware|"
@@ -828,6 +816,14 @@ msgid ""
 "             # neutral fashion,\n"
 "             # - Otherwise only device UDIs are listed.\n"
 msgstr ""
+"             # הצגת החומרה שזמינה במערכת.\n"
+"             # - אם צוינה האפשרות ‚nonportableinfo’ יופיעו מאפייני\n"
+"             # ההתקן (כדאי להיזהר, במקרה כזה שמות המאפיינים תלויים\n"
+"             # במנגנון),\n"
+"             # - אם צוינה האפשרות 'details' ממשקי ההתקן והמאפיינים\n"
+"             # המתאימים מופיעים בצורה שאינה\n"
+"             # תלויה בפלטפורמה,\n"
+"             # - אחרת יוצגו רק UDIs (מזהי התקן ייחודיים) של התקנים.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:245
 msgctxt "solid-hardware|"
@@ -835,6 +831,8 @@ msgid ""
 "             # Display all the interfaces and properties of the device\n"
 "             # corresponding to 'udi' in a platform neutral fashion.\n"
 msgstr ""
+"             # הצגת כל הממשקים והמאפיינים של ההתקן\n"
+"             # שעונה על ה־‚udi’ בצורה שמתעלמת מהבדלי פלטפורמות.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:251
 msgctxt "solid-hardware|"
@@ -844,6 +842,8 @@ msgid ""
 "             # (be careful, in this case property names are backend "
 "dependent).\n"
 msgstr ""
+"             # הצגת כל המאפיינים של ההתקן שעונה על ה־‚udi’\n"
+"             # (רצוי להיזהר, במקרה זה שמות המאפיינים תלויים במנגנון).\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:257
 msgctxt "solid-hardware|"
@@ -854,59 +854,68 @@ msgid ""
 "             # branch of the corresponding device,\n"
 "             # - Otherwise the search is done on all the devices.\n"
 msgstr ""
+"             # רשימת ה־UDI (מזהי התקנים ייחודיים) של התקנים שעונים על "
+"‚predicate’.\n"
+"             # - אם צוין ‚parentUdi’ החיפוש מוגבל לענף של\n"
+"             # ההתקן התואם,\n"
+"             # - אחרת החיפוש מתבצע מול כל ההתקנים.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:265
 msgctxt "solid-hardware|"
 msgid ""
 "             # If applicable, mount the device corresponding to 'udi'.\n"
 msgstr ""
+"             # אם אפשר, לעגן את ההתקן שתואם ל־‚udi’ (מזהה התקן ייחודי).\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:268
 msgctxt "solid-hardware|"
 msgid ""
 "             # If applicable, unmount the device corresponding to 'udi'.\n"
 msgstr ""
+"             # אם אפשר, לנתק את עיגון ההתקן שתואם ל־‚udi’ (מזהה התקן "
+"ייחודי).\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:271
 msgctxt "solid-hardware|"
 msgid ""
 "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgstr ""
+"             # אם אפשר, לשלוף את ההתקן שתואם ל־‚udi’ (מזהה התקן ייחודי).\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:274
 msgctxt "solid-hardware|"
 msgid "             # Listen to all add/remove events on supported hardware.\n"
-msgstr ""
+msgstr "             # האזנה לכל אירועי הוספה/הסרה של חומרה נתמכת.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:277
 msgctxt "solid-hardware|"
 msgid "             # Monitor a devices for changes.\n"
-msgstr ""
+msgstr "             # מעקב אחר שינויים בהתקנים.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:289
 msgctxt "solid-hardware|"
 msgid "KDE tool for querying your hardware from the command line"
-msgstr ""
+msgstr "כלי של KDE לתשאול החומרה שלך משורת הפקודה"
 
 #: tools/solid-hardware/solid-hardware.cpp:292
 msgctxt "solid-hardware|"
 msgid "Command to execute"
-msgstr ""
+msgstr "פקודה להרצה"
 
 #: tools/solid-hardware/solid-hardware.cpp:294
 msgctxt "solid-hardware|"
 msgid "Show available commands"
-msgstr ""
+msgstr "הצגת פקודות זמינות"
 
 #: tools/solid-hardware/solid-hardware.cpp:316
 msgctxt "solid-hardware|"
 msgid "Show device details"
-msgstr ""
+msgstr "הצגת פרטי התקנים"
 
 #: tools/solid-hardware/solid-hardware.cpp:317
 msgctxt "solid-hardware|"
 msgid "Show non portable information"
-msgstr ""
+msgstr "הצגת מידע שאינו נייד"
 
 #: tools/solid-hardware/solid-hardware.cpp:330
 #, fuzzy
@@ -918,40 +927,40 @@ msgstr "התקני UPnP"
 #, qt-format
 msgctxt "solid-hardware|"
 msgid "Syntax Error: Unknown command '%1'"
-msgstr ""
+msgstr "שגיאת תחביר: הפקודה ‚%1’ לא ידועה"
 
 #: tools/solid-hardware/solid-hardware.cpp:422
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1 does not have the interface StorageAccess."
-msgstr ""
+msgstr "שגיאה: ל־%1 אין את הממשק לגישה לאחסון."
 
 #: tools/solid-hardware/solid-hardware.cpp:425
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1 does not have the interface OpticalDrive."
-msgstr ""
+msgstr "שגיאה: ל־%1 אין את הממשק לכונן אופטי."
 
 #: tools/solid-hardware/solid-hardware.cpp:456
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1"
-msgstr ""
+msgstr "שגיאה: %1"
 
 #: tools/solid-power/main.cpp:22
 msgctxt "solid-power|"
 msgid "Tool to know and set the power management state of your device"
-msgstr ""
+msgstr "כלי לאיתור והגדרת מצב ניהול צריכת החשמל של המכשיר שלך"
 
 #: tools/solid-power/main.cpp:24
 msgctxt "solid-power|"
 msgid "Command to execute"
-msgstr ""
+msgstr "פקודה להרצה"
 
 #: tools/solid-power/main.cpp:26
 msgctxt "solid-power|"
 msgid "Show available commands"
-msgstr ""
+msgstr "הצגת פקודות זמינות"
 
 #: tools/solid-power/main.cpp:35
 msgctxt "solid-power|"
@@ -960,6 +969,8 @@ msgid ""
 "             # - acPlugged: whether the device is connected to the AC or "
 "not\n"
 msgstr ""
+"             # הצגת כל פרטי ניהול צריכת החשמל מהמערכת.\n"
+"             # - acPlugged: האם המחשב מחובר לחשמל או לא\n"
 
 #, fuzzy
 #~ msgctxt "Solid::Backends::Hal::HalDevice|"
