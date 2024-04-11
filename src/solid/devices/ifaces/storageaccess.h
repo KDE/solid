@@ -75,6 +75,38 @@ public:
      */
     virtual bool teardown() = 0;
 
+    /**
+     * Indicates if this volume can check for filesystem errors.
+     *
+     * @return true if the volume is can be checked
+     */
+    virtual bool canCheck() const;
+
+    /**
+     * Checks the filesystem for consistency avoiding any modifications or repairs.
+     *
+     * Mounted or unsupported filesystems will result in an error.
+     *
+     * @return Whether the filesystem is undamaged.
+     */
+    virtual bool check();
+
+    /**
+     * Indicates if this volume can repair filesystem errors.
+     *
+     * @return true if the volume is can be repaired
+     */
+    virtual bool canRepair() const;
+
+    /**
+     * Tries to repair the filesystem.
+     *
+     * Mounted or unsupported filesystems will result in an error.
+     *
+     * @return Whether the filesystem could be successfully repaired
+     */
+    virtual bool repair();
+
 protected:
     // Q_SIGNALS:
     /**
@@ -121,6 +153,25 @@ protected:
      * @param udi the UDI of the volume
      */
     virtual void teardownRequested(const QString &udi) = 0;
+
+    /**
+     * This signal is emitted when a repair of this device is requested.
+     * The signal might be spontaneous i.e. it can be triggered by
+     * another process.
+     *
+     * @param udi the UDI of the volume
+     */
+    virtual void repairRequested(const QString &udi);
+
+    /**
+     * This signal is emitted when the attempted repaired of this
+     * device is completed.
+     *
+     * @param error type of error that occurred, if any
+     * @param errorData more information about the error, if any
+     * @param udi the UDI of the volume
+     */
+    virtual void repairDone(Solid::ErrorType error, QVariant resultData, const QString &udi);
 };
 }
 }

@@ -31,7 +31,7 @@ public:
     bool listen();
     bool monitor(const QString &udi);
 
-    enum VolumeCallType { Mount, Unmount, Eject };
+    enum VolumeCallType { Mount, Unmount, Eject, CanCheck, Check, CanRepair, Repair };
     bool hwVolumeCall(VolumeCallType type, const QString &udi);
 
 private:

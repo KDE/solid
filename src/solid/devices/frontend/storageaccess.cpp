@@ -19,6 +19,9 @@ Solid::StorageAccess::StorageAccess(QObject *backendObject)
     connect(backendObject, SIGNAL(teardownRequested(QString)), this, SIGNAL(teardownRequested(QString)));
 
     connect(backendObject, SIGNAL(accessibilityChanged(bool, QString)), this, SIGNAL(accessibilityChanged(bool, QString)));
+
+    connect(backendObject, SIGNAL(repairRequested(QString)), this, SIGNAL(repairRequested(QString)));
+    connect(backendObject, SIGNAL(repairDone(Solid::ErrorType, QVariant, QString)), this, SIGNAL(repairDone(Solid::ErrorType, QVariant, QString)));
 }
 
 Solid::StorageAccess::StorageAccess(StorageAccessPrivate &dd, QObject *backendObject)
@@ -36,6 +39,9 @@ Solid::StorageAccess::StorageAccess(StorageAccessPrivate &dd, QObject *backendOb
     connect(backendObject, SIGNAL(teardownRequested(QString)), this, SIGNAL(teardownRequested(QString)));
 
     connect(backendObject, SIGNAL(accessibilityChanged(bool, QString)), this, SIGNAL(accessibilityChanged(bool, QString)));
+
+    connect(backendObject, SIGNAL(repairRequested(QString)), this, SIGNAL(repairRequested(QString)));
+    connect(backendObject, SIGNAL(repairDone(Solid::ErrorType, QVariant, QString)), this, SIGNAL(repairDone(Solid::ErrorType, QVariant, QString)));
 }
 
 Solid::StorageAccess::~StorageAccess()
@@ -76,6 +82,30 @@ bool Solid::StorageAccess::isEncrypted() const
 {
     Q_D(const StorageAccess);
     return_SOLID_CALL(Ifaces::StorageAccess *, d->backendObject(), false, isEncrypted());
+}
+
+bool Solid::StorageAccess::canCheck() const
+{
+    Q_D(const StorageAccess);
+    return_SOLID_CALL(Ifaces::StorageAccess *, d->backendObject(), false, canCheck());
+}
+
+bool Solid::StorageAccess::check()
+{
+    Q_D(StorageAccess);
+    return_SOLID_CALL(Ifaces::StorageAccess *, d->backendObject(), false, check());
+}
+
+bool Solid::StorageAccess::canRepair() const
+{
+    Q_D(const StorageAccess);
+    return_SOLID_CALL(Ifaces::StorageAccess *, d->backendObject(), false, canRepair());
+}
+
+bool Solid::StorageAccess::repair()
+{
+    Q_D(StorageAccess);
+    return_SOLID_CALL(Ifaces::StorageAccess *, d->backendObject(), false, repair());
 }
 
 #include "moc_storageaccess.cpp"

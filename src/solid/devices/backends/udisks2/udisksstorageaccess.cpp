@@ -11,6 +11,7 @@
 
 #include <QDBusConnection>
 #include <QDBusInterface>
+#include <QDBusMetaType>
 #include <QDir>
 #include <QGuiApplication>
 #include <QWindow>
@@ -20,14 +21,39 @@
 #include <libmount/libmount.h>
 #endif
 
+struct AvailableAnswer {
+    bool checkResult;
+    QString binaryName;
+};
+Q_DECLARE_METATYPE(AvailableAnswer)
+
+QDBusArgument &operator<<(QDBusArgument &argument, const AvailableAnswer &answer)
+{
+    argument.beginStructure();
+    argument << answer.checkResult << answer.binaryName;
+    argument.endStructure();
+    return argument;
+}
+
+const QDBusArgument &operator>>(const QDBusArgument &argument, AvailableAnswer &answer)
+{
+    argument.beginStructure();
+    argument >> answer.checkResult >> answer.binaryName;
+    argument.endStructure();
+    return argument;
+}
+
 using namespace Solid::Backends::UDisks2;
 
 StorageAccess::StorageAccess(Device *device)
     : DeviceInterface(device)
     , m_setupInProgress(false)
     , m_teardownInProgress(false)
+    , m_repairInProgress(false)
     , m_passphraseRequested(false)
 {
+    qDBusRegisterMetaType<AvailableAnswer>();
+
     connect(device, SIGNAL(changed()), this, SLOT(checkAccessibility()));
     updateCache();
 
@@ -45,6 +71,8 @@ void StorageAccess::connectDBusSignals()
     m_device->registerAction("setup", this, SLOT(slotSetupRequested()), SLOT(slotSetupDone(int, QString)));
 
     m_device->registerAction("teardown", this, SLOT(slotTeardownRequested()), SLOT(slotTeardownDone(int, QString)));
+
+    m_device->registerAction("repair", this, SLOT(slotRepairRequested()), SLOT(slotRepairDone(int, QString)));
 }
 
 bool StorageAccess::isLuksDevice() const
@@ -72,6 +100,75 @@ bool StorageAccess::isEncrypted() const
     // FIXME We should also check if physical device is encrypted
     // FIXME Gocryptfs is not supported
     return isLuksDevice() || m_device->isEncryptedCleartext();
+}
+
+bool StorageAccess::canCheck() const
+{
+    const auto idType = m_device->prop("IdType").toString();
+    auto c = QDBusConnection::systemBus();
+    auto msg = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, UD2_DBUS_PATH_MANAGER, "org.freedesktop.UDisks2.Manager", "CanCheck");
+    msg << idType;
+    QDBusReply<AvailableAnswer> r = c.call(msg);
+    if (!r.isValid()) {
+        qCDebug(UDISKS2) << Q_FUNC_INFO << dbusPath() << idType << "DBus error, code" << r.error().type();
+        return false;
+    }
+
+    const bool ret = r.value().checkResult;
+    qCDebug(UDISKS2) << Q_FUNC_INFO << dbusPath() << idType << ret << r.value().binaryName;
+    return ret;
+}
+
+bool StorageAccess::check()
+{
+    if (m_setupInProgress || m_teardownInProgress) {
+        return false;
+    }
+
+    const auto path = dbusPath();
+    auto c = QDBusConnection::systemBus();
+    auto msg = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, path, UD2_DBUS_INTERFACE_FILESYSTEM, "Check");
+    QVariantMap options;
+    msg << options;
+    QDBusReply<bool> r = c.call(msg);
+    bool ret = r.isValid() && r.value();
+    qCDebug(UDISKS2) << Q_FUNC_INFO << path << ret;
+    return ret;
+}
+
+bool StorageAccess::canRepair() const
+{
+    const auto idType = m_device->prop("IdType").toString();
+    auto c = QDBusConnection::systemBus();
+    auto msg = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, UD2_DBUS_PATH_MANAGER, "org.freedesktop.UDisks2.Manager", "CanRepair");
+    msg << idType;
+    QDBusReply<AvailableAnswer> r = c.call(msg);
+    if (!r.isValid()) {
+        qCDebug(UDISKS2) << Q_FUNC_INFO << dbusPath() << idType << "DBus error, code" << r.error().type();
+        return false;
+    }
+
+    const bool ret = r.value().checkResult;
+    qCDebug(UDISKS2) << Q_FUNC_INFO << dbusPath() << idType << ret << r.value().binaryName;
+    return ret;
+}
+
+bool StorageAccess::repair()
+{
+    if (m_teardownInProgress || m_setupInProgress || m_repairInProgress) {
+        return false;
+    }
+    m_repairInProgress = true;
+    m_device->broadcastActionRequested("repair");
+
+    const auto path = dbusPath();
+    auto c = QDBusConnection::systemBus();
+    auto msg = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, path, UD2_DBUS_INTERFACE_FILESYSTEM, "Repair");
+    QVariantMap options;
+    msg << options;
+
+    qCDebug(UDISKS2) << Q_FUNC_INFO << path;
+    return c.callWithCallback(msg, this, SLOT(slotDBusReply(QDBusMessage)), SLOT(slotDBusError(QDBusError)));
 }
 
 static QString baseMountPoint(const QByteArray &dev)
@@ -173,7 +270,7 @@ bool StorageAccess::isIgnored() const
 
 bool StorageAccess::setup()
 {
-    if (m_teardownInProgress || m_setupInProgress) {
+    if (m_teardownInProgress || m_setupInProgress || m_repairInProgress) {
         return false;
     }
     m_setupInProgress = true;
@@ -188,7 +285,7 @@ bool StorageAccess::setup()
 
 bool StorageAccess::teardown()
 {
-    if (m_teardownInProgress || m_setupInProgress) {
+    if (m_teardownInProgress || m_setupInProgress || m_repairInProgress) {
         return false;
     }
     m_teardownInProgress = true;
@@ -259,6 +356,10 @@ void StorageAccess::slotDBusReply(const QDBusMessage & /*reply*/)
 
             checkAccessibility();
         }
+    } else if (m_repairInProgress) {
+        qCDebug(UDISKS2) << "Successfully repaired " << m_device->udi();
+        m_repairInProgress = false;
+        m_device->broadcastActionDone("repair");
     }
 }
 
@@ -279,6 +380,9 @@ void StorageAccess::slotDBusError(const QDBusError &error)
                                       m_device->errorToSolidError(error.name()),
                                       m_device->errorToString(error.name()) + ": " + error.message());
         checkAccessibility();
+    } else if (m_repairInProgress) {
+        m_repairInProgress = false;
+        m_device->broadcastActionDone("repair", m_device->errorToSolidError(error.name()), m_device->errorToString(error.name()) + ": " + error.message());
     }
 }
 
@@ -310,16 +414,21 @@ void StorageAccess::slotTeardownDone(int error, const QString &errorString)
     Q_EMIT teardownDone(static_cast<Solid::ErrorType>(error), errorString, m_device->udi());
 }
 
+void StorageAccess::slotRepairRequested()
+{
+    m_repairInProgress = true;
+    Q_EMIT repairRequested(m_device->udi());
+}
+
+void StorageAccess::slotRepairDone(int error, const QString &errorString)
+{
+    m_repairInProgress = false;
+    Q_EMIT repairDone(static_cast<Solid::ErrorType>(error), errorString, m_device->udi());
+}
+
 bool StorageAccess::mount()
 {
-    QString path = m_device->udi();
-
-    if (isLuksDevice()) { // mount options for the cleartext volume
-        const QString ctPath = clearTextPath();
-        if (!ctPath.isEmpty()) {
-            path = ctPath;
-        }
-    }
+    const auto path = dbusPath();
 
     QDBusConnection c = QDBusConnection::systemBus();
     QDBusMessage msg = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, path, UD2_DBUS_INTERFACE_FILESYSTEM, "Mount");
@@ -336,14 +445,7 @@ bool StorageAccess::mount()
 
 bool StorageAccess::unmount()
 {
-    QString path = m_device->udi();
-
-    if (isLuksDevice()) { // unmount options for the cleartext volume
-        const QString ctPath = clearTextPath();
-        if (!ctPath.isEmpty()) {
-            path = ctPath;
-        }
-    }
+    const auto path = dbusPath();
 
     QDBusConnection c = QDBusConnection::systemBus();
     QDBusMessage msg = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, path, UD2_DBUS_INTERFACE_FILESYSTEM, "Unmount");
@@ -364,6 +466,18 @@ QString StorageAccess::generateReturnObjectPath()
 QString StorageAccess::clearTextPath() const
 {
     return m_device->prop("CleartextDevice").value<QDBusObjectPath>().path();
+}
+
+QString StorageAccess::dbusPath() const
+{
+    QString path = m_device->udi();
+    if (isLuksDevice()) { // mount options for the cleartext volume
+        const QString ctPath = clearTextPath();
+        if (!ctPath.isEmpty()) {
+            path = ctPath;
+        }
+    }
+    return path;
 }
 
 bool StorageAccess::requestPassphrase()

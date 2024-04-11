@@ -116,6 +116,39 @@ public:
      */
     bool teardown();
 
+    /**
+     * Indicates if this volume can check for filesystem errors.
+     *
+     * @return true if the volume is can be checked
+     */
+    bool canCheck() const;
+
+    /**
+     * Checks the filesystem for consistency avoiding any modifications or repairs.
+     *
+     * Mounted or unsupported filesystems will result in an error.
+     *
+     * @return Whether the filesystem is undamaged.
+     */
+    bool check();
+
+    /**
+     * Indicates if the filesystem of this volume supports repair
+     * attempts. It does not indicate if such an attempt will succeed.
+     *
+     * @return true if the volume is can be repaired
+     */
+    bool canRepair() const;
+
+    /**
+     * Tries to repair the filesystem.
+     *
+     * Mounted or unsupported filesystems will result in an error.
+     *
+     * @return Whether the filesystem could be successfully repaired
+     */
+    bool repair();
+
 Q_SIGNALS:
     /**
      * This signal is emitted when the accessiblity of this device
@@ -165,6 +198,26 @@ Q_SIGNALS:
      * @param udi the UDI of the volume
      */
     void teardownRequested(const QString &udi);
+
+    /**
+     * This signal is emitted when a repair of this device is requested.
+     * The signal might be spontaneous i.e. it can be triggered by
+     * another process.
+     *
+     * @param udi the UDI of the volume
+     */
+    void repairRequested(const QString &udi);
+
+    /**
+     * This signal is emitted when the attempted repaired of this
+     * device is completed. The signal might be spontaneous i.e.
+     * it can be triggered by another process.
+     *
+     * @param error type of error that occurred, if any
+     * @param errorData more information about the error, if any
+     * @param udi the UDI of the volume
+     */
+    void repairDone(Solid::ErrorType error, QVariant errorData, const QString &udi);
 
 protected:
     /**

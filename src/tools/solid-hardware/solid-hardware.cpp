@@ -274,7 +274,19 @@ static QString commandsHelp()
     cout << QCoreApplication::translate("solid-hardware", "             # Listen to all add/remove events on supported hardware.\n") << '\n';
 
     cout << "  solid-hardware monitor 'udi'" << '\n';
-    cout << QCoreApplication::translate("solid-hardware", "             # Monitor devices for changes.\n");
+    cout << QCoreApplication::translate("solid-hardware", "             # Monitor devices for changes.\n") << '\n';
+
+    cout << "  solid-hardware CanCheck 'udi'" << '\n';
+    cout << QCoreApplication::translate("solid-hardware", "             # Send \"CanCheck\" request to the device corresponding to 'udi'.\n") << '\n';
+
+    cout << "  solid-hardware Check 'udi'" << '\n';
+    cout << QCoreApplication::translate("solid-hardware", "             # Send \"Check\" request to the device corresponding to 'udi'.\n") << '\n';
+
+    cout << "  solid-hardware CanRepair 'udi'" << '\n';
+    cout << QCoreApplication::translate("solid-hardware", "             # Send \"CanRepair\" request to the device corresponding to 'udi'.\n") << '\n';
+
+    cout << "  solid-hardware Repair 'udi'" << '\n';
+    cout << QCoreApplication::translate("solid-hardware", "             # Send \"Repair\" request to the device corresponding to 'udi'.\n");
 
     return data;
 }
@@ -355,6 +367,18 @@ int main(int argc, char **argv)
     } else if (command == "monitor") {
         const QString udi = getUdiFromArguments(app, parser);
         return app.monitor(udi);
+    } else if (command == "CanCheck") {
+        const QString udi = getUdiFromArguments(app, parser);
+        return app.hwVolumeCall(SolidHardware::CanCheck, udi);
+    } else if (command == "Check") {
+        const QString udi = getUdiFromArguments(app, parser);
+        return app.hwVolumeCall(SolidHardware::Check, udi);
+    } else if (command == "CanRepair") {
+        const QString udi = getUdiFromArguments(app, parser);
+        return app.hwVolumeCall(SolidHardware::CanRepair, udi);
+    } else if (command == "Repair") {
+        const QString udi = getUdiFromArguments(app, parser);
+        return app.hwVolumeCall(SolidHardware::Repair, udi);
     }
 
     cerr << QCoreApplication::translate("solid-hardware", "Syntax Error: Unknown command '%1'").arg(command) << endl;
@@ -447,6 +471,29 @@ bool SolidHardware::hwVolumeCall(SolidHardware::VolumeCallType type, const QStri
                 this,
                 SLOT(slotStorageResult(Solid::ErrorType, QVariant)));
         device.as<Solid::OpticalDrive>()->eject();
+        break;
+    case CanCheck:
+        cout << tr("Device CanCheck: %1").arg(device.as<Solid::StorageAccess>()->canCheck() == 0 ? tr("no") : tr("yes")) << endl;
+        cout << "udi = '" << udi << "'" << endl;
+        return true;
+    case Check:
+        if (device.as<Solid::StorageAccess>()->canCheck()) {
+            cout << tr("Device Check: %1").arg(device.as<Solid::StorageAccess>()->check() == 0 ? tr("has error") : tr("no error")) << endl;
+        } else {
+            cout << tr("Device Check: operation is not supported") << endl;
+        }
+        cout << "udi = '" << udi << "'" << endl;
+        return true;
+    case CanRepair:
+        cout << tr("Device CanRepair: %1").arg(device.as<Solid::StorageAccess>()->canRepair() == 0 ? tr("no") : tr("yes")) << endl;
+        cout << "udi = '" << udi << "'" << endl;
+        return true;
+    case Repair:
+        connect(device.as<Solid::StorageAccess>(),
+                SIGNAL(repairDone(Solid::ErrorType, QVariant, QString)),
+                this,
+                SLOT(slotStorageResult(Solid::ErrorType, QVariant)));
+        device.as<Solid::StorageAccess>()->repair();
         break;
     }
 
