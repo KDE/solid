@@ -20,7 +20,6 @@
 #include "soliddefs_p.h"
 
 #include <QDir>
-#include <QFileInfo>
 #include <QLoggingCategory>
 
 #include <set>
@@ -168,10 +167,6 @@ QList<Solid::Device> Solid::Device::listFromQuery(const Predicate &predicate, co
 
 Solid::Device Solid::Device::storageAccessFromPath(const QString &path)
 {
-    if (!QFileInfo::exists(path)) {
-        qCWarning(Frontend::DeviceManager::DEVICEMANAGER).nospace() << "Couldn't get StorageAccess for \"" << path << "\" - File doesn't exist";
-        return Device();
-    }
     // We ensure file and all mount paths are with trailing dir separators, to avoid false positive matches later
     QString trailing_path(path);
     if (!trailing_path.endsWith(QDir::separator())) {
