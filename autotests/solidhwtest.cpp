@@ -4,8 +4,6 @@
     SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
-#include "solidhwtest.h"
-
 #include <QSignalSpy>
 #include <QTest>
 
@@ -26,6 +24,36 @@
 #ifndef FAKE_COMPUTER_XML
 #error "FAKE_COMPUTER_XML not set. An XML file describing a computer is required for this test"
 #endif
+
+class SolidHwTest : public QObject
+{
+    Q_OBJECT
+private Q_SLOTS:
+    void initTestCase();
+    void testAllDevices();
+    void testDeviceBasicFeatures();
+    void testManagerSignals();
+    void testDeviceSignals();
+    void testDeviceExistence();
+    void testDeviceInterfaceIntrospection_data();
+    void testDeviceInterfaceIntrospection();
+    void testDeviceInterfaceIntrospectionCornerCases();
+    void testDeviceInterfaces();
+    void testInvalidPredicate();
+    void testPredicate();
+    void testQueryStorageVolumeOrProcessor();
+    void testQueryStorageVolumeOrStorageAccess();
+    void testQueryWithParentUdi();
+    void testListFromTypeProcessor();
+    void testListFromTypeInvalid();
+    void testSetupTeardown();
+
+    void slotPropertyChanged(const QMap<QString, int> &changes);
+
+private:
+    Solid::Backends::Fake::FakeManager *fakeManager;
+    QList<QMap<QString, int>> m_changesList;
+};
 
 QTEST_MAIN(SolidHwTest)
 
@@ -472,4 +500,4 @@ void SolidHwTest::slotPropertyChanged(const QMap<QString, int> &changes)
     m_changesList << changes;
 }
 
-#include "moc_solidhwtest.cpp"
+#include "solidhwtest.moc"
