@@ -729,7 +729,7 @@ msgid "Network Share"
 msgstr "Partage réseau"
 
 #: tools/solid-hardware/solid-hardware.cpp:218
-#: tools/solid-hardware/solid-hardware.cpp:329
+#: tools/solid-hardware/solid-hardware.cpp:341
 msgctxt "solid-hardware|"
 msgid "Device udi"
 msgstr "Périphériques « UDI »"
@@ -839,56 +839,148 @@ msgid "             # Monitor devices for changes.\n"
 msgstr ""
 "             # Surveiller les modifications concernant un périphérique.\n"
 
+#: tools/solid-hardware/solid-hardware.cpp:280
+#, fuzzy
+#| msgctxt "solid-hardware|"
+#| msgid ""
+#| "             # If applicable, eject the device corresponding to 'udi'.\n"
+msgctxt "solid-hardware|"
+msgid ""
+"             # Send \"CanCheck\" request to the device corresponding to "
+"'udi'.\n"
+msgstr ""
+"             # Si possible, éjecte le périphérique correspondant à « UDI ».\n"
+
+#: tools/solid-hardware/solid-hardware.cpp:283
+#, fuzzy
+#| msgctxt "solid-hardware|"
+#| msgid ""
+#| "             # If applicable, eject the device corresponding to 'udi'.\n"
+msgctxt "solid-hardware|"
+msgid ""
+"             # Send \"Check\" request to the device corresponding to 'udi'.\n"
+msgstr ""
+"             # Si possible, éjecte le périphérique correspondant à « UDI ».\n"
+
+#: tools/solid-hardware/solid-hardware.cpp:286
+#, fuzzy
+#| msgctxt "solid-hardware|"
+#| msgid ""
+#| "             # If applicable, eject the device corresponding to 'udi'.\n"
+msgctxt "solid-hardware|"
+msgid ""
+"             # Send \"CanRepair\" request to the device corresponding to "
+"'udi'.\n"
+msgstr ""
+"             # Si possible, éjecte le périphérique correspondant à « UDI ».\n"
+
 #: tools/solid-hardware/solid-hardware.cpp:289
+#, fuzzy
+#| msgctxt "solid-hardware|"
+#| msgid ""
+#| "             # If applicable, eject the device corresponding to 'udi'.\n"
+msgctxt "solid-hardware|"
+msgid ""
+"             # Send \"Repair\" request to the device corresponding to "
+"'udi'.\n"
+msgstr ""
+"             # Si possible, éjecte le périphérique correspondant à « UDI ».\n"
+
+#: tools/solid-hardware/solid-hardware.cpp:301
 msgctxt "solid-hardware|"
 msgid "KDE tool for querying your hardware from the command line"
 msgstr ""
 "Outil KDE permettant d'interroger votre matériel depuis la ligne de commande"
 
-#: tools/solid-hardware/solid-hardware.cpp:292
+#: tools/solid-hardware/solid-hardware.cpp:304
 msgctxt "solid-hardware|"
 msgid "Command to execute"
 msgstr "Commande à exécuter"
 
-#: tools/solid-hardware/solid-hardware.cpp:294
+#: tools/solid-hardware/solid-hardware.cpp:306
 msgctxt "solid-hardware|"
 msgid "Show available commands"
 msgstr "Afficher les commandes disponibles"
 
-#: tools/solid-hardware/solid-hardware.cpp:316
+#: tools/solid-hardware/solid-hardware.cpp:328
 msgctxt "solid-hardware|"
 msgid "Show device details"
 msgstr "Afficher les détails du périphérique"
 
-#: tools/solid-hardware/solid-hardware.cpp:317
+#: tools/solid-hardware/solid-hardware.cpp:329
 msgctxt "solid-hardware|"
 msgid "Show non portable information"
 msgstr "Afficher les informations non portable"
 
-#: tools/solid-hardware/solid-hardware.cpp:330
+#: tools/solid-hardware/solid-hardware.cpp:342
 msgctxt "solid-hardware|"
 msgid "Parent device udi"
 msgstr "Périphérique UDI parent"
 
-#: tools/solid-hardware/solid-hardware.cpp:360
+#: tools/solid-hardware/solid-hardware.cpp:384
 #, qt-format
 msgctxt "solid-hardware|"
 msgid "Syntax Error: Unknown command '%1'"
 msgstr "Erreur de syntaxe : commande « %1 » inconnue"
 
-#: tools/solid-hardware/solid-hardware.cpp:422
+#: tools/solid-hardware/solid-hardware.cpp:446
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1 does not have the interface StorageAccess."
 msgstr "Erreur : %1 n'a pas l'interface « StorageAccess »"
 
-#: tools/solid-hardware/solid-hardware.cpp:425
+#: tools/solid-hardware/solid-hardware.cpp:449
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1 does not have the interface OpticalDrive."
 msgstr "Erreur : %1 n'a pas l'interface « OpticalDrive »"
 
-#: tools/solid-hardware/solid-hardware.cpp:456
+#: tools/solid-hardware/solid-hardware.cpp:476
+#, qt-format
+msgctxt "SolidHardware|"
+msgid "Device CanCheck: %1"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:476
+#: tools/solid-hardware/solid-hardware.cpp:488
+msgctxt "SolidHardware|"
+msgid "no"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:476
+#: tools/solid-hardware/solid-hardware.cpp:488
+msgctxt "SolidHardware|"
+msgid "yes"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:481
+#, qt-format
+msgctxt "SolidHardware|"
+msgid "Device Check: %1"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:481
+msgctxt "SolidHardware|"
+msgid "has error"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:481
+msgctxt "SolidHardware|"
+msgid "no error"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:483
+msgctxt "SolidHardware|"
+msgid "Device Check: operation is not supported"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:488
+#, qt-format
+msgctxt "SolidHardware|"
+msgid "Device CanRepair: %1"
+msgstr ""
+
+#: tools/solid-hardware/solid-hardware.cpp:503
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1"
