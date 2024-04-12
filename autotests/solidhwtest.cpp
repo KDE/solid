@@ -57,11 +57,6 @@ private:
 
 QTEST_MAIN(SolidHwTest)
 
-#if defined(Q_OS_WIN)
-#include <qt_windows.h>
-#define setenv(x, y, z) SetEnvironmentVariableA(x, y)
-#endif
-
 void SolidHwTest::initTestCase()
 {
     qputenv("SOLID_FAKEHW", FAKE_COMPUTER_XML);
