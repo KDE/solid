@@ -48,11 +48,8 @@ private Q_SLOTS:
     void testListFromTypeInvalid();
     void testSetupTeardown();
 
-    void slotPropertyChanged(const QMap<QString, int> &changes);
-
 private:
     Solid::Backends::Fake::FakeManager *fakeManager;
-    QList<QMap<QString, int>> m_changesList;
 };
 
 QTEST_MAIN(SolidHwTest)
@@ -175,8 +172,8 @@ void SolidHwTest::testDeviceSignals()
     Solid::Device device("/org/kde/solid/fakehw/platform_floppy_0_storage_virt_volume");
 
     // We'll spy our floppy
-    connect(device.as<Solid::GenericInterface>(), SIGNAL(propertyChanged(QMap<QString, int>)), this, SLOT(slotPropertyChanged(QMap<QString, int>)));
     QSignalSpy condition_raised(device.as<Solid::GenericInterface>(), SIGNAL(conditionRaised(QString, QString)));
+    QSignalSpy property_changed(device.as<Solid::GenericInterface>(), SIGNAL(propertyChanged(QMap<QString, int>)));
 
     fake->setProperty("mountPoint", "/tmp.foo"); // The button is now pressed (modified property)
     fake->raiseCondition("Floppy Closed", "Why not?"); // Since it's a LID we notify this change
@@ -184,24 +181,24 @@ void SolidHwTest::testDeviceSignals()
     fake->removeProperty("hactar"); // We remove a property
 
     // 3 property changes occurred in the device
-    QCOMPARE(m_changesList.count(), 3);
+    QCOMPARE(property_changed.count(), 3);
 
     QMap<QString, int> changes;
 
     // First one is a "PropertyModified" for "button.state"
-    changes = m_changesList.at(0);
+    changes = property_changed.at(0).at(0).value<QMap<QString, int>>();
     QCOMPARE(changes.count(), 1);
     QVERIFY(changes.contains("mountPoint"));
-    QCOMPARE(changes["stateValue"], (int)Solid::GenericInterface::PropertyModified);
+    QCOMPARE(changes["mountPoint"], (int)Solid::GenericInterface::PropertyModified);
 
     // Second one is a "PropertyAdded" for "hactar"
-    changes = m_changesList.at(1);
+    changes = property_changed.at(1).at(0).value<QMap<QString, int>>();
     QCOMPARE(changes.count(), 1);
     QVERIFY(changes.contains("hactar"));
     QCOMPARE(changes["hactar"], (int)Solid::GenericInterface::PropertyAdded);
 
     // Third one is a "PropertyRemoved" for "hactar"
-    changes = m_changesList.at(2);
+    changes = property_changed.at(2).at(0).value<QMap<QString, int>>();
     QCOMPARE(changes.count(), 1);
     QVERIFY(changes.contains("hactar"));
     QCOMPARE(changes["hactar"], (int)Solid::GenericInterface::PropertyRemoved);
@@ -488,11 +485,6 @@ void SolidHwTest::testSetupTeardown()
     QCOMPARE(spy.count(), 1);
     args = spy.takeFirst();
     QCOMPARE(args.at(0).toBool(), true);
-}
-
-void SolidHwTest::slotPropertyChanged(const QMap<QString, int> &changes)
-{
-    m_changesList << changes;
 }
 
 #include "solidhwtest.moc"
