@@ -822,9 +822,6 @@ msgstr ""
 
 #: tools/solid-hardware/solid-hardware.cpp:280
 #, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"CanCheck\" request to the device corresponding to "
@@ -833,9 +830,6 @@ msgstr "             # Om det går an løs ut enheten som tilsvarer «udi».\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:283
 #, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"Check\" request to the device corresponding to 'udi'.\n"
@@ -843,9 +837,6 @@ msgstr "             # Om det går an løs ut enheten som tilsvarer «udi».\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:286
 #, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"CanRepair\" request to the device corresponding to "
@@ -854,9 +845,6 @@ msgstr "             # Om det går an løs ut enheten som tilsvarer «udi».\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:289
 #, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"Repair\" request to the device corresponding to "
