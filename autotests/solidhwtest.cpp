@@ -47,6 +47,8 @@ private Q_SLOTS:
     void testListFromTypeProcessor();
     void testListFromTypeInvalid();
     void testSetupTeardown();
+    void testStorageAccessFromPath();
+    void testStorageAccessFromPath_data();
 
 private:
     Solid::Backends::Fake::FakeManager *fakeManager;
@@ -485,6 +487,42 @@ void SolidHwTest::testSetupTeardown()
     QCOMPARE(spy.count(), 1);
     args = spy.takeFirst();
     QCOMPARE(args.at(0).toBool(), true);
+}
+
+void SolidHwTest::testStorageAccessFromPath()
+{
+    QFETCH(QString, path);
+    QFETCH(QString, deviceUdi);
+
+    const auto prefix = QStringLiteral("/org/kde/solid/fakehw/");
+
+    const Solid::Device device = Solid::Device::storageAccessFromPath(path);
+#if defined(Q_OS_WIN)
+    // storageAccessFromPath has never been working correctly on Windows
+    // Fixing this is left for someone with access to a Windows machine
+    return;
+#endif
+
+    QVERIFY(device.isValid());
+    QCOMPARE(device.udi(), prefix + deviceUdi);
+
+    auto storage = device.as<Solid::StorageAccess>();
+    QVERIFY(storage);
+    QVERIFY(!storage->filePath().isEmpty());
+    QVERIFY(path.startsWith(storage->filePath()));
+}
+
+void SolidHwTest::testStorageAccessFromPath_data()
+{
+    QTest::addColumn<QString>("path");
+    QTest::addColumn<QString>("deviceUdi");
+
+    QTest::addRow("Root")            << QStringLiteral("/")           << QStringLiteral("volume_uuid_feedface");
+    QTest::addRow("Mount directory") << QStringLiteral("/media")      << QStringLiteral("volume_uuid_feedface");
+    QTest::addRow("NFS mount")       << QStringLiteral("/media/nfs")  << QStringLiteral("fstab/thehost/solidpath");
+    QTest::addRow("Home directory")  << QStringLiteral("/home")       << QStringLiteral("volume_uuid_c0ffee");
+    QTest::addRow("Other home")      << QStringLiteral("/home_other") << QStringLiteral("volume_uuid_feedface");
+    QTest::addRow("User home")       << QStringLiteral("/home/user")  << QStringLiteral("volume_uuid_c0ffee");
 }
 
 #include "solidhwtest.moc"
