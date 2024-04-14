@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Qt-Contexts: true\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:60
 #, qt-format
@@ -824,55 +824,39 @@ msgid "             # Monitor devices for changes.\n"
 msgstr "             # მოწყობილობების ცვლილებების თვალყურის დევნება.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:280
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"CanCheck\" request to the device corresponding to "
 "'udi'.\n"
 msgstr ""
-"             # შესაბამისობის შემთხვევაში 'udi'-სთან თავსებადი მოწყობილობის "
-"გამოღება.\n"
+"             # შესაბამისობის შემთხვევაში 'udi'-სთან თავსებადი "
+"მოწყობილობისთვის ბრძანება 'CanCheck'-ის გაგზავნა.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:283
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"Check\" request to the device corresponding to 'udi'.\n"
 msgstr ""
-"             # შესაბამისობის შემთხვევაში 'udi'-სთან თავსებადი მოწყობილობის "
-"გამოღება.\n"
+"             # შესაბამისობის შემთხვევაში 'udi'-სთან თავსებადი "
+"მოწყობილობისთვის ბრძანება 'Check'-ის გაგზავნა.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:286
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"CanRepair\" request to the device corresponding to "
 "'udi'.\n"
 msgstr ""
-"             # შესაბამისობის შემთხვევაში 'udi'-სთან თავსებადი მოწყობილობის "
-"გამოღება.\n"
+"             # შესაბამისობის შემთხვევაში 'udi'-სთან თავსებადი "
+"მოწყობილობისთვის ბრძანება 'CanRepair'-ის გაგზავნა.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:289
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"Repair\" request to the device corresponding to "
 "'udi'.\n"
 msgstr ""
-"             # შესაბამისობის შემთხვევაში 'udi'-სთან თავსებადი მოწყობილობის "
-"გამოღება.\n"
+"             # შესაბამისობის შემთხვევაში 'udi'-სთან თავსებადი "
+"მოწყობილობისთვის ბრძანება 'Repair'-ის გაგზავნა.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:301
 msgctxt "solid-hardware|"
@@ -926,46 +910,46 @@ msgstr "შეცდომა: %1-ს OpticalDrive ინტერფეის�
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanCheck: %1"
-msgstr ""
+msgstr "მოწყობილობას აქვს CanCheck: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #: tools/solid-hardware/solid-hardware.cpp:488
 msgctxt "SolidHardware|"
 msgid "no"
-msgstr ""
+msgstr "არა"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #: tools/solid-hardware/solid-hardware.cpp:488
 msgctxt "SolidHardware|"
 msgid "yes"
-msgstr ""
+msgstr "დიახ"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device Check: %1"
-msgstr ""
+msgstr "მოწყობილობას აქვს Check: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 msgctxt "SolidHardware|"
 msgid "has error"
-msgstr ""
+msgstr "აქვს შეცდომა"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 msgctxt "SolidHardware|"
 msgid "no error"
-msgstr ""
+msgstr "შეცდომის გარეშე"
 
 #: tools/solid-hardware/solid-hardware.cpp:483
 msgctxt "SolidHardware|"
 msgid "Device Check: operation is not supported"
-msgstr ""
+msgstr "მოწყობილობის Check: ოპერაცია მხარდაჭერილი არაა"
 
 #: tools/solid-hardware/solid-hardware.cpp:488
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanRepair: %1"
-msgstr ""
+msgstr "მოწყობილობას აქვს CanRepair: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:503
 #, qt-format
