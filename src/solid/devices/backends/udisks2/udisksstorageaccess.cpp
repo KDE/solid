@@ -465,7 +465,11 @@ QString StorageAccess::generateReturnObjectPath()
 
 QString StorageAccess::clearTextPath() const
 {
-    return m_device->prop("CleartextDevice").value<QDBusObjectPath>().path();
+    const QString path = m_device->prop("CleartextDevice").value<QDBusObjectPath>().path();
+    if (path != QLatin1String("/")) {
+        return path;
+    }
+    return QString();
 }
 
 QString StorageAccess::dbusPath() const
