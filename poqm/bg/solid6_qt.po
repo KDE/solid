@@ -2,20 +2,20 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Yasen Pramatarov <yasen@lindeas.com>, 2010, 2021.
-# Mincho Kondarev <mkondarev@yahoo.de>, 2022, 2023.
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Mincho Kondarev <mkondarev@yahoo.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: solid_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-01-24 18:50+0000\n"
-"PO-Revision-Date: 2023-04-06 18:49+0200\n"
+"PO-Revision-Date: 2024-04-15 10:03+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 24.02.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Qt-Contexts: true\n"
 
@@ -786,29 +786,36 @@ msgid ""
 "             # branch of the corresponding device,\n"
 "             # - Otherwise the search is done on all the devices.\n"
 msgstr ""
-" # Списък на UDI на устройства, съответстващи на \"predicate\". \n"
-" # - Ако е посочен 'parentUdi', търсенето е ограничено до\n"
-" # вида на съответното устройство, \n"
-" # - В противен случай търсенето се извършва на всички устройства. \n"
+"             # Списък на UDI на устройства, съответстващи на \"predicate"
+"\". \n"
+"             # - Ако е посочен 'parentUdi', търсенето е ограничено до\n"
+"             # вида на съответното устройство, \n"
+"             # - В противен случай търсенето се извършва на всички "
+"устройства. \n"
 
 #: tools/solid-hardware/solid-hardware.cpp:265
 msgctxt "solid-hardware|"
 msgid ""
 "             # If applicable, mount the device corresponding to 'udi'.\n"
-msgstr " # Ако е възможно, устройството се монтира в съответствие на 'udi'. \n"
+msgstr ""
+"             # Ако е възможно, устройството се монтира в съответствие на "
+"'udi'. \n"
 
 #: tools/solid-hardware/solid-hardware.cpp:268
 msgctxt "solid-hardware|"
 msgid ""
 "             # If applicable, unmount the device corresponding to 'udi'.\n"
 msgstr ""
-" # Ако е възможно, устройството се демонтира в съответствие на 'udi'. \n"
+"             # Ако е възможно, устройството се демонтира в съответствие на "
+"'udi'. \n"
 
 #: tools/solid-hardware/solid-hardware.cpp:271
 msgctxt "solid-hardware|"
 msgid ""
 "             # If applicable, eject the device corresponding to 'udi'.\n"
-msgstr " # Ако е възможно, устройството се изважда в съответствие на 'udi'. \n"
+msgstr ""
+"             # Ако е възможно, устройството се изважда в съответствие на "
+"'udi'. \n"
 
 #: tools/solid-hardware/solid-hardware.cpp:274
 msgctxt "solid-hardware|"
@@ -823,47 +830,39 @@ msgid "             # Monitor devices for changes.\n"
 msgstr "             # Наблюдение на устройствата за промени.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:280
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"CanCheck\" request to the device corresponding to "
 "'udi'.\n"
-msgstr " # Ако е възможно, устройството се изважда в съответствие на 'udi'. \n"
+msgstr ""
+"             # Изпращане на заявка \"CanCheck\"към устройството, отговарящо "
+"на 'udi'.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:283
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"Check\" request to the device corresponding to 'udi'.\n"
-msgstr " # Ако е възможно, устройството се изважда в съответствие на 'udi'. \n"
+msgstr ""
+"             # Изпращане на заявка \"Check\"към устройството, отговарящо на "
+"'udi'.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:286
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"CanRepair\" request to the device corresponding to "
 "'udi'.\n"
-msgstr " # Ако е възможно, устройството се изважда в съответствие на 'udi'. \n"
+msgstr ""
+"             # Изпращане на заявка \"CanRepair\"към устройството, отговарящо "
+"на 'udi'.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:289
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"Repair\" request to the device corresponding to "
 "'udi'.\n"
-msgstr " # Ако е възможно, устройството се изважда в съответствие на 'udi'. \n"
+msgstr ""
+"             # Изпращане на заявка \"Repair\"към устройството, отговарящо на "
+"'udi'.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:301
 msgctxt "solid-hardware|"
@@ -919,46 +918,46 @@ msgstr "Грешка:%1 няма интерфейс OpticalDrive."
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanCheck: %1"
-msgstr ""
+msgstr "CanCheck на устройство: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #: tools/solid-hardware/solid-hardware.cpp:488
 msgctxt "SolidHardware|"
 msgid "no"
-msgstr ""
+msgstr "не"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #: tools/solid-hardware/solid-hardware.cpp:488
 msgctxt "SolidHardware|"
 msgid "yes"
-msgstr ""
+msgstr "да"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device Check: %1"
-msgstr ""
+msgstr "Check на устройство: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 msgctxt "SolidHardware|"
 msgid "has error"
-msgstr ""
+msgstr "с грешка"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 msgctxt "SolidHardware|"
 msgid "no error"
-msgstr ""
+msgstr "без грешка"
 
 #: tools/solid-hardware/solid-hardware.cpp:483
 msgctxt "SolidHardware|"
 msgid "Device Check: operation is not supported"
-msgstr ""
+msgstr "Check на устройство: операцията не се поддържа"
 
 #: tools/solid-hardware/solid-hardware.cpp:488
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanRepair: %1"
-msgstr ""
+msgstr "CanRepair на устройство: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:503
 #, qt-format
