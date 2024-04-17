@@ -390,13 +390,13 @@ void SolidHwTest::testPredicate()
 void SolidHwTest::testQueryStorageVolumeOrProcessor()
 {
     auto list = Solid::Device::listFromQuery("[Processor.number==1 OR IS StorageVolume]");
-    QCOMPARE(list.size(), 10);
+    QCOMPARE(list.size(), 12);
 
     // make sure predicate case-insensitiveness is sane
     list = Solid::Device::listFromQuery("[Processor.number==1 or is StorageVolume]");
-    QCOMPARE(list.size(), 10);
+    QCOMPARE(list.size(), 12);
     list = Solid::Device::listFromQuery("[Processor.number==1 oR Is StorageVolume]");
-    QCOMPARE(list.size(), 10);
+    QCOMPARE(list.size(), 12);
     QStringList expected{"/org/kde/solid/fakehw/acpi_CPU1",
                          "/org/kde/solid/fakehw/platform_floppy_0_storage_virt_volume",
                          "/org/kde/solid/fakehw/volume_label_SOLIDMAN_BEGINS",
@@ -405,12 +405,14 @@ void SolidHwTest::testQueryStorageVolumeOrProcessor()
                          "/org/kde/solid/fakehw/volume_part5_size_1048576",
                          "/org/kde/solid/fakehw/volume_uuid_5011",
                          "/org/kde/solid/fakehw/volume_uuid_c0ffee",
+                         "/org/kde/solid/fakehw/volume_uuid_cleartext_data_0123",
+                         "/org/kde/solid/fakehw/volume_uuid_encrypted_0123",
                          "/org/kde/solid/fakehw/volume_uuid_f00ba7",
                          "/org/kde/solid/fakehw/volume_uuid_feedface"};
     QCOMPARE(to_string_list(list), expected);
 
     list = Solid::Device::listFromQuery("[IS Processor OR IS StorageVolume]");
-    QCOMPARE(list.size(), 11);
+    QCOMPARE(list.size(), 13);
     expected.prepend("/org/kde/solid/fakehw/acpi_CPU0");
     QCOMPARE(to_string_list(list), expected);
 }
@@ -523,6 +525,7 @@ void SolidHwTest::testStorageAccessFromPath_data()
     QTest::addRow("Home directory")  << QStringLiteral("/home")       << QStringLiteral("volume_uuid_c0ffee");
     QTest::addRow("Other home")      << QStringLiteral("/home_other") << QStringLiteral("volume_uuid_feedface");
     QTest::addRow("User home")       << QStringLiteral("/home/user")  << QStringLiteral("volume_uuid_c0ffee");
+    QTest::addRow("LUKS")            << QStringLiteral("/data")       << QStringLiteral("volume_uuid_cleartext_data_0123");
 }
 
 #include "solidhwtest.moc"

@@ -75,11 +75,14 @@ public:
     static QList<Device> listFromQuery(const QString &predicate, const QString &parentUdi = QString());
 
     /**
-     * Returns storage volume for given canonical path to file stored on that device
+     * Returns the Device containing the filesystem for the given path
      *
-     * @param canonical path to an existing file
-     * @return StorageVolume Device containing file to which path was given or an empty Device, if no device could be found
+     * @param canonical path to a filesystem entry, e.g. a file or directory
+     * @return @p Device containing the given @p path. For Devices implementing the
+     * StorageVolume interface only ones matching UsageType::FileSystem are
+     * returned, i.e. no backing encrypted volumes.
      * @since 5.73
+     * @see QFileInfo::canonicalFilePath
      */
     static Device storageAccessFromPath(const QString &path);
 

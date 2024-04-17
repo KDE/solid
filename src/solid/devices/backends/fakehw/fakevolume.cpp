@@ -35,6 +35,8 @@ Solid::StorageVolume::UsageType FakeVolume::usage() const
         return Solid::StorageVolume::Raid;
     } else if (usage == "unused") {
         return Solid::StorageVolume::Unused;
+    } else if (usage == "encrypted") {
+        return Solid::StorageVolume::Encrypted;
     } else {
         return Solid::StorageVolume::Other;
     }

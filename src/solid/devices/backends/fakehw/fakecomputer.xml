@@ -154,8 +154,9 @@
                               - one physical partition (the root /, ext3, 20GB)
                               - one extended containing three logical volumes:
                                   - a swap volume (2GB)
-                                  - /home volume (xfs, 208GB)
+                                  - /home volume (xfs, 188GB)
                                   - /foreign volume (ntfs, 20GB)
+                                  - /data volume (encrypted Luks container, btrfs, 20GB)
                     -->
                     <device udi="/org/kde/solid/fakehw/volume_uuid_feedface">
                         <property key="name">/</property>
@@ -191,7 +192,7 @@
                         <property key="fsType">xfs</property>
                         <property key="label">Home</property>
                         <property key="uuid">c0ffee</property>
-                        <property key="size">223338299392</property>
+                        <property key="size">201863462912</property>
                     </device>
                     <device udi="/org/kde/solid/fakehw/volume_uuid_f00ba7">
                         <property key="name">/foreign</property>
@@ -239,6 +240,42 @@
                         <property key="usage">other</property>
                         <property key="fsType">swap</property>
                         <property key="size">2147483648</property>
+                    </device>
+                    <device udi="/org/kde/solid/fakehw/volume_uuid_encrypted_0123">
+                        <property key="name">Luks Container</property>
+                        <property key="interfaces">Block,StorageVolume,StorageAccess</property>
+                        <property key="parent">/org/kde/solid/fakehw/storage_serial_HD56890I</property>
+
+                        <property key="minor">8</property>
+                        <property key="major">3</property>
+                        <property key="device">/dev/hda8</property>
+
+                        <property key="isIgnored">true</property>
+                        <property key="isMounted">true</property>
+                        <property key="mountPoint">/data</property>
+                        <property key="usage">encrypted</property>
+                        <property key="fsType">crypto_LUKS</property>
+                        <property key="label"></property>
+                        <property key="uuid">encrypted-0123</property>
+                        <property key="size">21474836480</property>
+                    </device>
+                    <device udi="/org/kde/solid/fakehw/volume_uuid_cleartext_data_0123">
+                        <property key="name">Encrypted data</property>
+                        <property key="interfaces">Block,StorageVolume,StorageAccess</property>
+                        <property key="parent">/</property>
+
+                        <property key="minor">0</property>
+                        <property key="major">254</property>
+                        <property key="device">/dev/dm-0</property>
+
+                        <property key="isIgnored">true</property>
+                        <property key="isMounted">true</property>
+                        <property key="mountPoint">/data</property>
+                        <property key="usage">filesystem</property>
+                        <property key="fsType">btrfs</property>
+                        <property key="label"></property>
+                        <property key="uuid">cleartext-data-0123</property>
+                        <property key="size">21474835466</property>
                     </device>
 
 
