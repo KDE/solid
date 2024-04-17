@@ -19,7 +19,6 @@
 
 #include "soliddefs_p.h"
 
-#include <QDir>
 #include <QLoggingCategory>
 
 #include <set>
@@ -167,12 +166,6 @@ QList<Solid::Device> Solid::Device::listFromQuery(const Predicate &predicate, co
 
 Solid::Device Solid::Device::storageAccessFromPath(const QString &path)
 {
-    // We ensure file and all mount paths are with trailing dir separators, to avoid false positive matches later
-    QString trailing_path(path);
-    if (!trailing_path.endsWith(QDir::separator())) {
-        trailing_path.append(QDir::separator());
-    }
-
     const QList<Device> list = Solid::Device::listFromType(DeviceInterface::Type::StorageAccess);
     Device match;
     int match_length = 0;
@@ -184,11 +177,16 @@ Solid::Device Solid::Device::storageAccessFromPath(const QString &path)
 
         auto storageAccess = device.as<StorageAccess>();
         QString mountPath = storageAccess->filePath();
-        if (!mountPath.endsWith(QDir::separator())) {
-            mountPath.append(QDir::separator());
+
+        if (mountPath.size() <= match_length || !path.startsWith(mountPath)) {
+            continue;
         }
-        if (mountPath.size() > match_length && trailing_path.startsWith(mountPath)) {
-            match_length = mountPath.size();
+
+        const auto realLength = mountPath.back() == '/' ? mountPath.size() - 1 : mountPath.size();
+
+        // `startsWith` implies `path.size() >= mountPath.size()`
+        if (path.size() == realLength || path[realLength] == '/') {
+            match_length = realLength;
             match = device;
         }
     }

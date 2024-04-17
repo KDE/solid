@@ -390,15 +390,16 @@ void SolidHwTest::testPredicate()
 void SolidHwTest::testQueryStorageVolumeOrProcessor()
 {
     auto list = Solid::Device::listFromQuery("[Processor.number==1 OR IS StorageVolume]");
-    QCOMPARE(list.size(), 12);
+    QCOMPARE(list.size(), 13);
 
     // make sure predicate case-insensitiveness is sane
     list = Solid::Device::listFromQuery("[Processor.number==1 or is StorageVolume]");
-    QCOMPARE(list.size(), 12);
+    QCOMPARE(list.size(), 13);
     list = Solid::Device::listFromQuery("[Processor.number==1 oR Is StorageVolume]");
-    QCOMPARE(list.size(), 12);
+    QCOMPARE(list.size(), 13);
     QStringList expected{"/org/kde/solid/fakehw/acpi_CPU1",
                          "/org/kde/solid/fakehw/platform_floppy_0_storage_virt_volume",
+                         "/org/kde/solid/fakehw/volume_0000_unmounted_storage",
                          "/org/kde/solid/fakehw/volume_label_SOLIDMAN_BEGINS",
                          "/org/kde/solid/fakehw/volume_part1_size_993284096",
                          "/org/kde/solid/fakehw/volume_part2_size_1024",
@@ -412,7 +413,7 @@ void SolidHwTest::testQueryStorageVolumeOrProcessor()
     QCOMPARE(to_string_list(list), expected);
 
     list = Solid::Device::listFromQuery("[IS Processor OR IS StorageVolume]");
-    QCOMPARE(list.size(), 13);
+    QCOMPARE(list.size(), 14);
     expected.prepend("/org/kde/solid/fakehw/acpi_CPU0");
     QCOMPARE(to_string_list(list), expected);
 }
