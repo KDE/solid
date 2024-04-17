@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
-"PO-Revision-Date: 2024-04-12 19:12\n"
+"PO-Revision-Date: 2024-04-16 13:59\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -812,13 +812,13 @@ msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"CanCheck\" request to the device corresponding to "
 "'udi'.\n"
-msgstr ""
+msgstr "             # 发送“CanCheck” (能否检查) 请求到与“UDI”项对应的设备。\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:283
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"Check\" request to the device corresponding to 'udi'.\n"
-msgstr ""
+msgstr "             # 发送“Check” (检查) 请求到与“UDI”项对应的设备。\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:286
 msgctxt "solid-hardware|"
@@ -826,18 +826,19 @@ msgid ""
 "             # Send \"CanRepair\" request to the device corresponding to "
 "'udi'.\n"
 msgstr ""
+"             # 发送“CanRepair” (能否修复) 请求到与“UDI”项对应的设备。\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:289
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"Repair\" request to the device corresponding to "
 "'udi'.\n"
-msgstr ""
+msgstr "             # 发送“Repair” (修复) 请求到与“UDI”项对应的设备。\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:301
 msgctxt "solid-hardware|"
 msgid "KDE tool for querying your hardware from the command line"
-msgstr "从命令行查询并控制您硬件的 KDE 工具"
+msgstr "通过命令行查询硬件信息的 KDE 工具"
 
 #: tools/solid-hardware/solid-hardware.cpp:304
 msgctxt "solid-hardware|"
@@ -886,46 +887,46 @@ msgstr "错误：%1 没有 OpticalDrive 接口。"
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanCheck: %1"
-msgstr ""
+msgstr "设备 CanCheck (能否检查)：%1"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #: tools/solid-hardware/solid-hardware.cpp:488
 msgctxt "SolidHardware|"
 msgid "no"
-msgstr ""
+msgstr "否"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #: tools/solid-hardware/solid-hardware.cpp:488
 msgctxt "SolidHardware|"
 msgid "yes"
-msgstr ""
+msgstr "是"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device Check: %1"
-msgstr ""
+msgstr "设备 Check (检查) 结果：%1"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 msgctxt "SolidHardware|"
 msgid "has error"
-msgstr ""
+msgstr "有错误"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 msgctxt "SolidHardware|"
 msgid "no error"
-msgstr ""
+msgstr "没有错误"
 
 #: tools/solid-hardware/solid-hardware.cpp:483
 msgctxt "SolidHardware|"
 msgid "Device Check: operation is not supported"
-msgstr ""
+msgstr "设备 Check (检查)：不支持此操作"
 
 #: tools/solid-hardware/solid-hardware.cpp:488
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanRepair: %1"
-msgstr ""
+msgstr "设备 CanRepair (能否修复)：%1"
 
 #: tools/solid-hardware/solid-hardware.cpp:503
 #, qt-format
