@@ -1,24 +1,24 @@
 # Translation for solid6_qt.po to Euskera/Basque (eu).
-# Copyright (C) 2011-2023 This file is copyright:
+# Copyright (C) 2011-2024 This file is copyright:
 # This file is distributed under the same license as the original file.
-# KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>.
+# SPDX-FileCopyrightText: 2024 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
 #
 # Translators:
-# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2009, 2010, 2011, 2012, 2017, 2019, 2020, 2021, 2022, 2023.
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2009, 2010, 2011, 2012, 2017, 2019, 2020, 2021, 2022, 2023, 2024.
 # marcos <marcos@euskalgnu.org>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: solid\n"
 "Report-Msgid-Bugs-To: http://bugs.kde.org\n"
 "POT-Creation-Date: 2014-04-01 01:49+0000\n"
-"PO-Revision-Date: 2023-04-09 20:39+0200\n"
+"PO-Revision-Date: 2024-04-18 22:01+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 24.02.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Qt-Contexts: true\n"
 
@@ -828,52 +828,38 @@ msgid "             # Monitor devices for changes.\n"
 msgstr "             # Gailuak aldaketa bila gainbegiratu.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:280
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"CanCheck\" request to the device corresponding to "
 "'udi'.\n"
-msgstr "             # Hala badagokio, egotzi 'udi'-ri dagokion gailua.\n"
+msgstr ""
+"             # Bidali \"CanCheck\" eskaera 'udi'ari dagokion gailuari.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:283
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"Check\" request to the device corresponding to 'udi'.\n"
-msgstr "             # Hala badagokio, egotzi 'udi'-ri dagokion gailua.\n"
+msgstr "             # Bidali \"Check\" eskaera 'udi'ari dagokion gailuari.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:286
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"CanRepair\" request to the device corresponding to "
 "'udi'.\n"
-msgstr "             # Hala badagokio, egotzi 'udi'-ri dagokion gailua.\n"
+msgstr ""
+"             # Bidali \"CanRepair\" eskaera 'udi'ari dagokion gailuari.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:289
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"Repair\" request to the device corresponding to "
 "'udi'.\n"
-msgstr "             # Hala badagokio, egotzi 'udi'-ri dagokion gailua.\n"
+msgstr "             # Bidali \"Repair\" eskaera 'udi'ari dagokion gailuari.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:301
 msgctxt "solid-hardware|"
 msgid "KDE tool for querying your hardware from the command line"
-msgstr "KDEren tresna zure hardwarea komando-lerrotik itauntzeko"
+msgstr "Zure hardwarea komando-lerrotik itauntzeko KDEren tresna"
 
 #: tools/solid-hardware/solid-hardware.cpp:304
 msgctxt "solid-hardware|"
@@ -926,46 +912,46 @@ msgstr "Errorea: %1(e)k ez du «OpticalDrive» interfazea."
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanCheck: %1"
-msgstr ""
+msgstr "Gailua «CanCheck»: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #: tools/solid-hardware/solid-hardware.cpp:488
 msgctxt "SolidHardware|"
 msgid "no"
-msgstr ""
+msgstr "ez"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #: tools/solid-hardware/solid-hardware.cpp:488
 msgctxt "SolidHardware|"
 msgid "yes"
-msgstr ""
+msgstr "bai"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device Check: %1"
-msgstr ""
+msgstr "Gailua «Check»: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 msgctxt "SolidHardware|"
 msgid "has error"
-msgstr ""
+msgstr "errorea du"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 msgctxt "SolidHardware|"
 msgid "no error"
-msgstr ""
+msgstr "errorerik ez"
 
 #: tools/solid-hardware/solid-hardware.cpp:483
 msgctxt "SolidHardware|"
 msgid "Device Check: operation is not supported"
-msgstr ""
+msgstr "Gailua «Check»: eragiketa ez da onartzen"
 
 #: tools/solid-hardware/solid-hardware.cpp:488
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanRepair: %1"
-msgstr ""
+msgstr "Gailau «CanRepair»: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:503
 #, qt-format
