@@ -1,13 +1,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Kishore G <kishore96@gmail.com>, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024 Kishore G <kishore96@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: solid_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-01 01:49+0000\n"
-"PO-Revision-Date: 2023-04-02 16:23+0530\n"
+"PO-Revision-Date: 2024-04-21 21:50+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Qt-Contexts: true\n"
-"X-Generator: Lokalize 23.03.90\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:60
 #, qt-format
@@ -463,31 +463,28 @@ msgstr ""
 #, qt-format
 msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
 msgid "%1 Removable Media"
-msgstr "%1 கழற்றக்கூடியது"
+msgstr "%1 கழற்றக்கூடிய சாதனம்"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:582
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Removable Media"
-msgstr "கழற்றக்கூடியது"
+msgstr "கழற்றக்கூடிய சாதனம்"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:586
 #, qt-format
 msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
 msgid "%1 Media"
-msgstr ""
+msgstr "%1 சாதனம்"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:588
-#, fuzzy
-#| msgctxt "Solid::DeviceInterface|Storage Drive device type"
-#| msgid "Storage Drive"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Storage Media"
-msgstr "சேமிப்பக வட்டு"
+msgstr "சேமிப்பக சாதனம்"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:732
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "You are not authorized to perform this operation"
-msgstr ""
+msgstr "இந்த செயலுக்கான அனுமதி உங்களிடம் இல்லை"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:734
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -507,7 +504,7 @@ msgstr "கோரிய செயல் ரத்துசெய்யப்ப�
 #: solid/devices/backends/udisks2/udisksdevice.cpp:740
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "An invalid or malformed option has been given"
-msgstr ""
+msgstr "செல்லுபடியாகாத அல்லது முறையற்ற விருப்பம் தரப்பட்டது"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:742
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -547,7 +544,7 @@ msgstr ""
 #: solid/devices/backends/udisks2/udisksdevice.cpp:756
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The operation has already been canceled"
-msgstr ""
+msgstr "செயல் ஏற்கனவே ரத்து செய்யப்பட்டுள்ளது"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:758
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -559,7 +556,7 @@ msgstr ""
 #: solid/devices/backends/udisks2/udisksdevice.cpp:760
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The authentication prompt was canceled"
-msgstr ""
+msgstr "சான்றளிக்கும் சாளரம் ரத்த செய்யப்பட்டது"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:762
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -625,9 +622,10 @@ msgid "Power Management"
 msgstr "ஆற்றல் மேலாண்மை"
 
 #: solid/devices/backends/upower/upowermanager.cpp:62
+#, fuzzy
 msgctxt "Solid::Backends::UPower::UPowerManager|"
 msgid "Batteries and other sources of power"
-msgstr ""
+msgstr "மின்கலங்களும் "
 
 #: solid/devices/backends/win/windevice.cpp:158
 msgctxt "Solid::Backends::Win::WinDevice|battery technology"
@@ -884,34 +882,34 @@ msgstr ""
 #: tools/solid-hardware/solid-hardware.cpp:488
 msgctxt "SolidHardware|"
 msgid "no"
-msgstr ""
+msgstr "இல்லை"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #: tools/solid-hardware/solid-hardware.cpp:488
 msgctxt "SolidHardware|"
 msgid "yes"
-msgstr ""
+msgstr "ஆம்"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device Check: %1"
-msgstr ""
+msgstr "சாதன சரிபார்ப்பு: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 msgctxt "SolidHardware|"
 msgid "has error"
-msgstr ""
+msgstr "சிக்கல் உள்ளது"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 msgctxt "SolidHardware|"
 msgid "no error"
-msgstr ""
+msgstr "சிக்கல் இல்லை"
 
 #: tools/solid-hardware/solid-hardware.cpp:483
 msgctxt "SolidHardware|"
 msgid "Device Check: operation is not supported"
-msgstr ""
+msgstr "சாதன சரிபார்ப்பு: செயல்பாடு ஆதரிக்கப்படாத‍து"
 
 #: tools/solid-hardware/solid-hardware.cpp:488
 #, qt-format
