@@ -224,7 +224,6 @@ void Solid::DeviceManagerPrivate::_k_deviceRemoved(const QString &udi)
         // and now becomes magically invalid!
 
         if (dev) {
-            Q_ASSERT(dev->backendObject() != nullptr);
             dev->setBackendObject(nullptr);
             Q_ASSERT(dev->backendObject() == nullptr);
         }
