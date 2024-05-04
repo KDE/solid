@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2024-04-08 18:54+0300\n"
+"PO-Revision-Date: 2024-05-03 16:43+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -581,16 +581,14 @@ msgid "The kernel driver for this filesystem type is not available"
 msgstr "מודול הליבה עבור מערכת הקבצים הזאת לא זמין."
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:744
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is already mounted"
-msgstr "ההתקן בשימוש."
+msgstr "ההתקן כבר מעוגן"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:746
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is not mounted"
-msgstr "ההתקן בשימוש."
+msgstr "ההתקן לא מעוגן"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:748
 #, fuzzy
