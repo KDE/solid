@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2024-05-03 16:43+0300\n"
+"PO-Revision-Date: 2024-05-08 22:31+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -122,28 +122,28 @@ msgid "0 B"
 msgstr "0 ב׳"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:75
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "QObject|%1 is the size, %2 is the block device name e.g. sda, sda1"
 msgid "%1 External Drive (%2)"
-msgstr "כונן חיצוני בגודל %1"
+msgstr "כונן %1 חיצוני (%2)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:77
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "QObject|%1 is the size, %2 is the block device name e.g. sda, sda1"
 msgid "%1 Internal Drive (%2)"
-msgstr "כונן חיצוני בגודל %1"
+msgstr "כונן %1 פנימי (%2)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:81
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "QObject|%1 is the block device name e.g. sda, sda1"
 msgid "External Drive (%1)"
-msgstr "כונן %1%2 חיצוני"
+msgstr "כונן חיצוני (%1)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:83
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "QObject|%1 is the block device name e.g. sda, sda1"
 msgid "Internal Drive (%1)"
-msgstr "כונן %1%2 חיצוני"
+msgstr "כונן פנימי (%1)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:256
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -151,10 +151,9 @@ msgid "Swap Space"
 msgstr "שטח החלפה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:278
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Loop Device"
-msgstr "התקנים"
+msgstr "התקן לולאה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:294
 #, fuzzy
@@ -271,7 +270,7 @@ msgid "/HD DVD-RW"
 msgstr "תקליטור רב פעמי"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:354
-#, fuzzy, qt-format
+#, qt-format
 msgctxt ""
 "Solid::Backends::UDisks2::Device|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
 "DVD-R'/etc (with leading slash)"
@@ -279,7 +278,7 @@ msgid "External %1%2 Drive"
 msgstr "כונן %1%2 חיצוני"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:356
-#, fuzzy, qt-format
+#, qt-format
 msgctxt ""
 "Solid::Backends::UDisks2::Device|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
 "DVD-R'/etc (with leading slash)"
@@ -287,16 +286,14 @@ msgid "%1%2 Drive"
 msgstr "כונן %1%2"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:364
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "External Floppy Drive"
-msgstr "תקליטון חיצוני"
+msgstr "כונן תקליטונים חיצוני"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:366
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Floppy Drive"
-msgstr "תקליטון (דיסקט)"
+msgstr "כונן תקליטונים"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:398
 #, fuzzy, qt-format
@@ -511,7 +508,6 @@ msgid "Encrypted Drive"
 msgstr "מיכל מוצפן"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:576
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Floppy Disk"
 msgstr "תקליטון (דיסקט)"
@@ -523,12 +519,9 @@ msgid "%1 Removable Media"
 msgstr "מדיה נשלפת בגודל %1"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:582
-#, fuzzy
-#| msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
-#| msgid "%1 Removable Media"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Removable Media"
-msgstr "מדיה נשלפת בגודל %1"
+msgstr "מדיה נשלפת"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:586
 #, qt-format
@@ -537,48 +530,39 @@ msgid "%1 Media"
 msgstr "מדיה %1"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:588
-#, fuzzy
-#| msgctxt "Solid::Backends::UDisks2::Manager|"
-#| msgid "Storage devices"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Storage Media"
 msgstr "אמצעי אחסון"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:732
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "You are not authorized to perform this operation"
-msgstr "אין לך הרשאות לבצע פעולה זו."
+msgstr "אין לך הרשאות לבצע פעולה זו"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:734
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is currently busy"
-msgstr "ההתקן בשימוש."
+msgstr "ההתקן בשימוש"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:736
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The requested operation has failed"
-msgstr "הפעולה המבוקשת נכשלה."
+msgstr "הפעולה המבוקשת נכשלה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:738
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The requested operation has been canceled"
-msgstr "הפעולה המתבקשת בוטלה."
+msgstr "הפעולה המתבקשת בוטלה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:740
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "An invalid or malformed option has been given"
-msgstr "ניתנה פעולה לא תקינה או משובת."
+msgstr "סופקה פעולה שגויה או פגומה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:742
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The kernel driver for this filesystem type is not available"
-msgstr "מודול הליבה עבור מערכת הקבצים הזאת לא זמין."
+msgstr "מודול הליבה עבור סוג מערכת הקבצים הזאת לא זמין"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:744
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -591,16 +575,14 @@ msgid "The device is not mounted"
 msgstr "ההתקן לא מעוגן"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:748
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is mounted by another user"
-msgstr "ההתקן בשימוש."
+msgstr "ההתקן מעוגן על ידי משתמש אחר"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:750
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is already unmounting"
-msgstr "ההתקן בשימוש."
+msgstr "ההתקן כבר נפרק"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:752
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -625,10 +607,9 @@ msgid ""
 msgstr "לא ניתן לבקש אימות. נראה שמערכת האימות PolicyKit לא זמינה."
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:760
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The authentication prompt was canceled"
-msgstr "הפעולה המתבקשת בוטלה."
+msgstr "בקשת האימות בוטלה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:762
 msgctxt "Solid::Backends::UDisks2::Device|"
