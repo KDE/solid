@@ -11,6 +11,8 @@
 
 namespace Solid
 {
+class DevicePrivate;
+
 class DeviceInterfacePrivate
 {
 public:
