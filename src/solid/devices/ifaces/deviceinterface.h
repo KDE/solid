@@ -18,8 +18,6 @@ namespace Ifaces
  *
  * A device interface describes what a device can do. A device generally has
  * a set of device interfaces.
- *
- * @see Solid::Ifaces::AbstractDeviceInterface
  */
 class DeviceInterface
 {
