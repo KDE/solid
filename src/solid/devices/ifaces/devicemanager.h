@@ -75,7 +75,7 @@ public:
      * Instantiates a new Device object from this backend given its UDI.
      *
      * @param udi the identifier of the device instantiated
-     * @returns a new Device object if there's a device having the given UDI, 0 otherwise
+     * @returns a new Device object if there's a device having the given UDI, nullptr otherwise
      */
     virtual QObject *createDevice(const QString &udi) = 0;
 
