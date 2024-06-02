@@ -36,7 +36,7 @@ target_link_libraries(KF6Solid PUBLIC Qt6::Core
                                        Qt6::Gui
                                        ${solid_OPTIONAL_LIBS}
  )
-if (TARGET Qt6::DBus)
+if (HAVE_DBUS)
   target_link_libraries(KF6Solid PRIVATE Qt6::DBus)
 endif()
 
@@ -109,7 +109,7 @@ if (BUILD_TESTING)
 
   target_link_libraries(KF6Solid_static PUBLIC Qt6::Core)
   target_link_libraries(KF6Solid_static PRIVATE Qt6::Xml Qt6::Gui ${solid_OPTIONAL_LIBS})
-  if (TARGET Qt6::DBus)
+  if (HAVE_DBUS)
     target_link_libraries(KF6Solid_static PRIVATE Qt6::DBus)
   endif()
   target_include_directories(KF6Solid_static PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR};${CMAKE_CURRENT_SOURCE_DIR}/..;${CMAKE_CURRENT_BINARY_DIR}/..>")

@@ -22,15 +22,24 @@ include(ECMDeprecationSettings)
 set(REQUIRED_QT_VERSION 6.5.0)
 find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Xml Gui)
 
+
+# shall we use DBus?
+# enabled per default on Linux & BSD systems
 # Android has no DBus, and Windows & Mac have backends that don't use DBus
-if(NOT ANDROID AND NOT WIN32 AND NOT APPLE)
+set(USE_DBUS_DEFAULT OFF)
+if(UNIX AND NOT APPLE AND NOT ANDROID AND NOT HAIKU)
+    set(USE_DBUS_DEFAULT ON)
+endif()
+option(USE_DBUS "Build components using DBus" ${USE_DBUS_DEFAULT})
+if(USE_DBUS)
     find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED DBus)
+    set(HAVE_DBUS TRUE)
+    add_definitions(-DHAVE_DBUS)
 endif()
 
 if(WIN32)
     find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Network)
 endif()
-
 
 include(ECMGenerateExportHeader)
 include(CMakePackageConfigHelpers)

@@ -23,7 +23,7 @@ if (NOT @BUILD_SHARED_LIBS@)
     find_dependency(Qt6Xml @REQUIRED_QT_VERSION@)
     find_dependency(Qt6Gui @REQUIRED_QT_VERSION@)
 
-    if (@Qt6DBus_FOUND@)
+    if (@HAVE_DBUS@)
         find_dependency(Qt6DBus @REQUIRED_QT_VERSION@)
     endif()
 

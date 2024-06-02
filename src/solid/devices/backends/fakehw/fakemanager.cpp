@@ -14,7 +14,7 @@
 #include <QDomNode>
 #include <QFile>
 #include <QString>
-#ifdef QT_DBUS_LIB
+#ifdef HAVE_DBUS
 #include <QDBusConnection>
 #endif
 
@@ -36,7 +36,7 @@ FakeManager::FakeManager(QObject *parent, const QString &xmlFile)
     QString machineXmlFile = xmlFile;
     d->xmlFile = machineXmlFile;
 
-#ifdef QT_DBUS_LIB
+#ifdef HAVE_DBUS
     QDBusConnection::sessionBus().registerObject("/org/kde/solid/fakehw", this, QDBusConnection::ExportNonScriptableSlots);
 #endif
 
@@ -60,7 +60,7 @@ FakeManager::FakeManager(QObject *parent, const QString &xmlFile)
 
 FakeManager::~FakeManager()
 {
-#ifdef QT_DBUS_LIB
+#ifdef HAVE_DBUS
     QDBusConnection::sessionBus().unregisterObject("/org/kde/solid/fakehw", QDBusConnection::UnregisterTree);
 #endif
     qDeleteAll(d->loadedDevices);

@@ -21,7 +21,7 @@
 #include "fakevolume.h"
 
 #include <QStringList>
-#ifdef QT_DBUS_LIB
+#ifdef HAVE_DBUS
 #include <QDBusConnection>
 #endif
 
@@ -40,7 +40,7 @@ FakeDevice::FakeDevice(const QString &udi, const QMap<QString, QVariant> &proper
     d->locked = false;
     d->broken = false;
 
-#ifdef QT_DBUS_LIB
+#ifdef HAVE_DBUS
     QDBusConnection::sessionBus().registerObject(udi, this, QDBusConnection::ExportNonScriptableSlots);
 #endif
 
@@ -67,7 +67,7 @@ FakeDevice::FakeDevice(const FakeDevice &dev)
 
 FakeDevice::~FakeDevice()
 {
-#ifdef QT_DBUS_LIB
+#ifdef HAVE_DBUS
     QDBusConnection::sessionBus().unregisterObject(d->udi, QDBusConnection::UnregisterTree);
 #endif
 }
@@ -292,7 +292,7 @@ QObject *FakeDevice::createDeviceInterface(const Solid::DeviceInterface::Type &t
         break;
     }
 
-#ifdef QT_DBUS_LIB
+#ifdef HAVE_DBUS
     if (iface) {
         QDBusConnection::sessionBus().registerObject(d->udi + '/' + Solid::DeviceInterface::typeToString(type),
                                                      iface,

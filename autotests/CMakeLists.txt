@@ -34,7 +34,7 @@ if (WITH_NEW_SOLID_JOB AND WITH_NEW_POWER_ASYNC_API)
 endif()
 
 ########### solidpowertest ###############
-if(WITH_NEW_POWER_ASYNC_API AND WITH_NEW_POWER_ASYNC_FREEDESKTOP)
+if(HAVE_DBUS AND WITH_NEW_POWER_ASYNC_API AND WITH_NEW_POWER_ASYNC_FREEDESKTOP)
     ecm_add_test(
         solidfreedesktoptest.cpp
         fakeUpower.cpp

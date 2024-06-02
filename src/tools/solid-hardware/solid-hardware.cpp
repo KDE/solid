@@ -7,7 +7,7 @@
 
 #include "solid-hardware.h"
 
-#if defined QT_DBUS_LIB
+#ifdef HAVE_DBUS
 #include <QDBusArgument>
 #include <QDBusObjectPath>
 #endif
@@ -37,7 +37,7 @@ std::ostream &operator<<(std::ostream &out, const QString &msg)
 }
 
 std::ostream &operator<<(std::ostream &out, const QVariant &value);
-#if defined QT_DBUS_LIB
+#ifdef HAVE_DBUS
 std::ostream &operator<<(std::ostream &out, const QDBusArgument &arg)
 {
     auto type = arg.currentType();
@@ -139,7 +139,7 @@ std::ostream &operator<<(std::ostream &out, const QVariant &value)
                 tmp.append(QString::number(val));
             }
             out << "{" << tmp.join(",") << "} (int list)";
-#if defined QT_DBUS_LIB
+#ifdef HAVE_DBUS
         } else if (value.canConvert<QDBusObjectPath>()) {
             out << value.value<QDBusObjectPath>().path() << " (ObjectPath)";
         } else if (value.canConvert<QDBusVariant>()) {
