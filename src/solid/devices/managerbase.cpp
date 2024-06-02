@@ -85,7 +85,7 @@ void Solid::ManagerBasePrivate::loadBackends()
     }
 }
 
-QList<QObject *> Solid::ManagerBasePrivate::managerBackends() const
+QList<Solid::Ifaces::DeviceManager *> Solid::ManagerBasePrivate::managerBackends() const
 {
     return m_backends;
 }

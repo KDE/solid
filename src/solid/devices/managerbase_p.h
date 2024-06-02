@@ -9,6 +9,7 @@
 
 #include <QObject>
 
+#include "ifaces/devicemanager.h"
 #include "solid/solid_export.h"
 
 namespace Solid
@@ -20,10 +21,10 @@ public:
     virtual ~ManagerBasePrivate();
     void loadBackends();
 
-    QList<QObject *> managerBackends() const;
+    QList<Ifaces::DeviceManager *> managerBackends() const;
 
 private:
-    QList<QObject *> m_backends;
+    QList<Ifaces::DeviceManager *> m_backends;
 };
 }
 

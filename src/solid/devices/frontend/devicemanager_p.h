@@ -51,7 +51,7 @@ class DeviceManagerStorage
 public:
     DeviceManagerStorage();
 
-    QList<QObject *> managerBackends();
+    QList<Ifaces::DeviceManager *> managerBackends();
     DeviceNotifier *notifier();
 
 private:
