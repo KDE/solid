@@ -1,8 +1,8 @@
-# Stefan Asserhäll <stefan.asserhall@gmail.com>, 2014, 2017, 2019, 2020, 2021, 2022.
+# SPDX-FileCopyrightText: 2014, 2017, 2019, 2020, 2021, 2022, 2024 Stefan Asserhäll <stefan.asserhall@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2022-09-24 15:11+0200\n"
+"PO-Revision-Date: 2024-06-21 07:37+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Qt-Contexts: true\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 20.08.1\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:60
 #, qt-format
@@ -802,63 +802,51 @@ msgid ""
 msgstr "             # Om tillämpligt, matar ut enheten som motsvarar 'udi'.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:274
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # Listen to all add/remove events on supported hardware."
 msgctxt "solid-hardware|"
 msgid "             # Listen to all add/remove events on supported hardware.\n"
 msgstr ""
 "             # Lyssna på alla tilläggs- och borttagningshändelser på "
-"hårdvara som stöder det."
+"hårdvara som stöder det.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:277
 msgctxt "solid-hardware|"
 msgid "             # Monitor devices for changes.\n"
-msgstr ""
+msgstr "             # Övervaka enheter för ändringar.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:280
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"CanCheck\" request to the device corresponding to "
 "'udi'.\n"
-msgstr "             # Om tillämpligt, matar ut enheten som motsvarar 'udi'.\n"
+msgstr ""
+"             # Skicka förfrågan \"Kan kontrollera\" till enheten som "
+"motsvarar 'udi'.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:283
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"Check\" request to the device corresponding to 'udi'.\n"
-msgstr "             # Om tillämpligt, matar ut enheten som motsvarar 'udi'.\n"
+msgstr ""
+"             # Skicka förfrågan \"Kontrollera\" till enheten som motsvarar "
+"'udi'.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:286
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"CanRepair\" request to the device corresponding to "
 "'udi'.\n"
-msgstr "             # Om tillämpligt, matar ut enheten som motsvarar 'udi'.\n"
+msgstr ""
+"             # Skicka förfrågan \"Kan reparera\" till enheten som motsvarar "
+"'udi'.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:289
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"Repair\" request to the device corresponding to "
 "'udi'.\n"
-msgstr "             # Om tillämpligt, matar ut enheten som motsvarar 'udi'.\n"
+msgstr ""
+"             # Skicka förfrågan \"Reparera\" till enheten som motsvarar "
+"'udi'.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:301
 msgctxt "solid-hardware|"
@@ -912,46 +900,46 @@ msgstr "Fel: %1 har inte gränssnittet optisk enhet."
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanCheck: %1"
-msgstr ""
+msgstr "Kan kontrollera enhet: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #: tools/solid-hardware/solid-hardware.cpp:488
 msgctxt "SolidHardware|"
 msgid "no"
-msgstr ""
+msgstr "nej"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #: tools/solid-hardware/solid-hardware.cpp:488
 msgctxt "SolidHardware|"
 msgid "yes"
-msgstr ""
+msgstr "ja"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device Check: %1"
-msgstr ""
+msgstr "Kontrollera enhet: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 msgctxt "SolidHardware|"
 msgid "has error"
-msgstr ""
+msgstr "har fel"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 msgctxt "SolidHardware|"
 msgid "no error"
-msgstr ""
+msgstr "inga fel"
 
 #: tools/solid-hardware/solid-hardware.cpp:483
 msgctxt "SolidHardware|"
 msgid "Device Check: operation is not supported"
-msgstr ""
+msgstr "Check för enhet: operationen stöds inte"
 
 #: tools/solid-hardware/solid-hardware.cpp:488
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanRepair: %1"
-msgstr ""
+msgstr "Kan reparera enhet: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:503
 #, qt-format
