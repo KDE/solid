@@ -40,7 +40,7 @@ public:
 
     void init(const QStringList &subsystemList, ListenToWhat what);
     void setWatchedSubsystems(const QStringList &subsystemList);
-    void _uq_monitorReadyRead(int fd);
+    void dispatchEvent();
     DeviceList deviceListFromEnumerate(struct udev_enumerate *en);
 
     struct udev *udev;

@@ -67,7 +67,9 @@ void ClientPrivate::setWatchedSubsystems(const QStringList &subsystemList)
     // start the new monitor receiving
     udev_monitor_enable_receiving(newM);
     QSocketNotifier *sn = new QSocketNotifier(udev_monitor_get_fd(newM), QSocketNotifier::Read);
-    QObject::connect(sn, SIGNAL(activated(int)), q, SLOT(_uq_monitorReadyRead(int)));
+    QObject::connect(sn, &QSocketNotifier::activated, q, [this]() {
+        dispatchEvent();
+    });
 
     // kill any previous monitor
     delete monitorNotifier;
@@ -81,9 +83,8 @@ void ClientPrivate::setWatchedSubsystems(const QStringList &subsystemList)
     watchedSubsystems = subsystemList;
 }
 
-void ClientPrivate::_uq_monitorReadyRead(int fd)
+void ClientPrivate::dispatchEvent()
 {
-    Q_UNUSED(fd);
     monitorNotifier->setEnabled(false);
     struct udev_device *dev = udev_monitor_receive_device(monitor);
     monitorNotifier->setEnabled(true);
