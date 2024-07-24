@@ -4,19 +4,20 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Sveinn í Felli <sveinki@nett.is>, 2009, 2010, 2011, 2016.
+# SPDX-FileCopyrightText: 2024 Gummi <gudmundure@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: solid_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-01 01:49+0000\n"
-"PO-Revision-Date: 2016-01-16 09:56+0000\n"
-"Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
-"Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
+"PO-Revision-Date: 2024-07-22 12:56+0000\n"
+"Last-Translator: Gummi <gudmundure@gmail.com>\n"
+"Language-Team: Icelandic <kde-i18n-doc@kde.org>\n"
 "Language: is\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 23.08.5\n"
 "Plural-Forms: Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Qt-Contexts: true\n"
 
@@ -24,45 +25,38 @@ msgstr ""
 #, qt-format
 msgctxt "%1 is sharename, %2 is servername"
 msgid "%1 on %2"
-msgstr ""
+msgstr "%1 á %2"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:62
 #, qt-format
 msgctxt "%1 is mountpoint, %2 is fs type"
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: solid/devices/backends/fstab/fstabmanager.cpp:80
 msgctxt "Solid::Backends::Fstab::FstabManager|"
 msgid "Filesystem Volumes"
-msgstr ""
+msgstr "Skrákerfiseintök"
 
 #: solid/devices/backends/fstab/fstabmanager.cpp:81
-#, fuzzy
-#| msgctxt "Solid::Backends::UDev::UDevManager|"
-#| msgid "Devices declared in your system"
 msgctxt "Solid::Backends::Fstab::FstabManager|"
 msgid "Mountable filesystems declared in your system"
-msgstr "Tæki sem uppgefin eru á netinu þínu"
+msgstr "Tengjanleg skráakerfi sem eru skilgreind í stýrikerfinu þínu"
 
 #: solid/devices/backends/imobile/imobiledevice.cpp:90
 msgctxt "imobiledevice|Company name"
 msgid "Apple"
-msgstr ""
+msgstr "Apple"
 
 #: solid/devices/backends/imobile/imobilemanager.cpp:101
-#, fuzzy
-#| msgctxt "Solid::Backends::UDev::UDevManager|"
-#| msgid "Devices"
 msgctxt "Solid::Backends::IMobile::Manager|"
 msgid "iDevice"
-msgstr "Tæki"
+msgstr "iDevice"
 
 #: solid/devices/backends/imobile/imobilemanager.cpp:102
-#, fuzzy
 msgctxt "Solid::Backends::IMobile::Manager|"
 msgid "iOS devices"
-msgstr "UPnP tæki"
+msgstr "iOS-tæki"
 
 #: solid/devices/backends/udev/udevdevice.cpp:100
 msgctxt "Solid::Backends::UDev::UDevDevice|"
@@ -130,40 +124,28 @@ msgid "0 B"
 msgstr "0 B"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:75
-#, fuzzy, qt-format
-#| msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
-#| msgid "%1 External Hard Drive"
+#, qt-format
 msgctxt "QObject|%1 is the size, %2 is the block device name e.g. sda, sda1"
 msgid "%1 External Drive (%2)"
-msgstr "%1 utanáliggjandi harður diskur"
+msgstr "%1 utanáliggjandi drif (%2)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:77
-#, fuzzy, qt-format
-#| msgctxt "Solid::Backends::Hal::HalDevice|%1 is the size"
-#| msgid "%1 External Hard Drive"
+#, qt-format
 msgctxt "QObject|%1 is the size, %2 is the block device name e.g. sda, sda1"
 msgid "%1 Internal Drive (%2)"
-msgstr "%1 utanáliggjandi harður diskur"
+msgstr "%1 innbyggt drif (%2)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:81
-#, fuzzy, qt-format
-#| msgctxt ""
-#| "Solid::Backends::Hal::HalDevice|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
-#| "DVD-R'/etc (with leading slash)"
-#| msgid "External %1%2 Drive"
+#, qt-format
 msgctxt "QObject|%1 is the block device name e.g. sda, sda1"
 msgid "External Drive (%1)"
-msgstr "Utanáliggjandi %1%2 drif"
+msgstr "Utanáliggjandi drif (%1)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:83
-#, fuzzy, qt-format
-#| msgctxt ""
-#| "Solid::Backends::Hal::HalDevice|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
-#| "DVD-R'/etc (with leading slash)"
-#| msgid "External %1%2 Drive"
+#, qt-format
 msgctxt "QObject|%1 is the block device name e.g. sda, sda1"
 msgid "Internal Drive (%1)"
-msgstr "Utanáliggjandi %1%2 drif"
+msgstr "Innbyggt drif (%1)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:256
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -476,12 +458,9 @@ msgid "Encrypted Drive"
 msgstr "Dulritað drif"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:576
-#, fuzzy
-#| msgctxt "Solid::Backends::UDisks2::Device|"
-#| msgid "Floppy Drive"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Floppy Disk"
-msgstr "Disklingadrif"
+msgstr "Disklingur"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:580
 #, qt-format
@@ -490,12 +469,9 @@ msgid "%1 Removable Media"
 msgstr "%1 fjarlægjanlegur geymslumiðill"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:582
-#, fuzzy
-#| msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
-#| msgid "%1 Removable Media"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Removable Media"
-msgstr "%1 fjarlægjanlegur geymslumiðill"
+msgstr "Utanáliggjandi miðill"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:586
 #, qt-format
@@ -504,12 +480,9 @@ msgid "%1 Media"
 msgstr "%1 geymslumiðill"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:588
-#, fuzzy
-#| msgctxt "Solid::Backends::UDisks2::Manager|"
-#| msgid "Storage devices"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Storage Media"
-msgstr "Geymslumiðlar"
+msgstr "Geymslumiðill"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:732
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -582,14 +555,13 @@ msgid ""
 "Cannot request authentication for this action. The PolicyKit authentication "
 "system appears to be not available."
 msgstr ""
+"Get ekki beðið um auðkenningu fyrir þessa aðgerð. PolicyKit-"
+"auðkenningarkerfið virðist ekki vera tiltækt."
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:760
-#, fuzzy
-#| msgctxt "Solid::Backends::UDisks2::Device|"
-#| msgid "The requested operation has been canceled"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The authentication prompt was canceled"
-msgstr "Hætt hefur verið við umbeðna aðgerð"
+msgstr "Hætt var við auðkenningarkvaðninguna"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:762
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -774,6 +746,17 @@ msgid ""
 "             # neutral fashion,\n"
 "             # - Otherwise only device UDIs are listed.\n"
 msgstr ""
+"             # Vélbúnaður sem er til staðar í kerfinu talinn upp.\n"
+"             # - Ef valkosturinn 'nonportableinfo' er tilgreindur eru\n"
+"             # eiginleikar tækisins sýndir (gætið að því að í slíku tilfelli "
+"eru heiti eiginleika\n"
+"             # bundin við tiltekna bakenda),\n"
+"             # - Ef valkosturinn 'details' er tilgreindur eru viðmót "
+"tækisins\n"
+"             # og viðeigandi eiginleikar sýndir án þess að það sé bundið "
+"við\n"
+"             # tiltekið kerfi,\n"
+"             # - Að öðrum kosti er aðeins UDI-númer tækis birt.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:245
 msgctxt "solid-hardware|"
@@ -781,6 +764,8 @@ msgid ""
 "             # Display all the interfaces and properties of the device\n"
 "             # corresponding to 'udi' in a platform neutral fashion.\n"
 msgstr ""
+"             # Sýna öll viðmót og eiginleika tækja sem samsvara\n"
+"             # 'udi' án þess að það sé bundið við tiltekin kerfi.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:251
 msgctxt "solid-hardware|"
@@ -790,6 +775,9 @@ msgid ""
 "             # (be careful, in this case property names are backend "
 "dependent).\n"
 msgstr ""
+"             # Birta alla eiginleika tækisins sem samsvarar 'udi'\n"
+"             # (sýndu aðgát, í þessu tilfelli eru heiti eiginleika bundin "
+"við tiltekna bakenda).\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:257
 msgctxt "solid-hardware|"
@@ -800,34 +788,40 @@ msgid ""
 "             # branch of the corresponding device,\n"
 "             # - Otherwise the search is done on all the devices.\n"
 msgstr ""
+"             # UDI-tölur tækja sem samsvara 'predicate' taldar upp.\n"
+"             # - Ef 'parentUdi' er tilgreint er leitin takmörkuð við\n"
+"             # greinina á viðeigandi tæki,\n"
+"             # - Að öðrum kosti nær leitin til allra tækja.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:265
 msgctxt "solid-hardware|"
 msgid ""
 "             # If applicable, mount the device corresponding to 'udi'.\n"
-msgstr ""
+msgstr "             # Ef við á, tengja tækið sem samsvarar 'udi'.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:268
 msgctxt "solid-hardware|"
 msgid ""
 "             # If applicable, unmount the device corresponding to 'udi'.\n"
-msgstr ""
+msgstr "             # Ef við á, aftengja tækið sem samsvarar 'udi'.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:271
 msgctxt "solid-hardware|"
 msgid ""
 "             # If applicable, eject the device corresponding to 'udi'.\n"
-msgstr ""
+msgstr "             # Ef við á, ýta út tækinu sem samsvarar 'udi'.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:274
 msgctxt "solid-hardware|"
 msgid "             # Listen to all add/remove events on supported hardware.\n"
 msgstr ""
+"             # Hlusta eftir öllum bæta við-/fjarlægja-atvikum á studdum "
+"vélbúnaði.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:277
 msgctxt "solid-hardware|"
 msgid "             # Monitor devices for changes.\n"
-msgstr ""
+msgstr "             # Vakta tæki og fylgjast með breytingum.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:280
 msgctxt "solid-hardware|"
@@ -835,12 +829,14 @@ msgid ""
 "             # Send \"CanCheck\" request to the device corresponding to "
 "'udi'.\n"
 msgstr ""
+"             # Senda \"CanCheck\"-beiðni til tækisins sem samsvarar 'udi'.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:283
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"Check\" request to the device corresponding to 'udi'.\n"
 msgstr ""
+"             # Senda \"Check\"-beiðni til tækisins sem samsvarar 'udi'.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:286
 msgctxt "solid-hardware|"
@@ -848,6 +844,7 @@ msgid ""
 "             # Send \"CanRepair\" request to the device corresponding to "
 "'udi'.\n"
 msgstr ""
+"             # Senda \"CanRepair\"-beiðni til tækisins sem samsvarar 'udi'.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:289
 msgctxt "solid-hardware|"
@@ -855,11 +852,12 @@ msgid ""
 "             # Send \"Repair\" request to the device corresponding to "
 "'udi'.\n"
 msgstr ""
+"             # Senda \"Repair\"-beiðni til tækisins sem samsvarar 'udi'.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:301
 msgctxt "solid-hardware|"
 msgid "KDE tool for querying your hardware from the command line"
-msgstr "KDE tól til samskipta og stjórnunar á vélbúnaði frá skipanalínu"
+msgstr "KDE-verkfæri til samskipta og stjórnunar á vélbúnaði frá skipanalínu"
 
 #: tools/solid-hardware/solid-hardware.cpp:304
 msgctxt "solid-hardware|"
@@ -874,17 +872,17 @@ msgstr "Sýna tiltækar skipanir"
 #: tools/solid-hardware/solid-hardware.cpp:328
 msgctxt "solid-hardware|"
 msgid "Show device details"
-msgstr "Birta nánar um tæki"
+msgstr "Sýna upplýsingar um tæki"
 
 #: tools/solid-hardware/solid-hardware.cpp:329
 msgctxt "solid-hardware|"
 msgid "Show non portable information"
-msgstr ""
+msgstr "Sýna ófæranlegar upplýsingar"
 
 #: tools/solid-hardware/solid-hardware.cpp:342
 msgctxt "solid-hardware|"
 msgid "Parent device udi"
-msgstr "UDI yfirtækis"
+msgstr "UDI-kenni móðurtækis"
 
 #: tools/solid-hardware/solid-hardware.cpp:384
 #, qt-format
@@ -896,58 +894,58 @@ msgstr "Formvilla: Óþekkt skipun '%1'"
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1 does not have the interface StorageAccess."
-msgstr ""
+msgstr "Villa: %1 er ekki með viðmótið StorageAccess."
 
 #: tools/solid-hardware/solid-hardware.cpp:449
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1 does not have the interface OpticalDrive."
-msgstr ""
+msgstr "Villa: %1 er ekki með viðmótið OpticalDrive."
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanCheck: %1"
-msgstr ""
+msgstr "Device CanCheck: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #: tools/solid-hardware/solid-hardware.cpp:488
 msgctxt "SolidHardware|"
 msgid "no"
-msgstr ""
+msgstr "nei"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #: tools/solid-hardware/solid-hardware.cpp:488
 msgctxt "SolidHardware|"
 msgid "yes"
-msgstr ""
+msgstr "já"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device Check: %1"
-msgstr ""
+msgstr "Device Check: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 msgctxt "SolidHardware|"
 msgid "has error"
-msgstr ""
+msgstr "með villu"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 msgctxt "SolidHardware|"
 msgid "no error"
-msgstr ""
+msgstr "engin villa"
 
 #: tools/solid-hardware/solid-hardware.cpp:483
 msgctxt "SolidHardware|"
 msgid "Device Check: operation is not supported"
-msgstr ""
+msgstr "Device Check: aðgerð er ekki studd"
 
 #: tools/solid-hardware/solid-hardware.cpp:488
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanRepair: %1"
-msgstr ""
+msgstr "Device CanRepair: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:503
 #, qt-format
@@ -958,7 +956,7 @@ msgstr "Villa: %1"
 #: tools/solid-power/main.cpp:22
 msgctxt "solid-power|"
 msgid "Tool to know and set the power management state of your device"
-msgstr ""
+msgstr "Verkfæri til að þekkja og stilla orkustjórnunarstöðu tækisins þíns"
 
 #: tools/solid-power/main.cpp:24
 msgctxt "solid-power|"
@@ -977,6 +975,8 @@ msgid ""
 "             # - acPlugged: whether the device is connected to the AC or "
 "not\n"
 msgstr ""
+"             # Sýna alla orkustjórnunarupplýsingar úr kerfinu.\n"
+"             # - acPlugged: hvort tækið sé tengt við rafmagn eða ekki\n"
 
 #~ msgctxt "Solid::Backends::Hal::HalDevice|"
 #~ msgid "%1 TiB"
