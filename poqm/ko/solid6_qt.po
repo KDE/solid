@@ -1,13 +1,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Shinjo Park <kde@peremen.name>, 2009, 2010, 2011, 2013, 2014, 2017, 2019, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2009, 2010, 2011, 2013, 2014, 2017, 2019, 2020, 2021, 2022, 2023, 2024 Shinjo Park <kde@peremen.name>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-01 01:49+0000\n"
-"PO-Revision-Date: 2023-04-22 00:10+0200\n"
+"PO-Revision-Date: 2024-08-21 00:07+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Qt-Contexts: true\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:60
 #, qt-format
@@ -817,47 +817,33 @@ msgid "             # Monitor devices for changes.\n"
 msgstr "             # 장치의 변경 사항을 감시합니다.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:280
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"CanCheck\" request to the device corresponding to "
 "'udi'.\n"
-msgstr "             # 사용 가능한 경우 'udi'에 해당하는 장치를 꺼냅니다.\n"
+msgstr ""
+"             # 'udi'에 해당하는 장치에 \"CanCheck\" 요청을 전송합니다.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:283
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"Check\" request to the device corresponding to 'udi'.\n"
-msgstr "             # 사용 가능한 경우 'udi'에 해당하는 장치를 꺼냅니다.\n"
+msgstr "             # 'udi'에 해당하는 장치에 \"Check\" 요청을 전송합니다.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:286
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"CanRepair\" request to the device corresponding to "
 "'udi'.\n"
-msgstr "             # 사용 가능한 경우 'udi'에 해당하는 장치를 꺼냅니다.\n"
+msgstr ""
+"             # 'udi'에 해당하는 장치에 \"CanRepair\" 요청을 전송합니다.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:289
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"Repair\" request to the device corresponding to "
 "'udi'.\n"
-msgstr "             # 사용 가능한 경우 'udi'에 해당하는 장치를 꺼냅니다.\n"
+msgstr "             # 'udi'에 해당하는 장치에 \"Repair\" 요청을 전송합니다.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:301
 msgctxt "solid-hardware|"
@@ -911,46 +897,46 @@ msgstr "오류: %1이(가) OpticalDrive 인터페이스를 제공하지 않습�
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanCheck: %1"
-msgstr ""
+msgstr "장치 검사 가능: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #: tools/solid-hardware/solid-hardware.cpp:488
 msgctxt "SolidHardware|"
 msgid "no"
-msgstr ""
+msgstr "아니요"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #: tools/solid-hardware/solid-hardware.cpp:488
 msgctxt "SolidHardware|"
 msgid "yes"
-msgstr ""
+msgstr "예"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device Check: %1"
-msgstr ""
+msgstr "장치 검사: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 msgctxt "SolidHardware|"
 msgid "has error"
-msgstr ""
+msgstr "오류 있음"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 msgctxt "SolidHardware|"
 msgid "no error"
-msgstr ""
+msgstr "오류 없음"
 
 #: tools/solid-hardware/solid-hardware.cpp:483
 msgctxt "SolidHardware|"
 msgid "Device Check: operation is not supported"
-msgstr ""
+msgstr "장치 검사: 동작이 지원되지 않음"
 
 #: tools/solid-hardware/solid-hardware.cpp:488
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanRepair: %1"
-msgstr ""
+msgstr "장치 수리 가능: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:503
 #, qt-format
