@@ -262,19 +262,6 @@ void Manager::slotMediaChanged(const QDBusMessage &msg)
 
     const QString udi = msg.path();
     updateBackend(udi);
-    qulonglong size = properties.value(QStringLiteral("Size")).toULongLong();
-    qCDebug(UDISKS2) << "MEDIA CHANGED in" << udi << "; size is:" << size;
-
-    if (!m_deviceCache.contains(udi) && size > 0) { // we don't know the optdisc, got inserted
-        m_deviceCache.append(udi);
-        Q_EMIT deviceAdded(udi);
-    }
-
-    if (m_deviceCache.contains(udi) && size == 0) { // we know the optdisc, got removed
-        Q_EMIT deviceRemoved(udi);
-        m_deviceCache.removeAll(udi);
-        DeviceBackend::destroyBackend(udi);
-    }
 }
 
 const QStringList &Manager::deviceCache()
