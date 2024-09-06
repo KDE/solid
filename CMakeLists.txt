@@ -76,10 +76,12 @@ set_package_properties(PList PROPERTIES
                        PURPOSE "Needed to build the iOS device support backend"
                       )
 
-# Used by the UDisks backend on Linux
-find_package(LibMount)
-set_package_properties(LibMount PROPERTIES
-                       TYPE OPTIONAL)
+if (CMAKE_SYSTEM_NAME MATCHES Linux)
+    # Used by the UDisks backend on Linux
+    find_package(LibMount)
+    set_package_properties(LibMount PROPERTIES
+                           TYPE REQUIRED)
+endif()
 
 include(ECMPoQmTools)
 
