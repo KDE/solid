@@ -22,11 +22,7 @@ namespace Fstab
 Q_GLOBAL_STATIC(FstabWatcher, globalFstabWatcher)
 
 static const QString s_mtabFile = QStringLiteral("/etc/mtab");
-#ifdef Q_OS_SOLARIS
-static const QString s_fstabFile = QStringLiteral("/etc/vfstab");
-#else
 static const QString s_fstabFile = QStringLiteral("/etc/fstab");
-#endif
 static const QString s_fstabPath = QStringLiteral("/etc");
 
 FstabWatcher::FstabWatcher()

@@ -17,8 +17,6 @@
 
 #include <errno.h>
 
-#define MTAB "/etc/mtab"
-
 using namespace Solid::Backends::Fstab;
 
 FstabStorageAccess::FstabStorageAccess(Solid::Backends::Fstab::FstabDevice *device)

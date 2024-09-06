@@ -21,13 +21,8 @@
 #include <solid/config-solid.h>
 #include <stdlib.h>
 
-#if HAVE_SYS_MNTTAB_H
-#include <sys/mnttab.h>
-#endif
 #if HAVE_MNTENT_H
 #include <mntent.h>
-#elif defined(HAVE_SYS_MNTENT_H)
-#include <sys/mntent.h>
 #endif
 
 // This is the *BSD branch
@@ -41,33 +36,11 @@
 #include <sys/mount.h>
 #endif
 
-#ifdef Q_OS_SOLARIS
-#define FSTAB "/etc/vfstab"
-#else
 #define FSTAB "/etc/fstab"
-#endif
 
-#if !HAVE_GETMNTINFO
-#ifdef _PATH_MOUNTED
-// On some Linux, MNTTAB points to /etc/fstab !
-#undef MNTTAB
-#define MNTTAB _PATH_MOUNTED
-#else
-#ifndef MNTTAB
-#ifdef MTAB_FILE
-#define MNTTAB MTAB_FILE
-#else
-#define MNTTAB "/etc/mnttab"
-#endif
-#endif
-#endif
-#endif
-
-// There are (at least) four kind of APIs:
+// There are currently two APIs implemented:
 // setmntent + getmntent + struct mntent (linux...)
-//             getmntent + struct mnttab
 // getmntinfo + struct statfs&flags (BSD 4.4 and friends)
-// getfsent + char* (BSD 4.3 and friends)
 
 #if HAVE_SETMNTENT
 #define SETMNTENT setmntent
@@ -79,16 +52,6 @@
 #define MOUNTTYPE(var) var->mnt_type
 #define MOUNTOPTIONS(var) var->mnt_opts
 #define FSNAME(var) var->mnt_fsname
-#else
-#define SETMNTENT fopen
-#define ENDMNTENT fclose
-#define STRUCT_MNTENT struct mnttab
-#define STRUCT_SETMNTENT FILE *
-#define GETMNTENT(file, var) (getmntent(file, &var) == nullptr)
-#define MOUNTPOINT(var) var.mnt_mountp
-#define MOUNTTYPE(var) var.mnt_fstype
-#define MOUNTOPTIONS(var) var.mnt_mntopts
-#define FSNAME(var) var.mnt_special
 #endif
 
 Q_GLOBAL_STATIC(QThreadStorage<Solid::Backends::Fstab::FstabHandling>, globalFstabCache)
@@ -197,16 +160,10 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateFstabMountPointsCache()
 
         // not empty or commented out by '#'
         const QStringList items = line.split(' ');
-
-#ifdef Q_OS_SOLARIS
-        if (items.count() < 5) {
-            continue;
-        }
-#else
         if (items.count() < 4) {
             continue;
         }
-#endif
+
         // prevent accessing a blocking directory
         if (_k_isFstabNetworkFileSystem(items.at(2), items.at(0)) || _k_isFstabSupportedLocalFileSystem(items.at(2))) {
             const QString device = items.at(0);
@@ -356,7 +313,7 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateMtabMountPointsCache()
 
 #else
     STRUCT_SETMNTENT mnttab;
-    if ((mnttab = SETMNTENT(MNTTAB, "r")) == nullptr) {
+    if ((mnttab = SETMNTENT("/etc/mtab", "r")) == nullptr) {
         return;
     }
 
