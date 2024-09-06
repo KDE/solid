@@ -42,18 +42,6 @@
 // setmntent + getmntent + struct mntent (linux...)
 // getmntinfo + struct statfs&flags (BSD 4.4 and friends)
 
-#if HAVE_SETMNTENT
-#define SETMNTENT setmntent
-#define ENDMNTENT endmntent
-#define STRUCT_MNTENT struct mntent *
-#define STRUCT_SETMNTENT FILE *
-#define GETMNTENT(file, var) ((var = getmntent(file)) != nullptr)
-#define MOUNTPOINT(var) var->mnt_dir
-#define MOUNTTYPE(var) var->mnt_type
-#define MOUNTOPTIONS(var) var->mnt_opts
-#define FSNAME(var) var->mnt_fsname
-#endif
-
 Q_GLOBAL_STATIC(QThreadStorage<Solid::Backends::Fstab::FstabHandling>, globalFstabCache)
 
 Solid::Backends::Fstab::FstabHandling::FstabHandling()
@@ -312,23 +300,23 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateMtabMountPointsCache()
     }
 
 #else
-    STRUCT_SETMNTENT mnttab;
-    if ((mnttab = SETMNTENT("/etc/mtab", "r")) == nullptr) {
+    FILE *mnttab;
+    if ((mnttab = setmntent("/etc/mtab", "r")) == nullptr) {
         return;
     }
 
-    STRUCT_MNTENT fe;
-    while (GETMNTENT(mnttab, fe)) {
-        QString type = QFile::decodeName(MOUNTTYPE(fe));
+    struct mntent *fe;
+    while ((fe = getmntent(mnttab)) != nullptr) {
+        const QString type = QFile::decodeName(fe->mnt_type);
         if (_k_isFstabNetworkFileSystem(type, QString()) || _k_isFstabSupportedLocalFileSystem(type)) {
-            const QString fsname = QFile::decodeName(FSNAME(fe));
-            const QString mountpoint = QFile::decodeName(MOUNTPOINT(fe));
+            const QString fsname = QFile::decodeName(fe->mnt_fsname);
+            const QString mountpoint = QFile::decodeName(fe->mnt_dir);
             const QString device = _k_deviceNameForMountpoint(fsname, type, mountpoint);
             globalFstabCache->localData().m_mtabCache.insert(device, mountpoint);
             globalFstabCache->localData().m_fstabFstypeCache.insert(device, type);
         }
     }
-    ENDMNTENT(mnttab);
+    endmntent(mnttab);
 #endif
 
     globalFstabCache->localData().m_mtabCacheValid = true;
