@@ -54,6 +54,10 @@ Q_SIGNALS:
 
     void teardownRequested(const QString &udi) override;
 
+    void repairRequested(const QString &udi) override;
+
+    void repairDone(Solid::ErrorType error, QVariant resultData, const QString &udi) override;
+
 private Q_SLOTS:
     void onMtabChanged(const QString &device);
     void connectDBusSignals();
