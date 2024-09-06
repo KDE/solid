@@ -96,7 +96,6 @@ ecm_setup_version(PROJECT VARIABLE_PREFIX SOLID
 
 # TODO: Remove these
 remove_definitions(-DQT_NO_CAST_FROM_ASCII)
-remove_definitions(-DQT_NO_CAST_FROM_BYTEARRAY)
 
 ecm_set_disabled_deprecation_versions(
     QT 6.5

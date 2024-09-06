@@ -181,14 +181,14 @@ bool Solid::Predicate::matches(const Device &device) const
         const DeviceInterface *iface = device.asDeviceInterface(d->ifaceType);
 
         if (iface != nullptr) {
-            const int index = iface->metaObject()->indexOfProperty(d->property.toLatin1());
+            const int index = iface->metaObject()->indexOfProperty(d->property.toLatin1().constData());
             QMetaProperty metaProp = iface->metaObject()->property(index);
             QVariant value = metaProp.isReadable() ? metaProp.read(iface) : QVariant();
             QVariant expected = d->value;
 
             if (metaProp.isEnumType() && expected.userType() == QMetaType::QString) {
                 QMetaEnum metaEnum = metaProp.enumerator();
-                int value = metaEnum.keysToValue(d->value.toString().toLatin1());
+                int value = metaEnum.keysToValue(d->value.toString().toLatin1().constData());
                 if (value >= 0) { // No value found for these keys, resetting expected to invalid
                     expected = QVariant(metaProp.metaType(), &value);
                 } else {
