@@ -21,8 +21,8 @@
 #include <solid/config-solid.h>
 #include <stdlib.h>
 
-#if HAVE_MNTENT_H
-#include <mntent.h>
+#if HAVE_LIBMOUNT
+#include <libmount/libmount.h>
 #endif
 
 // This is the *BSD branch
@@ -39,7 +39,7 @@
 #define FSTAB "/etc/fstab"
 
 // There are currently two APIs implemented:
-// setmntent + getmntent + struct mntent (linux...)
+// libmount for linux
 // getmntinfo + struct statfs&flags (BSD 4.4 and friends)
 
 Q_GLOBAL_STATIC(QThreadStorage<Solid::Backends::Fstab::FstabHandling>, globalFstabCache)
@@ -104,31 +104,44 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateFstabMountPointsCache()
     globalFstabCache->localData().m_fstabCache.clear();
     globalFstabCache->localData().m_fstabOptionsCache.clear();
 
-#if HAVE_SETMNTENT
+#if HAVE_LIBMOUNT
 
-    FILE *fstab;
-    if ((fstab = setmntent(FSTAB, "r")) == nullptr) {
+    struct libmnt_table *table = mnt_new_table();
+    if (!table) {
         return;
     }
 
-    struct mntent *fe;
-    while ((fe = getmntent(fstab)) != nullptr) {
-        const QString fsname = QFile::decodeName(fe->mnt_fsname);
-        const QString fstype = QFile::decodeName(fe->mnt_type);
+    if (mnt_table_parse_fstab(table, NULL) != 0) {
+        mnt_free_table(table);
+        return;
+    }
+
+    struct libmnt_iter *itr = mnt_new_iter(MNT_ITER_FORWARD);
+    struct libmnt_fs *fs;
+
+    while (mnt_table_next_fs(table, itr, &fs) == 0) {
+        const QString fstype = QFile::decodeName(mnt_fs_get_fstype(fs));
+        const QString fsname = QFile::decodeName(mnt_fs_get_srcpath(fs));
         if (_k_isFstabNetworkFileSystem(fstype, fsname) || _k_isFstabSupportedLocalFileSystem(fstype)) {
-            const QString mountpoint = QFile::decodeName(fe->mnt_dir);
+            const QString mountpoint = QFile::decodeName(mnt_fs_get_target(fs));
             const QString device = _k_deviceNameForMountpoint(fsname, fstype, mountpoint);
-            QStringList options = QFile::decodeName(fe->mnt_opts).split(QLatin1Char(','));
+            const QStringList options = QFile::decodeName(mnt_fs_strdup_options(fs)).split(QLatin1Char(','));
 
             globalFstabCache->localData().m_fstabCache.insert(device, mountpoint);
             globalFstabCache->localData().m_fstabFstypeCache.insert(device, fstype);
-            while (!options.isEmpty()) {
-                globalFstabCache->localData().m_fstabOptionsCache.insert(device, options.takeFirst());
+            for (const auto &optionLine : options) {
+                const auto split = optionLine.split(QLatin1Char('='));
+                const auto optionName = split[0];
+                const auto optionValue = split.size() > 1 ? split[1] : QString{};
+
+                globalFstabCache->localData().m_fstabOptionsCache[device].insert(optionName, optionValue);
             }
         }
     }
 
-    endmntent(fstab);
+    mnt_free_iter(itr);
+
+    mnt_free_table(table);
 
 #else
 
@@ -216,11 +229,20 @@ QStringList Solid::Backends::Fstab::FstabHandling::mountPoints(const QString &de
     return mountpoints;
 }
 
-QStringList Solid::Backends::Fstab::FstabHandling::options(const QString &device)
+QHash<QString, QString> Solid::Backends::Fstab::FstabHandling::options(const QString &device)
 {
     _k_updateFstabMountPointsCache();
+    _k_updateMtabMountPointsCache();
 
-    QStringList options = globalFstabCache->localData().m_fstabOptionsCache.values(device);
+    auto options = globalFstabCache->localData().m_mtabOptionsCache.value(device);
+
+    const auto optionsFstab = globalFstabCache->localData().m_fstabOptionsCache.value(device);
+    for (const auto &it : optionsFstab.asKeyValueRange()) {
+        if (!options.contains(it.first)) {
+            options.insert(it.first, it.second);
+        }
+    }
+
     return options;
 }
 
@@ -277,6 +299,7 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateMtabMountPointsCache()
     }
 
     globalFstabCache->localData().m_mtabCache.clear();
+    globalFstabCache->localData().m_mtabOptionsCache.clear();
 
 #if HAVE_GETMNTINFO
 
@@ -299,24 +322,45 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateMtabMountPointsCache()
         }
     }
 
-#else
-    FILE *mnttab;
-    if ((mnttab = setmntent("/etc/mtab", "r")) == nullptr) {
+#elif HAVE_LIBMOUNT
+
+    struct libmnt_table *table = mnt_new_table();
+    if (!table) {
         return;
     }
 
-    struct mntent *fe;
-    while ((fe = getmntent(mnttab)) != nullptr) {
-        const QString type = QFile::decodeName(fe->mnt_type);
-        if (_k_isFstabNetworkFileSystem(type, QString()) || _k_isFstabSupportedLocalFileSystem(type)) {
-            const QString fsname = QFile::decodeName(fe->mnt_fsname);
-            const QString mountpoint = QFile::decodeName(fe->mnt_dir);
-            const QString device = _k_deviceNameForMountpoint(fsname, type, mountpoint);
+    if (mnt_table_parse_mtab(table, NULL) != 0) {
+        mnt_free_table(table);
+        return;
+    }
+
+    struct libmnt_iter *itr = mnt_new_iter(MNT_ITER_FORWARD);
+    struct libmnt_fs *fs;
+
+    while (mnt_table_next_fs(table, itr, &fs) == 0) {
+        const QString fstype = QFile::decodeName(mnt_fs_get_fstype(fs));
+        if (_k_isFstabNetworkFileSystem(fstype, QString{}) || _k_isFstabSupportedLocalFileSystem(fstype)) {
+            const QString mountpoint = QFile::decodeName(mnt_fs_get_target(fs));
+            const QString fsname = QFile::decodeName(mnt_fs_get_srcpath(fs));
+            const QString device = _k_deviceNameForMountpoint(fsname, fstype, mountpoint);
+            const QStringList options = QFile::decodeName(mnt_fs_strdup_options(fs)).split(QLatin1Char(','));
+
             globalFstabCache->localData().m_mtabCache.insert(device, mountpoint);
-            globalFstabCache->localData().m_fstabFstypeCache.insert(device, type);
+            globalFstabCache->localData().m_fstabFstypeCache.insert(device, fstype);
+            for (const auto &optionLine : options) {
+                const auto split = optionLine.split(QLatin1Char('='));
+                const auto optionName = split[0];
+                const auto optionValue = split.size() > 1 ? split[1] : QString{};
+
+                globalFstabCache->localData().m_mtabOptionsCache[device].insert(optionName, optionValue);
+            }
         }
     }
-    endmntent(mnttab);
+
+    mnt_free_iter(itr);
+
+    mnt_free_table(table);
+
 #endif
 
     globalFstabCache->localData().m_mtabCacheValid = true;

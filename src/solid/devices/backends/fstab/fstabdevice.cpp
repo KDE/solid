@@ -44,15 +44,15 @@ FstabDevice::FstabDevice(QString uid)
         }
     }
 
-    const QStringList &gvfsOptions = FstabHandling::options(m_device);
-    for (const QString &option : gvfsOptions) {
-        if (const auto tag = QLatin1String("x-gvfs-name="); option.startsWith(tag)) {
-            const QStringView encoded = QStringView(option).mid(tag.size());
-            m_displayName = QUrl::fromPercentEncoding(encoded.toLatin1());
-        } else if (const auto tag = QLatin1String("x-gvfs-icon="); option.startsWith(tag)) {
-            const QStringView encoded = QStringView(option).mid(tag.size());
-            m_iconName = QUrl::fromPercentEncoding(encoded.toLatin1());
-        }
+    const auto &options = FstabHandling::options(m_device);
+
+    const auto gvfsName = options.value(QLatin1String("x-gvfs-name"));
+    if (!gvfsName.isEmpty()) {
+        m_displayName = QUrl::fromPercentEncoding(gvfsName.toUtf8());
+    }
+    const auto gvfsIcon = options.value(QLatin1String("x-gvfs-icon"));
+    if (!gvfsIcon.isEmpty()) {
+        m_iconName = QUrl::fromPercentEncoding(gvfsIcon.toUtf8());
     }
 
     if (m_storageType == StorageType::NetworkShare) {
