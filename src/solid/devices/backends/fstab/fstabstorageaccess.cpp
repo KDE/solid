@@ -43,7 +43,7 @@ FstabStorageAccess::FstabStorageAccess(Solid::Backends::Fstab::FstabDevice *devi
         // ignore overlay fs not pointing to / or seemingly mounted by user
         (fsIsOverlay && m_filePath != QLatin1String("/") && !inUserPath);
 
-    connect(device, SIGNAL(mtabChanged(QString)), this, SLOT(onMtabChanged(QString)));
+    connect(device, &FstabDevice::mtabChanged, this, &FstabStorageAccess::onMtabChanged);
     QTimer::singleShot(0, this, SLOT(connectDBusSignals()));
 }
 

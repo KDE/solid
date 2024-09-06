@@ -9,7 +9,7 @@
 
 #include "fstabstorageaccess.h"
 #include <QPointer>
-#include <QStringList>
+#include <QString>
 #include <solid/devices/ifaces/device.h>
 
 namespace Solid
