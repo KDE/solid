@@ -46,22 +46,22 @@ DeviceBackend::DeviceBackend(const QString &udi)
 {
     // qDebug() << "Creating backend for device" << m_udi;
 
-    QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE, //
+    QDBusConnection::systemBus().connect(QStringLiteral(UD2_DBUS_SERVICE), //
                                          m_udi,
-                                         DBUS_INTERFACE_PROPS,
-                                         "PropertiesChanged",
+                                         QStringLiteral(DBUS_INTERFACE_PROPS),
+                                         QStringLiteral("PropertiesChanged"),
                                          this,
                                          SLOT(slotPropertiesChanged(QString, QVariantMap, QStringList)));
-    QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE,
-                                         UD2_DBUS_PATH,
-                                         DBUS_INTERFACE_MANAGER,
-                                         "InterfacesAdded",
+    QDBusConnection::systemBus().connect(QStringLiteral(UD2_DBUS_SERVICE),
+                                         QStringLiteral(UD2_DBUS_PATH),
+                                         QStringLiteral(DBUS_INTERFACE_MANAGER),
+                                         QStringLiteral("InterfacesAdded"),
                                          this,
                                          SLOT(slotInterfacesAdded(QDBusObjectPath, VariantMapMap)));
-    QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE,
-                                         UD2_DBUS_PATH,
-                                         DBUS_INTERFACE_MANAGER,
-                                         "InterfacesRemoved",
+    QDBusConnection::systemBus().connect(QStringLiteral(UD2_DBUS_SERVICE),
+                                         QStringLiteral(UD2_DBUS_PATH),
+                                         QStringLiteral(DBUS_INTERFACE_MANAGER),
+                                         QStringLiteral("InterfacesRemoved"),
                                          this,
                                          SLOT(slotInterfacesRemoved(QDBusObjectPath, QStringList)));
 
@@ -90,7 +90,7 @@ void DeviceBackend::initInterfaces()
             const auto name = xml.attributes().value(QLatin1String("name")).toString();
             /* Accept only org.freedesktop.UDisks2.* interfaces so that when the device is unplugged,
              * m_interfaces goes empty and we can easily verify that the device is gone. */
-            if (name.startsWith(UD2_DBUS_SERVICE)) {
+            if (name.startsWith(QStringLiteral(UD2_DBUS_SERVICE))) {
                 m_interfaces.append(name);
             }
         }
@@ -125,10 +125,10 @@ bool DeviceBackend::propertyExists(const QString &key) const
 
 QVariantMap DeviceBackend::allProperties() const
 {
-    QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, //
+    QDBusMessage call = QDBusMessage::createMethodCall(QStringLiteral(UD2_DBUS_SERVICE), //
                                                        m_udi,
-                                                       DBUS_INTERFACE_PROPS,
-                                                       "GetAll");
+                                                       QStringLiteral(DBUS_INTERFACE_PROPS),
+                                                       QStringLiteral("GetAll"));
 
     for (const QString &iface : std::as_const(m_interfaces)) {
         call.setArguments(QVariantList() << iface);
@@ -156,7 +156,8 @@ void DeviceBackend::invalidateProperties()
 
 QString DeviceBackend::introspect() const
 {
-    QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, m_udi, DBUS_INTERFACE_INTROSPECT, "Introspect");
+    QDBusMessage call =
+        QDBusMessage::createMethodCall(QStringLiteral(UD2_DBUS_SERVICE), m_udi, QStringLiteral(DBUS_INTERFACE_INTROSPECT), QStringLiteral("Introspect"));
     QDBusPendingReply<QString> reply = QDBusConnection::systemBus().call(call);
 
     if (reply.isValid()) {
@@ -176,7 +177,7 @@ void DeviceBackend::checkCache(const QString &key) const
         return;
     }
 
-    QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, m_udi, DBUS_INTERFACE_PROPS, "Get");
+    QDBusMessage call = QDBusMessage::createMethodCall(QStringLiteral(UD2_DBUS_SERVICE), m_udi, QStringLiteral(DBUS_INTERFACE_PROPS), QStringLiteral("Get"));
     /*
      * Interface is set to an empty string as in this QDBusInterface is a meta-object of multiple interfaces on the same path
      * The DBus properties also interface supports this, and will find the appropriate interface if none is explicitly set.
@@ -193,7 +194,7 @@ void DeviceBackend::checkCache(const QString &key) const
 
 void DeviceBackend::slotPropertiesChanged(const QString &ifaceName, const QVariantMap &changedProps, const QStringList &invalidatedProps)
 {
-    if (!ifaceName.startsWith(UD2_DBUS_SERVICE)) {
+    if (!ifaceName.startsWith(QStringLiteral(UD2_DBUS_SERVICE))) {
         return;
     }
     // qDebug() << m_udi << "'s interface" << ifaceName << "changed props:";
@@ -228,7 +229,7 @@ void DeviceBackend::slotInterfacesAdded(const QDBusObjectPath &object_path, cons
     for (auto it = interfaces_and_properties.cbegin(); it != interfaces_and_properties.cend(); ++it) {
         const QString &iface = it.key();
         /* Don't store generic DBus interfaces */
-        if (iface.startsWith(UD2_DBUS_SERVICE)) {
+        if (iface.startsWith(QStringLiteral(UD2_DBUS_SERVICE))) {
             m_interfaces.append(iface);
         }
     }

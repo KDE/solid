@@ -20,22 +20,22 @@ FakeStorageAccess::~FakeStorageAccess()
 
 bool FakeStorageAccess::isAccessible() const
 {
-    return fakeDevice()->property("isMounted").toBool();
+    return fakeDevice()->property(QStringLiteral("isMounted")).toBool();
 }
 
 QString FakeStorageAccess::filePath() const
 {
-    return fakeDevice()->property("mountPoint").toString();
+    return fakeDevice()->property(QStringLiteral("mountPoint")).toString();
 }
 
 bool FakeStorageAccess::isIgnored() const
 {
-    return fakeDevice()->property("isIgnored").toBool();
+    return fakeDevice()->property(QStringLiteral("isIgnored")).toBool();
 }
 
 bool FakeStorageAccess::isEncrypted() const
 {
-    return fakeDevice()->property("isEncrypted").toBool();
+    return fakeDevice()->property(QStringLiteral("isEncrypted")).toBool();
 }
 
 bool FakeStorageAccess::setup()
@@ -43,7 +43,7 @@ bool FakeStorageAccess::setup()
     if (fakeDevice()->isBroken() || isAccessible()) {
         return false;
     } else {
-        fakeDevice()->setProperty("isMounted", true);
+        fakeDevice()->setProperty(QStringLiteral("isMounted"), true);
         return true;
     }
 }
@@ -53,7 +53,7 @@ bool FakeStorageAccess::teardown()
     if (fakeDevice()->isBroken() || !isAccessible()) {
         return false;
     } else {
-        fakeDevice()->setProperty("isMounted", false);
+        fakeDevice()->setProperty(QStringLiteral("isMounted"), false);
         return true;
     }
 }
@@ -61,8 +61,8 @@ bool FakeStorageAccess::teardown()
 void Solid::Backends::Fake::FakeStorageAccess::onPropertyChanged(const QMap<QString, int> &changes)
 {
     for (auto it = changes.cbegin(); it != changes.cend(); ++it) {
-        if (it.key() == QLatin1String("isMounted")) {
-            Q_EMIT accessibilityChanged(fakeDevice()->property("isMounted").toBool(), fakeDevice()->udi());
+        if (it.key() == QLatin1String(QLatin1String("isMounted"))) {
+            Q_EMIT accessibilityChanged(fakeDevice()->property(QStringLiteral("isMounted")).toBool(), fakeDevice()->udi());
         }
     }
 }

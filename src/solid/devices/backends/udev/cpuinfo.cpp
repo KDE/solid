@@ -34,13 +34,13 @@ QString extractCpuVendor(int processorNumber)
     QString vendor;
 
 #ifndef BUILDING_FOR_ARM_TARGET
-    vendor = info.extractCpuInfoLine(processorNumber, "vendor_id\\s+:\\s+(\\S.+)");
+    vendor = info.extractCpuInfoLine(processorNumber, QStringLiteral("vendor_id\\s+:\\s+(\\S.+)"));
     if (vendor.isEmpty()) {
-        vendor = info.extractInfoLine("Hardware\\s+:\\s+(\\S.+)");
+        vendor = info.extractInfoLine(QStringLiteral("Hardware\\s+:\\s+(\\S.+)"));
     }
 #else
     // ARM ? "CPU implementer : 0x41"
-    vendor = info.extractCpuInfoLine(processorNumber, "CPU implementer\\s+:\\s+(\\S.+)");
+    vendor = info.extractCpuInfoLine(processorNumber, QStringLiteral("CPU implementer\\s+:\\s+(\\S.+)"));
     bool ok = false;
     const int vendorId = vendor.toInt(&ok, 16);
     if (ok) {
@@ -60,19 +60,19 @@ QString extractCpuModel(int processorNumber)
     QString model;
 
 #ifndef BUILDING_FOR_ARM_TARGET
-    model = info.extractCpuInfoLine(processorNumber, "model name\\s+:\\s+(\\S.+)");
+    model = info.extractCpuInfoLine(processorNumber, QStringLiteral("model name\\s+:\\s+(\\S.+)"));
     if (model.isEmpty()) {
-        model = info.extractInfoLine("Processor\\s+:\\s+(\\S.+)");
+        model = info.extractInfoLine(QStringLiteral("Processor\\s+:\\s+(\\S.+)"));
     }
 
     // for ppc64, extract from "cpu:" line
     if (model.isEmpty()) {
-        model = info.extractInfoLine("cpu\\s+:\\s+(\\S.+)");
+        model = info.extractInfoLine(QStringLiteral("cpu\\s+:\\s+(\\S.+)"));
     }
 #else
     // ARM? "CPU part        : 0xd03"
-    const QString vendor = info.extractCpuInfoLine(processorNumber, "CPU implementer\\s+:\\s+(\\S.+)");
-    model = info.extractCpuInfoLine(processorNumber, "CPU part\\s+:\\s+(\\S.+)");
+    const QString vendor = info.extractCpuInfoLine(processorNumber, QStringLiteral("CPU implementer\\s+:\\s+(\\S.+)"));
+    model = info.extractCpuInfoLine(processorNumber, QStringLiteral("CPU part\\s+:\\s+(\\S.+)"));
     if (!model.isEmpty() && !vendor.isEmpty()) {
         bool vendorOk = false, modelOk = false;
         const int vendorId = vendor.toInt(&vendorOk, 16);
@@ -89,17 +89,17 @@ QString extractCpuModel(int processorNumber)
 int extractCurrentCpuSpeed(int processorNumber)
 {
     CpuInfo info;
-    int speed = info.extractCpuInfoLine(processorNumber, "cpu MHz\\s+:\\s+(\\d+).*").toInt();
+    int speed = info.extractCpuInfoLine(processorNumber, QStringLiteral("cpu MHz\\s+:\\s+(\\d+).*")).toInt();
     return speed;
 }
 
 CpuInfo::CpuInfo()
 {
-    QFile cpuInfoFile("/proc/cpuinfo");
+    QFile cpuInfoFile(QStringLiteral("/proc/cpuinfo"));
     if (!cpuInfoFile.open(QIODevice::ReadOnly)) {
         return;
     }
-    cpuInfo = QString(cpuInfoFile.readAll()).split('\n', Qt::SkipEmptyParts);
+    cpuInfo = QString::fromLatin1(cpuInfoFile.readAll()).split(QLatin1Char('\n'), Qt::SkipEmptyParts);
 }
 
 QString CpuInfo::extractCpuInfoLine(int processorNumber, const QString &regExpStr)

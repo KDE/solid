@@ -21,7 +21,7 @@ using namespace Solid::Backends::Shared;
 
 Manager::Manager(QObject *parent)
     : Solid::Ifaces::DeviceManager(parent)
-    , m_manager(UD2_DBUS_SERVICE, UD2_DBUS_PATH, QDBusConnection::systemBus())
+    , m_manager(QStringLiteral(UD2_DBUS_SERVICE), QStringLiteral(UD2_DBUS_PATH), QDBusConnection::systemBus())
 {
     m_supportedInterfaces = {
         Solid::DeviceInterface::GenericInterface,
@@ -41,14 +41,14 @@ Manager::Manager(QObject *parent)
     bool serviceFound = m_manager.isValid();
     if (!serviceFound) {
         // find out whether it will be activated automatically
-        QDBusMessage message = QDBusMessage::createMethodCall("org.freedesktop.DBus", //
-                                                              "/org/freedesktop/DBus",
-                                                              "org.freedesktop.DBus",
-                                                              "ListActivatableNames");
+        QDBusMessage message = QDBusMessage::createMethodCall(QStringLiteral("org.freedesktop.DBus"), //
+                                                              QStringLiteral("/org/freedesktop/DBus"),
+                                                              QStringLiteral("org.freedesktop.DBus"),
+                                                              QStringLiteral("ListActivatableNames"));
 
         QDBusReply<QStringList> reply = QDBusConnection::systemBus().call(message);
-        if (reply.isValid() && reply.value().contains(UD2_DBUS_SERVICE)) {
-            QDBusConnection::systemBus().interface()->startService(UD2_DBUS_SERVICE);
+        if (reply.isValid() && reply.value().contains(QStringLiteral(UD2_DBUS_SERVICE))) {
+            QDBusConnection::systemBus().interface()->startService(QStringLiteral(UD2_DBUS_SERVICE));
             serviceFound = true;
         }
     }
@@ -74,7 +74,7 @@ QObject *Manager::createDevice(const QString &udi)
 
         root->setProduct(tr("Storage"));
         root->setDescription(tr("Storage devices"));
-        root->setIcon("server-database"); // Obviously wasn't meant for that, but maps nicely in oxygen icon set :-p
+        root->setIcon(QStringLiteral("server-database")); // Obviously wasn't meant for that, but maps nicely in oxygen icon set :-p
 
         return root;
     } else if (deviceCache().contains(udi)) {
@@ -116,35 +116,36 @@ QStringList Manager::allDevices()
 {
     m_deviceCache.clear();
 
-    introspect(UD2_DBUS_PATH_BLOCKDEVICES, true /*checkOptical*/);
-    introspect(UD2_DBUS_PATH_DRIVES);
+    introspect(QStringLiteral(UD2_DBUS_PATH_BLOCKDEVICES), true /*checkOptical*/);
+    introspect(QStringLiteral(UD2_DBUS_PATH_DRIVES));
 
     return m_deviceCache;
 }
 
 void Manager::introspect(const QString &path, bool checkOptical)
 {
-    QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, path, DBUS_INTERFACE_INTROSPECT, "Introspect");
+    QDBusMessage call =
+        QDBusMessage::createMethodCall(QStringLiteral(UD2_DBUS_SERVICE), path, QStringLiteral(DBUS_INTERFACE_INTROSPECT), QStringLiteral("Introspect"));
     QDBusPendingReply<QString> reply = QDBusConnection::systemBus().call(call);
 
     if (reply.isValid()) {
         QDomDocument dom;
         dom.setContent(reply.value());
-        QDomNodeList nodeList = dom.documentElement().elementsByTagName("node");
+        QDomNodeList nodeList = dom.documentElement().elementsByTagName(QStringLiteral("node"));
         for (int i = 0; i < nodeList.count(); i++) {
             QDomElement nodeElem = nodeList.item(i).toElement();
-            if (!nodeElem.isNull() && nodeElem.hasAttribute("name")) {
-                const QString name = nodeElem.attribute("name");
-                const QString udi = path + "/" + name;
+            if (!nodeElem.isNull() && nodeElem.hasAttribute(QStringLiteral("name"))) {
+                const QString name = nodeElem.attribute(QStringLiteral("name"));
+                const QString udi = path + QStringLiteral("/") + name;
 
                 // Optimization, a loop device cannot really have a physical drive associated with it
                 if (checkOptical && !name.startsWith(QLatin1String("loop"))) {
                     Device device(udi);
                     if (device.mightBeOpticalDisc()) {
-                        QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE, //
+                        QDBusConnection::systemBus().connect(QStringLiteral(UD2_DBUS_SERVICE), //
                                                              udi,
-                                                             DBUS_INTERFACE_PROPS,
-                                                             "PropertiesChanged",
+                                                             QStringLiteral(DBUS_INTERFACE_PROPS),
+                                                             QStringLiteral("PropertiesChanged"),
                                                              this,
                                                              SLOT(slotMediaChanged(QDBusMessage)));
                         if (!device.isOpticalDisc()) { // skip empty CD disc
@@ -168,7 +169,7 @@ QSet<Solid::DeviceInterface::Type> Manager::supportedInterfaces() const
 
 QString Manager::udiPrefix() const
 {
-    return UD2_UDI_DISKS_PREFIX;
+    return QStringLiteral(UD2_UDI_DISKS_PREFIX);
 }
 
 void Manager::slotInterfacesAdded(const QDBusObjectPath &object_path, const VariantMapMap &interfaces_and_properties)
@@ -176,7 +177,7 @@ void Manager::slotInterfacesAdded(const QDBusObjectPath &object_path, const Vari
     const QString udi = object_path.path();
 
     /* Ignore jobs */
-    if (udi.startsWith(UD2_DBUS_PATH_JOBS)) {
+    if (udi.startsWith(QStringLiteral(UD2_DBUS_PATH_JOBS))) {
         return;
     }
 
@@ -186,13 +187,13 @@ void Manager::slotInterfacesAdded(const QDBusObjectPath &object_path, const Vari
     // should check if it is an optical drive, in order to properly
     // register mediaChanged event handler with newly-plugged external
     // drives
-    if (interfaces_and_properties.contains("org.freedesktop.UDisks2.Block")) {
+    if (interfaces_and_properties.contains(QStringLiteral("org.freedesktop.UDisks2.Block"))) {
         Device device(udi);
         if (device.mightBeOpticalDisc()) {
-            QDBusConnection::systemBus().connect(UD2_DBUS_SERVICE, //
+            QDBusConnection::systemBus().connect(QStringLiteral(UD2_DBUS_SERVICE), //
                                                  udi,
-                                                 DBUS_INTERFACE_PROPS,
-                                                 "PropertiesChanged",
+                                                 QStringLiteral(DBUS_INTERFACE_PROPS),
+                                                 QStringLiteral("PropertiesChanged"),
                                                  this,
                                                  SLOT(slotMediaChanged(QDBusMessage)));
         }
@@ -206,7 +207,7 @@ void Manager::slotInterfacesAdded(const QDBusObjectPath &object_path, const Vari
         Q_EMIT deviceAdded(udi);
     }
     // re-emit in case of 2-stage devices like N9 or some Android phones
-    else if (m_deviceCache.contains(udi) && interfaces_and_properties.keys().contains(UD2_DBUS_INTERFACE_FILESYSTEM)) {
+    else if (m_deviceCache.contains(udi) && interfaces_and_properties.keys().contains(QStringLiteral(UD2_DBUS_INTERFACE_FILESYSTEM))) {
         Q_EMIT deviceAdded(udi);
     }
 }
@@ -219,7 +220,7 @@ void Manager::slotInterfacesRemoved(const QDBusObjectPath &object_path, const QS
     }
 
     /* Ignore jobs */
-    if (udi.startsWith(UD2_DBUS_PATH_JOBS)) {
+    if (udi.startsWith(QStringLiteral(UD2_DBUS_PATH_JOBS))) {
         return;
     }
 
@@ -255,13 +256,13 @@ void Manager::slotMediaChanged(const QDBusMessage &msg)
 {
     const QVariantMap properties = qdbus_cast<QVariantMap>(msg.arguments().at(1));
 
-    if (!properties.contains("Size")) { // react only on Size changes
+    if (!properties.contains(QStringLiteral("Size"))) { // react only on Size changes
         return;
     }
 
     const QString udi = msg.path();
     updateBackend(udi);
-    qulonglong size = properties.value("Size").toULongLong();
+    qulonglong size = properties.value(QStringLiteral("Size")).toULongLong();
     qCDebug(UDISKS2) << "MEDIA CHANGED in" << udi << "; size is:" << size;
 
     if (!m_deviceCache.contains(udi) && size > 0) { // we don't know the optdisc, got inserted
@@ -295,7 +296,7 @@ void Manager::updateBackend(const QString &udi)
     // This doesn't emit "changed" signals. Signals are emitted later by DeviceBackend's slots
     backend->allProperties();
 
-    QVariant driveProp = backend->prop("Drive");
+    QVariant driveProp = backend->prop(QStringLiteral("Drive"));
     if (!driveProp.isValid()) {
         return;
     }

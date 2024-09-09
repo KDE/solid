@@ -53,9 +53,9 @@ FstabStorageAccess::~FstabStorageAccess()
 
 void FstabStorageAccess::connectDBusSignals()
 {
-    m_fstabDevice->registerAction("setup", this, SLOT(slotSetupRequested()), SLOT(slotSetupDone(int, QString)));
+    m_fstabDevice->registerAction(QStringLiteral("setup"), this, SLOT(slotSetupRequested()), SLOT(slotSetupDone(int, QString)));
 
-    m_fstabDevice->registerAction("teardown", this, SLOT(slotTeardownRequested()), SLOT(slotTeardownDone(int, QString)));
+    m_fstabDevice->registerAction(QStringLiteral("teardown"), this, SLOT(slotTeardownRequested()), SLOT(slotTeardownDone(int, QString)));
 }
 
 const Solid::Backends::Fstab::FstabDevice *FstabStorageAccess::fstabDevice() const
@@ -88,12 +88,14 @@ bool FstabStorageAccess::setup()
     if (filePath().isEmpty()) {
         return false;
     }
-    m_fstabDevice->broadcastActionRequested("setup");
-    return FstabHandling::callSystemCommand("mount", {filePath()}, this, [this](QProcess *process) {
+    m_fstabDevice->broadcastActionRequested(QStringLiteral("setup"));
+    return FstabHandling::callSystemCommand(QStringLiteral("mount"), {filePath()}, this, [this](QProcess *process) {
         if (process->exitCode() == 0) {
-            m_fstabDevice->broadcastActionDone("setup", Solid::NoError, QString());
+            m_fstabDevice->broadcastActionDone(QStringLiteral("setup"), Solid::NoError, QString());
         } else {
-            m_fstabDevice->broadcastActionDone("setup", Solid::UnauthorizedOperation, process->readAllStandardError().trimmed());
+            m_fstabDevice->broadcastActionDone(QStringLiteral("setup"),
+                                               Solid::UnauthorizedOperation,
+                                               QString::fromUtf8(process->readAllStandardError().trimmed()));
         }
     });
 }
@@ -108,16 +110,20 @@ bool FstabStorageAccess::teardown()
     if (filePath().isEmpty()) {
         return false;
     }
-    m_fstabDevice->broadcastActionRequested("teardown");
-    return FstabHandling::callSystemCommand("umount", {filePath()}, this, [this](QProcess *process) {
+    m_fstabDevice->broadcastActionRequested(QStringLiteral("teardown"));
+    return FstabHandling::callSystemCommand(QStringLiteral("umount"), {filePath()}, this, [this](QProcess *process) {
         if (process->exitCode() == 0) {
-            m_fstabDevice->broadcastActionDone("teardown", Solid::NoError);
+            m_fstabDevice->broadcastActionDone(QStringLiteral("teardown"), Solid::NoError);
         } else if (process->exitCode() == EBUSY) {
-            m_fstabDevice->broadcastActionDone("teardown", Solid::DeviceBusy);
+            m_fstabDevice->broadcastActionDone(QStringLiteral("teardown"), Solid::DeviceBusy);
         } else if (process->exitCode() == EPERM) {
-            m_fstabDevice->broadcastActionDone("teardown", Solid::UnauthorizedOperation, process->readAllStandardError().trimmed());
+            m_fstabDevice->broadcastActionDone(QStringLiteral("teardown"),
+                                               Solid::UnauthorizedOperation,
+                                               QString::fromUtf8(process->readAllStandardError().trimmed()));
         } else {
-            m_fstabDevice->broadcastActionDone("teardown", Solid::OperationFailed, process->readAllStandardError().trimmed());
+            m_fstabDevice->broadcastActionDone(QStringLiteral("teardown"),
+                                               Solid::OperationFailed,
+                                               QString::fromUtf8(process->readAllStandardError().trimmed()));
         }
     });
 }
@@ -144,12 +150,12 @@ void FstabStorageAccess::onMtabChanged(const QString &device)
         // device umounted
         m_filePath = FstabHandling::mountPoints(device).first();
         m_isAccessible = false;
-        Q_EMIT accessibilityChanged(false, QString(FSTAB_UDI_PREFIX) + "/" + device);
+        Q_EMIT accessibilityChanged(false, QStringLiteral(FSTAB_UDI_PREFIX "/%1").arg(device));
     } else {
         // device added
         m_filePath = currentMountPoints.first();
         m_isAccessible = true;
-        Q_EMIT accessibilityChanged(true, QString(FSTAB_UDI_PREFIX) + "/" + device);
+        Q_EMIT accessibilityChanged(true, QStringLiteral(FSTAB_UDI_PREFIX "/%1").arg(device));
     }
 }
 

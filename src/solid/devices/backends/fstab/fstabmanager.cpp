@@ -28,7 +28,7 @@ FstabManager::FstabManager(QObject *parent)
 
 QString FstabManager::udiPrefix() const
 {
-    return QString::fromLatin1(FSTAB_UDI_PREFIX);
+    return QStringLiteral(FSTAB_UDI_PREFIX);
 }
 
 QSet<Solid::DeviceInterface::Type> FstabManager::supportedInterfaces() const
@@ -42,7 +42,7 @@ QStringList FstabManager::allDevices()
 
     result << udiPrefix();
     for (const QString &device : std::as_const(m_deviceList)) {
-        result << udiPrefix() + "/" + device;
+        result << udiPrefix() + QStringLiteral("/") + device;
     }
 
     return result;
@@ -54,12 +54,12 @@ QStringList FstabManager::devicesFromQuery(const QString &parentUdi, Solid::Devi
         QStringList result;
         if (type == Solid::DeviceInterface::StorageAccess) {
             for (const QString &device : std::as_const(m_deviceList)) {
-                result << udiPrefix() + "/" + device;
+                result << udiPrefix() + QStringLiteral("/") + device;
             }
             return result;
         } else if (type == Solid::DeviceInterface::NetworkShare) {
             for (const QString &device : std::as_const(m_deviceList)) {
-                result << udiPrefix() + "/" + device;
+                result << udiPrefix() + QStringLiteral("/") + device;
             }
             return result;
         }
@@ -75,11 +75,11 @@ QStringList FstabManager::devicesFromQuery(const QString &parentUdi, Solid::Devi
 QObject *FstabManager::createDevice(const QString &udi)
 {
     if (udi == udiPrefix()) {
-        RootDevice *root = new RootDevice(FSTAB_UDI_PREFIX);
+        RootDevice *root = new RootDevice(udi);
 
         root->setProduct(tr("Filesystem Volumes"));
         root->setDescription(tr("Mountable filesystems declared in your system"));
-        root->setIcon("folder");
+        root->setIcon(QStringLiteral("folder"));
 
         return root;
 
@@ -114,13 +114,13 @@ void FstabManager::_k_updateDeviceList()
 
     for (const QString &device : newlist) {
         if (!oldlist.contains(device)) {
-            Q_EMIT deviceAdded(udiPrefix() + "/" + device);
+            Q_EMIT deviceAdded(udiPrefix() + QStringLiteral("/") + device);
         }
     }
 
     for (const QString &device : oldlist) {
         if (!newlist.contains(device)) {
-            Q_EMIT deviceRemoved(udiPrefix() + "/" + device);
+            Q_EMIT deviceRemoved(udiPrefix() + QStringLiteral("/") + device);
         }
     }
 }

@@ -255,51 +255,41 @@ QSet<Solid::DeviceInterface::Type> Solid::Predicate::usedTypes() const
 QString Solid::Predicate::toString() const
 {
     if (!d->isValid) {
-        return "False";
+        return QStringLiteral("False");
     }
 
     if (d->type != PropertyCheck && d->type != InterfaceCheck) {
-        QString op = " AND ";
+        QString op = QStringLiteral("AND");
         if (d->type == Disjunction) {
-            op = " OR ";
+            op = QStringLiteral("OR");
         }
 
-        return '[' + d->operand1->toString() + op + d->operand2->toString() + ']';
+        return QStringLiteral("[%1 %2 %3]").arg(d->operand1->toString(), op, d->operand2->toString());
     } else {
         QString ifaceName = DeviceInterface::typeToString(d->ifaceType);
 
         if (ifaceName.isEmpty()) {
-            ifaceName = "Unknown";
+            ifaceName = QStringLiteral("Unknown");
         }
 
         if (d->type == InterfaceCheck) {
-            return "IS " + ifaceName;
+            return QStringLiteral("IS ") + ifaceName;
         }
 
         QString value;
 
         switch (d->value.userType()) {
         case QMetaType::QStringList: {
-            value = '{';
-
             const QStringList list = d->value.toStringList();
-
-            QStringList::ConstIterator it = list.begin();
-            QStringList::ConstIterator end = list.end();
-
-            for (; it != end; ++it) {
-                value += '\'' + *it + '\'';
-
-                if (it + 1 != end) {
-                    value += ", ";
-                }
+            if (list.isEmpty()) {
+                value = QStringLiteral("{}");
+            } else {
+                value = QStringLiteral("{'") + list.join(QStringLiteral("', '")) + QStringLiteral("'}'");
             }
-
-            value += '}';
             break;
         }
         case QMetaType::Bool:
-            value = (d->value.toBool() ? "true" : "false");
+            value = (d->value.toBool() ? QStringLiteral("true") : QStringLiteral("false"));
             break;
         case QMetaType::Int:
         case QMetaType::UInt:
@@ -308,16 +298,16 @@ QString Solid::Predicate::toString() const
             value = d->value.toString();
             break;
         default:
-            value = '\'' + d->value.toString() + '\'';
+            value = QStringLiteral("'%1'").arg(d->value.toString());
             break;
         }
 
-        QString str_operator = "==";
+        QString str_operator = QStringLiteral("==");
         if (d->compOperator != Equals) {
-            str_operator = " &";
+            str_operator = QStringLiteral(" &");
         }
 
-        return ifaceName + '.' + d->property + ' ' + str_operator + ' ' + value;
+        return QStringLiteral("%1.%2 %3 %4").arg(ifaceName, d->property, str_operator, value);
     }
 }
 

@@ -63,7 +63,7 @@ QStringList WinBlock::drivesFromMask(const DWORD unitmask)
     DWORD localUnitmask(unitmask);
     for (int i = 0; i <= 25; ++i) {
         if (0x01 == (localUnitmask & 0x1)) {
-            result << QString("%1:").arg((char)(i + 'A'));
+            result << QStringLiteral("%1:").arg((char)(i + 'A'));
         }
         localUnitmask >>= 1;
     }
@@ -122,7 +122,7 @@ QSet<QString> WinBlock::updateUdiFromBitMask(const DWORD unitmask)
         } else {
             QueryDosDeviceW(driveWCHAR, bufferOut, MAX_PATH);
             dosPath = QString::fromWCharArray(bufferOut);
-            if (dosPath.startsWith("\\??\\")) { // subst junction
+            if (dosPath.startsWith(QLatin1String("\\??\\"))) { // subst junction
                 dosPath = dosPath.mid(4);
                 QString key = QLatin1String("/org/kde/solid/win/volume.virtual/") + drive.at(0);
                 m_virtualDrives[key] = dosPath;
@@ -132,16 +132,16 @@ QSet<QString> WinBlock::updateUdiFromBitMask(const DWORD unitmask)
 
                 switch (info.DeviceType) {
                 case FILE_DEVICE_DISK: {
-                    udis << QString("/org/kde/solid/win/volume/disk#%1,partition#%2").arg(info.DeviceNumber).arg(info.PartitionNumber);
-                    udis << QString("/org/kde/solid/win/storage/disk#%1").arg(info.DeviceNumber);
+                    udis << QStringLiteral("/org/kde/solid/win/volume/disk#%1,partition#%2").arg(info.DeviceNumber).arg(info.PartitionNumber);
+                    udis << QStringLiteral("/org/kde/solid/win/storage/disk#%1").arg(info.DeviceNumber);
                     break;
                 }
                 case FILE_DEVICE_CD_ROM:
                 case FILE_DEVICE_DVD: {
-                    udis << QString("/org/kde/solid/win/storage.cdrom/disk#%1").arg(info.DeviceNumber);
+                    udis << QStringLiteral("/org/kde/solid/win/storage.cdrom/disk#%1").arg(info.DeviceNumber);
                     DISK_GEOMETRY_EX out = WinDeviceManager::getDeviceInfo<DISK_GEOMETRY_EX>(drive, IOCTL_DISK_GET_DRIVE_GEOMETRY_EX);
                     if (out.DiskSize.QuadPart != 0) {
-                        udis << QString("/org/kde/solid/win/volume.cdrom/disk#%1").arg(info.DeviceNumber);
+                        udis << QStringLiteral("/org/kde/solid/win/volume.cdrom/disk#%1").arg(info.DeviceNumber);
                     }
                     break;
                 }

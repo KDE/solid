@@ -32,7 +32,7 @@ Solid::OpticalDisc::ContentTypes FakeOpticalDisc::availableContent() const
         {QStringLiteral("videodvd"), Solid::OpticalDisc::VideoDvd},
     };
 
-    const QStringList content_typelist = fakeDevice()->property("availableContent").toString().split(',');
+    const QStringList content_typelist = fakeDevice()->property(QStringLiteral("availableContent")).toString().split(QLatin1Char(','));
 
     for (const QString &type : content_typelist) {
         content |= map.value(type, Solid::OpticalDisc::NoContent);
@@ -43,41 +43,41 @@ Solid::OpticalDisc::ContentTypes FakeOpticalDisc::availableContent() const
 
 Solid::OpticalDisc::DiscType FakeOpticalDisc::discType() const
 {
-    QString type = fakeDevice()->property("discType").toString();
+    QString type = fakeDevice()->property(QStringLiteral("discType")).toString();
 
-    if (type == "cd_rom") {
+    if (type == QLatin1String("cd_rom")) {
         return Solid::OpticalDisc::CdRom;
-    } else if (type == "cd_r") {
+    } else if (type == QLatin1String("cd_r")) {
         return Solid::OpticalDisc::CdRecordable;
-    } else if (type == "cd_rw") {
+    } else if (type == QLatin1String("cd_rw")) {
         return Solid::OpticalDisc::CdRewritable;
-    } else if (type == "dvd_rom") {
+    } else if (type == QLatin1String("dvd_rom")) {
         return Solid::OpticalDisc::DvdRom;
-    } else if (type == "dvd_ram") {
+    } else if (type == QLatin1String("dvd_ram")) {
         return Solid::OpticalDisc::DvdRam;
-    } else if (type == "dvd_r") {
+    } else if (type == QLatin1String("dvd_r")) {
         return Solid::OpticalDisc::DvdRecordable;
-    } else if (type == "dvd_rw") {
+    } else if (type == QLatin1String("dvd_rw")) {
         return Solid::OpticalDisc::DvdRewritable;
-    } else if (type == "dvd_plus_r") {
+    } else if (type == QLatin1String("dvd_plus_r")) {
         return Solid::OpticalDisc::DvdPlusRecordable;
-    } else if (type == "dvd_plus_rw") {
+    } else if (type == QLatin1String("dvd_plus_rw")) {
         return Solid::OpticalDisc::DvdPlusRewritable;
-    } else if (type == "dvd_plus_r_dl") {
+    } else if (type == QLatin1String("dvd_plus_r_dl")) {
         return Solid::OpticalDisc::DvdPlusRecordableDuallayer;
-    } else if (type == "dvd_plus_rw_dl") {
+    } else if (type == QLatin1String("dvd_plus_rw_dl")) {
         return Solid::OpticalDisc::DvdPlusRewritableDuallayer;
-    } else if (type == "bd_rom") {
+    } else if (type == QLatin1String("bd_rom")) {
         return Solid::OpticalDisc::BluRayRom;
-    } else if (type == "bd_r") {
+    } else if (type == QLatin1String("bd_r")) {
         return Solid::OpticalDisc::BluRayRecordable;
-    } else if (type == "bd_re") {
+    } else if (type == QLatin1String("bd_re")) {
         return Solid::OpticalDisc::BluRayRewritable;
-    } else if (type == "hddvd_rom") {
+    } else if (type == QLatin1String("hddvd_rom")) {
         return Solid::OpticalDisc::HdDvdRom;
-    } else if (type == "hddvd_r") {
+    } else if (type == QLatin1String("hddvd_r")) {
         return Solid::OpticalDisc::HdDvdRecordable;
-    } else if (type == "hddvd_rw") {
+    } else if (type == QLatin1String("hddvd_rw")) {
         return Solid::OpticalDisc::HdDvdRewritable;
     } else {
         return Solid::OpticalDisc::UnknownDiscType;
@@ -86,22 +86,22 @@ Solid::OpticalDisc::DiscType FakeOpticalDisc::discType() const
 
 bool FakeOpticalDisc::isAppendable() const
 {
-    return fakeDevice()->property("isAppendable").toBool();
+    return fakeDevice()->property(QStringLiteral("isAppendable")).toBool();
 }
 
 bool FakeOpticalDisc::isBlank() const
 {
-    return fakeDevice()->property("isBlank").toBool();
+    return fakeDevice()->property(QStringLiteral("isBlank")).toBool();
 }
 
 bool FakeOpticalDisc::isRewritable() const
 {
-    return fakeDevice()->property("isRewritable").toBool();
+    return fakeDevice()->property(QStringLiteral("isRewritable")).toBool();
 }
 
 qulonglong FakeOpticalDisc::capacity() const
 {
-    return fakeDevice()->property("capacity").toULongLong();
+    return fakeDevice()->property(QStringLiteral("capacity")).toULongLong();
 }
 
 #include "moc_fakeopticaldisc.cpp"

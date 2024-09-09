@@ -52,12 +52,12 @@ Solid::Backends::Fstab::FstabHandling::FstabHandling()
 
 bool _k_isFstabNetworkFileSystem(const QString &fstype, const QString &devName)
 {
-    if (fstype == "nfs" //
-        || fstype == "nfs4" //
-        || fstype == "smbfs" //
-        || fstype == "cifs" //
-        || fstype == "smb3" //
-        || fstype == "fuse.sshfs" //
+    if (fstype == QLatin1String("nfs") //
+        || fstype == QLatin1String("nfs4") //
+        || fstype == QLatin1String("smbfs") //
+        || fstype == QLatin1String("cifs") //
+        || fstype == QLatin1String("smb3") //
+        || fstype == QLatin1String("fuse.sshfs") //
         || devName.startsWith(QLatin1String("//"))) {
         return true;
     }
@@ -66,10 +66,10 @@ bool _k_isFstabNetworkFileSystem(const QString &fstype, const QString &devName)
 
 bool _k_isFstabSupportedLocalFileSystem(const QString &fstype)
 {
-    if (fstype == "fuse.encfs" //
-        || fstype == "fuse.cryfs" //
-        || fstype == "fuse.gocryptfs" //
-        || fstype == "overlay") {
+    if (fstype == QLatin1String("fuse.encfs") //
+        || fstype == QLatin1String("fuse.cryfs") //
+        || fstype == QLatin1String("fuse.gocryptfs") //
+        || fstype == QLatin1String("overlay")) {
         return true;
     }
     return false;
@@ -77,7 +77,7 @@ bool _k_isFstabSupportedLocalFileSystem(const QString &fstype)
 
 QString _k_deviceNameForMountpoint(const QString &source, const QString &fstype, const QString &mountpoint)
 {
-    if (fstype.startsWith("fuse.") || fstype == QLatin1String("overlay")) {
+    if (fstype.startsWith(QLatin1String("fuse.")) || fstype == QLatin1String("overlay")) {
         return fstype + mountpoint;
     }
     // A source may be mounted several times, e.g. with different
@@ -86,7 +86,7 @@ QString _k_deviceNameForMountpoint(const QString &source, const QString &fstype,
     // mountpoint (which is unique).
 
     auto _mountpoint = mountpoint;
-    if (fstype == "nfs" || fstype == "nfs4") {
+    if (fstype == QLatin1String("nfs") || fstype == QLatin1String("nfs4")) {
         if (!mountpoint.startsWith(QLatin1Char('/'))) {
             // making sure mount point starts with /
             _mountpoint.prepend(QLatin1Char('/'));
@@ -132,7 +132,7 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateFstabMountPointsCache()
 
 #else
 
-    QFile fstab(FSTAB);
+    QFile fstab(QStringLiteral(FSTAB));
     if (!fstab.open(QIODevice::ReadOnly)) {
         return;
     }
@@ -142,12 +142,12 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateFstabMountPointsCache()
 
     while (!stream.atEnd()) {
         line = stream.readLine().simplified();
-        if (line.isEmpty() || line.startsWith('#')) {
+        if (line.isEmpty() || line.startsWith(QLatin1Char('#'))) {
             continue;
         }
 
         // not empty or commented out by '#'
-        const QStringList items = line.split(' ');
+        const QStringList items = line.split(QLatin1Char(' '));
         if (items.count() < 4) {
             continue;
         }
@@ -158,7 +158,7 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateFstabMountPointsCache()
             const QString fsType = items.at(2);
             QString mountpoint = items.at(1);
 
-            if (fsType == "nfs" || fsType == "nfs4") {
+            if (fsType == QLatin1String("nfs") || fsType == QLatin1String("nfs4")) {
                 if (!mountpoint.startsWith(QLatin1Char('/'))) {
                     // making sure mount point starts with /
                     mountpoint.prepend(QLatin1Char('/'));
@@ -240,7 +240,7 @@ bool Solid::Backends::Fstab::FstabHandling::callSystemCommand(const QString &com
     static const QString joinedPaths = searchPaths.join(QLatin1Char(':'));
     const QString exec = QStandardPaths::findExecutable(commandName, searchPaths);
     if (exec.isEmpty()) {
-        qCWarning(FSTAB_LOG) << "Couldn't find executable " + commandName + " in " + joinedPaths;
+        qCWarning(FSTAB_LOG) << "Couldn't find executable" << commandName << "in" << joinedPaths;
         return false;
     }
 

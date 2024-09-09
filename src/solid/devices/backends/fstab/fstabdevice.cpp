@@ -19,26 +19,25 @@ FstabDevice::FstabDevice(QString uid)
     : Solid::Ifaces::Device()
     , m_uid(uid)
 {
-    m_device = m_uid;
-    m_device.remove(parentUdi() + "/");
+    m_device = m_uid.mid(parentUdi().length() + 1);
 
     const QString &fstype = FstabHandling::fstype(m_device);
     qCDebug(FSTAB_LOG) << "Adding " << m_device << "type:" << fstype;
 
-    if (m_device.startsWith("//")) {
-        m_vendor = m_device.mid(2, m_device.indexOf("/", 2) - 2);
-        m_product = m_device.mid(m_device.indexOf("/", 2) + 1);
+    if (m_device.startsWith(QLatin1String("//"))) {
+        m_vendor = m_device.mid(2, m_device.indexOf(QLatin1String("/"), 2) - 2);
+        m_product = m_device.mid(m_device.indexOf(QLatin1String("/"), 2) + 1);
         m_storageType = StorageType::NetworkShare;
-    } else if (fstype.startsWith("nfs")) {
-        m_vendor = m_device.left(m_device.indexOf(":/"));
-        m_product = m_device.mid(m_device.indexOf(":/") + 1);
+    } else if (fstype.startsWith(QLatin1String("nfs"))) {
+        m_vendor = m_device.left(m_device.indexOf(QLatin1String(":/")));
+        m_product = m_device.mid(m_device.indexOf(QLatin1String(":/")) + 1);
         m_storageType = StorageType::NetworkShare;
-    } else if (fstype.startsWith("fuse.") || fstype == QLatin1String("overlay")) {
+    } else if (fstype.startsWith(QLatin1String("fuse.")) || fstype == QLatin1String("overlay")) {
         m_vendor = fstype;
         m_product = m_device.mid(m_device.indexOf(fstype) + fstype.length());
         QString home = QDir::homePath();
         if (m_product.startsWith(home)) {
-            m_product = "~" + m_product.mid(home.length());
+            m_product = QStringLiteral("~") + m_product.mid(home.length());
         }
         if ((fstype == QLatin1String("fuse.encfs")) || (fstype == QLatin1String("fuse.cryfs")) || (fstype == QLatin1String("fuse.gocryptfs"))) {
             m_storageType = StorageType::Encrypted;
@@ -74,13 +73,13 @@ FstabDevice::FstabDevice(QString uid)
 
     if (m_iconName.isEmpty()) {
         if (m_storageType == StorageType::NetworkShare) {
-            m_iconName = QLatin1String("network-server");
+            m_iconName = QStringLiteral("network-server");
         } else if (m_storageType == StorageType::Encrypted) {
-            m_iconName = QLatin1String("folder-decrypted");
+            m_iconName = QStringLiteral("folder-decrypted");
         } else {
             const QStringList &mountPoints = FstabHandling::mountPoints(m_device);
             const QString home = QDir::homePath();
-            if (mountPoints.contains("/")) {
+            if (mountPoints.contains(QLatin1String("/"))) {
                 m_iconName = QStringLiteral("drive-harddisk-root");
             } else if (mountPoints.contains(home)) {
                 m_iconName = QStringLiteral("user-home");
@@ -122,18 +121,15 @@ QString FstabDevice::icon() const
 
 QStringList FstabDevice::emblems() const
 {
-    QStringList res;
     if (!m_storageAccess) {
         FstabDevice *d = const_cast<FstabDevice *>(this);
         d->m_storageAccess = new FstabStorageAccess(d);
     }
     if (m_storageAccess->isAccessible()) {
-        res << "emblem-mounted";
+        return {QStringLiteral("emblem-mounted")};
     } else {
-        res << "emblem-unmounted";
+        return {QStringLiteral("emblem-unmounted")};
     }
-
-    return res;
 }
 
 QString FstabDevice::displayName() const

@@ -20,22 +20,22 @@ FakeVolume::~FakeVolume()
 
 bool FakeVolume::isIgnored() const
 {
-    return fakeDevice()->property("isIgnored").toBool();
+    return fakeDevice()->property(QStringLiteral("isIgnored")).toBool();
 }
 
 Solid::StorageVolume::UsageType FakeVolume::usage() const
 {
-    QString usage = fakeDevice()->property("usage").toString();
+    QString usage = fakeDevice()->property(QStringLiteral("usage")).toString();
 
-    if (usage == "filesystem") {
+    if (usage == QLatin1String("filesystem")) {
         return Solid::StorageVolume::FileSystem;
-    } else if (usage == "partitiontable") {
+    } else if (usage == QLatin1String("partitiontable")) {
         return Solid::StorageVolume::PartitionTable;
-    } else if (usage == "raid") {
+    } else if (usage == QLatin1String("raid")) {
         return Solid::StorageVolume::Raid;
-    } else if (usage == "unused") {
+    } else if (usage == QLatin1String("unused")) {
         return Solid::StorageVolume::Unused;
-    } else if (usage == "encrypted") {
+    } else if (usage == QLatin1String("encrypted")) {
         return Solid::StorageVolume::Encrypted;
     } else {
         return Solid::StorageVolume::Other;
@@ -44,22 +44,22 @@ Solid::StorageVolume::UsageType FakeVolume::usage() const
 
 QString FakeVolume::fsType() const
 {
-    return fakeDevice()->property("fsType").toString();
+    return fakeDevice()->property(QStringLiteral("fsType")).toString();
 }
 
 QString FakeVolume::label() const
 {
-    return fakeDevice()->property("label").toString();
+    return fakeDevice()->property(QStringLiteral("label")).toString();
 }
 
 QString FakeVolume::uuid() const
 {
-    return fakeDevice()->property("uuid").toString();
+    return fakeDevice()->property(QStringLiteral("uuid")).toString();
 }
 
 qulonglong FakeVolume::size() const
 {
-    return fakeDevice()->property("size").toULongLong();
+    return fakeDevice()->property(QStringLiteral("size")).toULongLong();
 }
 
 QString Solid::Backends::Fake::FakeVolume::encryptedContainerUdi() const

@@ -35,8 +35,8 @@ FakeDevice::FakeDevice(const QString &udi, const QMap<QString, QVariant> &proper
 {
     d->udi = udi;
     d->propertyMap = propertyMap;
-    d->interfaceList = d->propertyMap["interfaces"].toString().simplified().split(',');
-    d->interfaceList << "GenericInterface";
+    d->interfaceList = d->propertyMap[QStringLiteral("interfaces")].toString().simplified().split(QLatin1Char(','));
+    d->interfaceList << QStringLiteral("GenericInterface");
     d->locked = false;
     d->broken = false;
 
@@ -79,53 +79,51 @@ QString FakeDevice::udi() const
 
 QString FakeDevice::parentUdi() const
 {
-    return d->propertyMap["parent"].toString();
+    return d->propertyMap[QStringLiteral("parent")].toString();
 }
 
 QString FakeDevice::vendor() const
 {
-    return d->propertyMap["vendor"].toString();
+    return d->propertyMap[QStringLiteral("vendor")].toString();
 }
 
 QString FakeDevice::product() const
 {
-    return d->propertyMap["name"].toString();
+    return d->propertyMap[QStringLiteral("name")].toString();
 }
 
 QString FakeDevice::icon() const
 {
     if (parentUdi().isEmpty()) {
-        return "system";
+        return QStringLiteral("system");
     } else if (queryDeviceInterface(Solid::DeviceInterface::OpticalDrive)) {
-        return "cdrom-unmount";
+        return QStringLiteral("cdrom-unmount");
     } else if (queryDeviceInterface(Solid::DeviceInterface::PortableMediaPlayer)) {
-        return "ipod-unmount";
+        return QStringLiteral("ipod-unmount");
     } else if (queryDeviceInterface(Solid::DeviceInterface::Camera)) {
-        return "camera-unmount";
+        return QStringLiteral("camera-unmount");
     } else if (queryDeviceInterface(Solid::DeviceInterface::Processor)) {
-        return "cpu";
+        return QStringLiteral("cpu");
     } else if (queryDeviceInterface(Solid::DeviceInterface::StorageDrive)) {
-        return "hdd-unmount";
+        return QStringLiteral("hdd-unmount");
     } else if (queryDeviceInterface(Solid::DeviceInterface::Block)) {
-        return "blockdevice";
+        return QStringLiteral("blockdevice");
     } else {
-        return "hwinfo";
+        return QStringLiteral("hwinfo");
     }
 }
 
 QStringList FakeDevice::emblems() const
 {
-    QStringList res;
-
     if (queryDeviceInterface(Solid::DeviceInterface::StorageAccess)) {
-        if (property("isMounted").toBool()) {
-            res << "emblem-mounted";
+        if (property(QStringLiteral("isMounted")).toBool()) {
+            return {QStringLiteral("emblem-mounted")};
         } else {
-            res << "emblem-unmounted";
+            return {QStringLiteral("emblem-unmounted")};
         }
     }
 
-    return res;
+    return {};
 }
 
 QString FakeDevice::description() const
@@ -294,7 +292,7 @@ QObject *FakeDevice::createDeviceInterface(const Solid::DeviceInterface::Type &t
 
 #ifdef HAVE_DBUS
     if (iface) {
-        QDBusConnection::sessionBus().registerObject(d->udi + '/' + Solid::DeviceInterface::typeToString(type),
+        QDBusConnection::sessionBus().registerObject(d->udi + QLatin1Char('/') + Solid::DeviceInterface::typeToString(type),
                                                      iface,
                                                      QDBusConnection::ExportNonScriptableSlots);
     }

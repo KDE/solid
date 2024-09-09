@@ -27,7 +27,7 @@ StorageDrive::~StorageDrive()
 
 qulonglong StorageDrive::size() const
 {
-    return m_device->prop("Size").toULongLong();
+    return m_device->prop(QStringLiteral("Size")).toULongLong();
 }
 
 bool StorageDrive::isHotpluggable() const
@@ -37,11 +37,11 @@ bool StorageDrive::isHotpluggable() const
     /* clang-format off */
     return _bus == Solid::StorageDrive::Usb
         || _bus == Solid::StorageDrive::Ieee1394
-        || (m_udevDevice.deviceProperty("UDISKS_SYSTEM").isValid()
-            && !m_udevDevice.deviceProperty("UDISKS_SYSTEM").toBool());
+        || (m_udevDevice.deviceProperty(QStringLiteral("UDISKS_SYSTEM")).isValid()
+            && !m_udevDevice.deviceProperty(QStringLiteral("UDISKS_SYSTEM")).toBool());
     /* clang-format on */
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_OPENBSD)
-    return m_device->prop("bsdisks_IsHotpluggable").toBool();
+    return m_device->prop(QStringLiteral("bsdisks_IsHotpluggable")).toBool();
 #else
 #error Implement this or stub this out for your platform
 #endif
@@ -49,16 +49,16 @@ bool StorageDrive::isHotpluggable() const
 
 bool StorageDrive::isRemovable() const
 {
-    return m_device->prop("MediaRemovable").toBool() || m_device->prop("Removable").toBool();
+    return m_device->prop(QStringLiteral("MediaRemovable")).toBool() || m_device->prop(QStringLiteral("Removable")).toBool();
 }
 
 Solid::StorageDrive::DriveType StorageDrive::driveType() const
 {
-    const QStringList mediaTypes = m_device->prop("MediaCompatibility").toStringList();
+    const QStringList mediaTypes = m_device->prop(QStringLiteral("MediaCompatibility")).toStringList();
 
     if (m_device->isOpticalDrive()) { // optical disks
         return Solid::StorageDrive::CdromDrive;
-    } else if (mediaTypes.contains("floppy")) {
+    } else if (mediaTypes.contains(QStringLiteral("floppy"))) {
         return Solid::StorageDrive::Floppy;
     }
 #if 0 // TODO add to Solid
@@ -70,16 +70,16 @@ Solid::StorageDrive::DriveType StorageDrive::driveType() const
         return Solid::StorageDrive::Flash;
     }
 #endif
-    else if (mediaTypes.contains("flash_cf")) {
+    else if (mediaTypes.contains(QStringLiteral("flash_cf"))) {
         return Solid::StorageDrive::CompactFlash;
-    } else if (mediaTypes.contains("flash_ms")) {
+    } else if (mediaTypes.contains(QStringLiteral("flash_ms"))) {
         return Solid::StorageDrive::MemoryStick;
-    } else if (mediaTypes.contains("flash_sm")) {
+    } else if (mediaTypes.contains(QStringLiteral("flash_sm"))) {
         return Solid::StorageDrive::SmartMedia;
-    } else if (mediaTypes.contains("flash_sd") //
-               || mediaTypes.contains("flash_sdhc") //
-               || mediaTypes.contains("flash_mmc") //
-               || mediaTypes.contains("flash_sdxc")) {
+    } else if (mediaTypes.contains(QStringLiteral("flash_sd")) //
+               || mediaTypes.contains(QStringLiteral("flash_sdhc")) //
+               || mediaTypes.contains(QStringLiteral("flash_mmc")) //
+               || mediaTypes.contains(QStringLiteral("flash_sdxc"))) {
         return Solid::StorageDrive::SdMmc;
     }
     // FIXME: udisks2 doesn't know about xD cards
@@ -90,27 +90,27 @@ Solid::StorageDrive::DriveType StorageDrive::driveType() const
 
 Solid::StorageDrive::Bus StorageDrive::bus() const
 {
-    const QString bus = m_device->prop("ConnectionBus").toString();
+    const QString bus = m_device->prop(QStringLiteral("ConnectionBus")).toString();
     const QString udevBus =
 #if UDEV_FOUND
-        m_udevDevice.deviceProperty("ID_BUS").toString();
+        m_udevDevice.deviceProperty(QStringLiteral("ID_BUS")).toString();
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_OPENBSD)
-        m_device->prop("bsdisks_ConnectionBus").toString();
+        m_device->prop(QStringLiteral("bsdisks_ConnectionBus")).toString();
 #else
 #error Implement this or stub this out for your platform
 #endif
 
     // qDebug() << "bus:" << bus << "udev bus:" << udevBus;
 
-    if (udevBus == "ata") {
+    if (udevBus == QLatin1String("ata")) {
 #if UDEV_FOUND
-        if (m_udevDevice.deviceProperty("ID_ATA_SATA").toInt() == 1) { // serial ATA
+        if (m_udevDevice.deviceProperty(QStringLiteral("ID_ATA_SATA")).toInt() == 1) { // serial ATA
             return Solid::StorageDrive::Sata;
         } else { // parallel (classical) ATA
             return Solid::StorageDrive::Ide;
         }
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_OPENBSD)
-        if (m_device->prop("bsdisks_AtaSata").toString() == "sata") { // serial ATA
+        if (m_device->prop(QStringLiteral("bsdisks_AtaSata")).toString() == QLatin1String("sata")) { // serial ATA
             return Solid::StorageDrive::Sata;
         } else { // parallel (classical) ATA
             return Solid::StorageDrive::Ide;
@@ -118,11 +118,11 @@ Solid::StorageDrive::Bus StorageDrive::bus() const
 #else
 #error Implement this or stub this out for your platform
 #endif
-    } else if (bus == "usb") {
+    } else if (bus == QLatin1String("usb")) {
         return Solid::StorageDrive::Usb;
-    } else if (bus == "ieee1394") {
+    } else if (bus == QLatin1String("ieee1394")) {
         return Solid::StorageDrive::Ieee1394;
-    } else if (udevBus == "scsi") {
+    } else if (udevBus == QLatin1String("scsi")) {
         return Solid::StorageDrive::Scsi;
     }
 #if 0 // TODO add these to Solid
@@ -140,7 +140,7 @@ Solid::StorageDrive::Bus StorageDrive::bus() const
 QDateTime StorageDrive::timeDetected() const
 {
     bool conversionValid;
-    const qulonglong microSecondsSinceEpoch = m_device->prop("TimeDetected").toULongLong(&conversionValid);
+    const qulonglong microSecondsSinceEpoch = m_device->prop(QStringLiteral("TimeDetected")).toULongLong(&conversionValid);
     if (!conversionValid) {
         return QDateTime();
     }
@@ -150,7 +150,7 @@ QDateTime StorageDrive::timeDetected() const
 QDateTime StorageDrive::timeMediaDetected() const
 {
     bool conversionValid;
-    const qulonglong microSecondsSinceEpoch = m_device->prop("TimeMediaDetected").toULongLong(&conversionValid);
+    const qulonglong microSecondsSinceEpoch = m_device->prop(QStringLiteral("TimeMediaDetected")).toULongLong(&conversionValid);
     if (!conversionValid) {
         return QDateTime();
     }

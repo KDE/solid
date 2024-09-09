@@ -34,23 +34,23 @@ WinDevice::WinDevice(const QString &udi)
      /org/kde/solid/win/volume/disk #%1, partition #%2
      /org/kde/solid/win/storage.cdrom/disk #%0
     */
-    QStringList data = udi.split("/");
-    QString parentName = data[6].split(",")[0].trimmed();
+    QStringList data = udi.split(QLatin1Char('/'));
+    QString parentName = data[6].split(QLatin1Char(','))[0].trimmed();
     QString type = data[5];
 
-    if (type == "storage") {
+    if (type == QLatin1String("storage")) {
         m_type = Solid::DeviceInterface::StorageDrive;
-    } else if (type == "volume") {
+    } else if (type == QLatin1String("volume")) {
         m_type = Solid::DeviceInterface::StorageVolume;
-    } else if (type == "storage.cdrom") {
+    } else if (type == QLatin1String("storage.cdrom")) {
         m_type = Solid::DeviceInterface::OpticalDrive;
-    } else if (type == "volume.cdrom") {
+    } else if (type == QLatin1String("volume.cdrom")) {
         m_type = Solid::DeviceInterface::OpticalDisc;
-    } else if (type == "cpu") {
+    } else if (type == QLatin1String("cpu")) {
         m_type = Solid::DeviceInterface::Processor;
-    } else if (type == "power.battery") {
+    } else if (type == QLatin1String("power.battery")) {
         m_type = Solid::DeviceInterface::Battery;
-    } else if (type == "volume.virtual") {
+    } else if (type == QLatin1String("volume.virtual")) {
         m_type = Solid::DeviceInterface::StorageAccess;
     }
 
@@ -96,14 +96,14 @@ void WinDevice::initStorageDevice()
     switch (m_type) {
     case Solid::DeviceInterface::StorageAccess:
         dev = WinBlock::driveLetterFromUdi(udi());
-        m_product = QString("Virtual drive %1").arg(dev);
-        m_description = QString("%1 (%2)").arg(dev, WinBlock::resolveVirtualDrive(udi()));
+        m_product = QStringLiteral("Virtual drive %1").arg(dev);
+        m_description = QStringLiteral("%1 (%2)").arg(dev, WinBlock::resolveVirtualDrive(udi()));
         return;
     case Solid::DeviceInterface::OpticalDrive:
         dev = WinBlock::driveLetterFromUdi(udi());
         break;
     case Solid::DeviceInterface::StorageDrive:
-        dev = QString("PhysicalDrive%1").arg(WinBlock(this).deviceMajor());
+        dev = QStringLiteral("PhysicalDrive%1").arg(WinBlock(this).deviceMajor());
         break;
     default:
         dev = WinBlock::driveLetterFromUdi(udi());
@@ -124,14 +124,14 @@ void WinDevice::initStorageDevice()
     WinDeviceManager::getDeviceInfo<char, STORAGE_PROPERTY_QUERY>(dev, IOCTL_STORAGE_QUERY_PROPERTY, buff, 1024, &query);
     STORAGE_DEVICE_DESCRIPTOR *info = ((STORAGE_DEVICE_DESCRIPTOR *)buff);
     if (info->VendorIdOffset != 0) {
-        m_vendor = QString((char *)buff + info->VendorIdOffset).trimmed();
+        m_vendor = QString::fromLatin1(&buff[info->VendorIdOffset]).trimmed();
         if (info->ProductIdOffset != 0) {
-            m_product = QString((char *)buff + info->ProductIdOffset).trimmed();
+            m_product = QString::fromLatin1(&buff[info->ProductIdOffset]).trimmed();
         }
     } else if (info->ProductIdOffset != 0) { // fallback doesn't work for all devices
-        QStringList tmp = QString((char *)buff + info->ProductIdOffset).trimmed().split(" ");
+        QStringList tmp = QString::fromLatin1(&buff[info->ProductIdOffset]).trimmed().split(QLatin1Char(' '));
         m_vendor = tmp.takeFirst();
-        m_product = tmp.join(" ");
+        m_product = tmp.join(QLatin1Char(' '));
     }
 }
 

@@ -20,23 +20,18 @@ FakeCamera::~FakeCamera()
 
 QStringList FakeCamera::supportedProtocols() const
 {
-    QStringList res;
-    QString method = fakeDevice()->property("accessMethod").toString();
+    QString method = fakeDevice()->property(QStringLiteral("accessMethod")).toString();
 
-    res << method;
-
-    return res;
+    return {method};
 }
 
 QStringList FakeCamera::supportedDrivers(QString /*protocol*/) const
 {
-    QStringList res;
-
-    if (fakeDevice()->property("gphotoSupport").toBool()) {
-        res << "gphoto";
+    if (fakeDevice()->property(QStringLiteral("gphotoSupport")).toBool()) {
+        return {QStringLiteral("gphoto")};
     }
 
-    return res;
+    return {};
 }
 
 QVariant Solid::Backends::Fake::FakeCamera::driverHandle(const QString &driver) const

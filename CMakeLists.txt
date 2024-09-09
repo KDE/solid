@@ -94,9 +94,6 @@ ecm_setup_version(PROJECT VARIABLE_PREFIX SOLID
                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF6SolidConfigVersion.cmake"
                         SOVERSION 6)
 
-# TODO: Remove these
-remove_definitions(-DQT_NO_CAST_FROM_ASCII)
-
 ecm_set_disabled_deprecation_versions(
     QT 6.5
 )

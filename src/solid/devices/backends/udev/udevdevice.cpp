@@ -36,12 +36,12 @@ QString UDevDevice::udi() const
 
 QString UDevDevice::parentUdi() const
 {
-    return UDEV_UDI_PREFIX;
+    return QStringLiteral(UDEV_UDI_PREFIX);
 }
 
 QString UDevDevice::vendor() const
 {
-    QString vendor = m_device.sysfsProperty("manufacturer").toString();
+    QString vendor = m_device.sysfsProperty(QStringLiteral("manufacturer")).toString();
     if (vendor.isEmpty()) {
         if (queryDeviceInterface(Solid::DeviceInterface::Processor)) {
             // sysfs doesn't have anything useful here
@@ -49,7 +49,7 @@ QString UDevDevice::vendor() const
         }
 
         if (vendor.isEmpty()) {
-            vendor = m_device.deviceProperty("ID_VENDOR").toString().replace('_', ' ');
+            vendor = m_device.deviceProperty(QStringLiteral("ID_VENDOR")).toString().replace(QLatin1Char('_'), QLatin1Char(' '));
         }
     }
     return vendor;
@@ -57,7 +57,7 @@ QString UDevDevice::vendor() const
 
 QString UDevDevice::product() const
 {
-    QString product = m_device.sysfsProperty("product").toString();
+    QString product = m_device.sysfsProperty(QStringLiteral("product")).toString();
     if (product.isEmpty()) {
         if (queryDeviceInterface(Solid::DeviceInterface::Processor)) {
             // sysfs doesn't have anything useful here
@@ -65,7 +65,7 @@ QString UDevDevice::product() const
         }
 
         if (product.isEmpty()) {
-            product = m_device.deviceProperty("ID_MODEL").toString().replace('_', ' ');
+            product = m_device.deviceProperty(QStringLiteral("ID_MODEL")).toString().replace(QLatin1Char('_'), QLatin1Char(' '));
         }
     }
     return product;
@@ -108,7 +108,7 @@ QString UDevDevice::description() const
          *       until we can return the Name.
          */
         const PortableMediaPlayer *player = new PortableMediaPlayer(const_cast<UDevDevice *>(this));
-        if (player->supportedProtocols().contains("mtp")) {
+        if (player->supportedProtocols().contains(QStringLiteral("mtp"))) {
             return product();
         } else {
             // TODO: check out special cases like iPod
@@ -131,13 +131,13 @@ bool UDevDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type) 
         return m_device.subsystem() == QLatin1String("cpu");
 
     case Solid::DeviceInterface::Camera:
-        return m_device.subsystem() == QLatin1String("usb") && property("ID_GPHOTO2").isValid();
+        return m_device.subsystem() == QLatin1String("usb") && property(QStringLiteral("ID_GPHOTO2")).isValid();
 
     case Solid::DeviceInterface::PortableMediaPlayer:
-        return m_device.subsystem() == QLatin1String("usb") && property("ID_MEDIA_PLAYER").isValid();
+        return m_device.subsystem() == QLatin1String("usb") && property(QStringLiteral("ID_MEDIA_PLAYER")).isValid();
 
     case Solid::DeviceInterface::Block:
-        return !property("MAJOR").toString().isEmpty();
+        return !property(QStringLiteral("MAJOR")).toString().isEmpty();
 
     default:
         return false;
@@ -203,7 +203,7 @@ bool UDevDevice::propertyExists(const QString &key) const
 
 QString UDevDevice::systemAttribute(const char *attribute) const
 {
-    return m_device.sysfsProperty(attribute).toString();
+    return m_device.sysfsProperty(QString::fromLatin1(attribute)).toString();
 }
 
 QString UDevDevice::deviceName() const
@@ -218,7 +218,7 @@ int UDevDevice::deviceNumber() const
 
 QString UDevDevice::devicePath() const
 {
-    return QString(UDEV_UDI_PREFIX) + deviceName();
+    return QStringLiteral(UDEV_UDI_PREFIX) + deviceName();
 }
 
 UdevQt::Device UDevDevice::udevDevice()

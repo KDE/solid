@@ -42,7 +42,7 @@ Solid::OpticalDrive::MediumTypes FakeCdrom::supportedMedia() const
         {QStringLiteral("hddvdrw"), Solid::OpticalDrive::HdDvdrw},
     };
 
-    const QStringList supported_medialist = fakeDevice()->property("supportedMedia").toString().simplified().split(',');
+    const QStringList supported_medialist = fakeDevice()->property(QStringLiteral("supportedMedia")).toString().simplified().split(QLatin1Char(','));
 
     for (const QString &media : supported_medialist) {
         supported |= map.value(media, Solid::OpticalDrive::UnknownMediumType);
@@ -53,18 +53,18 @@ Solid::OpticalDrive::MediumTypes FakeCdrom::supportedMedia() const
 
 int FakeCdrom::readSpeed() const
 {
-    return fakeDevice()->property("readSpeed").toInt();
+    return fakeDevice()->property(QStringLiteral("readSpeed")).toInt();
 }
 
 int FakeCdrom::writeSpeed() const
 {
-    return fakeDevice()->property("writeSpeed").toInt();
+    return fakeDevice()->property(QStringLiteral("writeSpeed")).toInt();
 }
 
 QList<int> FakeCdrom::writeSpeeds() const
 {
     QList<int> speeds;
-    const QStringList speed_strlist = fakeDevice()->property("writeSpeeds").toString().simplified().split(',');
+    const QStringList speed_strlist = fakeDevice()->property(QStringLiteral("writeSpeeds")).toString().simplified().split(QLatin1Char(','));
 
     for (const QString &speed_str : speed_strlist) {
         speeds << speed_str.toInt();

@@ -24,19 +24,19 @@ UPowerDevice::UPowerDevice(const QString &udi)
     : Solid::Ifaces::Device()
     , m_udi(udi)
 {
-    QDBusConnection::systemBus().connect(UP_DBUS_SERVICE,
+    QDBusConnection::systemBus().connect(QStringLiteral(UP_DBUS_SERVICE),
                                          m_udi,
-                                         "org.freedesktop.DBus.Properties",
-                                         "PropertiesChanged",
+                                         QStringLiteral("org.freedesktop.DBus.Properties"),
+                                         QStringLiteral("PropertiesChanged"),
                                          this,
                                          SLOT(onPropertiesChanged(QString, QVariantMap, QStringList)));
 
     // TODO port this to Solid::Power, we can't link against kdelibs4support for this signal
     // older upower versions not affected
-    QDBusConnection::systemBus().connect("org.freedesktop.login1", //
-                                         "/org/freedesktop/login1",
-                                         "org.freedesktop.login1.Manager",
-                                         "PrepareForSleep",
+    QDBusConnection::systemBus().connect(QStringLiteral("org.freedesktop.login1"), //
+                                         QStringLiteral("/org/freedesktop/login1"),
+                                         QStringLiteral("org.freedesktop.login1.Manager"),
+                                         QStringLiteral("PrepareForSleep"),
                                          this,
                                          SLOT(login1Resuming(bool)));
 }
@@ -67,7 +67,7 @@ QObject *UPowerDevice::createDeviceInterface(const Solid::DeviceInterface::Type 
 
 bool UPowerDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type) const
 {
-    const UpDeviceKind uptype = static_cast<UpDeviceKind>(prop("Type").toUInt());
+    const UpDeviceKind uptype = static_cast<UpDeviceKind>(prop(QStringLiteral("Type")).toUInt());
     switch (type) {
     case Solid::DeviceInterface::GenericInterface:
         return true;
@@ -89,7 +89,7 @@ bool UPowerDevice::queryDeviceInterface(const Solid::DeviceInterface::Type &type
             return true;
         case UP_DEVICE_KIND_UNKNOWN:
             // There is currently no "Bluetooth battery" type, so check if it comes from Bluez
-            if (prop("NativePath").toString().startsWith(QLatin1String("/org/bluez/"))) {
+            if (prop(QStringLiteral("NativePath")).toString().startsWith(QLatin1String("/org/bluez/"))) {
                 return true;
             }
             return false;
@@ -116,7 +116,7 @@ QString UPowerDevice::description() const
     if (queryDeviceInterface(Solid::DeviceInterface::Battery)) {
         return tr("%1 Battery", "%1 is battery technology").arg(batteryTechnology());
     } else {
-        QString result = prop("Model").toString();
+        QString result = prop(QStringLiteral("Model")).toString();
         if (result.isEmpty()) {
             return vendor();
         }
@@ -126,7 +126,7 @@ QString UPowerDevice::description() const
 
 QString UPowerDevice::batteryTechnology() const
 {
-    const UpDeviceTechnology tech = static_cast<UpDeviceTechnology>(prop("Technology").toUInt());
+    const UpDeviceTechnology tech = static_cast<UpDeviceTechnology>(prop(QStringLiteral("Technology")).toUInt());
     switch (tech) {
     case UP_DEVICE_TECHNOLOGY_UNKNOWN:
         return tr("Unknown", "battery technology");
@@ -151,7 +151,7 @@ QString UPowerDevice::batteryTechnology() const
 QString UPowerDevice::icon() const
 {
     if (queryDeviceInterface(Solid::DeviceInterface::Battery)) {
-        return "battery";
+        return QStringLiteral("battery");
     } else {
         return QString();
     }
@@ -159,7 +159,7 @@ QString UPowerDevice::icon() const
 
 QString UPowerDevice::product() const
 {
-    QString result = prop("Model").toString();
+    QString result = prop(QStringLiteral("Model")).toString();
 
     if (result.isEmpty()) {
         result = description();
@@ -170,7 +170,7 @@ QString UPowerDevice::product() const
 
 QString UPowerDevice::vendor() const
 {
-    return prop("Vendor").toString();
+    return prop(QStringLiteral("Vendor")).toString();
 }
 
 QString UPowerDevice::udi() const
@@ -180,7 +180,7 @@ QString UPowerDevice::udi() const
 
 QString UPowerDevice::parentUdi() const
 {
-    return UP_UDI_PREFIX;
+    return QStringLiteral(UP_UDI_PREFIX);
 }
 
 void UPowerDevice::checkCache(const QString &key) const
@@ -195,8 +195,9 @@ void UPowerDevice::checkCache(const QString &key) const
         return;
     }
 
-    QDBusMessage call = QDBusMessage::createMethodCall(UP_DBUS_SERVICE, m_udi, "org.freedesktop.DBus.Properties", "Get");
-    call.setArguments({UP_DBUS_INTERFACE_DEVICE, key});
+    QDBusMessage call =
+        QDBusMessage::createMethodCall(QStringLiteral(UP_DBUS_SERVICE), m_udi, QStringLiteral("org.freedesktop.DBus.Properties"), QStringLiteral("Get"));
+    call.setArguments({QStringLiteral(UP_DBUS_INTERFACE_DEVICE), key});
     QDBusReply<QVariant> reply = QDBusConnection::systemBus().call(call);
 
     if (reply.isValid()) {
@@ -220,8 +221,9 @@ bool UPowerDevice::propertyExists(const QString &key) const
 
 void UPowerDevice::loadCache() const
 {
-    QDBusMessage call = QDBusMessage::createMethodCall(UP_DBUS_SERVICE, m_udi, "org.freedesktop.DBus.Properties", "GetAll");
-    call.setArguments({UP_DBUS_INTERFACE_DEVICE});
+    QDBusMessage call =
+        QDBusMessage::createMethodCall(QStringLiteral(UP_DBUS_SERVICE), m_udi, QStringLiteral("org.freedesktop.DBus.Properties"), QStringLiteral("GetAll"));
+    call.setArguments({QStringLiteral(UP_DBUS_INTERFACE_DEVICE)});
     QDBusReply<QVariantMap> reply = QDBusConnection::systemBus().call(call);
 
     if (reply.isValid()) {
@@ -243,8 +245,8 @@ QMap<QString, QVariant> UPowerDevice::allProperties() const
 
 void UPowerDevice::onPropertiesChanged(const QString &ifaceName, const QVariantMap &changedProps, const QStringList &invalidatedProps)
 {
-    if (ifaceName != UP_DBUS_INTERFACE_DEVICE)
-	return;
+    if (ifaceName != QStringLiteral(UP_DBUS_INTERFACE_DEVICE))
+        return;
 
     QMap<QString, int> changeMap;
     for (auto it = changedProps.begin(); it != changedProps.end(); ++it) {

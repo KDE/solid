@@ -27,34 +27,37 @@ using namespace Solid::Backends::UDisks2;
 
 Block::Block(Device *dev)
     : DeviceInterface(dev)
-    , m_devNum(m_device->prop("DeviceNumber").toULongLong())
-    , m_devFile(QFile::decodeName(m_device->prop("Device").toByteArray()))
+    , m_devNum(m_device->prop(QStringLiteral("DeviceNumber")).toULongLong())
+    , m_devFile(QFile::decodeName(m_device->prop(QStringLiteral("Device")).toByteArray()))
 {
     // we have a drive (non-block device for udisks), so let's find the corresponding (real) block device
     if (m_devNum == 0 || m_devFile.isEmpty()) {
-        QDBusMessage call = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, UD2_DBUS_PATH_BLOCKDEVICES, DBUS_INTERFACE_INTROSPECT, "Introspect");
+        QDBusMessage call = QDBusMessage::createMethodCall(QStringLiteral(UD2_DBUS_SERVICE),
+                                                           QStringLiteral(UD2_DBUS_PATH_BLOCKDEVICES),
+                                                           QStringLiteral(DBUS_INTERFACE_INTROSPECT),
+                                                           QStringLiteral("Introspect"));
         QDBusPendingReply<QString> reply = QDBusConnection::systemBus().asyncCall(call);
         reply.waitForFinished();
 
         if (reply.isValid()) {
             QDomDocument dom;
             dom.setContent(reply.value());
-            QDomNodeList nodeList = dom.documentElement().elementsByTagName("node");
+            QDomNodeList nodeList = dom.documentElement().elementsByTagName(QStringLiteral("node"));
             for (int i = 0; i < nodeList.count(); i++) {
                 QDomElement nodeElem = nodeList.item(i).toElement();
-                if (!nodeElem.isNull() && nodeElem.hasAttribute("name")) {
-                    const QString udi = UD2_DBUS_PATH_BLOCKDEVICES + QLatin1Char('/') + nodeElem.attribute("name");
+                if (!nodeElem.isNull() && nodeElem.hasAttribute(QStringLiteral("name"))) {
+                    const QString udi = QStringLiteral(UD2_DBUS_PATH_BLOCKDEVICES) + QLatin1Char('/') + nodeElem.attribute(QStringLiteral("name"));
 
                     Device device(udi);
                     if (device.drivePath() == dev->udi()) {
-                        m_devNum = device.prop("DeviceNumber").toULongLong();
-                        m_devFile = QFile::decodeName(device.prop("Device").toByteArray());
+                        m_devNum = device.prop(QStringLiteral("DeviceNumber")).toULongLong();
+                        m_devFile = QFile::decodeName(device.prop(QStringLiteral("Device")).toByteArray());
                         break;
                     }
                 }
             }
         } else {
-            qCWarning(UDISKS2) << "Failed enumerating UDisks2 objects:" << reply.error().name() << "\n" << reply.error().message();
+            qCWarning(UDISKS2) << "Failed enumerating UDisks2 objects:" << reply.error().name() << QStringLiteral("\n") << reply.error().message();
         }
     }
 

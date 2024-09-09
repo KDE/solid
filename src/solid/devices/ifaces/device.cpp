@@ -28,16 +28,18 @@ QString Solid::Ifaces::Device::parentUdi() const
 void Solid::Ifaces::Device::registerAction(const QString &actionName, QObject *dest, const char *requestSlot, const char *doneSlot) const
 {
 #ifdef HAVE_DBUS
-    QDBusConnection::sessionBus().connect(QString(), deviceDBusPath(), "org.kde.Solid.Device", actionName + "Requested", dest, requestSlot);
+    QDBusConnection::sessionBus()
+        .connect(QString(), deviceDBusPath(), QStringLiteral("org.kde.Solid.Device"), actionName + QStringLiteral("Requested"), dest, requestSlot);
 
-    QDBusConnection::sessionBus().connect(QString(), deviceDBusPath(), "org.kde.Solid.Device", actionName + "Done", dest, doneSlot);
+    QDBusConnection::sessionBus()
+        .connect(QString(), deviceDBusPath(), QStringLiteral("org.kde.Solid.Device"), actionName + QStringLiteral("Done"), dest, doneSlot);
 #endif
 }
 
 void Solid::Ifaces::Device::broadcastActionDone(const QString &actionName, int error, const QString &errorString) const
 {
 #ifdef HAVE_DBUS
-    QDBusMessage signal = QDBusMessage::createSignal(deviceDBusPath(), "org.kde.Solid.Device", actionName + "Done");
+    QDBusMessage signal = QDBusMessage::createSignal(deviceDBusPath(), QStringLiteral("org.kde.Solid.Device"), actionName + QStringLiteral("Done"));
     signal << error << errorString;
 
     QDBusConnection::sessionBus().send(signal);
@@ -47,7 +49,7 @@ void Solid::Ifaces::Device::broadcastActionDone(const QString &actionName, int e
 void Solid::Ifaces::Device::broadcastActionRequested(const QString &actionName) const
 {
 #ifdef HAVE_DBUS
-    QDBusMessage signal = QDBusMessage::createSignal(deviceDBusPath(), "org.kde.Solid.Device", actionName + "Requested");
+    QDBusMessage signal = QDBusMessage::createSignal(deviceDBusPath(), QStringLiteral("org.kde.Solid.Device"), actionName + QStringLiteral("Requested"));
     QDBusConnection::sessionBus().send(signal);
 #endif
 }
@@ -55,7 +57,7 @@ void Solid::Ifaces::Device::broadcastActionRequested(const QString &actionName) 
 QString Solid::Ifaces::Device::deviceDBusPath() const
 {
     const QByteArray encodedUdi = udi().toUtf8().toPercentEncoding(QByteArray(), ".~-", '_');
-    return QString("/org/kde/solid/Device_") + QString::fromLatin1(encodedUdi);
+    return QStringLiteral("/org/kde/solid/Device_") + QString::fromLatin1(encodedUdi);
 }
 
 QString Solid::Ifaces::Device::displayName() const

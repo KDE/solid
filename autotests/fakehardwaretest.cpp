@@ -21,23 +21,23 @@ QTEST_MAIN(FakeHardwareTest)
 
 void FakeHardwareTest::testFakeBackend()
 {
-    Solid::Backends::Fake::FakeManager *fakeManager = new Solid::Backends::Fake::FakeManager(nullptr, TEST_DATA);
+    Solid::Backends::Fake::FakeManager *fakeManager = new Solid::Backends::Fake::FakeManager(nullptr, QStringLiteral(TEST_DATA));
 
     QVERIFY(!fakeManager->allDevices().isEmpty());
-    QObject *computer = fakeManager->createDevice("/org/kde/solid/fakehw/computer");
+    QObject *computer = fakeManager->createDevice(QStringLiteral("/org/kde/solid/fakehw/computer"));
     QVERIFY(computer != nullptr);
-    QVERIFY(fakeManager->createDevice("/com/helloworld/troll/compiutor") == nullptr);
+    QVERIFY(fakeManager->createDevice(QStringLiteral("/com/helloworld/troll/compiutor")) == nullptr);
 
-    Solid::Backends::Fake::FakeDevice *device = static_cast<Solid::Backends::Fake::FakeDevice *>(fakeManager->createDevice("/org/kde/solid/fakehw/acpi_CPU0"));
+    auto *device = static_cast<Solid::Backends::Fake::FakeDevice *>(fakeManager->createDevice(QStringLiteral("/org/kde/solid/fakehw/acpi_CPU0")));
 
-    QCOMPARE(device->udi(), QString("/org/kde/solid/fakehw/acpi_CPU0"));
-    QCOMPARE(device->parentUdi(), QString("/org/kde/solid/fakehw/computer"));
-    QCOMPARE(device->vendor(), QString("Acme Corporation"));
-    QCOMPARE(device->product(), QString("Solid Processor #0"));
+    QCOMPARE(device->udi(), QStringLiteral("/org/kde/solid/fakehw/acpi_CPU0"));
+    QCOMPARE(device->parentUdi(), QStringLiteral("/org/kde/solid/fakehw/computer"));
+    QCOMPARE(device->vendor(), QStringLiteral("Acme Corporation"));
+    QCOMPARE(device->product(), QStringLiteral("Solid Processor #0"));
 
-    QCOMPARE(device->property("number").toString(), QString("0"));
-    QVERIFY(device->propertyExists("number"));
-    QVERIFY(!device->propertyExists("youstfuqewerrernoob"));
+    QCOMPARE(device->property(QStringLiteral("number")).toString(), QStringLiteral("0"));
+    QVERIFY(device->propertyExists(QStringLiteral("number")));
+    QVERIFY(!device->propertyExists(QStringLiteral("youstfuqewerrernoob")));
 
     QVERIFY(device->queryDeviceInterface(Solid::DeviceInterface::Processor));
 

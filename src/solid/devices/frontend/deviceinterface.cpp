@@ -36,7 +36,7 @@ QString Solid::DeviceInterface::typeToString(Type type)
 {
     int index = staticMetaObject.indexOfEnumerator("Type");
     QMetaEnum metaEnum = staticMetaObject.enumerator(index);
-    return QString(metaEnum.valueToKey((int)type));
+    return QString::fromLatin1(metaEnum.valueToKey((int)type));
 }
 
 Solid::DeviceInterface::Type Solid::DeviceInterface::stringToType(const QString &type)

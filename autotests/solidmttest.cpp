@@ -35,7 +35,7 @@ class WorkerThread : public QThread
 protected:
     void run() override
     {
-        Solid::Device dev("/org/freedesktop/Hal/devices/computer");
+        Solid::Device dev(QStringLiteral("/org/freedesktop/Hal/devices/computer"));
 
         const QList<Solid::Device> driveList = Solid::Device::listFromType(Solid::DeviceInterface::StorageDrive);
         for (const Solid::Device &solidDevice : driveList) {
@@ -48,19 +48,19 @@ protected:
 
 static void doPredicates()
 {
-    Solid::Predicate p5 =
-        Solid::Predicate::fromString("[[Processor.maxSpeed == 3201 AND Processor.canChangeFrequency == false] OR StorageVolume.mountPoint == '/media/blup']");
+    Solid::Predicate p5 = Solid::Predicate::fromString(
+        QStringLiteral("[[Processor.maxSpeed == 3201 AND Processor.canChangeFrequency == false] OR StorageVolume.mountPoint == '/media/blup']"));
 
-    Solid::Predicate p6 = Solid::Predicate::fromString("StorageVolume.usage == 'Other'");
-    Solid::Predicate p7 = Solid::Predicate::fromString(QString("StorageVolume.usage == %1").arg((int)Solid::StorageVolume::Other));
-    Solid::Predicate p8 = Solid::Predicate::fromString("StorageVolume.ignored == false");
+    Solid::Predicate p6 = Solid::Predicate::fromString(QStringLiteral("StorageVolume.usage == 'Other'"));
+    Solid::Predicate p7 = Solid::Predicate::fromString(QStringLiteral("StorageVolume.usage == %1").arg((int)Solid::StorageVolume::Other));
+    Solid::Predicate p8 = Solid::Predicate::fromString(QStringLiteral("StorageVolume.ignored == false"));
 }
 
 QTEST_MAIN(SolidMtTest)
 
 void SolidMtTest::testWorkerThread()
 {
-    Solid::Device dev("/org/freedesktop/Hal/devices/acpi_ADP1");
+    Solid::Device dev(QStringLiteral("/org/freedesktop/Hal/devices/acpi_ADP1"));
 
     WorkerThread *wt = new WorkerThread;
     wt->start();
@@ -124,10 +124,9 @@ void SolidMtTest::testTextPredicates()
     // The expressions contain @ as a placeholder, so they are
     // short enough to easily see the structure of the expression
     // in _data(); replace all those @s with an actual atom.
-    const QString atom("StorageVolume.ignored == false");
-    while(pstring.contains('@'))
-    {
-        pstring = pstring.replace('@', atom);
+    const QString atom(QStringLiteral("StorageVolume.ignored == false"));
+    while (pstring.contains(QLatin1Char('@'))) {
+        pstring = pstring.replace(QLatin1Char('@'), atom);
     }
 
     Solid::Predicate p = Solid::Predicate::fromString(pstring);
@@ -136,7 +135,8 @@ void SolidMtTest::testTextPredicates()
 
 void SolidMtTest::testTextPredicatesExtended()
 {
-    Solid::Predicate p = Solid::Predicate::fromString("[[StorageVolume.ignored == false AND StorageVolume.usage == 'FileSystem'] AND [StorageVolume.ignored == false AND StorageDrive.removable == true]]");
+    Solid::Predicate p = Solid::Predicate::fromString(QStringLiteral(
+        "[[StorageVolume.ignored == false AND StorageVolume.usage == 'FileSystem'] AND [StorageVolume.ignored == false AND StorageDrive.removable == true]]"));
     QVERIFY(p.isValid());
     QCOMPARE(p.type(), Solid::Predicate::Conjunction);
     QCOMPARE(p.firstOperand().type(), Solid::Predicate::Conjunction);
@@ -184,7 +184,7 @@ void SolidMtTest::testDeviceMatching()
     auto deviceList = Solid::Device::allDevices();
     QVERIFY(!deviceList.isEmpty());
 
-    Solid::Predicate volumesPredicate = Solid::Predicate::fromString("StorageVolume.ignored == false");
+    Solid::Predicate volumesPredicate = Solid::Predicate::fromString(QStringLiteral("StorageVolume.ignored == false"));
     QVERIFY(volumesPredicate.isValid());
 
     int volumes = 0;
@@ -204,7 +204,7 @@ void SolidMtTest::testDeviceMatching()
     }
     // Same from text again
     {
-        auto matchedDeviceList = Solid::Device::listFromQuery("StorageVolume.ignored == false");
+        auto matchedDeviceList = Solid::Device::listFromQuery(QStringLiteral("StorageVolume.ignored == false"));
         QCOMPARE(matchedDeviceList.size(), volumes);
     }
 
@@ -214,9 +214,11 @@ void SolidMtTest::testDeviceMatching()
     // a given Solid::Device isn't a Volume and a Drive at the same time,
     // so it cannot match.
     {
-        Solid::Predicate fsVolumesPredicate = Solid::Predicate::fromString("[StorageVolume.ignored == false AND StorageVolume.usage == 'FileSystem']");
-        Solid::Predicate removablePredicate = Solid::Predicate::fromString("StorageDrive.removable == true");
-        Solid::Predicate removableFSVolumesPredicate = Solid::Predicate::fromString("[[StorageVolume.ignored == false AND StorageVolume.usage == 'FileSystem'] AND StorageDrive.removable == true]");
+        Solid::Predicate fsVolumesPredicate =
+            Solid::Predicate::fromString(QStringLiteral("[StorageVolume.ignored == false AND StorageVolume.usage == 'FileSystem']"));
+        Solid::Predicate removablePredicate = Solid::Predicate::fromString(QStringLiteral("StorageDrive.removable == true"));
+        Solid::Predicate removableFSVolumesPredicate = Solid::Predicate::fromString(
+            QStringLiteral("[[StorageVolume.ignored == false AND StorageVolume.usage == 'FileSystem'] AND StorageDrive.removable == true]"));
         volumes = 0;
         for (const auto &device : std::as_const(deviceList)) {
             qDebug() << device.displayName() << "fs?" << fsVolumesPredicate.matches(device) << "removable?" << removablePredicate.matches(device) << "removableFS?" << removableFSVolumesPredicate.matches(device);

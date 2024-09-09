@@ -20,17 +20,17 @@ FakeBlock::~FakeBlock()
 
 int FakeBlock::deviceMajor() const
 {
-    return fakeDevice()->property("major").toInt();
+    return fakeDevice()->property(QStringLiteral("major")).toInt();
 }
 
 int FakeBlock::deviceMinor() const
 {
-    return fakeDevice()->property("minor").toInt();
+    return fakeDevice()->property(QStringLiteral("minor")).toInt();
 }
 
 QString FakeBlock::device() const
 {
-    return fakeDevice()->property("device").toString();
+    return fakeDevice()->property(QStringLiteral("device")).toString();
 }
 
 #include "moc_fakeblock.cpp"

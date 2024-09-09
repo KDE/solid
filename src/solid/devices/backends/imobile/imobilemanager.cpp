@@ -100,7 +100,7 @@ QObject *Manager::createDevice(const QString &udi)
         RootDevice *root = new RootDevice(udi);
         root->setProduct(tr("iDevice"));
         root->setDescription(tr("iOS devices"));
-        root->setIcon("phone-apple-iphone");
+        root->setIcon(QStringLiteral("phone-apple-iphone"));
         return root;
     }
 

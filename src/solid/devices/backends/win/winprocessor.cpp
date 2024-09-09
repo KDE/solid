@@ -53,7 +53,7 @@ QSet<QString> WinProcessor::getUdis()
     if (out.isEmpty()) {
         const QMap<int, ProcessorInfo> map = updateCache();
         for (const ProcessorInfo &info : map) {
-            out << QString("/org/kde/solid/win/cpu/device#%1,cpu#%2").arg(info.id).arg(info.lgicalId);
+            out << QStringLiteral("/org/kde/solid/win/cpu/device#%1,cpu#%2").arg(info.id).arg(info.lgicalId);
         }
     }
     return out;

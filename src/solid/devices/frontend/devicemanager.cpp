@@ -167,10 +167,10 @@ Solid::Device Solid::Device::storageAccessFromPath(const QString &path)
             continue;
         }
 
-        const auto realLength = mountPath.back() == '/' ? mountPath.size() - 1 : mountPath.size();
+        const auto realLength = mountPath.back() == QLatin1Char('/') ? mountPath.size() - 1 : mountPath.size();
 
         // `startsWith` implies `path.size() >= mountPath.size()`
-        if (path.size() == realLength || path[realLength] == '/') {
+        if (path.size() == realLength || path[realLength] == QLatin1Char('/')) {
             match_length = realLength;
             match = device;
         }

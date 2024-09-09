@@ -53,7 +53,7 @@ void ClientPrivate::setWatchedSubsystems(const QStringList &subsystemList)
 
     // apply our filters; an empty list means listen to everything
     for (const QString &subsysDevtype : subsystemList) {
-        int ix = subsysDevtype.indexOf("/");
+        int ix = subsysDevtype.indexOf(QLatin1String("/"));
 
         if (ix > 0) {
             QByteArray subsystem = subsysDevtype.left(ix).toLatin1();

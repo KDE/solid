@@ -32,15 +32,15 @@ static QString readMpiValue(QIODevice &file, const QString &group, const QString
 
     while (!mpiStream.atEnd()) {
         line = mpiStream.readLine().trimmed(); // trimmed is needed for possible indentation
-        if (line.isEmpty() || line.startsWith(QChar(';'))) {
+        if (line.isEmpty() || line.startsWith(QLatin1Char(';'))) {
             // skip empty and comment lines
-        } else if (line.startsWith(QChar('[')) && line.endsWith(QChar(']'))) {
+        } else if (line.startsWith(QLatin1Char('[')) && line.endsWith(QLatin1Char(']'))) {
             currGroup = line.mid(1, line.length() - 2); // strip [ and ]
-        } else if (line.indexOf(QChar('=')) != -1) {
-            int index = line.indexOf(QChar('='));
+        } else if (line.indexOf(QLatin1Char('=')) != -1) {
+            int index = line.indexOf(QLatin1Char('='));
             if (currGroup == group && line.left(index) == key) {
                 line = line.right(line.length() - index - 1);
-                if (line.startsWith(QChar('"')) && line.endsWith(QChar('"'))) {
+                if (line.startsWith(QLatin1Char('"')) && line.endsWith(QLatin1Char('"'))) {
                     line = line.mid(1, line.length() - 2); // strip enclosing double quotes
                 }
                 return line;
@@ -70,8 +70,8 @@ QStringList PortableMediaPlayer::supportedProtocols() const
      *  * media-player-info sets it to a string that denotes a name of the .mpi file with
      *    additional info.
      */
-    if (m_device->property("ID_MEDIA_PLAYER").toInt() == 1) {
-        return QStringList() << "mtp";
+    if (m_device->property(QStringLiteral("ID_MEDIA_PLAYER")).toInt() == 1) {
+        return {QStringLiteral("mtp")};
     }
 
     QString mpiFileName = mediaPlayerInfoFilePath();
@@ -85,28 +85,27 @@ QStringList PortableMediaPlayer::supportedProtocols() const
                    << "Check your media-player-info installation.";
         return QStringList();
     }
-    QString value = readMpiValue(mpiFile, QString("Device"), QString("AccessProtocol"));
-    return value.split(QChar(';'), Qt::SkipEmptyParts);
+    QString value = readMpiValue(mpiFile, QStringLiteral("Device"), QStringLiteral("AccessProtocol"));
+    return value.split(QLatin1Char(';'), Qt::SkipEmptyParts);
 }
 
 QStringList PortableMediaPlayer::supportedDrivers(QString protocol) const
 {
     Q_UNUSED(protocol)
-    QStringList res;
 
     if (!supportedProtocols().isEmpty()) {
-        res << "usb";
+        return {QStringLiteral("usb")};
     }
-    if (m_device->property("USBMUX_SUPPORTED").toBool() == true) {
-        res << "usbmux";
+    if (m_device->property(QStringLiteral("USBMUX_SUPPORTED")).toBool() == true) {
+        return {QStringLiteral("usbmux")};
     }
-    return res;
+    return {};
 }
 
 QVariant PortableMediaPlayer::driverHandle(const QString &driver) const
 {
-    if (driver == "mtp" || driver == "usbmux") {
-        return m_device->property("ID_SERIAL_SHORT");
+    if (driver == QLatin1String("mtp") || driver == QLatin1String("usbmux")) {
+        return m_device->property(QStringLiteral("ID_SERIAL_SHORT"));
     }
 
     return QVariant();
@@ -114,13 +113,13 @@ QVariant PortableMediaPlayer::driverHandle(const QString &driver) const
 
 QString PortableMediaPlayer::mediaPlayerInfoFilePath() const
 {
-    QString relativeFilename = m_device->property("ID_MEDIA_PLAYER").toString();
+    QString relativeFilename = m_device->property(QStringLiteral("ID_MEDIA_PLAYER")).toString();
     if (relativeFilename.isEmpty()) {
         qWarning() << "We attached PortableMediaPlayer interface to device" << m_device->udi() << "but m_device->property(\"ID_MEDIA_PLAYER\") is empty???";
         return QString();
     }
-    relativeFilename.prepend("media-player-info/");
-    relativeFilename.append(".mpi");
+    relativeFilename.prepend(QStringLiteral("media-player-info/"));
+    relativeFilename.append(QStringLiteral(".mpi"));
     QString filename = QStandardPaths::locate(QStandardPaths::GenericDataLocation, relativeFilename);
     if (filename.isEmpty()) {
         qWarning() << "media player info file" << relativeFilename << "not found under user and"

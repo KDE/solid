@@ -15,20 +15,17 @@ FstabNetworkShare::FstabNetworkShare(Solid::Backends::Fstab::FstabDevice *device
     , m_fstabDevice(device)
 {
     QString url;
-    if (m_fstabDevice->device().startsWith("//")) {
+    if (m_fstabDevice->device().startsWith(QLatin1String("//"))) {
         QString fsType = FstabHandling::fstype(m_fstabDevice->device());
-        if (fsType == "cifs") {
+        if (fsType == QLatin1String("cifs")) {
             m_type = Solid::NetworkShare::Cifs;
-        } else if (fsType == "smb3") {
+        } else if (fsType == QLatin1String("smb3")) {
             m_type = Solid::NetworkShare::Smb3;
         }
-        url = "smb:";
-        url += m_fstabDevice->device();
-    } else if (m_fstabDevice->device().contains(":/")) {
+        url = QStringLiteral("smb:%1").arg(m_fstabDevice->device());
+    } else if (m_fstabDevice->device().contains(QLatin1String(":/"))) {
         m_type = Solid::NetworkShare::Nfs;
-        url = "nfs://";
-        url += m_fstabDevice->vendor() + "/";
-        url += m_fstabDevice->product();
+        url = QStringLiteral("nfs://%1/%2").arg(m_fstabDevice->vendor(), m_fstabDevice->product());
     } else {
         m_type = Solid::NetworkShare::Unknown;
     }

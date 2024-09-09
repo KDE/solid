@@ -129,13 +129,13 @@ void WinBattery::powerChanged()
 
     QString tech = QString::fromUtf8((const char *)info.Chemistry, 4);
 
-    if (tech == "LION" || tech == "LI-I") {
+    if (tech == QLatin1String("LION") || tech == QLatin1String("LI-I")) {
         m_technology = Solid::Battery::LithiumIon;
-    } else if (tech == "PBAC") {
+    } else if (tech == QLatin1String("PBAC")) {
         m_technology = Solid::Battery::LeadAcid;
-    } else if (tech == "NICD") {
+    } else if (tech == QLatin1String("NICD")) {
         m_technology = Solid::Battery::NickelCadmium;
-    } else if (tech == "NIMH") {
+    } else if (tech == QLatin1String("NIMH")) {
         m_technology = Solid::Battery::NickelMetalHydride;
     } else {
         m_technology = Solid::Battery::UnknownTechnology;

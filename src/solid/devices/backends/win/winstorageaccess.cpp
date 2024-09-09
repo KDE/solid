@@ -26,7 +26,7 @@ bool WinStorageAccess::isAccessible() const
 
 QString WinStorageAccess::filePath() const
 {
-    return WinBlock::driveLetterFromUdi(m_device->udi()).append("/");
+    return WinBlock::driveLetterFromUdi(m_device->udi()).append(QStringLiteral("/"));
 }
 
 bool WinStorageAccess::isIgnored() const

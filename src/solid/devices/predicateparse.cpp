@@ -75,8 +75,8 @@ void PredicateParse_destroy(void *pred)
 
 void *PredicateParse_newAtom(char *interface, char *property, void *value)
 {
-    QString iface(interface);
-    QString prop(property);
+    QString iface = QString::fromLatin1(interface, -1);
+    QString prop = QString::fromLatin1(property, -1);
     QVariant *val = (QVariant *)value;
 
     Solid::Predicate *result = new Solid::Predicate(iface, prop, *val);
@@ -90,8 +90,8 @@ void *PredicateParse_newAtom(char *interface, char *property, void *value)
 
 void *PredicateParse_newMaskAtom(char *interface, char *property, void *value)
 {
-    QString iface(interface);
-    QString prop(property);
+    QString iface = QString::fromLatin1(interface, -1);
+    QString prop = QString::fromLatin1(property, -1);
     QVariant *val = (QVariant *)value;
 
     Solid::Predicate *result = new Solid::Predicate(iface, prop, *val, Solid::Predicate::Mask);
@@ -105,7 +105,7 @@ void *PredicateParse_newMaskAtom(char *interface, char *property, void *value)
 
 void *PredicateParse_newIsAtom(char *interface)
 {
-    QString iface(interface);
+    QString iface = QString::fromLatin1(interface);
 
     Solid::Predicate *result = new Solid::Predicate(iface);
 
@@ -156,7 +156,7 @@ void *PredicateParse_newOr(void *pred1, void *pred2)
 
 void *PredicateParse_newStringValue(char *val)
 {
-    QString s(val);
+    QString s = QString::fromLatin1(val);
 
     free(val);
 
@@ -186,8 +186,7 @@ void *PredicateParse_newEmptyStringListValue()
 
 void *PredicateParse_newStringListValue(char *name)
 {
-    QStringList list;
-    list << QString(name);
+    QStringList list{QString::fromLatin1(name)};
 
     free(name);
 
@@ -200,7 +199,7 @@ void *PredicateParse_appendStringListValue(char *name, void *list)
 
     QStringList new_list = variant->toStringList();
 
-    new_list << QString(name);
+    new_list << QString::fromLatin1(name);
 
     delete variant;
     free(name);

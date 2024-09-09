@@ -22,24 +22,24 @@ FakeProcessor::~FakeProcessor()
 
 int FakeProcessor::number() const
 {
-    return fakeDevice()->property("number").toInt();
+    return fakeDevice()->property(QStringLiteral("number")).toInt();
 }
 
 int FakeProcessor::maxSpeed() const
 {
-    return fakeDevice()->property("maxSpeed").toInt();
+    return fakeDevice()->property(QStringLiteral("maxSpeed")).toInt();
 }
 
 bool FakeProcessor::canChangeFrequency() const
 {
-    return fakeDevice()->property("canChangeFrequency").toBool();
+    return fakeDevice()->property(QStringLiteral("canChangeFrequency")).toBool();
 }
 
 Solid::Processor::InstructionSets FakeProcessor::instructionSets() const
 {
     Solid::Processor::InstructionSets result;
 
-    const QStringList extension_list = fakeDevice()->property("instructionSets").toString().split(',');
+    const QStringList extension_list = fakeDevice()->property(QStringLiteral("instructionSets")).toString().split(QLatin1Char(','));
     for (const QString &extension_str : extension_list) {
         if (extension_str == QLatin1String("mmx")) {
             result |= Solid::Processor::IntelMmx;

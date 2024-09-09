@@ -22,32 +22,32 @@ FakeBattery::~FakeBattery()
 
 bool FakeBattery::isPresent() const
 {
-    return fakeDevice()->property("isPresent").toBool();
+    return fakeDevice()->property(QStringLiteral("isPresent")).toBool();
 }
 
 Solid::Battery::BatteryType FakeBattery::type() const
 {
-    QString name = fakeDevice()->property("batteryType").toString();
+    QString name = fakeDevice()->property(QStringLiteral("batteryType")).toString();
 
-    if (name == "pda") {
+    if (name == QLatin1String("pda")) {
         return Solid::Battery::PdaBattery;
-    } else if (name == "ups") {
+    } else if (name == QLatin1String("ups")) {
         return Solid::Battery::UpsBattery;
-    } else if (name == "primary") {
+    } else if (name == QLatin1String("primary")) {
         return Solid::Battery::PrimaryBattery;
-    } else if (name == "mouse") {
+    } else if (name == QLatin1String("mouse")) {
         return Solid::Battery::MouseBattery;
-    } else if (name == "keyboard") {
+    } else if (name == QLatin1String("keyboard")) {
         return Solid::Battery::KeyboardBattery;
-    } else if (name == "keyboard_mouse") {
+    } else if (name == QLatin1String("keyboard_mouse")) {
         return Solid::Battery::KeyboardMouseBattery;
-    } else if (name == "camera") {
+    } else if (name == QLatin1String("camera")) {
         return Solid::Battery::CameraBattery;
-    } else if (name == "gaminginput") {
+    } else if (name == QLatin1String("gaminginput")) {
         return Solid::Battery::GamingInputBattery;
-    } else if (name == "bluetooth") {
+    } else if (name == QLatin1String("bluetooth")) {
         return Solid::Battery::BluetoothBattery;
-    } else if (name == "tablet") {
+    } else if (name == QLatin1String("tablet")) {
         return Solid::Battery::TabletBattery;
     } else {
         return Solid::Battery::UnknownBattery;
@@ -56,8 +56,8 @@ Solid::Battery::BatteryType FakeBattery::type() const
 
 int FakeBattery::chargePercent() const
 {
-    int last_full = fakeDevice()->property("lastFullLevel").toInt();
-    int current = fakeDevice()->property("currentLevel").toInt();
+    int last_full = fakeDevice()->property(QStringLiteral("lastFullLevel")).toInt();
+    int current = fakeDevice()->property(QStringLiteral("currentLevel")).toInt();
 
     int percent = 0;
     if (last_full > 0) {
@@ -69,28 +69,28 @@ int FakeBattery::chargePercent() const
 
 int FakeBattery::capacity() const
 {
-    return fakeDevice()->property("capacity").toInt();
+    return fakeDevice()->property(QStringLiteral("capacity")).toInt();
 }
 
 bool FakeBattery::isRechargeable() const
 {
-    return fakeDevice()->property("isRechargeable").toBool();
+    return fakeDevice()->property(QStringLiteral("isRechargeable")).toBool();
 }
 
 bool FakeBattery::isPowerSupply() const
 {
-    return fakeDevice()->property("isPowerSupply").toBool();
+    return fakeDevice()->property(QStringLiteral("isPowerSupply")).toBool();
 }
 
 Solid::Battery::ChargeState FakeBattery::chargeState() const
 {
-    QString state = fakeDevice()->property("chargeState").toString();
+    QString state = fakeDevice()->property(QStringLiteral("chargeState")).toString();
 
-    if (state == "charging") {
+    if (state == QLatin1String("charging")) {
         return Solid::Battery::Charging;
-    } else if (state == "discharging") {
+    } else if (state == QLatin1String("discharging")) {
         return Solid::Battery::Discharging;
-    } else if (state == "fullyCharged") {
+    } else if (state == QLatin1String("fullyCharged")) {
         return Solid::Battery::FullyCharged;
     } else {
         return Solid::Battery::NoCharge;
@@ -99,12 +99,12 @@ Solid::Battery::ChargeState FakeBattery::chargeState() const
 
 qlonglong FakeBattery::timeToEmpty() const
 {
-    return fakeDevice()->property("timeToEmpty").toLongLong();
+    return fakeDevice()->property(QStringLiteral("timeToEmpty")).toLongLong();
 }
 
 qlonglong FakeBattery::timeToFull() const
 {
-    return fakeDevice()->property("timeToFull").toLongLong();
+    return fakeDevice()->property(QStringLiteral("timeToFull")).toLongLong();
 }
 
 void FakeBattery::setChargeState(Solid::Battery::ChargeState newState)
@@ -113,72 +113,72 @@ void FakeBattery::setChargeState(Solid::Battery::ChargeState newState)
 
     switch (newState) {
     case Solid::Battery::Charging:
-        name = "charging";
+        name = QStringLiteral("charging");
         break;
     case Solid::Battery::Discharging:
-        name = "discharging";
+        name = QStringLiteral("discharging");
         break;
     case Solid::Battery::NoCharge:
-        name = "noCharge";
+        name = QStringLiteral("noCharge");
         break;
     case Solid::Battery::FullyCharged:
-        name = "fullyCharged";
+        name = QStringLiteral("fullyCharged");
         break;
     }
 
-    fakeDevice()->setProperty("chargeState", name);
+    fakeDevice()->setProperty(QStringLiteral("chargeState"), name);
     Q_EMIT chargeStateChanged(newState, fakeDevice()->udi());
 }
 
 void FakeBattery::setChargeLevel(int newLevel)
 {
-    fakeDevice()->setProperty("currentLevel", newLevel);
+    fakeDevice()->setProperty(QStringLiteral("currentLevel"), newLevel);
     Q_EMIT chargePercentChanged(chargePercent(), fakeDevice()->udi());
 }
 
 Solid::Battery::Technology FakeBattery::technology() const
 {
-    return (Solid::Battery::Technology)fakeDevice()->property("technology").toInt();
+    return (Solid::Battery::Technology)fakeDevice()->property(QStringLiteral("technology")).toInt();
 }
 
 double FakeBattery::energy() const
 {
-    return fakeDevice()->property("energy").toDouble();
+    return fakeDevice()->property(QStringLiteral("energy")).toDouble();
 }
 
 double FakeBattery::energyFull() const
 {
-    return fakeDevice()->property("energyFull").toDouble();
+    return fakeDevice()->property(QStringLiteral("energyFull")).toDouble();
 }
 
 double FakeBattery::energyFullDesign() const
 {
-    return fakeDevice()->property("energyFullDesign").toDouble();
+    return fakeDevice()->property(QStringLiteral("energyFullDesign")).toDouble();
 }
 
 double FakeBattery::energyRate() const
 {
-    return fakeDevice()->property("energyRate").toDouble();
+    return fakeDevice()->property(QStringLiteral("energyRate")).toDouble();
 }
 
 double FakeBattery::voltage() const
 {
-    return fakeDevice()->property("voltage").toDouble();
+    return fakeDevice()->property(QStringLiteral("voltage")).toDouble();
 }
 
 double FakeBattery::temperature() const
 {
-    return fakeDevice()->property("temperature").toDouble();
+    return fakeDevice()->property(QStringLiteral("temperature")).toDouble();
 }
 
 QString FakeBattery::serial() const
 {
-    return fakeDevice()->property("serial").toString();
+    return fakeDevice()->property(QStringLiteral("serial")).toString();
 }
 
 qlonglong FakeBattery::remainingTime() const
 {
-    return fakeDevice()->property("remainingTime").toLongLong();
+    return fakeDevice()->property(QStringLiteral("remainingTime")).toLongLong();
 }
 
 #include "moc_fakebattery.cpp"

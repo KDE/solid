@@ -223,24 +223,22 @@ bool Device::queryDeviceInterface(const Solid::DeviceInterface::Type &type) cons
 
 QStringList Device::emblems() const
 {
-    QStringList res;
-
     if (queryDeviceInterface(Solid::DeviceInterface::StorageAccess)) {
         const UDisks2::StorageAccess accessIface(const_cast<Device *>(this));
         if (accessIface.isAccessible()) {
             if (isEncryptedContainer()) {
-                res << "emblem-encrypted-unlocked";
+                return {QStringLiteral("emblem-encrypted-unlocked")};
             }
         } else {
             if (isEncryptedContainer()) {
-                res << "emblem-encrypted-locked";
+                return {QStringLiteral("emblem-encrypted-locked")};
             } else {
-                res << "emblem-unmounted";
+                return {QStringLiteral("emblem-unmounted")};
             }
         }
     }
 
-    return res;
+    return {};
 }
 
 QString Device::description() const
@@ -265,12 +263,12 @@ QString Device::description() const
 
 QString Device::loopDescription() const
 {
-    const QString label = prop("IdLabel").toString();
+    const QString label = prop(QStringLiteral("IdLabel")).toString();
     if (!label.isEmpty()) {
         return label;
     }
 
-    const QString backingFile = prop("BackingFile").toString();
+    const QString backingFile = prop(QStringLiteral("BackingFile")).toString();
     if (!backingFile.isEmpty()) {
         return backingFile.section(QLatin1Char('/'), -1);
     }
@@ -413,9 +411,9 @@ QString Device::volumeDescription() const
 {
     QString description;
     const UDisks2::StorageVolume storageVolume(const_cast<Device *>(this));
-    QString volume_label = prop("IdLabel").toString();
+    QString volume_label = prop(QStringLiteral("IdLabel")).toString();
     if (volume_label.isEmpty()) {
-        volume_label = prop("Name").toString();
+        volume_label = prop(QStringLiteral("Name")).toString();
     }
     if (!volume_label.isEmpty()) {
         return volume_label;
@@ -602,7 +600,7 @@ QString Device::icon() const
     } else if (isRoot()) {
         return QStringLiteral("drive-harddisk-root");
     } else if (isLoop()) {
-        const QString backingFile = prop("BackingFile").toString();
+        const QString backingFile = prop(QStringLiteral("BackingFile")).toString();
         if (!backingFile.isEmpty()) {
             QMimeType type = QMimeDatabase().mimeTypeForFile(backingFile);
             if (!type.isDefault()) {
@@ -611,152 +609,155 @@ QString Device::icon() const
         }
         return QStringLiteral("drive-harddisk");
     } else if (isSwap()) {
-        return "drive-harddisk";
+        return QStringLiteral("drive-harddisk");
     } else if (isDrive()) {
-        const bool isRemovable = prop("Removable").toBool();
-        const QString conn = prop("ConnectionBus").toString();
+        const bool isRemovable = prop(QStringLiteral("Removable")).toBool();
+        const QString conn = prop(QStringLiteral("ConnectionBus")).toString();
 
         if (isOpticalDrive()) {
-            return "drive-optical";
-        } else if (isRemovable && !prop("Optical").toBool()) {
-            if (conn == "usb") {
-                return "drive-removable-media-usb";
+            return QStringLiteral("drive-optical");
+        } else if (isRemovable && !prop(QStringLiteral("Optical")).toBool()) {
+            if (conn == QLatin1String("usb")) {
+                return QStringLiteral("drive-removable-media-usb");
             } else {
-                return "drive-removable-media";
+                return QStringLiteral("drive-removable-media");
             }
         }
     } else if (isBlock()) {
         const QString drv = drivePath();
-        if (drv.isEmpty() || drv == "/") {
-            return "drive-harddisk"; // stuff like loop devices or swap which don't have the Drive prop set
+        if (drv.isEmpty() || drv == QLatin1String("/")) {
+            return QStringLiteral("drive-harddisk"); // stuff like loop devices or swap which don't have the Drive prop set
         }
 
         Device drive(drv);
 
         // handle media
-        const QString media = drive.prop("Media").toString();
+        const QString media = drive.prop(QStringLiteral("Media")).toString();
 
         if (!media.isEmpty()) {
-            if (drive.prop("Optical").toBool()) { // optical stuff
-                bool isWritable = drive.prop("OpticalBlank").toBool();
+            if (drive.prop(QStringLiteral("Optical")).toBool()) { // optical stuff
+                bool isWritable = drive.prop(QStringLiteral("OpticalBlank")).toBool();
 
                 const UDisks2::OpticalDisc disc(const_cast<Device *>(this));
                 Solid::OpticalDisc::ContentTypes availContent = disc.availableContent();
 
                 if (availContent & Solid::OpticalDisc::VideoDvd) { // Video DVD
-                    return "media-optical-dvd-video";
+                    return QStringLiteral("media-optical-dvd-video");
                 } else if ((availContent & Solid::OpticalDisc::VideoCd) || (availContent & Solid::OpticalDisc::SuperVideoCd)) { // Video CD
-                    return "media-optical-video";
+                    return QStringLiteral("media-optical-video");
                 } else if ((availContent & Solid::OpticalDisc::Data) && (availContent & Solid::OpticalDisc::Audio)) { // Mixed CD
-                    return "media-optical-mixed-cd";
+                    return QStringLiteral("media-optical-mixed-cd");
                 } else if (availContent & Solid::OpticalDisc::Audio) { // Audio CD
-                    return "media-optical-audio";
+                    return QStringLiteral("media-optical-audio");
                 } else if (availContent & Solid::OpticalDisc::Data) { // Data CD
-                    return "media-optical-data";
+                    return QStringLiteral("media-optical-data");
                 } else if (isWritable) {
-                    return "media-optical-recordable";
+                    return QStringLiteral("media-optical-recordable");
                 } else {
-                    if (media.startsWith("optical_dvd") || media.startsWith("optical_hddvd")) { // DVD
-                        return "media-optical-dvd";
-                    } else if (media.startsWith("optical_bd")) { // BluRay
-                        return "media-optical-blu-ray";
+                    if (media.startsWith(QStringLiteral("optical_dvd")) || media.startsWith(QStringLiteral("optical_hddvd"))) { // DVD
+                        return QStringLiteral("media-optical-dvd");
+                    } else if (media.startsWith(QStringLiteral("optical_bd"))) { // BluRay
+                        return QStringLiteral("media-optical-blu-ray");
                     }
                 }
 
                 // fallback for every other optical disc
-                return "media-optical";
+                return QStringLiteral("media-optical");
             }
 
-            if (media == "flash_ms") { // Flash & Co.
-                return "media-flash-memory-stick";
-            } else if (media == "flash_sd" || media == "flash_sdhc" || media == "flash_sdxc" || media == "flash_mmc") {
-                return "media-flash-sd-mmc";
-            } else if (media == "flash_sm") {
-                return "media-flash-smart-media";
-            } else if (media == "thumb") {
-                return "drive-removable-media-usb-pendrive";
-            } else if (media.startsWith("flash")) {
-                return "media-flash";
-            } else if (media == "floppy") { // the good ol' floppy
-                return "media-floppy";
+            if (media == QLatin1String("flash_ms")) { // Flash & Co.
+                return QStringLiteral("media-flash-memory-stick");
+            } else if (media == QLatin1String("flash_sd") //
+                       || media == QLatin1String("flash_sdhc") //
+                       || media == QLatin1String("flash_sdxc") //
+                       || media == QLatin1String("flash_mmc")) {
+                return QStringLiteral("media-flash-sd-mmc");
+            } else if (media == QLatin1String("flash_sm")) {
+                return QStringLiteral("media-flash-smart-media");
+            } else if (media == QLatin1String("thumb")) {
+                return QStringLiteral("drive-removable-media-usb-pendrive");
+            } else if (media.startsWith(QStringLiteral("flash"))) {
+                return QStringLiteral("media-flash");
+            } else if (media == QLatin1String("floppy")) { // the good ol' floppy
+                return QStringLiteral("media-floppy");
             }
         }
 
-        if (drive.prop("ConnectionBus").toString() == "sdio") { // hack for SD cards connected thru sdio bus
-            return "media-flash-sd-mmc";
+        if (drive.prop(QStringLiteral("ConnectionBus")).toString() == QLatin1String("sdio")) { // hack for SD cards connected thru sdio bus
+            return QStringLiteral("media-flash-sd-mmc");
         }
 
         return drive.icon();
     }
 
-    return "drive-harddisk"; // general fallback
+    return QStringLiteral("drive-harddisk"); // general fallback
 }
 
 QString Device::product() const
 {
     if (!isDrive()) {
         Device drive(drivePath());
-        return drive.prop("Model").toString();
+        return drive.prop(QStringLiteral("Model")).toString();
     }
 
-    return prop("Model").toString();
+    return prop(QStringLiteral("Model")).toString();
 }
 
 QString Device::vendor() const
 {
     if (!isDrive()) {
         Device drive(drivePath());
-        return drive.prop("Vendor").toString();
+        return drive.prop(QStringLiteral("Vendor")).toString();
     }
 
-    return prop("Vendor").toString();
+    return prop(QStringLiteral("Vendor")).toString();
 }
 
 QString Device::parentUdi() const
 {
     QString parent;
 
-    if (propertyExists("Drive")) { // block
+    if (propertyExists(QStringLiteral("Drive"))) { // block
         parent = drivePath();
-    } else if (propertyExists("Table")) { // partition
-        parent = prop("Table").value<QDBusObjectPath>().path();
-    } else if (parent.isEmpty() || parent == "/") {
-        parent = UD2_UDI_DISKS_PREFIX;
+    } else if (propertyExists(QStringLiteral("Table"))) { // partition
+        parent = prop(QStringLiteral("Table")).value<QDBusObjectPath>().path();
+    } else if (parent.isEmpty() || parent == QLatin1String("/")) {
+        parent = QStringLiteral(UD2_UDI_DISKS_PREFIX);
     }
     return parent;
 }
 
 QString Device::errorToString(const QString &error) const
 {
-    if (error == UD2_ERROR_UNAUTHORIZED || error == UD2_ERROR_NOT_AUTHORIZED) {
+    if (error == QLatin1String(UD2_ERROR_UNAUTHORIZED) || error == QLatin1String(UD2_ERROR_NOT_AUTHORIZED)) {
         return tr("You are not authorized to perform this operation");
-    } else if (error == UD2_ERROR_BUSY) {
+    } else if (error == QLatin1String(UD2_ERROR_BUSY)) {
         return tr("The device is currently busy");
-    } else if (error == UD2_ERROR_FAILED) {
+    } else if (error == QLatin1String(UD2_ERROR_FAILED)) {
         return tr("The requested operation has failed");
-    } else if (error == UD2_ERROR_CANCELED) {
+    } else if (error == QLatin1String(UD2_ERROR_CANCELED)) {
         return tr("The requested operation has been canceled");
-    } else if (error == UD2_ERROR_INVALID_OPTION) {
+    } else if (error == QLatin1String(UD2_ERROR_INVALID_OPTION)) {
         return tr("An invalid or malformed option has been given");
-    } else if (error == UD2_ERROR_MISSING_DRIVER) {
+    } else if (error == QLatin1String(UD2_ERROR_MISSING_DRIVER)) {
         return tr("The kernel driver for this filesystem type is not available");
-    } else if (error == UD2_ERROR_ALREADY_MOUNTED) {
+    } else if (error == QLatin1String(UD2_ERROR_ALREADY_MOUNTED)) {
         return tr("The device is already mounted");
-    } else if (error == UD2_ERROR_NOT_MOUNTED) {
+    } else if (error == QLatin1String(UD2_ERROR_NOT_MOUNTED)) {
         return tr("The device is not mounted");
-    } else if (error == UD2_ERROR_MOUNTED_BY_OTHER_USER) {
+    } else if (error == QLatin1String(UD2_ERROR_MOUNTED_BY_OTHER_USER)) {
         return tr("The device is mounted by another user");
-    } else if (error == UD2_ERROR_ALREADY_UNMOUNTING) {
+    } else if (error == QLatin1String(UD2_ERROR_ALREADY_UNMOUNTING)) {
         return tr("The device is already unmounting");
-    } else if (error == UD2_ERROR_TIMED_OUT) {
+    } else if (error == QLatin1String(UD2_ERROR_TIMED_OUT)) {
         return tr("The operation timed out");
-    } else if (error == UD2_ERROR_WOULD_WAKEUP) {
+    } else if (error == QLatin1String(UD2_ERROR_WOULD_WAKEUP)) {
         return tr("The operation would wake up a disk that is in a deep-sleep state");
-    } else if (error == UD2_ERROR_ALREADY_CANCELLED) {
+    } else if (error == QLatin1String(UD2_ERROR_ALREADY_CANCELLED)) {
         return tr("The operation has already been canceled");
-    } else if (error == UD2_ERROR_NOT_AUTHORIZED_CAN_OBTAIN) {
+    } else if (error == QLatin1String(UD2_ERROR_NOT_AUTHORIZED_CAN_OBTAIN)) {
         return tr("Cannot request authentication for this action. The PolicyKit authentication system appears to be not available.");
-    } else if (error == UD2_ERROR_NOT_AUTHORIZED_DISMISSED) {
+    } else if (error == QLatin1String(UD2_ERROR_NOT_AUTHORIZED_DISMISSED)) {
         return tr("The authentication prompt was canceled");
     } else {
         return tr("An unspecified error has occurred");
@@ -765,17 +766,17 @@ QString Device::errorToString(const QString &error) const
 
 Solid::ErrorType Device::errorToSolidError(const QString &error) const
 {
-    if (error == UD2_ERROR_BUSY) {
+    if (error == QLatin1String(UD2_ERROR_BUSY)) {
         return Solid::DeviceBusy;
-    } else if (error == UD2_ERROR_FAILED) {
+    } else if (error == QLatin1String(UD2_ERROR_FAILED)) {
         return Solid::OperationFailed;
-    } else if (error == UD2_ERROR_CANCELED) {
+    } else if (error == QLatin1String(UD2_ERROR_CANCELED)) {
         return Solid::UserCanceled;
-    } else if (error == UD2_ERROR_INVALID_OPTION) {
+    } else if (error == QLatin1String(UD2_ERROR_INVALID_OPTION)) {
         return Solid::InvalidOption;
-    } else if (error == UD2_ERROR_MISSING_DRIVER) {
+    } else if (error == QLatin1String(UD2_ERROR_MISSING_DRIVER)) {
         return Solid::MissingDriver;
-    } else if (error == UD2_ERROR_NOT_AUTHORIZED_DISMISSED) {
+    } else if (error == QLatin1String(UD2_ERROR_NOT_AUTHORIZED_DISMISSED)) {
         return Solid::UserCanceled;
     } else {
         return Solid::UnauthorizedOperation;
@@ -814,24 +815,24 @@ bool Device::isDrive() const
 
 bool Device::isOpticalDrive() const
 {
-    return isDrive() && !prop("MediaCompatibility").toStringList().filter("optical_").isEmpty();
+    return isDrive() && !prop(QStringLiteral("MediaCompatibility")).toStringList().filter(QStringLiteral("optical_")).isEmpty();
 }
 
 bool Device::isOpticalDisc() const
 {
     const QString drv = drivePath();
-    if (drv.isEmpty() || drv == "/") {
+    if (drv.isEmpty() || drv == QLatin1String("/")) {
         return false;
     }
 
     Device drive(drv);
-    return drive.prop("Optical").toBool();
+    return drive.prop(QStringLiteral("Optical")).toBool();
 }
 
 bool Device::mightBeOpticalDisc() const
 {
     const QString drv = drivePath();
-    if (drv.isEmpty() || drv == "/") {
+    if (drv.isEmpty() || drv == QLatin1String("/")) {
         return false;
     }
 
@@ -852,8 +853,8 @@ bool Device::isEncryptedContainer() const
 
 bool Device::isEncryptedCleartext() const
 {
-    const QString holderDevice = prop("CryptoBackingDevice").value<QDBusObjectPath>().path();
-    if (holderDevice.isEmpty() || holderDevice == "/") {
+    const QString holderDevice = prop(QStringLiteral("CryptoBackingDevice")).value<QDBusObjectPath>().path();
+    if (holderDevice.isEmpty() || holderDevice == QLatin1String("/")) {
         return false;
     } else {
         return true;
@@ -881,7 +882,7 @@ bool Device::isLoop() const
 
 QString Device::drivePath() const
 {
-    return prop("Drive").value<QDBusObjectPath>().path();
+    return prop(QStringLiteral("Drive")).value<QDBusObjectPath>().path();
 }
 
 #include "moc_udisksdevice.cpp"

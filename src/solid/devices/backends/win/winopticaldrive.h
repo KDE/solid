@@ -58,7 +58,7 @@ public:
     static QMap<ulong, MediaProfiles> profiles(const QString &drive);
 
 private:
-    MediaProfiles(ulong profile, Solid::OpticalDrive::MediumTypes type, QString name = "");
+    MediaProfiles(ulong profile, Solid::OpticalDrive::MediumTypes type, QString name = QString());
 
     MediaProfiles(FEATURE_DATA_PROFILE_LIST_EX *feature);
     bool isNull();

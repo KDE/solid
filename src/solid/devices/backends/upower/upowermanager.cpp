@@ -31,14 +31,14 @@ UPowerManager::UPowerManager(QObject *parent)
     bool serviceFound = m_manager.isValid();
     if (!serviceFound) {
         // find out whether it will be activated automatically
-        QDBusMessage message = QDBusMessage::createMethodCall("org.freedesktop.DBus", //
-                                                              "/org/freedesktop/DBus",
-                                                              "org.freedesktop.DBus",
-                                                              "ListActivatableNames");
+        QDBusMessage message = QDBusMessage::createMethodCall(QStringLiteral("org.freedesktop.DBus"), //
+                                                              QStringLiteral("/org/freedesktop/DBus"),
+                                                              QStringLiteral("org.freedesktop.DBus"),
+                                                              QStringLiteral("ListActivatableNames"));
 
         QDBusReply<QStringList> reply = QDBusConnection::systemBus().call(message);
-        if (reply.isValid() && reply.value().contains(UP_DBUS_SERVICE)) {
-            QDBusConnection::systemBus().interface()->startService(UP_DBUS_SERVICE);
+        if (reply.isValid() && reply.value().contains(QStringLiteral(UP_DBUS_SERVICE))) {
+            QDBusConnection::systemBus().interface()->startService(QStringLiteral(UP_DBUS_SERVICE));
             serviceFound = true;
         }
     }
@@ -60,7 +60,7 @@ QObject *UPowerManager::createDevice(const QString &udi)
 
         root->setProduct(tr("Power Management"));
         root->setDescription(tr("Batteries and other sources of power"));
-        root->setIcon("preferences-system-power-management");
+        root->setIcon(QStringLiteral("preferences-system-power-management"));
 
         return root;
 
@@ -148,7 +148,7 @@ QSet<Solid::DeviceInterface::Type> UPowerManager::supportedInterfaces() const
 
 QString UPowerManager::udiPrefix() const
 {
-    return UP_UDI_PREFIX;
+    return QStringLiteral(UP_UDI_PREFIX);
 }
 
 void UPowerManager::onDeviceAdded(const QDBusObjectPath &path)

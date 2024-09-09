@@ -27,9 +27,9 @@
 #include <solid/devicenotifier.h>
 using namespace std;
 
-static const char appName[] = "solid-hardware";
+static const QString appName{QStringLiteral("solid-hardware")};
 
-static const char version[] = "0.1a";
+static const QString version{QStringLiteral("0.1a")};
 
 std::ostream &operator<<(std::ostream &out, const QString &msg)
 {
@@ -138,7 +138,7 @@ std::ostream &operator<<(std::ostream &out, const QVariant &value)
             for (const int val : intlist) {
                 tmp.append(QString::number(val));
             }
-            out << "{" << tmp.join(",") << "} (int list)";
+            out << "{" << tmp.join(QStringLiteral(",")) << "} (int list)";
 #ifdef HAVE_DBUS
         } else if (value.canConvert<QDBusObjectPath>()) {
             out << value.value<QDBusObjectPath>().path() << " (ObjectPath)";
@@ -180,7 +180,7 @@ std::ostream &operator<<(std::ostream &out, const Solid::Device &device)
 
             for (int i = meta->propertyOffset(); i < meta->propertyCount(); i++) {
                 QMetaProperty property = meta->property(i);
-                out << "  " << QString(meta->className()).mid(7) << "." << property.name() << " = ";
+                out << "  " << QByteArray(meta->className()).mid(7).constData() << "." << property.name() << " = ";
 
                 QVariant value = property.read(interface);
 
@@ -215,7 +215,7 @@ std::ostream &operator<<(std::ostream &out, const QMap<QString, QVariant> &prope
 
 QString getUdiFromArguments(QCoreApplication &app, QCommandLineParser &parser)
 {
-    parser.addPositionalArgument("udi", QCoreApplication::translate("solid-hardware", "Device udi"));
+    parser.addPositionalArgument(QStringLiteral("udi"), QCoreApplication::translate("solid-hardware", "Device udi"));
     parser.process(app);
     if (parser.positionalArguments().count() < 2) {
         parser.showHelp(1);
@@ -301,9 +301,9 @@ int main(int argc, char **argv)
     parser.setApplicationDescription(QCoreApplication::translate("solid-hardware", "KDE tool for querying your hardware from the command line"));
     parser.addHelpOption();
     parser.addVersionOption();
-    parser.addPositionalArgument("command", QCoreApplication::translate("solid-hardware", "Command to execute"), commandsHelp());
+    parser.addPositionalArgument(QStringLiteral("command"), QCoreApplication::translate("solid-hardware", "Command to execute"), commandsHelp());
 
-    QCommandLineOption commands("commands", QCoreApplication::translate("solid-hardware", "Show available commands"));
+    QCommandLineOption commands(QStringLiteral("commands"), QCoreApplication::translate("solid-hardware", "Show available commands"));
     // --commands only for backwards compat, it's now in the "syntax help"
     // of the positional argument.
     commands.setFlags(QCommandLineOption::HiddenFromHelp);
@@ -324,22 +324,22 @@ int main(int argc, char **argv)
 
     QString command(args.at(0));
 
-    if (command == "list") {
-        parser.addPositionalArgument("details", QCoreApplication::translate("solid-hardware", "Show device details"));
-        parser.addPositionalArgument("nonportableinfo", QCoreApplication::translate("solid-hardware", "Show non portable information"));
+    if (command == QLatin1String("list")) {
+        parser.addPositionalArgument(QStringLiteral("details"), QCoreApplication::translate("solid-hardware", "Show device details"));
+        parser.addPositionalArgument(QStringLiteral("nonportableinfo"), QCoreApplication::translate("solid-hardware", "Show non portable information"));
         parser.process(app);
         args = parser.positionalArguments();
         QByteArray extra(args.count() == 2 ? args.at(1).toLocal8Bit() : QByteArray());
         return app.hwList(extra == "details", extra == "nonportableinfo");
-    } else if (command == "details") {
+    } else if (command == QLatin1String("details")) {
         const QString udi = getUdiFromArguments(app, parser);
         return app.hwCapabilities(udi);
-    } else if (command == "nonportableinfo") {
+    } else if (command == QLatin1String("nonportableinfo")) {
         const QString udi = getUdiFromArguments(app, parser);
         return app.hwProperties(udi);
-    } else if (command == "query") {
-        parser.addPositionalArgument("udi", QCoreApplication::translate("solid-hardware", "Device udi"));
-        parser.addPositionalArgument("parent", QCoreApplication::translate("solid-hardware", "Parent device udi"));
+    } else if (command == QLatin1String("query")) {
+        parser.addPositionalArgument(QStringLiteral("udi"), QCoreApplication::translate("solid-hardware", "Device udi"));
+        parser.addPositionalArgument(QStringLiteral("parent"), QCoreApplication::translate("solid-hardware", "Parent device udi"));
         parser.process(app);
         if (parser.positionalArguments().count() < 2 || parser.positionalArguments().count() > 3) {
             parser.showHelp(1);
@@ -353,30 +353,30 @@ int main(int argc, char **argv)
         }
 
         return app.hwQuery(parent, query);
-    } else if (command == "mount") {
+    } else if (command == QLatin1String("mount")) {
         const QString udi = getUdiFromArguments(app, parser);
         return app.hwVolumeCall(SolidHardware::Mount, udi);
-    } else if (command == "unmount") {
+    } else if (command == QLatin1String("unmount")) {
         const QString udi = getUdiFromArguments(app, parser);
         return app.hwVolumeCall(SolidHardware::Unmount, udi);
-    } else if (command == "eject") {
+    } else if (command == QLatin1String("eject")) {
         const QString udi = getUdiFromArguments(app, parser);
         return app.hwVolumeCall(SolidHardware::Eject, udi);
-    } else if (command == "listen") {
+    } else if (command == QLatin1String("listen")) {
         return app.listen();
-    } else if (command == "monitor") {
+    } else if (command == QLatin1String("monitor")) {
         const QString udi = getUdiFromArguments(app, parser);
         return app.monitor(udi);
-    } else if (command == "CanCheck") {
+    } else if (command == QLatin1String("CanCheck")) {
         const QString udi = getUdiFromArguments(app, parser);
         return app.hwVolumeCall(SolidHardware::CanCheck, udi);
-    } else if (command == "Check") {
+    } else if (command == QLatin1String("Check")) {
         const QString udi = getUdiFromArguments(app, parser);
         return app.hwVolumeCall(SolidHardware::Check, udi);
-    } else if (command == "CanRepair") {
+    } else if (command == QLatin1String("CanRepair")) {
         const QString udi = getUdiFromArguments(app, parser);
         return app.hwVolumeCall(SolidHardware::CanRepair, udi);
-    } else if (command == "Repair") {
+    } else if (command == QLatin1String("Repair")) {
         const QString udi = getUdiFromArguments(app, parser);
         return app.hwVolumeCall(SolidHardware::Repair, udi);
     }

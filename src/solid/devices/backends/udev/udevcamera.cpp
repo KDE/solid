@@ -19,39 +19,35 @@ Camera::~Camera()
 
 QStringList Camera::supportedProtocols() const
 {
-    QStringList protocols;
-
-    QString method = m_device->property("GPHOTO2_DRIVER").toString();
+    QString method = m_device->property(QStringLiteral("GPHOTO2_DRIVER")).toString();
 
     if (!method.isEmpty()) {
-        protocols << method.toLower();
+        return {method.toLower()};
     }
 
-    return protocols;
+    return {};
 }
 
 QStringList Camera::supportedDrivers(QString /*protocol*/) const
 {
-    QStringList res;
-
     if (!supportedProtocols().isEmpty()) {
-        res << "gphoto";
+        return {QStringLiteral("gphoto")};
     }
 
-    return res;
+    return {};
 }
 
 QVariant Camera::driverHandle(const QString &driver) const
 {
-    if (driver == "gphoto" && m_device->property("SUBSYSTEM").toString() == "usb") {
-        QVariantList list;
-
-        list << "usb" << m_device->property("ID_VENDOR_ID") << m_device->property("ID_MODEL_ID");
-
-        return list;
+    if (driver == QLatin1String("gphoto") && m_device->property(QStringLiteral("SUBSYSTEM")).toString() == QLatin1String("usb")) {
+        return QVariantList{
+            QStringLiteral("usb"),
+            m_device->property(QStringLiteral("ID_VENDOR_ID")),
+            m_device->property(QStringLiteral("ID_MODEL_ID")),
+        };
     }
 
-    return QVariant();
+    return {};
 }
 
 #include "moc_udevcamera.cpp"

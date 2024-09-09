@@ -20,17 +20,17 @@ FakeStorage::~FakeStorage()
 
 Solid::StorageDrive::Bus FakeStorage::bus() const
 {
-    QString bus = fakeDevice()->property("bus").toString();
+    QString bus = fakeDevice()->property(QStringLiteral("bus")).toString();
 
-    if (bus == "ide") {
+    if (bus == QLatin1String("ide")) {
         return Solid::StorageDrive::Ide;
-    } else if (bus == "usb") {
+    } else if (bus == QLatin1String("usb")) {
         return Solid::StorageDrive::Usb;
-    } else if (bus == "ieee1394") {
+    } else if (bus == QLatin1String("ieee1394")) {
         return Solid::StorageDrive::Ieee1394;
-    } else if (bus == "scsi") {
+    } else if (bus == QLatin1String("scsi")) {
         return Solid::StorageDrive::Scsi;
-    } else if (bus == "sata") {
+    } else if (bus == QLatin1String("sata")) {
         return Solid::StorageDrive::Sata;
     } else {
         return Solid::StorageDrive::Platform;
@@ -39,23 +39,23 @@ Solid::StorageDrive::Bus FakeStorage::bus() const
 
 Solid::StorageDrive::DriveType FakeStorage::driveType() const
 {
-    QString type = fakeDevice()->property("major").toString();
+    QString type = fakeDevice()->property(QStringLiteral("major")).toString();
 
-    if (type == "disk") {
+    if (type == QLatin1String("disk")) {
         return Solid::StorageDrive::HardDisk;
-    } else if (type == "cdrom") {
+    } else if (type == QLatin1String("cdrom")) {
         return Solid::StorageDrive::CdromDrive;
-    } else if (type == "floppy") {
+    } else if (type == QLatin1String("floppy")) {
         return Solid::StorageDrive::Floppy;
-    } else if (type == "tape") {
+    } else if (type == QLatin1String("tape")) {
         return Solid::StorageDrive::Tape;
-    } else if (type == "compact_flash") {
+    } else if (type == QLatin1String("compact_flash")) {
         return Solid::StorageDrive::CompactFlash;
-    } else if (type == "memory_stick") {
+    } else if (type == QLatin1String("memory_stick")) {
         return Solid::StorageDrive::MemoryStick;
-    } else if (type == "smart_media") {
+    } else if (type == QLatin1String("smart_media")) {
         return Solid::StorageDrive::SmartMedia;
-    } else if (type == "sd_mmc") {
+    } else if (type == QLatin1String("sd_mmc")) {
         return Solid::StorageDrive::SdMmc;
     } else {
         return Solid::StorageDrive::HardDisk;
@@ -64,27 +64,27 @@ Solid::StorageDrive::DriveType FakeStorage::driveType() const
 
 bool FakeStorage::isRemovable() const
 {
-    return fakeDevice()->property("isRemovable").toBool();
+    return fakeDevice()->property(QStringLiteral("isRemovable")).toBool();
 }
 
 bool FakeStorage::isHotpluggable() const
 {
-    return fakeDevice()->property("isHotpluggable").toBool();
+    return fakeDevice()->property(QStringLiteral("isHotpluggable")).toBool();
 }
 
 qulonglong FakeStorage::size() const
 {
-    return fakeDevice()->property("size").toULongLong();
+    return fakeDevice()->property(QStringLiteral("size")).toULongLong();
 }
 
 QDateTime FakeStorage::timeDetected() const
 {
-    return fakeDevice()->property("timeDetected").toDateTime();
+    return fakeDevice()->property(QStringLiteral("timeDetected")).toDateTime();
 }
 
 QDateTime FakeStorage::timeMediaDetected() const
 {
-    return fakeDevice()->property("timeMediaDetected").toDateTime();
+    return fakeDevice()->property(QStringLiteral("timeMediaDetected")).toDateTime();
 }
 
 #include "moc_fakestorage.cpp"

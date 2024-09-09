@@ -25,7 +25,7 @@ inline QString qGetLastError(ulong errorNummber = GetLastError())
                                (LPWSTR)&error,
                                0,
                                NULL);
-    QString out = QString::fromWCharArray((wchar_t *)error, (int)len).trimmed().append(" %1").arg(errorNummber);
+    QString out = QString::fromWCharArray((wchar_t *)error, (int)len).trimmed().append(QStringLiteral(" %1")).arg(errorNummber);
     LocalFree(error);
     return out;
 }
@@ -103,7 +103,7 @@ private:
         Q_ASSERT(!devName.isNull());
         wchar_t deviceNameBuffer[MAX_PATH];
         QString dev = devName;
-        if (!dev.startsWith("\\")) {
+        if (!dev.startsWith(QLatin1String("\\"))) {
             dev = QLatin1String("\\\\?\\") + dev;
         }
         deviceNameBuffer[dev.toWCharArray(deviceNameBuffer)] = 0;

@@ -32,7 +32,7 @@ OpticalDrive::OpticalDrive(Device *device)
     , m_writeSpeed(0)
     , m_speedsInit(false)
 {
-    m_device->registerAction("eject", this, SLOT(slotEjectRequested()), SLOT(slotEjectDone(int, QString)));
+    m_device->registerAction(QStringLiteral("eject"), this, SLOT(slotEjectRequested()), SLOT(slotEjectDone(int, QString)));
 
     connect(m_device, SIGNAL(changed()), this, SLOT(slotChanged()));
 }
@@ -47,14 +47,14 @@ bool OpticalDrive::eject()
         return false;
     }
     m_ejectInProgress = true;
-    m_device->broadcastActionRequested("eject");
+    m_device->broadcastActionRequested(QStringLiteral("eject"));
 
     const QString path = m_device->udi();
-    QDBusConnection c = QDBusConnection::connectToBus(QDBusConnection::SystemBus, "Solid::Udisks2::OpticalDrive::" + path);
+    QDBusConnection c = QDBusConnection::connectToBus(QDBusConnection::SystemBus, QStringLiteral("Solid::Udisks2::OpticalDrive::") + path);
 
     // if the device is mounted, unmount first
     QString blockPath;
-    org::freedesktop::DBus::ObjectManager manager(UD2_DBUS_SERVICE, UD2_DBUS_PATH, c);
+    org::freedesktop::DBus::ObjectManager manager(QStringLiteral(UD2_DBUS_SERVICE), QStringLiteral(UD2_DBUS_PATH), c);
     QDBusPendingReply<DBUSManagerStruct> reply = manager.GetManagedObjects();
     reply.waitForFinished();
     if (!reply.isError()) { // enum devices
@@ -64,7 +64,9 @@ bool OpticalDrive::eject()
 
             // qDebug() << "Inspecting" << udi;
 
-            if (udi == UD2_DBUS_PATH_MANAGER || udi == UD2_UDI_DISKS_PREFIX || udi.startsWith(UD2_DBUS_PATH_JOBS)) {
+            if (udi == QLatin1String(UD2_DBUS_PATH_MANAGER) //
+                || udi == QLatin1String(UD2_UDI_DISKS_PREFIX) //
+                || udi.startsWith(QStringLiteral(UD2_DBUS_PATH_JOBS))) {
                 continue;
             }
 
@@ -81,12 +83,16 @@ bool OpticalDrive::eject()
 
     if (!blockPath.isEmpty()) {
         // qDebug() << "Calling unmount on" << blockPath;
-        QDBusMessage msg = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, blockPath, UD2_DBUS_INTERFACE_FILESYSTEM, "Unmount");
+        QDBusMessage msg = QDBusMessage::createMethodCall(QStringLiteral(UD2_DBUS_SERVICE),
+                                                          blockPath,
+                                                          QStringLiteral(UD2_DBUS_INTERFACE_FILESYSTEM),
+                                                          QStringLiteral("Unmount"));
         msg << QVariantMap(); // options, unused now
         c.call(msg, QDBus::BlockWithGui);
     }
 
-    QDBusMessage msg = QDBusMessage::createMethodCall(UD2_DBUS_SERVICE, path, UD2_DBUS_INTERFACE_DRIVE, "Eject");
+    QDBusMessage msg =
+        QDBusMessage::createMethodCall(QStringLiteral(UD2_DBUS_SERVICE), path, QStringLiteral(UD2_DBUS_INTERFACE_DRIVE), QStringLiteral("Eject"));
     msg << QVariantMap();
     return c.callWithCallback(msg, this, SLOT(slotDBusReply(QDBusMessage)), SLOT(slotDBusError(QDBusError)));
 }
@@ -94,15 +100,15 @@ bool OpticalDrive::eject()
 void OpticalDrive::slotDBusReply(const QDBusMessage & /*reply*/)
 {
     m_ejectInProgress = false;
-    m_device->broadcastActionDone("eject");
+    m_device->broadcastActionDone(QStringLiteral("eject"));
 }
 
 void OpticalDrive::slotDBusError(const QDBusError &error)
 {
     m_ejectInProgress = false;
-    m_device->broadcastActionDone("eject", //
+    m_device->broadcastActionDone(QStringLiteral("eject"), //
                                   m_device->errorToSolidError(error.name()),
-                                  m_device->errorToString(error.name()) + ": " + error.message());
+                                  m_device->errorToString(error.name()) + QStringLiteral(": ") + error.message());
 }
 
 void OpticalDrive::slotEjectRequested()
@@ -176,7 +182,7 @@ int OpticalDrive::readSpeed() const
 
 Solid::OpticalDrive::MediumTypes OpticalDrive::supportedMedia() const
 {
-    const QStringList mediaTypes = m_device->prop("MediaCompatibility").toStringList();
+    const QStringList mediaTypes = m_device->prop(QStringLiteral("MediaCompatibility")).toStringList();
     Solid::OpticalDrive::MediumTypes supported;
 
     QMap<QString, Solid::OpticalDrive::MediumType> map = {

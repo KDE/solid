@@ -37,7 +37,7 @@ FakeManager::FakeManager(QObject *parent, const QString &xmlFile)
     d->xmlFile = machineXmlFile;
 
 #ifdef HAVE_DBUS
-    QDBusConnection::sessionBus().registerObject("/org/kde/solid/fakehw", this, QDBusConnection::ExportNonScriptableSlots);
+    QDBusConnection::sessionBus().registerObject(QStringLiteral("/org/kde/solid/fakehw"), this, QDBusConnection::ExportNonScriptableSlots);
 #endif
 
     parseMachineFile();
@@ -61,7 +61,7 @@ FakeManager::FakeManager(QObject *parent, const QString &xmlFile)
 FakeManager::~FakeManager()
 {
 #ifdef HAVE_DBUS
-    QDBusConnection::sessionBus().unregisterObject("/org/kde/solid/fakehw", QDBusConnection::UnregisterTree);
+    QDBusConnection::sessionBus().unregisterObject(QStringLiteral("/org/kde/solid/fakehw"), QDBusConnection::UnregisterTree);
 #endif
     qDeleteAll(d->loadedDevices);
     delete d;
@@ -69,7 +69,7 @@ FakeManager::~FakeManager()
 
 QString FakeManager::udiPrefix() const
 {
-    return "/org/kde/solid/fakehw";
+    return QStringLiteral("/org/kde/solid/fakehw");
 }
 
 QSet<Solid::DeviceInterface::Type> FakeManager::supportedInterfaces() const
@@ -91,7 +91,7 @@ QStringList FakeManager::allDevices()
 QStringList FakeManager::devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type)
 {
     if (!parentUdi.isEmpty()) {
-        QStringList found = findDeviceStringMatch(QLatin1String("parent"), parentUdi);
+        QStringList found = findDeviceStringMatch(QStringLiteral("parent"), parentUdi);
 
         if (type == Solid::DeviceInterface::Unknown) {
             return found;
@@ -213,7 +213,7 @@ FakeDevice *FakeManager::parseDeviceElement(const QDomElement &deviceElement)
 {
     FakeDevice *device = nullptr;
     QMap<QString, QVariant> propertyMap;
-    QString udi = deviceElement.attribute("udi");
+    QString udi = deviceElement.attribute(QStringLiteral("udi"));
 
     QDomNode propertyNode = deviceElement.firstChild();
     while (!propertyNode.isNull()) {
@@ -222,7 +222,7 @@ FakeDevice *FakeManager::parseDeviceElement(const QDomElement &deviceElement)
             QString propertyKey;
             QVariant propertyValue;
 
-            propertyKey = propertyElement.attribute("key");
+            propertyKey = propertyElement.attribute(QStringLiteral("key"));
             propertyValue = QVariant(propertyElement.text());
 
             propertyMap.insert(propertyKey, propertyValue);

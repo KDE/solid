@@ -26,13 +26,13 @@ Battery::~Battery()
 
 bool Battery::isPresent() const
 {
-    return m_device.data()->prop("IsPresent").toBool();
+    return m_device.data()->prop(QStringLiteral("IsPresent")).toBool();
 }
 
 Solid::Battery::BatteryType Battery::type() const
 {
     Solid::Battery::BatteryType result = Solid::Battery::UnknownBattery;
-    const auto t = static_cast<UpDeviceKind>(m_device.data()->prop("Type").toUInt());
+    const auto t = static_cast<UpDeviceKind>(m_device.data()->prop(QStringLiteral("Type")).toUInt());
     switch (t) {
     case UP_DEVICE_KIND_LINE_POWER: // TODO
         break;
@@ -82,7 +82,7 @@ Solid::Battery::BatteryType Battery::type() const
     if (result == Solid::Battery::UnknownBattery) {
         // Check if the battery came from Bluez, which is more useful than unknown battery type
         // UP_DEVICE_KIND_BLUETOOTH_GENERIC is only in UPower 0.99.12
-        if (m_device.data()->prop("NativePath").toString().startsWith(QLatin1String("/org/bluez/"))) {
+        if (m_device.data()->prop(QStringLiteral("NativePath")).toString().startsWith(QLatin1String("/org/bluez/"))) {
             result = Solid::Battery::BluetoothBattery;
         }
     }
@@ -92,28 +92,28 @@ Solid::Battery::BatteryType Battery::type() const
 
 int Battery::chargePercent() const
 {
-    return qRound(m_device.data()->prop("Percentage").toDouble());
+    return qRound(m_device.data()->prop(QStringLiteral("Percentage")).toDouble());
 }
 
 int Battery::capacity() const
 {
-    return qRound(m_device.data()->prop("Capacity").toDouble());
+    return qRound(m_device.data()->prop(QStringLiteral("Capacity")).toDouble());
 }
 
 bool Battery::isRechargeable() const
 {
-    return m_device.data()->prop("IsRechargeable").toBool();
+    return m_device.data()->prop(QStringLiteral("IsRechargeable")).toBool();
 }
 
 bool Battery::isPowerSupply() const
 {
-    return m_device.data()->prop("PowerSupply").toBool();
+    return m_device.data()->prop(QStringLiteral("PowerSupply")).toBool();
 }
 
 Solid::Battery::ChargeState Battery::chargeState() const
 {
     Solid::Battery::ChargeState result = Solid::Battery::NoCharge;
-    const UpDeviceState state = static_cast<UpDeviceState>(m_device.data()->prop("State").toUInt());
+    const UpDeviceState state = static_cast<UpDeviceState>(m_device.data()->prop(QStringLiteral("State")).toUInt());
     switch (state) {
     case UP_DEVICE_STATE_UNKNOWN:
         result = Solid::Battery::NoCharge; // stable or unknown
@@ -141,17 +141,17 @@ Solid::Battery::ChargeState Battery::chargeState() const
 
 qlonglong Battery::timeToEmpty() const
 {
-    return m_device.data()->prop("TimeToEmpty").toLongLong();
+    return m_device.data()->prop(QStringLiteral("TimeToEmpty")).toLongLong();
 }
 
 qlonglong Battery::timeToFull() const
 {
-    return m_device.data()->prop("TimeToFull").toLongLong();
+    return m_device.data()->prop(QStringLiteral("TimeToFull")).toLongLong();
 }
 
 Solid::Battery::Technology Battery::technology() const
 {
-    const UpDeviceTechnology tech = static_cast<UpDeviceTechnology>(m_device.data()->prop("Technology").toUInt());
+    const UpDeviceTechnology tech = static_cast<UpDeviceTechnology>(m_device.data()->prop(QStringLiteral("Technology")).toUInt());
     switch (tech) {
     case UP_DEVICE_TECHNOLOGY_UNKNOWN:
         return Solid::Battery::UnknownTechnology;
@@ -175,37 +175,37 @@ Solid::Battery::Technology Battery::technology() const
 
 double Battery::energy() const
 {
-    return m_device.data()->prop("Energy").toDouble();
+    return m_device.data()->prop(QStringLiteral("Energy")).toDouble();
 }
 
 double Battery::energyFull() const
 {
-    return m_device.data()->prop("EnergyFull").toDouble();
+    return m_device.data()->prop(QStringLiteral("EnergyFull")).toDouble();
 }
 
 double Battery::energyFullDesign() const
 {
-    return m_device.data()->prop("EnergyFullDesign").toDouble();
+    return m_device.data()->prop(QStringLiteral("EnergyFullDesign")).toDouble();
 }
 
 double Battery::energyRate() const
 {
-    return m_device.data()->prop("EnergyRate").toDouble();
+    return m_device.data()->prop(QStringLiteral("EnergyRate")).toDouble();
 }
 
 double Battery::voltage() const
 {
-    return m_device.data()->prop("Voltage").toDouble();
+    return m_device.data()->prop(QStringLiteral("Voltage")).toDouble();
 }
 
 double Battery::temperature() const
 {
-    return m_device.data()->prop("Temperature").toDouble();
+    return m_device.data()->prop(QStringLiteral("Temperature")).toDouble();
 }
 
 QString Battery::serial() const
 {
-    return m_device.data()->prop("Serial").toString();
+    return m_device.data()->prop(QStringLiteral("Serial")).toString();
 }
 
 qlonglong Battery::remainingTime() const

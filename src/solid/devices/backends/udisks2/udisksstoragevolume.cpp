@@ -23,8 +23,8 @@ StorageVolume::~StorageVolume()
 
 QString StorageVolume::encryptedContainerUdi() const
 {
-    const QString path = m_device->prop("CryptoBackingDevice").value<QDBusObjectPath>().path();
-    if (path.isEmpty() || path == "/") {
+    const QString path = m_device->prop(QStringLiteral("CryptoBackingDevice")).value<QDBusObjectPath>().path();
+    if (path.isEmpty() || path == QLatin1String("/")) {
         return QString();
     } else {
         return path;
@@ -33,44 +33,44 @@ QString StorageVolume::encryptedContainerUdi() const
 
 qulonglong StorageVolume::size() const
 {
-    return m_device->prop("Size").toULongLong();
+    return m_device->prop(QStringLiteral("Size")).toULongLong();
 }
 
 QString StorageVolume::uuid() const
 {
-    return m_device->prop("IdUUID").toString();
+    return m_device->prop(QStringLiteral("IdUUID")).toString();
 }
 
 QString StorageVolume::label() const
 {
-    QString label = m_device->prop("HintName").toString();
+    QString label = m_device->prop(QStringLiteral("HintName")).toString();
     if (label.isEmpty()) {
-        label = m_device->prop("IdLabel").toString();
+        label = m_device->prop(QStringLiteral("IdLabel")).toString();
     }
     if (label.isEmpty()) {
-        label = m_device->prop("Name").toString();
+        label = m_device->prop(QStringLiteral("Name")).toString();
     }
     return label;
 }
 
 QString StorageVolume::fsType() const
 {
-    return m_device->prop("IdType").toString();
+    return m_device->prop(QStringLiteral("IdType")).toString();
 }
 
 Solid::StorageVolume::UsageType StorageVolume::usage() const
 {
-    const QString usage = m_device->prop("IdUsage").toString();
+    const QString usage = m_device->prop(QStringLiteral("IdUsage")).toString();
 
-    if (m_device->hasInterface(UD2_DBUS_INTERFACE_FILESYSTEM)) {
+    if (m_device->hasInterface(QStringLiteral(UD2_DBUS_INTERFACE_FILESYSTEM))) {
         return Solid::StorageVolume::FileSystem;
     } else if (m_device->isPartitionTable()) {
         return Solid::StorageVolume::PartitionTable;
-    } else if (usage == "raid") {
+    } else if (usage == QLatin1String("raid")) {
         return Solid::StorageVolume::Raid;
     } else if (m_device->isEncryptedContainer()) {
         return Solid::StorageVolume::Encrypted;
-    } else if (usage == "unused" || usage.isEmpty()) {
+    } else if (usage == QLatin1String("unused") || usage.isEmpty()) {
         return Solid::StorageVolume::Unused;
     } else {
         return Solid::StorageVolume::Other;
@@ -79,11 +79,11 @@ Solid::StorageVolume::UsageType StorageVolume::usage() const
 
 bool StorageVolume::isIgnored() const
 {
-    if (m_device->prop("HintIgnore").toBool()) {
+    if (m_device->prop(QStringLiteral("HintIgnore")).toBool()) {
         return true;
     }
 
-    const QStringList mountOptions = m_device->prop("UserspaceMountOptions").toStringList();
+    const QStringList mountOptions = m_device->prop(QStringLiteral("UserspaceMountOptions")).toStringList();
     if (mountOptions.contains(QLatin1String("x-gdu.hide"))) {
         return true;
     }
@@ -99,7 +99,7 @@ bool StorageVolume::isIgnored() const
         return true;
     }
 
-    const QString backingFile = m_device->prop("BackingFile").toString();
+    const QString backingFile = m_device->prop(QStringLiteral("BackingFile")).toString();
     return !backingFile.isEmpty() && !backingFile.startsWith(QDir::homePath());
 }
 

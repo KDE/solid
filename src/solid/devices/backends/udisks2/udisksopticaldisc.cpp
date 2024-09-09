@@ -49,21 +49,21 @@ static Solid::OpticalDisc::ContentType advancedDiscDetect(const QByteArray &devi
     /* read the block size */
     lseek(fd, 0x8080, SEEK_CUR);
     if (read(fd, &bs, 2) != 2) {
-        qCDebug(UDISKS2, "Advanced probing on %s failed while reading block size", qPrintable(device_file));
+        qCDebug(UDISKS2, "Advanced probing on %s failed while reading block size", device_file.constData());
         goto out;
     }
 
     /* read in size of path table */
     lseek(fd, 2, SEEK_CUR);
     if (read(fd, &ts, 2) != 2) {
-        qCDebug(UDISKS2, "Advanced probing on %s failed while reading path table size", qPrintable(device_file));
+        qCDebug(UDISKS2, "Advanced probing on %s failed while reading path table size", device_file.constData());
         goto out;
     }
 
     /* read in which block path table is in */
     lseek(fd, 6, SEEK_CUR);
     if (read(fd, &tl, 4) != 4) {
-        qCDebug(UDISKS2, "Advanced probing on %s failed while reading path table block", qPrintable(device_file));
+        qCDebug(UDISKS2, "Advanced probing on %s failed while reading path table block", device_file.constData());
         goto out;
     }
 
@@ -74,7 +74,7 @@ static Solid::OpticalDisc::ContentType advancedDiscDetect(const QByteArray &devi
     while (pos < ts) {
         /* get the length of the filename of the current entry */
         if (read(fd, &len_di, 1) != 1) {
-            qCDebug(UDISKS2, "Advanced probing on %s failed, cannot read more entries", qPrintable(device_file));
+            qCDebug(UDISKS2, "Advanced probing on %s failed, cannot read more entries", device_file.constData());
             break;
         }
 
@@ -82,13 +82,13 @@ static Solid::OpticalDisc::ContentType advancedDiscDetect(const QByteArray &devi
            i'm pretty sure that the 1st entry is always the top directory */
         lseek(fd, 5, SEEK_CUR);
         if (read(fd, &parent, 2) != 2) {
-            qCDebug(UDISKS2, "Advanced probing on %s failed, couldn't read parent entry", qPrintable(device_file));
+            qCDebug(UDISKS2, "Advanced probing on %s failed, couldn't read parent entry", device_file.constData());
             break;
         }
 
         /* read the name */
         if (read(fd, dirname, len_di) != len_di) {
-            qCDebug(UDISKS2, "Advanced probing on %s failed, couldn't read the entry name", qPrintable(device_file));
+            qCDebug(UDISKS2, "Advanced probing on %s failed, couldn't read the entry name", device_file.constData());
             break;
         }
         dirname[len_di] = 0;
@@ -97,19 +97,19 @@ static Solid::OpticalDisc::ContentType advancedDiscDetect(const QByteArray &devi
            one of the special directories then set the properties accordingly */
         if (parent == 1) {
             if (!strcasecmp(dirname, "VIDEO_TS")) {
-                qCDebug(UDISKS2, "Disc in %s is a Video DVD", qPrintable(device_file));
+                qCDebug(UDISKS2, "Disc in %s is a Video DVD", device_file.constData());
                 result = Solid::OpticalDisc::VideoDvd;
                 break;
             } else if (!strcasecmp(dirname, "BDMV")) {
-                qCDebug(UDISKS2, "Disc in %s is a Blu-ray video disc", qPrintable(device_file));
+                qCDebug(UDISKS2, "Disc in %s is a Blu-ray video disc", device_file.constData());
                 result = Solid::OpticalDisc::VideoBluRay;
                 break;
             } else if (!strcasecmp(dirname, "VCD")) {
-                qCDebug(UDISKS2, "Disc in %s is a Video CD", qPrintable(device_file));
+                qCDebug(UDISKS2, "Disc in %s is a Video CD", device_file.constData());
                 result = Solid::OpticalDisc::VideoCd;
                 break;
             } else if (!strcasecmp(dirname, "SVCD")) {
-                qCDebug(UDISKS2, "Disc in %s is a Super Video CD", qPrintable(device_file));
+                qCDebug(UDISKS2, "Disc in %s is a Super Video CD", device_file.constData());
                 result = Solid::OpticalDisc::SuperVideoCd;
                 break;
             }
@@ -229,7 +229,7 @@ private:
 
     static QString getKey()
     {
-        static const QString keyTemplate("solid-disk-info-1-%1-%2");
+        static const QString keyTemplate(QStringLiteral("solid-disk-info-1-%1-%2"));
         static const QString tableSize(QString::number(sizeof(ContentTypesCache)));
 
         return keyTemplate.arg(tableSize, QString::number(geteuid()));
@@ -238,8 +238,8 @@ private:
 public:
     SharedContentTypesCache()
         : m_pointer(nullptr)
-        , m_semaphore(getKey() + "sem", 1)
-        , m_shmem(getKey() + "mem")
+        , m_semaphore(getKey() + QStringLiteral("sem"), 1)
+        , m_shmem(getKey() + QStringLiteral("mem"))
     {
         if (!m_semaphore.acquire()) {
             return;
@@ -306,9 +306,9 @@ OpticalDisc::Identity::Identity()
 }
 
 OpticalDisc::Identity::Identity(const Device &device, const Device &drive)
-    : m_detectTime(drive.prop("TimeMediaDetected").toLongLong())
-    , m_size(device.prop("Size").toLongLong())
-    , m_labelHash(qHash(device.prop("IdLabel").toString()))
+    : m_detectTime(drive.prop(QStringLiteral("TimeMediaDetected")).toLongLong())
+    , m_size(device.prop(QStringLiteral("Size")).toLongLong())
+    , m_labelHash(qHash(device.prop(QStringLiteral("IdLabel")).toString()))
 {
 }
 
@@ -341,7 +341,7 @@ OpticalDisc::~OpticalDisc()
 
 qulonglong OpticalDisc::capacity() const
 {
-    return m_device->prop("Size").toULongLong();
+    return m_device->prop(QStringLiteral("Size")).toULongLong();
 }
 
 bool OpticalDisc::isRewritable() const
@@ -349,28 +349,28 @@ bool OpticalDisc::isRewritable() const
     // the hard way, udisks has no notion of a disc "rewritability"
     const QString mediaType = media();
     /* clang-format off */
-    return mediaType == "optical_cd_rw"
-        || mediaType == "optical_dvd_rw"
-        || mediaType == "optical_dvd_ram"
-        || mediaType == "optical_dvd_plus_rw"
-        || mediaType == "optical_dvd_plus_rw_dl"
-        || mediaType == "optical_bd_re"
-        || mediaType == "optical_hddvd_rw";
+    return mediaType == QLatin1String("optical_cd_rw")
+        || mediaType == QLatin1String("optical_dvd_rw")
+        || mediaType == QLatin1String("optical_dvd_ram")
+        || mediaType == QLatin1String("optical_dvd_plus_rw")
+        || mediaType == QLatin1String("optical_dvd_plus_rw_dl")
+        || mediaType == QLatin1String("optical_bd_re")
+        || mediaType == QLatin1String("optical_hddvd_rw");
     /* clang-format on */
 }
 
 bool OpticalDisc::isBlank() const
 {
-    return m_drive->prop("OpticalBlank").toBool();
+    return m_drive->prop(QStringLiteral("OpticalBlank")).toBool();
 }
 
 bool OpticalDisc::isAppendable() const
 {
     // qDebug() << "appendable prop" << m_udevDevice.deviceProperty("ID_CDROM_MEDIA_STATE");
 #if UDEV_FOUND
-    return m_udevDevice.deviceProperty("ID_CDROM_MEDIA_STATE").toString() == QLatin1String("appendable");
+    return m_udevDevice.deviceProperty(QStringLiteral("ID_CDROM_MEDIA_STATE")).toString() == QLatin1String("appendable");
 #elif defined(Q_OS_FREEBSD) || defined(Q_OS_OPENBSD)
-    return m_device->prop("bsdisks_IsAppendable").toBool();
+    return m_device->prop(QStringLiteral("bsdisks_IsAppendable")).toBool();
 #else
 #error Implement this or stub this out for your platform
 #endif
@@ -378,24 +378,25 @@ bool OpticalDisc::isAppendable() const
 
 Solid::OpticalDisc::DiscType OpticalDisc::discType() const
 {
-    QMap<Solid::OpticalDisc::DiscType, QString> map;
-    map[Solid::OpticalDisc::CdRom] = "optical_cd";
-    map[Solid::OpticalDisc::CdRecordable] = "optical_cd_r";
-    map[Solid::OpticalDisc::CdRewritable] = "optical_cd_rw";
-    map[Solid::OpticalDisc::DvdRom] = "optical_dvd";
-    map[Solid::OpticalDisc::DvdRecordable] = "optical_dvd_r";
-    map[Solid::OpticalDisc::DvdRewritable] = "optical_dvd_rw";
-    map[Solid::OpticalDisc::DvdRam] = "optical_dvd_ram";
-    map[Solid::OpticalDisc::DvdPlusRecordable] = "optical_dvd_plus_r";
-    map[Solid::OpticalDisc::DvdPlusRewritable] = "optical_dvd_plus_rw";
-    map[Solid::OpticalDisc::DvdPlusRecordableDuallayer] = "optical_dvd_plus_r_dl";
-    map[Solid::OpticalDisc::DvdPlusRewritableDuallayer] = "optical_dvd_plus_rw_dl";
-    map[Solid::OpticalDisc::BluRayRom] = "optical_bd";
-    map[Solid::OpticalDisc::BluRayRecordable] = "optical_bd_r";
-    map[Solid::OpticalDisc::BluRayRewritable] = "optical_bd_re";
-    map[Solid::OpticalDisc::HdDvdRom] = "optical_hddvd";
-    map[Solid::OpticalDisc::HdDvdRecordable] = "optical_hddvd_r";
-    map[Solid::OpticalDisc::HdDvdRewritable] = "optical_hddvd_rw";
+    const QMap<Solid::OpticalDisc::DiscType, QString> map{
+        {Solid::OpticalDisc::CdRom, QStringLiteral("optical_cd")},
+        {Solid::OpticalDisc::CdRecordable, QStringLiteral("optical_cd_r")},
+        {Solid::OpticalDisc::CdRewritable, QStringLiteral("optical_cd_rw")},
+        {Solid::OpticalDisc::DvdRom, QStringLiteral("optical_dvd")},
+        {Solid::OpticalDisc::DvdRecordable, QStringLiteral("optical_dvd_r")},
+        {Solid::OpticalDisc::DvdRewritable, QStringLiteral("optical_dvd_rw")},
+        {Solid::OpticalDisc::DvdRam, QStringLiteral("optical_dvd_ram")},
+        {Solid::OpticalDisc::DvdPlusRecordable, QStringLiteral("optical_dvd_plus_r")},
+        {Solid::OpticalDisc::DvdPlusRewritable, QStringLiteral("optical_dvd_plus_rw")},
+        {Solid::OpticalDisc::DvdPlusRecordableDuallayer, QStringLiteral("optical_dvd_plus_r_dl")},
+        {Solid::OpticalDisc::DvdPlusRewritableDuallayer, QStringLiteral("optical_dvd_plus_rw_dl")},
+        {Solid::OpticalDisc::BluRayRom, QStringLiteral("optical_bd")},
+        {Solid::OpticalDisc::BluRayRecordable, QStringLiteral("optical_bd_r")},
+        {Solid::OpticalDisc::BluRayRewritable, QStringLiteral("optical_bd_re")},
+        {Solid::OpticalDisc::HdDvdRom, QStringLiteral("optical_hddvd")},
+        {Solid::OpticalDisc::HdDvdRecordable, QStringLiteral("optical_hddvd_r")},
+        {Solid::OpticalDisc::HdDvdRewritable, QStringLiteral("optical_hddvd_rw")},
+    };
     // TODO add these to Solid
     // map[Solid::OpticalDisc::MagnetoOptical] ="optical_mo";
     // map[Solid::OpticalDisc::MountRainer] ="optical_mrw";
@@ -411,15 +412,15 @@ Solid::OpticalDisc::ContentTypes OpticalDisc::availableContent() const
     }
 
     Solid::OpticalDisc::ContentTypes content = Solid::OpticalDisc::NoContent;
-    const bool hasData = m_drive->prop("OpticalNumDataTracks").toUInt() > 0;
-    const bool hasAudio = m_drive->prop("OpticalNumAudioTracks").toUInt() > 0;
+    const bool hasData = m_drive->prop(QStringLiteral("OpticalNumDataTracks")).toUInt() > 0;
+    const bool hasAudio = m_drive->prop(QStringLiteral("OpticalNumAudioTracks")).toUInt() > 0;
 
     if (hasData) {
         content |= Solid::OpticalDisc::Data;
 
         Identity newIdentity(*m_device, *m_drive);
         if (!(m_identity == newIdentity)) {
-            QByteArray deviceFile(m_device->prop("Device").toByteArray());
+            QByteArray deviceFile(m_device->prop(QStringLiteral("Device")).toByteArray());
             m_cachedContent = sharedContentTypesCache->localData().getContent(newIdentity, deviceFile);
             m_identity = newIdentity;
         }
@@ -435,7 +436,7 @@ Solid::OpticalDisc::ContentTypes OpticalDisc::availableContent() const
 
 QString OpticalDisc::media() const
 {
-    return m_drive->prop("Media").toString();
+    return m_drive->prop(QStringLiteral("Media")).toString();
 }
 
 #include "moc_udisksopticaldisc.cpp"

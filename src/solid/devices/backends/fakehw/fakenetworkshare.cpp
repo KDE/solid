@@ -20,12 +20,12 @@ FakeNetworkShare::~FakeNetworkShare()
 
 Solid::NetworkShare::ShareType FakeNetworkShare::type() const
 {
-    QString type = fakeDevice()->property("type").toString();
-    if (type == "nfs") {
+    QString type = fakeDevice()->property(QStringLiteral("type")).toString();
+    if (type == QLatin1String("nfs")) {
         return Solid::NetworkShare::Nfs;
-    } else if (type == "cifs") {
+    } else if (type == QLatin1String("cifs")) {
         return Solid::NetworkShare::Cifs;
-    } else if (type == "smb3") {
+    } else if (type == QLatin1String("smb3")) {
         return Solid::NetworkShare::Smb3;
     } else {
         return Solid::NetworkShare::Unknown;
@@ -34,7 +34,7 @@ Solid::NetworkShare::ShareType FakeNetworkShare::type() const
 
 QUrl FakeNetworkShare::url() const
 {
-    QString url = fakeDevice()->property("url").toString();
+    QString url = fakeDevice()->property(QStringLiteral("url")).toString();
     return QUrl(url);
 }
 

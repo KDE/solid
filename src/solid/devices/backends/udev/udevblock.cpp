@@ -19,17 +19,17 @@ Block::~Block()
 
 int Block::deviceMajor() const
 {
-    return m_device->property("MAJOR").toInt();
+    return m_device->property(QStringLiteral("MAJOR")).toInt();
 }
 
 int Block::deviceMinor() const
 {
-    return m_device->property("MINOR").toInt();
+    return m_device->property(QStringLiteral("MINOR")).toInt();
 }
 
 QString Block::device() const
 {
-    return m_device->property("DEVNAME").toString();
+    return m_device->property(QStringLiteral("DEVNAME")).toString();
 }
 
 #include "moc_udevblock.cpp"
