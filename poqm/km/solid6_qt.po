@@ -17,13 +17,13 @@ msgstr ""
 "X-Language: km-CM\n"
 "X-Qt-Contexts: true\n"
 
-#: solid/devices/backends/fstab/fstabdevice.cpp:60
+#: solid/devices/backends/fstab/fstabdevice.cpp:59
 #, qt-format
 msgctxt "%1 is sharename, %2 is servername"
 msgid "%1 on %2"
 msgstr ""
 
-#: solid/devices/backends/fstab/fstabdevice.cpp:62
+#: solid/devices/backends/fstab/fstabdevice.cpp:61
 #, qt-format
 msgctxt "%1 is mountpoint, %2 is fs type"
 msgid "%1 (%2)"
@@ -87,14 +87,14 @@ msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Camera"
 msgstr "ម៉ាស៊ីន​ថត"
 
-#: solid/devices/backends/udev/udevmanager.cpp:220
+#: solid/devices/backends/udev/udevmanager.cpp:221
 #, fuzzy
 #| msgid "Devices"
 msgctxt "Solid::Backends::UDev::UDevManager|"
 msgid "Devices"
 msgstr "ឧបករណ៍"
 
-#: solid/devices/backends/udev/udevmanager.cpp:221
+#: solid/devices/backends/udev/udevmanager.cpp:222
 #, fuzzy
 #| msgid "Devices declared in your system"
 msgctxt "Solid::Backends::UDev::UDevManager|"
@@ -177,42 +177,42 @@ msgctxt "QObject|%1 is the block device name e.g. sda, sda1"
 msgid "Internal Drive (%1)"
 msgstr "ដ្រាយ %1%2 ខាង​ក្រៅ​"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:256
+#: solid/devices/backends/udisks2/udisksdevice.cpp:254
 #, fuzzy
 #| msgid "Swap Space"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Swap Space"
 msgstr "ដូរ​ទំហំ"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:278
+#: solid/devices/backends/udisks2/udisksdevice.cpp:276
 #, fuzzy
 #| msgid "Loop Device"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Loop Device"
 msgstr "ឧបករណ៍​បង្វិល"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:294
+#: solid/devices/backends/udisks2/udisksdevice.cpp:292
 #, fuzzy
 #| msgid "CD-ROM"
 msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
 msgid "CD-ROM"
 msgstr "ស៊ីឌី​រ៉ូម"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:296
+#: solid/devices/backends/udisks2/udisksdevice.cpp:294
 #, fuzzy
 #| msgid "CD-R"
 msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
 msgid "CD-R"
 msgstr "ស៊ីឌី-អាន"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:299
+#: solid/devices/backends/udisks2/udisksdevice.cpp:297
 #, fuzzy
 #| msgid "CD-RW"
 msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
 msgid "CD-RW"
 msgstr "ស៊ីឌី-អានសរសេរ"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:303
+#: solid/devices/backends/udisks2/udisksdevice.cpp:301
 #, fuzzy
 #| msgctxt "Second item of %1%2 Drive sentence"
 #| msgid "/DVD-ROM"
@@ -220,7 +220,7 @@ msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD-ROM"
 msgstr "/ឌីវីឌី​រ៉ូម"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:306
+#: solid/devices/backends/udisks2/udisksdevice.cpp:304
 #, fuzzy
 #| msgctxt "Second item of %1%2 Drive sentence"
 #| msgid "/DVD+R"
@@ -228,7 +228,7 @@ msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD+R"
 msgstr "/ឌីវីឌី+អាន"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:309
+#: solid/devices/backends/udisks2/udisksdevice.cpp:307
 #, fuzzy
 #| msgctxt "Second item of %1%2 Drive sentence"
 #| msgid "/DVD+RW"
@@ -236,7 +236,7 @@ msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD+RW"
 msgstr "/ឌីវីឌី+អានសរសេរ"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:312
+#: solid/devices/backends/udisks2/udisksdevice.cpp:310
 #, fuzzy
 #| msgctxt "Second item of %1%2 Drive sentence"
 #| msgid "/DVD-R"
@@ -244,7 +244,7 @@ msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD-R"
 msgstr "/ឌីវីឌី-អាន"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:315
+#: solid/devices/backends/udisks2/udisksdevice.cpp:313
 #, fuzzy
 #| msgctxt "Second item of %1%2 Drive sentence"
 #| msgid "/DVD-RW"
@@ -252,7 +252,7 @@ msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD-RW"
 msgstr "/ឌីវីឌី-អានសរសេរ"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:318
+#: solid/devices/backends/udisks2/udisksdevice.cpp:316
 #, fuzzy
 #| msgctxt "Second item of %1%2 Drive sentence"
 #| msgid "/DVD-RAM"
@@ -260,7 +260,7 @@ msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD-RAM"
 msgstr "/ឌីវីឌី-RAM"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:322
+#: solid/devices/backends/udisks2/udisksdevice.cpp:320
 #, fuzzy
 #| msgctxt "Second item of %1%2 Drive sentence"
 #| msgid "/DVD±R DL"
@@ -268,7 +268,7 @@ msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD±R DL"
 msgstr "/ឌីវីឌី±អាន ពីរ​ស្រទាប់"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:324
+#: solid/devices/backends/udisks2/udisksdevice.cpp:322
 #, fuzzy
 #| msgctxt "Second item of %1%2 Drive sentence"
 #| msgid "/DVD±R"
@@ -276,7 +276,7 @@ msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD±R"
 msgstr "/ឌីវីឌី±អាន"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:329
+#: solid/devices/backends/udisks2/udisksdevice.cpp:327
 #, fuzzy
 #| msgctxt "Second item of %1%2 Drive sentence"
 #| msgid "/DVD±RW DL"
@@ -284,7 +284,7 @@ msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD±RW DL"
 msgstr "/ឌីវីឌី±អាន សរសេរ​ពីរ​ស្រទា​ប់"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:331
+#: solid/devices/backends/udisks2/udisksdevice.cpp:329
 #, fuzzy
 #| msgctxt "Second item of %1%2 Drive sentence"
 #| msgid "/DVD±RW"
@@ -292,7 +292,7 @@ msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD±RW"
 msgstr "/ឌីវីឌី±អានសរសេរ"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:335
+#: solid/devices/backends/udisks2/udisksdevice.cpp:333
 #, fuzzy
 #| msgctxt "Second item of %1%2 Drive sentence"
 #| msgid "/BD-ROM"
@@ -300,7 +300,7 @@ msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/BD-ROM"
 msgstr "/BD-ROM"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:338
+#: solid/devices/backends/udisks2/udisksdevice.cpp:336
 #, fuzzy
 #| msgctxt "Second item of %1%2 Drive sentence"
 #| msgid "/BD-R"
@@ -308,7 +308,7 @@ msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/BD-R"
 msgstr "/BD-R"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:341
+#: solid/devices/backends/udisks2/udisksdevice.cpp:339
 #, fuzzy
 #| msgctxt "Second item of %1%2 Drive sentence"
 #| msgid "/BD-RE"
@@ -316,7 +316,7 @@ msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/BD-RE"
 msgstr "/BD-RE"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:344
+#: solid/devices/backends/udisks2/udisksdevice.cpp:342
 #, fuzzy
 #| msgctxt "Second item of %1%2 Drive sentence"
 #| msgid "/HD DVD-ROM"
@@ -324,7 +324,7 @@ msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/HD DVD-ROM"
 msgstr "/HD DVD-ROM"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:347
+#: solid/devices/backends/udisks2/udisksdevice.cpp:345
 #, fuzzy
 #| msgctxt "Second item of %1%2 Drive sentence"
 #| msgid "/HD DVD-R"
@@ -332,7 +332,7 @@ msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/HD DVD-R"
 msgstr "/HD DVD-R"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:350
+#: solid/devices/backends/udisks2/udisksdevice.cpp:348
 #, fuzzy
 #| msgctxt "Second item of %1%2 Drive sentence"
 #| msgid "/HD DVD-RW"
@@ -340,7 +340,7 @@ msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/HD DVD-RW"
 msgstr "/HD DVD-RW"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:354
+#: solid/devices/backends/udisks2/udisksdevice.cpp:352
 #, fuzzy, qt-format
 #| msgctxt ""
 #| "%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/DVD-R'/etc (with leading slash)"
@@ -351,7 +351,7 @@ msgctxt ""
 msgid "External %1%2 Drive"
 msgstr "ដ្រាយ %1%2 ខាង​ក្រៅ​"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:356
+#: solid/devices/backends/udisks2/udisksdevice.cpp:354
 #, fuzzy, qt-format
 #| msgctxt ""
 #| "%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/DVD-R'/etc (with leading slash)"
@@ -362,21 +362,21 @@ msgctxt ""
 msgid "%1%2 Drive"
 msgstr "ដ្រាយ %1%2​"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:364
+#: solid/devices/backends/udisks2/udisksdevice.cpp:362
 #, fuzzy
 #| msgid "External Floppy Drive"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "External Floppy Drive"
 msgstr "ដ្រាយ​ថាសទន់​ខាង​ក្រៅ"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:366
+#: solid/devices/backends/udisks2/udisksdevice.cpp:364
 #, fuzzy
 #| msgid "Floppy Drive"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Floppy Drive"
 msgstr "ដ្រាយ​ថាស​ទន់"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:398
+#: solid/devices/backends/udisks2/udisksdevice.cpp:396
 #, fuzzy, qt-format
 #| msgctxt "%1 is the vendor, %2 is the model of the device"
 #| msgid "%1 %2"
@@ -386,231 +386,231 @@ msgctxt ""
 msgid "%1 %2"
 msgstr "%1 %2"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:404
+#: solid/devices/backends/udisks2/udisksdevice.cpp:402
 #, fuzzy
 #| msgid "Drive"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Drive"
 msgstr "ដ្រាយ"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:434
+#: solid/devices/backends/udisks2/udisksdevice.cpp:432
 #, fuzzy
 #| msgid "CD-ROM"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "CD-ROM"
 msgstr "ស៊ីឌី​រ៉ូម"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:439
+#: solid/devices/backends/udisks2/udisksdevice.cpp:437
 #, fuzzy
 #| msgid "Blank CD-R"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank CD-R"
 msgstr "ស៊ីឌី​-អាន​ទទេ"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:441
+#: solid/devices/backends/udisks2/udisksdevice.cpp:439
 #, fuzzy
 #| msgid "CD-R"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "CD-R"
 msgstr "ស៊ីឌី-អាន"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:447
+#: solid/devices/backends/udisks2/udisksdevice.cpp:445
 #, fuzzy
 #| msgid "Blank CD-RW"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank CD-RW"
 msgstr "ស៊ីឌី​-អាន​សរសេរ​ទទេ"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:449
+#: solid/devices/backends/udisks2/udisksdevice.cpp:447
 #, fuzzy
 #| msgid "CD-RW"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "CD-RW"
 msgstr "ស៊ីឌី-អានសរសេរ"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:454
+#: solid/devices/backends/udisks2/udisksdevice.cpp:452
 #, fuzzy
 #| msgid "DVD-ROM"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD-ROM"
 msgstr "ឌីវីឌី​រ៉ូម"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:459
+#: solid/devices/backends/udisks2/udisksdevice.cpp:457
 #, fuzzy
 #| msgid "Blank DVD-RAM"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD-RAM"
 msgstr "ឌីវីឌី-RAM ទទេ"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:461
+#: solid/devices/backends/udisks2/udisksdevice.cpp:459
 #, fuzzy
 #| msgid "DVD-RAM"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD-RAM"
 msgstr "ឌីវីឌី-RAM"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:467
+#: solid/devices/backends/udisks2/udisksdevice.cpp:465
 #, fuzzy
 #| msgid "Blank DVD-R"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD-R"
 msgstr "ឌីវីឌី-អាន​ទទេ"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:469
+#: solid/devices/backends/udisks2/udisksdevice.cpp:467
 #, fuzzy
 #| msgid "DVD-R"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD-R"
 msgstr "ឌីវីឌី​-អាន"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:475
+#: solid/devices/backends/udisks2/udisksdevice.cpp:473
 #, fuzzy
 #| msgid "Blank DVD+R Dual-Layer"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD+R Dual-Layer"
 msgstr "ឌីវីឌី+អាន​ទទេ​ពីរ​ស្រទាប់"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:477
+#: solid/devices/backends/udisks2/udisksdevice.cpp:475
 #, fuzzy
 #| msgid "DVD+R Dual-Layer"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD+R Dual-Layer"
 msgstr "ឌីវីឌី​+អាន​ពីរ​ស្រទាប់"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:483
+#: solid/devices/backends/udisks2/udisksdevice.cpp:481
 #, fuzzy
 #| msgid "Blank DVD-RW"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD-RW"
 msgstr "ឌីវីឌី-អានសរសេរ​ទទេ"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:485
+#: solid/devices/backends/udisks2/udisksdevice.cpp:483
 #, fuzzy
 #| msgid "DVD-RW"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD-RW"
 msgstr "ឌីវីឌី​-អានសរសេរ"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:491
+#: solid/devices/backends/udisks2/udisksdevice.cpp:489
 #, fuzzy
 #| msgid "Blank DVD+R"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD+R"
 msgstr "ឌីវីឌី+អាន​ទទេ"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:493
+#: solid/devices/backends/udisks2/udisksdevice.cpp:491
 #, fuzzy
 #| msgid "DVD+R"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD+R"
 msgstr "ឌីវីឌី+អាន"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:499
+#: solid/devices/backends/udisks2/udisksdevice.cpp:497
 #, fuzzy
 #| msgid "Blank DVD+RW"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD+RW"
 msgstr "ឌីវីឌី​+អានសរសេរ​ទទេ"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:501
+#: solid/devices/backends/udisks2/udisksdevice.cpp:499
 #, fuzzy
 #| msgid "DVD+RW"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD+RW"
 msgstr "ឌីវីឌី+អានសរសេរ"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:507
+#: solid/devices/backends/udisks2/udisksdevice.cpp:505
 #, fuzzy
 #| msgid "Blank DVD+RW Dual-Layer"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD+RW Dual-Layer"
 msgstr "ឌីវីឌី+អាន-សរសេរ​​ទទេ​ពីរ​ស្រទាប់"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:509
+#: solid/devices/backends/udisks2/udisksdevice.cpp:507
 #, fuzzy
 #| msgid "DVD+RW Dual-Layer"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD+RW Dual-Layer"
 msgstr "ឌីវីឌី​+អាន-សរសេរ​​ពីរ​ស្រទាប់"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:514
+#: solid/devices/backends/udisks2/udisksdevice.cpp:512
 #, fuzzy
 #| msgid "BD-ROM"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "BD-ROM"
 msgstr "BD-ROM"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:519
+#: solid/devices/backends/udisks2/udisksdevice.cpp:517
 #, fuzzy
 #| msgid "Blank BD-R"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank BD-R"
 msgstr "BD-R ទទេ"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:521
+#: solid/devices/backends/udisks2/udisksdevice.cpp:519
 #, fuzzy
 #| msgid "BD-R"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "BD-R"
 msgstr "BD-R"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:527
+#: solid/devices/backends/udisks2/udisksdevice.cpp:525
 #, fuzzy
 #| msgid "Blank BD-RE"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank BD-RE"
 msgstr "BD-RE ទទេ"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:529
+#: solid/devices/backends/udisks2/udisksdevice.cpp:527
 #, fuzzy
 #| msgid "BD-RE"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "BD-RE"
 msgstr "BD-RE"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:534
+#: solid/devices/backends/udisks2/udisksdevice.cpp:532
 #, fuzzy
 #| msgid "HD DVD-ROM"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "HD DVD-ROM"
 msgstr "HD DVD-ROM"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:539
+#: solid/devices/backends/udisks2/udisksdevice.cpp:537
 #, fuzzy
 #| msgid "Blank HD DVD-R"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank HD DVD-R"
 msgstr "HD DVD-R ទទេ"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:541
+#: solid/devices/backends/udisks2/udisksdevice.cpp:539
 #, fuzzy
 #| msgid "HD DVD-R"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "HD DVD-R"
 msgstr "HD DVD-R"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:547
+#: solid/devices/backends/udisks2/udisksdevice.cpp:545
 #, fuzzy
 #| msgid "Blank HD DVD-RW"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank HD DVD-RW"
 msgstr "HD ឌីវីឌី-អាន​សរសេរ​ទទេ"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:549
+#: solid/devices/backends/udisks2/udisksdevice.cpp:547
 #, fuzzy
 #| msgid "HD DVD-RW"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "HD DVD-RW"
 msgstr "HD ឌីវីឌី​-អាន​សរសេរ"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:556
+#: solid/devices/backends/udisks2/udisksdevice.cpp:554
 #, fuzzy
 #| msgid "Audio CD"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Audio CD"
 msgstr "ស៊ីឌី​អូឌីយ៉ូ"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:569
+#: solid/devices/backends/udisks2/udisksdevice.cpp:567
 #, fuzzy, qt-format
 #| msgctxt "%1 is the size"
 #| msgid "%1 Encrypted Drive"
@@ -618,7 +618,7 @@ msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
 msgid "%1 Encrypted Drive"
 msgstr "ដ្រាយ​​​ដែល​បាន​អ៊ិនគ្រីប %1"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:571
+#: solid/devices/backends/udisks2/udisksdevice.cpp:569
 #, fuzzy
 #| msgctxt ""
 #| msgid "Encrypted Drive"
@@ -626,14 +626,14 @@ msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Encrypted Drive"
 msgstr "ដ្រាយ​​ដែល​បាន​អ៊ិនគ្រីប"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:576
+#: solid/devices/backends/udisks2/udisksdevice.cpp:574
 #, fuzzy
 #| msgid "Floppy Drive"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Floppy Disk"
 msgstr "ដ្រាយ​ថាស​ទន់"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:580
+#: solid/devices/backends/udisks2/udisksdevice.cpp:578
 #, fuzzy, qt-format
 #| msgctxt "%1 is the size"
 #| msgid "%1 Removable Media"
@@ -641,7 +641,7 @@ msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
 msgid "%1 Removable Media"
 msgstr "មេឌៀ​ចល័ត %1"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:582
+#: solid/devices/backends/udisks2/udisksdevice.cpp:580
 #, fuzzy
 #| msgctxt "%1 is the size"
 #| msgid "%1 Removable Media"
@@ -649,7 +649,7 @@ msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Removable Media"
 msgstr "មេឌៀ​ចល័ត %1"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:586
+#: solid/devices/backends/udisks2/udisksdevice.cpp:584
 #, fuzzy, qt-format
 #| msgctxt "%1 is the size"
 #| msgid "%1 Media"
@@ -657,14 +657,14 @@ msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
 msgid "%1 Media"
 msgstr "មេឌៀ %1"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:588
+#: solid/devices/backends/udisks2/udisksdevice.cpp:586
 #, fuzzy
 #| msgid "Storage devices"
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Storage Media"
 msgstr "ឧបករណ៍​ផ្ទុក"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:732
+#: solid/devices/backends/udisks2/udisksdevice.cpp:733
 #, fuzzy
 #| msgctxt ""
 #| msgid "You are not authorized to perform this operation"
@@ -672,7 +672,7 @@ msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "You are not authorized to perform this operation"
 msgstr "អ្នក​មិន​មាន​សេចក្ដី​អនុញ្ញាត​ឲ្យ​ធ្វើ​ប្រតិបត្តិការ​នេះ​ទេ ។"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:734
+#: solid/devices/backends/udisks2/udisksdevice.cpp:735
 #, fuzzy
 #| msgctxt ""
 #| msgid "The device is currently busy"
@@ -680,7 +680,7 @@ msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is currently busy"
 msgstr "បច្ចុប្បន្ន​ឧបករណ៍​ជាប់រវល់ ។"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:736
+#: solid/devices/backends/udisks2/udisksdevice.cpp:737
 #, fuzzy
 #| msgctxt ""
 #| msgid "The requested operation has failed"
@@ -688,7 +688,7 @@ msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The requested operation has failed"
 msgstr "បាន​បរាជ័យ​​ការ​ប្រតិបត្តិការ​ដែល​បាន​ស្នើ ។"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:738
+#: solid/devices/backends/udisks2/udisksdevice.cpp:739
 #, fuzzy
 #| msgctxt ""
 #| msgid "The requested operation has been canceled"
@@ -696,7 +696,7 @@ msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The requested operation has been canceled"
 msgstr "បាន​បោះបង់​ប្រតិបត្តិការ​ដែល​បាន​ស្នើ ។"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:740
+#: solid/devices/backends/udisks2/udisksdevice.cpp:741
 #, fuzzy
 #| msgctxt ""
 #| msgid "An invalid or malformed option has been given"
@@ -704,7 +704,7 @@ msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "An invalid or malformed option has been given"
 msgstr "បាន​ផ្ដល់​ជម្រើស​ដែល​មិន​ត្រឹមត្រូវ ។​"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:742
+#: solid/devices/backends/udisks2/udisksdevice.cpp:743
 #, fuzzy
 #| msgctxt ""
 #| msgid "The kernel driver for this filesystem type is not available"
@@ -712,7 +712,7 @@ msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The kernel driver for this filesystem type is not available"
 msgstr "ឧបករណ៍​ខឺណែល​​សម្រាប់​ប្រភេទ​ប្រព័ន្ធ​ឯកសារ​គឺ​មិន​ត្រឹមត្រូវ​ឡើយ ។​"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:744
+#: solid/devices/backends/udisks2/udisksdevice.cpp:745
 #, fuzzy
 #| msgctxt ""
 #| msgid "The device is already mounted"
@@ -720,7 +720,7 @@ msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is already mounted"
 msgstr "ឧបករណ៍​ត្រូវ​បាន​ម៉ោន​រួច​ហើយ"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:746
+#: solid/devices/backends/udisks2/udisksdevice.cpp:747
 #, fuzzy
 #| msgctxt ""
 #| msgid "The device is not mounted"
@@ -728,7 +728,7 @@ msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is not mounted"
 msgstr "ឧបករណ៍​​មិន​ត្រូវ​បាន​ម៉ោន​ឡើយ"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:748
+#: solid/devices/backends/udisks2/udisksdevice.cpp:749
 #, fuzzy
 #| msgctxt ""
 #| msgid "The device is mounted by another user"
@@ -736,7 +736,7 @@ msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is mounted by another user"
 msgstr "ឧបករណ៍​ត្រូវ​បាន​ម៉ោន​ដោយ​​អ្នក​ប្រើ​​ផ្សេង​ទៀត"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:750
+#: solid/devices/backends/udisks2/udisksdevice.cpp:751
 #, fuzzy
 #| msgctxt ""
 #| msgid "The device is already unmounting"
@@ -744,7 +744,7 @@ msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is already unmounting"
 msgstr "ឧបករណ៍​ត្រូវ​បាន​អាន់ម៉ោន​រួច​​ហើយ"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:752
+#: solid/devices/backends/udisks2/udisksdevice.cpp:753
 #, fuzzy
 #| msgctxt ""
 #| msgid "The operation timed out"
@@ -752,7 +752,7 @@ msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The operation timed out"
 msgstr "ប្រតិបត្តិការ​អស់​ពេល"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:754
+#: solid/devices/backends/udisks2/udisksdevice.cpp:755
 #, fuzzy
 #| msgctxt ""
 #| msgid "The operation would wake up a disk that is in a deep-sleep state"
@@ -760,7 +760,7 @@ msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The operation would wake up a disk that is in a deep-sleep state"
 msgstr "The operation would wake up a disk that is in a deep-sleep state"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:756
+#: solid/devices/backends/udisks2/udisksdevice.cpp:757
 #, fuzzy
 #| msgctxt ""
 #| msgid "The operation has already been canceled"
@@ -768,14 +768,14 @@ msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The operation has already been canceled"
 msgstr "បាន​បោះបង់​ប្រតិបត្តិការ​​រួច​ហើយ ។"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:758
+#: solid/devices/backends/udisks2/udisksdevice.cpp:759
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid ""
 "Cannot request authentication for this action. The PolicyKit authentication "
 "system appears to be not available."
 msgstr ""
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:760
+#: solid/devices/backends/udisks2/udisksdevice.cpp:761
 #, fuzzy
 #| msgctxt ""
 #| msgid "The requested operation has been canceled"
@@ -783,7 +783,7 @@ msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The authentication prompt was canceled"
 msgstr "បាន​បោះបង់​ប្រតិបត្តិការ​ដែល​បាន​ស្នើ ។"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:762
+#: solid/devices/backends/udisks2/udisksdevice.cpp:763
 #, fuzzy
 #| msgctxt ""
 #| msgid "An unspecified error has occurred"
