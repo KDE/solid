@@ -149,13 +149,17 @@ void FstabStorageAccess::onMtabChanged(const QString &device)
     if (currentMountPoints.isEmpty()) {
         // device umounted
         m_filePath = FstabHandling::mountPoints(device).first();
-        m_isAccessible = false;
-        Q_EMIT accessibilityChanged(false, QStringLiteral(FSTAB_UDI_PREFIX "/%1").arg(device));
+        if (m_isAccessible) {
+            m_isAccessible = false;
+            Q_EMIT accessibilityChanged(false, QStringLiteral(FSTAB_UDI_PREFIX "/%1").arg(device));
+        }
     } else {
         // device added
         m_filePath = currentMountPoints.first();
-        m_isAccessible = true;
-        Q_EMIT accessibilityChanged(true, QStringLiteral(FSTAB_UDI_PREFIX "/%1").arg(device));
+        if (!m_isAccessible) {
+            m_isAccessible = true;
+            Q_EMIT accessibilityChanged(true, QStringLiteral(FSTAB_UDI_PREFIX "/%1").arg(device));
+        }
     }
 }
 
