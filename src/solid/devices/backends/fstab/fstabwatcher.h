@@ -8,6 +8,9 @@
 #define SOLID_BACKENDS_FSTAB_WATCHER_H
 
 #include <QObject>
+#ifdef Q_OS_LINUX
+#include <libmount.h>
+#endif
 
 class QFileSystemWatcher;
 class QFile;
@@ -33,15 +36,24 @@ Q_SIGNALS:
     void fstabChanged();
 
 private Q_SLOTS:
+#ifdef Q_OS_LINUX
+    void onMountChanged();
+#else
     void onFileChanged(const QString &path);
-    void orphanFileSystemWatcher();
+#endif
+
+    void onQuit();
 
 private:
+    QSocketNotifier *m_socketNotifier;
+#ifdef Q_OS_LINUX
+    libmnt_monitor *m_mountMonitor;
+#else
     bool m_isRoutineInstalled;
     QFileSystemWatcher *m_fileSystemWatcher;
-    QSocketNotifier *m_mtabSocketNotifier;
     QFile *m_mtabFile;
     bool m_isFstabWatched;
+#endif
 };
 }
 }

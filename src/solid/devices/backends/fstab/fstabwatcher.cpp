@@ -26,17 +26,49 @@ static const QString s_fstabFile = QStringLiteral("/etc/fstab");
 static const QString s_fstabPath = QStringLiteral("/etc");
 
 FstabWatcher::FstabWatcher()
-    : m_isRoutineInstalled(false)
-    , m_fileSystemWatcher(new QFileSystemWatcher(this))
 {
-    if (qApp) {
-        connect(qApp, &QCoreApplication::aboutToQuit, this, &FstabWatcher::orphanFileSystemWatcher);
+#ifdef Q_OS_LINUX
+    auto mountMonitor = mnt_new_monitor();
+
+    if (!mountMonitor) {
+        qCritical(FSTAB_LOG) << "could not start mount monitor";
+        return;
     }
+    m_mountMonitor = mountMonitor;
+
+    auto r = mnt_monitor_enable_kernel(m_mountMonitor, true);
+    if (r < 0) {
+        mnt_unref_monitor(m_mountMonitor);
+        qCritical(FSTAB_LOG) << "Failed to enable watching of kernel mount events:" << strerror(errno);
+    }
+
+    r = mnt_monitor_enable_userspace(m_mountMonitor, true, NULL);
+    if (r < 0) {
+        mnt_unref_monitor(m_mountMonitor);
+        qCritical(FSTAB_LOG) << "Failed to enable watching of userspace mount events:" << strerror(errno);
+    }
+
+    auto fd = mnt_monitor_get_fd(m_mountMonitor);
+    if (fd < 0) {
+        mnt_unref_monitor(m_mountMonitor);
+        qCritical(FSTAB_LOG) << "Failed to acquire watch file descriptor" << strerror(errno);
+        return;
+    }
+
+    m_socketNotifier = new QSocketNotifier(fd, QSocketNotifier::Read, this);
+    connect(m_socketNotifier, &QSocketNotifier::activated, this, &FstabWatcher::onMountChanged);
+
+    if (qApp) {
+        connect(qApp, &QCoreApplication::aboutToQuit, this, &FstabWatcher::onQuit);
+    }
+#else
+    m_isRoutineInstalled = false;
+    m_fileSystemWatcher = new QFileSystemWatcher(this);
 
     m_mtabFile = new QFile(s_mtabFile, this);
     if (m_mtabFile && m_mtabFile->symLinkTarget().startsWith(QLatin1String("/proc/")) && m_mtabFile->open(QIODevice::ReadOnly)) {
-        m_mtabSocketNotifier = new QSocketNotifier(m_mtabFile->handle(), QSocketNotifier::Exception, this);
-        connect(m_mtabSocketNotifier, &QSocketNotifier::activated, this, &FstabWatcher::mtabChanged);
+        m_socketNotifier = new QSocketNotifier(m_mtabFile->handle(), QSocketNotifier::Exception, this);
+        connect(m_socketNotifier, &QSocketNotifier::activated, this, &FstabWatcher::mtabChanged);
     } else {
         m_fileSystemWatcher->addPath(s_mtabFile);
     }
@@ -54,26 +86,28 @@ FstabWatcher::FstabWatcher()
 
     m_isFstabWatched = m_fileSystemWatcher->addPath(s_fstabFile);
     connect(m_fileSystemWatcher, &QFileSystemWatcher::fileChanged, this, &FstabWatcher::onFileChanged);
+#endif
 }
 
 FstabWatcher::~FstabWatcher()
 {
+#ifdef Q_OS_LINUX
+    mnt_unref_monitor(m_mountMonitor);
+#else
     // The QFileSystemWatcher doesn't work correctly in a singleton
     // The solution so far was to destroy the QFileSystemWatcher when the application quits
     // But we have some crash with this solution.
     // For the moment to workaround the problem, we detach the QFileSystemWatcher from the parent
     // effectively leaking it on purpose.
-
-#if 0
-    //qRemovePostRoutine(globalFstabWatcher.destroy);
-#else
     m_fileSystemWatcher->setParent(nullptr);
 #endif
 }
 
-void FstabWatcher::orphanFileSystemWatcher()
+void FstabWatcher::onQuit()
 {
+#ifndef Q_OS_LINUX
     m_fileSystemWatcher->setParent(nullptr);
+#endif
 }
 
 FstabWatcher *FstabWatcher::instance()
@@ -91,6 +125,29 @@ FstabWatcher *FstabWatcher::instance()
 #endif
 }
 
+#ifdef Q_OS_LINUX
+void FstabWatcher::onMountChanged()
+{
+    auto mtab = false;
+    auto fstab = false;
+    const char *filename;
+    while (mnt_monitor_next_change(m_mountMonitor, &filename, NULL) == 0) {
+        if (!mtab && ((strcmp(filename, "/proc/self/mountinfo") == 0) || (strcmp(filename, "/run/mount/utab") == 0))) {
+            mtab = true;
+        }
+        if (!fstab && (strcmp(filename, "/etc/fstab") == 0)) {
+            fstab = true;
+        }
+    }
+
+    if (mtab) {
+        Q_EMIT mtabChanged();
+    }
+    if (fstab) {
+        Q_EMIT fstabChanged();
+    }
+}
+#else
 void FstabWatcher::onFileChanged(const QString &path)
 {
     if (path == s_mtabFile) {
@@ -107,7 +164,7 @@ void FstabWatcher::onFileChanged(const QString &path)
         }
     }
 }
-
+#endif
 }
 }
 } // namespace Solid:Backends::Fstab
