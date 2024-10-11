@@ -2,10 +2,6 @@ ecm_create_qm_loader(solid_QM_LOADER solid6_qt)
 
 include(devices/CMakeLists.txt)
 
-if (WITH_NEW_SOLID_JOB)
-    include(power/CMakeLists.txt)
-endif()
-
 set(solid_LIB_SRCS ${solid_LIB_SRCS} ${solid_QM_LOADER})
 
 add_library(KF6Solid  ${solid_LIB_SRCS})
@@ -69,33 +65,6 @@ ecm_generate_headers(Solid_CamelCase_HEADERS
   REQUIRED_HEADERS Solid_HEADERS
   PREFIX Solid
 )
-
-if (WITH_NEW_SOLID_JOB)
-    ecm_generate_headers(Solid_CamelCase_HEADERS
-    HEADER_NAMES
-    Job
-
-    RELATIVE power/
-    REQUIRED_HEADERS Solid_HEADERS
-    PREFIX Solid
-    )
-endif()
-
-if(WITH_NEW_SOLID_JOB AND WITH_NEW_POWER_ASYNC_API)
-    ecm_generate_headers(Solid_CamelCase_HEADERS
-        HEADER_NAMES
-        AcPluggedJob
-        InhibitionJob
-        Inhibition
-        Power
-        StatesJob
-        RequestStateJob
-
-        RELATIVE power/
-        REQUIRED_HEADERS Solid_HEADERS
-        PREFIX Solid
-    )
-endif()
 
 install(FILES ${Solid_CamelCase_HEADERS} DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/Solid/Solid COMPONENT Devel)
 
