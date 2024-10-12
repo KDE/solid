@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2024-05-08 22:31+0300\n"
+"PO-Revision-Date: 2024-10-10 09:09+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.08.1\n"
 "X-Qt-Contexts: true\n"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:60
@@ -156,40 +156,34 @@ msgid "Loop Device"
 msgstr "התקן לולאה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:294
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
 msgid "CD-ROM"
 msgstr "תקליטור"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:296
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
 msgid "CD-R"
 msgstr "תקליטור"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:299
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
 msgid "CD-RW"
 msgstr "תקליטור רב פעמי"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:303
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD-ROM"
 msgstr "/DVD-ROM"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:306
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD+R"
-msgstr "/DVD-R"
+msgstr "/תקליטור DVD+‎ לצריבה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:309
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD+RW"
-msgstr "/תקליטור רב פעמי"
+msgstr "/תקליטור DVD+‎ רב פעמי"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:312
 #, fuzzy
@@ -296,7 +290,7 @@ msgid "Floppy Drive"
 msgstr "כונן תקליטונים"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:398
-#, fuzzy, qt-format
+#, qt-format
 msgctxt ""
 "Solid::Backends::UDisks2::Device|%1 is the vendor, %2 is the model of the "
 "device"
@@ -304,19 +298,16 @@ msgid "%1 %2"
 msgstr "%1 %2"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:404
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Drive"
 msgstr "כונן"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:434
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "CD-ROM"
 msgstr "תקליטור"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:439
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank CD-R"
 msgstr "תקליטור ריק"
@@ -328,13 +319,11 @@ msgid "CD-R"
 msgstr "תקליטור"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:447
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank CD-RW"
 msgstr "תקליטור רב פעמי ריק"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:449
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "CD-RW"
 msgstr "תקליטור רב פעמי"
@@ -490,22 +479,20 @@ msgid "HD DVD-RW"
 msgstr "תקליטור רב פעמי"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:556
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Audio CD"
 msgstr "תקליטור שמע"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:569
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
 msgid "%1 Encrypted Drive"
-msgstr "מיכל מוצפן %1"
+msgstr "כונן מוצפן %1"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:571
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Encrypted Drive"
-msgstr "מיכל מוצפן"
+msgstr "כונן מוצפן"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:576
 msgctxt "Solid::Backends::UDisks2::Device|"
