@@ -719,7 +719,7 @@ msgctxt "solid-hardware|"
 msgid "Device udi"
 msgstr "设备 UDI"
 
-#: tools/solid-hardware/solid-hardware.cpp:230 tools/solid-power/main.cpp:32
+#: tools/solid-hardware/solid-hardware.cpp:230
 msgctxt "solid-hardware|"
 msgid "Syntax:"
 msgstr "语法："
@@ -934,27 +934,24 @@ msgctxt "SolidHardware|"
 msgid "Error: %1"
 msgstr "错误：%1"
 
-#: tools/solid-power/main.cpp:22
-msgctxt "solid-power|"
-msgid "Tool to know and set the power management state of your device"
-msgstr "查看和设置设备电源管理状态的工具"
+#~ msgctxt "solid-power|"
+#~ msgid "Tool to know and set the power management state of your device"
+#~ msgstr "查看和设置设备电源管理状态的工具"
 
-#: tools/solid-power/main.cpp:24
-msgctxt "solid-power|"
-msgid "Command to execute"
-msgstr "要执行的命令"
+#~ msgctxt "solid-power|"
+#~ msgid "Command to execute"
+#~ msgstr "要执行的命令"
 
-#: tools/solid-power/main.cpp:26
-msgctxt "solid-power|"
-msgid "Show available commands"
-msgstr "显示可用命令"
+#~ msgctxt "solid-power|"
+#~ msgid "Show available commands"
+#~ msgstr "显示可用命令"
 
-#: tools/solid-power/main.cpp:35
-msgctxt "solid-power|"
-msgid ""
-"             # Show all the power management information from the system.\n"
-"             # - acPlugged: whether the device is connected to the AC or "
-"not\n"
-msgstr ""
-"             # 显示系统的全部电源管理信息。\n"
-"             # - acPlugged：设备是否连接到电源\n"
+#~ msgctxt "solid-power|"
+#~ msgid ""
+#~ "             # Show all the power management information from the "
+#~ "system.\n"
+#~ "             # - acPlugged: whether the device is connected to the AC or "
+#~ "not\n"
+#~ msgstr ""
+#~ "             # 显示系统的全部电源管理信息。\n"
+#~ "             # - acPlugged：设备是否连接到电源\n"

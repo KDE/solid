@@ -719,7 +719,7 @@ msgctxt "solid-hardware|"
 msgid "Device udi"
 msgstr "Enhetens UDI"
 
-#: tools/solid-hardware/solid-hardware.cpp:230 tools/solid-power/main.cpp:32
+#: tools/solid-hardware/solid-hardware.cpp:230
 msgctxt "solid-hardware|"
 msgid "Syntax:"
 msgstr "Syntax:"
@@ -947,31 +947,29 @@ msgctxt "SolidHardware|"
 msgid "Error: %1"
 msgstr "Fel: %1"
 
-#: tools/solid-power/main.cpp:22
-msgctxt "solid-power|"
-msgid "Tool to know and set the power management state of your device"
-msgstr ""
-"Verktyg för att ta reda på och ställa in enhetens strömhanteringstillstånd"
+#~ msgctxt "solid-power|"
+#~ msgid "Tool to know and set the power management state of your device"
+#~ msgstr ""
+#~ "Verktyg för att ta reda på och ställa in enhetens strömhanteringstillstånd"
 
-#: tools/solid-power/main.cpp:24
-msgctxt "solid-power|"
-msgid "Command to execute"
-msgstr "Kommando att köra"
+#~ msgctxt "solid-power|"
+#~ msgid "Command to execute"
+#~ msgstr "Kommando att köra"
 
-#: tools/solid-power/main.cpp:26
-msgctxt "solid-power|"
-msgid "Show available commands"
-msgstr "Visa tillgängliga kommandon"
+#~ msgctxt "solid-power|"
+#~ msgid "Show available commands"
+#~ msgstr "Visa tillgängliga kommandon"
 
-#: tools/solid-power/main.cpp:35
-msgctxt "solid-power|"
-msgid ""
-"             # Show all the power management information from the system.\n"
-"             # - acPlugged: whether the device is connected to the AC or "
-"not\n"
-msgstr ""
-"             # Visa alla strömhanteringsinformation för systemet.\n"
-"             # - acPlugged: om enheten är ansluten till elnätet eller inte\n"
+#~ msgctxt "solid-power|"
+#~ msgid ""
+#~ "             # Show all the power management information from the "
+#~ "system.\n"
+#~ "             # - acPlugged: whether the device is connected to the AC or "
+#~ "not\n"
+#~ msgstr ""
+#~ "             # Visa alla strömhanteringsinformation för systemet.\n"
+#~ "             # - acPlugged: om enheten är ansluten till elnätet eller "
+#~ "inte\n"
 
 #~ msgctxt "Solid::Backends::Hal::HalDevice|"
 #~ msgid "%1 TiB"

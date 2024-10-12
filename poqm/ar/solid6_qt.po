@@ -722,7 +722,7 @@ msgctxt "solid-hardware|"
 msgid "Device udi"
 msgstr "معرف الجهاز"
 
-#: tools/solid-hardware/solid-hardware.cpp:230 tools/solid-power/main.cpp:32
+#: tools/solid-hardware/solid-hardware.cpp:230
 msgctxt "solid-hardware|"
 msgid "Syntax:"
 msgstr "الصياغة:"
@@ -937,30 +937,27 @@ msgctxt "SolidHardware|"
 msgid "Error: %1"
 msgstr "خطأ: %1"
 
-#: tools/solid-power/main.cpp:22
-msgctxt "solid-power|"
-msgid "Tool to know and set the power management state of your device"
-msgstr "أداة لمعرفة وضبط  حالة إدارة الطاقة على جهازك."
+#~ msgctxt "solid-power|"
+#~ msgid "Tool to know and set the power management state of your device"
+#~ msgstr "أداة لمعرفة وضبط  حالة إدارة الطاقة على جهازك."
 
-#: tools/solid-power/main.cpp:24
-msgctxt "solid-power|"
-msgid "Command to execute"
-msgstr "الأمر لتنفيذه"
+#~ msgctxt "solid-power|"
+#~ msgid "Command to execute"
+#~ msgstr "الأمر لتنفيذه"
 
-#: tools/solid-power/main.cpp:26
-msgctxt "solid-power|"
-msgid "Show available commands"
-msgstr "أظهر الأوامر المتوفّرة"
+#~ msgctxt "solid-power|"
+#~ msgid "Show available commands"
+#~ msgstr "أظهر الأوامر المتوفّرة"
 
-#: tools/solid-power/main.cpp:35
-msgctxt "solid-power|"
-msgid ""
-"             # Show all the power management information from the system.\n"
-"             # - acPlugged: whether the device is connected to the AC or "
-"not\n"
-msgstr ""
-"             # تظهر كل معلومات إدارة الطاقة من الجهاز.\n"
-"             # - acPlugged: إذا ما كان الجهاز موصول بالكهرباء أم لا\n"
+#~ msgctxt "solid-power|"
+#~ msgid ""
+#~ "             # Show all the power management information from the "
+#~ "system.\n"
+#~ "             # - acPlugged: whether the device is connected to the AC or "
+#~ "not\n"
+#~ msgstr ""
+#~ "             # تظهر كل معلومات إدارة الطاقة من الجهاز.\n"
+#~ "             # - acPlugged: إذا ما كان الجهاز موصول بالكهرباء أم لا\n"
 
 #~ msgctxt "Solid::Backends::Hal::HalDevice|"
 #~ msgid "%1 TiB"

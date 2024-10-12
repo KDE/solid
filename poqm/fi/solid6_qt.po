@@ -733,7 +733,7 @@ msgctxt "solid-hardware|"
 msgid "Device udi"
 msgstr "Laitteen UDI"
 
-#: tools/solid-hardware/solid-hardware.cpp:230 tools/solid-power/main.cpp:32
+#: tools/solid-hardware/solid-hardware.cpp:230
 msgctxt "solid-hardware|"
 msgid "Syntax:"
 msgstr "Syntaksi:"
@@ -978,30 +978,27 @@ msgctxt "SolidHardware|"
 msgid "Error: %1"
 msgstr "Virhe: %1"
 
-#: tools/solid-power/main.cpp:22
-msgctxt "solid-power|"
-msgid "Tool to know and set the power management state of your device"
-msgstr "Työkalu laitteen virranhallinnan tilan lukemiseen ja muuttamiseen"
+#~ msgctxt "solid-power|"
+#~ msgid "Tool to know and set the power management state of your device"
+#~ msgstr "Työkalu laitteen virranhallinnan tilan lukemiseen ja muuttamiseen"
 
-#: tools/solid-power/main.cpp:24
-msgctxt "solid-power|"
-msgid "Command to execute"
-msgstr "Suoritettava komento"
+#~ msgctxt "solid-power|"
+#~ msgid "Command to execute"
+#~ msgstr "Suoritettava komento"
 
-#: tools/solid-power/main.cpp:26
-msgctxt "solid-power|"
-msgid "Show available commands"
-msgstr "Näytä mahdolliset komennot"
+#~ msgctxt "solid-power|"
+#~ msgid "Show available commands"
+#~ msgstr "Näytä mahdolliset komennot"
 
-#: tools/solid-power/main.cpp:35
-msgctxt "solid-power|"
-msgid ""
-"             # Show all the power management information from the system.\n"
-"             # - acPlugged: whether the device is connected to the AC or "
-"not\n"
-msgstr ""
-"             # Näytä kaikki järjestelmän virranhallinnan tiedot.\n"
-"             # – acPlugged: onko laite yhdistettynä verkkovirtaan vai ei\n"
+#~ msgctxt "solid-power|"
+#~ msgid ""
+#~ "             # Show all the power management information from the "
+#~ "system.\n"
+#~ "             # - acPlugged: whether the device is connected to the AC or "
+#~ "not\n"
+#~ msgstr ""
+#~ "             # Näytä kaikki järjestelmän virranhallinnan tiedot.\n"
+#~ "             # – acPlugged: onko laite yhdistettynä verkkovirtaan vai ei\n"
 
 #~ msgctxt "Solid::Backends::Hal::HalDevice|"
 #~ msgid "%1 TiB"

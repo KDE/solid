@@ -726,7 +726,7 @@ msgctxt "solid-hardware|"
 msgid "Device udi"
 msgstr "UDI dispozitiv"
 
-#: tools/solid-hardware/solid-hardware.cpp:230 tools/solid-power/main.cpp:32
+#: tools/solid-hardware/solid-hardware.cpp:230
 msgctxt "solid-hardware|"
 msgid "Syntax:"
 msgstr "Sintaxă:"
@@ -926,30 +926,19 @@ msgctxt "SolidHardware|"
 msgid "Error: %1"
 msgstr "Eroare: %1"
 
-#: tools/solid-power/main.cpp:22
-msgctxt "solid-power|"
-msgid "Tool to know and set the power management state of your device"
-msgstr ""
-"Unealtă pentru aflarea și stabilirea stării de gestiune a alimentării a "
-"dispozitivului"
+#~ msgctxt "solid-power|"
+#~ msgid "Tool to know and set the power management state of your device"
+#~ msgstr ""
+#~ "Unealtă pentru aflarea și stabilirea stării de gestiune a alimentării a "
+#~ "dispozitivului"
 
-#: tools/solid-power/main.cpp:24
-msgctxt "solid-power|"
-msgid "Command to execute"
-msgstr "Comanda de executat"
+#~ msgctxt "solid-power|"
+#~ msgid "Command to execute"
+#~ msgstr "Comanda de executat"
 
-#: tools/solid-power/main.cpp:26
-msgctxt "solid-power|"
-msgid "Show available commands"
-msgstr "Arată comenzile disponibile"
-
-#: tools/solid-power/main.cpp:35
-msgctxt "solid-power|"
-msgid ""
-"             # Show all the power management information from the system.\n"
-"             # - acPlugged: whether the device is connected to the AC or "
-"not\n"
-msgstr ""
+#~ msgctxt "solid-power|"
+#~ msgid "Show available commands"
+#~ msgstr "Arată comenzile disponibile"
 
 #~ msgctxt "Solid::Backends::Hal::HalDevice|"
 #~ msgid "%1 TiB"

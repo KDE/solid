@@ -726,7 +726,7 @@ msgctxt "solid-hardware|"
 msgid "Device udi"
 msgstr "UDI urządzenia"
 
-#: tools/solid-hardware/solid-hardware.cpp:230 tools/solid-power/main.cpp:32
+#: tools/solid-hardware/solid-hardware.cpp:230
 msgctxt "solid-hardware|"
 msgid "Syntax:"
 msgstr "Składnia:"
@@ -958,32 +958,30 @@ msgctxt "SolidHardware|"
 msgid "Error: %1"
 msgstr "Błąd: %1"
 
-#: tools/solid-power/main.cpp:22
-msgctxt "solid-power|"
-msgid "Tool to know and set the power management state of your device"
-msgstr "Narzędzie do wglądu i ustawiania stanów energetycznych twoich urządzeń"
+#~ msgctxt "solid-power|"
+#~ msgid "Tool to know and set the power management state of your device"
+#~ msgstr ""
+#~ "Narzędzie do wglądu i ustawiania stanów energetycznych twoich urządzeń"
 
-#: tools/solid-power/main.cpp:24
-msgctxt "solid-power|"
-msgid "Command to execute"
-msgstr "Polecenie do wykonania"
+#~ msgctxt "solid-power|"
+#~ msgid "Command to execute"
+#~ msgstr "Polecenie do wykonania"
 
-#: tools/solid-power/main.cpp:26
-msgctxt "solid-power|"
-msgid "Show available commands"
-msgstr "Pokaż dostępne polecenia"
+#~ msgctxt "solid-power|"
+#~ msgid "Show available commands"
+#~ msgstr "Pokaż dostępne polecenia"
 
-#: tools/solid-power/main.cpp:35
-msgctxt "solid-power|"
-msgid ""
-"             # Show all the power management information from the system.\n"
-"             # - acPlugged: whether the device is connected to the AC or "
-"not\n"
-msgstr ""
-"             # Pokaż wszystkie informacje o zarządzaniu energią w twoim "
-"systemie.\n"
-"             # - acPlugged: określa czy urządzanie jest podłączone do "
-"zasilania z sieci czy nie\n"
+#~ msgctxt "solid-power|"
+#~ msgid ""
+#~ "             # Show all the power management information from the "
+#~ "system.\n"
+#~ "             # - acPlugged: whether the device is connected to the AC or "
+#~ "not\n"
+#~ msgstr ""
+#~ "             # Pokaż wszystkie informacje o zarządzaniu energią w twoim "
+#~ "systemie.\n"
+#~ "             # - acPlugged: określa czy urządzanie jest podłączone do "
+#~ "zasilania z sieci czy nie\n"
 
 #~ msgctxt "Solid::Backends::Hal::HalDevice|"
 #~ msgid "%1 TiB"

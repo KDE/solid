@@ -756,7 +756,7 @@ msgctxt "solid-hardware|"
 msgid "Device udi"
 msgstr "УДИ уређаја"
 
-#: tools/solid-hardware/solid-hardware.cpp:230 tools/solid-power/main.cpp:32
+#: tools/solid-hardware/solid-hardware.cpp:230
 msgctxt "solid-hardware|"
 msgid "Syntax:"
 msgstr "Синтакса:"
@@ -993,30 +993,28 @@ msgctxt "SolidHardware|"
 msgid "Error: %1"
 msgstr "Грешка: %1"
 
-#: tools/solid-power/main.cpp:22
-msgctxt "solid-power|"
-msgid "Tool to know and set the power management state of your device"
-msgstr "Алатка за очитавање и постављање стања управљања напајањем на уређају"
+#~ msgctxt "solid-power|"
+#~ msgid "Tool to know and set the power management state of your device"
+#~ msgstr ""
+#~ "Алатка за очитавање и постављање стања управљања напајањем на уређају"
 
-#: tools/solid-power/main.cpp:24
-msgctxt "solid-power|"
-msgid "Command to execute"
-msgstr "Наредба за извршавање"
+#~ msgctxt "solid-power|"
+#~ msgid "Command to execute"
+#~ msgstr "Наредба за извршавање"
 
-#: tools/solid-power/main.cpp:26
-msgctxt "solid-power|"
-msgid "Show available commands"
-msgstr "Прикажи расположиве наредбе"
+#~ msgctxt "solid-power|"
+#~ msgid "Show available commands"
+#~ msgstr "Прикажи расположиве наредбе"
 
-#: tools/solid-power/main.cpp:35
-msgctxt "solid-power|"
-msgid ""
-"             # Show all the power management information from the system.\n"
-"             # - acPlugged: whether the device is connected to the AC or "
-"not\n"
-msgstr ""
-"             # Приказује све податке о управљању напајањем на систему.\n"
-"             # - acPlugged: да ли је уређај повезан на струју или не\n"
+#~ msgctxt "solid-power|"
+#~ msgid ""
+#~ "             # Show all the power management information from the "
+#~ "system.\n"
+#~ "             # - acPlugged: whether the device is connected to the AC or "
+#~ "not\n"
+#~ msgstr ""
+#~ "             # Приказује све податке о управљању напајањем на систему.\n"
+#~ "             # - acPlugged: да ли је уређај повезан на струју или не\n"
 
 #~ msgctxt "Solid::Backends::Hal::HalDevice|"
 #~ msgid "%1 TiB"

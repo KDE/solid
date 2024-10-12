@@ -745,7 +745,7 @@ msgctxt "solid-hardware|"
 msgid "Device udi"
 msgstr "Seadme UDI"
 
-#: tools/solid-hardware/solid-hardware.cpp:230 tools/solid-power/main.cpp:32
+#: tools/solid-hardware/solid-hardware.cpp:230
 msgctxt "solid-hardware|"
 msgid "Syntax:"
 msgstr "Süntaks:"
@@ -986,30 +986,28 @@ msgctxt "SolidHardware|"
 msgid "Error: %1"
 msgstr "Tõrge: %1"
 
-#: tools/solid-power/main.cpp:22
-msgctxt "solid-power|"
-msgid "Tool to know and set the power management state of your device"
-msgstr "Tööriist sinu seadme toitehalduse uurimiseks ja haldamiseks"
+#~ msgctxt "solid-power|"
+#~ msgid "Tool to know and set the power management state of your device"
+#~ msgstr "Tööriist sinu seadme toitehalduse uurimiseks ja haldamiseks"
 
-#: tools/solid-power/main.cpp:24
-msgctxt "solid-power|"
-msgid "Command to execute"
-msgstr "Käivitatav käsk"
+#~ msgctxt "solid-power|"
+#~ msgid "Command to execute"
+#~ msgstr "Käivitatav käsk"
 
-#: tools/solid-power/main.cpp:26
-msgctxt "solid-power|"
-msgid "Show available commands"
-msgstr "Saadaolevate käskude näitamine"
+#~ msgctxt "solid-power|"
+#~ msgid "Show available commands"
+#~ msgstr "Saadaolevate käskude näitamine"
 
-#: tools/solid-power/main.cpp:35
-msgctxt "solid-power|"
-msgid ""
-"             # Show all the power management information from the system.\n"
-"             # - acPlugged: whether the device is connected to the AC or "
-"not\n"
-msgstr ""
-"             # Kogu süsteemi toitehaldusteabe näitamine.\n"
-"             # - acPlugged: kas seade on ühendatud vooluvõrguga või mitte\n"
+#~ msgctxt "solid-power|"
+#~ msgid ""
+#~ "             # Show all the power management information from the "
+#~ "system.\n"
+#~ "             # - acPlugged: whether the device is connected to the AC or "
+#~ "not\n"
+#~ msgstr ""
+#~ "             # Kogu süsteemi toitehaldusteabe näitamine.\n"
+#~ "             # - acPlugged: kas seade on ühendatud vooluvõrguga või "
+#~ "mitte\n"
 
 #~ msgctxt "Solid::Backends::Hal::HalDevice|"
 #~ msgid "%1 TiB"

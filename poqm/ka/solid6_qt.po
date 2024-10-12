@@ -719,7 +719,7 @@ msgctxt "solid-hardware|"
 msgid "Device udi"
 msgstr "მოწყობილობა udi"
 
-#: tools/solid-hardware/solid-hardware.cpp:230 tools/solid-power/main.cpp:32
+#: tools/solid-hardware/solid-hardware.cpp:230
 msgctxt "solid-hardware|"
 msgid "Syntax:"
 msgstr "სინტაქსი:"
@@ -957,29 +957,26 @@ msgctxt "SolidHardware|"
 msgid "Error: %1"
 msgstr "შეცდომა: %1"
 
-#: tools/solid-power/main.cpp:22
-msgctxt "solid-power|"
-msgid "Tool to know and set the power management state of your device"
-msgstr ""
-"ხელსაწყო თქვენი მოწყობილობის კვების მართვის დასაყენებლად და მდგომარეობის "
-"გამოსათხოვად"
+#~ msgctxt "solid-power|"
+#~ msgid "Tool to know and set the power management state of your device"
+#~ msgstr ""
+#~ "ხელსაწყო თქვენი მოწყობილობის კვების მართვის დასაყენებლად და მდგომარეობის "
+#~ "გამოსათხოვად"
 
-#: tools/solid-power/main.cpp:24
-msgctxt "solid-power|"
-msgid "Command to execute"
-msgstr "შესასრულებელი ბრძანება"
+#~ msgctxt "solid-power|"
+#~ msgid "Command to execute"
+#~ msgstr "შესასრულებელი ბრძანება"
 
-#: tools/solid-power/main.cpp:26
-msgctxt "solid-power|"
-msgid "Show available commands"
-msgstr "ხელმისაწვდომი ბრძანებების ჩვენება"
+#~ msgctxt "solid-power|"
+#~ msgid "Show available commands"
+#~ msgstr "ხელმისაწვდომი ბრძანებების ჩვენება"
 
-#: tools/solid-power/main.cpp:35
-msgctxt "solid-power|"
-msgid ""
-"             # Show all the power management information from the system.\n"
-"             # - acPlugged: whether the device is connected to the AC or "
-"not\n"
-msgstr ""
-"             # სისტემიდან კვების მართვის სრული ინფორმაციის ჩვენება.\n"
-"             # - acPlugged: არის თუ არა მოწყობილობა მიერთებული 220V-ზე\n"
+#~ msgctxt "solid-power|"
+#~ msgid ""
+#~ "             # Show all the power management information from the "
+#~ "system.\n"
+#~ "             # - acPlugged: whether the device is connected to the AC or "
+#~ "not\n"
+#~ msgstr ""
+#~ "             # სისტემიდან კვების მართვის სრული ინფორმაციის ჩვენება.\n"
+#~ "             # - acPlugged: არის თუ არა მოწყობილობა მიერთებული 220V-ზე\n"

@@ -750,7 +750,7 @@ msgctxt "solid-hardware|"
 msgid "Device udi"
 msgstr "Uređaj UDI"
 
-#: tools/solid-hardware/solid-hardware.cpp:230 tools/solid-power/main.cpp:32
+#: tools/solid-hardware/solid-hardware.cpp:230
 msgctxt "solid-hardware|"
 msgid "Syntax:"
 msgstr "Sintaksa:"
@@ -989,31 +989,29 @@ msgctxt "SolidHardware|"
 msgid "Error: %1"
 msgstr "Greška: %1"
 
-#: tools/solid-power/main.cpp:22
-msgctxt "solid-power|"
-msgid "Tool to know and set the power management state of your device"
-msgstr "Alat da se prepozna i postavi stanje napajanja vašeg uređaja"
+#~ msgctxt "solid-power|"
+#~ msgid "Tool to know and set the power management state of your device"
+#~ msgstr "Alat da se prepozna i postavi stanje napajanja vašeg uređaja"
 
-#: tools/solid-power/main.cpp:24
-msgctxt "solid-power|"
-msgid "Command to execute"
-msgstr "Naredba koju treba izvršiti"
+#~ msgctxt "solid-power|"
+#~ msgid "Command to execute"
+#~ msgstr "Naredba koju treba izvršiti"
 
-#: tools/solid-power/main.cpp:26
-msgctxt "solid-power|"
-msgid "Show available commands"
-msgstr "Prikaži dostupne naredbe"
+#~ msgctxt "solid-power|"
+#~ msgid "Show available commands"
+#~ msgstr "Prikaži dostupne naredbe"
 
-#: tools/solid-power/main.cpp:35
-msgctxt "solid-power|"
-msgid ""
-"             # Show all the power management information from the system.\n"
-"             # - acPlugged: whether the device is connected to the AC or "
-"not\n"
-msgstr ""
-"             # Prikaži sve informacije o upravljanju napajanjem iz sistema.\n"
-"             # - acPlugged: da li je uređaj povezan na naizmjeničnu struju "
-"ili ne\n"
+#~ msgctxt "solid-power|"
+#~ msgid ""
+#~ "             # Show all the power management information from the "
+#~ "system.\n"
+#~ "             # - acPlugged: whether the device is connected to the AC or "
+#~ "not\n"
+#~ msgstr ""
+#~ "             # Prikaži sve informacije o upravljanju napajanjem iz "
+#~ "sistema.\n"
+#~ "             # - acPlugged: da li je uređaj povezan na naizmjeničnu "
+#~ "struju ili ne\n"
 
 #~ msgctxt "Solid::Backends::Hal::HalDevice|"
 #~ msgid "%1 TiB"

@@ -731,7 +731,7 @@ msgctxt "solid-hardware|"
 msgid "Device udi"
 msgstr "Enheder"
 
-#: tools/solid-hardware/solid-hardware.cpp:230 tools/solid-power/main.cpp:32
+#: tools/solid-hardware/solid-hardware.cpp:230
 msgctxt "solid-hardware|"
 msgid "Syntax:"
 msgstr "Syntaks:"
@@ -978,31 +978,28 @@ msgctxt "SolidHardware|"
 msgid "Error: %1"
 msgstr "Fejl: %1"
 
-#: tools/solid-power/main.cpp:22
-msgctxt "solid-power|"
-msgid "Tool to know and set the power management state of your device"
-msgstr "Værktøj til at se og angive strømstyringstilstand for din enhed"
+#~ msgctxt "solid-power|"
+#~ msgid "Tool to know and set the power management state of your device"
+#~ msgstr "Værktøj til at se og angive strømstyringstilstand for din enhed"
 
-#: tools/solid-power/main.cpp:24
-msgctxt "solid-power|"
-msgid "Command to execute"
-msgstr "Kommando der skal køres"
+#~ msgctxt "solid-power|"
+#~ msgid "Command to execute"
+#~ msgstr "Kommando der skal køres"
 
-#: tools/solid-power/main.cpp:26
-msgctxt "solid-power|"
-msgid "Show available commands"
-msgstr "Vis tilgængelige kommandoer"
+#~ msgctxt "solid-power|"
+#~ msgid "Show available commands"
+#~ msgstr "Vis tilgængelige kommandoer"
 
-#: tools/solid-power/main.cpp:35
-msgctxt "solid-power|"
-msgid ""
-"             # Show all the power management information from the system.\n"
-"             # - acPlugged: whether the device is connected to the AC or "
-"not\n"
-msgstr ""
-"             # Vis al strømstyringsinformation fra systemet.\n"
-"             # - acPlugged: om enheden er sluttet til strømforsyningen eller "
-"ej\n"
+#~ msgctxt "solid-power|"
+#~ msgid ""
+#~ "             # Show all the power management information from the "
+#~ "system.\n"
+#~ "             # - acPlugged: whether the device is connected to the AC or "
+#~ "not\n"
+#~ msgstr ""
+#~ "             # Vis al strømstyringsinformation fra systemet.\n"
+#~ "             # - acPlugged: om enheden er sluttet til strømforsyningen "
+#~ "eller ej\n"
 
 #~ msgctxt "Solid::Backends::Hal::HalDevice|"
 #~ msgid "%1 TiB"

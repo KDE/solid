@@ -728,7 +728,7 @@ msgctxt "solid-hardware|"
 msgid "Device udi"
 msgstr "Geräte-UDI"
 
-#: tools/solid-hardware/solid-hardware.cpp:230 tools/solid-power/main.cpp:32
+#: tools/solid-hardware/solid-hardware.cpp:230
 msgctxt "solid-hardware|"
 msgid "Syntax:"
 msgstr "Syntax:"
@@ -968,33 +968,30 @@ msgctxt "SolidHardware|"
 msgid "Error: %1"
 msgstr "Fehler: %1"
 
-#: tools/solid-power/main.cpp:22
-msgctxt "solid-power|"
-msgid "Tool to know and set the power management state of your device"
-msgstr ""
-"Dienstprogramm zur Anzeige und Einstellung des Energieverwaltungstatus Ihres "
-"Geräts"
+#~ msgctxt "solid-power|"
+#~ msgid "Tool to know and set the power management state of your device"
+#~ msgstr ""
+#~ "Dienstprogramm zur Anzeige und Einstellung des Energieverwaltungstatus "
+#~ "Ihres Geräts"
 
-#: tools/solid-power/main.cpp:24
-msgctxt "solid-power|"
-msgid "Command to execute"
-msgstr "Auszuführender Befehl"
+#~ msgctxt "solid-power|"
+#~ msgid "Command to execute"
+#~ msgstr "Auszuführender Befehl"
 
-#: tools/solid-power/main.cpp:26
-msgctxt "solid-power|"
-msgid "Show available commands"
-msgstr "Verfügbare Befehle anzeigen"
+#~ msgctxt "solid-power|"
+#~ msgid "Show available commands"
+#~ msgstr "Verfügbare Befehle anzeigen"
 
-#: tools/solid-power/main.cpp:35
-msgctxt "solid-power|"
-msgid ""
-"             # Show all the power management information from the system.\n"
-"             # - acPlugged: whether the device is connected to the AC or "
-"not\n"
-msgstr ""
-"             # Zeigt alle Energieverwaltungsinformationen des Systems.\n"
-"             # - acPlugged: gibt an, ob das Gerät mit dem Netzteil verbunden "
-"ist\n"
+#~ msgctxt "solid-power|"
+#~ msgid ""
+#~ "             # Show all the power management information from the "
+#~ "system.\n"
+#~ "             # - acPlugged: whether the device is connected to the AC or "
+#~ "not\n"
+#~ msgstr ""
+#~ "             # Zeigt alle Energieverwaltungsinformationen des Systems.\n"
+#~ "             # - acPlugged: gibt an, ob das Gerät mit dem Netzteil "
+#~ "verbunden ist\n"
 
 #~ msgctxt "Solid::Backends::Hal::HalDevice|"
 #~ msgid "%1 TiB"

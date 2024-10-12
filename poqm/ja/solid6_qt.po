@@ -727,7 +727,7 @@ msgctxt "solid-hardware|"
 msgid "Device udi"
 msgstr "デバイス UDI"
 
-#: tools/solid-hardware/solid-hardware.cpp:230 tools/solid-power/main.cpp:32
+#: tools/solid-hardware/solid-hardware.cpp:230
 msgctxt "solid-hardware|"
 msgid "Syntax:"
 msgstr "構文:"
@@ -978,27 +978,24 @@ msgctxt "SolidHardware|"
 msgid "Error: %1"
 msgstr "エラー: %1"
 
-#: tools/solid-power/main.cpp:22
-msgctxt "solid-power|"
-msgid "Tool to know and set the power management state of your device"
-msgstr "デバイスの電源管理状態を把握して設定するツール"
+#~ msgctxt "solid-power|"
+#~ msgid "Tool to know and set the power management state of your device"
+#~ msgstr "デバイスの電源管理状態を把握して設定するツール"
 
-#: tools/solid-power/main.cpp:24
-msgctxt "solid-power|"
-msgid "Command to execute"
-msgstr "実行するコマンド"
+#~ msgctxt "solid-power|"
+#~ msgid "Command to execute"
+#~ msgstr "実行するコマンド"
 
-#: tools/solid-power/main.cpp:26
-msgctxt "solid-power|"
-msgid "Show available commands"
-msgstr "利用可能なコマンドを表示する"
+#~ msgctxt "solid-power|"
+#~ msgid "Show available commands"
+#~ msgstr "利用可能なコマンドを表示する"
 
-#: tools/solid-power/main.cpp:35
-msgctxt "solid-power|"
-msgid ""
-"             # Show all the power management information from the system.\n"
-"             # - acPlugged: whether the device is connected to the AC or "
-"not\n"
-msgstr ""
-"             # システム由来のすべての電源管理情報を表示します。\n"
-"             # - acPlugged: デバイスがACに接続されているかどうか\n"
+#~ msgctxt "solid-power|"
+#~ msgid ""
+#~ "             # Show all the power management information from the "
+#~ "system.\n"
+#~ "             # - acPlugged: whether the device is connected to the AC or "
+#~ "not\n"
+#~ msgstr ""
+#~ "             # システム由来のすべての電源管理情報を表示します。\n"
+#~ "             # - acPlugged: デバイスがACに接続されているかどうか\n"

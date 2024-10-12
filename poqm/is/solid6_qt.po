@@ -727,7 +727,7 @@ msgctxt "solid-hardware|"
 msgid "Device udi"
 msgstr "UDI tækis"
 
-#: tools/solid-hardware/solid-hardware.cpp:230 tools/solid-power/main.cpp:32
+#: tools/solid-hardware/solid-hardware.cpp:230
 msgctxt "solid-hardware|"
 msgid "Syntax:"
 msgstr "Notkun:"
@@ -953,30 +953,27 @@ msgctxt "SolidHardware|"
 msgid "Error: %1"
 msgstr "Villa: %1"
 
-#: tools/solid-power/main.cpp:22
-msgctxt "solid-power|"
-msgid "Tool to know and set the power management state of your device"
-msgstr "Verkfæri til að þekkja og stilla orkustjórnunarstöðu tækisins þíns"
+#~ msgctxt "solid-power|"
+#~ msgid "Tool to know and set the power management state of your device"
+#~ msgstr "Verkfæri til að þekkja og stilla orkustjórnunarstöðu tækisins þíns"
 
-#: tools/solid-power/main.cpp:24
-msgctxt "solid-power|"
-msgid "Command to execute"
-msgstr "Skipun til að keyra"
+#~ msgctxt "solid-power|"
+#~ msgid "Command to execute"
+#~ msgstr "Skipun til að keyra"
 
-#: tools/solid-power/main.cpp:26
-msgctxt "solid-power|"
-msgid "Show available commands"
-msgstr "Sýna tiltækar skipanir"
+#~ msgctxt "solid-power|"
+#~ msgid "Show available commands"
+#~ msgstr "Sýna tiltækar skipanir"
 
-#: tools/solid-power/main.cpp:35
-msgctxt "solid-power|"
-msgid ""
-"             # Show all the power management information from the system.\n"
-"             # - acPlugged: whether the device is connected to the AC or "
-"not\n"
-msgstr ""
-"             # Sýna alla orkustjórnunarupplýsingar úr kerfinu.\n"
-"             # - acPlugged: hvort tækið sé tengt við rafmagn eða ekki\n"
+#~ msgctxt "solid-power|"
+#~ msgid ""
+#~ "             # Show all the power management information from the "
+#~ "system.\n"
+#~ "             # - acPlugged: whether the device is connected to the AC or "
+#~ "not\n"
+#~ msgstr ""
+#~ "             # Sýna alla orkustjórnunarupplýsingar úr kerfinu.\n"
+#~ "             # - acPlugged: hvort tækið sé tengt við rafmagn eða ekki\n"
 
 #~ msgctxt "Solid::Backends::Hal::HalDevice|"
 #~ msgid "%1 TiB"

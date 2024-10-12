@@ -726,7 +726,7 @@ msgctxt "solid-hardware|"
 msgid "Device udi"
 msgstr "Dispositivo udi"
 
-#: tools/solid-hardware/solid-hardware.cpp:230 tools/solid-power/main.cpp:32
+#: tools/solid-hardware/solid-hardware.cpp:230
 msgctxt "solid-hardware|"
 msgid "Syntax:"
 msgstr "Syntaxe:"
@@ -965,33 +965,30 @@ msgctxt "SolidHardware|"
 msgid "Error: %1"
 msgstr "Error: %1"
 
-#: tools/solid-power/main.cpp:22
-msgctxt "solid-power|"
-msgid "Tool to know and set the power management state of your device"
-msgstr ""
-"Instrumento per saper e fixar le stato de gestion de energia de tu "
-"dispositivo"
+#~ msgctxt "solid-power|"
+#~ msgid "Tool to know and set the power management state of your device"
+#~ msgstr ""
+#~ "Instrumento per saper e fixar le stato de gestion de energia de tu "
+#~ "dispositivo"
 
-#: tools/solid-power/main.cpp:24
-msgctxt "solid-power|"
-msgid "Command to execute"
-msgstr "Commando que il debe exequer"
+#~ msgctxt "solid-power|"
+#~ msgid "Command to execute"
+#~ msgstr "Commando que il debe exequer"
 
-#: tools/solid-power/main.cpp:26
-msgctxt "solid-power|"
-msgid "Show available commands"
-msgstr "Monstra commandos disponibile"
+#~ msgctxt "solid-power|"
+#~ msgid "Show available commands"
+#~ msgstr "Monstra commandos disponibile"
 
-#: tools/solid-power/main.cpp:35
-msgctxt "solid-power|"
-msgid ""
-"             # Show all the power management information from the system.\n"
-"             # - acPlugged: whether the device is connected to the AC or "
-"not\n"
-msgstr ""
-"             # Monstra tote le information de gestion de energia ex le "
-"systema.\n"
-"             # - acPlugged: si le dispositivo es connectite al AC o no\n"
+#~ msgctxt "solid-power|"
+#~ msgid ""
+#~ "             # Show all the power management information from the "
+#~ "system.\n"
+#~ "             # - acPlugged: whether the device is connected to the AC or "
+#~ "not\n"
+#~ msgstr ""
+#~ "             # Monstra tote le information de gestion de energia ex le "
+#~ "systema.\n"
+#~ "             # - acPlugged: si le dispositivo es connectite al AC o no\n"
 
 #~ msgctxt "Solid::Backends::Hal::HalDevice|"
 #~ msgid "%1 TiB"

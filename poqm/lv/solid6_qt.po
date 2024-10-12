@@ -5,19 +5,20 @@
 # Viesturs Zariņš <viesturs.zarins@mii.lu.lv>, 2009.
 # Viesturs Zarins <viesturs.zarins@mii.lu.lv>, 2010.
 # Maris Nartiss <maris.kde@gmail.com>, 2011, 2024.
+# SPDX-FileCopyrightText: 2024 Toms Trasuns <toms.trasuns@posteo.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: solid_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-01 01:49+0000\n"
-"PO-Revision-Date: 2024-01-20 14:36+0200\n"
-"Last-Translator: Māris Nartišs <maris.kde@gmail.com>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2024-10-10 16:45+0300\n"
+"Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
+"Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 24.08.1\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
 "X-Qt-Contexts: true\n"
@@ -26,7 +27,7 @@ msgstr ""
 #, qt-format
 msgctxt "%1 is sharename, %2 is servername"
 msgid "%1 on %2"
-msgstr "%1 uz %2"
+msgstr "„%1“ on „%2“"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:61
 #, qt-format
@@ -483,7 +484,7 @@ msgstr "%1 datu nesējs"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:586
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Storage Media"
-msgstr "Glabāšanas iekārta"
+msgstr "Krātuves iekārta"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:733
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -572,12 +573,12 @@ msgstr "Ir notikusi nenorādīta kļūda"
 #: solid/devices/backends/udisks2/udisksmanager.cpp:75
 msgctxt "Solid::Backends::UDisks2::Manager|"
 msgid "Storage"
-msgstr "Glabāšana"
+msgstr "Krātuve"
 
 #: solid/devices/backends/udisks2/udisksmanager.cpp:76
 msgctxt "Solid::Backends::UDisks2::Manager|"
 msgid "Storage devices"
-msgstr "Glabāšanas iekārtas"
+msgstr "Krātuves iekārtas"
 
 #: solid/devices/backends/upower/upowerdevice.cpp:117
 #, qt-format
@@ -680,12 +681,12 @@ msgstr "Bloka"
 #: solid/devices/frontend/deviceinterface.cpp:61
 msgctxt "Solid::DeviceInterface|Storage Access device type"
 msgid "Storage Access"
-msgstr "Glabāšanas piekļuves"
+msgstr "Krātuves piekļuves"
 
 #: solid/devices/frontend/deviceinterface.cpp:63
 msgctxt "Solid::DeviceInterface|Storage Drive device type"
 msgid "Storage Drive"
-msgstr "Glabāšanas disks"
+msgstr "Krātuves disks"
 
 #: solid/devices/frontend/deviceinterface.cpp:65
 msgctxt "Solid::DeviceInterface|Optical Drive device type"
@@ -695,7 +696,7 @@ msgstr "Optiskais dzinis"
 #: solid/devices/frontend/deviceinterface.cpp:67
 msgctxt "Solid::DeviceInterface|Storage Volume device type"
 msgid "Storage Volume"
-msgstr "Glabāšanas sējums"
+msgstr "Krātuves sējums"
 
 #: solid/devices/frontend/deviceinterface.cpp:69
 msgctxt "Solid::DeviceInterface|Optical Disc device type"
@@ -728,7 +729,7 @@ msgctxt "solid-hardware|"
 msgid "Device udi"
 msgstr "Iekārtas UDI"
 
-#: tools/solid-hardware/solid-hardware.cpp:230 tools/solid-power/main.cpp:32
+#: tools/solid-hardware/solid-hardware.cpp:230
 msgctxt "solid-hardware|"
 msgid "Syntax:"
 msgstr "Sintakse:"
@@ -748,12 +749,12 @@ msgid ""
 "             # - Otherwise only device UDIs are listed.\n"
 msgstr ""
 "             # Parādīt sistēmā esošo aparatūru.\n"
-"             # - Ja ir norādīts 'nonportableinfo' parametrs, tiek drukātas\n"
+"             # – Ja ir norādīts „nonportableinfo“ parametrs, parādīs\n"
 "             # iekārtu īpašības (ņemiet vērā, ka šādā gadījumā tās būs\n"
-"             # atkarīgas no izmantotās aizmugures)\n"
-"             # - Ja ir norādīts 'details' parametrs, tad iekārtu īpašības\n"
-"             # tiek drukātas platformneatkarīgā veidā\n"
-"             # - Pretējā gadījumā tiek drukāti tikai iekārtu UDI.\n"
+"             # atkarīgas no izmantotās aizmugursistēmas)\n"
+"             # – Ja ir norādīts „details“ parametrs, tad iekārtu īpašības\n"
+"             # parādīs platformai neatkarīgā veidā\n"
+"             # – Pretējā gadījumā parādīs tikai iekārtu UDI.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:245
 msgctxt "solid-hardware|"
@@ -761,9 +762,8 @@ msgid ""
 "             # Display all the interfaces and properties of the device\n"
 "             # corresponding to 'udi' in a platform neutral fashion.\n"
 msgstr ""
-"             # Attēlot visas „UDI“ atbilstošās iekārtas saskarnes un "
-"īpašības\n"
-"             # platformneatkarīgā veidā.\n"
+"             # Attēlot visas UDI atbilstošās iekārtas saskarnes un īpašības\n"
+"             # platformai neatkarīgā veidā.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:251
 msgctxt "solid-hardware|"
@@ -773,6 +773,9 @@ msgid ""
 "             # (be careful, in this case property names are backend "
 "dependent).\n"
 msgstr ""
+"             # Parāda visas ierīces īpašības atbilstoši to UDI\n"
+"             # (uzmanīgi, jo šajā gadījumā īpašību nosaukumi ir atkarīgi no "
+"aizmugursistēmas).\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:257
 msgctxt "solid-hardware|"
@@ -783,47 +786,53 @@ msgid ""
 "             # branch of the corresponding device,\n"
 "             # - Otherwise the search is done on all the devices.\n"
 msgstr ""
+"             # Uzskaita ierīču UDI atbilstoši „predicate“.\n"
+"             # – Ja ir norādīts „parentUdi“, meklēšanu ierobežo līdz\n"
+"             # attiecīgās ierīces zaram,\n"
+"             # – Pretējā gadījumā meklēšana notiek visās ierīcēs.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:265
 msgctxt "solid-hardware|"
 msgid ""
 "             # If applicable, mount the device corresponding to 'udi'.\n"
-msgstr ""
+msgstr "             # Ja piemērojams, piemontē ierīci pēc tās UDI.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:268
 msgctxt "solid-hardware|"
 msgid ""
 "             # If applicable, unmount the device corresponding to 'udi'.\n"
-msgstr ""
+msgstr "             # Ja piemērojams, nomontē ierīci pēc tās UDI.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:271
 msgctxt "solid-hardware|"
 msgid ""
 "             # If applicable, eject the device corresponding to 'udi'.\n"
-msgstr ""
+msgstr "             # Ja piemērojams, izgrūž ierīci pēc tās UDI.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:274
 msgctxt "solid-hardware|"
 msgid "             # Listen to all add/remove events on supported hardware.\n"
 msgstr ""
+"             # Klausīties visus pievienošanas/noņemšanas notikumus "
+"atbilstošā aparatūrā.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:277
 msgctxt "solid-hardware|"
 msgid "             # Monitor devices for changes.\n"
-msgstr ""
+msgstr "             # Pārraudzīt izmaiņas ierīcēs.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:280
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"CanCheck\" request to the device corresponding to "
 "'udi'.\n"
-msgstr ""
+msgstr "             # Nosūtīt „CanCheck“ pieprasījumu ierīcei pēc UDI.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:283
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"Check\" request to the device corresponding to 'udi'.\n"
-msgstr ""
+msgstr "             # Nosūtīt „Check“ pieprasījumu ierīcei atbilstoši UDI.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:286
 msgctxt "solid-hardware|"
@@ -831,13 +840,14 @@ msgid ""
 "             # Send \"CanRepair\" request to the device corresponding to "
 "'udi'.\n"
 msgstr ""
+"             # Nosūtīt „CanRepair“ pieprasījumu ierīcei atbilstoši UDI.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:289
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"Repair\" request to the device corresponding to "
 "'udi'.\n"
-msgstr ""
+msgstr "             # Nosūtīt „Repair“ pieprasījumu ierīcei atbilstoši UDI.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:301
 msgctxt "solid-hardware|"
@@ -857,12 +867,12 @@ msgstr "Rādīt pieejamās komandas"
 #: tools/solid-hardware/solid-hardware.cpp:328
 msgctxt "solid-hardware|"
 msgid "Show device details"
-msgstr "Rādīt iekārtas detaļas"
+msgstr "Rādīt iekārtas informāciju"
 
 #: tools/solid-hardware/solid-hardware.cpp:329
 msgctxt "solid-hardware|"
 msgid "Show non portable information"
-msgstr ""
+msgstr "Rādīt nepārnesamu informāciju"
 
 #: tools/solid-hardware/solid-hardware.cpp:342
 msgctxt "solid-hardware|"
@@ -879,58 +889,58 @@ msgstr "Sintakses kļūda: nezināma komanda „%1“"
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1 does not have the interface StorageAccess."
-msgstr "Kļūda: „%1“ nav StorageAccess saskarnes."
+msgstr "Kļūda: „%1“ nav „StorageAccess“ saskarnes."
 
 #: tools/solid-hardware/solid-hardware.cpp:449
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1 does not have the interface OpticalDrive."
-msgstr "Kļūda: „%1“ nav OpticalDrive saskarnes."
+msgstr "Kļūda: „%1“ nav „OpticalDrive“ saskarnes."
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanCheck: %1"
-msgstr ""
+msgstr "Ierīces „CanCheck“: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #: tools/solid-hardware/solid-hardware.cpp:488
 msgctxt "SolidHardware|"
 msgid "no"
-msgstr ""
+msgstr "nē"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #: tools/solid-hardware/solid-hardware.cpp:488
 msgctxt "SolidHardware|"
 msgid "yes"
-msgstr ""
+msgstr "jā"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device Check: %1"
-msgstr ""
+msgstr "Ierīces „Check“: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 msgctxt "SolidHardware|"
 msgid "has error"
-msgstr ""
+msgstr "ir kļūda"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 msgctxt "SolidHardware|"
 msgid "no error"
-msgstr ""
+msgstr "nav kļūdas"
 
 #: tools/solid-hardware/solid-hardware.cpp:483
 msgctxt "SolidHardware|"
 msgid "Device Check: operation is not supported"
-msgstr ""
+msgstr "Ierīces „Check“: darbība nav atbalstīta"
 
 #: tools/solid-hardware/solid-hardware.cpp:488
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanRepair: %1"
-msgstr ""
+msgstr "Ierīces „CanRepair“: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:503
 #, qt-format
@@ -938,28 +948,28 @@ msgctxt "SolidHardware|"
 msgid "Error: %1"
 msgstr "Kļūda: %1"
 
-#: tools/solid-power/main.cpp:22
-msgctxt "solid-power|"
-msgid "Tool to know and set the power management state of your device"
-msgstr "Rīks, kas ļauj noskaidrot un iestatīt iekārtas energokontroles režīmu"
+#~ msgctxt "solid-power|"
+#~ msgid "Tool to know and set the power management state of your device"
+#~ msgstr ""
+#~ "Rīks, kas ļauj noskaidrot un iestatīt iekārtas energokontroles režīmu"
 
-#: tools/solid-power/main.cpp:24
-msgctxt "solid-power|"
-msgid "Command to execute"
-msgstr "Izpildāmā komanda"
+#~ msgctxt "solid-power|"
+#~ msgid "Command to execute"
+#~ msgstr "Izpildāmā komanda"
 
-#: tools/solid-power/main.cpp:26
-msgctxt "solid-power|"
-msgid "Show available commands"
-msgstr "Rādīt pieejamās komandas"
+#~ msgctxt "solid-power|"
+#~ msgid "Show available commands"
+#~ msgstr "Rādīt pieejamās komandas"
 
-#: tools/solid-power/main.cpp:35
-msgctxt "solid-power|"
-msgid ""
-"             # Show all the power management information from the system.\n"
-"             # - acPlugged: whether the device is connected to the AC or "
-"not\n"
-msgstr ""
+#~ msgctxt "solid-power|"
+#~ msgid ""
+#~ "             # Show all the power management information from the "
+#~ "system.\n"
+#~ "             # - acPlugged: whether the device is connected to the AC or "
+#~ "not\n"
+#~ msgstr ""
+#~ "             # Rādīt visu sistēmas jaudas pārvaldības informāciju.\n"
+#~ "             # – „acPlugged“: vai ierīce ir pievienota strāvai\n"
 
 #, fuzzy
 #~| msgid "%1 TiB"

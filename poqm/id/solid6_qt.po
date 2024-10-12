@@ -745,7 +745,7 @@ msgctxt "solid-hardware|"
 msgid "Device udi"
 msgstr "Peranti uid"
 
-#: tools/solid-hardware/solid-hardware.cpp:230 tools/solid-power/main.cpp:32
+#: tools/solid-hardware/solid-hardware.cpp:230
 msgctxt "solid-hardware|"
 msgid "Syntax:"
 msgstr "Sintaks:"
@@ -1001,32 +1001,29 @@ msgctxt "SolidHardware|"
 msgid "Error: %1"
 msgstr "Error: %1"
 
-#: tools/solid-power/main.cpp:22
-msgctxt "solid-power|"
-msgid "Tool to know and set the power management state of your device"
-msgstr ""
-"Alat untuk mengetahui dan mengeset keadaan pengelolaan daya pada perantimu"
+#~ msgctxt "solid-power|"
+#~ msgid "Tool to know and set the power management state of your device"
+#~ msgstr ""
+#~ "Alat untuk mengetahui dan mengeset keadaan pengelolaan daya pada perantimu"
 
-#: tools/solid-power/main.cpp:24
-msgctxt "solid-power|"
-msgid "Command to execute"
-msgstr "Perintah untuk mengeksekusi"
+#~ msgctxt "solid-power|"
+#~ msgid "Command to execute"
+#~ msgstr "Perintah untuk mengeksekusi"
 
-#: tools/solid-power/main.cpp:26
-msgctxt "solid-power|"
-msgid "Show available commands"
-msgstr "Tampilkan perintah yang tersedia"
+#~ msgctxt "solid-power|"
+#~ msgid "Show available commands"
+#~ msgstr "Tampilkan perintah yang tersedia"
 
-#: tools/solid-power/main.cpp:35
-msgctxt "solid-power|"
-msgid ""
-"             # Show all the power management information from the system.\n"
-"             # - acPlugged: whether the device is connected to the AC or "
-"not\n"
-msgstr ""
-"             # Tampilkan semua informasi pengelolaan daya dari sistem.\n"
-"             # - acPlugged: di mana peranti telah terkoneksi ke AC atau "
-"tidak\n"
+#~ msgctxt "solid-power|"
+#~ msgid ""
+#~ "             # Show all the power management information from the "
+#~ "system.\n"
+#~ "             # - acPlugged: whether the device is connected to the AC or "
+#~ "not\n"
+#~ msgstr ""
+#~ "             # Tampilkan semua informasi pengelolaan daya dari sistem.\n"
+#~ "             # - acPlugged: di mana peranti telah terkoneksi ke AC atau "
+#~ "tidak\n"
 
 #~ msgctxt "Solid::Backends::Hal::HalDevice|"
 #~ msgid "%1 TiB"

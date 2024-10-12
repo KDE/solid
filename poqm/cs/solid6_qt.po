@@ -727,7 +727,7 @@ msgctxt "solid-hardware|"
 msgid "Device udi"
 msgstr "UDI zařízení"
 
-#: tools/solid-hardware/solid-hardware.cpp:230 tools/solid-power/main.cpp:32
+#: tools/solid-hardware/solid-hardware.cpp:230
 msgctxt "solid-hardware|"
 msgid "Syntax:"
 msgstr "Syntaxe:"
@@ -947,27 +947,25 @@ msgctxt "SolidHardware|"
 msgid "Error: %1"
 msgstr "Chyba: %1"
 
-#: tools/solid-power/main.cpp:22
-msgctxt "solid-power|"
-msgid "Tool to know and set the power management state of your device"
-msgstr "Nástroj pro zjištění a nastavení stavu správy napájení vašeho zařízení"
+#~ msgctxt "solid-power|"
+#~ msgid "Tool to know and set the power management state of your device"
+#~ msgstr ""
+#~ "Nástroj pro zjištění a nastavení stavu správy napájení vašeho zařízení"
 
-#: tools/solid-power/main.cpp:24
-msgctxt "solid-power|"
-msgid "Command to execute"
-msgstr "Příkaz ke spuštění"
+#~ msgctxt "solid-power|"
+#~ msgid "Command to execute"
+#~ msgstr "Příkaz ke spuštění"
 
-#: tools/solid-power/main.cpp:26
-msgctxt "solid-power|"
-msgid "Show available commands"
-msgstr "Zobrazit dostupné příkazy"
+#~ msgctxt "solid-power|"
+#~ msgid "Show available commands"
+#~ msgstr "Zobrazit dostupné příkazy"
 
-#: tools/solid-power/main.cpp:35
-msgctxt "solid-power|"
-msgid ""
-"             # Show all the power management information from the system.\n"
-"             # - acPlugged: whether the device is connected to the AC or "
-"not\n"
-msgstr ""
-"             # Zobrazit všechny informace o správě napájení systému.\n"
-"             # - acPlugged: zda je zařízení připojeno do sítě či nikoliv\n"
+#~ msgctxt "solid-power|"
+#~ msgid ""
+#~ "             # Show all the power management information from the "
+#~ "system.\n"
+#~ "             # - acPlugged: whether the device is connected to the AC or "
+#~ "not\n"
+#~ msgstr ""
+#~ "             # Zobrazit všechny informace o správě napájení systému.\n"
+#~ "             # - acPlugged: zda je zařízení připojeno do sítě či nikoliv\n"

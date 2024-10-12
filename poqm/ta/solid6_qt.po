@@ -723,7 +723,7 @@ msgctxt "solid-hardware|"
 msgid "Device udi"
 msgstr ""
 
-#: tools/solid-hardware/solid-hardware.cpp:230 tools/solid-power/main.cpp:32
+#: tools/solid-hardware/solid-hardware.cpp:230
 msgctxt "solid-hardware|"
 msgid "Syntax:"
 msgstr "இலக்கணம்:"
@@ -923,25 +923,14 @@ msgctxt "SolidHardware|"
 msgid "Error: %1"
 msgstr "சிக்கல்: %1"
 
-#: tools/solid-power/main.cpp:22
-msgctxt "solid-power|"
-msgid "Tool to know and set the power management state of your device"
-msgstr "உங்கள் சாதனத்தின் ஆற்றல் மேலாண் நிலையை காணவும் அமைக்கவும்  உதவும் நிரல்"
+#~ msgctxt "solid-power|"
+#~ msgid "Tool to know and set the power management state of your device"
+#~ msgstr "உங்கள் சாதனத்தின் ஆற்றல் மேலாண் நிலையை காணவும் அமைக்கவும்  உதவும் நிரல்"
 
-#: tools/solid-power/main.cpp:24
-msgctxt "solid-power|"
-msgid "Command to execute"
-msgstr "இயக்க வேண்டிய கட்டளை"
+#~ msgctxt "solid-power|"
+#~ msgid "Command to execute"
+#~ msgstr "இயக்க வேண்டிய கட்டளை"
 
-#: tools/solid-power/main.cpp:26
-msgctxt "solid-power|"
-msgid "Show available commands"
-msgstr "பயன்படுத்தக்கூடிய கட்டளைகளைக் காட்டு"
-
-#: tools/solid-power/main.cpp:35
-msgctxt "solid-power|"
-msgid ""
-"             # Show all the power management information from the system.\n"
-"             # - acPlugged: whether the device is connected to the AC or "
-"not\n"
-msgstr ""
+#~ msgctxt "solid-power|"
+#~ msgid "Show available commands"
+#~ msgstr "பயன்படுத்தக்கூடிய கட்டளைகளைக் காட்டு"

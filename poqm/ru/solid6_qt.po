@@ -739,7 +739,7 @@ msgctxt "solid-hardware|"
 msgid "Device udi"
 msgstr "UDI устройства"
 
-#: tools/solid-hardware/solid-hardware.cpp:230 tools/solid-power/main.cpp:32
+#: tools/solid-hardware/solid-hardware.cpp:230
 msgctxt "solid-hardware|"
 msgid "Syntax:"
 msgstr "Синтаксис:"
@@ -969,31 +969,30 @@ msgctxt "SolidHardware|"
 msgid "Error: %1"
 msgstr "Ошибка: %1"
 
-#: tools/solid-power/main.cpp:22
-msgctxt "solid-power|"
-msgid "Tool to know and set the power management state of your device"
-msgstr ""
-"Программа для получения и установки параметров энергосбережения для устройств"
+#~ msgctxt "solid-power|"
+#~ msgid "Tool to know and set the power management state of your device"
+#~ msgstr ""
+#~ "Программа для получения и установки параметров энергосбережения для "
+#~ "устройств"
 
-#: tools/solid-power/main.cpp:24
-msgctxt "solid-power|"
-msgid "Command to execute"
-msgstr "Команда для выполнения"
+#~ msgctxt "solid-power|"
+#~ msgid "Command to execute"
+#~ msgstr "Команда для выполнения"
 
-#: tools/solid-power/main.cpp:26
-msgctxt "solid-power|"
-msgid "Show available commands"
-msgstr "Показать список доступных команд"
+#~ msgctxt "solid-power|"
+#~ msgid "Show available commands"
+#~ msgstr "Показать список доступных команд"
 
-#: tools/solid-power/main.cpp:35
-msgctxt "solid-power|"
-msgid ""
-"             # Show all the power management information from the system.\n"
-"             # - acPlugged: whether the device is connected to the AC or "
-"not\n"
-msgstr ""
-"             # Показать от системы всю информацию об энергосбережении.\n"
-"             # - acPlugged: Подключено ли устройство к электрической сети.\n"
+#~ msgctxt "solid-power|"
+#~ msgid ""
+#~ "             # Show all the power management information from the "
+#~ "system.\n"
+#~ "             # - acPlugged: whether the device is connected to the AC or "
+#~ "not\n"
+#~ msgstr ""
+#~ "             # Показать от системы всю информацию об энергосбережении.\n"
+#~ "             # - acPlugged: Подключено ли устройство к электрической "
+#~ "сети.\n"
 
 #~ msgctxt "Solid::Backends::Hal::HalDevice|"
 #~ msgid "%1 TiB"
