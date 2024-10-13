@@ -46,35 +46,35 @@ Solid::OpticalDisc::DiscType IOKitOpticalDisc::discType() const
 {
     QString type = m_device->property(QStringLiteral("Type")).toString();
 
-    if (type == "CD-ROM") {
+    if (type == QLatin1String("CD-ROM")) {
         return Solid::OpticalDisc::CdRom;
-    } else if (type == "CD-R") {
+    } else if (type == QLatin1String("CD-R")) {
         return Solid::OpticalDisc::CdRecordable;
-    } else if (type == "CD-RW") {
+    } else if (type == QLatin1String("CD-RW")) {
         return Solid::OpticalDisc::CdRewritable;
-    } else if (type == "DVD-ROM") {
+    } else if (type == QLatin1String("DVD-ROM")) {
         return Solid::OpticalDisc::DvdRom;
-    } else if (type == "DVD-RAM") {
+    } else if (type == QLatin1String("DVD-RAM")) {
         return Solid::OpticalDisc::DvdRam;
-    } else if (type == "DVD-R") {
+    } else if (type == QLatin1String("DVD-R")) {
         return Solid::OpticalDisc::DvdRecordable;
-    } else if (type == "DVD-RW") {
+    } else if (type == QLatin1String("DVD-RW")) {
         return Solid::OpticalDisc::DvdRewritable;
-    } else if (type == "DVD+R") {
+    } else if (type == QLatin1String("DVD+R")) {
         return Solid::OpticalDisc::DvdPlusRecordable;
-    } else if (type == "DVD+RW") {
+    } else if (type == QLatin1String("DVD+RW")) {
         return Solid::OpticalDisc::DvdPlusRewritable;
-    } else if (type == "BD-ROM") {
+    } else if (type == QLatin1String("BD-ROM")) {
         return Solid::OpticalDisc::BluRayRom;
-    } else if (type == "BD-R") {
+    } else if (type == QLatin1String("BD-R")) {
         return Solid::OpticalDisc::BluRayRecordable;
-    } else if (type == "BD-RE") {
+    } else if (type == QLatin1String("BD-RE")) {
         return Solid::OpticalDisc::BluRayRewritable;
-    } else if (type == "HD DVD-ROM") {
+    } else if (type == QLatin1String("HD DVD-ROM")) {
         return Solid::OpticalDisc::HdDvdRom;
-    } else if (type == "HD DVD-R") {
+    } else if (type == QLatin1String("HD DVD-R")) {
         return Solid::OpticalDisc::HdDvdRecordable;
-    } else if (type == "HD DVD-RW") {
+    } else if (type == QLatin1String("HD DVD-RW")) {
         return Solid::OpticalDisc::HdDvdRewritable;
     } else {
         return Solid::OpticalDisc::UnknownDiscType;

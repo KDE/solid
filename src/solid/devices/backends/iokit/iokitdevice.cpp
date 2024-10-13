@@ -96,7 +96,7 @@ static QMap<QString, QVariant> getProperties(const io_registry_entry_t &entry)
 
     io_name_t className;
     IOObjectGetClass(entry, className);
-    result["className"] = QString::fromUtf8(className);
+    result[QStringLiteral("className")] = QString::fromUtf8(className);
 
     return result;
 }
@@ -418,7 +418,7 @@ QStringList IOKitDevice::emblems() const
 QVariant IOKitDevice::property(const QString &key) const
 {
     if (!d->properties.contains(key)) {
-        return QObject::property(key.toUtf8());
+        return QObject::property(key.toUtf8().constData());
     }
     return d->properties.value(key);
 }
