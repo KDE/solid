@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: solid_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-01 01:49+0000\n"
-"PO-Revision-Date: 2024-04-12 07:12+0300\n"
+"PO-Revision-Date: 2024-10-27 20:13+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.04.70\n"
+"X-Generator: Lokalize 24.08.2\n"
 "X-Qt-Contexts: true\n"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:59
@@ -60,7 +60,7 @@ msgstr "iAygıt"
 #: solid/devices/backends/imobile/imobilemanager.cpp:102
 msgctxt "Solid::Backends::IMobile::Manager|"
 msgid "iOS devices"
-msgstr "iOS aygıtları"
+msgstr "iOS Aygıtları"
 
 #: solid/devices/backends/udev/udevdevice.cpp:100
 msgctxt "Solid::Backends::UDev::UDevDevice|"
@@ -75,7 +75,7 @@ msgstr "İşlemci"
 #: solid/devices/backends/udev/udevdevice.cpp:115
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Portable Media Player"
-msgstr "Taşınabilir Ortam Oynatıcı"
+msgstr "Taşınabilir Ortam Oynatıcısı"
 
 #: solid/devices/backends/udev/udevdevice.cpp:118
 msgctxt "Solid::Backends::UDev::UDevDevice|"
@@ -90,7 +90,7 @@ msgstr "Aygıtlar"
 #: solid/devices/backends/udev/udevmanager.cpp:222
 msgctxt "Solid::Backends::UDev::UDevManager|"
 msgid "Devices declared in your system"
-msgstr "Sisteminizdeki aygıtlar"
+msgstr "Sisteminizdeki Aygıtlar"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:43
 #, qt-format
@@ -613,7 +613,7 @@ msgstr "Lityum Demir Fosfat"
 #: solid/devices/backends/upower/upowerdevice.cpp:140
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lead Acid"
-msgstr "Kurşun Asidi"
+msgstr "Kurşun Asit"
 
 #: solid/devices/backends/upower/upowerdevice.cpp:142
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
@@ -751,12 +751,12 @@ msgid ""
 "             # - Otherwise only device UDIs are listed.\n"
 msgstr ""
 "             # Sistemdeki kullanılabilir donanımları listele.\n"
-"              # - ‘nonportableinfo’ ayarı belirtilmişse aygıt\n"
+"              # — “nonportableinfo” ayarı belirtilmişse aygıt\n"
 "              # özellikleri listelenir (dikkat, bu sefer özellik adları\n"
 "              # arka uca bağımlıdır),\n"
-"              # - Eğer ‘details’ ayarı belirtilmişse aygıt arayüzleri\n"
+"              # — Eğer “details” ayarı belirtilmişse aygıt arayüzleri\n"
 "              # ve ilgili özellikler listelenir,\n"
-"              # - Yoksa yalnızca aygıt UDI’leri listelenir.\n"
+"              # — Yoksa yalnızca aygıt UDI’leri listelenir.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:245
 msgctxt "solid-hardware|"
@@ -764,7 +764,7 @@ msgid ""
 "             # Display all the interfaces and properties of the device\n"
 "             # corresponding to 'udi' in a platform neutral fashion.\n"
 msgstr ""
-"             # Aygıtın ‘udi’ye karşılık gelen bütün arayüzlerini ve\n"
+"             # Aygıtın “udi”ye karşılık gelen bütün arayüzlerini ve\n"
 "             # özelliklerini platform bağımsız olarak görüntüle.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:251
@@ -775,7 +775,7 @@ msgid ""
 "             # (be careful, in this case property names are backend "
 "dependent).\n"
 msgstr ""
-"             # Aygıtın ‘udi’ye karşılık gelen tüm özelliklerini görüntüle\n"
+"             # Aygıtın “udi”ye karşılık gelen tüm özelliklerini görüntüle\n"
 "             # (dikkatli olun, bu durumda özellik adları arka uca "
 "bağımlıdır).\n"
 
@@ -788,8 +788,8 @@ msgid ""
 "             # branch of the corresponding device,\n"
 "             # - Otherwise the search is done on all the devices.\n"
 msgstr ""
-"             # ‘predicate’e karşılık gelen aygıtların UDI’lerini listele.\n"
-"             # - ‘parentUdi’ belirtilmişse arama ilgili aygıtın alt "
+"             # “predicate”e karşılık gelen aygıtların UDI’lerini listele.\n"
+"             # - “parentUdi” belirtilmişse arama ilgili aygıtın alt "
 "grubuyla\n"
 "             # sınırlandırılır,\n"
 "             # - Belirtilmemişse bütün aygıtlar arasında arama yapılır.\n"
@@ -798,20 +798,20 @@ msgstr ""
 msgctxt "solid-hardware|"
 msgid ""
 "             # If applicable, mount the device corresponding to 'udi'.\n"
-msgstr "             # Olanaklıysa ‘udi’ye karşılık gelen aygıtı bağla.\n"
+msgstr "             # Olanaklıysa “udi”ye karşılık gelen aygıtı bağla.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:268
 msgctxt "solid-hardware|"
 msgid ""
 "             # If applicable, unmount the device corresponding to 'udi'.\n"
 msgstr ""
-"             # Olanaklıysa ‘udi’ye karşılık gelen aygıtın bağlantısını kes.\n"
+"             # Olanaklıysa “udi”ye karşılık gelen aygıtın bağlantısını kes.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:271
 msgctxt "solid-hardware|"
 msgid ""
 "             # If applicable, eject the device corresponding to 'udi'.\n"
-msgstr "             # Olanaklıysa ‘udi’ye karşılık gelen aygıtı çıkar.\n"
+msgstr "             # Olanaklıysa “udi”ye karşılık gelen aygıtı çıkar.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:274
 msgctxt "solid-hardware|"
@@ -831,7 +831,7 @@ msgid ""
 "             # Send \"CanCheck\" request to the device corresponding to "
 "'udi'.\n"
 msgstr ""
-"             # Olanaklıysa ‘udi’ye karşılık gelen aygıta “CanCheck” isteği "
+"             # Olanaklıysa “udi”ye karşılık gelen aygıta “CanCheck” isteği "
 "gönder.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:283
@@ -839,7 +839,7 @@ msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"Check\" request to the device corresponding to 'udi'.\n"
 msgstr ""
-"             # Olanaklıysa ‘udi’ye karşılık gelen aygıta “Check” isteği "
+"             # Olanaklıysa “udi”ye karşılık gelen aygıta “Check” isteği "
 "gönder.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:286
@@ -848,7 +848,7 @@ msgid ""
 "             # Send \"CanRepair\" request to the device corresponding to "
 "'udi'.\n"
 msgstr ""
-"             # Olanaklıysa ‘udi’ye karşılık gelen aygıta “CanRepair” isteği "
+"             # Olanaklıysa “udi”ye karşılık gelen aygıta “CanRepair” isteği "
 "gönder.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:289
@@ -857,7 +857,7 @@ msgid ""
 "             # Send \"Repair\" request to the device corresponding to "
 "'udi'.\n"
 msgstr ""
-"             # Olanaklıysa ‘udi’ye karşılık gelen aygıta “Repair” isteği "
+"             # Olanaklıysa “udi”ye karşılık gelen aygıta “Repair” isteği "
 "gönder.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:301
@@ -896,7 +896,7 @@ msgstr "Üst aygıt udi’si"
 #, qt-format
 msgctxt "solid-hardware|"
 msgid "Syntax Error: Unknown command '%1'"
-msgstr "Sözdizim Hatası: Bilinmeyen komut “%1”"
+msgstr "Sözdizim hatası: Bilinmeyen komut “%1”"
 
 #: tools/solid-hardware/solid-hardware.cpp:446
 #, qt-format
@@ -914,7 +914,7 @@ msgstr "Hata: %1 OpticalDrive arayüzüne sahip değil."
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanCheck: %1"
-msgstr "Aygıt CanCheck: %1"
+msgstr "Aygıt denetleyebilir: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #: tools/solid-hardware/solid-hardware.cpp:488
@@ -953,33 +953,10 @@ msgstr "Aygıt denetimi: İşlem desteklenmiyor"
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanRepair: %1"
-msgstr "Aygıt CanRepair: %1"
+msgstr "Aygıt onarabilir: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:503
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1"
 msgstr "Hata: %1"
-
-#~ msgctxt "solid-power|"
-#~ msgid "Tool to know and set the power management state of your device"
-#~ msgstr ""
-#~ "Aygıtınızın güç yönetimi durumunu öğrenmek ve ayarlamak için bir araç"
-
-#~ msgctxt "solid-power|"
-#~ msgid "Command to execute"
-#~ msgstr "Yürütülecek komut"
-
-#~ msgctxt "solid-power|"
-#~ msgid "Show available commands"
-#~ msgstr "Kullanılabilir komutları göster"
-
-#~ msgctxt "solid-power|"
-#~ msgid ""
-#~ "             # Show all the power management information from the "
-#~ "system.\n"
-#~ "             # - acPlugged: whether the device is connected to the AC or "
-#~ "not\n"
-#~ msgstr ""
-#~ "             # Sistemdeki tüm güç yönetimi bilgisini göster.\n"
-#~ "             # - acPlugged: bu aygıt elektiriğe takılı mı değil mi\n"
