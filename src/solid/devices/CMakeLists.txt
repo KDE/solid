@@ -90,14 +90,14 @@ ecm_qt_declare_logging_category(solid_LIB_SRCS
 bison_target(SolidParser
              devices/predicate_parser.y
              ${CMAKE_CURRENT_BINARY_DIR}/predicate_parser.c
-             COMPILE_FLAGS "-p Solid -d -b predicate_parser"
+             COMPILE_FLAGS "-p Solid -d -b predicate_parser --no-lines"
 )
 set_property(SOURCE ${CMAKE_CURRENT_BINARY_DIR}/predicate_parser.h PROPERTY SKIP_AUTOMOC TRUE) # don't run automoc on this file
 
 flex_target(SolidLexer
             devices/predicate_lexer.l
             ${CMAKE_CURRENT_BINARY_DIR}/predicate_lexer.c
-            COMPILE_FLAGS "-P Solid"
+            COMPILE_FLAGS "-P Solid --noline"
 )
 add_flex_bison_dependency(SolidLexer SolidParser)
 list(APPEND solid_LIB_SRCS ${BISON_SolidParser_OUTPUTS} ${FLEX_SolidLexer_OUTPUTS})
