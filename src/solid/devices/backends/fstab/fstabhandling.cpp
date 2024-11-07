@@ -58,6 +58,7 @@ bool _k_isFstabNetworkFileSystem(const QString &fstype, const QString &devName)
         || fstype == QLatin1String("cifs") //
         || fstype == QLatin1String("smb3") //
         || fstype == QLatin1String("fuse.sshfs") //
+        || fstype == QLatin1String("fuse.rclone") //
         || devName.startsWith(QLatin1String("//"))) {
         return true;
     }
@@ -73,6 +74,14 @@ bool _k_isFstabSupportedLocalFileSystem(const QString &fstype)
         return true;
     }
     return false;
+}
+
+QString _k_mntFstype(const QString &orig)
+{
+    if (orig == QLatin1String("sshfs") || orig == QLatin1String("rclone")) {
+        return QStringLiteral("fuse.%1").arg(orig);
+    }
+    return orig;
 }
 
 QString _k_deviceNameForMountpoint(const QString &source, const QString &fstype, const QString &mountpoint)
@@ -120,7 +129,7 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateFstabMountPointsCache()
     struct libmnt_fs *fs;
 
     while (mnt_table_next_fs(table, itr, &fs) == 0) {
-        const QString fstype = QFile::decodeName(mnt_fs_get_fstype(fs));
+        const QString fstype = _k_mntFstype(QFile::decodeName(mnt_fs_get_fstype(fs)));
         const QString fsname = QFile::decodeName(mnt_fs_get_srcpath(fs));
         if (_k_isFstabNetworkFileSystem(fstype, fsname) || _k_isFstabSupportedLocalFileSystem(fstype)) {
             const QString mountpoint = QFile::decodeName(mnt_fs_get_target(fs));
@@ -165,13 +174,14 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateFstabMountPointsCache()
             continue;
         }
 
+        const QString device = items.at(0);
+        const QString fstype = _k_mntFstype(items.at(2));
+
         // prevent accessing a blocking directory
-        if (_k_isFstabNetworkFileSystem(items.at(2), items.at(0)) || _k_isFstabSupportedLocalFileSystem(items.at(2))) {
-            const QString device = items.at(0);
-            const QString fsType = items.at(2);
+        if (_k_isFstabNetworkFileSystem(fstype, device) || _k_isFstabSupportedLocalFileSystem(fstype)) {
             QString mountpoint = items.at(1);
 
-            if (fsType == QLatin1String("nfs") || fsType == QLatin1String("nfs4")) {
+            if (fstype == QLatin1String("nfs") || fstype == QLatin1String("nfs4")) {
                 if (!mountpoint.startsWith(QLatin1Char('/'))) {
                     // making sure mount point starts with /
                     mountpoint.prepend(QLatin1Char('/'));
@@ -312,7 +322,7 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateMtabMountPointsCache()
     int num_fs = getmntinfo(&mounted, MNT_NOWAIT);
 
     for (int i = 0; i < num_fs; i++) {
-        QString type = QFile::decodeName(mounted[i].f_fstypename);
+        QString type = _k_mntFstype(QFile::decodeName(mounted[i].f_fstypename));
         if (_k_isFstabNetworkFileSystem(type, QString()) || _k_isFstabSupportedLocalFileSystem(type)) {
             const QString fsname = QFile::decodeName(mounted[i].f_mntfromname);
             const QString mountpoint = QFile::decodeName(mounted[i].f_mntonname);
@@ -338,7 +348,7 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateMtabMountPointsCache()
     struct libmnt_fs *fs;
 
     while (mnt_table_next_fs(table, itr, &fs) == 0) {
-        const QString fstype = QFile::decodeName(mnt_fs_get_fstype(fs));
+        const QString fstype = _k_mntFstype(QFile::decodeName(mnt_fs_get_fstype(fs)));
         if (_k_isFstabNetworkFileSystem(fstype, QString{}) || _k_isFstabSupportedLocalFileSystem(fstype)) {
             const QString mountpoint = QFile::decodeName(mnt_fs_get_target(fs));
             const QString fsname = QFile::decodeName(mnt_fs_get_srcpath(fs));

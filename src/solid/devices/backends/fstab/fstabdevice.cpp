@@ -41,6 +41,8 @@ FstabDevice::FstabDevice(QString uid)
         }
         if ((fstype == QLatin1String("fuse.encfs")) || (fstype == QLatin1String("fuse.cryfs")) || (fstype == QLatin1String("fuse.gocryptfs"))) {
             m_storageType = StorageType::Encrypted;
+        } else if (fstype == QLatin1String("fuse.sshfs") || fstype == QLatin1String("fuse.rclone")) {
+            m_storageType = StorageType::NetworkShare;
         }
     }
 
