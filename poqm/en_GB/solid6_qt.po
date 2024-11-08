@@ -19,13 +19,13 @@ msgstr ""
 "X-Generator: Lokalize 24.02.2\n"
 "X-Qt-Contexts: true\n"
 
-#: solid/devices/backends/fstab/fstabdevice.cpp:59
+#: solid/devices/backends/fstab/fstabdevice.cpp:61
 #, qt-format
 msgctxt "%1 is sharename, %2 is servername"
 msgid "%1 on %2"
 msgstr "%1 on %2"
 
-#: solid/devices/backends/fstab/fstabdevice.cpp:61
+#: solid/devices/backends/fstab/fstabdevice.cpp:63
 #, qt-format
 msgctxt "%1 is mountpoint, %2 is fs type"
 msgid "%1 (%2)"

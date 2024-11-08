@@ -15,13 +15,13 @@ msgstr ""
 "X-Crowdin-File: /kf6-trunk/messages/solid/solid6_qt.pot\n"
 "X-Crowdin-File-ID: 43691\n"
 
-#: solid/devices/backends/fstab/fstabdevice.cpp:59
+#: solid/devices/backends/fstab/fstabdevice.cpp:61
 #, qt-format
 msgctxt "%1 is sharename, %2 is servername"
 msgid "%1 on %2"
 msgstr "%2 上的 %1"
 
-#: solid/devices/backends/fstab/fstabdevice.cpp:61
+#: solid/devices/backends/fstab/fstabdevice.cpp:63
 #, qt-format
 msgctxt "%1 is mountpoint, %2 is fs type"
 msgid "%1 (%2)"

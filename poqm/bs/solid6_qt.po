@@ -13,13 +13,13 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#: solid/devices/backends/fstab/fstabdevice.cpp:59
+#: solid/devices/backends/fstab/fstabdevice.cpp:61
 #, qt-format
 msgctxt "%1 is sharename, %2 is servername"
 msgid "%1 on %2"
 msgstr ""
 
-#: solid/devices/backends/fstab/fstabdevice.cpp:61
+#: solid/devices/backends/fstab/fstabdevice.cpp:63
 #, qt-format
 msgctxt "%1 is mountpoint, %2 is fs type"
 msgid "%1 (%2)"
