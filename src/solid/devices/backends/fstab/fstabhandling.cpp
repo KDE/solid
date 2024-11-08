@@ -22,7 +22,7 @@
 #include <stdlib.h>
 
 #if HAVE_LIBMOUNT
-#include <libmount/libmount.h>
+#include <libmount.h>
 #endif
 
 // This is the *BSD branch

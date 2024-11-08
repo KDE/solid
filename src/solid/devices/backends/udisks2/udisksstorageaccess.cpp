@@ -18,7 +18,7 @@
 
 #include <config-solid.h>
 #if HAVE_LIBMOUNT
-#include <libmount/libmount.h>
+#include <libmount.h>
 #endif
 
 struct AvailableAnswer {
