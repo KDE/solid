@@ -1,0 +1,16 @@
+include($KDE_DOCS/global/qt-module-defaults.qdocconf)
+
+project = Solid
+description = Stuff
+
+documentationinheaders = true
+
+headerdirs = .
+sourcedirs = .
+
+outputformats = HTML
+
+depends += \
+    kde \
+    qtcore \
+    qtgui \
