@@ -34,7 +34,7 @@ public:
     DeviceList allDevices();
     DeviceList devicesByProperty(const QString &property, const QVariant &value);
     DeviceList devicesBySubsystem(const QString &subsystem);
-    /**
+    /*!
      * Returns a list of devices matching any of the given subsystems AND any of the properties.
      *
      * (subsystem1 || subsystem2 || ...) && (property1 || property2 || ...)

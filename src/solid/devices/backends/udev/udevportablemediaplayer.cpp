@@ -16,7 +16,7 @@
 
 using namespace Solid::Backends::UDev;
 
-/**
+/*!
  * Reads one value from media-player-info ini-like file.
  *
  * @param file file to open. May advance current seek position

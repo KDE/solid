@@ -15,7 +15,7 @@ namespace Backends
 {
 namespace UDev
 {
-/**
+/*!
  * IDs list is based on code from lscpu-arm.c from util-linux project.
  * You can also find them in Linux kernel source:
  * https://elixir.bootlin.com/linux/latest/source/arch/arm64/include/asm/cputype.h

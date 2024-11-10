@@ -18,74 +18,83 @@ namespace Solid
 class Device;
 class NetworkSharePrivate;
 
-/**
- * @class Solid::NetworkShare networkshare.h <Solid/NetworkShare>
+/*!
+ * \class Solid::NetworkShare
+ * \inheaderfile Solid/NetworkShare
+ * \inmodule Solid
  *
- * NetworkShare interface.
+ * \brief NetworkShare interface.
  *
- * a NetworkShare interface is used to determine the type of
+ * A NetworkShare interface is used to determine the type of
  * network access.
- * @since 4.7
+ * \since 4.7
  */
 class SOLID_EXPORT NetworkShare : public DeviceInterface
 {
     Q_OBJECT
+
+    /*!
+     * \property Solid::NetworkShare::type
+     */
     Q_PROPERTY(ShareType type READ type)
+
+    /*!
+     * \property Solid::NetworkShare::url
+     */
     Q_PROPERTY(QUrl url READ url)
+
     Q_DECLARE_PRIVATE(NetworkShare)
     friend class Device;
 
 private:
-    /**
+    /*!
+     * \internal
+     *
      * Creates a new NetworkShare object.
      * You generally won't need this. It's created when necessary using
      * Device::as().
      *
-     * @param backendObject the device interface object provided by the backend
-     * @see Solid::Device::as()
+     * \a backendObject the device interface object provided by the backend
+     * \sa Solid::Device::as()
      */
     SOLID_NO_EXPORT explicit NetworkShare(QObject *backendObject);
 
 public:
-    /**
-     * Destroys a NetworkShare object.
-     */
     ~NetworkShare() override;
 
-    /**
+    /*!
      * This enum type defines the type of networkShare device can be.
      *
-     * - Unknown : a unsupported network protocol
-     * - Nfs : nfs protocol
-     * - Cifs : samba protocol
-     * - Smb3 : samba protocol (version 3)
+     * \value Unknown a unsupported network protocol
+     * \value Nfs nfs protocol
+     * \value Cifs samba protocol
+     * \value Smb3 samba protocol (version 3)
      */
-
     enum ShareType { Unknown, Nfs, Cifs, Smb3 };
     Q_ENUM(ShareType)
 
-    /**
+    /*!
      * Get the Solid::DeviceInterface::Type of the NetworkShare device interface.
      *
-     * @return the NetworkShare device interface type
-     * @see Solid::DeviceInterface::Type
+     * Returns the NetworkShare device interface type
+     * \sa Solid::DeviceInterface::Type
      */
     static Type deviceInterfaceType()
     {
         return DeviceInterface::NetworkShare;
     }
 
-    /**
+    /*!
      * Retrieves the type of network share
      *
-     * @return the type of network share
+     * Returns the type of network share
      */
     ShareType type() const;
 
-    /**
+    /*!
      * Retrieves the url of network share
      *
-     * @return the url of network share
+     * Returns the url of network share
      */
     QUrl url() const;
 };

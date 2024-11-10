@@ -16,38 +16,68 @@ namespace Solid
 class ProcessorPrivate;
 class Device;
 
-/**
- * @class Solid::Processor processor.h <Solid/Processor>
+/*!
+ * \class Solid::Processor
+ * \inheaderfile Solid/Processor
+ * \inmodule Solid
  *
- * This device interface is available on processors.
+ * \brief This device interface is available on processors.
  */
 class SOLID_EXPORT Processor : public DeviceInterface
 {
     Q_OBJECT
+
+    /*!
+     * \property Solid::Processor::number
+     */
     Q_PROPERTY(int number READ number)
+
+    /*!
+     * \property Solid::Processor::maxSpeed
+     */
     Q_PROPERTY(qulonglong maxSpeed READ maxSpeed)
+
+    /*!
+     * \property Solid::Processor::canChangeFrequency
+     */
     Q_PROPERTY(bool canChangeFrequency READ canChangeFrequency)
+
+    /*!
+     * \property Solid::Processor::instructionSets
+     */
     Q_PROPERTY(InstructionSets instructionSets READ instructionSets)
+
     Q_DECLARE_PRIVATE(Processor)
     friend class Device;
 
 private:
-    /**
+    /*!
+     * \internal
      * Creates a new Processor object.
      * You generally won't need this. It's created when necessary using
      * Device::as().
      *
-     * @param backendObject the device interface object provided by the backend
-     * @see Solid::Device::as()
+     * \a backendObject the device interface object provided by the backend
+     * \sa Solid::Device::as()
      */
     SOLID_NO_EXPORT explicit Processor(QObject *backendObject);
 
 public:
-    /**
+    /*!
      * This enum contains the list of architecture extensions you
      * can query.
      *
-     * @see InstructionSets
+     * \value NoExtensions
+     * \value IntelMmx
+     * \value IntelSse
+     * \value IntelSse2
+     * \value IntelSse3
+     * \value IntelSsse3
+     * \value IntelSse4
+     * \value IntelSse41
+     * \value IntelSse42
+     * \value Amd3DNow
+     * \value AltiVec
      */
     enum InstructionSet {
         NoExtensions = 0x0,
@@ -64,58 +94,52 @@ public:
     };
     Q_ENUM(InstructionSet)
 
-    /*
-     * Stores a combination of #InstructionSet values.
-     */
     Q_DECLARE_FLAGS(InstructionSets, InstructionSet)
     Q_FLAG(InstructionSets)
 
-    /**
-     * Destroys a Processor object.
-     */
     ~Processor() override;
 
-    /**
+    /*!
      * Get the Solid::DeviceInterface::Type of the Processor device interface.
      *
-     * @return the Processor device interface type
-     * @see Solid::Ifaces::Enums::DeviceInterface::Type
+     * Returns the Processor device interface type
+     * \sa Solid::Ifaces::Enums::DeviceInterface::Type
      */
     static Type deviceInterfaceType()
     {
         return DeviceInterface::Processor;
     }
 
-    /**
+    /*!
      * Retrieves the processor number in the system.
      *
-     * @return the internal processor number in the system, starting from zero
+     * Returns the internal processor number in the system, starting from zero
      */
     int number() const;
 
-    /**
+    /*!
      * Retrieves the maximum speed of the processor.
      *
-     * @return the maximum speed in MHz, or 0 if the device can't be queried for this
+     * Returns the maximum speed in MHz, or 0 if the device can't be queried for this
      * information.
      */
     int maxSpeed() const;
 
-    /**
+    /*!
      * Indicates if the processor can change the CPU frequency.
      *
      * True if a processor is able to change its own CPU frequency.
      *  (generally for power management).
      *
-     * @return true if the processor can change CPU frequency, false otherwise
+     * Returns true if the processor can change CPU frequency, false otherwise
      */
     bool canChangeFrequency() const;
 
-    /**
+    /*!
      * Queries the instructions set extensions of the CPU.
      *
-     * @return the extensions supported by the CPU
-     * @see Solid::Processor::InstructionSet
+     * Returns the extensions supported by the CPU
+     * \sa Solid::Processor::InstructionSet
      */
     InstructionSets instructionSets() const;
 };
