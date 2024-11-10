@@ -128,7 +128,12 @@ elseif (APPLE)
     add_device_backend(iokit)
 elseif (WIN32)
     add_device_backend(win)
-elseif (NOT ANDROID)
+elseif (ANDROID)
+    # Android specific Storage and other device APIs not implemented
+elseif (HAIKU)
+    # Haiku OS specific Storage and other device APIs not implemented
+else()
+    # BSDs and other Unix like systems
     add_device_backend(upower)
     add_device_backend(fstab)
 
