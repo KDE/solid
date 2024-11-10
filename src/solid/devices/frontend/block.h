@@ -16,10 +16,12 @@ namespace Solid
 class BlockPrivate;
 class Device;
 
-/**
- * @class Solid::Block block.h <Solid/Block>
+/*!
+ * \class Solid::Block
+ * \inheaderfile Solid/Block
+ * \inmodule Solid
  *
- * This device interface is available on block devices.
+ * \brief This device interface is available on block devices.
  *
  * A block device is an addressable device such as drive or partition.
  * It is possible to interact with such a device using a special file
@@ -28,61 +30,73 @@ class Device;
 class SOLID_EXPORT Block : public DeviceInterface
 {
     Q_OBJECT
+
+    /*!
+     * \property Solid::Block::major
+     */
     Q_PROPERTY(int major READ deviceMajor)
+
+    /*!
+     * \property Solid::Block::minor
+     */
     Q_PROPERTY(int minor READ deviceMinor)
+
+    /*!
+     * \property Solid::Block::device
+     */
     Q_PROPERTY(QString device READ device)
+
     Q_DECLARE_PRIVATE(Block)
     friend class Device;
 
 private:
-    /**
+    /*!
+     * \internal
+     *
      * Creates a new Block object.
+     *
      * You generally won't need this. It's created when necessary using
      * Device::as().
      *
-     * @param backendObject the device interface object provided by the backend
-     * @see Solid::Device::as()
+     * \a backendObject the device interface object provided by the backend
      */
     SOLID_NO_EXPORT explicit Block(QObject *backendObject);
 
 public:
-    /**
-     * Destroys a Block object.
-     */
     ~Block() override;
 
-    /**
+    /*!
      * Get the Solid::DeviceInterface::Type of the Block device interface.
      *
-     * @return the Block device interface type
-     * @see Solid::Ifaces::Enums::DeviceInterface::Type
+     * Returns the Block device interface type
+     * \sa Solid::Ifaces::Enums::DeviceInterface::Type
      */
     static Type deviceInterfaceType()
     {
         return DeviceInterface::Block;
     }
 
-    /**
+    /*!
      * Retrieves the major number of the node file to interact with
      * the device.
      *
-     * @return the device major number
+     * Returns the device major number
      */
     int deviceMajor() const;
 
-    /**
+    /*!
      * Retrieves the minor number of the node file to interact with
      * the device.
      *
-     * @return the device minor number
+     * Returns the device minor number
      */
     int deviceMinor() const;
 
-    /**
+    /*!
      * Retrieves the absolute path of the special file to interact
      * with the device.
      *
-     * @return the absolute path of the special file to interact with
+     * Returns the absolute path of the special file to interact with
      * the device
      */
     QString device() const;

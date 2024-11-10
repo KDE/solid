@@ -19,10 +19,12 @@ namespace Solid
 class CameraPrivate;
 class Device;
 
-/**
- * @class Solid::Camera camera.h <Solid/Camera>
+/*!
+ * \class Solid::Camera
+ * \inheaderfile Solid/Camera
+ * \inmodule Solid
  *
- * This device interface is available on digital camera devices.
+ * \brief This device interface is available on digital camera devices.
  *
  * A digital camera is a device used to transform images into
  * data. Nowaday most digital cameras are multifunctional and
@@ -34,64 +36,73 @@ class Device;
 class SOLID_EXPORT Camera : public DeviceInterface
 {
     Q_OBJECT
+
+    /*!
+     * \property Solid::Camera::supportedProtocols
+     */
     Q_PROPERTY(QStringList supportedProtocols READ supportedProtocols)
+
+    /*!
+     * \property Solid::Camera::supportedDrivers
+     */
     Q_PROPERTY(QStringList supportedDrivers READ supportedDrivers)
+
     Q_DECLARE_PRIVATE(Camera)
     friend class Device;
 
 private:
-    /**
+    /*!
+     * \internal
      * Creates a new Camera object.
      * You generally won't need this. It's created when necessary using
      * Device::as().
      *
-     * @param backendObject the device interface object provided by the backend
-     * @see Solid::Device::as()
+     * \a backendObject the device interface object provided by the backend
+     * \sa Solid::Device::as()
      */
     SOLID_NO_EXPORT explicit Camera(QObject *backendObject);
 
 public:
-    /**
-     * Destroys a Camera object.
-     */
     ~Camera() override;
 
-    /**
+    /*!
      * Get the Solid::DeviceInterface::Type of the Camera device interface.
      *
-     * @return the Camera device interface type
-     * @see Solid::DeviceInterface::Type
+     * Returns the Camera device interface type
+     * \sa Solid::DeviceInterface::Type
      */
     static Type deviceInterfaceType()
     {
         return DeviceInterface::Camera;
     }
 
-    /**
-     * Retrieves known protocols this device can speak.  This list may be dependent
-     * on installed device driver libraries.
+    /*!
+     * Returns known protocols this device can speak.
      *
-     * @return a list of known protocols this device can speak
+     * This list may be dependent
+     * on installed device driver libraries.
      */
     QStringList supportedProtocols() const;
 
-    /**
+    /*!
      * Retrieves known installed device drivers that claim to handle this device
-     * using the requested protocol.  If protocol is blank, returns a list of
+     * using the requested protocol.
+     *
+     * If protocol is blank, returns a list of
      * all drivers supporting the device.
      *
-     * @param protocol The protocol to get drivers for.
-     * @return a list of installed drivers meeting the criteria
+     * \a protocol The protocol to get drivers for.
+     * Returns a list of installed drivers meeting the criteria
      */
     QStringList supportedDrivers(QString protocol = QString()) const;
 
-    /**
+    /*!
      * Retrieves a driver specific string allowing to access the device.
      *
      * For example for the "gphoto" driver it will return a list of the
      * form '("usb", vendor_id, product_id)'.
      *
-     * @return the driver specific data
+     * Returns the driver specific data
      */
     QVariant driverHandle(const QString &driver) const;
 };

@@ -18,10 +18,12 @@ class DevicePrivate;
 class Predicate;
 class DeviceInterfacePrivate;
 
-/**
- * @class Solid::DeviceInterface deviceinterface.h <Solid/DeviceInterface>
+/*!
+ * \class Solid::DeviceInterface
+ * \inheaderfile Solid/DeviceInterface
+ * \inmodule Solid
  *
- * Base class of all the device interfaces.
+ * \brief Base class of all the device interfaces.
  *
  * A device interface describes what a device can do. A device generally has
  * a set of device interfaces.
@@ -32,20 +34,23 @@ class SOLID_EXPORT DeviceInterface : public QObject
     Q_DECLARE_PRIVATE(DeviceInterface)
 
 public:
-    /**
+    /*!
      * This enum type defines the type of device interface that a Device can have.
      *
-     * - Unknown : An undetermined device interface
-     * - Processor : A processor
-     * - Block : A block device
-     * - StorageAccess : A mechanism to access data on a storage device
-     * - StorageDrive : A storage drive
-     * - OpticalDrive : An optical drive (CD-ROM, DVD, ...)
-     * - StorageVolume : A volume
-     * - OpticalDisc : An optical disc
-     * - Camera : A digital camera
-     * - PortableMediaPlayer: A portable media player
-     * - NetworkShare: A network share interface
+     * \value Unknown An undetermined device interface
+     * \value GenericInterface
+     * \value Processor A processor
+     * \value Block A block device
+     * \value StorageAccess A mechanism to access data on a storage device
+     * \value StorageDrive A storage drive
+     * \value OpticalDrive An optical drive (CD-ROM, DVD, ...)
+     * \value StorageVolume A volume
+     * \value OpticalDisc An optical disc
+     * \value Camera A digital camera
+     * \value PortableMediaPlayer A portable media player
+     * \value Battery
+     * \value NetworkShare A network share interface
+     * \omitvalue Last
      */
     enum Type {
         Unknown = 0,
@@ -65,45 +70,41 @@ public:
     };
     Q_ENUM(Type)
 
-    /**
-     * Destroys a DeviceInterface object.
-     */
     ~DeviceInterface() override;
 
-    /**
+    /*!
      * Indicates if this device interface is valid.
+     *
      * A device interface is considered valid if the device it is referring is available in the system.
      *
-     * @return true if this device interface's device is available, false otherwise
+     * Returns \c true if this device interface's device is available, \c false otherwise
      */
     bool isValid() const;
 
-    /**
-     *
-     * @return the class name of the device interface type
+    /*!
+     * Returns the class name of the device interface type
      */
     static QString typeToString(Type type);
 
-    /**
-     *
-     * @return the device interface type for the given class name
+    /*!
+     * Returns the device interface type for the given class name
      */
     static Type stringToType(const QString &type);
 
-    /**
-     *
-     * @return a description suitable to display in the UI of the device interface type
-     * @since 4.4
+    /*!
+     * Returns a description suitable to display in the UI of the device interface type
+     * \since 4.4
      */
     static QString typeDescription(Type type);
 
 protected:
-    /**
-     * @internal
+    /*!
+     * \internal
      * Creates a new DeviceInterface object.
      *
-     * @param dd the private d member. It will take care of deleting it upon destruction.
-     * @param backendObject the device interface object provided by the backend
+     * \a dd the private d member. It will take care of deleting it upon destruction.
+     *
+     * \a backendObject the device interface object provided by the backend
      */
     SOLID_NO_EXPORT DeviceInterface(DeviceInterfacePrivate &dd, QObject *backendObject);
 

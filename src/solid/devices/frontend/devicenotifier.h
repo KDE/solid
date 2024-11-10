@@ -13,37 +13,40 @@
 
 namespace Solid
 {
-/**
- * @class Solid::DeviceNotifier devicenotifier.h <Solid/DeviceNotifier>
+/*!
+ * \class Solid::DeviceNotifier
+ * \inheaderfile Solid/DeviceNotifier
+ * \inmodule Solid
  *
- * This class allow to query the underlying system to obtain information
+ * \brief This class allow to query the underlying system to obtain information
  * about the hardware available.
  *
  * It's the unique entry point for hardware discovery. Applications should use
  * it to find devices, or to be notified about hardware changes.
  *
  * Note that it's implemented as a singleton and encapsulates the backend logic.
- *
- * @author Kevin Ottens <ervin@kde.org>
  */
 class SOLID_EXPORT DeviceNotifier : public QObject // krazy:exclude=dpointer (interface class)
 {
     Q_OBJECT
 public:
+    /*!
+     *
+     */
     static DeviceNotifier *instance();
 
 Q_SIGNALS:
-    /**
+    /*!
      * This signal is emitted when a new device appears in the underlying system.
      *
-     * @param udi the new device UDI
+     * \a udi the new device UDI
      */
     void deviceAdded(const QString &udi);
 
-    /**
+    /*!
      * This signal is emitted when a device disappears from the underlying system.
      *
-     * @param udi the old device UDI
+     * \a udi the old device UDI
      */
     void deviceRemoved(const QString &udi);
 };

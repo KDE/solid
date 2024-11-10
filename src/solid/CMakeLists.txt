@@ -66,6 +66,8 @@ ecm_generate_headers(Solid_CamelCase_HEADERS
   PREFIX Solid
 )
 
+ecm_generate_qdoc(KF6Solid solid.qdocconf)
+
 install(FILES ${Solid_CamelCase_HEADERS} DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/Solid/Solid COMPONENT Devel)
 
 install(TARGETS KF6Solid EXPORT KF6SolidTargets ${KF_INSTALL_TARGETS_DEFAULT_ARGS})

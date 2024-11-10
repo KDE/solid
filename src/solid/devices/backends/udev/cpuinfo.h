@@ -15,15 +15,15 @@ namespace Backends
 {
 namespace UDev
 {
-/**
+/*!
  * Extracts vendor from /proc/cpuinfo for a given processor
  */
 QString extractCpuVendor(int processorNumber);
-/**
+/*!
  * Extracts model from /proc/cpuinfo for a given processor
  */
 QString extractCpuModel(int processorNumber);
-/**
+/*!
  * Extracts speed from /proc/cpuinfo for a given processor
  */
 int extractCurrentCpuSpeed(int processorNumber);

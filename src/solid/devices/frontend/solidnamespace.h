@@ -8,8 +8,23 @@
 #ifndef SOLID_SOLIDNAMESPACE_H
 #define SOLID_SOLIDNAMESPACE_H
 
+/*!
+ * \namespace Solid
+ * \inheaderfile Solid/SolidNamespace
+ * \inmodule Solid
+ */
 namespace Solid
 {
+
+/*!
+ * \value NoError
+ * \value UnauthorizedOperation
+ * \value DeviceBusy
+ * \value OperationFailed
+ * \value UserCanceled
+ * \value InvalidOption
+ * \value MissingDriver
+ */
 enum ErrorType {
     NoError = 0,
     UnauthorizedOperation,
