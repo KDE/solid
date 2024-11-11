@@ -14,7 +14,7 @@ namespace Solid
 {
 namespace Ifaces
 {
-/**
+/*!
  * This device interface is available on volume devices.
  *
  * A volume is anything that can contain data (partition, optical disc,
@@ -23,12 +23,12 @@ namespace Ifaces
 class StorageVolume : virtual public Block
 {
 public:
-    /**
+    /*!
      * Destroys a StorageVolume object.
      */
     ~StorageVolume() override;
 
-    /**
+    /*!
      * Indicates if this volume should be ignored by applications.
      *
      * If it should be ignored, it generally means that it should be
@@ -39,7 +39,7 @@ public:
      */
     virtual bool isIgnored() const = 0;
 
-    /**
+    /*!
      * Retrieves the type of use for this volume (for example filesystem).
      *
      * @return the usage type
@@ -47,21 +47,21 @@ public:
      */
     virtual Solid::StorageVolume::UsageType usage() const = 0;
 
-    /**
+    /*!
      * Retrieves the filesystem type of this volume.
      *
      * @return the filesystem type if applicable, QString() otherwise
      */
     virtual QString fsType() const = 0;
 
-    /**
+    /*!
      * Retrieves this volume label.
      *
      * @return the volume level if available, QString() otherwise
      */
     virtual QString label() const = 0;
 
-    /**
+    /*!
      * Retrieves this volume Universal Unique IDentifier (UUID).
      *
      * You can generally assume that this identifier is unique with reasonable
@@ -73,14 +73,14 @@ public:
      */
     virtual QString uuid() const = 0;
 
-    /**
+    /*!
      * Retrieves this volume size in bytes.
      *
      * @return the size of this volume
      */
     virtual qulonglong size() const = 0;
 
-    /**
+    /*!
      * Retrieves the crypto container UDI of this volume.
      *
      * @return the encrypted volume UDI containing the current volume if applicable,

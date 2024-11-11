@@ -18,7 +18,7 @@ class DevicePrivate;
 class Predicate;
 class DeviceInterfacePrivate;
 
-/**
+/*!
  * @class Solid::DeviceInterface deviceinterface.h <Solid/DeviceInterface>
  *
  * Base class of all the device interfaces.
@@ -32,7 +32,7 @@ class SOLID_EXPORT DeviceInterface : public QObject
     Q_DECLARE_PRIVATE(DeviceInterface)
 
 public:
-    /**
+    /*!
      * This enum type defines the type of device interface that a Device can have.
      *
      * - Unknown : An undetermined device interface
@@ -65,12 +65,12 @@ public:
     };
     Q_ENUM(Type)
 
-    /**
+    /*!
      * Destroys a DeviceInterface object.
      */
     ~DeviceInterface() override;
 
-    /**
+    /*!
      * Indicates if this device interface is valid.
      * A device interface is considered valid if the device it is referring is available in the system.
      *
@@ -78,19 +78,19 @@ public:
      */
     bool isValid() const;
 
-    /**
+    /*!
      *
      * @return the class name of the device interface type
      */
     static QString typeToString(Type type);
 
-    /**
+    /*!
      *
      * @return the device interface type for the given class name
      */
     static Type stringToType(const QString &type);
 
-    /**
+    /*!
      *
      * @return a description suitable to display in the UI of the device interface type
      * @since 4.4
@@ -98,7 +98,7 @@ public:
     static QString typeDescription(Type type);
 
 protected:
-    /**
+    /*!
      * @internal
      * Creates a new DeviceInterface object.
      *

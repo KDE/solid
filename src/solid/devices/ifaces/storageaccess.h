@@ -14,7 +14,7 @@ namespace Solid
 {
 namespace Ifaces
 {
-/**
+/*!
  * This device interface is available on volume devices.
  *
  * A volume is anything that can contain data (partition, optical disc,
@@ -23,19 +23,19 @@ namespace Ifaces
 class StorageAccess : virtual public DeviceInterface
 {
 public:
-    /**
+    /*!
      * Destroys a StorageVolume object.
      */
     ~StorageAccess() override;
 
-    /**
+    /*!
      * Indicates if this volume is mounted.
      *
      * @return true if the volume is mounted
      */
     virtual bool isAccessible() const = 0;
 
-    /**
+    /*!
      * Retrieves the absolute path of this volume mountpoint.
      *
      * @return the absolute path to the mount point if the volume is
@@ -43,7 +43,7 @@ public:
      */
     virtual QString filePath() const = 0;
 
-    /**
+    /*!
      * Indicates if this volume should be ignored by applications.
      *
      * If it should be ignored, it generally means that it should be
@@ -54,35 +54,35 @@ public:
      */
     virtual bool isIgnored() const = 0;
 
-    /**
+    /*!
      * Checks if source of the storage is encrypted.
      *
      * @return true if storage is encrypted one
      */
     virtual bool isEncrypted() const = 0;
 
-    /**
+    /*!
      * Mounts the volume.
      *
      * @return the job handling the operation
      */
     virtual bool setup() = 0;
 
-    /**
+    /*!
      * Unmounts the volume.
      *
      * @return the job handling the operation
      */
     virtual bool teardown() = 0;
 
-    /**
+    /*!
      * Indicates if this volume can check for filesystem errors.
      *
      * @return true if the volume is can be checked
      */
     virtual bool canCheck() const;
 
-    /**
+    /*!
      * Checks the filesystem for consistency avoiding any modifications or repairs.
      *
      * Mounted or unsupported filesystems will result in an error.
@@ -91,14 +91,14 @@ public:
      */
     virtual bool check();
 
-    /**
+    /*!
      * Indicates if this volume can repair filesystem errors.
      *
      * @return true if the volume is can be repaired
      */
     virtual bool canRepair() const;
 
-    /**
+    /*!
      * Tries to repair the filesystem.
      *
      * Mounted or unsupported filesystems will result in an error.
@@ -109,7 +109,7 @@ public:
 
 protected:
     // Q_SIGNALS:
-    /**
+    /*!
      * This signal is emitted when the mount state of this device
      * has changed.
      *
@@ -118,7 +118,7 @@ protected:
      */
     virtual void accessibilityChanged(bool accessible, const QString &udi) = 0;
 
-    /**
+    /*!
      * This signal is emitted when the mount state of this device
      * has changed.
      *
@@ -127,7 +127,7 @@ protected:
      */
     virtual void setupDone(Solid::ErrorType error, QVariant resultData, const QString &udi) = 0;
 
-    /**
+    /*!
      * This signal is emitted when the mount state of this device
      * has changed.
      *
@@ -136,7 +136,7 @@ protected:
      */
     virtual void teardownDone(Solid::ErrorType error, QVariant resultData, const QString &udi) = 0;
 
-    /**
+    /*!
      * This signal is emitted when a setup of this device is requested.
      * The signal might be spontaneous i.e. it can be triggered by
      * another process.
@@ -145,7 +145,7 @@ protected:
      */
     virtual void setupRequested(const QString &udi) = 0;
 
-    /**
+    /*!
      * This signal is emitted when a teardown of this device is requested.
      * The signal might be spontaneous i.e. it can be triggered by
      * another process
@@ -154,7 +154,7 @@ protected:
      */
     virtual void teardownRequested(const QString &udi) = 0;
 
-    /**
+    /*!
      * This signal is emitted when a repair of this device is requested.
      * The signal might be spontaneous i.e. it can be triggered by
      * another process.
@@ -163,7 +163,7 @@ protected:
      */
     virtual void repairRequested(const QString &udi);
 
-    /**
+    /*!
      * This signal is emitted when the attempted repaired of this
      * device is completed.
      *

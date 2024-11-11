@@ -34,7 +34,7 @@ public:
     QVariant driverHandle(const QString &driver) const override;
 
 private:
-    /**
+    /*!
      * Return full absolute path to media-player-info .mpi file, based on ID_MEDIA_PLAYER
      * udev property. Does not check for existence. Returns empty string in case no reasonable
      * file path could be determined.

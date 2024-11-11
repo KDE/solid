@@ -16,7 +16,7 @@ namespace Solid
 class OpticalDiscPrivate;
 class Device;
 
-/**
+/*!
  * @class Solid::OpticalDisc opticaldisc.h <Solid/OpticalDisc>
  *
  * This device interface is available on optical discs.
@@ -36,7 +36,7 @@ class SOLID_EXPORT OpticalDisc : public StorageVolume
     friend class Device;
 
 public:
-    /**
+    /*!
      * This enum type defines the type of content available in an optical disc.
      *
      * - Audio : A disc containing audio
@@ -58,13 +58,13 @@ public:
     };
     Q_ENUM(ContentType)
 
-    /**
+    /*!
      * Stores a combination of #ContentType values.
      */
     Q_DECLARE_FLAGS(ContentTypes, ContentType)
     Q_FLAG(ContentTypes)
 
-    /**
+    /*!
      * This enum type defines the type of optical disc it can be.
      *
      * - UnknownDiscType : An undetermined disc type
@@ -109,7 +109,7 @@ public:
     Q_ENUM(DiscType)
 
 private:
-    /**
+    /*!
      * Creates a new OpticalDisc object.
      * You generally won't need this. It's created when necessary using
      * Device::as().
@@ -120,12 +120,12 @@ private:
     SOLID_NO_EXPORT explicit OpticalDisc(QObject *backendObject);
 
 public:
-    /**
+    /*!
      * Destroys an OpticalDisc object.
      */
     ~OpticalDisc() override;
 
-    /**
+    /*!
      * Get the Solid::DeviceInterface::Type of the OpticalDisc device interface.
      *
      * @return the OpticalDisc device interface type
@@ -136,7 +136,7 @@ public:
         return DeviceInterface::OpticalDisc;
     }
 
-    /**
+    /*!
      * Retrieves the content types this disc contains (audio, video,
      * data...).
      *
@@ -145,28 +145,28 @@ public:
      */
     ContentTypes availableContent() const;
 
-    /**
+    /*!
      * Retrieves the disc type (cdr, cdrw...).
      *
      * @return the disc type
      */
     DiscType discType() const;
 
-    /**
+    /*!
      * Indicates if it's possible to write additional data to the disc.
      *
      * @return true if the disc is appendable, false otherwise
      */
     bool isAppendable() const;
 
-    /**
+    /*!
      * Indicates if the disc is blank.
      *
      * @return true if the disc is blank, false otherwise
      */
     bool isBlank() const;
 
-    /**
+    /*!
      * Indicates if the disc is rewritable.
      *
      * A disc is rewritable if you can write on it several times.
@@ -175,7 +175,7 @@ public:
      */
     bool isRewritable() const;
 
-    /**
+    /*!
      * Retrieves the disc capacity (that is the maximum size of a
      * volume could have on this disc).
      *

@@ -21,7 +21,7 @@ namespace Solid
 class PortableMediaPlayerPrivate;
 class Device;
 
-/**
+/*!
  * @class Solid::PortableMediaPlayer portablemediaplayer.h <Solid/PortableMediaPlayer>
  *
  * This class implements Portable Media Player device interface and represents
@@ -40,7 +40,7 @@ class SOLID_EXPORT PortableMediaPlayer : public DeviceInterface
 
 public:
 private:
-    /**
+    /*!
      * Creates a new PortableMediaPlayer object.
      * You generally won't need this. It's created when necessary using
      * Device::as().
@@ -51,12 +51,12 @@ private:
     SOLID_NO_EXPORT explicit PortableMediaPlayer(QObject *backendObject);
 
 public:
-    /**
+    /*!
      * Destroys a portable media player object.
      */
     ~PortableMediaPlayer() override;
 
-    /**
+    /*!
      * Get the Solid::DeviceInterface::Type of the PortableMediaPlayer device interface.
      *
      * @return the PortableMediaPlayer device interface type
@@ -67,7 +67,7 @@ public:
         return DeviceInterface::PortableMediaPlayer;
     }
 
-    /**
+    /*!
      * Retrieves known protocols this device can speak.  This list may be dependent
      * on installed device driver libraries.
      *
@@ -75,7 +75,7 @@ public:
      */
     QStringList supportedProtocols() const;
 
-    /**
+    /*!
      * Retrieves known installed device drivers that claim to handle this device
      * using the requested protocol.  If protocol is blank, returns a list of
      * all drivers supporting the device.
@@ -85,7 +85,7 @@ public:
      */
     QStringList supportedDrivers(QString protocol = QString()) const;
 
-    /**
+    /*!
      * Retrieves a driver specific string allowing to access the device.
      *
      * For example for the "mtp" driver it will return the serial number

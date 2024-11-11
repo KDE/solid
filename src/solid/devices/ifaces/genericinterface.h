@@ -16,7 +16,7 @@ namespace Solid
 {
 namespace Ifaces
 {
-/**
+/*!
  * Generic interface to deal with a device. It exposes a set of properties
  * and is organized a a key/value set.
  *
@@ -28,12 +28,12 @@ namespace Ifaces
 class GenericInterface
 {
 public:
-    /**
+    /*!
      * Destroys a GenericInterface object.
      */
     virtual ~GenericInterface();
 
-    /**
+    /*!
      * Retrieves the value of a property.
      *
      * @param key the property name
@@ -41,14 +41,14 @@ public:
      */
     virtual QVariant property(const QString &key) const = 0;
 
-    /**
+    /*!
      * Retrieves all the properties of this device.
      *
      * @returns all properties in a map
      */
     virtual QMap<QString, QVariant> allProperties() const = 0;
 
-    /**
+    /*!
      * Tests if a property exist.
      *
      * @param key the property name
@@ -58,7 +58,7 @@ public:
 
 protected:
     // Q_SIGNALS:
-    /**
+    /*!
      * This signal is emitted when a property is changed in the device.
      *
      * @param changes the map describing the property changes that
@@ -68,7 +68,7 @@ protected:
      */
     virtual void propertyChanged(const QMap<QString, int> &changes) = 0;
 
-    /**
+    /*!
      * This signal is emitted when an event occurred in the device.
      * For example when a button is pressed.
      *

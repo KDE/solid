@@ -13,7 +13,7 @@ namespace Solid
 {
 namespace Ifaces
 {
-/**
+/*!
  * Base interface of all the device interfaces.
  *
  * A device interface describes what a device can do. A device generally has
@@ -22,7 +22,7 @@ namespace Ifaces
 class DeviceInterface
 {
 public:
-    /**
+    /*!
      * Destroys a DeviceInterface object.
      */
     virtual ~DeviceInterface();

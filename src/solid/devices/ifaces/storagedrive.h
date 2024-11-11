@@ -16,7 +16,7 @@ namespace Solid
 {
 namespace Ifaces
 {
-/**
+/*!
  * This device interface is available on storage devices.
  *
  * A storage is anything that can contain a set of volumes (card reader,
@@ -25,12 +25,12 @@ namespace Ifaces
 class StorageDrive : virtual public Block
 {
 public:
-    /**
+    /*!
      * Destroys a StorageDrive object.
      */
     ~StorageDrive() override;
 
-    /**
+    /*!
      * Retrieves the type of physical interface this storage device is
      * connected to.
      *
@@ -39,7 +39,7 @@ public:
      */
     virtual Solid::StorageDrive::Bus bus() const = 0;
 
-    /**
+    /*!
      * Retrieves the type of this storage drive.
      *
      * @return the drive type
@@ -47,7 +47,7 @@ public:
      */
     virtual Solid::StorageDrive::DriveType driveType() const = 0;
 
-    /**
+    /*!
      * Indicates if the media contained by this drive can be removed.
      *
      * For example memory card can be removed from the drive by the user,
@@ -57,7 +57,7 @@ public:
      */
     virtual bool isRemovable() const = 0;
 
-    /**
+    /*!
      * Indicates if this storage device can be plugged or unplugged while
      * the computer is running.
      *
@@ -65,19 +65,19 @@ public:
      */
     virtual bool isHotpluggable() const = 0;
 
-    /**
+    /*!
      * Retrieves this drives size in bytes.
      *
      * @return the size of this drive
      */
     virtual qulonglong size() const = 0;
 
-    /**
+    /*!
      * Retrieves the time the drive was detected
      */
     virtual QDateTime timeDetected() const;
 
-    /**
+    /*!
      * Retrieves the time media in the drive was detected
      */
     virtual QDateTime timeMediaDetected() const;

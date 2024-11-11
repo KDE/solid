@@ -12,29 +12,37 @@
 #include <solid/battery.h>
 #include <solid/devices/ifaces/deviceinterface.h>
 
+/*!
+ * \namespace Solid
+ */
 namespace Solid
 {
+/*!
+ * \namespace Solid::Ifaces
+ */
 namespace Ifaces
 {
-/**
+/*!
+ * \class Solid::Ifaces::Battery
+ *
  * This device interface is available on batteries.
  */
 class Battery : virtual public DeviceInterface
 {
 public:
-    /**
+    /*!
      * Destroys a Battery object.
      */
     ~Battery() override;
 
-    /**
+    /*!
      * Indicates if this battery is currently present in its bay.
      *
      * @return true if the battery is present, false otherwise
      */
     virtual bool isPresent() const = 0;
 
-    /**
+    /*!
      * Retrieves the type of device holding this battery.
      *
      * @return the type of device holding this battery
@@ -42,7 +50,7 @@ public:
      */
     virtual Solid::Battery::BatteryType type() const = 0;
 
-    /**
+    /*!
      * Retrieves the current charge level of the battery normalised
      * to percent.
      *
@@ -50,7 +58,7 @@ public:
      */
     virtual int chargePercent() const = 0;
 
-    /**
+    /*!
      * Retrieves the battery capacity normalised to percent,
      * meaning how much energy can it hold compared to what it is designed to.
      * The capacity of the battery will reduce with age.
@@ -61,21 +69,21 @@ public:
      */
     virtual int capacity() const = 0;
 
-    /**
+    /*!
      * Indicates if the battery is rechargeable.
      *
      * @return true if the battery is rechargeable, false otherwise (one time usage)
      */
     virtual bool isRechargeable() const = 0;
 
-    /**
+    /*!
      * Indicates if the battery is powering the machine.
      *
      * @return true if the battery is powersupply, false otherwise
      */
     virtual bool isPowerSupply() const = 0;
 
-    /**
+    /*!
      * Retrieves the current charge state of the battery. It can be in a stable
      * state (no charge), charging or discharging.
      *
@@ -84,7 +92,7 @@ public:
      */
     virtual Solid::Battery::ChargeState chargeState() const = 0;
 
-    /**
+    /*!
      * Time (in seconds) until the battery is empty.
      *
      * @return time until the battery is empty
@@ -92,7 +100,7 @@ public:
      */
     virtual qlonglong timeToEmpty() const = 0;
 
-    /**
+    /*!
      * Time (in seconds) until the battery is full.
      *
      * @return time until the battery is full
@@ -100,7 +108,7 @@ public:
      */
     virtual qlonglong timeToFull() const = 0;
 
-    /**
+    /*!
      * Retrieves the technology used to manufacture the battery.
      *
      * @return the battery technology
@@ -108,14 +116,14 @@ public:
      */
     virtual Solid::Battery::Technology technology() const = 0;
 
-    /**
+    /*!
      * Amount of energy (measured in Wh) currently available in the power source.
      *
      * @return amount of battery energy in Wh
      */
     virtual double energy() const = 0;
 
-    /**
+    /*!
      * Amount of energy (measured in Wh) the battery has when it is full.
      *
      * @return amount of battery energy when full in Wh
@@ -123,7 +131,7 @@ public:
      */
     virtual double energyFull() const = 0;
 
-    /**
+    /*!
      * Amount of energy (measured in Wh) the battery should have by design hen it is full.
      *
      * @return amount of battery energy when full by design in Wh
@@ -131,7 +139,7 @@ public:
      */
     virtual double energyFullDesign() const = 0;
 
-    /**
+    /*!
      * Amount of energy being drained from the source, measured in W.
      * If positive, the source is being discharged, if negative it's being charged.
      *
@@ -140,14 +148,14 @@ public:
      */
     virtual double energyRate() const = 0;
 
-    /**
+    /*!
      * Voltage in the Cell or being recorded by the meter.
      *
      * @return voltage in Volts
      */
     virtual double voltage() const = 0;
 
-    /**
+    /*!
      * The temperature of the battery in degrees Celsius.
      *
      * @return the battery temperature in degrees Celsius
@@ -155,7 +163,7 @@ public:
      */
     virtual double temperature() const = 0;
 
-    /**
+    /*!
      * The serial number of the battery
      *
      * @return the serial number of the battery
@@ -163,7 +171,7 @@ public:
      */
     virtual QString serial() const = 0;
 
-    /**
+    /*!
      * Retrieves the current estimated remaining time of the system batteries
      *
      * @return the current global estimated remaining time in seconds
@@ -173,7 +181,7 @@ public:
 
 protected:
     // Q_SIGNALS:
-    /**
+    /*!
      * This signal is emitted if the battery gets plugged in/out of the
      * battery bay.
      *
@@ -182,7 +190,7 @@ protected:
      */
     virtual void presentStateChanged(bool newState, const QString &udi) = 0;
 
-    /**
+    /*!
      * This signal is emitted when the charge percent value of this
      * battery has changed.
      *
@@ -191,7 +199,7 @@ protected:
      */
     virtual void chargePercentChanged(int value, const QString &udi) = 0;
 
-    /**
+    /*!
      * This signal is emitted when the capacity of this battery has changed.
      *
      * @param value the new capacity of the battery
@@ -200,7 +208,7 @@ protected:
      */
     virtual void capacityChanged(int value, const QString &udi) = 0;
 
-    /**
+    /*!
      * This signal is emitted when the power supply state of the battery
      * changes.
      *
@@ -210,7 +218,7 @@ protected:
      */
     virtual void powerSupplyStateChanged(bool newState, const QString &udi) = 0;
 
-    /**
+    /*!
      * This signal is emitted when the charge state of this battery
      * has changed.
      *
@@ -221,7 +229,7 @@ protected:
      */
     virtual void chargeStateChanged(int newState, const QString &udi = QString()) = 0;
 
-    /**
+    /*!
      * This signal is emitted when the time until the battery is empty
      * has changed.
      *
@@ -231,7 +239,7 @@ protected:
      */
     virtual void timeToEmptyChanged(qlonglong time, const QString &udi) = 0;
 
-    /**
+    /*!
      * This signal is emitted when the time until the battery is full
      * has changed.
      *
@@ -241,7 +249,7 @@ protected:
      */
     virtual void timeToFullChanged(qlonglong time, const QString &udi) = 0;
 
-    /**
+    /*!
      * This signal is emitted when the energy value of this
      * battery has changed.
      *
@@ -250,7 +258,7 @@ protected:
      */
     virtual void energyChanged(double energy, const QString &udi) = 0;
 
-    /**
+    /*!
      * This signal is emitted when the energy full value of this
      * battery has changed.
      *
@@ -259,7 +267,7 @@ protected:
      */
     virtual void energyFullChanged(double energy, const QString &udi) = 0;
 
-    /**
+    /*!
      * This signal is emitted when the energy full design value of this
      * battery has changed.
      *
@@ -268,7 +276,7 @@ protected:
      */
     virtual void energyFullDesignChanged(double energy, const QString &udi) = 0;
 
-    /**
+    /*!
      * This signal is emitted when the energy rate value of this
      * battery has changed.
      *
@@ -279,7 +287,7 @@ protected:
      */
     virtual void energyRateChanged(double energyRate, const QString &udi) = 0;
 
-    /**
+    /*!
      * This signal is emitted when the voltage in the cell has changed.
      *
      * @param voltage the new voltage of the cell
@@ -288,7 +296,7 @@ protected:
      */
     virtual void voltageChanged(double voltage, const QString &udi) = 0;
 
-    /**
+    /*!
      * This signal is emitted when the battery temperature has changed.
      *
      * @param temperature the new temperature of the battery in degrees Celsius
@@ -297,7 +305,7 @@ protected:
      */
     virtual void temperatureChanged(double temperature, const QString &udi) = 0;
 
-    /**
+    /*!
      * This signal is emitted when the estimated battery remaining time changes.
      *
      * @param time the new remaining time

@@ -7,7 +7,7 @@
 #ifndef SOLID_BACKENDS_UDEV_CPUINFO_ARM_H
 #define SOLID_BACKENDS_UDEV_CPUINFO_ARM_H
 
-/**
+/*!
  * Detect if we are compiling for ARM 32-bit or 64-bit platforms.
  * This works at least for gcc and clang (they both have the same
  * default list of defined macros, which can be obtained by:
@@ -30,7 +30,7 @@ namespace Backends
 {
 namespace UDev
 {
-/**
+/*!
  * @brief The ArmIdPart struct
  * Describes specfic CPU Model. Is used to
  * convert numerical CPU ID to name string.

@@ -16,7 +16,7 @@ namespace Solid
 class BlockPrivate;
 class Device;
 
-/**
+/*!
  * @class Solid::Block block.h <Solid/Block>
  *
  * This device interface is available on block devices.
@@ -35,7 +35,7 @@ class SOLID_EXPORT Block : public DeviceInterface
     friend class Device;
 
 private:
-    /**
+    /*!
      * Creates a new Block object.
      * You generally won't need this. It's created when necessary using
      * Device::as().
@@ -46,12 +46,12 @@ private:
     SOLID_NO_EXPORT explicit Block(QObject *backendObject);
 
 public:
-    /**
+    /*!
      * Destroys a Block object.
      */
     ~Block() override;
 
-    /**
+    /*!
      * Get the Solid::DeviceInterface::Type of the Block device interface.
      *
      * @return the Block device interface type
@@ -62,7 +62,7 @@ public:
         return DeviceInterface::Block;
     }
 
-    /**
+    /*!
      * Retrieves the major number of the node file to interact with
      * the device.
      *
@@ -70,7 +70,7 @@ public:
      */
     int deviceMajor() const;
 
-    /**
+    /*!
      * Retrieves the minor number of the node file to interact with
      * the device.
      *
@@ -78,7 +78,7 @@ public:
      */
     int deviceMinor() const;
 
-    /**
+    /*!
      * Retrieves the absolute path of the special file to interact
      * with the device.
      *

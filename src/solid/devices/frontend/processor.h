@@ -16,7 +16,7 @@ namespace Solid
 class ProcessorPrivate;
 class Device;
 
-/**
+/*!
  * @class Solid::Processor processor.h <Solid/Processor>
  *
  * This device interface is available on processors.
@@ -32,7 +32,7 @@ class SOLID_EXPORT Processor : public DeviceInterface
     friend class Device;
 
 private:
-    /**
+    /*!
      * Creates a new Processor object.
      * You generally won't need this. It's created when necessary using
      * Device::as().
@@ -43,7 +43,7 @@ private:
     SOLID_NO_EXPORT explicit Processor(QObject *backendObject);
 
 public:
-    /**
+    /*!
      * This enum contains the list of architecture extensions you
      * can query.
      *
@@ -70,12 +70,12 @@ public:
     Q_DECLARE_FLAGS(InstructionSets, InstructionSet)
     Q_FLAG(InstructionSets)
 
-    /**
+    /*!
      * Destroys a Processor object.
      */
     ~Processor() override;
 
-    /**
+    /*!
      * Get the Solid::DeviceInterface::Type of the Processor device interface.
      *
      * @return the Processor device interface type
@@ -86,14 +86,14 @@ public:
         return DeviceInterface::Processor;
     }
 
-    /**
+    /*!
      * Retrieves the processor number in the system.
      *
      * @return the internal processor number in the system, starting from zero
      */
     int number() const;
 
-    /**
+    /*!
      * Retrieves the maximum speed of the processor.
      *
      * @return the maximum speed in MHz, or 0 if the device can't be queried for this
@@ -101,7 +101,7 @@ public:
      */
     int maxSpeed() const;
 
-    /**
+    /*!
      * Indicates if the processor can change the CPU frequency.
      *
      * True if a processor is able to change its own CPU frequency.
@@ -111,7 +111,7 @@ public:
      */
     bool canChangeFrequency() const;
 
-    /**
+    /*!
      * Queries the instructions set extensions of the CPU.
      *
      * @return the extensions supported by the CPU

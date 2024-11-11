@@ -26,30 +26,30 @@ public:
     DADictionary(const IOKitDevice *device);
     virtual ~DADictionary();
 
-    /**
+    /*!
      * get a fresh copy of the DA disk description dict;
      * the result is stored in daRef (after releasing any
      * dict it may currently point to).
      */
     bool getDict();
-    /**
+    /*!
      * release the DA disk description dict and reset daRef.
      */
     void releaseDict();
 
-    /**
+    /*!
      * fetch the value of @p key as a string, from the current
      * disk description (calls getDict() and releaseDict()).
      */
     const QString stringForKey(const CFStringRef key);
-    /**
+    /*!
      * fetch the value of @p key as a CFURLRef, from the current
      * disk description. Calls getDict() but not releaseDict().
      *The contents of the CFURLRef must be retrieved before
      * calling releaseDict() (and thus getDict()).
      */
     CFURLRef cfUrLRefForKey(const CFStringRef key);
-    /**
+    /*!
      * fetch the value of @p key as a boolean, from the current
      * disk description (calls getDict() and releaseDict()).
      */

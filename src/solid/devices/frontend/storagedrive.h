@@ -16,7 +16,7 @@ namespace Solid
 class StorageDrivePrivate;
 class Device;
 
-/**
+/*!
  * @class Solid::StorageDrive storagedrive.h <Solid/StorageDrive>
  *
  * This device interface is available on storage devices.
@@ -40,7 +40,7 @@ class SOLID_EXPORT StorageDrive : public DeviceInterface
     friend class Device;
 
 public:
-    /**
+    /*!
      * This enum type defines the type of bus a storage device is attached to.
      *
      * - Ide : An Integrated Drive Electronics (IDE) bus, also known as ATA
@@ -53,7 +53,7 @@ public:
     enum Bus { Ide, Usb, Ieee1394, Scsi, Sata, Platform };
     Q_ENUM(Bus)
 
-    /**
+    /*!
      * This enum type defines the type of drive a storage device can be.
      *
      * - HardDisk : A hard disk
@@ -70,7 +70,7 @@ public:
     Q_ENUM(DriveType)
 
 private:
-    /**
+    /*!
      * Creates a new StorageDrive object.
      * You generally won't need this. It's created when necessary using
      * Device::as().
@@ -81,12 +81,12 @@ private:
     SOLID_NO_EXPORT explicit StorageDrive(QObject *backendObject);
 
 public:
-    /**
+    /*!
      * Destroys a StorageDrive object.
      */
     ~StorageDrive() override;
 
-    /**
+    /*!
      * Get the Solid::DeviceInterface::Type of the StorageDrive device interface.
      *
      * @return the StorageDrive device interface type
@@ -97,7 +97,7 @@ public:
         return DeviceInterface::StorageDrive;
     }
 
-    /**
+    /*!
      * Retrieves the type of physical interface this storage device is
      * connected to.
      *
@@ -106,7 +106,7 @@ public:
      */
     Bus bus() const;
 
-    /**
+    /*!
      * Retrieves the type of this storage drive.
      *
      * @return the drive type
@@ -114,7 +114,7 @@ public:
      */
     DriveType driveType() const;
 
-    /**
+    /*!
      * Indicates if the media contained by this drive can be removed.
      *
      * For example memory card can be removed from the drive by the user,
@@ -124,7 +124,7 @@ public:
      */
     bool isRemovable() const;
 
-    /**
+    /*!
      * Indicates if this storage device can be plugged or unplugged while
      * the computer is running.
      *
@@ -132,14 +132,14 @@ public:
      */
     bool isHotpluggable() const;
 
-    /**
+    /*!
      * Retrieves this drives size in bytes.
      *
      * @return the size of this drive
      */
     qulonglong size() const;
 
-    /**
+    /*!
      * Indicates if the storage device is currently in use
      * i.e. if at least one child storage access is
      * mounted
@@ -148,7 +148,7 @@ public:
      */
     bool isInUse() const;
 
-    /**
+    /*!
      * Returns the time the drive was deteced.
      * Typically this means the time a drive was plugged in, or the computer rebooted
      *
@@ -157,7 +157,7 @@ public:
      */
     QDateTime timeDetected() const;
 
-    /**
+    /*!
      * Returns the time media in the drive was deteced.
      * Typically this means the time a card was inserted into a reader, or the computer rebooted
      *
@@ -167,7 +167,7 @@ public:
     QDateTime timeMediaDetected() const;
 
 protected:
-    /**
+    /*!
      * @internal
      */
     SOLID_NO_EXPORT StorageDrive(StorageDrivePrivate &dd, QObject *backendObject);

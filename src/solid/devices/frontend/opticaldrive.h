@@ -20,7 +20,7 @@ namespace Solid
 class OpticalDrivePrivate;
 class Device;
 
-/**
+/*!
  * @class Solid::OpticalDrive opticaldrive.h <Solid/OpticalDrive>
  *
  * This device interface is available on CD-R*,DVD*,Blu-Ray,HD-DVD drives.
@@ -38,7 +38,7 @@ class SOLID_EXPORT OpticalDrive : public StorageDrive
     friend class Device;
 
 public:
-    /**
+    /*!
      * This enum type defines the type of medium an optical drive supports.
      *
      * - Cdr : A Recordable Compact Disc (CD-R)
@@ -81,14 +81,14 @@ public:
     };
     Q_ENUM(MediumType)
 
-    /**
+    /*!
      * Stores a combination of #MediumType values.
      */
     Q_DECLARE_FLAGS(MediumTypes, MediumType)
     Q_FLAG(MediumTypes)
 
 private:
-    /**
+    /*!
      * Creates a new OpticalDrive object.
      * You generally won't need this. It's created when necessary using
      * Device::as().
@@ -99,12 +99,12 @@ private:
     SOLID_NO_EXPORT explicit OpticalDrive(QObject *backendObject);
 
 public:
-    /**
+    /*!
      * Destroys an OpticalDrive object.
      */
     ~OpticalDrive() override;
 
-    /**
+    /*!
      * Get the Solid::DeviceInterface::Type of the OpticalDrive device interface.
      *
      * @return the OpticalDrive device interface type
@@ -115,28 +115,28 @@ public:
         return DeviceInterface::OpticalDrive;
     }
 
-    /**
+    /*!
      * Retrieves the medium types this drive supports.
      *
      * @return the flag set indicating the supported medium types
      */
     MediumTypes supportedMedia() const;
 
-    /**
+    /*!
      * Retrieves the maximum read speed of this drive in kilobytes per second.
      *
      * @return the maximum read speed
      */
     int readSpeed() const;
 
-    /**
+    /*!
      * Retrieves the maximum write speed of this drive in kilobytes per second.
      *
      * @return the maximum write speed
      */
     int writeSpeed() const;
 
-    /**
+    /*!
      * Retrieves the list of supported write speeds of this drive in
      * kilobytes per second.
      *
@@ -144,7 +144,7 @@ public:
      */
     QList<int> writeSpeeds() const;
 
-    /**
+    /*!
      * Ejects any disc that could be contained in this drive.
      * If this drive is empty, but has a tray it'll be opened.
      *
@@ -153,7 +153,7 @@ public:
     bool eject();
 
 Q_SIGNALS:
-    /**
+    /*!
      * This signal is emitted when the eject button is pressed
      * on the drive.
      *
@@ -162,7 +162,7 @@ Q_SIGNALS:
      */
     void ejectPressed(const QString &udi);
 
-    /**
+    /*!
      * This signal is emitted when the attempted eject process on this
      * drive is completed. The signal might be spontaneous, i.e.
      * it can be triggered by another process.
@@ -173,7 +173,7 @@ Q_SIGNALS:
      */
     void ejectDone(Solid::ErrorType error, QVariant errorData, const QString &udi);
 
-    /**
+    /*!
      * This signal is emitted when eject on this drive is
      * requested. The signal might be spontaneous, i.e. it
      * can be triggered by another process.

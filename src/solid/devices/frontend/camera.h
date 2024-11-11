@@ -19,7 +19,7 @@ namespace Solid
 class CameraPrivate;
 class Device;
 
-/**
+/*!
  * @class Solid::Camera camera.h <Solid/Camera>
  *
  * This device interface is available on digital camera devices.
@@ -40,7 +40,7 @@ class SOLID_EXPORT Camera : public DeviceInterface
     friend class Device;
 
 private:
-    /**
+    /*!
      * Creates a new Camera object.
      * You generally won't need this. It's created when necessary using
      * Device::as().
@@ -51,12 +51,12 @@ private:
     SOLID_NO_EXPORT explicit Camera(QObject *backendObject);
 
 public:
-    /**
+    /*!
      * Destroys a Camera object.
      */
     ~Camera() override;
 
-    /**
+    /*!
      * Get the Solid::DeviceInterface::Type of the Camera device interface.
      *
      * @return the Camera device interface type
@@ -67,7 +67,7 @@ public:
         return DeviceInterface::Camera;
     }
 
-    /**
+    /*!
      * Retrieves known protocols this device can speak.  This list may be dependent
      * on installed device driver libraries.
      *
@@ -75,7 +75,7 @@ public:
      */
     QStringList supportedProtocols() const;
 
-    /**
+    /*!
      * Retrieves known installed device drivers that claim to handle this device
      * using the requested protocol.  If protocol is blank, returns a list of
      * all drivers supporting the device.
@@ -85,7 +85,7 @@ public:
      */
     QStringList supportedDrivers(QString protocol = QString()) const;
 
-    /**
+    /*!
      * Retrieves a driver specific string allowing to access the device.
      *
      * For example for the "gphoto" driver it will return a list of the

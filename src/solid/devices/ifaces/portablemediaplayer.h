@@ -15,7 +15,7 @@ namespace Solid
 {
 namespace Ifaces
 {
-/**
+/*!
  * This class implements Portable Media Player device interface and represents
  * a portable media player attached to the system.
  * A portable media player is a portable device able to play multimedia files.
@@ -25,12 +25,12 @@ namespace Ifaces
 class PortableMediaPlayer : virtual public DeviceInterface
 {
 public:
-    /**
+    /*!
      * Destroys a portable media player object.
      */
     ~PortableMediaPlayer() override;
 
-    /**
+    /*!
      * Retrieves known protocols this device can speak.  This list may be dependent
      * on installed device driver libraries.
      *
@@ -46,7 +46,7 @@ public:
      */
     virtual QStringList supportedProtocols() const = 0;
 
-    /**
+    /*!
      * Retrieves known installed device drivers that claim to handle this device
      * using the requested protocol.
      *
@@ -62,7 +62,7 @@ public:
      */
     virtual QStringList supportedDrivers(QString protocol = QString()) const = 0;
 
-    /**
+    /*!
      * Retrieves a driver specific string allowing to access the device.
      *
      * For example for the "mtp" driver it will return the serial number

@@ -14,32 +14,32 @@ namespace Solid
 {
 namespace Ifaces
 {
-/**
+/*!
  * This device interface is available on processors.
  */
 class Processor : virtual public DeviceInterface
 {
 public:
-    /**
+    /*!
      * Destroys a Processor object.
      */
     ~Processor() override;
 
-    /**
+    /*!
      * Retrieves the processor number in the system.
      *
      * @return the internal processor number in the system, starting from zero
      */
     virtual int number() const = 0;
 
-    /**
+    /*!
      * Retrieves the maximum speed of the processor.
      *
      * @return the maximum speed in MHz
      */
     virtual int maxSpeed() const = 0;
 
-    /**
+    /*!
      * Indicates if the processor can change the CPU frequency.
      *
      * True if a processor is able to change its own CPU frequency.
@@ -49,7 +49,7 @@ public:
      */
     virtual bool canChangeFrequency() const = 0;
 
-    /**
+    /*!
      * Queries the instructions set extensions of the CPU.
      *
      * @return the extensions supported by the CPU

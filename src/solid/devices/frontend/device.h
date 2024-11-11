@@ -18,7 +18,7 @@ namespace Solid
 {
 class DevicePrivate;
 
-/**
+/*!
  * @class Solid::Device device.h <Solid/Device>
  *
  * This class allows applications to deal with devices available in the
@@ -33,14 +33,14 @@ class DevicePrivate;
 class SOLID_EXPORT Device
 {
 public:
-    /**
+    /*!
      * Retrieves all the devices available in the underlying system.
      *
      * @return the list of the devices available
      */
     static QList<Device> allDevices();
 
-    /**
+    /*!
      * Retrieves a list of devices of the system given matching the given
      * constraints (parent and device interface type)
      *
@@ -53,7 +53,7 @@ public:
      */
     static QList<Device> listFromType(const DeviceInterface::Type &type, const QString &parentUdi = QString());
 
-    /**
+    /*!
      * Retrieves a list of devices of the system given matching the given
      * constraints (parent and predicate)
      *
@@ -65,7 +65,7 @@ public:
      */
     static QList<Device> listFromQuery(const Predicate &predicate, const QString &parentUdi = QString());
 
-    /**
+    /*!
      * Convenience function see above.
      *
      * @param predicate
@@ -74,7 +74,7 @@ public:
      */
     static QList<Device> listFromQuery(const QString &predicate, const QString &parentUdi = QString());
 
-    /**
+    /*!
      * Returns the Device containing the filesystem for the given path
      *
      * @param canonical path to a filesystem entry, e.g. a file or directory
@@ -86,26 +86,26 @@ public:
      */
     static Device storageAccessFromPath(const QString &path);
 
-    /**
+    /*!
      * Constructs a device for a given Universal Device Identifier (UDI).
      *
      * @param udi the udi of the device to create
      */
     explicit Device(const QString &udi = QString());
 
-    /**
+    /*!
      * Constructs a copy of a device.
      *
      * @param device the device to copy
      */
     Device(const Device &device);
 
-    /**
+    /*!
      * Destroys the device.
      */
     ~Device();
 
-    /**
+    /*!
      * Assigns a device to this device and returns a reference to it.
      *
      * @param device the device to assign
@@ -113,7 +113,7 @@ public:
      */
     Device &operator=(const Device &device);
 
-    /**
+    /*!
      * Indicates if this device is valid.
      * A device is considered valid if it's available in the system.
      *
@@ -121,7 +121,7 @@ public:
      */
     bool isValid() const;
 
-    /**
+    /*!
      * Retrieves the Universal Device Identifier (UDI).
      *
      * \warning Don't use the UDI for anything except communication with Solid. Also don't store
@@ -135,7 +135,7 @@ public:
      */
     QString udi() const;
 
-    /**
+    /*!
      * Retrieves the Universal Device Identifier (UDI)
      * of the Device's parent.
      *
@@ -143,7 +143,7 @@ public:
      */
     QString parentUdi() const;
 
-    /**
+    /*!
      * Retrieves the parent of the Device.
      *
      * @return the device's parent
@@ -151,21 +151,21 @@ public:
      */
     Device parent() const;
 
-    /**
+    /*!
      * Retrieves the name of the device vendor.
      *
      * @return the vendor name
      */
     QString vendor() const;
 
-    /**
+    /*!
      * Retrieves the name of the product corresponding to this device.
      *
      * @return the product name
      */
     QString product() const;
 
-    /**
+    /*!
      * Retrieves the name of the icon representing this device.
      * The naming follows the freedesktop.org specification.
      *
@@ -173,7 +173,7 @@ public:
      */
     QString icon() const;
 
-    /**
+    /*!
      * Retrieves the names of the emblems representing the state of this device.
      * The naming follows the freedesktop.org specification.
      *
@@ -182,7 +182,7 @@ public:
      */
     QStringList emblems() const;
 
-    /**
+    /*!
      * Retrieves the display Name to use for this device.
      * Same as description when not defined.
      *
@@ -191,7 +191,7 @@ public:
      */
     QString displayName() const;
 
-    /**
+    /*!
      * Retrieves the description of device.
      *
      * @return the description
@@ -199,7 +199,7 @@ public:
      */
     QString description() const;
 
-    /**
+    /*!
      * Tests if a device interface is available from the device.
      *
      * @param type the device interface type to query
@@ -207,7 +207,7 @@ public:
      */
     bool isDeviceInterface(const DeviceInterface::Type &type) const;
 
-    /**
+    /*!
      * Retrieves a specialized interface to interact with the device corresponding to
      * a particular device interface.
      *
@@ -216,7 +216,7 @@ public:
      */
     DeviceInterface *asDeviceInterface(const DeviceInterface::Type &type);
 
-    /**
+    /*!
      * Retrieves a specialized interface to interact with the device corresponding to
      * a particular device interface.
      *
@@ -225,7 +225,7 @@ public:
      */
     const DeviceInterface *asDeviceInterface(const DeviceInterface::Type &type) const;
 
-    /**
+    /*!
      * Retrieves a specialized interface to interact with the device corresponding
      * to a given device interface.
      *
@@ -239,7 +239,7 @@ public:
         return qobject_cast<DevIface *>(iface);
     }
 
-    /**
+    /*!
      * Retrieves a specialized interface to interact with the device corresponding
      * to a given device interface.
      *
@@ -253,7 +253,7 @@ public:
         return qobject_cast<const DevIface *>(iface);
     }
 
-    /**
+    /*!
      * Tests if a device provides a given device interface.
      *
      * @returns true if the interface is available, false otherwise

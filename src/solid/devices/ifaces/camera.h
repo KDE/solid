@@ -15,7 +15,7 @@ namespace Solid
 {
 namespace Ifaces
 {
-/**
+/*!
  * This device interface is available on digital camera devices.
  *
  * A digital camera is a device used to transform images into
@@ -28,12 +28,12 @@ namespace Ifaces
 class Camera : virtual public DeviceInterface
 {
 public:
-    /**
+    /*!
      * Destroys a Camera object.
      */
     ~Camera() override;
 
-    /**
+    /*!
      * Retrieves known protocols this device can speak.  This list may be dependent
      * on installed device driver libraries.
      *
@@ -41,7 +41,7 @@ public:
      */
     virtual QStringList supportedProtocols() const = 0;
 
-    /**
+    /*!
      * Retrieves known installed device drivers that claim to handle this device
      * using the requested protocol.
      *
@@ -50,7 +50,7 @@ public:
      */
     virtual QStringList supportedDrivers(QString protocol = QString()) const = 0;
 
-    /**
+    /*!
      * Retrieves a driver specific string allowing to access the device.
      *
      * For example for the "gphoto" driver it will return a list of the

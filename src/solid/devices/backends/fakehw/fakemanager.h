@@ -21,11 +21,11 @@ namespace Fake
 {
 class FakeDevice;
 
-/**
- * @brief a Fake manager that read a device list from a XML file.
+/*!
+ * A Fake manager that read a device list from a XML file.
  * This fake manager is used for unit tests and developers.
  *
- * @author Michaël Larouche <michael.larouche@kdemail.net>
+ * \internal
  */
 class FakeManager : public Solid::Ifaces::DeviceManager
 {
@@ -37,7 +37,7 @@ public:
     QString udiPrefix() const override;
     QSet<Solid::DeviceInterface::Type> supportedInterfaces() const override;
 
-    /**
+    /*!
      * Return the list of UDI of all available devices.
      */
     QStringList allDevices() override;
@@ -52,12 +52,12 @@ public Q_SLOTS:
     void unplug(const QString &udi);
 
 private Q_SLOTS:
-    /**
+    /*!
      * @internal
      * Parse the XML file that represent the fake machine.
      */
     void parseMachineFile();
-    /**
+    /*!
      * @internal
      * Parse a device node and the return the device.
      */

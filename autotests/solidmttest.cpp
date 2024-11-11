@@ -113,7 +113,7 @@ void SolidMtTest::testTextPredicates_data()
     QTest::newRow("[[[and]and]and]") << QStringLiteral("[ [ [ @ AND @] AND @ ] AND @]") << true;
 }
 
-/** @brief Check validity (and hence, parser-code) for a bunch of text predicates
+/*! @brief Check validity (and hence, parser-code) for a bunch of text predicates
  *
  */
 void SolidMtTest::testTextPredicates()

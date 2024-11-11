@@ -18,7 +18,7 @@ namespace Solid
 {
 class Device;
 
-/**
+/*!
  * @class Solid::Predicate predicate.h <Solid/Predicate>
  *
  * This class implements predicates for devices.
@@ -66,7 +66,7 @@ class Device;
 class SOLID_EXPORT Predicate
 {
 public:
-    /**
+    /*!
      * The comparison operator which can be used for matching within the predicate.
      *
      * - Equals, the property and the value will match for strict equality
@@ -74,7 +74,7 @@ public:
      */
     enum ComparisonOperator { Equals, Mask };
 
-    /**
+    /*!
      * The predicate type which controls how the predicate is handled
      *
      * - PropertyCheck, the predicate contains a comparison that needs to be matched using a ComparisonOperator
@@ -84,19 +84,19 @@ public:
      */
     enum Type { PropertyCheck, Conjunction, Disjunction, InterfaceCheck };
 
-    /**
+    /*!
      * Constructs an invalid predicate.
      */
     Predicate();
 
-    /**
+    /*!
      * Copy constructor.
      *
      * @param other the predicate to copy
      */
     Predicate(const Predicate &other);
 
-    /**
+    /*!
      * Constructs a predicate matching the value of a property in
      * a given device interface.
      *
@@ -107,7 +107,7 @@ public:
      */
     Predicate(const DeviceInterface::Type &ifaceType, const QString &property, const QVariant &value, ComparisonOperator compOperator = Equals);
 
-    /**
+    /*!
      * Constructs a predicate matching the value of a property in
      * a given device interface.
      *
@@ -118,26 +118,26 @@ public:
      */
     Predicate(const QString &ifaceName, const QString &property, const QVariant &value, ComparisonOperator compOperator = Equals);
 
-    /**
+    /*!
      * Constructs a predicate matching devices being of a particular device interface
      *
      * @param ifaceType the device interface the device must have
      */
     explicit Predicate(const DeviceInterface::Type &ifaceType);
 
-    /**
+    /*!
      * Constructs a predicate matching devices being of a particular device interface
      *
      * @param ifaceName the name of the device interface the device must have
      */
     explicit Predicate(const QString &ifaceName);
 
-    /**
+    /*!
      * Destroys a Predicate object.
      */
     ~Predicate();
 
-    /**
+    /*!
      * Assignment operator.
      *
      * @param other the predicate to assign
@@ -145,7 +145,7 @@ public:
      */
     Predicate &operator=(const Predicate &other);
 
-    /**
+    /*!
      * 'And' operator.
      *
      * @param other the second operand
@@ -153,7 +153,7 @@ public:
      */
     Predicate operator&(const Predicate &other);
 
-    /**
+    /*!
      * 'AndEquals' operator.
      *
      * @param other the second operand
@@ -161,7 +161,7 @@ public:
      */
     Predicate &operator&=(const Predicate &other);
 
-    /**
+    /*!
      * 'Or' operator.
      *
      * @param other the second operand
@@ -169,7 +169,7 @@ public:
      */
     Predicate operator|(const Predicate &other);
 
-    /**
+    /*!
      * 'OrEquals' operator.
      *
      * @param other the second operand
@@ -177,7 +177,7 @@ public:
      */
     Predicate &operator|=(const Predicate &other);
 
-    /**
+    /*!
      * Indicates if the predicate is valid.
      *
      * Predicate() is the only invalid predicate.
@@ -186,7 +186,7 @@ public:
      */
     bool isValid() const;
 
-    /**
+    /*!
      * Checks if a device matches the predicate.
      *
      * @param device the device to match against the predicate
@@ -194,21 +194,21 @@ public:
      */
     bool matches(const Device &device) const;
 
-    /**
+    /*!
      * Retrieves the device interface types used in this predicate.
      *
      * @return all the device interface types used in this predicate
      */
     QSet<DeviceInterface::Type> usedTypes() const;
 
-    /**
+    /*!
      * Converts the predicate to its string form.
      *
      * @return a string representation of the predicate
      */
     QString toString() const;
 
-    /**
+    /*!
      * Converts a string to a predicate.
      *
      * @param predicate the string to convert
@@ -217,7 +217,7 @@ public:
      */
     static Predicate fromString(const QString &predicate);
 
-    /**
+    /*!
      * Retrieves the predicate type, used to determine how to handle the predicate
      *
      * @since 4.4
@@ -225,7 +225,7 @@ public:
      */
     Type type() const;
 
-    /**
+    /*!
      * Retrieves the interface type.
      *
      * @note This is only valid for InterfaceCheck and PropertyCheck types
@@ -234,7 +234,7 @@ public:
      */
     DeviceInterface::Type interfaceType() const;
 
-    /**
+    /*!
      * Retrieves the property name used when retrieving the value to compare against
      *
      * @note This is only valid for the PropertyCheck type
@@ -243,7 +243,7 @@ public:
      */
     QString propertyName() const;
 
-    /**
+    /*!
      * Retrieves the value used when comparing a devices property to see if it matches the predicate
      *
      * @note This is only valid for the PropertyCheck type
@@ -252,7 +252,7 @@ public:
      */
     QVariant matchingValue() const;
 
-    /**
+    /*!
      * Retrieves the comparison operator used to compare a property's value
      *
      * @since 4.4
@@ -261,7 +261,7 @@ public:
      */
     ComparisonOperator comparisonOperator() const;
 
-    /**
+    /*!
      * A smaller, inner predicate which is the first to appear and is compared with the second one
      *
      * @since 4.4
@@ -270,7 +270,7 @@ public:
      */
     Predicate firstOperand() const;
 
-    /**
+    /*!
      * A smaller, inner predicate which is the second to appear and is compared with the first one
      *
      * @since 4.4

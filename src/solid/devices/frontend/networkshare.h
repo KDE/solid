@@ -18,7 +18,7 @@ namespace Solid
 class Device;
 class NetworkSharePrivate;
 
-/**
+/*!
  * @class Solid::NetworkShare networkshare.h <Solid/NetworkShare>
  *
  * NetworkShare interface.
@@ -36,7 +36,7 @@ class SOLID_EXPORT NetworkShare : public DeviceInterface
     friend class Device;
 
 private:
-    /**
+    /*!
      * Creates a new NetworkShare object.
      * You generally won't need this. It's created when necessary using
      * Device::as().
@@ -47,12 +47,12 @@ private:
     SOLID_NO_EXPORT explicit NetworkShare(QObject *backendObject);
 
 public:
-    /**
+    /*!
      * Destroys a NetworkShare object.
      */
     ~NetworkShare() override;
 
-    /**
+    /*!
      * This enum type defines the type of networkShare device can be.
      *
      * - Unknown : a unsupported network protocol
@@ -64,7 +64,7 @@ public:
     enum ShareType { Unknown, Nfs, Cifs, Smb3 };
     Q_ENUM(ShareType)
 
-    /**
+    /*!
      * Get the Solid::DeviceInterface::Type of the NetworkShare device interface.
      *
      * @return the NetworkShare device interface type
@@ -75,14 +75,14 @@ public:
         return DeviceInterface::NetworkShare;
     }
 
-    /**
+    /*!
      * Retrieves the type of network share
      *
      * @return the type of network share
      */
     ShareType type() const;
 
-    /**
+    /*!
      * Retrieves the url of network share
      *
      * @return the url of network share

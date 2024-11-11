@@ -18,7 +18,7 @@ namespace Solid
 class GenericInterfacePrivate;
 class Device;
 
-/**
+/*!
  * @class Solid::GenericInterface genericinterface.h <Solid/GenericInterface>
  *
  * Generic interface to deal with a device. It exposes a set of properties
@@ -36,7 +36,7 @@ class SOLID_EXPORT GenericInterface : public DeviceInterface
     friend class Device;
 
 public:
-    /**
+    /*!
      * This enum type defines the type of change that can occur to a GenericInterface
      * property.
      *
@@ -52,7 +52,7 @@ public:
     Q_ENUM(PropertyChange)
 
 private:
-    /**
+    /*!
      * Creates a new GenericInterface object.
      * You generally won't need this. It's created when necessary using
      * Device::as().
@@ -63,12 +63,12 @@ private:
     SOLID_NO_EXPORT explicit GenericInterface(QObject *backendObject);
 
 public:
-    /**
+    /*!
      * Destroys a Processor object.
      */
     ~GenericInterface() override;
 
-    /**
+    /*!
      * Get the Solid::DeviceInterface::Type of the GenericInterface device interface.
      *
      * @return the Processor device interface type
@@ -79,7 +79,7 @@ public:
         return DeviceInterface::GenericInterface;
     }
 
-    /**
+    /*!
      * Retrieves a property of the device.
      *
      * Warning: Using this method could expose some backend specific details
@@ -93,7 +93,7 @@ public:
      */
     QVariant property(const QString &key) const;
 
-    /**
+    /*!
      * Retrieves a key/value map of all the known properties for the device.
      *
      * Warning: Using this method could expose some backend specific details
@@ -105,7 +105,7 @@ public:
      */
     QMap<QString, QVariant> allProperties() const;
 
-    /**
+    /*!
      * Tests if a property exist in the device.
      *
      * Warning: Using this method could expose some backend specific details
@@ -120,7 +120,7 @@ public:
     bool propertyExists(const QString &key) const;
 
 Q_SIGNALS:
-    /**
+    /*!
      * This signal is emitted when a property is changed in the device.
      *
      * @param changes the map describing the property changes that
@@ -130,7 +130,7 @@ Q_SIGNALS:
      */
     void propertyChanged(const QMap<QString, int> &changes);
 
-    /**
+    /*!
      * This signal is emitted when an event occurred in the device.
      * For example when a button is pressed.
      *

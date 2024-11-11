@@ -16,7 +16,7 @@ namespace Solid
 class StorageVolumePrivate;
 class Device;
 
-/**
+/*!
  * @class Solid::StorageVolume storagevolume.h <Solid/StorageVolume>
  *
  * This device interface is available on volume devices.
@@ -37,7 +37,7 @@ class SOLID_EXPORT StorageVolume : public DeviceInterface
     friend class Device;
 
 public:
-    /**
+    /*!
      * This enum type defines the how a volume is used.
      *
      * - FileSystem : A mountable filesystem volume
@@ -50,7 +50,7 @@ public:
     Q_ENUM(UsageType)
 
 private:
-    /**
+    /*!
      * Creates a new StorageVolume object.
      * You generally won't need this. It's created when necessary using
      * Device::as().
@@ -61,12 +61,12 @@ private:
     SOLID_NO_EXPORT explicit StorageVolume(QObject *backendObject);
 
 public:
-    /**
+    /*!
      * Destroys a StorageVolume object.
      */
     ~StorageVolume() override;
 
-    /**
+    /*!
      * Get the Solid::DeviceInterface::Type of the StorageVolume device interface.
      *
      * @return the StorageVolume device interface type
@@ -77,7 +77,7 @@ public:
         return DeviceInterface::StorageVolume;
     }
 
-    /**
+    /*!
      * Indicates if this volume should be ignored by applications.
      *
      * If it should be ignored, it generally means that it should be
@@ -88,7 +88,7 @@ public:
      */
     bool isIgnored() const;
 
-    /**
+    /*!
      * Retrieves the type of use for this volume (for example filesystem).
      *
      * @return the usage type
@@ -96,7 +96,7 @@ public:
      */
     UsageType usage() const;
 
-    /**
+    /*!
      * Retrieves the filesystem type of this volume.
      *
      * FIXME: It's a platform dependent string, maybe we should switch to
@@ -106,14 +106,14 @@ public:
      */
     QString fsType() const;
 
-    /**
+    /*!
      * Retrieves this volume label.
      *
      * @return the volume label if available, QString() otherwise
      */
     QString label() const;
 
-    /**
+    /*!
      * Retrieves this volume Universal Unique IDentifier (UUID).
      *
      * You can generally assume that this identifier is unique with reasonable
@@ -125,14 +125,14 @@ public:
      */
     QString uuid() const;
 
-    /**
+    /*!
      * Retrieves this volume size in bytes.
      *
      * @return the size of this volume
      */
     qulonglong size() const;
 
-    /**
+    /*!
      * Retrieves the crypto container of this volume.
      *
      * @return the encrypted volume containing the current volume if applicable,
@@ -141,7 +141,7 @@ public:
     Device encryptedContainer() const;
 
 protected:
-    /**
+    /*!
      * @internal
      */
     SOLID_NO_EXPORT StorageVolume(StorageVolumePrivate &dd, QObject *backendObject);

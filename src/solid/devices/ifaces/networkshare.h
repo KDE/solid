@@ -14,7 +14,7 @@ namespace Solid
 {
 namespace Ifaces
 {
-/**
+/*!
  * NetworkShare interface.
  *
  * a NetworkShare interface is used to determine the type of
@@ -23,19 +23,19 @@ namespace Ifaces
 class NetworkShare : virtual public DeviceInterface
 {
 public:
-    /**
+    /*!
      * Destroys a NetworkShare object.
      */
     ~NetworkShare() override;
 
-    /**
+    /*!
      * Retrieves the type of network
      *
      * @return the type of network
      */
     virtual Solid::NetworkShare::ShareType type() const = 0;
 
-    /**
+    /*!
      * Retrieves the url of network share
      *
      * @return the url of network share

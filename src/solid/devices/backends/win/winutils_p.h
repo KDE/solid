@@ -11,23 +11,25 @@
 
 #include <qt_windows.h>
 
-/**
- * @brief RAII class for blocking Windows from reporting errors
+/*!
+ * RAII class for blocking Windows from reporting errors
  *
  * Internally calls SetThreadErrorMode. This class stores the
  * current error mode on construction and disables certain error reportings
  * during the life time of this object
  *
- * @code
+ * \code
  * {
  *     WinErrorBlocker blocker; // custom error mode is set
  *     // Your Windows API calls...
  * } // end of scope: original error mode is restored
- * @endcode
+ * \endcode
  *
  * Note that qstorageinfo_win.cpp (qtbase) does something similar to silence errors
  *
  * See MSDN documentation: https://msdn.microsoft.com/en-us/library/windows/desktop/dd553630(v=vs.85).aspx
+ *
+ * \internal
  */
 class WinErrorBlocker
 {

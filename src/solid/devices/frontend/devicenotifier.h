@@ -13,7 +13,7 @@
 
 namespace Solid
 {
-/**
+/*!
  * @class Solid::DeviceNotifier devicenotifier.h <Solid/DeviceNotifier>
  *
  * This class allow to query the underlying system to obtain information
@@ -33,14 +33,14 @@ public:
     static DeviceNotifier *instance();
 
 Q_SIGNALS:
-    /**
+    /*!
      * This signal is emitted when a new device appears in the underlying system.
      *
      * @param udi the new device UDI
      */
     void deviceAdded(const QString &udi);
 
-    /**
+    /*!
      * This signal is emitted when a device disappears from the underlying system.
      *
      * @param udi the old device UDI

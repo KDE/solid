@@ -14,7 +14,7 @@ namespace Solid
 {
 namespace Ifaces
 {
-/**
+/*!
  * This device interface is available on optical discs.
  *
  * An optical disc is a volume that can be inserted in a cdrom drive.
@@ -22,12 +22,12 @@ namespace Ifaces
 class OpticalDisc : virtual public StorageVolume
 {
 public:
-    /**
+    /*!
      * Destroys an OpticalDisc object.
      */
     ~OpticalDisc() override;
 
-    /**
+    /*!
      * Retrieves the content types this disc contains (audio, video,
      * data...).
      *
@@ -35,28 +35,28 @@ public:
      */
     virtual Solid::OpticalDisc::ContentTypes availableContent() const = 0;
 
-    /**
+    /*!
      * Retrieves the disc type (cdr, cdrw...).
      *
      * @return the disc type
      */
     virtual Solid::OpticalDisc::DiscType discType() const = 0;
 
-    /**
+    /*!
      * Indicates if it's possible to write additional data to the disc.
      *
      * @return true if the disc is appendable, false otherwise
      */
     virtual bool isAppendable() const = 0;
 
-    /**
+    /*!
      * Indicates if the disc is blank.
      *
      * @return true if the disc is blank, false otherwise
      */
     virtual bool isBlank() const = 0;
 
-    /**
+    /*!
      * Indicates if the disc is rewritable.
      *
      * A disc is rewritable if you can write on it several times.
@@ -65,7 +65,7 @@ public:
      */
     virtual bool isRewritable() const = 0;
 
-    /**
+    /*!
      * Retrieves the disc capacity (that is the maximum size of a
      * volume could have on this disc).
      *

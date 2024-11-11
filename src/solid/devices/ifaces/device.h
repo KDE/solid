@@ -20,7 +20,7 @@ namespace Solid
 {
 namespace Ifaces
 {
-/**
+/*!
  * This class specifies the interface a device will have to comply to in order to be used in the system.
  *
  * Backends will have to implement it to gather and modify data in the underlying system.
@@ -34,16 +34,16 @@ class Device : public QObject
     Q_OBJECT
 
 public:
-    /**
+    /*!
      * Constructs a Device
      */
     Device(QObject *parent = nullptr);
-    /**
+    /*!
      * Destruct the Device object
      */
     ~Device() override;
 
-    /**
+    /*!
      * Retrieves the Universal Device Identifier (UDI) of the Device.
      * This identifier is unique for each device in the system.
      *
@@ -51,7 +51,7 @@ public:
      */
     virtual QString udi() const = 0;
 
-    /**
+    /*!
      * Retrieves the Universal Device Identifier (UDI) of the Device's
      * parent.
      *
@@ -59,21 +59,21 @@ public:
      */
     virtual QString parentUdi() const;
 
-    /**
+    /*!
      * Retrieves the name of the device vendor.
      *
      * @return the vendor name
      */
     virtual QString vendor() const = 0;
 
-    /**
+    /*!
      * Retrieves the name of the product corresponding to this device.
      *
      * @return the product name
      */
     virtual QString product() const = 0;
 
-    /**
+    /*!
      * Retrieves the name of the icon representing this device.
      * The naming follows the freedesktop.org specification.
      *
@@ -81,7 +81,7 @@ public:
      */
     virtual QString icon() const = 0;
 
-    /**
+    /*!
      * Retrieves the name of the emblems representing the state of this device.
      * The naming follows the freedesktop.org specification.
      *
@@ -89,7 +89,7 @@ public:
      */
     virtual QStringList emblems() const = 0;
 
-    /**
+    /*!
      * Retrieves the display name to use for this device.
      * Same as description when not defined.
      *
@@ -98,14 +98,14 @@ public:
      */
     virtual QString displayName() const;
 
-    /**
+    /*!
      * Retrieves the description of device.
      *
      * @return the description
      */
     virtual QString description() const = 0;
 
-    /**
+    /*!
      * Tests if a property exist.
      *
      * @param type the device interface type
@@ -113,7 +113,7 @@ public:
      */
     virtual bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const = 0;
 
-    /**
+    /*!
      * Create a specialized interface to interact with the device corresponding to
      * a particular device interface.
      *
@@ -122,7 +122,7 @@ public:
      */
     virtual QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type) = 0;
 
-    /**
+    /*!
      * Register an action for the given device. Each time the same device in another process
      * broadcast the begin or the end of such action, the corresponding slots will be called
      * in the current process.
@@ -134,7 +134,7 @@ public:
      */
     void registerAction(const QString &actionName, QObject *dest, const char *requestSlot, const char *doneSlot) const;
 
-    /**
+    /*!
      * Allows to broadcast that an action just got requested on a device to all
      * the corresponding devices in other processes.
      *
@@ -142,7 +142,7 @@ public:
      */
     void broadcastActionRequested(const QString &actionName) const;
 
-    /**
+    /*!
      * Allows to broadcast that an action just completed in a device to all
      * the corresponding devices in other processes.
      *
