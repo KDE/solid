@@ -134,7 +134,9 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateFstabMountPointsCache()
         if (_k_isFstabNetworkFileSystem(fstype, fsname) || _k_isFstabSupportedLocalFileSystem(fstype)) {
             const QString mountpoint = QFile::decodeName(mnt_fs_get_target(fs));
             const QString device = _k_deviceNameForMountpoint(fsname, fstype, mountpoint);
-            const QStringList options = QFile::decodeName(mnt_fs_strdup_options(fs)).split(QLatin1Char(','));
+            char *name = mnt_fs_strdup_options(fs);
+            const QStringList options = QFile::decodeName(name).split(QLatin1Char(','));
+            free(name);
 
             globalFstabCache->localData().m_fstabCache.insert(device, mountpoint);
             globalFstabCache->localData().m_fstabFstypeCache.insert(device, fstype);
@@ -353,7 +355,9 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateMtabMountPointsCache()
             const QString mountpoint = QFile::decodeName(mnt_fs_get_target(fs));
             const QString fsname = QFile::decodeName(mnt_fs_get_srcpath(fs));
             const QString device = _k_deviceNameForMountpoint(fsname, fstype, mountpoint);
-            const QStringList options = QFile::decodeName(mnt_fs_strdup_options(fs)).split(QLatin1Char(','));
+            char *name = mnt_fs_strdup_options(fs);
+            const QStringList options = QFile::decodeName(name).split(QLatin1Char(','));
+            free(name);
 
             globalFstabCache->localData().m_mtabCache.insert(device, mountpoint);
             globalFstabCache->localData().m_fstabFstypeCache.insert(device, fstype);
