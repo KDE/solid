@@ -62,6 +62,15 @@ public:
     virtual int capacity() const = 0;
 
     /**
+     * Retrieves the number of charge cycles this battery has experienced so far,
+     * or -1 if this information is unavailable.
+     *
+     * @since 6.9
+     * @return the number of charge cycles
+     */
+    virtual int cycleCount() const = 0;
+
+    /**
      * Indicates if the battery is rechargeable.
      *
      * @return true if the battery is rechargeable, false otherwise (one time usage)
@@ -199,6 +208,16 @@ protected:
      * @since 4.11
      */
     virtual void capacityChanged(int value, const QString &udi) = 0;
+
+    /**
+     * This signal is emitted when the number of charge cycles of the
+     * battery has changed.
+     *
+     * @param value the new number of charge cycles of the battery
+     * @param udi the UDI of the battery with the new number of charge cycles
+     * @since 6.9
+     */
+    virtual void cycleCountChanged(int value, const QString &udi) = 0;
 
     /**
      * This signal is emitted when the power supply state of the battery

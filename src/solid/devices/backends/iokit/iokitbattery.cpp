@@ -131,6 +131,11 @@ int Battery::capacity() const
     return 100;
 }
 
+int Battery::cycleCount() const
+{
+    return m_device->property(QStringLiteral("CycleCount")).toInt();
+}
+
 bool Battery::isRechargeable() const
 {
     return m_device->property(QStringLiteral("CycleCount")).toInt() > 1;

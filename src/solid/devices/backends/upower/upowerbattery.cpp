@@ -100,6 +100,18 @@ int Battery::capacity() const
     return qRound(m_device.data()->prop(QStringLiteral("Capacity")).toDouble());
 }
 
+int Battery::cycleCount() const
+{
+    // New in upower v0.99.14.
+    bool ok;
+    const int cycleCount = m_device.data()->prop(QStringLiteral("ChargeCycles")).toInt(&ok);
+    if (ok) {
+        return cycleCount;
+    } else {
+        return -1;
+    }
+}
+
 bool Battery::isRechargeable() const
 {
     return m_device.data()->prop(QStringLiteral("IsRechargeable")).toBool();
@@ -225,6 +237,7 @@ void Battery::slotChanged()
         const bool old_isPresent = m_isPresent;
         const int old_chargePercent = m_chargePercent;
         const int old_capacity = m_capacity;
+        const int old_cycleCount = m_cycleCount;
         const bool old_isPowerSupply = m_isPowerSupply;
         const Solid::Battery::ChargeState old_chargeState = m_chargeState;
         const qlonglong old_timeToEmpty = m_timeToEmpty;
@@ -247,6 +260,10 @@ void Battery::slotChanged()
 
         if (old_capacity != m_capacity) {
             Q_EMIT capacityChanged(m_capacity, m_device.data()->udi());
+        }
+
+        if (old_cycleCount != m_cycleCount) {
+            Q_EMIT cycleCountChanged(m_cycleCount, m_device.data()->udi());
         }
 
         if (old_isPowerSupply != m_isPowerSupply) {
@@ -300,6 +317,7 @@ void Battery::updateCache()
     m_isPresent = isPresent();
     m_chargePercent = chargePercent();
     m_capacity = capacity();
+    m_cycleCount = cycleCount();
     m_isPowerSupply = isPowerSupply();
     m_chargeState = chargeState();
     m_timeToEmpty = timeToEmpty();

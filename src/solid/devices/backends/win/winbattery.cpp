@@ -38,6 +38,11 @@ int WinBattery::capacity() const
     return m_capacity;
 }
 
+int WinBattery::cycleCount() const
+{
+    return m_cycleCount;
+}
+
 bool WinBattery::isRechargeable() const
 {
     return m_rechargeable;
@@ -100,6 +105,7 @@ void WinBattery::powerChanged()
 {
     const int old_charge = m_charge;
     const int old_capacity = m_capacity;
+    const int old_cyleCount = m_cycleCount;
     const Solid::Battery::ChargeState old_state = m_state;
     const bool old_isPowerSupply = m_isPowerSupply;
     const double old_energy = m_energy;
@@ -155,6 +161,10 @@ void WinBattery::powerChanged()
         m_capacity = (float)info.FullChargedCapacity / info.DesignedCapacity * 100.0;
     }
 
+    if (info.CycleCount != 0) {
+        m_cycleCount = info.CycleCount;
+    }
+
     if (status.PowerState == 0) {
         m_state = Solid::Battery::NoCharge;
     } else if (status.PowerState & BATTERY_CHARGING) {
@@ -181,6 +191,10 @@ void WinBattery::powerChanged()
 
     if (m_capacity != old_capacity) {
         Q_EMIT capacityChanged(m_capacity, m_device->udi());
+    }
+
+    if (m_cycleCount != old_cyleCount) {
+        Q_EMIT cycleCountChanged(m_cycleCount, m_device->udi());
     }
 
     if (old_state != m_state) {

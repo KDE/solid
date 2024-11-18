@@ -33,6 +33,8 @@ public:
 
     virtual int capacity() const;
 
+    int cycleCount() const override;
+
     virtual bool isRechargeable() const;
 
     virtual bool isPowerSupply() const;
@@ -71,6 +73,7 @@ public:
 Q_SIGNALS:
     void chargePercentChanged(int value, const QString &udi);
     void capacityChanged(int value, const QString &udi);
+    void cycleCountChanged(int value, const QString &udi);
     void chargeStateChanged(int newState, const QString &udi);
     void powerSupplyStateChanged(bool newState, const QString &udi);
     void energyChanged(double energy, const QString &udi);
@@ -100,6 +103,7 @@ private:
     Solid::Battery::BatteryType m_type;
     int m_charge;
     int m_capacity;
+    int m_cycleCount = -1;
     bool m_rechargeable;
     bool m_isPowerSupply;
     Solid::Battery::ChargeState m_state;

@@ -32,6 +32,7 @@ public:
 
     int chargePercent() const override;
     int capacity() const override;
+    int cycleCount() const override;
 
     bool isRechargeable() const override;
     bool isPowerSupply() const override;
@@ -62,6 +63,7 @@ Q_SIGNALS:
     void energyRateChanged(double energyRate, const QString &udi) override;
     void chargePercentChanged(int value, const QString &udi) override;
     void capacityChanged(int value, const QString &udi) override;
+    void cycleCountChanged(int value, const QString &udi) override;
     void chargeStateChanged(int newState, const QString &udi) override;
     void presentStateChanged(bool newState, const QString &udi) override;
     void powerSupplyStateChanged(bool newState, const QString &udi) override;

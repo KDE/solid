@@ -49,6 +49,7 @@
             <property key="isPowerSupply">false</property>
             <property key="chargeState">discharging</property>
             <property key="capacity">85</property>
+            <property key="cycleCount">175</property>
             <property key="technology">1</property>
             <property key="energy">72.25</property>
             <property key="energyRate">21.5</property>

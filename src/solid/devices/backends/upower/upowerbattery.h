@@ -35,6 +35,8 @@ public:
 
     int capacity() const override;
 
+    int cycleCount() const override;
+
     bool isRechargeable() const override;
 
     bool isPowerSupply() const override;
@@ -67,6 +69,7 @@ Q_SIGNALS:
     void presentStateChanged(bool newState, const QString &udi) override;
     void chargePercentChanged(int value, const QString &udi = QString()) override;
     void capacityChanged(int value, const QString &udi) override;
+    void cycleCountChanged(int value, const QString &udi) override;
     void powerSupplyStateChanged(bool newState, const QString &udi) override;
     void chargeStateChanged(int newState, const QString &udi = QString()) override;
     void timeToEmptyChanged(qlonglong time, const QString &udi) override;
@@ -88,6 +91,7 @@ private:
     bool m_isPresent;
     int m_chargePercent;
     int m_capacity;
+    int m_cycleCount = -1;
     bool m_isPowerSupply;
     Solid::Battery::ChargeState m_chargeState;
     qlonglong m_timeToEmpty;

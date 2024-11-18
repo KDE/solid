@@ -28,6 +28,7 @@ class SOLID_EXPORT Battery : public DeviceInterface
     Q_PROPERTY(BatteryType type READ type CONSTANT)
     Q_PROPERTY(int chargePercent READ chargePercent NOTIFY chargePercentChanged)
     Q_PROPERTY(int capacity READ capacity NOTIFY capacityChanged)
+    Q_PROPERTY(int cycleCount READ cycleCount NOTIFY cycleCountChanged)
     Q_PROPERTY(bool rechargeable READ isRechargeable CONSTANT)
     Q_PROPERTY(bool powerSupply READ isPowerSupply NOTIFY powerSupplyStateChanged)
     Q_PROPERTY(ChargeState chargeState READ chargeState NOTIFY chargeStateChanged)
@@ -185,6 +186,15 @@ public:
     int capacity() const;
 
     /**
+     * Retrieves the number of charge cycles this battery has experienced so far,
+     * or -1 if this information is unavailable.
+     *
+     * @since 6.9
+     * @return the number of charge cycles
+     */
+    int cycleCount() const;
+
+    /**
      * Indicates if the battery is rechargeable.
      *
      * @return true if the battery is rechargeable, false otherwise (one time usage)
@@ -321,6 +331,16 @@ Q_SIGNALS:
      * @since 4.11
      */
     void capacityChanged(int value, const QString &udi);
+
+    /**
+     * This signal is emitted when the number of charge cycles of the
+     * battery has changed.
+     *
+     * @param value the new number of charge cycles of the battery
+     * @param udi the UDI of the battery with the new number of charge cycles
+     * @since 6.9
+     */
+    void cycleCountChanged(int value, const QString &udi);
 
     /**
      * This signal is emitted when the power supply state of the battery

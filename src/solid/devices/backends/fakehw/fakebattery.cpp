@@ -72,6 +72,11 @@ int FakeBattery::capacity() const
     return fakeDevice()->property(QStringLiteral("capacity")).toInt();
 }
 
+int FakeBattery::cycleCount() const
+{
+    return fakeDevice()->property(QStringLiteral("cycleCount")).toInt();
+}
+
 bool FakeBattery::isRechargeable() const
 {
     return fakeDevice()->property(QStringLiteral("isRechargeable")).toBool();
