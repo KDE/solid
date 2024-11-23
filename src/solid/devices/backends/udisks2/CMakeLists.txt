@@ -5,7 +5,6 @@ endif()
 set(backend_sources
     udisksmanager.cpp
     udisksdevice.cpp
-    udisksdevicebackend.cpp
     udisksblock.cpp
     udisksstoragevolume.cpp
     udisksdeviceinterface.cpp
@@ -14,6 +13,7 @@ set(backend_sources
     udisksstoragedrive.cpp
     udisksstorageaccess.cpp
     udisksgenericinterface.cpp
+    udisksutils.cpp
     dbus/manager.cpp
 )
 
