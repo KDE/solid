@@ -331,7 +331,7 @@ OpticalDisc::OpticalDisc(Device *dev)
     /*qDebug() << "\tProperties:" << */ m_udevDevice.deviceProperties(); // initialize the properties DB so that it doesn't crash further down, #298416
 #endif
 
-    m_drive = new Device(m_device->drivePath());
+    m_drive = new Device(m_device->manager(), m_device->drivePath());
 }
 
 OpticalDisc::~OpticalDisc()
