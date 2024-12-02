@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the qt package.
 # Jorma Karvonen <karvonen.jorma@gmail.com>, 2009-2010.
 # Kim Enkovaara <embo@iki.fi>, 2010.
-# Tommi Nieminen <translator@legisign.org>, 2010, 2019, 2020, 2021, 2022, 2023.
+# SPDX-FileCopyrightText: 2010, 2019, 2020, 2021, 2022, 2023, 2024 Tommi Nieminen <translator@legisign.org>
 # Lasse Liehu <lliehu@kolumbus.fi>, 2011.
 # Lasse Liehu <lasse.liehu@gmail.com>, 2011, 2012, 2013, 2014, 2015, 2017.
 #
@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: solid_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-01-24 18:50+0000\n"
-"PO-Revision-Date: 2023-04-04 23:09+0300\n"
+"PO-Revision-Date: 2024-10-27 10:09+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -22,8 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-POT-Import-Date: 2012-06-15 08:34:19+0000\n"
-"X-Generator: Lokalize 22.12.3\n"
+"X-Generator: Lokalize 23.08.5\n"
 "X-Qt-Contexts: true\n"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:61
@@ -829,55 +828,33 @@ msgid "             # Monitor devices for changes.\n"
 msgstr "             # Valvo laitteiden muutoksia.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:280
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"CanCheck\" request to the device corresponding to "
 "'udi'.\n"
 msgstr ""
-"             # Jos mahdollista, poista levy ”udi”-parametria vastaavasta "
-"laitteesta.\n"
+"             # Lähetä ”CanCheck”-pyyntö UDI:ta vastaavalle laitteelle.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:283
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"Check\" request to the device corresponding to 'udi'.\n"
-msgstr ""
-"             # Jos mahdollista, poista levy ”udi”-parametria vastaavasta "
-"laitteesta.\n"
+msgstr "             # Lähetä ”Check”-pyyntö UDI:ta vastaavalle laitteelle.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:286
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"CanRepair\" request to the device corresponding to "
 "'udi'.\n"
 msgstr ""
-"             # Jos mahdollista, poista levy ”udi”-parametria vastaavasta "
-"laitteesta.\n"
+"             # Lähetä ”CanRepair”-pyyntö UDI:ta vastaavalle laitteelle.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:289
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"Repair\" request to the device corresponding to "
 "'udi'.\n"
-msgstr ""
-"             # Jos mahdollista, poista levy ”udi”-parametria vastaavasta "
-"laitteesta.\n"
+msgstr "             # Lähetä ”Repair”-pyyntö UDI:ta vastaavalle laitteelle.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:301
 msgctxt "solid-hardware|"
@@ -931,46 +908,46 @@ msgstr "Virhe: Kohteella ”%1” ei ole OpticalDrive-liittymää."
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanCheck: %1"
-msgstr ""
+msgstr "Laitteen CanCheck: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #: tools/solid-hardware/solid-hardware.cpp:488
 msgctxt "SolidHardware|"
 msgid "no"
-msgstr ""
+msgstr "ei"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #: tools/solid-hardware/solid-hardware.cpp:488
 msgctxt "SolidHardware|"
 msgid "yes"
-msgstr ""
+msgstr "kyllä"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device Check: %1"
-msgstr ""
+msgstr "Laitetarkistus: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 msgctxt "SolidHardware|"
 msgid "has error"
-msgstr ""
+msgstr "löytyi virhe"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 msgctxt "SolidHardware|"
 msgid "no error"
-msgstr ""
+msgstr "ei virheitä"
 
 #: tools/solid-hardware/solid-hardware.cpp:483
 msgctxt "SolidHardware|"
 msgid "Device Check: operation is not supported"
-msgstr ""
+msgstr "Laitetarkistus: toimintoa ei tueta"
 
 #: tools/solid-hardware/solid-hardware.cpp:488
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanRepair: %1"
-msgstr ""
+msgstr "Laitteen CanRepair: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:503
 #, qt-format
