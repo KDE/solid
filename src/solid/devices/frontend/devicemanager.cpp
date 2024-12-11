@@ -161,6 +161,11 @@ Solid::Device Solid::Device::storageAccessFromPath(const QString &path)
         }
 
         auto storageAccess = device.as<StorageAccess>();
+
+        if (!storageAccess) {
+            continue;
+        }
+
         QString mountPath = storageAccess->filePath();
 
         if (mountPath.size() <= match_length || !path.startsWith(mountPath)) {
