@@ -188,6 +188,11 @@ Solid::Device Solid::Device::storageAccessFromPath(const QString &path)
         }
 
         auto storageAccess = device.as<StorageAccess>();
+
+        if (!storageAccess) {
+            continue;
+        }
+
         QString mountPath = storageAccess->filePath();
         if (!mountPath.endsWith(QDir::separator())) {
             mountPath.append(QDir::separator());
