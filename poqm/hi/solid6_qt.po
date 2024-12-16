@@ -1,64 +1,63 @@
-# SPDX-FileCopyrightText: 2024 kali <skkalwar999@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2024-12-14 01:12+0530\n"
-"Last-Translator: kali <skkalwar999@gmail.com>\n"
-"Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
-"Language: sa\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2024-12-15 19:27+0530\n"
+"Last-Translator: Kali <EMAIL@ADDRESS>\n"
+"Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
+"Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Qt-Contexts: true\n"
-"Plural-Forms: nplurals=2; plural=(n>1);\n"
-"X-Generator: Lokalize 24.08.2\n"
+"X-Generator: Poedit 3.5\n"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:61
 #, qt-format
 msgctxt "%1 is sharename, %2 is servername"
 msgid "%1 on %2"
-msgstr "%2 इत्यत्र %1"
+msgstr "%1 पर %2"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:63
 #, qt-format
 msgctxt "%1 is mountpoint, %2 is fs type"
 msgid "%1 (%2)"
-msgstr "%1 (%2) २."
+msgstr "%1 (%2)"
 
 #: solid/devices/backends/fstab/fstabmanager.cpp:80
 msgctxt "Solid::Backends::Fstab::FstabManager|"
 msgid "Filesystem Volumes"
-msgstr "सञ्चिकातन्त्रस्य आयतनम्"
+msgstr "फ़ाइल सिस्टम वॉल्यूम"
 
 #: solid/devices/backends/fstab/fstabmanager.cpp:81
 msgctxt "Solid::Backends::Fstab::FstabManager|"
 msgid "Mountable filesystems declared in your system"
-msgstr "भवतः प्रणाल्यां घोषितानि माउण्टेबलसञ्चिकातन्त्राणि"
+msgstr "आपके सिस्टम में घोषित माउंटेबल फ़ाइल सिस्टम"
 
 #: solid/devices/backends/imobile/imobiledevice.cpp:90
 msgctxt "imobiledevice|Company name"
 msgid "Apple"
-msgstr "सेवफल"
+msgstr "सेब"
 
 #: solid/devices/backends/imobile/imobilemanager.cpp:101
 msgctxt "Solid::Backends::IMobile::Manager|"
 msgid "iDevice"
-msgstr "iDevice इति"
+msgstr "आईडिवाइस"
 
 #: solid/devices/backends/imobile/imobilemanager.cpp:102
 msgctxt "Solid::Backends::IMobile::Manager|"
 msgid "iOS devices"
-msgstr "iOS उपकरणानि"
+msgstr "आईओएस डिवाइस"
 
 #: solid/devices/backends/udev/udevdevice.cpp:100
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Computer"
-msgstr "संगणक"
+msgstr "कंप्यूटर"
 
 #: solid/devices/backends/udev/udevdevice.cpp:104
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Processor"
-msgstr "संसाधकः"
+msgstr "प्रोसेसर"
 
 #: solid/devices/backends/udev/udevdevice.cpp:115
 msgctxt "Solid::Backends::UDev::UDevDevice|"
@@ -68,76 +67,76 @@ msgstr "पोर्टेबल मीडिया प्लेयर"
 #: solid/devices/backends/udev/udevdevice.cpp:118
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Camera"
-msgstr "कॅमेरा"
+msgstr "कैमरा"
 
 #: solid/devices/backends/udev/udevmanager.cpp:221
 msgctxt "Solid::Backends::UDev::UDevManager|"
 msgid "Devices"
-msgstr "यन्त्राणि"
+msgstr "उपकरण"
 
 #: solid/devices/backends/udev/udevmanager.cpp:222
 msgctxt "Solid::Backends::UDev::UDevManager|"
 msgid "Devices declared in your system"
-msgstr "भवतः प्रणाल्यां घोषितानि उपकरणानि"
+msgstr "आपके सिस्टम में घोषित डिवाइस"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:43
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 TiB"
-msgstr "%1 तिब"
+msgstr "%1 TiB"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:45
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 GiB"
-msgstr "%1 गिब्"
+msgstr "%1 गीगाबाइट"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:51
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 MiB"
-msgstr "%1 मिब्"
+msgstr "%1 एमबी"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:56
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 KiB"
-msgstr "%1 किब"
+msgstr "%1 किबी"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:60
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 B"
-msgstr "%1 ख"
+msgstr "%1 बी"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:64
 msgctxt "udisksdevice|"
 msgid "0 B"
-msgstr "० ख"
+msgstr "0 बी"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:75
 #, qt-format
 msgctxt "QObject|%1 is the size, %2 is the block device name e.g. sda, sda1"
 msgid "%1 External Drive (%2)"
-msgstr "%1 बाह्य ड्राइव (%2) ."
+msgstr "%1 बाह्य ड्राइव (%2)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:77
 #, qt-format
 msgctxt "QObject|%1 is the size, %2 is the block device name e.g. sda, sda1"
 msgid "%1 Internal Drive (%2)"
-msgstr "%1 आन्तरिक ड्राइव (%2) ."
+msgstr "%1 आंतरिक ड्राइव (%2)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:81
 #, qt-format
 msgctxt "QObject|%1 is the block device name e.g. sda, sda1"
 msgid "External Drive (%1)"
-msgstr "बाह्य ड्राइव (%1) 1.1."
+msgstr "बाह्य ड्राइव (%1)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:83
 #, qt-format
 msgctxt "QObject|%1 is the block device name e.g. sda, sda1"
 msgid "Internal Drive (%1)"
-msgstr "आन्तरिक ड्राइव (%1) 1.1."
+msgstr "आंतरिक ड्राइव (%1)"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:254
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -147,7 +146,7 @@ msgstr "स्वैप स्पेस"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:276
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Loop Device"
-msgstr "पाशयन्त्रम्"
+msgstr "लूप डिवाइस"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:292
 msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
@@ -162,12 +161,12 @@ msgstr "सीडी-आर"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:297
 msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
 msgid "CD-RW"
-msgstr "सीडी-आरडब्ल्यू"
+msgstr "सीडी आरडब्ल्यू"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:301
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD-ROM"
-msgstr "/डीवीडी-रोम"
+msgstr "/डीवीडी रॉम"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:304
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
@@ -177,7 +176,7 @@ msgstr "/डीवीडी+आर"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:307
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD+RW"
-msgstr "/डीवीडी+आरडब्ल्यू"
+msgstr "/डीवीडी+आरडब्लू"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:310
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
@@ -187,7 +186,7 @@ msgstr "/डीवीडी-आर"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:313
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD-RW"
-msgstr "/डीवीडी-आरडब्ल्यू"
+msgstr "/डीवीडी-आरडब्लू"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:316
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
@@ -222,12 +221,12 @@ msgstr "/बीडी-रोम"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:336
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/BD-R"
-msgstr "/BD-R"
+msgstr "/बीडी-आर"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:339
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/BD-RE"
-msgstr "/BD-RE"
+msgstr "/बीडी-आरई"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:342
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
@@ -250,7 +249,7 @@ msgctxt ""
 "Solid::Backends::UDisks2::Device|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
 "DVD-R'/etc (with leading slash)"
 msgid "External %1%2 Drive"
-msgstr "बाह्य %1%2 ड्राइव्"
+msgstr "बाह्य %1%2 ड्राइव"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:354
 #, qt-format
@@ -258,7 +257,7 @@ msgctxt ""
 "Solid::Backends::UDisks2::Device|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
 "DVD-R'/etc (with leading slash)"
 msgid "%1%2 Drive"
-msgstr "%1%2 चालनम्"
+msgstr "%1%2 ड्राइव"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:362
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -281,7 +280,7 @@ msgstr "%1 %2"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:402
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Drive"
-msgstr "वह्"
+msgstr "गाड़ी चलाना"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:432
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -291,7 +290,7 @@ msgstr "सीडी-रोम"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:437
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank CD-R"
-msgstr "रिक्त सीडी-आर"
+msgstr "रिक्त CD-R"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:439
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -301,17 +300,17 @@ msgstr "सीडी-आर"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:445
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank CD-RW"
-msgstr "रिक्त सीडी-आरडब्ल्यू"
+msgstr "रिक्त CD-RW"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:447
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "CD-RW"
-msgstr "सीडी-आरडब्ल्यू"
+msgstr "सीडी आरडब्ल्यू"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:452
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD-ROM"
-msgstr "DVD-ROM इति"
+msgstr "डीवीडी रॉम"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:457
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -321,47 +320,47 @@ msgstr "रिक्त DVD-RAM"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:459
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD-RAM"
-msgstr "DVD-RAM इति"
+msgstr "डीवीडी-रैम"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:465
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD-R"
-msgstr "रिक्त डीवीडी-आर"
+msgstr "खाली डीवीडी-आर"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:467
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD-R"
-msgstr "DVD-R"
+msgstr "डीवीडी-आर"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:473
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD+R Dual-Layer"
-msgstr "रिक्त DVD+R द्वय-स्तर"
+msgstr "खाली डीवीडी+आर डुअल-लेयर"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:475
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD+R Dual-Layer"
-msgstr "DVD+R द्वय-स्तर"
+msgstr "डीवीडी+आर डुअल-लेयर"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:481
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD-RW"
-msgstr "रिक्त डीवीडी-आरडब्ल्यू"
+msgstr "रिक्त DVD-RW"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:483
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD-RW"
-msgstr "डीवीडी-आरडब्ल्यू"
+msgstr "DVD-RW"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:489
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD+R"
-msgstr "रिक्त डीवीडी+आर"
+msgstr "खाली डीवीडी+आर"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:491
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD+R"
-msgstr "DVD+R"
+msgstr "डीवीडी+आर"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:497
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -371,17 +370,17 @@ msgstr "रिक्त DVD+RW"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:499
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD+RW"
-msgstr "DVD+RW इति"
+msgstr "डीवीडी+आरडब्ल्यू"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:505
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD+RW Dual-Layer"
-msgstr "रिक्त DVD+RW द्वय-स्तर"
+msgstr "खाली DVD+RW दोहरे परत"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:507
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD+RW Dual-Layer"
-msgstr "DVD+RW द्वय-स्तर"
+msgstr "डीवीडी+आरडब्लू डुअल-लेयर"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:512
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -391,42 +390,42 @@ msgstr "बीडी-रोम"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:517
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank BD-R"
-msgstr "रिक्त BD-R"
+msgstr "रिक्त बीडी-आर"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:519
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "BD-R"
-msgstr "BD-R"
+msgstr "बीडी-आर"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:525
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank BD-RE"
-msgstr "रिक्त BD-RE"
+msgstr "रिक्त बीडी-आरई"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:527
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "BD-RE"
-msgstr "BD-RE"
+msgstr "बीडी-आरई"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:532
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "HD DVD-ROM"
-msgstr "HD DVD-ROM इति"
+msgstr "एचडी डीवीडी-रोम"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:537
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank HD DVD-R"
-msgstr "रिक्त एचडी डीवीडी-आर"
+msgstr "खाली HD DVD-R"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:539
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "HD DVD-R"
-msgstr "HD DVD-R"
+msgstr "एचडी डीवीडी-आर"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:545
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank HD DVD-RW"
-msgstr "रिक्त एचडी डीवीडी-आरडब्ल्यू"
+msgstr "रिक्त HD DVD-RW"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:547
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -436,18 +435,18 @@ msgstr "एचडी डीवीडी-आरडब्ल्यू"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:554
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Audio CD"
-msgstr "श्रव्य सीडी"
+msgstr "सुनने वाली सी डी"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:567
 #, qt-format
 msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
 msgid "%1 Encrypted Drive"
-msgstr "%1 एन्क्रिप्टेड् ड्राइव्"
+msgstr "%1 एन्क्रिप्टेड ड्राइव"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:569
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Encrypted Drive"
-msgstr "एन्क्रिप्टेड् ड्राइव्"
+msgstr "एन्क्रिप्टेड ड्राइव"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:574
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -458,88 +457,88 @@ msgstr "फ्लॉपी डिस्क"
 #, qt-format
 msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
 msgid "%1 Removable Media"
-msgstr "%1 हटनीयं माध्यमम्"
+msgstr "%1 हटाने योग्य मीडिया"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:580
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Removable Media"
-msgstr "हटनीय मीडिया"
+msgstr "हटाने योग्य मीडिया"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:584
 #, qt-format
 msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
 msgid "%1 Media"
-msgstr "%1 माध्यमम्"
+msgstr "%1 मीडिया"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:586
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Storage Media"
-msgstr "भण्डारण माध्यमम्"
+msgstr "भंडारण मीडिया"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:733
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "You are not authorized to perform this operation"
-msgstr "एतत् कार्यं कर्तुं भवतः अधिकृतता नास्ति"
+msgstr "आप इस ऑपरेशन को करने के लिए अधिकृत नहीं हैं"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:735
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is currently busy"
-msgstr "सम्प्रति यन्त्रं व्यस्तम् अस्ति"
+msgstr "डिवाइस अभी व्यस्त है"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:737
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The requested operation has failed"
-msgstr "अनुरोधितं कार्यं विफलं जातम्"
+msgstr "अनुरोधित कार्रवाई विफल हो गई है"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:739
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The requested operation has been canceled"
-msgstr "अनुरोधितं कार्यं रद्दं कृतम् अस्ति"
+msgstr "अनुरोधित कार्रवाई रद्द कर दी गई है"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:741
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "An invalid or malformed option has been given"
-msgstr "अमान्यः अथवा विकृतः विकल्पः दत्तः अस्ति"
+msgstr "अमान्य या विकृत विकल्प दिया गया है"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:743
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The kernel driver for this filesystem type is not available"
-msgstr "अस्य सञ्चिकातन्त्रप्रकारस्य कर्नेल् चालकः उपलब्धः नास्ति"
+msgstr "इस फ़ाइल सिस्टम प्रकार के लिए कर्नेल ड्राइवर उपलब्ध नहीं है"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:745
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is already mounted"
-msgstr "यन्त्रं पूर्वमेव आरोहितम् अस्ति"
+msgstr "डिवाइस पहले से ही माउंटेड है"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:747
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is not mounted"
-msgstr "यन्त्रं न स्थापितं भवति"
+msgstr "डिवाइस माउंट नहीं है"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:749
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is mounted by another user"
-msgstr "यन्त्रं अन्येन उपयोक्त्रेण स्थापितं भवति"
+msgstr "डिवाइस को किसी अन्य उपयोगकर्ता द्वारा माउंट किया गया है"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:751
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is already unmounting"
-msgstr "यन्त्रं पूर्वमेव अनमाउण्ट् भवति"
+msgstr "डिवाइस पहले से ही अनमाउंट हो रहा है"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:753
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The operation timed out"
-msgstr "शल्यक्रियायाः समयः समाप्तः"
+msgstr "संचालन का समय समाप्त हुआ"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:755
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The operation would wake up a disk that is in a deep-sleep state"
-msgstr "शल्यक्रिया गभीरनिद्रावस्थायां स्थितं चक्रं जागृयति स्म"
+msgstr "यह ऑपरेशन एक ऐसी डिस्क को जगा देगा जो गहरी नींद में है"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:757
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The operation has already been canceled"
-msgstr "पूर्वमेव शल्यक्रिया रद्दीकृता अस्ति"
+msgstr "ऑपरेशन पहले ही रद्द कर दिया गया है"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:759
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -547,28 +546,28 @@ msgid ""
 "Cannot request authentication for this action. The PolicyKit authentication "
 "system appears to be not available."
 msgstr ""
-"अस्य क्रियायाः प्रमाणीकरणं प्रार्थयितुं न शक्यते । PolicyKit प्रमाणीकरणप्रणाली उपलब्धा "
-"नास्ति इति भासते ।"
+"इस कार्रवाई के लिए प्रमाणीकरण का अनुरोध नहीं किया जा सकता। ऐसा प्रतीत होता है कि "
+"PolicyKit प्रमाणीकरण प्रणाली उपलब्ध नहीं है।"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:761
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The authentication prompt was canceled"
-msgstr "प्रमाणीकरणप्रॉम्प्ट् रद्दः अभवत्"
+msgstr "प्रमाणीकरण संकेत रद्द कर दिया गया"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:763
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "An unspecified error has occurred"
-msgstr "अनिर्दिष्टदोषः अभवत्"
+msgstr "एक अनिर्दिष्ट त्रुटि घटित हुई है"
 
 #: solid/devices/backends/udisks2/udisksmanager.cpp:75
 msgctxt "Solid::Backends::UDisks2::Manager|"
 msgid "Storage"
-msgstr "संग्रहण"
+msgstr "भंडारण"
 
 #: solid/devices/backends/udisks2/udisksmanager.cpp:76
 msgctxt "Solid::Backends::UDisks2::Manager|"
 msgid "Storage devices"
-msgstr "भण्डारणयन्त्राणि"
+msgstr "भंडारण उपकरणों"
 
 #: solid/devices/backends/upower/upowerdevice.cpp:117
 #, qt-format
@@ -591,7 +590,7 @@ msgstr "लिथियम आयन"
 #: solid/devices/backends/upower/upowerdevice.cpp:136
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Polymer"
-msgstr "लिथियम बहुलक"
+msgstr "लिथियम पॉलिमर"
 
 #: solid/devices/backends/upower/upowerdevice.cpp:138
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
@@ -601,7 +600,7 @@ msgstr "लिथियम आयरन फॉस्फेट"
 #: solid/devices/backends/upower/upowerdevice.cpp:140
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lead Acid"
-msgstr "सीसा अम्ल"
+msgstr "लैड एसिड"
 
 #: solid/devices/backends/upower/upowerdevice.cpp:142
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
@@ -611,17 +610,17 @@ msgstr "निकेल कैडमियम"
 #: solid/devices/backends/upower/upowerdevice.cpp:144
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Metal Hydride"
-msgstr "निकेल धातु हाइड्राइड"
+msgstr "निकेल मेटल हाइड्राइड"
 
 #: solid/devices/backends/upower/upowermanager.cpp:61
 msgctxt "Solid::Backends::UPower::UPowerManager|"
 msgid "Power Management"
-msgstr "शक्ति प्रबन्धन"
+msgstr "पावर प्रबंधन"
 
 #: solid/devices/backends/upower/upowermanager.cpp:62
 msgctxt "Solid::Backends::UPower::UPowerManager|"
 msgid "Batteries and other sources of power"
-msgstr "बैटरी इत्यादयः शक्तिस्रोताः"
+msgstr "बैटरी और ऊर्जा के अन्य स्रोत"
 
 #: solid/devices/backends/win/windevice.cpp:158
 msgctxt "Solid::Backends::Win::WinDevice|battery technology"
@@ -631,7 +630,7 @@ msgstr "लिथियम आयन"
 #: solid/devices/backends/win/windevice.cpp:161
 msgctxt "Solid::Backends::Win::WinDevice|battery technology"
 msgid "Lead Acid"
-msgstr "सीसा अम्ल"
+msgstr "लैड एसिड"
 
 #: solid/devices/backends/win/windevice.cpp:164
 msgctxt "Solid::Backends::Win::WinDevice|battery technology"
@@ -641,7 +640,7 @@ msgstr "निकेल कैडमियम"
 #: solid/devices/backends/win/windevice.cpp:167
 msgctxt "Solid::Backends::Win::WinDevice|battery technology"
 msgid "Nickel Metal Hydride"
-msgstr "निकेल धातु हाइड्राइड"
+msgstr "निकेल मेटल हाइड्राइड"
 
 #: solid/devices/backends/win/windevice.cpp:170
 msgctxt "Solid::Backends::Win::WinDevice|battery technology"
@@ -656,37 +655,37 @@ msgstr "अज्ञात"
 #: solid/devices/frontend/deviceinterface.cpp:55
 msgctxt "Solid::DeviceInterface|Generic Interface device type"
 msgid "Generic Interface"
-msgstr "सामान्य अन्तरफलक"
+msgstr "सामान्य इंटरफ़ेस"
 
 #: solid/devices/frontend/deviceinterface.cpp:57
 msgctxt "Solid::DeviceInterface|Processor device type"
 msgid "Processor"
-msgstr "संसाधकः"
+msgstr "प्रोसेसर"
 
 #: solid/devices/frontend/deviceinterface.cpp:59
 msgctxt "Solid::DeviceInterface|Block device type"
 msgid "Block"
-msgstr "मृदुवस्तु"
+msgstr "अवरोध पैदा करना"
 
 #: solid/devices/frontend/deviceinterface.cpp:61
 msgctxt "Solid::DeviceInterface|Storage Access device type"
 msgid "Storage Access"
-msgstr "भण्डारणप्रवेशः"
+msgstr "भंडारण पहुंच"
 
 #: solid/devices/frontend/deviceinterface.cpp:63
 msgctxt "Solid::DeviceInterface|Storage Drive device type"
 msgid "Storage Drive"
-msgstr "भण्डारण ड्राइव्"
+msgstr "स्टोरेज ड्राइव"
 
 #: solid/devices/frontend/deviceinterface.cpp:65
 msgctxt "Solid::DeviceInterface|Optical Drive device type"
 msgid "Optical Drive"
-msgstr "ऑप्टिकल ड्राइव"
+msgstr "दृस्टि सम्बन्धी अभियान"
 
 #: solid/devices/frontend/deviceinterface.cpp:67
 msgctxt "Solid::DeviceInterface|Storage Volume device type"
 msgid "Storage Volume"
-msgstr "भण्डारण आयतन"
+msgstr "भंडारण मात्रा"
 
 #: solid/devices/frontend/deviceinterface.cpp:69
 msgctxt "Solid::DeviceInterface|Optical Disc device type"
@@ -696,7 +695,7 @@ msgstr "ऑप्टिकल डिस्क"
 #: solid/devices/frontend/deviceinterface.cpp:71
 msgctxt "Solid::DeviceInterface|Camera device type"
 msgid "Camera"
-msgstr "कॅमेरा"
+msgstr "कैमरा"
 
 #: solid/devices/frontend/deviceinterface.cpp:73
 msgctxt "Solid::DeviceInterface|Portable Media Player device type"
@@ -706,7 +705,7 @@ msgstr "पोर्टेबल मीडिया प्लेयर"
 #: solid/devices/frontend/deviceinterface.cpp:75
 msgctxt "Solid::DeviceInterface|Battery device type"
 msgid "Battery"
-msgstr "विद्युत्कोष"
+msgstr "बैटरी"
 
 #: solid/devices/frontend/deviceinterface.cpp:77
 msgctxt "Solid::DeviceInterface|Network Share device type"
@@ -717,12 +716,12 @@ msgstr "नेटवर्क शेयर"
 #: tools/solid-hardware/solid-hardware.cpp:341
 msgctxt "solid-hardware|"
 msgid "Device udi"
-msgstr "यन्त्र उडी"
+msgstr "डिवाइस udi"
 
 #: tools/solid-hardware/solid-hardware.cpp:230
 msgctxt "solid-hardware|"
 msgid "Syntax:"
-msgstr "वाक्य रचना : १."
+msgstr "वाक्यविन्यास:"
 
 #: tools/solid-hardware/solid-hardware.cpp:233
 msgctxt "solid-hardware|"
@@ -738,14 +737,14 @@ msgid ""
 "             # neutral fashion,\n"
 "             # - Otherwise only device UDIs are listed.\n"
 msgstr ""
-"             # प्रणाल्यां उपलब्धं हार्डवेयरं सूचीबद्धं कुर्वन्तु।\n"
-"             # - यदि 'nonportableinfo' विकल्पः निर्दिष्टः अस्ति, तर्हि यन्त्रम्\n"
-"             # गुणाः सूचीबद्धाः सन्ति (सावधानं भवतु, अस्मिन् सन्दर्भे गुणनामानि\n"
-"             # पृष्ठभागनिर्भराः सन्ति),\n"
-"             # - यदि 'details' विकल्पः निर्दिष्टः अस्ति तर्हि यन्त्रं अन्तरफलकं करोति\n"
-"             # तथा तत्सम्बद्धाः गुणाः एकस्मिन् मञ्चे सूचीबद्धाः भवन्ति\n"
-"             # तटस्थ फैशन, २.\n"
-"             # - अन्यथा केवलं उपकरण UDI सूचीकृताः सन्ति ।\n"
+"# सिस्टम में उपलब्ध हार्डवेयर की सूची बनाएँ।\n"
+"# - यदि 'nonportableinfo' विकल्प निर्दिष्ट किया गया है, तो डिवाइस\n"
+"# गुण सूचीबद्ध किए जाते हैं (सावधान रहें, इस मामले में गुण नाम\n"
+"# बैकएंड पर निर्भर होते हैं),\n"
+"# - यदि 'विवरण' विकल्प निर्दिष्ट किया गया है, तो डिवाइस इंटरफेस\n"
+"# और संबंधित गुण प्लेटफ़ॉर्म\n"
+"# तटस्थ तरीके से सूचीबद्ध किए जाते हैं,\n"
+"# - अन्यथा केवल डिवाइस UDI सूचीबद्ध किए जाते हैं।\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:245
 msgctxt "solid-hardware|"
@@ -753,8 +752,8 @@ msgid ""
 "             # Display all the interfaces and properties of the device\n"
 "             # corresponding to 'udi' in a platform neutral fashion.\n"
 msgstr ""
-"             # यन्त्रस्य सर्वाणि अन्तरफलकानि गुणाः च प्रदर्शयन्तु\n"
-"             # मञ्च तटस्थरूपेण 'उडी' इत्यस्य अनुरूपम्।\n"
+"# डिवाइस के सभी इंटरफेस और गुण प्रदर्शित करें\n"
+"# प्लेटफ़ॉर्म तटस्थ फैशन में 'udi' के अनुरूप।\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:251
 msgctxt "solid-hardware|"
@@ -764,8 +763,8 @@ msgid ""
 "             # (be careful, in this case property names are backend "
 "dependent).\n"
 msgstr ""
-"             # 'udi' अनुरूपं यन्त्रस्य सर्वे गुणाः प्रदर्शयन्तु।\n"
-"             # (सावधानं भवतु, अस्मिन् सन्दर्भे गुणनामानि पृष्ठभागनिर्भराः सन्ति) ।\n"
+"# 'udi' से संबंधित डिवाइस के सभी गुण प्रदर्शित करें\n"
+"# (सावधान रहें, इस मामले में गुण नाम बैकएंड पर निर्भर हैं).\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:257
 msgctxt "solid-hardware|"
@@ -776,166 +775,161 @@ msgid ""
 "             # branch of the corresponding device,\n"
 "             # - Otherwise the search is done on all the devices.\n"
 msgstr ""
-"             # 'predicate' इत्यस्य अनुरूपस्य उपकरणानां UDI सूचीबद्धं कुर्वन्तु ।\n"
-"             # - यदि 'parentUdi' निर्दिष्टं भवति तर्हि अन्वेषणं प्रतिबन्धितम् अस्ति\n"
-"             # तत्सम्बद्धयन्त्रस्य शाखा, २.\n"
-"             # - अन्यथा अन्वेषणं सर्वेषु यन्त्रेषु क्रियते।\n"
+"# 'प्रीडिकेट' के अनुरूप डिवाइस की UDI सूचीबद्ध करें।\n"
+"# - यदि 'पैरेंटयूडीआई' निर्दिष्ट है, तो खोज संबंधित डिवाइस की\n"
+"# शाखा तक सीमित है,\n"
+"# - अन्यथा खोज सभी डिवाइस पर की जाती है।\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:265
 msgctxt "solid-hardware|"
 msgid ""
 "             # If applicable, mount the device corresponding to 'udi'.\n"
-msgstr ""
-"             # यदि प्रयोज्यम् अस्ति तर्हि 'udi' इत्यस्य अनुरूपं यन्त्रं माउण्ट् कुर्वन्तु ।\n"
+msgstr "             # यदि लागू हो, तो 'udi' के अनुरूप डिवाइस को माउंट करें।\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:268
 msgctxt "solid-hardware|"
 msgid ""
 "             # If applicable, unmount the device corresponding to 'udi'.\n"
-msgstr ""
-"             # यदि प्रयोज्यम् अस्ति तर्हि 'udi' इत्यस्य अनुरूपं यन्त्रं अनमाउण्ट् कुर्वन्तु ।\n"
+msgstr "             # यदि लागू हो, तो 'udi' से संबंधित डिवाइस को अनमाउंट करें।\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:271
 msgctxt "solid-hardware|"
 msgid ""
 "             # If applicable, eject the device corresponding to 'udi'.\n"
-msgstr ""
-"             # यदि प्रयोज्यम् अस्ति तर्हि 'udi' इत्यस्य अनुरूपं यन्त्रं बहिः निष्कासयन्तु ।\n"
+msgstr "             # यदि लागू हो, तो 'udi' से संबंधित डिवाइस को बाहर निकालें।\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:274
 msgctxt "solid-hardware|"
 msgid "             # Listen to all add/remove events on supported hardware.\n"
-msgstr "             # समर्थितहार्डवेयर् मध्ये सर्वाणि add/remove इवेण्ट् शृणुत।\n"
+msgstr "             # समर्थित हार्डवेयर पर सभी जोड़/हटाएँ ईवेंट सुनें।\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:277
 msgctxt "solid-hardware|"
 msgid "             # Monitor devices for changes.\n"
-msgstr "             # परिवर्तनार्थं उपकरणानां निरीक्षणं कुर्वन्तु।\n"
+msgstr "             # परिवर्तनों के लिए डिवाइस की निगरानी करें.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:280
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"CanCheck\" request to the device corresponding to "
 "'udi'.\n"
-msgstr ""
-"             # 'udi' इत्यस्य अनुरूपं उपकरणं प्रति \"CanCheck\" अनुरोधं प्रेषयन्तु।\n"
+msgstr "             # 'udi' से संबंधित डिवाइस पर \"CanCheck\" अनुरोध भेजें।\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:283
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"Check\" request to the device corresponding to 'udi'.\n"
-msgstr "             # 'udi' इत्यस्य अनुरूपं यन्त्रं प्रति \"Check\" अनुरोधं प्रेषयन्तु ।\n"
+msgstr "             # 'udi' से संबंधित डिवाइस को \"चेक\" अनुरोध भेजें।\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:286
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"CanRepair\" request to the device corresponding to "
 "'udi'.\n"
-msgstr ""
-"             # 'udi' इत्यस्य अनुरूपं उपकरणं प्रति \"CanRepair\" अनुरोधं प्रेषयन्तु।\n"
+msgstr "# 'udi' से संबंधित डिवाइस को \"CanRepair\" अनुरोध भेजें।\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:289
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"Repair\" request to the device corresponding to "
 "'udi'.\n"
-msgstr "             # 'udi' इत्यस्य अनुरूपं उपकरणं प्रति \"Repair\" अनुरोधं प्रेषयन्तु।\n"
+msgstr "             # 'udi' से संबंधित डिवाइस को \"मरम्मत\" अनुरोध भेजें।\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:301
 msgctxt "solid-hardware|"
 msgid "KDE tool for querying your hardware from the command line"
-msgstr "आदेशपङ्क्तौ भवतः हार्डवेयरं पृच्छितुं KDE साधनम्"
+msgstr "कमांड लाइन से अपने हार्डवेयर की जानकारी प्राप्त करने के लिए KDE टूल"
 
 #: tools/solid-hardware/solid-hardware.cpp:304
 msgctxt "solid-hardware|"
 msgid "Command to execute"
-msgstr "निष्पादयितुं आदेशः"
+msgstr "निष्पादित करने हेतु आदेश"
 
 #: tools/solid-hardware/solid-hardware.cpp:306
 msgctxt "solid-hardware|"
 msgid "Show available commands"
-msgstr "उपलब्धानि आदेशानि दर्शयन्तु"
+msgstr "उपलब्ध आदेश दिखाएं"
 
 #: tools/solid-hardware/solid-hardware.cpp:328
 msgctxt "solid-hardware|"
 msgid "Show device details"
-msgstr "उपकरणविवरणं दर्शयतु"
+msgstr "डिवाइस विवरण दिखाएं"
 
 #: tools/solid-hardware/solid-hardware.cpp:329
 msgctxt "solid-hardware|"
 msgid "Show non portable information"
-msgstr "गैर-पोर्टेबल सूचनां दर्शयतु"
+msgstr "गैर पोर्टेबल जानकारी दिखाएं"
 
 #: tools/solid-hardware/solid-hardware.cpp:342
 msgctxt "solid-hardware|"
 msgid "Parent device udi"
-msgstr "मातापितृयन्त्र udi"
+msgstr "पैरेंट डिवाइस udi"
 
 #: tools/solid-hardware/solid-hardware.cpp:384
 #, qt-format
 msgctxt "solid-hardware|"
 msgid "Syntax Error: Unknown command '%1'"
-msgstr "वाक्यविन्यासदोषः अज्ञातः आदेशः '%1' ।"
+msgstr "सिंटैक्स त्रुटि: अज्ञात आदेश '%1'"
 
 #: tools/solid-hardware/solid-hardware.cpp:446
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1 does not have the interface StorageAccess."
-msgstr "त्रुटिः : %1 मध्ये StorageAccess इति अन्तरफलकं नास्ति ।"
+msgstr "त्रुटि: %1 में StorageAccess इंटरफ़ेस नहीं है."
 
 #: tools/solid-hardware/solid-hardware.cpp:449
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1 does not have the interface OpticalDrive."
-msgstr "त्रुटिः : %1 इत्यत्र OpticalDrive इति अन्तरफलकं नास्ति ।"
+msgstr "त्रुटि: %1 में ऑप्टिकलड्राइव इंटरफ़ेस नहीं है."
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanCheck: %1"
-msgstr "उपकरणं CanCheck: %1"
+msgstr "डिवाइस जाँच कर सकता है: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #: tools/solid-hardware/solid-hardware.cpp:488
 msgctxt "SolidHardware|"
 msgid "no"
-msgstr "नहि"
+msgstr "नहीं"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #: tools/solid-hardware/solid-hardware.cpp:488
 msgctxt "SolidHardware|"
 msgid "yes"
-msgstr "आम्‌"
+msgstr "हाँ"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device Check: %1"
-msgstr "उपकरणपरीक्षा: %1"
+msgstr "डिवाइस जाँच: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 msgctxt "SolidHardware|"
 msgid "has error"
-msgstr "दोषः अस्ति"
+msgstr "त्रुटि है"
 
 #: tools/solid-hardware/solid-hardware.cpp:481
 msgctxt "SolidHardware|"
 msgid "no error"
-msgstr "न दोषः"
+msgstr "कोई त्रुटि नहीं"
 
 #: tools/solid-hardware/solid-hardware.cpp:483
 msgctxt "SolidHardware|"
 msgid "Device Check: operation is not supported"
-msgstr "उपकरणपरीक्षा: संचालनं समर्थितं नास्ति"
+msgstr "डिवाइस जाँच: ऑपरेशन समर्थित नहीं है"
 
 #: tools/solid-hardware/solid-hardware.cpp:488
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanRepair: %1"
-msgstr "उपकरणं CanRepair: %1"
+msgstr "डिवाइस मरम्मत कर सकता है: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:503
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1"
-msgstr "त्रुटिः %1"
+msgstr "त्रुटि: %1"
