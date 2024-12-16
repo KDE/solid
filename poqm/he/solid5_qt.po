@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2024-10-10 09:09+0300\n"
+"PO-Revision-Date: 2024-12-15 20:56+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 24.08.1\n"
+"X-Generator: Lokalize 24.08.3\n"
 "X-Qt-Contexts: true\n"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:60
@@ -186,82 +186,69 @@ msgid "/DVD+RW"
 msgstr "/תקליטור DVD+‎ רב פעמי"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:312
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD-R"
-msgstr "/DVD-R"
+msgstr "/תקליטור DVD-‎ לצריבה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:315
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD-RW"
-msgstr "/תקליטור רב פעמי"
+msgstr "/תקליטור DVD-‎ רב פעמי"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:318
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD-RAM"
-msgstr "/DVD-ROM"
+msgstr "/DVD-RAM"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:322
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD±R DL"
-msgstr "/DVD-R"
+msgstr "/תקליטור DVD±‎ דו־שכבתי לצריבה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:324
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD±R"
-msgstr "/DVD-R"
+msgstr "/תקליטור DVD±‎ לצריבה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:329
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD±RW DL"
-msgstr "/תקליטור רב פעמי"
+msgstr "/תקליטור DVD±‎ רב־פעמי דו־שכבתי"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:331
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD±RW"
-msgstr "/תקליטור רב פעמי"
+msgstr "/תקליטור DVD±‎ רב פעמי"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:335
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/BD-ROM"
-msgstr "תקליטור"
+msgstr "/BD-ROM"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:338
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/BD-R"
-msgstr "תקליטור"
+msgstr "/BD-R"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:341
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/BD-RE"
-msgstr "תקליטור"
+msgstr "/BD-RE"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:344
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/HD DVD-ROM"
-msgstr "/DVD-ROM"
+msgstr "/HD DVD-ROM"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:347
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/HD DVD-R"
-msgstr "תקליטור רב פעמי"
+msgstr "/HD DVD-‎ לצריבה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:350
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/HD DVD-RW"
-msgstr "תקליטור רב פעמי"
+msgstr "/HD DVD-‎ לצריבה רב־פעמית"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:354
 #, qt-format
@@ -313,10 +300,9 @@ msgid "Blank CD-R"
 msgstr "תקליטור ריק"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:441
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "CD-R"
-msgstr "תקליטור"
+msgstr "תקליטור לצריבה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:447
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -329,154 +315,129 @@ msgid "CD-RW"
 msgstr "תקליטור רב פעמי"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:454
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD-ROM"
-msgstr "/DVD-ROM"
+msgstr "DVD-ROM"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:459
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD-RAM"
-msgstr "תקליטור DVD רב פעמי ריק\\"
+msgstr "תקליטור DVD-RAM ריק"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:461
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD-RAM"
-msgstr "/DVD-ROM"
+msgstr "DVD-RAM"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:467
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD-R"
-msgstr "תקליטור DVD רב פעמי ריק\\"
+msgstr "תקליטור DVD ריק לצריבה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:469
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD-R"
-msgstr "תקליטור רב פעמי"
+msgstr "תקליטור DVD-‎ לצריבה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:475
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD+R Dual-Layer"
-msgstr "תקליטור DVD רב פעמי ריק\\"
+msgstr "תקליטור DVD+‎ דו־שכבתי ריק לצריבה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:477
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD+R Dual-Layer"
-msgstr "תקליטור DVD רב פעמי ריק\\"
+msgstr "תקליטור DVD+‎ דו־שכבתי לצריבה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:483
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD-RW"
-msgstr "תקליטור DVD רב פעמי ריק\\"
+msgstr "תקליטור DVD-‎ לצריבה רב־פעמית"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:485
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD-RW"
-msgstr "תקליטור רב פעמי"
+msgstr "תקליטור DVD-‎ רב פעמי"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:491
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD+R"
-msgstr "תקליטור DVD רב פעמי ריק\\"
+msgstr "תקליטור DVD+‎ ריק לצריבה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:493
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD+R"
-msgstr "/DVD-R"
+msgstr "תקליטור DVD+‎ לצריבה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:499
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD+RW"
-msgstr "תקליטור DVD רב פעמי ריק\\"
+msgstr "תקליטור DVD+‎ לצריבה רב־פעמית"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:501
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD+RW"
-msgstr "/תקליטור רב פעמי"
+msgstr "תקליטור DVD+‎ רב פעמי"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:507
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD+RW Dual-Layer"
-msgstr "תקליטור DVD רב פעמי ריק\\"
+msgstr "תקליטור DVD+‎ דו־שכבתי רב־פעמי"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:509
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD+RW Dual-Layer"
-msgstr "תקליטור DVD רב פעמי ריק\\"
+msgstr "תקליטור DVD+‎ רב־פעמי דו־שכבתי"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:514
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "BD-ROM"
-msgstr "תקליטור"
+msgstr "BD-ROM"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:519
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank BD-R"
-msgstr "תקליטור ריק"
+msgstr "תקליטור BD-‎ לצריבה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:521
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "BD-R"
-msgstr "תקליטור"
+msgstr "תקליטור BD-‎ לצריבה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:527
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank BD-RE"
-msgstr "תקליטור ריק"
+msgstr "תקליטור BD-RE ריק"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:529
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "BD-RE"
-msgstr "תקליטור"
+msgstr "BD-RE"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:534
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "HD DVD-ROM"
-msgstr "/DVD-ROM"
+msgstr "HD DVD-ROM"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:539
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank HD DVD-R"
-msgstr "תקליטור DVD רב פעמי ריק\\"
+msgstr "תקליטור HD DVD-‎ ריק לצריבה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:541
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "HD DVD-R"
-msgstr "תקליטור רב פעמי"
+msgstr "HD DVD-‎ לצריבה"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:547
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank HD DVD-RW"
-msgstr "תקליטור DVD רב פעמי ריק\\"
+msgstr "HD DVD רב־פעמי ריק"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:549
-#, fuzzy
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "HD DVD-RW"
-msgstr "תקליטור רב פעמי"
+msgstr "HD DVD-‎ רב־פעמי"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:556
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -758,10 +719,9 @@ msgstr "שיתוף רשת"
 
 #: tools/solid-hardware/solid-hardware.cpp:218
 #: tools/solid-hardware/solid-hardware.cpp:329
-#, fuzzy
 msgctxt "solid-hardware|"
 msgid "Device udi"
-msgstr "התקנים"
+msgstr "מזהה ההתקן הייחודי"
 
 #: tools/solid-hardware/solid-hardware.cpp:230 tools/solid-power/main.cpp:32
 msgctxt "solid-hardware|"
@@ -884,10 +844,9 @@ msgid "Show non portable information"
 msgstr "הצגת מידע שאינו נייד"
 
 #: tools/solid-hardware/solid-hardware.cpp:330
-#, fuzzy
 msgctxt "solid-hardware|"
 msgid "Parent device udi"
-msgstr "התקני UPnP"
+msgstr "מזהה ייחודי של התקן ההורה"
 
 #: tools/solid-hardware/solid-hardware.cpp:360
 #, qt-format
