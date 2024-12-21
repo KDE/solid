@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2024-12-14 01:12+0530\n"
+"PO-Revision-Date: 2024-12-20 21:54+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
@@ -23,7 +23,7 @@ msgstr "%2 इत्यत्र %1"
 #, qt-format
 msgctxt "%1 is mountpoint, %2 is fs type"
 msgid "%1 (%2)"
-msgstr "%1 (%2) २."
+msgstr "%1 (%2)"
 
 #: solid/devices/backends/fstab/fstabmanager.cpp:80
 msgctxt "Solid::Backends::Fstab::FstabManager|"
@@ -722,7 +722,7 @@ msgstr "यन्त्र उडी"
 #: tools/solid-hardware/solid-hardware.cpp:230
 msgctxt "solid-hardware|"
 msgid "Syntax:"
-msgstr "वाक्य रचना : १."
+msgstr "वाक्य रचना :"
 
 #: tools/solid-hardware/solid-hardware.cpp:233
 msgctxt "solid-hardware|"
