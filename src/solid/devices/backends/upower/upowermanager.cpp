@@ -118,7 +118,7 @@ QStringList UPowerManager::allDevices()
     reply.waitForFinished();
 
     if (!reply.isValid()) {
-        qWarning() << Q_FUNC_INFO << " error: " << reply.error().name();
+        qWarning() << Q_FUNC_INFO << " error: " << reply.error();
         return QStringList();
     }
     const auto pathList = reply.value();
