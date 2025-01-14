@@ -62,7 +62,7 @@ Solid::Device &Solid::Device::operator=(const Solid::Device &device)
 
 bool Solid::Device::isValid() const
 {
-    return d->backendObject() != nullptr;
+    return d && d->backendObject() != nullptr;
 }
 
 QString Solid::Device::udi() const

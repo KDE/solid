@@ -162,7 +162,7 @@ Solid::Device Solid::Device::storageAccessFromPath(const QString &path)
 
         auto storageAccess = device.as<StorageAccess>();
 
-        if (!storageAccess) {
+        if (!storageAccess || !storageAccess->isValid()) {
             continue;
         }
 
