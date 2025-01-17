@@ -31,6 +31,7 @@ class SOLID_EXPORT Block : public DeviceInterface
     Q_PROPERTY(int major READ deviceMajor)
     Q_PROPERTY(int minor READ deviceMinor)
     Q_PROPERTY(QString device READ device)
+    Q_PROPERTY(bool isSystem READ isSystem)
     Q_DECLARE_PRIVATE(Block)
     friend class Device;
 
@@ -86,6 +87,12 @@ public:
      * the device
      */
     QString device() const;
+
+    /**
+     * Whether this block is considered a system block,
+     * that it requires additional permissions to access (mount/umount)
+     */
+    bool isSystem() const;
 };
 }
 

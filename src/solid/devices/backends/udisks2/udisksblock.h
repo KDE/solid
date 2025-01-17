@@ -30,10 +30,12 @@ public:
     QString device() const override;
     int deviceMinor() const override;
     int deviceMajor() const override;
+    bool isSystem() const override;
 
 private:
     dev_t m_devNum;
     QString m_devFile;
+    bool m_hintSystem;
 };
 
 }
