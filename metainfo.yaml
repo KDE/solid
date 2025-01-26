@@ -13,7 +13,7 @@ portingAid: false
 deprecated: false
 release: true
 libraries:
- - cmake: "KF6::Solid"
+    - cmake: "KF6::Solid"
 cmakename: KF6Solid
 
 public_lib: true
