@@ -52,6 +52,7 @@ FstabWatcher::FstabWatcher()
     if (fd < 0) {
         mnt_unref_monitor(m_mountMonitor);
         qCritical(FSTAB_LOG) << "Failed to acquire watch file descriptor" << strerror(errno);
+        m_mountMonitor = nullptr;
         return;
     }
 
@@ -92,7 +93,9 @@ FstabWatcher::FstabWatcher()
 FstabWatcher::~FstabWatcher()
 {
 #ifdef Q_OS_LINUX
-    mnt_unref_monitor(m_mountMonitor);
+    if (m_mountMonitor) {
+        mnt_unref_monitor(m_mountMonitor);
+    }
 #else
     // The QFileSystemWatcher doesn't work correctly in a singleton
     // The solution so far was to destroy the QFileSystemWatcher when the application quits
