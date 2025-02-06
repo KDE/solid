@@ -200,6 +200,26 @@ Q_SIGNALS:
     void teardownRequested(const QString &udi);
 
     /**
+     * This signal is emitted when a check of this device is requested.
+     * The signal might be spontaneous i.e. it can be triggered by
+     * another process.
+     *
+     * @param udi the UDI of the volume
+     */
+    void checkRequested(const QString &udi);
+
+    /**
+     * This signal is emitted when the attempted check of this
+     * device is completed. The signal might be spontaneous i.e.
+     * it can be triggered by another process.
+     *
+     * @param error type of error that occurred, if any
+     * @param errorData more information about the error, if any
+     * @param udi the UDI of the volume
+     */
+    void checkDone(Solid::ErrorType error, QVariant errorData, const QString &udi);
+
+    /**
      * This signal is emitted when a repair of this device is requested.
      * The signal might be spontaneous i.e. it can be triggered by
      * another process.

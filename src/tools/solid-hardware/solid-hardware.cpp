@@ -478,12 +478,15 @@ bool SolidHardware::hwVolumeCall(SolidHardware::VolumeCallType type, const QStri
         return true;
     case Check:
         if (device.as<Solid::StorageAccess>()->canCheck()) {
-            cout << tr("Device Check: %1").arg(device.as<Solid::StorageAccess>()->check() == 0 ? tr("has error") : tr("no error")) << endl;
+            connect(device.as<Solid::StorageAccess>(),
+                    SIGNAL(checkDone(Solid::ErrorType, QVariant, QString)),
+                    this,
+                    SLOT(slotStorageCheckResult(Solid::ErrorType, QVariant, QString)));
+            device.as<Solid::StorageAccess>()->check();
         } else {
             cout << tr("Device Check: operation is not supported") << endl;
         }
-        cout << "udi = '" << udi << "'" << endl;
-        return true;
+        break;
     case CanRepair:
         cout << tr("Device CanRepair: %1").arg(device.as<Solid::StorageAccess>()->canRepair() == 0 ? tr("no") : tr("yes")) << endl;
         cout << "udi = '" << udi << "'" << endl;
@@ -565,6 +568,15 @@ void SolidHardware::slotStorageResult(Solid::ErrorType error, const QVariant &er
         m_errorString = errorData.toString();
     }
     m_loop.exit();
+}
+
+void SolidHardware::slotStorageCheckResult(Solid::ErrorType error, const QVariant &errorData, const QString &udi)
+{
+    slotStorageResult(error, errorData);
+    if (error == Solid::NoError) {
+        cout << tr("Device check: %1").arg(errorData.toBool() ? tr("no error") : tr("has error")) << endl;
+        cout << "udi = '" << udi << "'" << endl;
+    }
 }
 
 #include "moc_solid-hardware.cpp"

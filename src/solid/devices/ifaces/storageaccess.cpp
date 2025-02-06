@@ -30,6 +30,18 @@ bool Solid::Ifaces::StorageAccess::repair()
     return false;
 }
 
+void Solid::Ifaces::StorageAccess::checkRequested(const QString &udi)
+{
+    Q_UNUSED(udi);
+}
+
+void Solid::Ifaces::StorageAccess::checkDone(ErrorType error, QVariant resultData, const QString &udi)
+{
+    Q_UNUSED(error);
+    Q_UNUSED(resultData);
+    Q_UNUSED(udi);
+}
+
 void Solid::Ifaces::StorageAccess::repairRequested(const QString &udi)
 {
     Q_UNUSED(udi);

@@ -49,6 +49,7 @@ StorageAccess::StorageAccess(Device *device)
     : DeviceInterface(device)
     , m_setupInProgress(false)
     , m_teardownInProgress(false)
+    , m_checkInProgress(false)
     , m_repairInProgress(false)
     , m_passphraseRequested(false)
 {
@@ -71,6 +72,8 @@ void StorageAccess::connectDBusSignals()
     m_device->registerAction(QStringLiteral("setup"), this, SLOT(slotSetupRequested()), SLOT(slotSetupDone(int, QString)));
 
     m_device->registerAction(QStringLiteral("teardown"), this, SLOT(slotTeardownRequested()), SLOT(slotTeardownDone(int, QString)));
+
+    m_device->registerAction(QStringLiteral("check"), this, SLOT(slotCheckRequested()), SLOT(slotCheckDone(int, QString)));
 
     m_device->registerAction(QStringLiteral("repair"), this, SLOT(slotRepairRequested()), SLOT(slotRepairDone(int, QString)));
 }
@@ -124,19 +127,18 @@ bool StorageAccess::canCheck() const
 
 bool StorageAccess::check()
 {
-    if (m_setupInProgress || m_teardownInProgress) {
+    if (m_setupInProgress || m_teardownInProgress || m_checkInProgress || m_repairInProgress) {
         return false;
     }
+    m_checkInProgress = true;
+    m_device->broadcastActionRequested(QStringLiteral("check"));
 
     const auto path = dbusPath();
     auto c = QDBusConnection::systemBus();
     auto msg = QDBusMessage::createMethodCall(QStringLiteral(UD2_DBUS_SERVICE), path, QStringLiteral(UD2_DBUS_INTERFACE_FILESYSTEM), QStringLiteral("Check"));
-    QVariantMap options;
-    msg << options;
-    QDBusReply<bool> r = c.call(msg);
-    bool ret = r.isValid() && r.value();
-    qCDebug(UDISKS2) << Q_FUNC_INFO << path << ret;
-    return ret;
+    msg << QVariantMap{};
+
+    return c.callWithCallback(msg, this, SLOT(slotDBusReply(QDBusMessage)), SLOT(slotDBusError(QDBusError)));
 }
 
 bool StorageAccess::canRepair() const
@@ -161,7 +163,7 @@ bool StorageAccess::canRepair() const
 
 bool StorageAccess::repair()
 {
-    if (m_teardownInProgress || m_setupInProgress || m_repairInProgress) {
+    if (m_teardownInProgress || m_setupInProgress || m_checkInProgress || m_repairInProgress) {
         return false;
     }
     m_repairInProgress = true;
@@ -276,7 +278,7 @@ bool StorageAccess::isIgnored() const
 
 bool StorageAccess::setup()
 {
-    if (m_teardownInProgress || m_setupInProgress || m_repairInProgress) {
+    if (m_teardownInProgress || m_setupInProgress || m_checkInProgress || m_repairInProgress) {
         return false;
     }
     m_setupInProgress = true;
@@ -291,7 +293,7 @@ bool StorageAccess::setup()
 
 bool StorageAccess::teardown()
 {
-    if (m_teardownInProgress || m_setupInProgress || m_repairInProgress) {
+    if (m_teardownInProgress || m_setupInProgress || m_checkInProgress || m_repairInProgress) {
         return false;
     }
     m_teardownInProgress = true;
@@ -315,7 +317,7 @@ void StorageAccess::checkAccessibility()
     }
 }
 
-void StorageAccess::slotDBusReply(const QDBusMessage & /*reply*/)
+void StorageAccess::slotDBusReply(const QDBusMessage &reply)
 {
     if (m_setupInProgress) {
         if (isLuksDevice() && !isAccessible()) { // unlocked device, now mount it
@@ -368,6 +370,15 @@ void StorageAccess::slotDBusReply(const QDBusMessage & /*reply*/)
 
             checkAccessibility();
         }
+    } else if (m_checkInProgress) {
+        QDBusReply<bool> r = reply;
+        qCDebug(UDISKS2) << "Check reply received " << m_device->udi() << r;
+        m_checkInProgress = false;
+        if (r.isValid()) {
+            m_device->broadcastActionDone(QStringLiteral("check"), Solid::NoError, QString::number(r.value()));
+        } else {
+            m_device->broadcastActionDone(QStringLiteral("check"), Solid::OperationFailed, reply.errorMessage());
+        }
     } else if (m_repairInProgress) {
         qCDebug(UDISKS2) << "Successfully repaired " << m_device->udi();
         m_repairInProgress = false;
@@ -392,6 +403,11 @@ void StorageAccess::slotDBusError(const QDBusError &error)
                                       m_device->errorToSolidError(error.name()),
                                       m_device->errorToString(error.name()) + QStringLiteral(": ") + error.message());
         checkAccessibility();
+    } else if (m_checkInProgress) {
+        m_checkInProgress = false;
+        m_device->broadcastActionDone(QStringLiteral("check"),
+                                      m_device->errorToSolidError(error.name()),
+                                      m_device->errorToString(error.name()) + QStringLiteral(": ") + error.message());
     } else if (m_repairInProgress) {
         m_repairInProgress = false;
         m_device->broadcastActionDone(QStringLiteral("repair"),
@@ -426,6 +442,18 @@ void StorageAccess::slotTeardownDone(int error, const QString &errorString)
     m_teardownInProgress = false;
     checkAccessibility();
     Q_EMIT teardownDone(static_cast<Solid::ErrorType>(error), errorString, m_device->udi());
+}
+
+void StorageAccess::slotCheckRequested()
+{
+    m_checkInProgress = true;
+    Q_EMIT checkRequested(m_device->udi());
+}
+
+void StorageAccess::slotCheckDone(int error, const QString &errorString)
+{
+    m_checkInProgress = false;
+    Q_EMIT checkDone(static_cast<Solid::ErrorType>(error), errorString, m_device->udi());
 }
 
 void StorageAccess::slotRepairRequested()

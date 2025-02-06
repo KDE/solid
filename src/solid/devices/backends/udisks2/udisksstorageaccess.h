@@ -47,6 +47,8 @@ Q_SIGNALS:
     void teardownDone(Solid::ErrorType error, QVariant errorData, const QString &udi) override;
     void setupRequested(const QString &udi) override;
     void teardownRequested(const QString &udi) override;
+    void checkRequested(const QString &udi) override;
+    void checkDone(Solid::ErrorType error, QVariant errorData, const QString &udi) override;
     void repairRequested(const QString &udi) override;
     void repairDone(Solid::ErrorType error, QVariant errorData, const QString &udi) override;
 
@@ -63,6 +65,8 @@ private Q_SLOTS:
     void slotSetupDone(int error, const QString &errorString);
     void slotTeardownRequested();
     void slotTeardownDone(int error, const QString &errorString);
+    void slotCheckRequested();
+    void slotCheckDone(int error, const QString &errorString);
     void slotRepairRequested();
     void slotRepairDone(int error, const QString &errorString);
 
@@ -90,6 +94,7 @@ private:
     bool m_isAccessible;
     bool m_setupInProgress;
     bool m_teardownInProgress;
+    bool m_checkInProgress;
     bool m_repairInProgress;
     bool m_passphraseRequested;
     QString m_lastReturnObject;

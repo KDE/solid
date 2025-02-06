@@ -155,6 +155,25 @@ protected:
     virtual void teardownRequested(const QString &udi) = 0;
 
     /**
+     * This signal is emitted when a check of this device is requested.
+     * The signal might be spontaneous i.e. it can be triggered by
+     * another process.
+     *
+     * @param udi the UDI of the volume
+     */
+    virtual void checkRequested(const QString &udi);
+
+    /**
+     * This signal is emitted when the attempted checked of this
+     * device is completed.
+     *
+     * @param error type of error that occurred, if any
+     * @param errorData more information about the error, if any
+     * @param udi the UDI of the volume
+     */
+    virtual void checkDone(Solid::ErrorType error, QVariant resultData, const QString &udi);
+
+    /**
      * This signal is emitted when a repair of this device is requested.
      * The signal might be spontaneous i.e. it can be triggered by
      * another process.

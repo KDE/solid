@@ -43,6 +43,7 @@ private Q_SLOTS:
     void slotStorageResult(Solid::ErrorType error, const QVariant &errorData);
     void deviceAdded(const QString &udi);
     void deviceRemoved(const QString &udi);
+    void slotStorageCheckResult(Solid::ErrorType error, const QVariant &errorData, const QString &udi);
 };
 
 #endif // SOLID_HARDWARE_H

@@ -20,6 +20,8 @@ Solid::StorageAccess::StorageAccess(QObject *backendObject)
 
     connect(backendObject, SIGNAL(accessibilityChanged(bool, QString)), this, SIGNAL(accessibilityChanged(bool, QString)));
 
+    connect(backendObject, SIGNAL(checkRequested(QString)), this, SIGNAL(checkRequested(QString)));
+    connect(backendObject, SIGNAL(checkDone(Solid::ErrorType, QVariant, QString)), this, SIGNAL(checkDone(Solid::ErrorType, QVariant, QString)));
     connect(backendObject, SIGNAL(repairRequested(QString)), this, SIGNAL(repairRequested(QString)));
     connect(backendObject, SIGNAL(repairDone(Solid::ErrorType, QVariant, QString)), this, SIGNAL(repairDone(Solid::ErrorType, QVariant, QString)));
 }
@@ -40,6 +42,8 @@ Solid::StorageAccess::StorageAccess(StorageAccessPrivate &dd, QObject *backendOb
 
     connect(backendObject, SIGNAL(accessibilityChanged(bool, QString)), this, SIGNAL(accessibilityChanged(bool, QString)));
 
+    connect(backendObject, SIGNAL(checkRequested(QString)), this, SIGNAL(checkRequested(QString)));
+    connect(backendObject, SIGNAL(checkDone(Solid::ErrorType, QVariant, QString)), this, SIGNAL(checkDone(Solid::ErrorType, QVariant, QString)));
     connect(backendObject, SIGNAL(repairRequested(QString)), this, SIGNAL(repairRequested(QString)));
     connect(backendObject, SIGNAL(repairDone(Solid::ErrorType, QVariant, QString)), this, SIGNAL(repairDone(Solid::ErrorType, QVariant, QString)));
 }
