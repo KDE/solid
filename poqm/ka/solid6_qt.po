@@ -913,49 +913,51 @@ msgid "Device CanCheck: %1"
 msgstr "მოწყობილობას აქვს CanCheck: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
-#: tools/solid-hardware/solid-hardware.cpp:488
+#: tools/solid-hardware/solid-hardware.cpp:491
 msgctxt "SolidHardware|"
 msgid "no"
 msgstr "არა"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
-#: tools/solid-hardware/solid-hardware.cpp:488
+#: tools/solid-hardware/solid-hardware.cpp:491
 msgctxt "SolidHardware|"
 msgid "yes"
 msgstr "დიახ"
 
-#: tools/solid-hardware/solid-hardware.cpp:481
-#, qt-format
-msgctxt "SolidHardware|"
-msgid "Device Check: %1"
-msgstr "მოწყობილობას აქვს Check: %1"
-
-#: tools/solid-hardware/solid-hardware.cpp:481
-msgctxt "SolidHardware|"
-msgid "has error"
-msgstr "აქვს შეცდომა"
-
-#: tools/solid-hardware/solid-hardware.cpp:481
-msgctxt "SolidHardware|"
-msgid "no error"
-msgstr "შეცდომის გარეშე"
-
-#: tools/solid-hardware/solid-hardware.cpp:483
+#: tools/solid-hardware/solid-hardware.cpp:487
 msgctxt "SolidHardware|"
 msgid "Device Check: operation is not supported"
 msgstr "მოწყობილობის Check: ოპერაცია მხარდაჭერილი არაა"
 
-#: tools/solid-hardware/solid-hardware.cpp:488
+#: tools/solid-hardware/solid-hardware.cpp:491
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanRepair: %1"
 msgstr "მოწყობილობას აქვს CanRepair: %1"
 
-#: tools/solid-hardware/solid-hardware.cpp:503
+#: tools/solid-hardware/solid-hardware.cpp:506
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1"
 msgstr "შეცდომა: %1"
+
+#: tools/solid-hardware/solid-hardware.cpp:577
+#, fuzzy, qt-format
+#| msgctxt "SolidHardware|"
+#| msgid "Device Check: %1"
+msgctxt "SolidHardware|"
+msgid "Device check: %1"
+msgstr "მოწყობილობას აქვს Check: %1"
+
+#: tools/solid-hardware/solid-hardware.cpp:577
+msgctxt "SolidHardware|"
+msgid "no error"
+msgstr "შეცდომის გარეშე"
+
+#: tools/solid-hardware/solid-hardware.cpp:577
+msgctxt "SolidHardware|"
+msgid "has error"
+msgstr "აქვს შეცდომა"
 
 #~ msgctxt "solid-power|"
 #~ msgid "Tool to know and set the power management state of your device"

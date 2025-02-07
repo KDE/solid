@@ -890,46 +890,48 @@ msgid "Device CanCheck: %1"
 msgstr "设备 CanCheck (能否检查)：%1"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
-#: tools/solid-hardware/solid-hardware.cpp:488
+#: tools/solid-hardware/solid-hardware.cpp:491
 msgctxt "SolidHardware|"
 msgid "no"
 msgstr "否"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
-#: tools/solid-hardware/solid-hardware.cpp:488
+#: tools/solid-hardware/solid-hardware.cpp:491
 msgctxt "SolidHardware|"
 msgid "yes"
 msgstr "是"
 
-#: tools/solid-hardware/solid-hardware.cpp:481
-#, qt-format
-msgctxt "SolidHardware|"
-msgid "Device Check: %1"
-msgstr "设备 Check (检查) 结果：%1"
-
-#: tools/solid-hardware/solid-hardware.cpp:481
-msgctxt "SolidHardware|"
-msgid "has error"
-msgstr "有错误"
-
-#: tools/solid-hardware/solid-hardware.cpp:481
-msgctxt "SolidHardware|"
-msgid "no error"
-msgstr "没有错误"
-
-#: tools/solid-hardware/solid-hardware.cpp:483
+#: tools/solid-hardware/solid-hardware.cpp:487
 msgctxt "SolidHardware|"
 msgid "Device Check: operation is not supported"
 msgstr "设备 Check (检查)：不支持此操作"
 
-#: tools/solid-hardware/solid-hardware.cpp:488
+#: tools/solid-hardware/solid-hardware.cpp:491
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanRepair: %1"
 msgstr "设备 CanRepair (能否修复)：%1"
 
-#: tools/solid-hardware/solid-hardware.cpp:503
+#: tools/solid-hardware/solid-hardware.cpp:506
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1"
 msgstr "错误：%1"
+
+#: tools/solid-hardware/solid-hardware.cpp:577
+#, fuzzy, qt-format
+#| msgctxt "SolidHardware|"
+#| msgid "Device Check: %1"
+msgctxt "SolidHardware|"
+msgid "Device check: %1"
+msgstr "设备 Check (检查) 结果：%1"
+
+#: tools/solid-hardware/solid-hardware.cpp:577
+msgctxt "SolidHardware|"
+msgid "no error"
+msgstr "没有错误"
+
+#: tools/solid-hardware/solid-hardware.cpp:577
+msgctxt "SolidHardware|"
+msgid "has error"
+msgstr "有错误"

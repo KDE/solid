@@ -893,49 +893,51 @@ msgid "Device CanCheck: %1"
 msgstr "الجهاز \"يمكن التحقق منه\" : %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
-#: tools/solid-hardware/solid-hardware.cpp:488
+#: tools/solid-hardware/solid-hardware.cpp:491
 msgctxt "SolidHardware|"
 msgid "no"
 msgstr "لا"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
-#: tools/solid-hardware/solid-hardware.cpp:488
+#: tools/solid-hardware/solid-hardware.cpp:491
 msgctxt "SolidHardware|"
 msgid "yes"
 msgstr "نعم"
 
-#: tools/solid-hardware/solid-hardware.cpp:481
-#, qt-format
-msgctxt "SolidHardware|"
-msgid "Device Check: %1"
-msgstr "جهاز التحقق: %1"
-
-#: tools/solid-hardware/solid-hardware.cpp:481
-msgctxt "SolidHardware|"
-msgid "has error"
-msgstr "يوجد خطأ"
-
-#: tools/solid-hardware/solid-hardware.cpp:481
-msgctxt "SolidHardware|"
-msgid "no error"
-msgstr "لا يوجد خطأ"
-
-#: tools/solid-hardware/solid-hardware.cpp:483
+#: tools/solid-hardware/solid-hardware.cpp:487
 msgctxt "SolidHardware|"
 msgid "Device Check: operation is not supported"
 msgstr "فحص الجهاز: العملية غير مدعومة"
 
-#: tools/solid-hardware/solid-hardware.cpp:488
+#: tools/solid-hardware/solid-hardware.cpp:491
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanRepair: %1"
 msgstr "جهاز \"يمكن إصلاحه\": %1"
 
-#: tools/solid-hardware/solid-hardware.cpp:503
+#: tools/solid-hardware/solid-hardware.cpp:506
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1"
 msgstr "خطأ: %1"
+
+#: tools/solid-hardware/solid-hardware.cpp:577
+#, fuzzy, qt-format
+#| msgctxt "SolidHardware|"
+#| msgid "Device Check: %1"
+msgctxt "SolidHardware|"
+msgid "Device check: %1"
+msgstr "جهاز التحقق: %1"
+
+#: tools/solid-hardware/solid-hardware.cpp:577
+msgctxt "SolidHardware|"
+msgid "no error"
+msgstr "لا يوجد خطأ"
+
+#: tools/solid-hardware/solid-hardware.cpp:577
+msgctxt "SolidHardware|"
+msgid "has error"
+msgstr "يوجد خطأ"
 
 #~ msgctxt "solid-power|"
 #~ msgid "Tool to know and set the power management state of your device"

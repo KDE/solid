@@ -922,49 +922,51 @@ msgid "Device CanCheck: %1"
 msgstr "«CanCheck» del dispositiu: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
-#: tools/solid-hardware/solid-hardware.cpp:488
+#: tools/solid-hardware/solid-hardware.cpp:491
 msgctxt "SolidHardware|"
 msgid "no"
 msgstr "no"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
-#: tools/solid-hardware/solid-hardware.cpp:488
+#: tools/solid-hardware/solid-hardware.cpp:491
 msgctxt "SolidHardware|"
 msgid "yes"
 msgstr "sí"
 
-#: tools/solid-hardware/solid-hardware.cpp:481
-#, qt-format
-msgctxt "SolidHardware|"
-msgid "Device Check: %1"
-msgstr "«Check» del dispositiu: %1"
-
-#: tools/solid-hardware/solid-hardware.cpp:481
-msgctxt "SolidHardware|"
-msgid "has error"
-msgstr "té un error"
-
-#: tools/solid-hardware/solid-hardware.cpp:481
-msgctxt "SolidHardware|"
-msgid "no error"
-msgstr "cap error"
-
-#: tools/solid-hardware/solid-hardware.cpp:483
+#: tools/solid-hardware/solid-hardware.cpp:487
 msgctxt "SolidHardware|"
 msgid "Device Check: operation is not supported"
 msgstr "«Check» del dispositiu: l'operació no s'admet"
 
-#: tools/solid-hardware/solid-hardware.cpp:488
+#: tools/solid-hardware/solid-hardware.cpp:491
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanRepair: %1"
 msgstr "«CanRepair» del dispositiu: %1"
 
-#: tools/solid-hardware/solid-hardware.cpp:503
+#: tools/solid-hardware/solid-hardware.cpp:506
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1"
 msgstr "Error: %1"
+
+#: tools/solid-hardware/solid-hardware.cpp:577
+#, fuzzy, qt-format
+#| msgctxt "SolidHardware|"
+#| msgid "Device Check: %1"
+msgctxt "SolidHardware|"
+msgid "Device check: %1"
+msgstr "«Check» del dispositiu: %1"
+
+#: tools/solid-hardware/solid-hardware.cpp:577
+msgctxt "SolidHardware|"
+msgid "no error"
+msgstr "cap error"
+
+#: tools/solid-hardware/solid-hardware.cpp:577
+msgctxt "SolidHardware|"
+msgid "has error"
+msgstr "té un error"
 
 #~ msgctxt "solid-power|"
 #~ msgid "Tool to know and set the power management state of your device"
