@@ -205,6 +205,8 @@ Q_SIGNALS:
      * another process.
      *
      * @param udi the UDI of the volume
+     *
+     * @since 6.11
      */
     void checkRequested(const QString &udi);
 
@@ -216,6 +218,8 @@ Q_SIGNALS:
      * @param error type of error that occurred, if any
      * @param errorData more information about the error, if any
      * @param udi the UDI of the volume
+     *
+     * @since 6.11
      */
     void checkDone(Solid::ErrorType error, QVariant errorData, const QString &udi);
 
