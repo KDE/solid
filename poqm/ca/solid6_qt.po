@@ -1,9 +1,9 @@
 # Translation of solid6_qt.po to Catalan
-# Copyright (C) 2009-2024 This_file_is_part_of_KDE
+# Copyright (C) 2009-2025 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Josep M. Ferrer <txemaq@gmail.com>, 2009, 2010, 2011, 2012, 2013, 2014, 2017, 2019, 2020, 2021, 2022, 2023, 2024.
+# Josep M. Ferrer <txemaq@gmail.com>, 2009, 2010, 2011, 2012, 2013, 2014, 2017, 2019, 2020, 2021, 2022, 2023, 2024, 2025.
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2014, 2019, 2020, 2022.
 # Empar Montoro Martín <montoro_mde@gva.es>, 2019.
 msgid ""
@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: solid\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2014-01-24 18:50+0000\n"
-"PO-Revision-Date: 2024-04-12 09:38+0200\n"
+"PO-Revision-Date: 2025-02-07 09:38+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca\n"
@@ -951,9 +951,7 @@ msgid "Error: %1"
 msgstr "Error: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:577
-#, fuzzy, qt-format
-#| msgctxt "SolidHardware|"
-#| msgid "Device Check: %1"
+#, qt-format
 msgctxt "SolidHardware|"
 msgid "Device check: %1"
 msgstr "«Check» del dispositiu: %1"
@@ -967,29 +965,3 @@ msgstr "cap error"
 msgctxt "SolidHardware|"
 msgid "has error"
 msgstr "té un error"
-
-#~ msgctxt "solid-power|"
-#~ msgid "Tool to know and set the power management state of your device"
-#~ msgstr ""
-#~ "Eina per a conèixer i establir l'estat per a la gestió de l'energia del "
-#~ "vostre dispositiu"
-
-#~ msgctxt "solid-power|"
-#~ msgid "Command to execute"
-#~ msgstr "Ordre a executar"
-
-#~ msgctxt "solid-power|"
-#~ msgid "Show available commands"
-#~ msgstr "Mostra les ordres disponibles"
-
-#~ msgctxt "solid-power|"
-#~ msgid ""
-#~ "             # Show all the power management information from the "
-#~ "system.\n"
-#~ "             # - acPlugged: whether the device is connected to the AC or "
-#~ "not\n"
-#~ msgstr ""
-#~ "             # Mostra tota la informació sobre la gestió de l'energia des "
-#~ "del sistema.\n"
-#~ "             # - AcPlugged: quan el dispositiu està o no connectat al "
-#~ "corrent\n"

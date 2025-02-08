@@ -1,8 +1,8 @@
-# SPDX-FileCopyrightText: 2014, 2017, 2019, 2020, 2021, 2022, 2024 Stefan Asserhäll <stefan.asserhall@gmail.com>
+# SPDX-FileCopyrightText: 2014, 2017, 2019, 2020, 2021, 2022, 2024, 2025 Stefan Asserhäll <stefan.asserhall@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"PO-Revision-Date: 2024-06-21 07:37+0200\n"
+"PO-Revision-Date: 2025-02-07 21:40+0100\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Qt-Contexts: true\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.12.0\n"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:61
 #, qt-format
@@ -932,12 +932,10 @@ msgid "Error: %1"
 msgstr "Fel: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:577
-#, fuzzy, qt-format
-#| msgctxt "SolidHardware|"
-#| msgid "Device Check: %1"
+#, qt-format
 msgctxt "SolidHardware|"
 msgid "Device check: %1"
-msgstr "Kontrollera enhet: %1"
+msgstr "Enhetskontroll: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:577
 msgctxt "SolidHardware|"
