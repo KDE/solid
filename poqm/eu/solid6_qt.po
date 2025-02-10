@@ -1,24 +1,24 @@
 # Translation for solid6_qt.po to Euskera/Basque (eu).
-# Copyright (C) 2011-2024 This file is copyright:
+# Copyright (C) 2011-2025 This file is copyright:
 # This file is distributed under the same license as the original file.
-# SPDX-FileCopyrightText: 2024 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
+# SPDX-FileCopyrightText: 2024, 2025 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
 #
 # Translators:
-# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2009, 2010, 2011, 2012, 2017, 2019, 2020, 2021, 2022, 2023, 2024.
+# Iñigo Salvador Azurmendi <xalba@ni.eus>, 2009, 2010, 2011, 2012, 2017, 2019, 2020, 2021, 2022, 2023, 2024, 2025.
 # marcos <marcos@euskalgnu.org>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: solid\n"
 "Report-Msgid-Bugs-To: http://bugs.kde.org\n"
 "POT-Creation-Date: 2014-04-01 01:49+0000\n"
-"PO-Revision-Date: 2024-04-18 22:01+0200\n"
+"PO-Revision-Date: 2025-02-09 19:20+0100\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 24.02.2\n"
+"X-Generator: Lokalize 24.12.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Qt-Contexts: true\n"
 
@@ -912,7 +912,7 @@ msgstr "Errorea: %1(e)k ez du «OpticalDrive» interfazea."
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanCheck: %1"
-msgstr "Gailua «CanCheck»: %1"
+msgstr "Gailuaren «CanCheck»: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #: tools/solid-hardware/solid-hardware.cpp:491
@@ -929,7 +929,7 @@ msgstr "bai"
 #: tools/solid-hardware/solid-hardware.cpp:487
 msgctxt "SolidHardware|"
 msgid "Device Check: operation is not supported"
-msgstr "Gailua «Check»: eragiketa ez da onartzen"
+msgstr "Gailuaren «Check»: eragiketa ez da onartzen"
 
 #: tools/solid-hardware/solid-hardware.cpp:491
 #, qt-format
@@ -944,12 +944,10 @@ msgid "Error: %1"
 msgstr "Errorea: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:577
-#, fuzzy, qt-format
-#| msgctxt "SolidHardware|"
-#| msgid "Device Check: %1"
+#, qt-format
 msgctxt "SolidHardware|"
 msgid "Device check: %1"
-msgstr "Gailua «Check»: %1"
+msgstr "Gailuaren «check»: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:577
 msgctxt "SolidHardware|"

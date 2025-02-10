@@ -939,8 +939,6 @@ msgstr "Feil: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:577
 #, fuzzy, qt-format
-#| msgctxt "SolidHardware|"
-#| msgid "Device Check: %1"
 msgctxt "SolidHardware|"
 msgid "Device check: %1"
 msgstr "Eining – Check: %1"
