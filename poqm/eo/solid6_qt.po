@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: solid_qt\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2014-04-01 01:49+0000\n"
-"PO-Revision-Date: 2024-04-14 00:04+0100\n"
+"PO-Revision-Date: 2025-02-12 07:01+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
@@ -938,12 +938,10 @@ msgid "Error: %1"
 msgstr "Eraro: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:577
-#, fuzzy, qt-format
-#| msgctxt "SolidHardware|"
-#| msgid "Device Check: %1"
+#, qt-format
 msgctxt "SolidHardware|"
 msgid "Device check: %1"
-msgstr "Aparato Check: %1"
+msgstr "Aparatkontrolo: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:577
 msgctxt "SolidHardware|"
@@ -954,28 +952,3 @@ msgstr "sen eraro"
 msgctxt "SolidHardware|"
 msgid "has error"
 msgstr "havas eraron"
-
-#~ msgctxt "solid-power|"
-#~ msgid "Tool to know and set the power management state of your device"
-#~ msgstr ""
-#~ "Ilo por scii kaj agordi la staton pri administrado de potenco de via "
-#~ "aparato"
-
-#~ msgctxt "solid-power|"
-#~ msgid "Command to execute"
-#~ msgstr "Ordono plenumenda"
-
-#~ msgctxt "solid-power|"
-#~ msgid "Show available commands"
-#~ msgstr "Montri disponeblajn komandojn"
-
-#~ msgctxt "solid-power|"
-#~ msgid ""
-#~ "             # Show all the power management information from the "
-#~ "system.\n"
-#~ "             # - acPlugged: whether the device is connected to the AC or "
-#~ "not\n"
-#~ msgstr ""
-#~ "             # Montri ĉiujn informojn pri potenco pri administrado de la "
-#~ "sistemo.\n"
-#~ "             # - acPlugged: ĉu la aparato estas konektita al la AC aŭ ne\n"

@@ -919,12 +919,10 @@ msgid "Error: %1"
 msgstr "错误：%1"
 
 #: tools/solid-hardware/solid-hardware.cpp:577
-#, fuzzy, qt-format
-#| msgctxt "SolidHardware|"
-#| msgid "Device Check: %1"
+#, qt-format
 msgctxt "SolidHardware|"
 msgid "Device check: %1"
-msgstr "设备 Check (检查) 结果：%1"
+msgstr "设备 check (检查)：%1"
 
 #: tools/solid-hardware/solid-hardware.cpp:577
 msgctxt "SolidHardware|"
