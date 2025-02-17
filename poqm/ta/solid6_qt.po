@@ -1,13 +1,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024 Kishore G <kishore96@gmail.com>
+# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024, 2025 Kishore G <kishore96@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: solid_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-01 01:49+0000\n"
-"PO-Revision-Date: 2024-04-21 21:50+0530\n"
+"PO-Revision-Date: 2025-02-16 16:21+0530\n"
 "Last-Translator: Kishore G <kishore96@gmail.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
 "Language: ta\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Qt-Contexts: true\n"
-"X-Generator: Lokalize 24.02.2\n"
+"X-Generator: Lokalize 24.12.2\n"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:61
 #, qt-format
@@ -675,7 +675,7 @@ msgstr ""
 #: solid/devices/frontend/deviceinterface.cpp:61
 msgctxt "Solid::DeviceInterface|Storage Access device type"
 msgid "Storage Access"
-msgstr ""
+msgstr "சேமிப்பக அணுகல்"
 
 #: solid/devices/frontend/deviceinterface.cpp:63
 msgctxt "Solid::DeviceInterface|Storage Drive device type"
@@ -690,7 +690,7 @@ msgstr ""
 #: solid/devices/frontend/deviceinterface.cpp:67
 msgctxt "Solid::DeviceInterface|Storage Volume device type"
 msgid "Storage Volume"
-msgstr ""
+msgstr "சேமிப்பக வகிர்வு"
 
 #: solid/devices/frontend/deviceinterface.cpp:69
 msgctxt "Solid::DeviceInterface|Optical Disc device type"
@@ -908,9 +908,7 @@ msgid "Error: %1"
 msgstr "சிக்கல்: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:577
-#, fuzzy, qt-format
-#| msgctxt "SolidHardware|"
-#| msgid "Device Check: %1"
+#, qt-format
 msgctxt "SolidHardware|"
 msgid "Device check: %1"
 msgstr "சாதன சரிபார்ப்பு: %1"
