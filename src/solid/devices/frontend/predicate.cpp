@@ -20,6 +20,7 @@ public:
         : isValid(false)
         , type(PropertyCheck)
         , compOperator(Predicate::Equals)
+        , equalIFace(false)
         , operand1(nullptr)
         , operand2(nullptr)
     {
@@ -32,6 +33,7 @@ public:
     QString property;
     QVariant value;
     Predicate::ComparisonOperator compOperator;
+    bool equalIFace;
 
     Predicate *operand1;
     Predicate *operand2;
@@ -91,6 +93,12 @@ Solid::Predicate::Predicate(const QString &ifaceName)
         d->type = InterfaceCheck;
         d->ifaceType = ifaceType;
     }
+}
+
+Solid::Predicate::Predicate(const QString &ifaceName, NotOperator op)
+    : Predicate(ifaceName)
+{
+    d->equalIFace = true;
 }
 
 Solid::Predicate::~Predicate()
@@ -225,7 +233,7 @@ bool Solid::Predicate::matches(const Device &device) const
         break;
     }
     case InterfaceCheck:
-        return device.isDeviceInterface(d->ifaceType);
+        return device.isDeviceInterface(d->ifaceType) == d->equalIFace;
     }
 
     return false;

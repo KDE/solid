@@ -133,6 +133,21 @@ public:
     explicit Predicate(const QString &ifaceName);
 
     /**
+     * @brief Argument for Predicate constructor.
+     */
+    enum NotOperator {
+        NOT
+    };
+
+    /**
+     * Constructs a predicate that does a negated check of a device being of a particular device interface
+     *
+     * @param ifaceName the name of the device interface the device should not have
+     * @param op is always NOT
+     */
+    explicit Predicate(const QString &ifaceName, NotOperator op);
+
+    /**
      * Destroys a Predicate object.
      */
     ~Predicate();
