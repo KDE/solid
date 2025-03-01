@@ -31,6 +31,7 @@ DIGIT [0-9]
 [aA][nN][dD] { return AND; }
 [oO][rR] { return OR; }
 [iI][sS] { return IS; }
+[iI][sS][_][nN][oO][tT] { return IS_NOT; }
 
 [tT][rR][uU][eE] { yylval->valb = 1; return VAL_BOOL; }
 [fF][aA][lL][sS][eE] { yylval->valb = 0; return VAL_BOOL; }

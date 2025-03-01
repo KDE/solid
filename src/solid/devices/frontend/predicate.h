@@ -137,6 +137,23 @@ public:
      */
     explicit Predicate(const QString &ifaceName);
 
+    /*!
+     * Argument for Predicate constructor.
+     */
+    enum NotOperator {
+        NOT
+    };
+
+    /*!
+     * Constructs a predicate that does a negated check of a device being of a particular device interface.
+     *
+     * \a ifaceName the name of the device interface the device should not have
+     * \a op is always NOT
+     *
+     * \since 6.17
+     */
+    explicit Predicate(QStringView ifaceName, NotOperator op);
+
     ~Predicate();
 
     Predicate &operator=(const Predicate &other);
@@ -281,6 +298,13 @@ public:
      * Returns The predicate used for the second operand
      */
     Predicate secondOperand() const;
+
+    /*!
+     * True if the interface type check is negated.
+     *
+     * \since 6.17
+     */
+    bool isInterfaceTypeNegated() const;
 
 private:
     class Private;

@@ -114,6 +114,17 @@ void *PredicateParse_newIsAtom(char *interface)
     return result;
 }
 
+void *PredicateParse_newIsNotAtom(char *interface)
+{
+    QString iface = QString::fromLatin1(interface);
+
+    Solid::Predicate *result = new Solid::Predicate(iface, Solid::Predicate::NOT);
+
+    free(interface);
+
+    return result;
+}
+
 void *PredicateParse_newAnd(void *pred1, void *pred2)
 {
     Solid::Predicate *result = new Solid::Predicate();

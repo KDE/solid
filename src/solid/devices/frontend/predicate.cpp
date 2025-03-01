@@ -20,6 +20,7 @@ public:
         : isValid(false)
         , type(PropertyCheck)
         , compOperator(Predicate::Equals)
+        , equalIFace(true)
         , operand1(nullptr)
         , operand2(nullptr)
     {
@@ -32,6 +33,7 @@ public:
     QString property;
     QVariant value;
     Predicate::ComparisonOperator compOperator;
+    bool equalIFace;
 
     Predicate *operand1;
     Predicate *operand2;
@@ -93,6 +95,13 @@ Solid::Predicate::Predicate(const QString &ifaceName)
     }
 }
 
+Solid::Predicate::Predicate(QStringView ifaceName, NotOperator op)
+    : Predicate(ifaceName.toString())
+{
+    Q_UNUSED(op) // It's just there to make the API nicer
+    d->equalIFace = false;
+}
+
 Solid::Predicate::~Predicate()
 {
     if (d->type != PropertyCheck && d->type != InterfaceCheck) {
@@ -107,6 +116,7 @@ Solid::Predicate &Solid::Predicate::operator=(const Predicate &other)
 {
     d->isValid = other.d->isValid;
     d->type = other.d->type;
+    d->equalIFace = other.d->equalIFace;
 
     if (d->type != PropertyCheck && d->type != InterfaceCheck) {
         Predicate *operand1 = new Predicate(*(other.d->operand1));
@@ -225,7 +235,7 @@ bool Solid::Predicate::matches(const Device &device) const
         break;
     }
     case InterfaceCheck:
-        return device.isDeviceInterface(d->ifaceType);
+        return device.isDeviceInterface(d->ifaceType) == d->equalIFace;
     }
 
     return false;
@@ -350,4 +360,9 @@ Solid::Predicate Solid::Predicate::secondOperand() const
         return *d->operand2;
     }
     return Predicate();
+}
+
+bool Solid::Predicate::isInterfaceTypeNegated() const
+{
+    return !d->equalIFace;
 }
