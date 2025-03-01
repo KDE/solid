@@ -16,6 +16,7 @@ void PredicateParse_destroy(void *pred);
 void *PredicateParse_newAtom(char *interface, char *property, void *value);
 void *PredicateParse_newMaskAtom(char *interface, char *property, void *value);
 void *PredicateParse_newIsAtom(char *interface);
+void *PredicateParse_newIsNotAtom(char *interface);
 void *PredicateParse_newAnd(void *pred1, void *pred2);
 void *PredicateParse_newOr(void *pred1, void *pred2);
 void *PredicateParse_newStringValue(char *val);

@@ -37,6 +37,7 @@ typedef void *yyscan_t;
 %token AND
 %token OR
 %token IS
+%token IS_NOT
 
 %token <valb> VAL_BOOL
 %token <name> VAL_STRING
@@ -71,6 +72,7 @@ predicate: predicate_atom { PredicateParse_setResult( $<ptr>1 ); $$ = $<ptr>1; }
 predicate_atom: VAL_ID '.' VAL_ID EQ value { $$ = PredicateParse_newAtom( $<name>1, $<name>3, $<ptr>5 ); }
               | VAL_ID '.' VAL_ID MASK value { $$ = PredicateParse_newMaskAtom( $<name>1, $<name>3, $<ptr>5 ); }
               | IS VAL_ID { $$ = PredicateParse_newIsAtom( $<name>2 ); }
+              | IS_NOT VAL_ID { $$ = PredicateParse_newIsNotAtom( $<name>2 ); }
 
 predicate_or: predicate OR predicate { $$ = PredicateParse_newOr( $<ptr>1, $<ptr>3 ); }
 
