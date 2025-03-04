@@ -5,13 +5,13 @@
 # Andrey Cherepanov <skull@kde.ru>, 2011.
 # Alexander Lakhin <exclusion@gmail.com>, 2013.
 # Alexander Yavorsky <kekcuha@gmail.com>, 2020, 2021, 2022, 2023.
-# SPDX-FileCopyrightText: 2024 Olesya Gerasimenko <translation-team@basealt.ru>
+# SPDX-FileCopyrightText: 2024, 2025 Olesya Gerasimenko <translation-team@basealt.ru>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-01-24 18:50+0000\n"
-"PO-Revision-Date: 2024-09-10 11:36+0300\n"
+"PO-Revision-Date: 2025-03-03 16:55+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
@@ -954,9 +954,7 @@ msgid "Error: %1"
 msgstr "Ошибка: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:577
-#, fuzzy, qt-format
-#| msgctxt "SolidHardware|"
-#| msgid "Device Check: %1"
+#, qt-format
 msgctxt "SolidHardware|"
 msgid "Device check: %1"
 msgstr "«Check» устройства: %1"
