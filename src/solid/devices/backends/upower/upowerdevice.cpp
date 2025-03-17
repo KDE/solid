@@ -114,14 +114,15 @@ QStringList UPowerDevice::emblems() const
 QString UPowerDevice::description() const
 {
     if (queryDeviceInterface(Solid::DeviceInterface::Battery)) {
-        return tr("%1 Battery", "%1 is battery technology").arg(batteryTechnology());
-    } else {
-        QString result = prop(QStringLiteral("Model")).toString();
-        if (result.isEmpty()) {
-            return vendor();
+        if (!batteryTechnology().isEmpty()) {
+            return tr("%1 Battery", "%1 is battery technology").arg(batteryTechnology());
         }
-        return result;
     }
+    QString result = prop(QStringLiteral("Model")).toString();
+    if (result.isEmpty()) {
+        return vendor();
+    }
+    return result;
 }
 
 QString UPowerDevice::batteryTechnology() const
@@ -129,7 +130,7 @@ QString UPowerDevice::batteryTechnology() const
     const UpDeviceTechnology tech = static_cast<UpDeviceTechnology>(prop(QStringLiteral("Technology")).toUInt());
     switch (tech) {
     case UP_DEVICE_TECHNOLOGY_UNKNOWN:
-        return tr("Unknown", "battery technology");
+        return QString();
     case UP_DEVICE_TECHNOLOGY_LITHIUM_ION:
         return tr("Lithium Ion", "battery technology");
     case UP_DEVICE_TECHNOLOGY_LITHIUM_POLYMER:
@@ -143,9 +144,9 @@ QString UPowerDevice::batteryTechnology() const
     case UP_DEVICE_TECHNOLOGY_NICKEL_METAL_HYDRIDE:
         return tr("Nickel Metal Hydride", "battery technology");
     case UP_DEVICE_TECHNOLOGY_LAST:
-        return tr("Unknown", "battery technology");
+        return QString();
     }
-    return tr("Unknown", "battery technology");
+    return QString();
 }
 
 QString UPowerDevice::icon() const
