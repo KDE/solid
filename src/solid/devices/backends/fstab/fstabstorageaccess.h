@@ -54,6 +54,10 @@ Q_SIGNALS:
 
     void teardownRequested(const QString &udi) override;
 
+    void checkRequested(const QString &udi) override;
+
+    void checkDone(Solid::ErrorType error, QVariant errorData, const QString &udi) override;
+
     void repairRequested(const QString &udi) override;
 
     void repairDone(Solid::ErrorType error, QVariant resultData, const QString &udi) override;
