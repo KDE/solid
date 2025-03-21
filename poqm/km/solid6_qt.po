@@ -805,7 +805,7 @@ msgctxt "Solid::Backends::UDisks2::Manager|"
 msgid "Storage devices"
 msgstr "ឧបករណ៍​ផ្ទុក"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:117
+#: solid/devices/backends/upower/upowerdevice.cpp:118
 #, fuzzy, qt-format
 #| msgctxt "%1 is battery technology"
 #| msgid "%1 Battery"
@@ -813,17 +813,7 @@ msgctxt "Solid::Backends::UPower::UPowerDevice|%1 is battery technology"
 msgid "%1 Battery"
 msgstr "ថ្ម %1"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:132
-#: solid/devices/backends/upower/upowerdevice.cpp:146
-#: solid/devices/backends/upower/upowerdevice.cpp:148
-#, fuzzy
-#| msgctxt "battery technology"
-#| msgid "Unknown"
-msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
-msgid "Unknown"
-msgstr "មិន​ស្គាល់"
-
-#: solid/devices/backends/upower/upowerdevice.cpp:134
+#: solid/devices/backends/upower/upowerdevice.cpp:135
 #, fuzzy
 #| msgctxt "battery technology"
 #| msgid "Lithium Ion"
@@ -831,7 +821,7 @@ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Ion"
 msgstr "Lithium Ion"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:136
+#: solid/devices/backends/upower/upowerdevice.cpp:137
 #, fuzzy
 #| msgctxt "battery technology"
 #| msgid "Lithium Polymer"
@@ -839,7 +829,7 @@ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Polymer"
 msgstr "Lithium Polymer"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:138
+#: solid/devices/backends/upower/upowerdevice.cpp:139
 #, fuzzy
 #| msgctxt "battery technology"
 #| msgid "Lithium Iron Phosphate"
@@ -847,7 +837,7 @@ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Iron Phosphate"
 msgstr "Lithium Iron Phosphate"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:140
+#: solid/devices/backends/upower/upowerdevice.cpp:141
 #, fuzzy
 #| msgctxt "battery technology"
 #| msgid "Lead Acid"
@@ -855,7 +845,7 @@ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lead Acid"
 msgstr "Lead Acid"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:142
+#: solid/devices/backends/upower/upowerdevice.cpp:143
 #, fuzzy
 #| msgctxt "battery technology"
 #| msgid "Nickel Cadmium"
@@ -863,7 +853,7 @@ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Cadmium"
 msgstr "Nickel Cadmium"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:144
+#: solid/devices/backends/upower/upowerdevice.cpp:145
 #, fuzzy
 #| msgctxt "battery technology"
 #| msgid "Nickel Metal Hydride"
@@ -1235,6 +1225,13 @@ msgstr ""
 msgctxt "SolidHardware|"
 msgid "has error"
 msgstr ""
+
+#, fuzzy
+#~| msgctxt "battery technology"
+#~| msgid "Unknown"
+#~ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+#~ msgid "Unknown"
+#~ msgstr "មិន​ស្គាល់"
 
 #, fuzzy
 #~| msgid "%1 TiB"

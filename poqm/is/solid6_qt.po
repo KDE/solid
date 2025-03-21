@@ -578,45 +578,38 @@ msgctxt "Solid::Backends::UDisks2::Manager|"
 msgid "Storage devices"
 msgstr "Geymslumiðlar"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:117
+#: solid/devices/backends/upower/upowerdevice.cpp:118
 #, qt-format
 msgctxt "Solid::Backends::UPower::UPowerDevice|%1 is battery technology"
 msgid "%1 Battery"
 msgstr "%1 rafhlaða"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:132
-#: solid/devices/backends/upower/upowerdevice.cpp:146
-#: solid/devices/backends/upower/upowerdevice.cpp:148
-msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
-msgid "Unknown"
-msgstr "Óþekkt"
-
-#: solid/devices/backends/upower/upowerdevice.cpp:134
+#: solid/devices/backends/upower/upowerdevice.cpp:135
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Ion"
 msgstr "Liþíum-jóna"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:136
+#: solid/devices/backends/upower/upowerdevice.cpp:137
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Polymer"
 msgstr "Liþíum-pólýmer"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:138
+#: solid/devices/backends/upower/upowerdevice.cpp:139
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Iron Phosphate"
 msgstr "Liþíum-járnfosfat"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:140
+#: solid/devices/backends/upower/upowerdevice.cpp:141
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lead Acid"
 msgstr "Blýsýru"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:142
+#: solid/devices/backends/upower/upowerdevice.cpp:143
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Cadmium"
 msgstr "Nikkel-kadmíum"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:144
+#: solid/devices/backends/upower/upowerdevice.cpp:145
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Metal Hydride"
 msgstr "Nikkel-málmhýdríð"
@@ -954,6 +947,10 @@ msgstr "engin villa"
 msgctxt "SolidHardware|"
 msgid "has error"
 msgstr "með villu"
+
+#~ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+#~ msgid "Unknown"
+#~ msgstr "Óþekkt"
 
 #~ msgctxt "solid-power|"
 #~ msgid "Tool to know and set the power management state of your device"

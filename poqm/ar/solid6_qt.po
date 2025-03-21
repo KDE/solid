@@ -573,45 +573,38 @@ msgctxt "Solid::Backends::UDisks2::Manager|"
 msgid "Storage devices"
 msgstr "أجهزة التخزين"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:117
+#: solid/devices/backends/upower/upowerdevice.cpp:118
 #, qt-format
 msgctxt "Solid::Backends::UPower::UPowerDevice|%1 is battery technology"
 msgid "%1 Battery"
 msgstr "بطارية %1"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:132
-#: solid/devices/backends/upower/upowerdevice.cpp:146
-#: solid/devices/backends/upower/upowerdevice.cpp:148
-msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
-msgid "Unknown"
-msgstr "مجهولة"
-
-#: solid/devices/backends/upower/upowerdevice.cpp:134
+#: solid/devices/backends/upower/upowerdevice.cpp:135
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Ion"
 msgstr "أيونات ليثيوم"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:136
+#: solid/devices/backends/upower/upowerdevice.cpp:137
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Polymer"
 msgstr "بوليمرات ليثيوم"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:138
+#: solid/devices/backends/upower/upowerdevice.cpp:139
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Iron Phosphate"
 msgstr "فوسفات حديد الليثيوم"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:140
+#: solid/devices/backends/upower/upowerdevice.cpp:141
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lead Acid"
 msgstr "حمض الرصاص"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:142
+#: solid/devices/backends/upower/upowerdevice.cpp:143
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Cadmium"
 msgstr "كادميوم نيكل"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:144
+#: solid/devices/backends/upower/upowerdevice.cpp:145
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Metal Hydride"
 msgstr "هيدريد فلز النيكل"
@@ -936,6 +929,10 @@ msgstr "لا يوجد خطأ"
 msgctxt "SolidHardware|"
 msgid "has error"
 msgstr "يوجد خطأ"
+
+#~ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+#~ msgid "Unknown"
+#~ msgstr "مجهولة"
 
 #~ msgctxt "solid-power|"
 #~ msgid "Tool to know and set the power management state of your device"

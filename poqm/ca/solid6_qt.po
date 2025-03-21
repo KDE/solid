@@ -582,45 +582,38 @@ msgctxt "Solid::Backends::UDisks2::Manager|"
 msgid "Storage devices"
 msgstr "Dispositius d'emmagatzematge"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:117
+#: solid/devices/backends/upower/upowerdevice.cpp:118
 #, qt-format
 msgctxt "Solid::Backends::UPower::UPowerDevice|%1 is battery technology"
 msgid "%1 Battery"
 msgstr "Bateria %1"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:132
-#: solid/devices/backends/upower/upowerdevice.cpp:146
-#: solid/devices/backends/upower/upowerdevice.cpp:148
-msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
-msgid "Unknown"
-msgstr "Desconeguda"
-
-#: solid/devices/backends/upower/upowerdevice.cpp:134
+#: solid/devices/backends/upower/upowerdevice.cpp:135
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Ion"
 msgstr "Ió liti"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:136
+#: solid/devices/backends/upower/upowerdevice.cpp:137
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Polymer"
 msgstr "Polímer de liti"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:138
+#: solid/devices/backends/upower/upowerdevice.cpp:139
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Iron Phosphate"
 msgstr "Fosfat de ferro de liti"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:140
+#: solid/devices/backends/upower/upowerdevice.cpp:141
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lead Acid"
 msgstr "Plom i àcid"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:142
+#: solid/devices/backends/upower/upowerdevice.cpp:143
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Cadmium"
 msgstr "Níquel cadmi"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:144
+#: solid/devices/backends/upower/upowerdevice.cpp:145
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Metal Hydride"
 msgstr "Hidrur de metall de níquel"
@@ -965,3 +958,7 @@ msgstr "cap error"
 msgctxt "SolidHardware|"
 msgid "has error"
 msgstr "té un error"
+
+#~ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
+#~ msgid "Unknown"
+#~ msgstr "Desconeguda"
