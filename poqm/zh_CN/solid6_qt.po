@@ -926,7 +926,3 @@ msgstr "没有错误"
 msgctxt "SolidHardware|"
 msgid "has error"
 msgstr "有错误"
-
-#~ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
-#~ msgid "Unknown"
-#~ msgstr "未知"
