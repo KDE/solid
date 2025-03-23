@@ -942,7 +942,3 @@ msgstr ""
 msgctxt "SolidHardware|"
 msgid "has error"
 msgstr ""
-
-#~ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
-#~ msgid "Unknown"
-#~ msgstr "Ukjent"
