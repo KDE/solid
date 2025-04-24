@@ -70,7 +70,11 @@ bool _k_isFstabSupportedLocalFileSystem(const QString &fstype)
     if (fstype == QLatin1String("fuse.encfs") //
         || fstype == QLatin1String("fuse.cryfs") //
         || fstype == QLatin1String("fuse.gocryptfs") //
-        || fstype == QLatin1String("overlay")) {
+        || fstype == QLatin1String("overlay")
+
+        // handle ZFS here as udisk2 doesn't support that yet
+        // see https://github.com/storaged-project/udisks/issues/42
+        || fstype == QLatin1String("zfs")) {
         return true;
     }
     return false;
