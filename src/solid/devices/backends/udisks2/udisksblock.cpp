@@ -52,6 +52,7 @@ Block::Block(Device *dev)
                     if (device.drivePath() == dev->udi()) {
                         m_devNum = device.prop(QStringLiteral("DeviceNumber")).toULongLong();
                         m_devFile = QFile::decodeName(device.prop(QStringLiteral("Device")).toByteArray());
+                        m_hintSystem = device.prop(QStringLiteral("HintSystem")).toBool();
                         break;
                     }
                 }
@@ -81,6 +82,11 @@ int Block::deviceMinor() const
 int Block::deviceMajor() const
 {
     return MAJOR(m_devNum);
+}
+
+bool Block::isSystem() const
+{
+    return m_hintSystem;
 }
 
 #include "moc_udisksblock.cpp"

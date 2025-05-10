@@ -52,6 +52,12 @@ public:
      * the device
      */
     virtual QString device() const = 0;
+
+    /**
+     * Whether this block is considered a system block,
+     * that it requires additional permissions to access (mount/umount)
+     */
+    virtual bool isSystem() const;
 };
 }
 }
