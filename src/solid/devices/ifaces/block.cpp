@@ -9,3 +9,8 @@
 Solid::Ifaces::Block::~Block()
 {
 }
+
+bool Solid::Ifaces::Block::isSystem() const
+{
+    return false;
+}

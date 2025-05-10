@@ -46,6 +46,11 @@ class SOLID_EXPORT Block : public DeviceInterface
      */
     Q_PROPERTY(QString device READ device)
 
+    /*!
+     * \property Solid::Block::isSystem
+     */
+    Q_PROPERTY(bool isSystem READ isSystem)
+
     Q_DECLARE_PRIVATE(Block)
     friend class Device;
 
@@ -100,6 +105,16 @@ public:
      * the device
      */
     QString device() const;
+
+    /*!
+     * Whether this block is considered a system block,
+     * that it requires additional permissions to access (mount/umount)
+     *
+     * It defaults to false, if the backend does not support it.
+     *
+     * \since 6.15
+     */
+    bool isSystem() const;
 };
 }
 
