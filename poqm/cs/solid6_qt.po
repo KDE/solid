@@ -939,7 +939,3 @@ msgstr "žádná chyba"
 msgctxt "SolidHardware|"
 msgid "has error"
 msgstr "má chyby"
-
-#~ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
-#~ msgid "Unknown"
-#~ msgstr "Neznámý"
