@@ -11,6 +11,8 @@ excludedirs += devices/backends devices/interfaces
 
 outputformats = HTML
 
+navigation.landingpage = "Solid"
+
 depends += \
     kde \
     qtcore \
