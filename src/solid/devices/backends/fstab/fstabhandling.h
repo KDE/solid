@@ -32,6 +32,7 @@ public:
     static QStringList mountPoints(const QString &device);
     static QHash<QString, QString> options(const QString &device);
     static QString fstype(const QString &device);
+    static QString fsname(const QString &device);
     static bool callSystemCommand(const QString &commandName, const QStringList &args, const QObject *recvr, std::function<void(QProcess *)> callback);
     static void flushMtabCache();
     static void flushFstabCache();
@@ -47,6 +48,7 @@ private:
     QHash<QString, QHash<QString, QString>> m_fstabOptionsCache;
     QHash<QString, QHash<QString, QString>> m_mtabOptionsCache;
     QHash<QString, QString> m_fstabFstypeCache;
+    QHash<QString, QString> m_fstabFsnameCache;
     bool m_fstabCacheValid;
     bool m_mtabCacheValid;
 };

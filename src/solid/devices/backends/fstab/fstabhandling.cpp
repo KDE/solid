@@ -144,6 +144,7 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateFstabMountPointsCache()
 
             globalFstabCache->localData().m_fstabCache.insert(device, mountpoint);
             globalFstabCache->localData().m_fstabFstypeCache.insert(device, fstype);
+            globalFstabCache->localData().m_fstabFsnameCache.insert(device, fsname);
             for (const auto &optionLine : options) {
                 const auto split = optionLine.split(QLatin1Char('='));
                 const auto optionName = split[0];
@@ -195,6 +196,7 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateFstabMountPointsCache()
             }
 
             globalFstabCache->localData().m_fstabCache.insert(device, mountpoint);
+            globalFstabCache->localData().m_fstabFsnameCache.insert(device, device);
         }
     }
 
@@ -269,6 +271,13 @@ QString Solid::Backends::Fstab::FstabHandling::fstype(const QString &device)
     return globalFstabCache->localData().m_fstabFstypeCache.value(device);
 }
 
+QString Solid::Backends::Fstab::FstabHandling::fsname(const QString &device)
+{
+    _k_updateFstabMountPointsCache();
+
+    return globalFstabCache->localData().m_fstabFsnameCache.value(device);
+}
+
 bool Solid::Backends::Fstab::FstabHandling::callSystemCommand(const QString &commandName,
                                                               const QStringList &args,
                                                               const QObject *receiver,
@@ -335,6 +344,7 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateMtabMountPointsCache()
             const QString device = _k_deviceNameForMountpoint(fsname, type, mountpoint);
             globalFstabCache->localData().m_mtabCache.insert(device, mountpoint);
             globalFstabCache->localData().m_fstabFstypeCache.insert(device, type);
+            globalFstabCache->localData().m_fstabFsnameCache.insert(device, fsname);
         }
     }
 
@@ -365,6 +375,7 @@ void Solid::Backends::Fstab::FstabHandling::_k_updateMtabMountPointsCache()
 
             globalFstabCache->localData().m_mtabCache.insert(device, mountpoint);
             globalFstabCache->localData().m_fstabFstypeCache.insert(device, fstype);
+            globalFstabCache->localData().m_fstabFsnameCache.insert(device, fsname);
             for (const auto &optionLine : options) {
                 const auto split = optionLine.split(QLatin1Char('='));
                 const auto optionName = split[0];
