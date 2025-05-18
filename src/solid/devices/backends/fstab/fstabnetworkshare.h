@@ -37,7 +37,7 @@ public:
 
 private:
     Solid::Backends::Fstab::FstabDevice *m_fstabDevice;
-    Solid::NetworkShare::ShareType m_type;
+    Solid::NetworkShare::ShareType m_type = Solid::NetworkShare::ShareType::Unknown;
     QUrl m_url;
 };
 
