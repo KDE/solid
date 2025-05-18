@@ -26,8 +26,9 @@ FstabNetworkShare::FstabNetworkShare(Solid::Backends::Fstab::FstabDevice *device
     } else if (m_fstabDevice->device().contains(QLatin1String(":/"))) {
         m_type = Solid::NetworkShare::Nfs;
         url = QStringLiteral("nfs://%1/%2").arg(m_fstabDevice->vendor(), m_fstabDevice->product());
-    } else {
-        m_type = Solid::NetworkShare::Unknown;
+    } else if (const QString fsname = FstabHandling::fsname(m_fstabDevice->device()); fsname.contains(QLatin1String(":/"))) {
+        url = fsname;
+        url.replace(QLatin1String(":/"), QLatin1String("/"));
     }
     m_url = QUrl(url);
 }
