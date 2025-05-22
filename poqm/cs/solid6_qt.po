@@ -3,14 +3,14 @@
 # Lukáš Tinkl <ltinkl@redhat.com>, 2010, 2011, 2013.
 # Vít Pelčák <vit@pelcak.org>, 2011, 2012, 2013, 2014, 2017, 2019, 2020.
 # Tomáš Chvátal <tomas.chvatal@gmail.com>, 2012, 2013.
-# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024 Vit Pelcak <vit@pelcak.org>
+# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024, 2025 Vit Pelcak <vit@pelcak.org>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-01 01:49+0000\n"
-"PO-Revision-Date: 2024-04-17 09:45+0200\n"
+"PO-Revision-Date: 2025-05-13 15:25+0200\n"
 "Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 24.02.2\n"
+"X-Generator: Lokalize 25.04.1\n"
 "X-Language: cs_CZ\n"
 "X-Source-Language: en_US\n"
 "X-Qt-Contexts: true\n"
@@ -928,7 +928,7 @@ msgstr "Chyba: %1"
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device check: %1"
-msgstr ""
+msgstr "Kontrola zařízení: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:577
 msgctxt "SolidHardware|"
