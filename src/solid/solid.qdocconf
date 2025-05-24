@@ -31,3 +31,5 @@ qhp.Solid.subprojects.classes.title = C++ Classes
 qhp.Solid.subprojects.classes.indexTitle = Solid C++ Classes
 qhp.Solid.subprojects.classes.selectors = class fake:headerfile
 qhp.Solid.subprojects.classes.sortPages = true
+
+tagfile = solid.tags
