@@ -13,7 +13,7 @@ namespace Solid
 {
 namespace Ifaces
 {
-/**
+/*!
  * This device interface is available on block devices.
  *
  * A block device is an addressable device such as drive or partition.
@@ -23,12 +23,12 @@ namespace Ifaces
 class Block : virtual public DeviceInterface
 {
 public:
-    /**
+    /*!
      * Destroys a Block object.
      */
     ~Block() override;
 
-    /**
+    /*!
      * Retrieves the major number of the node file to interact with
      * the device.
      *
@@ -36,26 +36,28 @@ public:
      */
     virtual int deviceMajor() const = 0;
 
-    /**
+    /*!
      * Retrieves the minor number of the node file to interact with
      * the device.
      *
-     * @return the device minor number
+     * \return the device minor number
      */
     virtual int deviceMinor() const = 0;
 
-    /**
+    /*!
      * Retrieves the absolute path of the special file to interact
      * with the device.
      *
-     * @return the absolute path of the special file to interact with
+     * \return the absolute path of the special file to interact with
      * the device
      */
     virtual QString device() const = 0;
 
-    /**
+    /*!
      * Whether this block is considered a system block,
      * that it requires additional permissions to access (mount/umount)
+     *
+     * \since 6.15
      */
     virtual bool isSystem() const;
 };
