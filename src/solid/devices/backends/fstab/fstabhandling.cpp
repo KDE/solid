@@ -11,7 +11,6 @@
 #include <QFile>
 #include <QObject>
 #include <QProcess>
-#include <QRegularExpression>
 #include <QStandardPaths>
 #include <QTextStream>
 #include <QThreadStorage>
@@ -270,16 +269,14 @@ bool Solid::Backends::Fstab::FstabHandling::callSystemCommand(const QString &com
                                                               const QObject *receiver,
                                                               std::function<void(QProcess *)> callback)
 {
-    static const QStringList searchPaths{QStringLiteral("/sbin"), QStringLiteral("/bin"), QStringLiteral("/usr/sbin"), QStringLiteral("/usr/bin")};
-    static const QString joinedPaths = searchPaths.join(QLatin1Char(':'));
-    const QString exec = QStandardPaths::findExecutable(commandName, searchPaths);
+    // search mount and Co. in the normal user environment PATH
+    const QString exec = QStandardPaths::findExecutable(commandName);
     if (exec.isEmpty()) {
-        qCWarning(FSTAB_LOG) << "Couldn't find executable" << commandName << "in" << joinedPaths;
+        qCWarning(FSTAB_LOG) << "Couldn't find executable" << commandName << "in current PATH.";
         return false;
     }
 
     QProcess *process = new QProcess();
-
     QObject::connect(process,
                      static_cast<void (QProcess::*)(int, QProcess::ExitStatus)>(&QProcess::finished),
                      receiver,
@@ -290,12 +287,7 @@ bool Solid::Backends::Fstab::FstabHandling::callSystemCommand(const QString &com
                          process->deleteLater();
                      });
 
-    static const QRegularExpression re(QStringLiteral("^PATH=.*"), QRegularExpression::CaseInsensitiveOption);
-    QStringList env = QProcess::systemEnvironment();
-    env.replaceInStrings(re, QLatin1String("PATH=") + joinedPaths);
-    process->setEnvironment(env);
     process->start(exec, args);
-
     if (process->waitForStarted()) {
         return true;
     }
