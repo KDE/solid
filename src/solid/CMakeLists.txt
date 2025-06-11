@@ -93,30 +93,3 @@ install(FILES
   ${Solid_HEADERS}
   DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/Solid/solid COMPONENT Devel
 )
-
-if(BUILD_QCH)
-    ecm_add_qch(
-        KF6Solid_QCH
-        NAME Solid
-        BASE_NAME KF6Solid
-        VERSION ${KF_VERSION}
-        ORG_DOMAIN org.kde
-        SOURCES # using only public headers, to cover only public API
-            ${Solid_HEADERS}
-            "${CMAKE_SOURCE_DIR}/docs/song.md"
-        MD_MAINPAGE "${CMAKE_SOURCE_DIR}/README.md"
-        LINK_QCHS
-            Qt6Core_QCH
-        INCLUDE_DIRS
-            ${solid_BUILD_INCLUDE_DIRS}
-        BLANK_MACROS
-            SOLID_EXPORT
-            SOLID_DEPRECATED
-            SOLID_DEPRECATED_EXPORT
-            "SOLID_DEPRECATED_VERSION(x, y, t)"
-        TAGFILE_INSTALL_DESTINATION ${KDE_INSTALL_QTQCHDIR}
-        QCH_INSTALL_DESTINATION ${KDE_INSTALL_QTQCHDIR}
-        COMPONENT Devel
-    )
-endif()
-

@@ -47,7 +47,6 @@ include(CMakePackageConfigHelpers)
 include(ECMSetupVersion)
 include(ECMGenerateHeaders)
 include(ECMMarkNonGuiExecutable)
-include(ECMAddQch)
 
 find_package(FLEX REQUIRED)
 set_package_properties(FLEX PROPERTIES
@@ -87,9 +86,6 @@ endif()
 include(ECMPoQmTools)
 
 set(EXCLUDE_DEPRECATED_BEFORE_AND_AT 0 CACHE STRING "Control the range of deprecated API excluded from the build [default=0].")
-
-option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)" OFF)
-add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)")
 
 set(solid_version_header "${CMAKE_CURRENT_BINARY_DIR}/src/solid/solid_version.h")
 ecm_setup_version(PROJECT VARIABLE_PREFIX SOLID
@@ -156,16 +152,6 @@ endif()
 
 # create a Config.cmake and a ConfigVersion.cmake file and install them
 set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF6Solid")
-
-if (BUILD_QCH)
-    ecm_install_qch_export(
-        TARGETS KF6Solid_QCH
-        FILE KF6SolidQchTargets.cmake
-        DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
-        COMPONENT Devel
-    )
-    set(PACKAGE_INCLUDE_QCHTARGETS "include(\"\${CMAKE_CURRENT_LIST_DIR}/KF6SolidQchTargets.cmake\")")
-endif()
 
 configure_package_config_file(
     "${CMAKE_CURRENT_SOURCE_DIR}/KF6SolidConfig.cmake.in"
