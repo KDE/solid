@@ -1,7 +1,3 @@
-if (LibMount_FOUND)
-    set(backend_libs LibMount::LibMount)
-endif()
-
 set(backend_sources
     udisksmanager.cpp
     udisksdevice.cpp
