@@ -229,7 +229,7 @@ QVariant Device::deviceProperty(const QString &name) const
     }
 
     QByteArray propName = name.toLatin1();
-    QString propValue = QString::fromLatin1(udev_device_get_property_value(d->udev, propName.constData()));
+    QString propValue = QString::fromUtf8(udev_device_get_property_value(d->udev, propName.constData()));
     if (!propValue.isEmpty()) {
         return QVariant::fromValue(propValue);
     }
@@ -253,7 +253,7 @@ QVariant Device::sysfsProperty(const QString &name) const
     }
 
     QByteArray propName = name.toLatin1();
-    QString propValue = QString::fromLatin1(udev_device_get_sysattr_value(d->udev, propName.constData()));
+    QString propValue = QString::fromUtf8(udev_device_get_sysattr_value(d->udev, propName.constData()));
     if (!propValue.isEmpty()) {
         return QVariant::fromValue(propValue);
     }
