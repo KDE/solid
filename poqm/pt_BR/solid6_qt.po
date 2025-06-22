@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: solid5_qt\n"
 "Report-Msgid-Bugs-To: http://bugs.kde.org\n"
 "POT-Creation-Date: 2014-04-01 01:49+0000\n"
-"PO-Revision-Date: 2025-02-27 20:02-0300\n"
+"PO-Revision-Date: 2025-06-21 19:31-0300\n"
 "Last-Translator: Guilherme Marçal Silva <guimarcalsilva@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <kde-i18n-pt_BR@kde.org>\n"
 "Language: pt_BR\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.12.2\n"
+"X-Generator: Lokalize 25.04.2\n"
 "X-Qt-Contexts: true\n"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:61
@@ -914,30 +914,30 @@ msgstr "Erro: %1 não tem a interface OpticalDrive."
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanCheck: %1"
-msgstr ""
+msgstr "Pode verificar dispositivo: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #: tools/solid-hardware/solid-hardware.cpp:491
 msgctxt "SolidHardware|"
 msgid "no"
-msgstr ""
+msgstr "não"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #: tools/solid-hardware/solid-hardware.cpp:491
 msgctxt "SolidHardware|"
 msgid "yes"
-msgstr ""
+msgstr "sim"
 
 #: tools/solid-hardware/solid-hardware.cpp:487
 msgctxt "SolidHardware|"
 msgid "Device Check: operation is not supported"
-msgstr ""
+msgstr "Verificação de dispositivo: a operação não é suportada"
 
 #: tools/solid-hardware/solid-hardware.cpp:491
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanRepair: %1"
-msgstr ""
+msgstr "Pode reparar dispositivo: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:506
 #, qt-format
@@ -949,17 +949,17 @@ msgstr "Erro: %1"
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device check: %1"
-msgstr ""
+msgstr "Verificação de dispositivo: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:577
 msgctxt "SolidHardware|"
 msgid "no error"
-msgstr ""
+msgstr "nenhum erro"
 
 #: tools/solid-hardware/solid-hardware.cpp:577
 msgctxt "SolidHardware|"
 msgid "has error"
-msgstr ""
+msgstr "contém erro"
 
 #~ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 #~ msgid "Unknown"
