@@ -186,4 +186,34 @@ qlonglong FakeBattery::remainingTime() const
     return fakeDevice()->property(QStringLiteral("remainingTime")).toLongLong();
 }
 
+bool FakeBattery::chargeLimitSupported() const
+{
+    return fakeDevice()->property(QStringLiteral("chargeLimitSupported")).toBool();
+}
+
+bool FakeBattery::chargeLimitEnabled() const
+{
+    return fakeDevice()->property(QStringLiteral("chargeLimitEnabled")).toBool();
+}
+
+bool FakeBattery::chargeStartThresholdSupported() const
+{
+    return fakeDevice()->property(QStringLiteral("chargeStartThresholdSupported")).toBool();
+}
+
+int FakeBattery::chargeStartThreshold() const
+{
+    return fakeDevice()->property(QStringLiteral("chargeStartThreshold")).toInt();
+}
+
+bool FakeBattery::chargeEndThresholdSupported() const
+{
+    return fakeDevice()->property(QStringLiteral("chargeEndThresholdSupported")).toBool();
+}
+
+int FakeBattery::chargeEndThreshold() const
+{
+    return fakeDevice()->property(QStringLiteral("chargeEndThreshold")).toInt();
+}
+
 #include "moc_fakebattery.cpp"

@@ -231,6 +231,48 @@ qlonglong Battery::remainingTime() const
     return -1;
 }
 
+bool Battery::chargeLimitSupported() const
+{
+    // property present since UPower 1.90.5 (2024-08-26)
+    return m_device.data()->prop(QStringLiteral("ChargeThresholdSupported")).toBool();
+}
+
+bool Battery::chargeLimitEnabled() const
+{
+    // property present since UPower 1.90.5 (2024-08-26)
+    return m_device.data()->prop(QStringLiteral("ChargeThresholdEnabled")).toBool();
+}
+
+bool Battery::chargeStartThresholdSupported() const
+{
+    // informational settings flags supported by a upower > 1.90.9:
+    // https://gitlab.freedesktop.org/upower/upower/-/merge_requests/276#note_3034202
+    QVariant enabled = m_device.data()->prop(QStringLiteral("ChargeThresholdSettingsSupported"));
+    return enabled.isValid() ? (enabled.toUInt() & qToUnderlying(ChargeThresholdSettingsSupportedFlag::StartThreshold)) : chargeLimitSupported();
+}
+
+int Battery::chargeStartThreshold() const
+{
+    bool ok = false; // property present since UPower 1.90.5 (2024-08-26)
+    auto threshold = m_device.data()->prop(QStringLiteral("ChargeStartThreshold")).toUInt(&ok);
+    return (!ok || threshold == UINT_MAX) ? 0 : static_cast<int>(threshold); // UINT_MAX means not set
+}
+
+bool Battery::chargeEndThresholdSupported() const
+{
+    // informational settings flags supported by a upower > 1.90.9:
+    // https://gitlab.freedesktop.org/upower/upower/-/merge_requests/276#note_3034202
+    QVariant enabled = m_device.data()->prop(QStringLiteral("ChargeThresholdSettingsSupported"));
+    return enabled.isValid() ? (enabled.toUInt() & qToUnderlying(ChargeThresholdSettingsSupportedFlag::EndThreshold)) : chargeLimitSupported();
+}
+
+int Battery::chargeEndThreshold() const
+{
+    bool ok = false; // property present since UPower 1.90.5 (2024-08-26)
+    auto threshold = m_device.data()->prop(QStringLiteral("ChargeEndThreshold")).toUInt(&ok);
+    return (!ok || threshold == UINT_MAX) ? 100 : static_cast<int>(threshold); // UINT_MAX means not set
+}
+
 void Battery::slotChanged()
 {
     if (m_device) {
@@ -248,6 +290,12 @@ void Battery::slotChanged()
         const double old_energyRate = m_energyRate;
         const double old_voltage = m_voltage;
         const double old_temperature = m_temperature;
+        const bool old_chargeLimitSupported = m_chargeLimitSupported;
+        const bool old_chargeLimitEnabled = m_chargeLimitEnabled;
+        const bool old_chargeStartThresholdSupported = m_chargeStartThresholdSupported;
+        const bool old_chargeEndThresholdSupported = m_chargeEndThresholdSupported;
+        const int old_chargeStartThreshold = m_chargeStartThreshold;
+        const int old_chargeEndThreshold = m_chargeEndThreshold;
         updateCache();
 
         if (old_isPresent != m_isPresent) {
@@ -309,6 +357,30 @@ void Battery::slotChanged()
         if (old_timeToFull != m_timeToFull || old_timeToEmpty != m_timeToEmpty) {
             Q_EMIT remainingTimeChanged(remainingTime(), m_device.data()->udi());
         }
+
+        if (old_chargeLimitSupported != m_chargeLimitSupported) {
+            Q_EMIT chargeLimitSupportedChanged(m_chargeLimitSupported, m_device.data()->udi());
+        }
+
+        if (old_chargeLimitEnabled != m_chargeLimitEnabled) {
+            Q_EMIT chargeLimitEnabledChanged(m_chargeLimitEnabled, m_device.data()->udi());
+        }
+
+        if (old_chargeStartThresholdSupported != m_chargeStartThresholdSupported) {
+            Q_EMIT chargeStartThresholdSupportedChanged(m_chargeStartThresholdSupported, m_device.data()->udi());
+        }
+
+        if (old_chargeStartThreshold != m_chargeStartThreshold) {
+            Q_EMIT chargeStartThresholdChanged(m_chargeStartThreshold, m_device.data()->udi());
+        }
+
+        if (old_chargeEndThresholdSupported != m_chargeEndThresholdSupported) {
+            Q_EMIT chargeEndThresholdSupportedChanged(m_chargeEndThresholdSupported, m_device.data()->udi());
+        }
+
+        if (old_chargeEndThreshold != m_chargeEndThreshold) {
+            Q_EMIT chargeEndThresholdChanged(m_chargeEndThreshold, m_device.data()->udi());
+        }
     }
 }
 
@@ -328,6 +400,12 @@ void Battery::updateCache()
     m_energyRate = energyRate();
     m_voltage = voltage();
     m_temperature = temperature();
+    m_chargeLimitSupported = chargeLimitSupported();
+    m_chargeLimitEnabled = chargeLimitEnabled();
+    m_chargeStartThresholdSupported = chargeStartThresholdSupported();
+    m_chargeStartThreshold = chargeStartThreshold();
+    m_chargeEndThresholdSupported = chargeEndThresholdSupported();
+    m_chargeEndThreshold = chargeEndThreshold();
 }
 
 #include "moc_upowerbattery.cpp"

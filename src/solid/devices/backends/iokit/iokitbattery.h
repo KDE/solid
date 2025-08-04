@@ -54,6 +54,13 @@ public:
     double energyRate() const override { return 0.0; }
 
     qlonglong remainingTime() const override { return -1; }
+
+    bool chargeLimitSupported() const override { return false; }
+    bool chargeLimitEnabled() const override { return false; }
+    bool chargeStartThresholdSupported() const override { return false; }
+    int chargeStartThreshold() const override { return 0; }
+    bool chargeEndThresholdSupported() const override { return false; }
+    int chargeEndThreshold() const override { return 100; }
     // clang-format on
 
 Q_SIGNALS:
@@ -72,6 +79,12 @@ Q_SIGNALS:
     void temperatureChanged(double temperature, const QString &udi) override;
     void voltageChanged(double voltage, const QString &udi) override;
     void remainingTimeChanged(qlonglong time, const QString &udi) override;
+    void chargeLimitSupportedChanged(bool supported, const QString &udi) override;
+    void chargeLimitEnabledChanged(bool enabled, const QString &udi) override;
+    void chargeStartThresholdSupportedChanged(bool startThresholdSupported, const QString &udi) override;
+    void chargeStartThresholdChanged(int startThreshold, const QString &udi) override;
+    void chargeEndThresholdSupportedChanged(bool endThresholdSupported, const QString &udi) override;
+    void chargeEndThresholdChanged(int endThreshold, const QString &udi) override;
 };
 }
 }
