@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-06-28 15:38+0300\n"
-"PO-Revision-Date: 2025-02-09 10:47+0400\n"
+"PO-Revision-Date: 2025-08-03 15:49+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -446,12 +446,12 @@ msgstr "CD صوتي"
 #, qt-format
 msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
 msgid "%1 Encrypted Drive"
-msgstr "حاوي %1 مشفّر"
+msgstr "قرص %1 معمى"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:569
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Encrypted Drive"
-msgstr "حاوي مشفّر"
+msgstr "قرص معمى"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:574
 msgctxt "Solid::Backends::UDisks2::Device|"
