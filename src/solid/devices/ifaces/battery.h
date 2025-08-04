@@ -180,6 +180,63 @@ public:
      */
     virtual qlonglong remainingTime() const = 0;
 
+    /**
+     * Indicates if setting battery charge limits is supported for this battery.
+     *
+     * @return true if limits are supported, false otherwise
+     * @since 6.18
+     */
+    virtual bool chargeLimitSupported() const = 0;
+
+    /**
+     * Indicates if battery charge limits are applied.
+     *
+     * This may or may not make use of charge end or charge start thresholds,
+     * depending on firmware behavior.
+     *
+     * @return true if limits are applied, false otherwise
+     * @since 6.18
+     */
+    virtual bool chargeLimitEnabled() const = 0;
+
+    /**
+     * Indicates if chargeStartThreshold() will be used when
+     * chargeThresholdEnabled() == true.
+     *
+     * @return true if the charge start threshold value is relevant, false otherwise
+     * @since 6.18
+     */
+    virtual bool chargeStartThresholdSupported() const = 0;
+
+    /**
+     * When chargeThresholdEnabled() == true and a start charge threshold is set,
+     * the battery won't get charged until the charge drops under this threshold.
+     * Undefined and ignored if chargeStartThresholdSupported() == false.
+     *
+     * @return charge start threshold percentage between 0 and 100 (0 if not set)
+     * @since 6.18
+     */
+    virtual int chargeStartThreshold() const = 0;
+
+    /**
+     * Indicates if chargeEndThreshold() will be used when
+     * chargeThresholdEnabled() == true.
+     *
+     * @return true if the charge end threshold value is relevant, false otherwise
+     * @since 6.18
+     */
+    virtual bool chargeEndThresholdSupported() const = 0;
+
+    /**
+     * When chargeThresholdEnabled() == true and an end charge threshold is set,
+     * the battery stops getting charged after the set threshold.
+     * Undefined and ignored if chargeEndThresholdSupported() == false.
+     *
+     * @return charge end threshold percentage between 0 and 100 (100 if not set)
+     * @since 6.18
+     */
+    virtual int chargeEndThreshold() const = 0;
+
 protected:
     // Q_SIGNALS:
     /**
@@ -324,6 +381,64 @@ protected:
      * @since 5.8
      */
     virtual void remainingTimeChanged(qlonglong time, const QString &udi) = 0;
+
+    /**
+     * This signal is emitted if support for battery charge limits is
+     * newly detected or not detected anymore.
+     *
+     * @param supported true if limits are supported, false otherwise
+     * @param udi the UDI of the battery with the charge limit support
+     * @since 6.18
+     */
+    virtual void chargeLimitSupportedChanged(bool supported, const QString &udi) = 0;
+
+    /**
+     * This signal is emitted if battery charge start and end limits
+     * start or stop being applied.
+     *
+     * @param enabled the new state of charge limits being applied
+     * @param udi the UDI of the battery with the charge limit change
+     * @since 6.18
+     */
+    virtual void chargeLimitEnabledChanged(bool enabled, const QString &udi) = 0;
+
+    /**
+     * This signal is emitted if the battery charge start threshold is
+     * newly detected as relevant or not relevant anymore.
+     *
+     * @param startThresholdSupported true if the start threshold is relevant, false otherwise
+     * @param udi the UDI of the battery with the charge limit change
+     * @since 6.18
+     */
+    virtual void chargeStartThresholdSupportedChanged(bool startThresholdSupported, const QString &udi) = 0;
+
+    /**
+     * This signal is emitted if the battery charge start threshold changes.
+     *
+     * @param startThreshold the new charge start threshold  between 0 and 100 (0 if not set)
+     * @param udi the UDI of the battery with the charge limit change
+     * @since 6.18
+     */
+    virtual void chargeStartThresholdChanged(int startThreshold, const QString &udi) = 0;
+
+    /**
+     * This signal is emitted if the battery charge end threshold is
+     * newly detected as relevant or not relevant anymore.
+     *
+     * @param startThresholdSupported true if the end threshold is relevant, false otherwise
+     * @param udi the UDI of the battery with the charge limit change
+     * @since 6.18
+     */
+    virtual void chargeEndThresholdSupportedChanged(bool endThresholdSupported, const QString &udi) = 0;
+
+    /**
+     * This signal is emitted if the battery charge end threshold changes.
+     *
+     * @param endThreshold the new charge end threshold, between 0 and 100 (100 if not set)
+     * @param udi the UDI of the battery with the charge limit change
+     * @since 6.18
+     */
+    virtual void chargeEndThresholdChanged(int endThreshold, const QString &udi) = 0;
 };
 }
 }

@@ -325,6 +325,36 @@ qlonglong WinBattery::remainingTime() const
     return m_timeUntilEmpty; // FIXME
 }
 
+bool WinBattery::chargeLimitSupported() const
+{
+    return false; // FIXME
+}
+
+bool WinBattery::chargeLimitEnabled() const
+{
+    return false; // FIXME
+}
+
+bool WinBattery::chargeStartThresholdSupported() const
+{
+    return false; // FIXME
+}
+
+int WinBattery::chargeStartThreshold() const
+{
+    return 0; // FIXME
+}
+
+bool WinBattery::chargeEndThresholdSupported() const
+{
+    return false; // FIXME
+}
+
+int WinBattery::chargeEndThreshold() const
+{
+    return 100; // FIXME
+}
+
 QString WinBattery::serial() const
 {
     return m_serial;

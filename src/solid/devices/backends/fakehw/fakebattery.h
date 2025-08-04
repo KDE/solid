@@ -59,6 +59,13 @@ public Q_SLOTS:
 
     qlonglong remainingTime() const override;
 
+    bool chargeLimitSupported() const override;
+    bool chargeLimitEnabled() const override;
+    bool chargeStartThresholdSupported() const override;
+    int chargeStartThreshold() const override;
+    bool chargeEndThresholdSupported() const override;
+    int chargeEndThreshold() const override;
+
 Q_SIGNALS:
     void presentStateChanged(bool newState, const QString &udi) override;
     void chargePercentChanged(int value, const QString &udi) override;
@@ -75,6 +82,12 @@ Q_SIGNALS:
     void voltageChanged(double voltage, const QString &udi) override;
     void temperatureChanged(double temperature, const QString &udi) override;
     void remainingTimeChanged(qlonglong time, const QString &udi) override;
+    void chargeLimitSupportedChanged(bool supported, const QString &udi) override;
+    void chargeLimitEnabledChanged(bool enabled, const QString &udi) override;
+    void chargeStartThresholdSupportedChanged(bool startThresholdSupported, const QString &udi) override;
+    void chargeStartThresholdChanged(int startThreshold, const QString &udi) override;
+    void chargeEndThresholdSupportedChanged(bool endThresholdSupported, const QString &udi) override;
+    void chargeEndThresholdChanged(int endThreshold, const QString &udi) override;
 };
 }
 }

@@ -44,6 +44,18 @@ Solid::Battery::Battery(QObject *backendObject)
     connect(backendObject, SIGNAL(temperatureChanged(double, QString)), this, SIGNAL(temperatureChanged(double, QString)));
 
     connect(backendObject, SIGNAL(remainingTimeChanged(qlonglong, QString)), this, SIGNAL(remainingTimeChanged(qlonglong, QString)));
+
+    connect(backendObject, SIGNAL(chargeLimitSupportedChanged(bool, QString)), this, SIGNAL(chargeLimitSupportedChanged(bool, QString)));
+
+    connect(backendObject, SIGNAL(chargeLimitEnabledChanged(bool, QString)), this, SIGNAL(chargeLimitEnabledChanged(bool, QString)));
+
+    connect(backendObject, SIGNAL(chargeStartThresholdSupportedChanged(bool, QString)), this, SIGNAL(chargeStartThresholdSupportedChanged(bool, QString)));
+
+    connect(backendObject, SIGNAL(chargeStartThresholdChanged(int, QString)), this, SIGNAL(chargeStartThresholdChanged(int, QString)));
+
+    connect(backendObject, SIGNAL(chargeEndThresholdSupportedChanged(bool, QString)), this, SIGNAL(chargeEndThresholdSupportedChanged(bool, QString)));
+
+    connect(backendObject, SIGNAL(chargeEndThresholdChanged(int, QString)), this, SIGNAL(chargeEndThresholdChanged(int, QString)));
 }
 
 Solid::Battery::~Battery()
@@ -162,6 +174,42 @@ qlonglong Solid::Battery::remainingTime() const
 {
     Q_D(const Battery);
     return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), -1, remainingTime());
+}
+
+bool Solid::Battery::chargeLimitSupported() const
+{
+    Q_D(const Battery);
+    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), false, chargeLimitSupported());
+}
+
+bool Solid::Battery::chargeLimitEnabled() const
+{
+    Q_D(const Battery);
+    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), false, chargeLimitEnabled());
+}
+
+bool Solid::Battery::chargeStartThresholdSupported() const
+{
+    Q_D(const Battery);
+    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), false, chargeStartThresholdSupported());
+}
+
+int Solid::Battery::chargeStartThreshold() const
+{
+    Q_D(const Battery);
+    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), 0, chargeStartThreshold());
+}
+
+bool Solid::Battery::chargeEndThresholdSupported() const
+{
+    Q_D(const Battery);
+    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), false, chargeEndThresholdSupported());
+}
+
+int Solid::Battery::chargeEndThreshold() const
+{
+    Q_D(const Battery);
+    return_SOLID_CALL(Ifaces::Battery *, d->backendObject(), 100, chargeEndThreshold());
 }
 
 #include "moc_battery.cpp"

@@ -64,6 +64,15 @@ public:
 
     virtual qlonglong remainingTime() const;
 
+    bool chargeLimitSupported() const override;
+    bool chargeLimitEnabled() const override;
+
+    bool chargeStartThresholdSupported() const override;
+    int chargeStartThreshold() const override;
+
+    bool chargeEndThresholdSupported() const override;
+    int chargeEndThreshold() const override;
+
     // ------------
 
     static QSet<QString> getUdis();
@@ -89,6 +98,12 @@ Q_SIGNALS:
     void presentStateChanged(bool newState, const QString &udi);
     void timeToFullChanged(qlonglong time, const QString &udi);
     void remainingTimeChanged(qlonglong time, const QString &udi);
+    void chargeLimitSupportedChanged(bool supported, const QString &udi) override;
+    void chargeLimitEnabledChanged(bool enabled, const QString &udi) override;
+    void chargeStartThresholdSupportedChanged(bool startThresholdSupported, const QString &udi) override;
+    void chargeStartThresholdChanged(int startThreshold, const QString &udi) override;
+    void chargeEndThresholdSupportedChanged(bool endThresholdSupported, const QString &udi) override;
+    void chargeEndThresholdChanged(int endThreshold, const QString &udi) override;
     // ------------
 
 private Q_SLOTS:

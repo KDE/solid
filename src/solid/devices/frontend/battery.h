@@ -123,6 +123,37 @@ class SOLID_EXPORT Battery : public DeviceInterface
      * \property Solid::Battery::remainingTime
      */
     Q_PROPERTY(qlonglong remainingTime READ remainingTime NOTIFY remainingTimeChanged)
+
+    /*!
+     * \property Solid::Battery::chargeLimitSupported
+     */
+    Q_PROPERTY(bool chargeLimitSupported READ chargeLimitSupported NOTIFY chargeLimitSupportedChanged)
+
+    /*!
+     * \property Solid::Battery::chargeThresholdEnabled
+     */
+    Q_PROPERTY(bool chargeLimitEnabled READ chargeLimitEnabled NOTIFY chargeLimitEnabledChanged)
+
+    /*!
+     * \property Solid::Battery::chargeStartThresholdSupported
+     */
+    Q_PROPERTY(bool chargeStartThresholdSupported READ chargeStartThresholdSupported NOTIFY chargeStartThresholdSupportedChanged)
+
+    /*!
+     * \property Solid::Battery::chargeStartThreshold
+     */
+    Q_PROPERTY(int chargeStartThreshold READ chargeStartThreshold NOTIFY chargeStartThresholdChanged)
+
+    /*!
+     * \property Solid::Battery::chargeEndThresholdSupported
+     */
+    Q_PROPERTY(bool chargeEndThresholdSupported READ chargeEndThresholdSupported NOTIFY chargeEndThresholdSupportedChanged)
+
+    /*!
+     * \property Solid::Battery::chargeEndThreshold
+     */
+    Q_PROPERTY(int chargeEndThreshold READ chargeEndThreshold NOTIFY chargeEndThresholdChanged)
+
     Q_DECLARE_PRIVATE(Battery)
     friend class Device;
 
@@ -176,7 +207,12 @@ public:
      * \value Discharging Battery is discharging
      * \value FullyCharged The battery is fully charged; a battery not necessarily charges up to 100%
      */
-    enum ChargeState { NoCharge, Charging, Discharging, FullyCharged };
+    enum ChargeState {
+        NoCharge,
+        Charging,
+        Discharging,
+        FullyCharged
+    };
     Q_ENUM(ChargeState)
 
     /*!
@@ -352,6 +388,55 @@ public:
      */
     qlonglong remainingTime() const;
 
+    /*!
+     * Indicates if setting battery charge limits is supported for this battery.
+     * \since 6.18
+     */
+    bool chargeLimitSupported() const;
+
+    /*!
+     * Indicates if battery charge limits are applied.
+     *
+     * This may or may not make use of charge end or charge start thresholds,
+     * depending on firmware behavior.
+     * \since 6.18
+     */
+    bool chargeLimitEnabled() const;
+
+    /*!
+     * Indicates if chargeStartThreshold() will be used when
+     * chargeThresholdEnabled() == true.
+     * \since 6.18
+     */
+    bool chargeStartThresholdSupported() const;
+
+    /*!
+     * When chargeThresholdEnabled() == true and a start charge threshold is set,
+     * the battery won't get charged until the charge drops under this threshold.
+     * Undefined and ignored if chargeStartThresholdSupported() == false.
+     *
+     * \return charge start threshold percentage between 0 and 100 (0 if not set)
+     * \since 6.18
+     */
+    int chargeStartThreshold() const;
+
+    /*!
+     * Indicates if chargeEndThreshold() will be used when
+     * chargeThresholdEnabled() == true.
+     * \since 6.18
+     */
+    bool chargeEndThresholdSupported() const;
+
+    /*!
+     * When chargeThresholdEnabled() == true and an end charge threshold is set,
+     * the battery stops getting charged after the set threshold.
+     * Undefined and ignored if chargeEndThresholdSupported() == false.
+     *
+     * \return charge end threshold percentage between 0 and 100 (100 if not set)
+     * \since 6.18
+     */
+    int chargeEndThreshold() const;
+
 Q_SIGNALS:
     /*!
      * This signal is emitted if the battery gets plugged in/out of the
@@ -509,6 +594,69 @@ Q_SIGNALS:
      * \since 5.8
      */
     void remainingTimeChanged(qlonglong time, const QString &udi);
+
+    /*!
+     * This signal is emitted if support for battery charge limits is
+     * newly detected or not detected anymore.
+     *
+     * \a supported true if limits are supported, false otherwise
+     *
+     * \a udi the UDI of the battery with the charge limit support
+     * \since 6.18
+     */
+    void chargeLimitSupportedChanged(bool supported, const QString &udi);
+
+    /*!
+     * This signal is emitted if battery charge start and end limits
+     * start or stop being applied.
+     *
+     * \a enabled the new state of charge limits being applied
+     *
+     * \a udi the UDI of the battery with the charge limit change
+     * \since 6.18
+     */
+    void chargeLimitEnabledChanged(bool enabled, const QString &udi);
+
+    /*!
+     * This signal is emitted if the battery charge start threshold is
+     * newly detected as relevant or not relevant anymore.
+     *
+     * @param startThresholdSupported true if the start threshold is relevant, false otherwise
+     *
+     * @param udi the UDI of the battery with the charge limit change
+     * \since 6.18
+     */
+    void chargeStartThresholdSupportedChanged(bool startThresholdSupported, const QString &udi);
+
+    /*!
+     * This signal is emitted if the battery charge start threshold changes.
+     *
+     * \a startThreshold the new charge start threshold, between 0 and 100 (0 if not set)
+     *
+     * \a udi the UDI of the battery with the charge limit change
+     * \since 6.18
+     */
+    void chargeStartThresholdChanged(int startThreshold, const QString &udi);
+
+    /*!
+     * This signal is emitted if the battery charge end threshold is
+     * newly detected as relevant or not relevant anymore.
+     *
+     * @param endThresholdSupported true if the end threshold is relevant, false otherwise
+     *
+     * @param udi the UDI of the battery with the charge limit change
+     * \since 6.18
+     */
+    void chargeEndThresholdSupportedChanged(bool endThresholdSupported, const QString &udi);
+
+    /*!
+     * This signal is emitted if the battery charge end threshold changes.
+     *
+     * \a endThreshold the new charge end threshold, between 0 and 100 (100 if not set)
+     * \a udi the UDI of the battery with the charge limit change
+     * \since 6.18
+     */
+    void chargeEndThresholdChanged(int endThreshold, const QString &udi);
 };
 }
 
