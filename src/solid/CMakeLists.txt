@@ -6,7 +6,6 @@ set(solid_LIB_SRCS ${solid_LIB_SRCS} ${solid_QM_LOADER})
 
 add_library(KF6Solid  ${solid_LIB_SRCS})
 set(solid_BUILD_INCLUDE_DIRS
-    ${CMAKE_CURRENT_BINARY_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/..
     ${CMAKE_CURRENT_BINARY_DIR}/..
 )
@@ -83,7 +82,7 @@ if (BUILD_TESTING)
   if (HAVE_DBUS)
     target_link_libraries(KF6Solid_static PRIVATE Qt6::DBus)
   endif()
-  target_include_directories(KF6Solid_static PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR};${CMAKE_CURRENT_SOURCE_DIR}/..;${CMAKE_CURRENT_BINARY_DIR}/..>")
+  target_include_directories(KF6Solid_static PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/..;${CMAKE_CURRENT_BINARY_DIR}/..>")
 endif()
 
 ########### install files ###############
