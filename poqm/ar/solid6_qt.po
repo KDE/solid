@@ -773,7 +773,7 @@ msgid ""
 "             # - Otherwise the search is done on all the devices.\n"
 msgstr ""
 "             # يسرد المعرف UDI لكل الأجهزة التي تستجيب لـ 'predicate'.\n"
-"             # - إذا حدد 'parentUdi' ، سيقيد البحث فرع الجهاز \n"
+"             # - إذا حدد 'parentUdi'، سيقيد البحث فرع الجهاز \n"
 "             # المقابل، غير ذلك سيبحث في جميع الأجهزة \n"
 
 #: tools/solid-hardware/solid-hardware.cpp:265
