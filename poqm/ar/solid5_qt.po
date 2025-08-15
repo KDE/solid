@@ -513,7 +513,7 @@ msgstr "جهاز النواة لنوع نظام الملفات هذا غير م�
 #: solid/devices/backends/udisks2/udisksdevice.cpp:744
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is already mounted"
-msgstr "الجهاز مضموم بالفعل"
+msgstr "الجهاز مضموم فعلًا"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:746
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -528,7 +528,7 @@ msgstr "الجهاز مضموم بواسطة مستخدم أخر"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:750
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is already unmounting"
-msgstr "الجهاز غير مضموم بالفعل"
+msgstr "الجهاز غير مضموم فعلًا"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:752
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -543,7 +543,7 @@ msgstr "ستوقظ العملية قرصًا في حالة نوم عميق"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:756
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The operation has already been canceled"
-msgstr "هذه العملية ملغاة بالفعل"
+msgstr "هذه العملية ملغاة فعلًا"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:758
 msgctxt "Solid::Backends::UDisks2::Device|"
