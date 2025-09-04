@@ -11,8 +11,8 @@
 #include <QChar>
 #include <QDebug>
 #include <QFile>
+#include <QStandardPaths>
 #include <QTextStream>
-#include <qstandardpaths.h>
 
 using namespace Solid::Backends::UDev;
 

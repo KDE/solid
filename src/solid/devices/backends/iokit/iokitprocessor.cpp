@@ -8,7 +8,7 @@
 #include "iokitprocessor.h"
 #include "iokitdevice.h"
 
-#include <qdebug.h>
+#include <QDebug>
 
 #include <errno.h>
 #include <sys/sysctl.h>

@@ -7,7 +7,7 @@
 #include <QObject>
 #include <QThread>
 #include <QThreadPool>
-#include <qtconcurrentrun.h>
+#include <QtConcurrentRun>
 
 #include <QTest>
 

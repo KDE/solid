@@ -7,7 +7,7 @@
 #include "iokitmanager.h"
 #include "iokitdevice.h"
 
-#include <qdebug.h>
+#include <QDebug>
 
 #include <IOKit/IOKitLib.h>
 #include <IOKit/network/IOEthernetInterface.h>

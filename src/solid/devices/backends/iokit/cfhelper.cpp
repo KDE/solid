@@ -5,12 +5,12 @@
     SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
-#include <qdatetime.h>
-#include <qdebug.h>
-#include <qstring.h>
-#include <qstringlist.h>
-#include <qvariant.h>
-#include <qvarlengtharray.h>
+#include <QDateTime>
+#include <QDebug>
+#include <QString>
+#include <QStringList>
+#include <QVarLengthArray>
+#include <QVariant>
 
 #include <CoreFoundation/CoreFoundation.h>
 
