@@ -1,5 +1,6 @@
 add_subdirectory(solid)
 add_subdirectory(tools)
+add_subdirectory(declarative)
 
 ecm_qt_install_logging_categories(
     EXPORT SOLID

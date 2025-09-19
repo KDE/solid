@@ -18,10 +18,11 @@ include(KDECMakeSettings)
 include(KDEGitCommitHooks)
 include(ECMQtDeclareLoggingCategory)
 include(ECMDeprecationSettings)
+include(ECMQmlModule)
 include(ECMGenerateQDoc)
 
 set(REQUIRED_QT_VERSION 6.7.0)
-find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Xml Gui)
+find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Xml Gui Qml)
 
 
 # shall we use DBus?
