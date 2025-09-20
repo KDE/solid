@@ -8,6 +8,8 @@
 #define SOLID_DECALARATIVE_DEVICES_H
 
 #include <QObject>
+#include <QtQml/qqmlregistration.h>
+
 #include <solid/deviceinterface.h>
 #include <solid/predicate.h>
 
@@ -57,6 +59,7 @@ class DevicesQueryPrivate;
 class Devices : public QObject
 {
     Q_OBJECT
+    QML_ELEMENT
 
     Q_PROPERTY(QString query READ query WRITE setQuery NOTIFY queryChanged)
     Q_PROPERTY(int count READ count NOTIFY countChanged)

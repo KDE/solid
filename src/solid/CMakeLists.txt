@@ -92,3 +92,5 @@ install(FILES
   ${Solid_HEADERS}
   DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/Solid/solid COMPONENT Devel
 )
+
+add_subdirectory(declarative)
