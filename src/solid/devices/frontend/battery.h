@@ -146,6 +146,7 @@ public:
      * \value[since 6.0] HeadphoneBattery A battery in a headphone
      * \value[since 6.0] HeadsetBattery A battery in a headset
      * \value[since 6.0] TouchpadBattery A battery in a touchpad. This is how the Dualsense Wireless Controller is categorized
+     * \value[since 6.21] WearableBattery A battery for a wearable device, watch...
      * \value UnknownBattery A battery in an unknown device
      */
     enum BatteryType {
@@ -165,6 +166,7 @@ public:
         HeadphoneBattery,
         HeadsetBattery,
         TouchpadBattery,
+        WearableBattery,
     };
     Q_ENUM(BatteryType)
 

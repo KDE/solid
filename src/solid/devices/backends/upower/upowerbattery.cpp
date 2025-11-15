@@ -75,7 +75,11 @@ Solid::Battery::BatteryType Battery::type() const
     case UP_DEVICE_KIND_BLUETOOTH_GENERIC:
         result = Solid::Battery::BluetoothBattery;
         break;
+    case UP_DEVICE_KIND_WEARABLE:
+        result = Solid::Battery::WearableBattery;
+        break;
     case UP_DEVICE_KIND_UNKNOWN:
+    default:
         break;
     }
 
