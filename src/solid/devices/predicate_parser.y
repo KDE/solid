@@ -94,6 +94,7 @@ string_list_rec: /* empty */ { $$ = PredicateParse_newEmptyStringListValue(); }
 
 void Soliderror ( yyscan_t scanner, const char *s )  /* Called by Solidparse on error */
 {
+    (void)(scanner);
     PredicateParse_errorDetected(s);
 }
 
