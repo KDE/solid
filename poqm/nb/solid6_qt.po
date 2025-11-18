@@ -576,38 +576,38 @@ msgctxt "Solid::Backends::UDisks2::Manager|"
 msgid "Storage devices"
 msgstr "Lagringsenheter"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:118
+#: solid/devices/backends/upower/upowerdevice.cpp:120
 #, qt-format
 msgctxt "Solid::Backends::UPower::UPowerDevice|%1 is battery technology"
 msgid "%1 Battery"
 msgstr "%1 batteri"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:135
+#: solid/devices/backends/upower/upowerdevice.cpp:137
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Ion"
 msgstr "Litium ion"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:137
+#: solid/devices/backends/upower/upowerdevice.cpp:139
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Polymer"
 msgstr "Litium polymer"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:139
+#: solid/devices/backends/upower/upowerdevice.cpp:141
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Iron Phosphate"
 msgstr "Litium jernfosfat"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:141
+#: solid/devices/backends/upower/upowerdevice.cpp:143
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lead Acid"
 msgstr "Bly-syre"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:143
+#: solid/devices/backends/upower/upowerdevice.cpp:145
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Cadmium"
 msgstr "Nikkel-kadmium"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:145
+#: solid/devices/backends/upower/upowerdevice.cpp:147
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Metal Hydride"
 msgstr "Nikkel-metallhydrid"

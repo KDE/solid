@@ -579,38 +579,38 @@ msgctxt "Solid::Backends::UDisks2::Manager|"
 msgid "Storage devices"
 msgstr "Tárolóeszközök"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:118
+#: solid/devices/backends/upower/upowerdevice.cpp:120
 #, qt-format
 msgctxt "Solid::Backends::UPower::UPowerDevice|%1 is battery technology"
 msgid "%1 Battery"
 msgstr "%1 akkumulátor"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:135
+#: solid/devices/backends/upower/upowerdevice.cpp:137
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Ion"
 msgstr "Lítiumion"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:137
+#: solid/devices/backends/upower/upowerdevice.cpp:139
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Polymer"
 msgstr "Lítiumpolimer"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:139
+#: solid/devices/backends/upower/upowerdevice.cpp:141
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Iron Phosphate"
 msgstr "Lítium-vas-foszfát"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:141
+#: solid/devices/backends/upower/upowerdevice.cpp:143
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lead Acid"
 msgstr "Ólmos-savas"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:143
+#: solid/devices/backends/upower/upowerdevice.cpp:145
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Cadmium"
 msgstr "Nikkel-kadmium"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:145
+#: solid/devices/backends/upower/upowerdevice.cpp:147
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Metal Hydride"
 msgstr "Nikkel-fém hibrid"

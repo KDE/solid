@@ -577,38 +577,38 @@ msgctxt "Solid::Backends::UDisks2::Manager|"
 msgid "Storage devices"
 msgstr "Urządzenia do przechowywania danych"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:118
+#: solid/devices/backends/upower/upowerdevice.cpp:120
 #, qt-format
 msgctxt "Solid::Backends::UPower::UPowerDevice|%1 is battery technology"
 msgid "%1 Battery"
 msgstr "Bateria %1"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:135
+#: solid/devices/backends/upower/upowerdevice.cpp:137
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Ion"
 msgstr "Litowo-jonowa"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:137
+#: solid/devices/backends/upower/upowerdevice.cpp:139
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Polymer"
 msgstr "Litowo-polimerowa"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:139
+#: solid/devices/backends/upower/upowerdevice.cpp:141
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lithium Iron Phosphate"
 msgstr "Litowo-żelazo-fosforowa"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:141
+#: solid/devices/backends/upower/upowerdevice.cpp:143
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Lead Acid"
 msgstr "Kwasowo-ołowiowa"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:143
+#: solid/devices/backends/upower/upowerdevice.cpp:145
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Cadmium"
 msgstr "Niklowo-kadmowa"
 
-#: solid/devices/backends/upower/upowerdevice.cpp:145
+#: solid/devices/backends/upower/upowerdevice.cpp:147
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Metal Hydride"
 msgstr "Niklowo-wodorkowa"
