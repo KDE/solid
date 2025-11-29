@@ -55,6 +55,8 @@ StorageAccess::StorageAccess(Device *device)
     , m_repairInProgress(false)
     , m_passphraseRequested(false)
 {
+    qDBusRegisterMetaType<AvailableAnswer>();
+
     connect(device, SIGNAL(changed()), this, SLOT(checkAccessibility()));
     updateCache();
 
