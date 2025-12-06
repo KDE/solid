@@ -22,20 +22,20 @@ class WinDevice : public Solid::Ifaces::Device
 public:
     WinDevice(const QString &udi);
 
-    virtual QString udi() const;
+    QString udi() const override;
 
-    virtual QString parentUdi() const;
-    virtual QString vendor() const;
-    virtual QString product() const;
+    QString parentUdi() const override;
+    QString vendor() const override;
+    QString product() const override;
 
-    virtual QString icon() const;
+    QString icon() const override;
 
-    virtual QStringList emblems() const;
+    QStringList emblems() const override;
 
-    virtual QString description() const;
+    QString description() const override;
 
-    virtual bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const;
-    virtual QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type);
+    bool queryDeviceInterface(const Solid::DeviceInterface::Type &type) const override;
+    QObject *createDeviceInterface(const Solid::DeviceInterface::Type &type) override;
 
     Solid::DeviceInterface::Type type() const;
 

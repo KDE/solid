@@ -27,42 +27,42 @@ public:
 
     WinBattery(WinDevice *device);
 
-    virtual Solid::Battery::BatteryType type() const;
+    Solid::Battery::BatteryType type() const override;
 
-    virtual int chargePercent() const;
+    int chargePercent() const override;
 
-    virtual int capacity() const;
+    int capacity() const override;
 
     int cycleCount() const override;
 
-    virtual bool isRechargeable() const;
+    bool isRechargeable() const override;
 
-    virtual bool isPowerSupply() const;
+    bool isPowerSupply() const override;
 
-    virtual Solid::Battery::ChargeState chargeState() const;
+    Solid::Battery::ChargeState chargeState() const override;
 
-    Solid::Battery::Technology technology() const;
+    Solid::Battery::Technology technology() const override;
 
-    double energy() const;
-    double energyFull() const;
-    double energyFullDesign() const;
-    double energyRate() const;
+    double energy() const override;
+    double energyFull() const override;
+    double energyFullDesign() const override;
+    double energyRate() const override;
 
-    double voltage() const;
+    double voltage() const override;
 
-    virtual qlonglong timeToEmpty() const;
+    qlonglong timeToEmpty() const override;
 
-    virtual qlonglong timeToFull() const;
+    qlonglong timeToFull() const override;
 
-    virtual double temperature() const;
+    double temperature() const override;
 
-    virtual QString serial() const;
+    QString serial() const override;
 
     // not yet implemented
     // ------------
-    virtual bool isPresent() const;
+    bool isPresent() const override;
 
-    virtual qlonglong remainingTime() const;
+    qlonglong remainingTime() const override;
 
     // ------------
 

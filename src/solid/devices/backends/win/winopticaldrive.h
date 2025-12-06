@@ -25,17 +25,17 @@ class WinOpticalDrive : public WinStorageDrive, virtual public Solid::Ifaces::Op
     Q_INTERFACES(Solid::Ifaces::OpticalDrive)
 public:
     WinOpticalDrive(WinDevice *device);
-    virtual ~WinOpticalDrive();
+    ~WinOpticalDrive() override;
 
-    virtual Solid::OpticalDrive::MediumTypes supportedMedia() const;
+    Solid::OpticalDrive::MediumTypes supportedMedia() const override;
 
-    virtual int readSpeed() const;
+    int readSpeed() const override;
 
-    virtual int writeSpeed() const;
+    int writeSpeed() const override;
 
-    virtual QList<int> writeSpeeds() const;
+    QList<int> writeSpeeds() const override;
 
-    virtual bool eject();
+    bool eject() override;
 
 Q_SIGNALS:
     void ejectPressed(const QString &udi);

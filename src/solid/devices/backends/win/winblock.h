@@ -24,11 +24,11 @@ public:
     WinBlock(WinDevice *device);
     ~WinBlock();
 
-    virtual int deviceMajor() const;
+    int deviceMajor() const override;
 
-    virtual int deviceMinor() const;
+    int deviceMinor() const override;
 
-    virtual QString device() const;
+    QString device() const override;
 
     static QSet<QString> getUdis();
 

@@ -25,15 +25,15 @@ public:
     WinStorageDrive(WinDevice *device);
     ~WinStorageDrive();
 
-    virtual Solid::StorageDrive::Bus bus() const;
+    Solid::StorageDrive::Bus bus() const override;
 
-    virtual Solid::StorageDrive::DriveType driveType() const;
+    Solid::StorageDrive::DriveType driveType() const override;
 
-    virtual bool isRemovable() const;
+    bool isRemovable() const override;
 
-    virtual bool isHotpluggable() const;
+    bool isHotpluggable() const override;
 
-    virtual qulonglong size() const;
+    qulonglong size() const override;
 
 private:
     void updateCache();

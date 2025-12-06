@@ -43,15 +43,15 @@ public:
     WinDeviceManager(QObject *parent = 0);
     ~WinDeviceManager();
 
-    virtual QString udiPrefix() const;
+    QString udiPrefix() const override;
 
-    virtual QSet<Solid::DeviceInterface::Type> supportedInterfaces() const;
+    QSet<Solid::DeviceInterface::Type> supportedInterfaces() const override;
 
-    virtual QStringList allDevices();
+    QStringList allDevices() override;
 
-    virtual QStringList devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type = Solid::DeviceInterface::Unknown);
+    QStringList devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type = Solid::DeviceInterface::Unknown) override;
 
-    virtual QObject *createDevice(const QString &udi);
+    QObject *createDevice(const QString &udi) override;
 
     static const WinDeviceManager *instance();
 
