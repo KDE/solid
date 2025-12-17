@@ -120,6 +120,21 @@
 
 
 
+        <!-- Ethernet adapter -->
+        <device udi="/org/kde/solid/fakehw/pci_10ec_8168">
+            <property key="name">Gigabit Ethernet Controller</property>
+            <property key="vendor">ReallyChip Corporation</property>
+            <property key="parent">/org/kde/solid/fakehw/computer</property>
+        </device>
+
+        <!-- WiFi adapter -->
+        <device udi="/org/kde/solid/fakehw/pci_8086_2526">
+            <property key="name">Wireless Network Adapter</property>
+            <property key="vendor">Acme Corporation</property>
+            <property key="parent">/org/kde/solid/fakehw/computer</property>
+        </device>
+
+
         <!-- Primary IDE controller -->
         <device udi="/org/kde/solid/fakehw/pci_001">
             <property key="name">99021 IDE Controller #1</property>

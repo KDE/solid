@@ -49,6 +49,8 @@ private Q_SLOTS:
     void testSetupTeardown();
     void testStorageAccessFromPath();
     void testStorageAccessFromPath_data();
+    void testDeviceVendorProduct();
+    void testDeviceVendorProduct_data();
 
 private:
     Solid::Backends::Fake::FakeManager *fakeManager;
@@ -527,6 +529,34 @@ void SolidHwTest::testStorageAccessFromPath_data()
     QTest::addRow("Other home")      << QStringLiteral("/home_other") << QStringLiteral("volume_uuid_feedface");
     QTest::addRow("User home")       << QStringLiteral("/home/user")  << QStringLiteral("volume_uuid_c0ffee");
     QTest::addRow("LUKS")            << QStringLiteral("/data")       << QStringLiteral("volume_uuid_cleartext_data_0123");
+}
+
+void SolidHwTest::testDeviceVendorProduct_data()
+{
+    QTest::addColumn<QString>("udi");
+    QTest::addColumn<QString>("expectedVendor");
+    QTest::addColumn<QString>("expectedProduct");
+
+    QTest::addRow("Processor") << QStringLiteral("/org/kde/solid/fakehw/acpi_CPU0") << QStringLiteral("Acme Corporation")
+                               << QStringLiteral("Solid Processor #0");
+    QTest::addRow("Ethernet adapter") << QStringLiteral("/org/kde/solid/fakehw/pci_10ec_8168") << QStringLiteral("ReallyChip Corporation")
+                                      << QStringLiteral("Gigabit Ethernet Controller");
+    QTest::addRow("WiFi adapter") << QStringLiteral("/org/kde/solid/fakehw/pci_8086_2526") << QStringLiteral("Acme Corporation")
+                                  << QStringLiteral("Wireless Network Adapter");
+    QTest::addRow("Storage device") << QStringLiteral("/org/kde/solid/fakehw/storage_serial_HD56890I") << QStringLiteral("Acme Corporation")
+                                    << QStringLiteral("HD250GB");
+}
+
+void SolidHwTest::testDeviceVendorProduct()
+{
+    QFETCH(QString, udi);
+    QFETCH(QString, expectedVendor);
+    QFETCH(QString, expectedProduct);
+
+    Solid::Device device(udi);
+    QVERIFY(device.isValid());
+    QCOMPARE(device.vendor(), expectedVendor);
+    QCOMPARE(device.product(), expectedProduct);
 }
 
 #include "solidhwtest.moc"
