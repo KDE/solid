@@ -7,8 +7,8 @@
 #include "predicate.h"
 
 #include <QMetaEnum>
-#include <QSequentialIterable>
 #include <QStringList>
+#include <QtCore> // For "qsequentialiterable.h"
 #include <solid/device.h>
 
 namespace Solid
