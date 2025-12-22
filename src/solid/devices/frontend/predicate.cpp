@@ -7,7 +7,7 @@
 #include "predicate.h"
 
 #include <QMetaEnum>
-#include <QSequentialIterable>
+#include <QMetaSequence>
 #include <QStringList>
 #include <solid/device.h>
 
@@ -223,8 +223,8 @@ bool Solid::Predicate::matches(const Device &device) const
             }
 
             // Make sure we can match single elements inside lists.
-            if (value.canConvert<QSequentialIterable>()) {
-                const auto iterable = value.value<QSequentialIterable>();
+            if (value.canConvert<QMetaSequence::Iterable>()) {
+                const auto iterable = value.value<QMetaSequence::Iterable>();
                 for (const auto &element : iterable) {
                     if (element == expected) {
                         return true;
