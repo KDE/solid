@@ -9,17 +9,12 @@
 
 #include "device.h"
 #include "device_p.h"
-#include "devices_debug.h"
 #include "predicate.h"
 #include "storageaccess.h"
 #include "storagevolume.h"
 
 #include "ifaces/device.h"
 #include "ifaces/devicemanager.h"
-
-#include "soliddefs_p.h"
-
-#include <QLoggingCategory>
 
 #include <set>
 
