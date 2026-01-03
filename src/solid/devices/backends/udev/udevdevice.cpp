@@ -19,6 +19,25 @@
 
 using namespace Solid::Backends::UDev;
 
+namespace
+{
+// Helper function for three-tier property fallback with hwdb support
+QString getUdevPropertyWithFallback(const UdevQt::Device &device, const QString &basePropertyName)
+{
+    // Try *_FROM_DATABASE first (from hwdb, most readable)
+    QString value = device.deviceProperty(basePropertyName + QStringLiteral("_FROM_DATABASE")).toString();
+    if (value.isEmpty()) {
+        // Fall back to *_ENC (hex-encoded, needs decoding and trimming)
+        value = device.decodedDeviceProperty(basePropertyName + QStringLiteral("_ENC")).trimmed();
+        if (value.isEmpty()) {
+            // Last resort: raw property (may have underscores)
+            value = device.deviceProperty(basePropertyName).toString().replace(QLatin1Char('_'), QLatin1Char(' '));
+        }
+    }
+    return value;
+}
+}
+
 UDevDevice::UDevDevice(const UdevQt::Device device)
     : Solid::Ifaces::Device()
     , m_device(device)
@@ -49,16 +68,7 @@ QString UDevDevice::vendor() const
         }
 
         if (vendor.isEmpty()) {
-            // Try ID_VENDOR_FROM_DATABASE first (from hwdb, most readable)
-            vendor = m_device.deviceProperty(QStringLiteral("ID_VENDOR_FROM_DATABASE")).toString();
-            if (vendor.isEmpty()) {
-                // Fall back to ID_VENDOR_ENC (hex-encoded, needs decoding and trimming)
-                vendor = m_device.decodedDeviceProperty(QStringLiteral("ID_VENDOR_ENC")).trimmed();
-                if (vendor.isEmpty()) {
-                    // Last resort: ID_VENDOR (raw, may have underscores)
-                    vendor = m_device.deviceProperty(QStringLiteral("ID_VENDOR")).toString().replace(QLatin1Char('_'), QLatin1Char(' '));
-                }
-            }
+            vendor = getUdevPropertyWithFallback(m_device, QStringLiteral("ID_VENDOR"));
         }
     }
     return vendor;
@@ -74,16 +84,7 @@ QString UDevDevice::product() const
         }
 
         if (product.isEmpty()) {
-            // Try ID_MODEL_FROM_DATABASE first (from hwdb, most readable)
-            product = m_device.deviceProperty(QStringLiteral("ID_MODEL_FROM_DATABASE")).toString();
-            if (product.isEmpty()) {
-                // Fall back to ID_MODEL_ENC (hex-encoded, needs decoding and trimming)
-                product = m_device.decodedDeviceProperty(QStringLiteral("ID_MODEL_ENC")).trimmed();
-                if (product.isEmpty()) {
-                    // Last resort: ID_MODEL (raw, may have underscores)
-                    product = m_device.deviceProperty(QStringLiteral("ID_MODEL")).toString().replace(QLatin1Char('_'), QLatin1Char(' '));
-                }
-            }
+            product = getUdevPropertyWithFallback(m_device, QStringLiteral("ID_MODEL"));
         }
     }
     return product;
