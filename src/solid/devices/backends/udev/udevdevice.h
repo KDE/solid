@@ -34,6 +34,8 @@ public:
 
     QString product() const override;
 
+    QString displayName() const override;
+
     QString icon() const override;
 
     QStringList emblems() const override;

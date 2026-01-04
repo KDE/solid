@@ -90,6 +90,34 @@ QString UDevDevice::product() const
     return product;
 }
 
+QString UDevDevice::displayName() const
+{
+    QString vendorName = vendor();
+    QString productName = product();
+
+    // If both vendor and product are available, check for redundancy
+    if (!vendorName.isEmpty() && !productName.isEmpty()) {
+        // If product already contains vendor, return product alone to avoid duplication
+        if (productName.toLower().contains(vendorName.toLower())) {
+            return productName;
+        }
+        // Otherwise combine them
+        return vendorName + QLatin1String(" ") + productName;
+    }
+
+    // Fallback: return whichever is available
+    if (!productName.isEmpty()) {
+        return productName;
+    }
+
+    if (!vendorName.isEmpty()) {
+        return vendorName;
+    }
+
+    // Ultimate fallback: use description
+    return description();
+}
+
 QString UDevDevice::icon() const
 {
     if (parentUdi().isEmpty()) {
