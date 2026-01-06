@@ -216,7 +216,7 @@ void Solid::DevicePrivate::setBackendObject(std::unique_ptr<Ifaces::Device> &&ob
     if (!m_ifaces.empty()) {
         m_ifaces.clear();
         if (!ref.deref()) {
-            deleteLater();
+            delete this;
         }
     }
 }

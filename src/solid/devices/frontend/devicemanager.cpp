@@ -210,7 +210,6 @@ void Solid::DeviceManagerPrivate::_k_deviceRemoved(const QString &udi)
 
         if (dev) {
             dev->setBackendObject(nullptr);
-            Q_ASSERT(dev->backendObject() == nullptr);
         }
     }
 
