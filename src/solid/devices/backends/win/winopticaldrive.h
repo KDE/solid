@@ -38,9 +38,9 @@ public:
     bool eject() override;
 
 Q_SIGNALS:
-    void ejectPressed(const QString &udi);
+    void ejectPressed(const QString &udi) override;
 
-    void ejectDone(Solid::ErrorType error, QVariant errorData, const QString &udi);
+    void ejectDone(Solid::ErrorType error, QVariant errorData, const QString &udi) override;
 
 private:
     Solid::OpticalDrive::MediumTypes m_supportedTypes;
