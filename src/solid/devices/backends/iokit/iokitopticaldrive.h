@@ -35,7 +35,7 @@ public Q_SLOTS:
 Q_SIGNALS:
     void ejectPressed(const QString &udi) override;
     void ejectDone(Solid::ErrorType error, QVariant errorData, const QString &udi) override;
-    void ejectRequested(const QString &udi);
+    void ejectRequested(const QString &udi) override;
 
 private:
     class Private;
