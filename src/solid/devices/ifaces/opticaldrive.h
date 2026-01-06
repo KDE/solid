@@ -78,6 +78,8 @@ protected:
     virtual void ejectPressed(const QString &udi) = 0;
 
     virtual void ejectDone(Solid::ErrorType error, QVariant errorData, const QString &udi) = 0;
+
+    virtual void ejectRequested(const QString &udi) = 0;
 };
 }
 }

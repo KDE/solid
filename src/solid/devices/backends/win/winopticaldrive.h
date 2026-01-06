@@ -42,6 +42,8 @@ Q_SIGNALS:
 
     void ejectDone(Solid::ErrorType error, QVariant errorData, const QString &udi) override;
 
+    void ejectRequested(const QString &udi) override;
+
 private:
     Solid::OpticalDrive::MediumTypes m_supportedTypes;
 };
