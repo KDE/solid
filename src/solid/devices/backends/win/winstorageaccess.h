@@ -26,28 +26,28 @@ public:
     WinStorageAccess(WinDevice *device);
     ~WinStorageAccess();
 
-    virtual bool isAccessible() const;
+    bool isAccessible() const override;
 
-    virtual QString filePath() const;
+    QString filePath() const override;
 
-    virtual bool isIgnored() const;
+    bool isIgnored() const override;
 
-    virtual bool isEncrypted() const;
+    bool isEncrypted() const override;
 
-    virtual bool setup();
+    bool setup() override;
 
-    virtual bool teardown();
+    bool teardown() override;
 
 Q_SIGNALS:
-    void accessibilityChanged(bool accessible, const QString &udi);
+    void accessibilityChanged(bool accessible, const QString &udi) override;
 
-    void setupDone(Solid::ErrorType error, QVariant resultData, const QString &udi);
+    void setupDone(Solid::ErrorType error, QVariant resultData, const QString &udi) override;
 
-    void teardownDone(Solid::ErrorType error, QVariant resultData, const QString &udi);
+    void teardownDone(Solid::ErrorType error, QVariant resultData, const QString &udi) override;
 
-    void setupRequested(const QString &udi);
+    void setupRequested(const QString &udi) override;
 
-    void teardownRequested(const QString &udi);
+    void teardownRequested(const QString &udi) override;
 };
 }
 }
