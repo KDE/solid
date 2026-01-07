@@ -233,13 +233,10 @@ Solid::DevicePrivate *Solid::DeviceManagerPrivate::findRegisteredDevice(const QS
     } else if (m_devicesMap.contains(udi)) {
         return m_devicesMap[udi].data();
     } else {
-        std::unique_ptr<Ifaces::Device> iface = createBackendObject(udi);
-
         DevicePrivate *devData = new DevicePrivate(udi);
-        devData->setBackendObject(std::move(iface));
+        devData->setBackendObject(createBackendObject(udi));
 
-        QPointer<DevicePrivate> ptr(devData);
-        m_devicesMap[udi] = ptr;
+        m_devicesMap[udi] = devData;
         m_reverseMap[devData] = udi;
 
         connect(devData, &QObject::destroyed, this, &DeviceManagerPrivate::_k_destroyed);
