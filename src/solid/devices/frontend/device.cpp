@@ -207,10 +207,7 @@ Solid::DevicePrivate::DevicePrivate(const QString &udi)
 {
 }
 
-Solid::DevicePrivate::~DevicePrivate()
-{
-    setBackendObject(nullptr);
-}
+Solid::DevicePrivate::~DevicePrivate() = default;
 
 void Solid::DevicePrivate::setBackendObject(std::unique_ptr<Ifaces::Device> &&object)
 {
