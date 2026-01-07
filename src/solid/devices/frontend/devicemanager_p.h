@@ -42,7 +42,7 @@ private:
 
     QExplicitlySharedDataPointer<DevicePrivate> m_nullDevice;
     QHash<QString, QPointer<DevicePrivate>> m_devicesMap;
-    QHash<QObject *, QString> m_reverseMap;
+    QHash<DevicePrivate *, QString> m_reverseMap;
 };
 
 class DeviceManagerStorage
