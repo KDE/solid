@@ -94,10 +94,10 @@ void Manager::spinUp()
     }
 }
 
-QObject *Manager::createDevice(const QString &udi)
+std::unique_ptr<QObject> Manager::createDevice(const QString &udi)
 {
     if (udi == udiPrefix()) {
-        RootDevice *root = new RootDevice(udi);
+        std::unique_ptr<RootDevice> root = std::make_unique<RootDevice>(udi);
         root->setProduct(tr("iDevice"));
         root->setDescription(tr("iOS devices"));
         root->setIcon(QStringLiteral("phone-apple-iphone"));
@@ -105,7 +105,7 @@ QObject *Manager::createDevice(const QString &udi)
     }
 
     if (m_deviceUdis.contains(udi)) {
-        return new IMobileDevice(udi);
+        return std::make_unique<IMobileDevice>(udi);
     }
 
     return nullptr;

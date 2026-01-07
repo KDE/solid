@@ -53,10 +53,10 @@ UPowerManager::~UPowerManager()
 {
 }
 
-QObject *UPowerManager::createDevice(const QString &udi)
+std::unique_ptr<QObject> UPowerManager::createDevice(const QString &udi)
 {
     if (udi == udiPrefix()) {
-        RootDevice *root = new RootDevice(udiPrefix());
+        std::unique_ptr<RootDevice> root = std::make_unique<RootDevice>(udiPrefix());
 
         root->setProduct(tr("Power Management"));
         root->setDescription(tr("Batteries and other sources of power"));
@@ -65,7 +65,7 @@ QObject *UPowerManager::createDevice(const QString &udi)
         return root;
 
     } else if (m_knownDevices.contains(udi) || allDevices().contains(udi)) {
-        return new UPowerDevice(udi);
+        return std::make_unique<UPowerDevice>(udi);
 
     } else {
         return nullptr;

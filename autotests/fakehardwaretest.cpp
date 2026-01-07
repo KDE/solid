@@ -24,11 +24,12 @@ void FakeHardwareTest::testFakeBackend()
     Solid::Backends::Fake::FakeManager *fakeManager = new Solid::Backends::Fake::FakeManager(nullptr, QStringLiteral(TEST_DATA));
 
     QVERIFY(!fakeManager->allDevices().isEmpty());
-    QObject *computer = fakeManager->createDevice(QStringLiteral("/org/kde/solid/fakehw/computer"));
+    auto computer = fakeManager->createDevice(QStringLiteral("/org/kde/solid/fakehw/computer"));
     QVERIFY(computer != nullptr);
     QVERIFY(fakeManager->createDevice(QStringLiteral("/com/helloworld/troll/compiutor")) == nullptr);
 
-    auto *device = static_cast<Solid::Backends::Fake::FakeDevice *>(fakeManager->createDevice(QStringLiteral("/org/kde/solid/fakehw/acpi_CPU0")));
+    auto d = fakeManager->createDevice(QStringLiteral("/org/kde/solid/fakehw/acpi_CPU0"));
+    auto *device = static_cast<Solid::Backends::Fake::FakeDevice *>(d.get());
 
     QCOMPARE(device->udi(), QStringLiteral("/org/kde/solid/fakehw/acpi_CPU0"));
     QCOMPARE(device->parentUdi(), QStringLiteral("/org/kde/solid/fakehw/computer"));
@@ -54,8 +55,6 @@ void FakeHardwareTest::testFakeBackend()
     QCOMPARE(processor->instructionSets(), instructionsets);
 
     delete processor;
-    delete device;
-    delete computer;
     delete fakeManager;
 }
 

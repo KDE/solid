@@ -34,16 +34,16 @@ public:
 
     Ifaces::Device *backendObject() const
     {
-        return m_backendObject.data();
+        return m_backendObject.get();
     }
-    void setBackendObject(Ifaces::Device *object);
+    void setBackendObject(std::unique_ptr<Ifaces::Device> &&object);
 
     DeviceInterface *interface(const DeviceInterface::Type &type) const;
     void setInterface(const DeviceInterface::Type &type, std::unique_ptr<DeviceInterface> &&interface);
 
 private:
     QString m_udi;
-    QPointer<Ifaces::Device> m_backendObject;
+    std::unique_ptr<Ifaces::Device> m_backendObject;
     std::map<DeviceInterface::Type, std::unique_ptr<DeviceInterface>> m_ifaces;
 };
 }

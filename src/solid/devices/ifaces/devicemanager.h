@@ -77,7 +77,7 @@ public:
      * @param udi the identifier of the device instantiated
      * @returns a new Device object if there's a device having the given UDI, nullptr otherwise
      */
-    virtual QObject *createDevice(const QString &udi) = 0;
+    virtual std::unique_ptr<QObject> createDevice(const QString &udi) = 0;
 
 Q_SIGNALS:
     /**

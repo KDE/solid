@@ -44,7 +44,7 @@ public:
 
     QStringList devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type) override;
 
-    QObject *createDevice(const QString &udi) override;
+    std::unique_ptr<QObject> createDevice(const QString &udi) override;
     virtual FakeDevice *findDevice(const QString &udi);
 
 public Q_SLOTS:

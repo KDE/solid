@@ -182,12 +182,12 @@ QStringList WinDeviceManager::devicesFromQuery(const QString &parentUdi, Solid::
     return list;
 }
 
-QObject *Solid::Backends::Win::WinDeviceManager::createDevice(const QString &udi)
+std::unique_ptr<QObject> Solid::Backends::Win::WinDeviceManager::createDevice(const QString &udi)
 {
     if (allDevices().contains(udi)) {
-        return new WinDevice(udi);
+        return std::make_unique<WinDevice>(udi);
     } else {
-        return 0;
+        return nullptr;
     }
 }
 

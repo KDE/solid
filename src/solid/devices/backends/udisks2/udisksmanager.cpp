@@ -98,10 +98,10 @@ QVariant Manager::deviceProperty(const QString &udi, const QString &name, Manage
     return QVariant();
 }
 
-QObject *Manager::createDevice(const QString &udi)
+std::unique_ptr<QObject> Manager::createDevice(const QString &udi)
 {
     if (udi == udiPrefix()) {
-        RootDevice *root = new RootDevice(udi);
+        std::unique_ptr<RootDevice> root = std::make_unique<RootDevice>(udi);
 
         root->setProduct(tr("Storage"));
         root->setDescription(tr("Storage devices"));
@@ -109,7 +109,7 @@ QObject *Manager::createDevice(const QString &udi)
 
         return root;
     } else if (deviceCache().contains(udi)) {
-        return new Device(this, udi);
+        return std::make_unique<Device>(this, udi);
     } else {
         return nullptr;
     }

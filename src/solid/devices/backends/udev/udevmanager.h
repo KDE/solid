@@ -32,7 +32,7 @@ public:
 
     QStringList devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type) override;
 
-    QObject *createDevice(const QString &udi) override;
+    std::unique_ptr<QObject> createDevice(const QString &udi) override;
 
 private Q_SLOTS:
     void slotDeviceAdded(const UdevQt::Device &device);

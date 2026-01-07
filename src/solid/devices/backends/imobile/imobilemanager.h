@@ -29,7 +29,7 @@ public:
     explicit Manager(QObject *parent);
     ~Manager() override;
 
-    QObject *createDevice(const QString &udi) override;
+    std::unique_ptr<QObject> createDevice(const QString &udi) override;
     QStringList devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type) override;
     QStringList allDevices() override;
     QSet<Solid::DeviceInterface::Type> supportedInterfaces() const override;

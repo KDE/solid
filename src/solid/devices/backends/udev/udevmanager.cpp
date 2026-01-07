@@ -214,10 +214,10 @@ QStringList UDevManager::devicesFromQuery(const QString &parentUdi, Solid::Devic
     return result;
 }
 
-QObject *UDevManager::createDevice(const QString &udi_)
+std::unique_ptr<QObject> UDevManager::createDevice(const QString &udi_)
 {
     if (udi_ == udiPrefix()) {
-        RootDevice *const device = new RootDevice(QStringLiteral(UDEV_UDI_PREFIX));
+        std::unique_ptr<RootDevice> device = std::make_unique<RootDevice>(QStringLiteral(UDEV_UDI_PREFIX));
         device->setProduct(tr("Devices"));
         device->setDescription(tr("Devices declared in your system"));
         device->setIcon(QStringLiteral("computer"));
@@ -229,7 +229,7 @@ QObject *UDevManager::createDevice(const QString &udi_)
     UdevQt::Device device = d->m_client->deviceBySysfsPath(udi);
 
     if (d->isOfInterest(udi_, device) || QFile::exists(udi)) {
-        return new UDevDevice(device);
+        return std::make_unique<UDevDevice>(device);
     }
 
     return nullptr;

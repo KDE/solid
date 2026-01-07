@@ -33,7 +33,7 @@ public:
 
     virtual QStringList allDevices();
     virtual QStringList devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type);
-    virtual QObject *createDevice(const QString &udi);
+    virtual std::unique_ptr<QObject> createDevice(const QString &udi);
 
 private:
     IOKitManagerPrivate *d;

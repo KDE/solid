@@ -203,7 +203,7 @@ QStringList IOKitManager::devicesFromQuery(const QString &parentUdi, Solid::Devi
     return filtered;
 }
 
-QObject *IOKitManager::createDevice(const QString &udi)
+std::unique_ptr<QObject> IOKitManager::createDevice(const QString &udi)
 {
     CFStringRef path = udi.toCFString();
     io_registry_entry_t entry = IORegistryEntryCopyFromPath(kIOMasterPortDefault, path);
@@ -217,7 +217,7 @@ QObject *IOKitManager::createDevice(const QString &udi)
         return 0;
     }
 
-    return new IOKitDevice(udi, entry);
+    return std::make_unique<IOKitDevice>(udi, entry);
 }
 
 }

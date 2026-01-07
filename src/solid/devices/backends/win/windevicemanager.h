@@ -51,7 +51,7 @@ public:
 
     QStringList devicesFromQuery(const QString &parentUdi, Solid::DeviceInterface::Type type = Solid::DeviceInterface::Unknown) override;
 
-    QObject *createDevice(const QString &udi) override;
+    std::unique_ptr<QObject> createDevice(const QString &udi) override;
 
     static const WinDeviceManager *instance();
 

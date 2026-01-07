@@ -212,10 +212,9 @@ Solid::DevicePrivate::~DevicePrivate()
     setBackendObject(nullptr);
 }
 
-void Solid::DevicePrivate::setBackendObject(Ifaces::Device *object)
+void Solid::DevicePrivate::setBackendObject(std::unique_ptr<Ifaces::Device> &&object)
 {
-    delete m_backendObject.data();
-    m_backendObject = object;
+    m_backendObject = std::move(object);
 
     if (!m_ifaces.empty()) {
         m_ifaces.clear();

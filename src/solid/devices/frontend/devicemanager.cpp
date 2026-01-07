@@ -233,10 +233,10 @@ Solid::DevicePrivate *Solid::DeviceManagerPrivate::findRegisteredDevice(const QS
     } else if (m_devicesMap.contains(udi)) {
         return m_devicesMap[udi].data();
     } else {
-        Ifaces::Device *iface = createBackendObject(udi);
+        std::unique_ptr<Ifaces::Device> iface = createBackendObject(udi);
 
         DevicePrivate *devData = new DevicePrivate(udi);
-        devData->setBackendObject(iface);
+        devData->setBackendObject(std::move(iface));
 
         QPointer<DevicePrivate> ptr(devData);
         m_devicesMap[udi] = ptr;
@@ -248,7 +248,7 @@ Solid::DevicePrivate *Solid::DeviceManagerPrivate::findRegisteredDevice(const QS
     }
 }
 
-Solid::Ifaces::Device *Solid::DeviceManagerPrivate::createBackendObject(const QString &udi)
+std::unique_ptr<Solid::Ifaces::Device> Solid::DeviceManagerPrivate::createBackendObject(const QString &udi)
 {
     const auto backends = globalDeviceStorage->managerBackends();
 
@@ -259,14 +259,12 @@ Solid::Ifaces::Device *Solid::DeviceManagerPrivate::createBackendObject(const QS
 
         Ifaces::Device *iface = nullptr;
 
-        QObject *object = backend->createDevice(udi);
-        iface = qobject_cast<Ifaces::Device *>(object);
+        std::unique_ptr<QObject> object = backend->createDevice(udi);
+        iface = qobject_cast<Ifaces::Device *>(object.get());
 
-        if (iface == nullptr) {
-            delete object;
+        if (iface != nullptr) {
+            return std::unique_ptr<Solid::Ifaces::Device>(qobject_cast<Ifaces::Device *>(object.release()));
         }
-
-        return iface;
     }
 
     return nullptr;

@@ -72,10 +72,10 @@ QStringList FstabManager::devicesFromQuery(const QString &parentUdi, Solid::Devi
     return QStringList();
 }
 
-QObject *FstabManager::createDevice(const QString &udi)
+std::unique_ptr<QObject> FstabManager::createDevice(const QString &udi)
 {
     if (udi == udiPrefix()) {
-        RootDevice *root = new RootDevice(udi);
+        std::unique_ptr<RootDevice> root = std::make_unique<RootDevice>(udi);
 
         root->setProduct(tr("Filesystem Volumes"));
         root->setDescription(tr("Mountable filesystems declared in your system"));
@@ -90,8 +90,8 @@ QObject *FstabManager::createDevice(const QString &udi)
             return nullptr;
         }
 
-        FstabDevice *device = new FstabDevice(udi);
-        connect(this, &FstabManager::mtabChanged, device, &FstabDevice::onMtabChanged);
+        std::unique_ptr<FstabDevice> device = std::make_unique<FstabDevice>(udi);
+        connect(this, &FstabManager::mtabChanged, device.get(), &FstabDevice::onMtabChanged);
         return device;
     }
 }

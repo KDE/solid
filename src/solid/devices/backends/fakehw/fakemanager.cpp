@@ -118,10 +118,10 @@ QStringList FakeManager::devicesFromQuery(const QString &parentUdi, Solid::Devic
     }
 }
 
-QObject *FakeManager::createDevice(const QString &udi)
+std::unique_ptr<QObject> FakeManager::createDevice(const QString &udi)
 {
     if (d->loadedDevices.contains(udi)) {
-        return new FakeDevice(*d->loadedDevices[udi]);
+        return std::make_unique<FakeDevice>(*d->loadedDevices[udi]);
     }
 
     return nullptr;

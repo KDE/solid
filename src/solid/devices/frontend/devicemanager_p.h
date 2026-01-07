@@ -39,7 +39,7 @@ private Q_SLOTS:
     void _k_destroyed(QObject *object);
 
 private:
-    Ifaces::Device *createBackendObject(const QString &udi);
+    std::unique_ptr<Ifaces::Device> createBackendObject(const QString &udi);
 
     QExplicitlySharedDataPointer<DevicePrivate> m_nullDevice;
     QHash<QString, QPointer<DevicePrivate>> m_devicesMap;
