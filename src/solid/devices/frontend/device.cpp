@@ -212,24 +212,10 @@ Solid::DevicePrivate::~DevicePrivate()
     setBackendObject(nullptr);
 }
 
-void Solid::DevicePrivate::_k_destroyed(QObject *object)
-{
-    Q_UNUSED(object);
-    setBackendObject(nullptr);
-}
-
 void Solid::DevicePrivate::setBackendObject(Ifaces::Device *object)
 {
-    if (m_backendObject) {
-        m_backendObject.data()->disconnect(this);
-    }
-
     delete m_backendObject.data();
     m_backendObject = object;
-
-    if (object) {
-        connect(object, SIGNAL(destroyed(QObject *)), this, SLOT(_k_destroyed(QObject *)));
-    }
 
     if (!m_ifaces.empty()) {
         m_ifaces.clear();
