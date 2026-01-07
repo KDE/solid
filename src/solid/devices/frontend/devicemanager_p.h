@@ -36,7 +36,6 @@ public:
 private Q_SLOTS:
     void _k_deviceAdded(const QString &udi);
     void _k_deviceRemoved(const QString &udi);
-    void _k_destroyed(QObject *object);
 
 private:
     std::unique_ptr<Ifaces::Device> createBackendObject(const QString &udi);

@@ -40,7 +40,7 @@ Solid::DeviceManagerPrivate::~DeviceManagerPrivate()
         disconnect(backend, &Solid::Ifaces::DeviceManager::deviceRemoved, this, &Solid::DeviceManagerPrivate::_k_deviceRemoved);
     }
 
-    // take a copy as m_devicesMap is changed by Solid::DeviceManagerPrivate::_k_destroyed
+    // take a copy as m_devicesMap is changed when DevicePrivate is destroyed
     const auto deviceMap = m_devicesMap;
     for (QPointer<DevicePrivate> dev : deviceMap) {
         if (!dev.data()->ref.deref()) {
@@ -217,15 +217,6 @@ void Solid::DeviceManagerPrivate::_k_deviceRemoved(const QString &udi)
     Q_EMIT deviceRemoved(udi);
 }
 
-void Solid::DeviceManagerPrivate::_k_destroyed(QObject *object)
-{
-    QString udi = m_reverseMap.take(object);
-
-    if (!udi.isEmpty()) {
-        m_devicesMap.remove(udi);
-    }
-}
-
 Solid::DevicePrivate *Solid::DeviceManagerPrivate::findRegisteredDevice(const QString &udi)
 {
     if (udi.isEmpty()) {
@@ -239,7 +230,13 @@ Solid::DevicePrivate *Solid::DeviceManagerPrivate::findRegisteredDevice(const QS
         m_devicesMap[udi] = devData;
         m_reverseMap[devData] = udi;
 
-        connect(devData, &QObject::destroyed, this, &DeviceManagerPrivate::_k_destroyed);
+        connect(devData, &QObject::destroyed, this, [this, devData] {
+            QString udi = m_reverseMap.take(devData);
+
+            if (!udi.isEmpty()) {
+                m_devicesMap.remove(udi);
+            }
+        });
 
         return devData;
     }
