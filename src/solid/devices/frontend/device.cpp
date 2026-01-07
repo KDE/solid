@@ -188,7 +188,7 @@ const Solid::DeviceInterface *Solid::Device::asDeviceInterface(const DeviceInter
 
         if (iface != nullptr) {
             // Lie on the constness since we're simply doing caching here
-            const_cast<Device *>(this)->d->setInterface(type, iface);
+            const_cast<Device *>(this)->d->setInterface(type, std::unique_ptr<DeviceInterface>(iface));
             iface->d_ptr->setDevicePrivate(d.data());
         }
 
@@ -231,9 +231,7 @@ void Solid::DevicePrivate::setBackendObject(Ifaces::Device *object)
         connect(object, SIGNAL(destroyed(QObject *)), this, SLOT(_k_destroyed(QObject *)));
     }
 
-    if (!m_ifaces.isEmpty()) {
-        qDeleteAll(m_ifaces);
-
+    if (!m_ifaces.empty()) {
         m_ifaces.clear();
         if (!ref.deref()) {
             deleteLater();
@@ -243,15 +241,19 @@ void Solid::DevicePrivate::setBackendObject(Ifaces::Device *object)
 
 Solid::DeviceInterface *Solid::DevicePrivate::interface(const DeviceInterface::Type &type) const
 {
-    return m_ifaces[type];
+    if (!m_ifaces.contains(type)) {
+        return nullptr;
+    }
+
+    return m_ifaces.at(type).get();
 }
 
-void Solid::DevicePrivate::setInterface(const DeviceInterface::Type &type, DeviceInterface *interface)
+void Solid::DevicePrivate::setInterface(const DeviceInterface::Type &type, std::unique_ptr<DeviceInterface> &&interface)
 {
-    if (m_ifaces.isEmpty()) {
+    if (m_ifaces.empty()) {
         ref.ref();
     }
-    m_ifaces[type] = interface;
+    m_ifaces[type] = std::move(interface);
 }
 
 #include "moc_device_p.cpp"

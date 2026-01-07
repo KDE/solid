@@ -39,7 +39,7 @@ public:
     void setBackendObject(Ifaces::Device *object);
 
     DeviceInterface *interface(const DeviceInterface::Type &type) const;
-    void setInterface(const DeviceInterface::Type &type, DeviceInterface *interface);
+    void setInterface(const DeviceInterface::Type &type, std::unique_ptr<DeviceInterface> &&interface);
 
 public Q_SLOTS:
     void _k_destroyed(QObject *object);
@@ -47,7 +47,7 @@ public Q_SLOTS:
 private:
     QString m_udi;
     QPointer<Ifaces::Device> m_backendObject;
-    QMap<DeviceInterface::Type, QPointer<DeviceInterface>> m_ifaces;
+    std::map<DeviceInterface::Type, std::unique_ptr<DeviceInterface>> m_ifaces;
 };
 }
 
