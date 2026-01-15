@@ -217,7 +217,7 @@ std::unique_ptr<QObject> IOKitManager::createDevice(const QString &udi)
         return 0;
     }
 
-    return std::make_unique<IOKitDevice>(udi, entry);
+    return std::unique_ptr<IOKitDevice>(new IOKitDevice(udi, entry));
 }
 
 }
