@@ -245,8 +245,10 @@ void UDevManager::slotDeviceAdded(const UdevQt::Device &device)
 void UDevManager::slotDeviceRemoved(const UdevQt::Device &device)
 {
     if (d->isOfInterest(udiPrefix() + device.sysfsPath(), device)) {
-        Q_EMIT deviceRemoved(udiPrefix() + device.sysfsPath());
+        // ensure we no longer list the removed device before we emit the signal
+        // applications might query all devices based on it, see bug 514791
         d->m_devicesOfInterest.removeAll(udiPrefix() + device.sysfsPath());
+        Q_EMIT deviceRemoved(udiPrefix() + device.sysfsPath());
     }
 }
 
