@@ -8,6 +8,7 @@
 #define SOLID_DEVICE_P_H
 
 #include <QMap>
+#include <QMutex>
 #include <QObject>
 #include <QPointer>
 #include <QSharedData>
@@ -43,6 +44,7 @@ public:
 
 private:
     QString m_udi;
+    QMutex m_mutex;
     std::unique_ptr<Ifaces::Device> m_backendObject;
     std::map<DeviceInterface::Type, std::unique_ptr<DeviceInterface>> m_ifaces;
 };

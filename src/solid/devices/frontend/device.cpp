@@ -12,6 +12,8 @@
 #include "deviceinterface_p.h"
 #include "soliddefs_p.h"
 
+#include <QMutexLocker>
+
 #include <solid/devices/ifaces/device.h>
 
 #include <solid/battery.h>
@@ -213,6 +215,7 @@ void Solid::DevicePrivate::setBackendObject(std::unique_ptr<Ifaces::Device> &&ob
 {
     m_backendObject = std::move(object);
 
+    QMutexLocker locker(&m_mutex);
     if (!m_ifaces.empty()) {
         m_ifaces.clear();
         if (!ref.deref()) {
@@ -232,6 +235,7 @@ Solid::DeviceInterface *Solid::DevicePrivate::interface(const DeviceInterface::T
 
 void Solid::DevicePrivate::setInterface(const DeviceInterface::Type &type, std::unique_ptr<DeviceInterface> &&interface)
 {
+    QMutexLocker locker(&m_mutex);
     if (m_ifaces.empty()) {
         ref.ref();
     }
