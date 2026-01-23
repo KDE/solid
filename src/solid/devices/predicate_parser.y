@@ -53,6 +53,7 @@ typedef void *yyscan_t;
 %type <ptr> string_list_rec
 %type <ptr> value
 
+%destructor { free($$); } <name>
 %destructor { PredicateParse_destroy( $$ ); } predicate
 %destructor { PredicateParse_destroy( $$ ); } predicate_atom
 %destructor { PredicateParse_destroy( $$ ); } predicate_or
