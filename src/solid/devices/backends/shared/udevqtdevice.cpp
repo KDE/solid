@@ -31,13 +31,19 @@ DevicePrivate &DevicePrivate::operator=(const DevicePrivate &other)
     return *this;
 }
 
-QString DevicePrivate::decodePropertyValue(const QByteArray &encoded) const
+namespace
 {
+QString decodePropertyValue(QByteArrayView encoded)
+{
+    if (!encoded.contains('\\')) {
+        return QString::fromUtf8(encoded);
+    }
+
     QByteArray decoded;
     const int len = encoded.length();
 
     for (int i = 0; i < len; i++) {
-        quint8 ch = encoded.at(i);
+        auto ch = encoded.at(i);
 
         if (ch == '\\') {
             if (i + 1 < len && encoded.at(i + 1) == '\\') {
@@ -45,7 +51,7 @@ QString DevicePrivate::decodePropertyValue(const QByteArray &encoded) const
                 i++;
                 continue;
             } else if (i + 3 < len && encoded.at(i + 1) == 'x') {
-                QByteArray hex = encoded.mid(i + 2, 2);
+                QByteArrayView hex = encoded.mid(i + 2, 2);
                 bool ok;
                 int code = hex.toInt(&ok, 16);
                 if (ok) {
@@ -60,6 +66,7 @@ QString DevicePrivate::decodePropertyValue(const QByteArray &encoded) const
     }
     return QString::fromUtf8(decoded);
 }
+} // namespace <anonymous>
 
 Device::Device()
     : d(nullptr)
@@ -243,7 +250,7 @@ QString Device::decodedDeviceProperty(const QString &name) const
     }
 
     QByteArray propName = name.toUtf8();
-    return d->decodePropertyValue(udev_device_get_property_value(d->udev, propName.constData()));
+    return decodePropertyValue(udev_device_get_property_value(d->udev, propName.constData()));
 }
 
 QVariant Device::sysfsProperty(const QString &name) const
