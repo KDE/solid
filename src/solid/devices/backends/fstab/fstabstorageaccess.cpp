@@ -19,6 +19,21 @@
 
 using namespace Solid::Backends::Fstab;
 
+namespace
+{
+bool isNetworkDeviceAccessibleToUser(const QString &device, const QString &filePath)
+{
+    // Limit the number of calls to `QDir::isReadable` since it does a call to `stat` which is blocking for the thread.
+    // Network mounts like fuse.sshfs (used in KDE Connect for example) could still block when the phone disconnects, so filter these out too
+    const auto fstype = FstabHandling::fstype(device);
+    if (!FstabHandling::isNetworkFileSystem(device) || fstype.startsWith(QStringLiteral("fuse."))) {
+        return true;
+    }
+
+    return QDir(filePath).isReadable();
+}
+}
+
 FstabStorageAccess::FstabStorageAccess(Solid::Backends::Fstab::FstabDevice *device)
     : QObject(device)
     , m_fstabDevice(device)
@@ -41,7 +56,9 @@ FstabStorageAccess::FstabStorageAccess(Solid::Backends::Fstab::FstabDevice *devi
 
     m_isIgnored = gvfsHidden ||
         // ignore overlay fs not pointing to / or seemingly mounted by user
-        (fsIsOverlay && m_filePath != QLatin1String("/") && !inUserPath);
+        (fsIsOverlay && m_filePath != QLatin1String("/") && !inUserPath) ||
+        // Ignore network devices where the user is missing read rights
+        !::isNetworkDeviceAccessibleToUser(device->device(), m_filePath);
 
     connect(device, &FstabDevice::mtabChanged, this, &FstabStorageAccess::onMtabChanged);
     QTimer::singleShot(0, this, SLOT(connectDBusSignals()));
