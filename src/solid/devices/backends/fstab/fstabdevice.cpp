@@ -15,6 +15,14 @@
 
 using namespace Solid::Backends::Fstab;
 
+namespace
+{
+QString mountpointDisplayName(const QString &mountpoint)
+{
+    return mountpoint.section(QLatin1Char('/'), -1);
+}
+}
+
 FstabDevice::FstabDevice(QString uid)
     : Solid::Ifaces::Device()
     , m_uid(uid)
@@ -67,9 +75,9 @@ FstabDevice::FstabDevice(QString uid)
         const QStringList currentMountPoints = FstabHandling::currentMountPoints(m_device);
         if (currentMountPoints.isEmpty()) {
             const QStringList mountPoints = FstabHandling::mountPoints(m_device);
-            m_displayName = mountPoints.isEmpty() ? m_description : mountPoints.first();
+            m_displayName = mountPoints.isEmpty() ? m_description : mountpointDisplayName(mountPoints.first());
         } else {
-            m_displayName = currentMountPoints.first();
+            m_displayName = mountpointDisplayName(currentMountPoints.first());
         }
     }
 
