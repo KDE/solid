@@ -23,6 +23,8 @@ FstabNetworkShare::FstabNetworkShare(Solid::Backends::Fstab::FstabDevice *device
             m_type = Solid::NetworkShare::Smb3;
         }
         url = QStringLiteral("smb:%1").arg(m_fstabDevice->device());
+        // The device ID is in "url:mountpoint" format, so strip the mountpoint
+        url = url.left(url.lastIndexOf(QStringLiteral(":/")));
     } else if (m_fstabDevice->device().contains(QLatin1String(":/"))) {
         m_type = Solid::NetworkShare::Nfs;
         url = QStringLiteral("nfs://%1/%2").arg(m_fstabDevice->vendor(), m_fstabDevice->product());
