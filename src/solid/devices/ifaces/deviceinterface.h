@@ -11,6 +11,9 @@
 
 namespace Solid
 {
+/*!
+ * \internal
+ */
 namespace Ifaces
 {
 /**

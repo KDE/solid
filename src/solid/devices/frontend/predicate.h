@@ -139,6 +139,8 @@ public:
 
     /*!
      * Argument for Predicate constructor.
+     *
+     * \value NOT
      */
     enum NotOperator {
         NOT
@@ -148,6 +150,7 @@ public:
      * Constructs a predicate that does a negated check of a device being of a particular device interface.
      *
      * \a ifaceName the name of the device interface the device should not have
+     *
      * \a op is always NOT
      *
      * \since 6.17

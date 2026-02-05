@@ -19,6 +19,7 @@ class Device;
 /*!
  * \class Solid::StorageDrive
  * \inheaderfile Solid/StorageDrive
+ * \inmodule Solid
  *
  * \brief This device interface is available on storage devices.
  *

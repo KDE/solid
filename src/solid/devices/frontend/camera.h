@@ -92,12 +92,13 @@ public:
      * all drivers supporting the device.
      *
      * \a protocol The protocol to get drivers for.
+     *
      * Returns a list of installed drivers meeting the criteria
      */
     QStringList supportedDrivers(QString protocol = QString()) const;
 
     /*!
-     * Retrieves a driver specific string allowing to access the device.
+     * Retrieves a \a driver specific string allowing to access the device.
      *
      * For example for the "gphoto" driver it will return a list of the
      * form '("usb", vendor_id, product_id)'.

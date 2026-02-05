@@ -79,7 +79,7 @@ public:
     /*!
      * Returns the Device containing the filesystem for the given path
      *
-     * \a canonical path to a filesystem entry, e.g. a file or directory
+     * \a path is the canonical path to a filesystem entry, e.g. a file or directory
      *
      * Returns a Device containing the given \a path.
      *
