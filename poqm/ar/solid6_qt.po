@@ -54,22 +54,22 @@ msgctxt "Solid::Backends::IMobile::Manager|"
 msgid "iOS devices"
 msgstr "أجهزة أي او اس"
 
-#: solid/devices/backends/udev/udevdevice.cpp:100
+#: solid/devices/backends/udev/udevdevice.cpp:147
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Computer"
 msgstr "حاسوب"
 
-#: solid/devices/backends/udev/udevdevice.cpp:104
+#: solid/devices/backends/udev/udevdevice.cpp:151
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Processor"
 msgstr "معالج"
 
-#: solid/devices/backends/udev/udevdevice.cpp:115
+#: solid/devices/backends/udev/udevdevice.cpp:162
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Portable Media Player"
 msgstr "مشغّل وسائط محمول"
 
-#: solid/devices/backends/udev/udevdevice.cpp:118
+#: solid/devices/backends/udev/udevdevice.cpp:165
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Camera"
 msgstr "كاميرا"

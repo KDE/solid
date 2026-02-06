@@ -56,22 +56,22 @@ msgctxt "Solid::Backends::IMobile::Manager|"
 msgid "iOS devices"
 msgstr "Устройства iOS"
 
-#: solid/devices/backends/udev/udevdevice.cpp:100
+#: solid/devices/backends/udev/udevdevice.cpp:147
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Computer"
 msgstr "Компютър"
 
-#: solid/devices/backends/udev/udevdevice.cpp:104
+#: solid/devices/backends/udev/udevdevice.cpp:151
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Processor"
 msgstr "Процесор"
 
-#: solid/devices/backends/udev/udevdevice.cpp:115
+#: solid/devices/backends/udev/udevdevice.cpp:162
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Portable Media Player"
 msgstr "Преносим медиен плеър"
 
-#: solid/devices/backends/udev/udevdevice.cpp:118
+#: solid/devices/backends/udev/udevdevice.cpp:165
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Camera"
 msgstr "Камера"

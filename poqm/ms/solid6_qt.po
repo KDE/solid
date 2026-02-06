@@ -59,12 +59,12 @@ msgctxt "Solid::Backends::IMobile::Manager|"
 msgid "iOS devices"
 msgstr "Jenis peranti pencapai storan"
 
-#: solid/devices/backends/udev/udevdevice.cpp:100
+#: solid/devices/backends/udev/udevdevice.cpp:147
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Computer"
 msgstr ""
 
-#: solid/devices/backends/udev/udevdevice.cpp:104
+#: solid/devices/backends/udev/udevdevice.cpp:151
 #, fuzzy
 #| msgctxt "Processor device type"
 #| msgid "Processor"
@@ -72,7 +72,7 @@ msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Processor"
 msgstr "Jenis peranti pemproses"
 
-#: solid/devices/backends/udev/udevdevice.cpp:115
+#: solid/devices/backends/udev/udevdevice.cpp:162
 #, fuzzy
 #| msgctxt "Portable Media Player device type"
 #| msgid "Portable Media Player"
@@ -80,7 +80,7 @@ msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Portable Media Player"
 msgstr "Jenis peranti pemain media mudah bawa"
 
-#: solid/devices/backends/udev/udevdevice.cpp:118
+#: solid/devices/backends/udev/udevdevice.cpp:165
 #, fuzzy
 #| msgctxt "Camera device type"
 #| msgid "Camera"

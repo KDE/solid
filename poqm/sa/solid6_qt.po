@@ -50,22 +50,22 @@ msgctxt "Solid::Backends::IMobile::Manager|"
 msgid "iOS devices"
 msgstr "iOS उपकरणानि"
 
-#: solid/devices/backends/udev/udevdevice.cpp:100
+#: solid/devices/backends/udev/udevdevice.cpp:147
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Computer"
 msgstr "संगणक"
 
-#: solid/devices/backends/udev/udevdevice.cpp:104
+#: solid/devices/backends/udev/udevdevice.cpp:151
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Processor"
 msgstr "संसाधकः"
 
-#: solid/devices/backends/udev/udevdevice.cpp:115
+#: solid/devices/backends/udev/udevdevice.cpp:162
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Portable Media Player"
 msgstr "पोर्टेबल मीडिया प्लेयर"
 
-#: solid/devices/backends/udev/udevdevice.cpp:118
+#: solid/devices/backends/udev/udevdevice.cpp:165
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Camera"
 msgstr "कॅमेरा"

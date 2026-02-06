@@ -59,22 +59,22 @@ msgctxt "Solid::Backends::IMobile::Manager|"
 msgid "iOS devices"
 msgstr "iOS 裝置"
 
-#: solid/devices/backends/udev/udevdevice.cpp:100
+#: solid/devices/backends/udev/udevdevice.cpp:147
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Computer"
 msgstr "電腦"
 
-#: solid/devices/backends/udev/udevdevice.cpp:104
+#: solid/devices/backends/udev/udevdevice.cpp:151
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Processor"
 msgstr "處理器"
 
-#: solid/devices/backends/udev/udevdevice.cpp:115
+#: solid/devices/backends/udev/udevdevice.cpp:162
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Portable Media Player"
 msgstr "可攜式媒體播放器"
 
-#: solid/devices/backends/udev/udevdevice.cpp:118
+#: solid/devices/backends/udev/udevdevice.cpp:165
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Camera"
 msgstr "相機"

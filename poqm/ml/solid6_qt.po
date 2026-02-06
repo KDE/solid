@@ -58,25 +58,25 @@ msgctxt "Solid::Backends::IMobile::Manager|"
 msgid "iOS devices"
 msgstr "യുപിഎന്‍പി ഉപകരണങ്ങള്‍"
 
-#: solid/devices/backends/udev/udevdevice.cpp:100
+#: solid/devices/backends/udev/udevdevice.cpp:147
 #, fuzzy
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Computer"
 msgstr "കമ്പ്യൂട്ടര്‍"
 
-#: solid/devices/backends/udev/udevdevice.cpp:104
+#: solid/devices/backends/udev/udevdevice.cpp:151
 #, fuzzy
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Processor"
 msgstr "പ്രോസ്സസര്‍"
 
-#: solid/devices/backends/udev/udevdevice.cpp:115
+#: solid/devices/backends/udev/udevdevice.cpp:162
 #, fuzzy
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Portable Media Player"
 msgstr "കൊണ്ടുനടക്കാവുന്ന മീഡിയ പ്ലെയര്‍"
 
-#: solid/devices/backends/udev/udevdevice.cpp:118
+#: solid/devices/backends/udev/udevdevice.cpp:165
 #, fuzzy
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Camera"
