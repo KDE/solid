@@ -134,6 +134,14 @@ public:
      * Returns false if the operation is not supported, true if the
      * operation is attempted
      */
+    bool remove();
+
+    /*!
+     * Ejects media from the drive.
+     *
+     * Returns false if the operation is not supported, true if the
+     * operation is attempted
+     */
     bool teardown();
 
     /*!
@@ -194,6 +202,19 @@ Q_SIGNALS:
     void setupDone(Solid::ErrorType error, QVariant errorData, const QString &udi);
 
     /*!
+     * This signal is emitted when the attempted unmounting of this
+     * device is completed. The signal might be spontaneous i.e.
+     * it can be triggered by another process.
+     *
+     * \a error type of error that occurred, if any
+     *
+     * \a errorData more information about the error, if any
+     *
+     * \a udi the UDI of the volume
+     */
+    void removeDone(Solid::ErrorType error, QVariant errorData, const QString &udi);
+
+    /*!
      * This signal is emitted when the attempted tearing down of this
      * device is completed. The signal might be spontaneous i.e.
      * it can be triggered by another process.
@@ -214,6 +235,15 @@ Q_SIGNALS:
      * \a udi the UDI of the volume
      */
     void setupRequested(const QString &udi);
+
+    /*!
+     * This signal is emitted when a setup of this device is requested.
+     * The signal might be spontaneous i.e. it can be triggered by
+     * another process.
+     *
+     * \a udi the UDI of the volume
+     */
+    void removeRequested(const QString &udi);
 
     /*!
      * This signal is emitted when a teardown of this device is requested.

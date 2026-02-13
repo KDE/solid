@@ -19,6 +19,7 @@
 #include <QWindow>
 
 #include <config-solid.h>
+#include <qcoreapplication.h>
 #if HAVE_LIBMOUNT
 #include <libmount.h>
 #endif
@@ -50,6 +51,7 @@ using namespace Solid::Backends::UDisks2;
 StorageAccess::StorageAccess(Device *device)
     : DeviceInterface(device)
     , m_setupInProgress(false)
+    , m_removeInProgress(false)
     , m_teardownInProgress(false)
     , m_checkInProgress(false)
     , m_repairInProgress(false)
@@ -72,6 +74,8 @@ StorageAccess::~StorageAccess()
 void StorageAccess::connectDBusSignals()
 {
     m_device->registerAction(QStringLiteral("setup"), this, SLOT(slotSetupRequested()), SLOT(slotSetupDone(int, QString)));
+
+    m_device->registerAction(QStringLiteral("remove"), this, SLOT(slotRemoveRequested()), SLOT(slotRemoveDone(int, QString)));
 
     m_device->registerAction(QStringLiteral("teardown"), this, SLOT(slotTeardownRequested()), SLOT(slotTeardownDone(int, QString)));
 
@@ -129,7 +133,7 @@ bool StorageAccess::canCheck() const
 
 bool StorageAccess::check()
 {
-    if (m_setupInProgress || m_teardownInProgress || m_checkInProgress || m_repairInProgress) {
+    if (m_teardownInProgress || m_setupInProgress || m_removeInProgress || m_checkInProgress || m_repairInProgress) {
         return false;
     }
     m_checkInProgress = true;
@@ -165,7 +169,7 @@ bool StorageAccess::canRepair() const
 
 bool StorageAccess::repair()
 {
-    if (m_teardownInProgress || m_setupInProgress || m_checkInProgress || m_repairInProgress) {
+    if (m_teardownInProgress || m_setupInProgress || m_removeInProgress || m_checkInProgress || m_repairInProgress) {
         return false;
     }
     m_repairInProgress = true;
@@ -272,7 +276,7 @@ bool StorageAccess::isIgnored() const
 
 bool StorageAccess::setup()
 {
-    if (m_teardownInProgress || m_setupInProgress || m_checkInProgress || m_repairInProgress) {
+    if (m_teardownInProgress || m_setupInProgress || m_removeInProgress || m_checkInProgress || m_repairInProgress) {
         return false;
     }
     m_setupInProgress = true;
@@ -285,15 +289,29 @@ bool StorageAccess::setup()
     }
 }
 
+bool StorageAccess::remove()
+{
+    if (m_teardownInProgress || m_setupInProgress || m_removeInProgress || m_checkInProgress || m_repairInProgress) {
+        return false;
+    }
+    m_removeInProgress = true;
+    m_device->broadcastActionRequested(QStringLiteral("remove"));
+
+    return unmount();
+}
+
 bool StorageAccess::teardown()
 {
-    if (m_teardownInProgress || m_setupInProgress || m_checkInProgress || m_repairInProgress) {
+    if (m_teardownInProgress || m_setupInProgress || m_removeInProgress || m_checkInProgress || m_repairInProgress) {
         return false;
     }
     m_teardownInProgress = true;
     m_device->broadcastActionRequested(QStringLiteral("teardown"));
 
-    return unmount();
+    if (m_isAccessible) {
+        return unmount();
+    }
+    return eject();
 }
 
 void StorageAccess::updateCache()
@@ -322,44 +340,16 @@ void StorageAccess::slotDBusReply(const QDBusMessage &reply)
 
             checkAccessibility();
         }
+    } else if (m_removeInProgress) {
+        m_removeInProgress = false;
+        m_device->broadcastActionDone(QStringLiteral("remove"));
+        checkAccessibility();
     } else if (m_teardownInProgress) { // FIXME
-        const QString ctPath = clearTextPath();
-        qCDebug(UDISKS2) << "Successfully unmounted " << m_device->udi();
-        if (isLuksDevice() && !ctPath.isEmpty() && ctPath != QStringLiteral("/")) { // unlocked device, lock it
-            callCryptoTeardown();
-        } else if (!ctPath.isEmpty() && ctPath != QStringLiteral("/")) {
-            callCryptoTeardown(true); // Lock encrypted parent
+        if (!isAccessible()) {
+            eject();
         } else {
-            // try to "eject" (aka safely remove) from the (parent) drive, e.g. SD card from a reader
-            QString drivePath = m_device->drivePath();
-            if (!drivePath.isEmpty() || drivePath != QStringLiteral("/")) {
-                Device drive(m_device->manager(), drivePath);
-                QDBusConnection c = QDBusConnection::systemBus();
-
-                if (drive.prop(QStringLiteral("MediaRemovable")).toBool() //
-                    && drive.prop(QStringLiteral("MediaAvailable")).toBool() //
-                    && !m_device->isOpticalDisc()) { // optical drives have their Eject method
-                    QDBusMessage msg = QDBusMessage::createMethodCall(QStringLiteral(UD2_DBUS_SERVICE),
-                                                                      drivePath,
-                                                                      QStringLiteral(UD2_DBUS_INTERFACE_DRIVE),
-                                                                      QStringLiteral("Eject"));
-                    msg << QVariantMap(); // options, unused now
-                    c.call(msg, QDBus::NoBlock);
-                } else if (drive.prop(QStringLiteral("CanPowerOff")).toBool() //
-                           && !m_device->isOpticalDisc()) { // avoid disconnecting optical drives from the bus
-                    qCDebug(UDISKS2) << "Drive can power off:" << drivePath;
-                    QDBusMessage msg = QDBusMessage::createMethodCall(QStringLiteral(UD2_DBUS_SERVICE),
-                                                                      drivePath,
-                                                                      QStringLiteral(UD2_DBUS_INTERFACE_DRIVE),
-                                                                      QStringLiteral("PowerOff"));
-                    msg << QVariantMap(); // options, unused now
-                    c.call(msg, QDBus::NoBlock);
-                }
-            }
-
             m_teardownInProgress = false;
             m_device->broadcastActionDone(QStringLiteral("teardown"));
-
             checkAccessibility();
         }
     } else if (m_checkInProgress) {
@@ -388,6 +378,12 @@ void StorageAccess::slotDBusError(const QDBusError &error)
                                       m_device->errorToSolidError(error.name()),
                                       m_device->errorToString(error.name()) + QStringLiteral(": ") + error.message());
 
+        checkAccessibility();
+    } else if (m_removeInProgress) {
+        m_removeInProgress = false;
+        m_device->broadcastActionDone(QStringLiteral("remove"),
+                                      m_device->errorToSolidError(error.name()),
+                                      m_device->errorToString(error.name()) + QStringLiteral(": ") + error.message());
         checkAccessibility();
     } else if (m_teardownInProgress) {
         m_teardownInProgress = false;
@@ -421,6 +417,19 @@ void StorageAccess::slotSetupDone(int error, const QString &errorString)
     // qDebug() << "SETUP DONE:" << m_device->udi();
     checkAccessibility();
     Q_EMIT setupDone(static_cast<Solid::ErrorType>(error), errorString, m_device->udi());
+}
+
+void StorageAccess::slotRemoveRequested()
+{
+    m_removeInProgress = true;
+    Q_EMIT removeRequested(m_device->udi());
+}
+
+void StorageAccess::slotRemoveDone(int error, const QString &errorString)
+{
+    m_removeInProgress = false;
+    checkAccessibility();
+    Q_EMIT removeDone(static_cast<Solid::ErrorType>(error), errorString, m_device->udi());
 }
 
 void StorageAccess::slotTeardownRequested()
@@ -490,6 +499,55 @@ bool StorageAccess::unmount()
 
     qCDebug(UDISKS2) << "Initiating unmount of " << path;
     return c.callWithCallback(msg, this, SLOT(slotDBusReply(QDBusMessage)), SLOT(slotDBusError(QDBusError)), s_unmountTimeout);
+}
+
+bool StorageAccess::eject()
+{
+    bool isSuccessful = false;
+    const QString ctPath = clearTextPath();
+    qCDebug(UDISKS2) << "Successfully unmounted " << m_device->udi();
+    if (isLuksDevice() && !ctPath.isEmpty() && ctPath != QStringLiteral("/")) { // unlocked device, lock it
+        callCryptoTeardown();
+        isSuccessful = true;
+    } else if (!ctPath.isEmpty() && ctPath != QStringLiteral("/")) {
+        callCryptoTeardown(true); // Lock encrypted parent
+        isSuccessful = true;
+    } else {
+        // try to "eject" (aka safely remove) from the (parent) drive, e.g. SD card from a reader
+        QString drivePath = m_device->drivePath();
+        if (!drivePath.isEmpty() || drivePath != QStringLiteral("/")) {
+            Device drive(m_device->manager(), drivePath);
+            QDBusConnection c = QDBusConnection::systemBus();
+
+            if (drive.prop(QStringLiteral("MediaRemovable")).toBool() //
+                && drive.prop(QStringLiteral("MediaAvailable")).toBool() //
+                && !m_device->isOpticalDisc()) { // optical drives have their Eject method
+                QDBusMessage msg = QDBusMessage::createMethodCall(QStringLiteral(UD2_DBUS_SERVICE),
+                                                                  drivePath,
+                                                                  QStringLiteral(UD2_DBUS_INTERFACE_DRIVE),
+                                                                  QStringLiteral("Eject"));
+                msg << QVariantMap(); // options, unused now
+                isSuccessful = true;
+                c.call(msg, QDBus::NoBlock);
+            } else if (drive.prop(QStringLiteral("CanPowerOff")).toBool() //
+                       && !m_device->isOpticalDisc()) { // avoid disconnecting optical drives from the bus
+                qCDebug(UDISKS2) << "Drive can power off:" << drivePath;
+                QDBusMessage msg = QDBusMessage::createMethodCall(QStringLiteral(UD2_DBUS_SERVICE),
+                                                                  drivePath,
+                                                                  QStringLiteral(UD2_DBUS_INTERFACE_DRIVE),
+                                                                  QStringLiteral("PowerOff"));
+                msg << QVariantMap(); // options, unused now
+                c.call(msg, QDBus::NoBlock);
+                isSuccessful = true;
+            }
+        }
+
+        m_teardownInProgress = false;
+        m_device->broadcastActionDone(QStringLiteral("teardown"));
+
+        checkAccessibility();
+    }
+    return isSuccessful;
 }
 
 QString StorageAccess::generateReturnObjectPath()

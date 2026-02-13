@@ -48,6 +48,16 @@ bool FakeStorageAccess::setup()
     }
 }
 
+bool FakeStorageAccess::remove()
+{
+    if (fakeDevice()->isBroken() || !isAccessible()) {
+        return false;
+    } else {
+        fakeDevice()->setProperty(QStringLiteral("isMounted"), false);
+        return true;
+    }
+}
+
 bool FakeStorageAccess::teardown()
 {
     if (fakeDevice()->isBroken() || !isAccessible()) {

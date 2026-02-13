@@ -105,21 +105,36 @@ void FstabStorageAccess::slotSetupRequested()
     Q_EMIT setupRequested(m_fstabDevice->udi());
 }
 
+bool FstabStorageAccess::remove()
+{
+    if (filePath().isEmpty()) {
+        return false;
+    }
+    m_fstabDevice->broadcastActionRequested(QStringLiteral("remove"));
+    return FstabHandling::callSystemCommand(QStringLiteral("umount"), {filePath()}, this, [this](QProcess *process) {
+        if (process->exitCode() == 0) {
+            m_fstabDevice->broadcastActionDone(QStringLiteral("remove"), Solid::NoError);
+        } else if (process->exitCode() == EBUSY) {
+            m_fstabDevice->broadcastActionDone(QStringLiteral("remove"), Solid::DeviceBusy);
+        } else if (process->exitCode() == EPERM) {
+            m_fstabDevice->broadcastActionDone(QStringLiteral("remove"),
+                                               Solid::UnauthorizedOperation,
+                                               QString::fromUtf8(process->readAllStandardError().trimmed()));
+        } else {
+            m_fstabDevice->broadcastActionDone(QStringLiteral("remove"), Solid::OperationFailed, QString::fromUtf8(process->readAllStandardError().trimmed()));
+        }
+    });
+}
+
 bool FstabStorageAccess::teardown()
 {
     if (filePath().isEmpty()) {
         return false;
     }
     m_fstabDevice->broadcastActionRequested(QStringLiteral("teardown"));
-    return FstabHandling::callSystemCommand(QStringLiteral("umount"), {filePath()}, this, [this](QProcess *process) {
+    return FstabHandling::callSystemCommand(QStringLiteral("eject"), {filePath()}, this, [this](QProcess *process) {
         if (process->exitCode() == 0) {
             m_fstabDevice->broadcastActionDone(QStringLiteral("teardown"), Solid::NoError);
-        } else if (process->exitCode() == EBUSY) {
-            m_fstabDevice->broadcastActionDone(QStringLiteral("teardown"), Solid::DeviceBusy);
-        } else if (process->exitCode() == EPERM) {
-            m_fstabDevice->broadcastActionDone(QStringLiteral("teardown"),
-                                               Solid::UnauthorizedOperation,
-                                               QString::fromUtf8(process->readAllStandardError().trimmed()));
         } else {
             m_fstabDevice->broadcastActionDone(QStringLiteral("teardown"),
                                                Solid::OperationFailed,

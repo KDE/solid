@@ -14,8 +14,10 @@ Solid::StorageAccess::StorageAccess(QObject *backendObject)
     : DeviceInterface(*new StorageAccessPrivate(), backendObject)
 {
     connect(backendObject, SIGNAL(setupDone(Solid::ErrorType, QVariant, QString)), this, SIGNAL(setupDone(Solid::ErrorType, QVariant, QString)));
+    connect(backendObject, SIGNAL(removeDone(Solid::ErrorType, QVariant, QString)), this, SIGNAL(removeDone(Solid::ErrorType, QVariant, QString)));
     connect(backendObject, SIGNAL(teardownDone(Solid::ErrorType, QVariant, QString)), this, SIGNAL(teardownDone(Solid::ErrorType, QVariant, QString)));
     connect(backendObject, SIGNAL(setupRequested(QString)), this, SIGNAL(setupRequested(QString)));
+    connect(backendObject, SIGNAL(removeRequested(QString)), this, SIGNAL(removeRequested(QString)));
     connect(backendObject, SIGNAL(teardownRequested(QString)), this, SIGNAL(teardownRequested(QString)));
 
     connect(backendObject, SIGNAL(accessibilityChanged(bool, QString)), this, SIGNAL(accessibilityChanged(bool, QString)));
@@ -34,10 +36,15 @@ Solid::StorageAccess::StorageAccess(StorageAccessPrivate &dd, QObject *backendOb
             this,
             SIGNAL(setupDone(Solid::StorageAccess::SetupResult, QVariant, QString)));
     connect(backendObject,
+            SIGNAL(removeDone(Solid::StorageAccess::RemoveResult, QVariant, QString)),
+            this,
+            SIGNAL(removeDone(Solid::StorageAccess::RemoveResult, QVariant, QString)));
+    connect(backendObject,
             SIGNAL(teardownDone(Solid::StorageAccess::TeardownResult, QVariant, QString)),
             this,
             SIGNAL(teardownDone(Solid::StorageAccess::TeardownResult, QVariant, QString)));
     connect(backendObject, SIGNAL(setupRequested(QString)), this, SIGNAL(setupRequested(QString)));
+    connect(backendObject, SIGNAL(removeRequested(QString)), this, SIGNAL(removeRequested(QString)));
     connect(backendObject, SIGNAL(teardownRequested(QString)), this, SIGNAL(teardownRequested(QString)));
 
     connect(backendObject, SIGNAL(accessibilityChanged(bool, QString)), this, SIGNAL(accessibilityChanged(bool, QString)));
@@ -68,6 +75,12 @@ bool Solid::StorageAccess::setup()
 {
     Q_D(StorageAccess);
     return_SOLID_CALL(Ifaces::StorageAccess *, d->backendObject(), false, setup());
+}
+
+bool Solid::StorageAccess::remove()
+{
+    Q_D(StorageAccess);
+    return_SOLID_CALL(Ifaces::StorageAccess *, d->backendObject(), false, remove());
 }
 
 bool Solid::StorageAccess::teardown()

@@ -73,6 +73,13 @@ public:
      *
      * @return the job handling the operation
      */
+    virtual bool remove() = 0;
+
+    /**
+     * Ejects media from the drive.
+     *
+     * @return the job handling the operation
+     */
     virtual bool teardown() = 0;
 
     /**
@@ -134,6 +141,15 @@ protected:
      * @param newState true if the volume is mounted, false otherwise
      * @param udi the UDI of the volume
      */
+    virtual void removeDone(Solid::ErrorType error, QVariant resultData, const QString &udi) = 0;
+
+    /**
+     * This signal is emitted when the mount state of this device
+     * has changed.
+     *
+     * @param newState true if the volume is mounted, false otherwise
+     * @param udi the UDI of the volume
+     */
     virtual void teardownDone(Solid::ErrorType error, QVariant resultData, const QString &udi) = 0;
 
     /**
@@ -144,6 +160,15 @@ protected:
      * @param udi the UDI of the volume
      */
     virtual void setupRequested(const QString &udi) = 0;
+
+    /**
+     * This signal is emitted when a teardown of this device is requested.
+     * The signal might be spontaneous i.e. it can be triggered by
+     * another process
+     *
+     * @param udi the UDI of the volume
+     */
+    virtual void removeRequested(const QString &udi) = 0;
 
     /**
      * This signal is emitted when a teardown of this device is requested.

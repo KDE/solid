@@ -33,6 +33,7 @@ public:
     QString filePath() const override;
     bool isIgnored() const override;
     bool setup() override;
+    bool remove() override;
     bool teardown() override;
     bool isEncrypted() const override;
 
@@ -44,8 +45,10 @@ public:
 Q_SIGNALS:
     void accessibilityChanged(bool accessible, const QString &udi) override;
     void setupDone(Solid::ErrorType error, QVariant errorData, const QString &udi) override;
+    void removeDone(Solid::ErrorType error, QVariant errorData, const QString &udi) override;
     void teardownDone(Solid::ErrorType error, QVariant errorData, const QString &udi) override;
     void setupRequested(const QString &udi) override;
+    void removeRequested(const QString &udi) override;
     void teardownRequested(const QString &udi) override;
     void checkRequested(const QString &udi) override;
     void checkDone(Solid::ErrorType error, QVariant errorData, const QString &udi) override;
@@ -63,6 +66,8 @@ private Q_SLOTS:
 
     void slotSetupRequested();
     void slotSetupDone(int error, const QString &errorString);
+    void slotRemoveRequested();
+    void slotRemoveDone(int error, const QString &errorString);
     void slotTeardownRequested();
     void slotTeardownDone(int error, const QString &errorString);
     void slotCheckRequested();
@@ -80,6 +85,7 @@ private:
 
     bool mount();
     bool unmount();
+    bool eject();
 
     bool requestPassphrase();
     void callCryptoSetup(const QString &passphrase);
@@ -93,6 +99,7 @@ private:
 private:
     bool m_isAccessible;
     bool m_setupInProgress;
+    bool m_removeInProgress;
     bool m_teardownInProgress;
     bool m_checkInProgress;
     bool m_repairInProgress;
