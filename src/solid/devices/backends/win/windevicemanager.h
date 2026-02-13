@@ -66,7 +66,7 @@ public:
     {
         INFO info;
         ZeroMemory(&info, sizeof(INFO));
-        getDeviceInfoPrivate(devName, code, &info, sizeof(INFO), query);
+        getDeviceInfoPrivate(devName, {code}, &info, sizeof(INFO), query);
         return info;
     }
 
@@ -74,12 +74,12 @@ public:
     static void getDeviceInfo(const QString &devName, int code, BUFFER_TYPE *out, DWORD outSize, QUERY *query = NULL)
     {
         ZeroMemory(out, sizeof(BUFFER_TYPE) * outSize);
-        getDeviceInfoPrivate(devName, code, out, outSize, query);
+        getDeviceInfoPrivate(devName, {code}, out, outSize, query);
     }
 
-    static void deviceAction(const QString &devName, int code)
+    static void deviceAction(const QString &devName, const QList<int> &codes)
     {
-        getDeviceInfoPrivate<void, void *>(devName, code, NULL, 0, NULL);
+        getDeviceInfoPrivate<void, void *>(devName, codes, NULL, 0, NULL);
     }
 
 Q_SIGNALS:
@@ -98,7 +98,7 @@ private:
     QSet<Solid::DeviceInterface::Type> m_supportedInterfaces;
 
     template<class INFO, class QUERY>
-    static void getDeviceInfoPrivate(const QString &devName, int code, INFO *info, DWORD size, QUERY *query = NULL)
+    static void getDeviceInfoPrivate(const QString &devName, const QList<int> &codes, INFO *info, DWORD size, QUERY *query = NULL)
     {
         Q_ASSERT(!devName.isNull());
         wchar_t deviceNameBuffer[MAX_PATH];
@@ -110,7 +110,7 @@ private:
         DWORD bytesReturned = 0;
 
         ulong err = NO_ERROR;
-        HANDLE handle = ::CreateFileW(deviceNameBuffer, GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL);
+        HANDLE handle = ::CreateFileW(deviceNameBuffer, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, 0, NULL);
         if (handle == INVALID_HANDLE_VALUE) {
             err = GetLastError();
             if (err == ERROR_ACCESS_DENIED) {
@@ -123,9 +123,11 @@ private:
                 return;
             }
         }
-        if (::DeviceIoControl(handle, code, query, sizeof(QUERY), info, size, &bytesReturned, NULL)) {
-            ::CloseHandle(handle);
-            return;
+        for (auto code : codes) {
+            if (::DeviceIoControl(handle, code, query, sizeof(QUERY), info, size, &bytesReturned, NULL)) {
+                ::CloseHandle(handle);
+                return;
+            }
         }
 
         if (handle == INVALID_HANDLE_VALUE) {

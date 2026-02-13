@@ -31,7 +31,7 @@ Solid::OpticalDrive::MediumTypes WinOpticalDrive::supportedMedia() const
 
 bool WinOpticalDrive::eject()
 {
-    WinDeviceManager::deviceAction(WinBlock::driveLetterFromUdi(m_device->udi()), IOCTL_STORAGE_EJECT_MEDIA);
+    WinDeviceManager::deviceAction(WinBlock::driveLetterFromUdi(m_device->udi()), {IOCTL_STORAGE_EJECT_MEDIA});
     return true;
 }
 
