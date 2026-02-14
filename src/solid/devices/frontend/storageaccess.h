@@ -237,7 +237,7 @@ Q_SIGNALS:
     void setupRequested(const QString &udi);
 
     /*!
-     * This signal is emitted when a setup of this device is requested.
+     * This signal is emitted when a unmount of this device is requested.
      * The signal might be spontaneous i.e. it can be triggered by
      * another process.
      *

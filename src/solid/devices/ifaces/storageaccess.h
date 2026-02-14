@@ -76,7 +76,9 @@ public:
     virtual bool unmount() = 0;
 
     /**
-     * Ejects media from the drive.
+     * Transitions the device from an active/mounted state to a physically unavailable
+     * state by ejecting it. This differs from a simple unmount: the device is removed
+     * from use and must be reinserted to become available again.
      *
      * @return the job handling the operation
      */
@@ -135,7 +137,7 @@ protected:
     virtual void setupDone(Solid::ErrorType error, QVariant resultData, const QString &udi) = 0;
 
     /**
-     * This signal is emitted when the mount state of this device
+     * This signal is emitted when the unmount state of this device
      * has changed.
      *
      * @param newState true if the volume is mounted, false otherwise
@@ -162,7 +164,7 @@ protected:
     virtual void setupRequested(const QString &udi) = 0;
 
     /**
-     * This signal is emitted when a teardown of this device is requested.
+     * This signal is emitted when a unmount of this device is requested.
      * The signal might be spontaneous i.e. it can be triggered by
      * another process
      *
