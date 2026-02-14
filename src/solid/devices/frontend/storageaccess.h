@@ -134,7 +134,7 @@ public:
      * Returns false if the operation is not supported, true if the
      * operation is attempted
      */
-    bool remove();
+    bool unmount();
 
     /*!
      * Ejects media from the drive.
@@ -212,7 +212,7 @@ Q_SIGNALS:
      *
      * \a udi the UDI of the volume
      */
-    void removeDone(Solid::ErrorType error, QVariant errorData, const QString &udi);
+    void unmountDone(Solid::ErrorType error, QVariant errorData, const QString &udi);
 
     /*!
      * This signal is emitted when the attempted tearing down of this
@@ -243,7 +243,7 @@ Q_SIGNALS:
      *
      * \a udi the UDI of the volume
      */
-    void removeRequested(const QString &udi);
+    void unmountRequested(const QString &udi);
 
     /*!
      * This signal is emitted when a teardown of this device is requested.

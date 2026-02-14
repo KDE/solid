@@ -45,7 +45,7 @@ bool WinStorageAccess::setup()
     return true;
 }
 
-bool WinStorageAccess::remove()
+bool WinStorageAccess::unmount()
 {
     if (m_device->queryDeviceInterface(Solid::DeviceInterface::StorageVolume) && WinStorageDrive(m_device).driveType() == Solid::StorageDrive::MemoryStick) {
         WinDeviceManager::deviceAction(WinBlock::driveLetterFromUdi(m_device->udi()), {FSCTL_LOCK_VOLUME, FSCTL_DISMOUNT_VOLUME});

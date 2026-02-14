@@ -31,16 +31,16 @@ public:
     bool isEncrypted() const override;
 public Q_SLOTS:
     bool setup() override;
-    bool remove() override;
+    bool unmount() override;
     bool teardown() override;
 
 Q_SIGNALS:
     void accessibilityChanged(bool accessible, const QString &udi) override;
     void setupDone(Solid::ErrorType error, QVariant errorData, const QString &udi) override;
-    void removeDone(Solid::ErrorType error, QVariant errorData, const QString &udi) override;
+    void unmountDone(Solid::ErrorType error, QVariant errorData, const QString &udi) override;
     void teardownDone(Solid::ErrorType error, QVariant errorData, const QString &udi) override;
     void setupRequested(const QString &udi) override;
-    void removeRequested(const QString &udi) override;
+    void unmountRequested(const QString &udi) override;
     void teardownRequested(const QString &udi) override;
     void checkRequested(const QString &udi) override;
     void checkDone(Solid::ErrorType error, QVariant errorData, const QString &udi) override;

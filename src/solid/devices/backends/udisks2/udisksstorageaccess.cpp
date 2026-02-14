@@ -51,7 +51,7 @@ using namespace Solid::Backends::UDisks2;
 StorageAccess::StorageAccess(Device *device)
     : DeviceInterface(device)
     , m_setupInProgress(false)
-    , m_removeInProgress(false)
+    , m_unmountInProgress(false)
     , m_teardownInProgress(false)
     , m_checkInProgress(false)
     , m_repairInProgress(false)
@@ -75,7 +75,7 @@ void StorageAccess::connectDBusSignals()
 {
     m_device->registerAction(QStringLiteral("setup"), this, SLOT(slotSetupRequested()), SLOT(slotSetupDone(int, QString)));
 
-    m_device->registerAction(QStringLiteral("remove"), this, SLOT(slotRemoveRequested()), SLOT(slotRemoveDone(int, QString)));
+    m_device->registerAction(QStringLiteral("unmount"), this, SLOT(slotUnmountRequested()), SLOT(slotUnmountDone(int, QString)));
 
     m_device->registerAction(QStringLiteral("teardown"), this, SLOT(slotTeardownRequested()), SLOT(slotTeardownDone(int, QString)));
 
@@ -133,7 +133,7 @@ bool StorageAccess::canCheck() const
 
 bool StorageAccess::check()
 {
-    if (m_teardownInProgress || m_setupInProgress || m_removeInProgress || m_checkInProgress || m_repairInProgress) {
+    if (m_teardownInProgress || m_setupInProgress || m_unmountInProgress || m_checkInProgress || m_repairInProgress) {
         return false;
     }
     m_checkInProgress = true;
@@ -169,7 +169,7 @@ bool StorageAccess::canRepair() const
 
 bool StorageAccess::repair()
 {
-    if (m_teardownInProgress || m_setupInProgress || m_removeInProgress || m_checkInProgress || m_repairInProgress) {
+    if (m_teardownInProgress || m_setupInProgress || m_unmountInProgress || m_checkInProgress || m_repairInProgress) {
         return false;
     }
     m_repairInProgress = true;
@@ -276,7 +276,7 @@ bool StorageAccess::isIgnored() const
 
 bool StorageAccess::setup()
 {
-    if (m_teardownInProgress || m_setupInProgress || m_removeInProgress || m_checkInProgress || m_repairInProgress) {
+    if (m_teardownInProgress || m_setupInProgress || m_unmountInProgress || m_checkInProgress || m_repairInProgress) {
         return false;
     }
     m_setupInProgress = true;
@@ -285,33 +285,33 @@ bool StorageAccess::setup()
     if (m_device->isEncryptedContainer() && clearTextPath().isEmpty()) {
         return requestPassphrase();
     } else {
-        return mount();
+        return triggerSetup();
     }
 }
 
-bool StorageAccess::remove()
+bool StorageAccess::unmount()
 {
-    if (m_teardownInProgress || m_setupInProgress || m_removeInProgress || m_checkInProgress || m_repairInProgress) {
+    if (m_teardownInProgress || m_setupInProgress || m_unmountInProgress || m_checkInProgress || m_repairInProgress) {
         return false;
     }
-    m_removeInProgress = true;
-    m_device->broadcastActionRequested(QStringLiteral("remove"));
+    m_unmountInProgress = true;
+    m_device->broadcastActionRequested(QStringLiteral("unmount"));
 
-    return unmount();
+    return triggerUnmount();
 }
 
 bool StorageAccess::teardown()
 {
-    if (m_teardownInProgress || m_setupInProgress || m_removeInProgress || m_checkInProgress || m_repairInProgress) {
+    if (m_teardownInProgress || m_setupInProgress || m_unmountInProgress || m_checkInProgress || m_repairInProgress) {
         return false;
     }
     m_teardownInProgress = true;
     m_device->broadcastActionRequested(QStringLiteral("teardown"));
 
     if (m_isAccessible) {
-        return unmount();
+        return triggerUnmount();
     }
-    return eject();
+    return triggerTeardown();
 }
 
 void StorageAccess::updateCache()
@@ -333,20 +333,20 @@ void StorageAccess::slotDBusReply(const QDBusMessage &reply)
 {
     if (m_setupInProgress) {
         if (isLuksDevice() && !isAccessible()) { // unlocked device, now mount it
-            mount();
+            triggerSetup();
         } else { // Don't broadcast setupDone unless the setup is really done. (Fix kde#271156)
             m_setupInProgress = false;
             m_device->broadcastActionDone(QStringLiteral("setup"));
 
             checkAccessibility();
         }
-    } else if (m_removeInProgress) {
-        m_removeInProgress = false;
-        m_device->broadcastActionDone(QStringLiteral("remove"));
+    } else if (m_unmountInProgress) {
+        m_unmountInProgress = false;
+        m_device->broadcastActionDone(QStringLiteral("unmount"));
         checkAccessibility();
-    } else if (m_teardownInProgress) { // FIXME
+    } else if (m_teardownInProgress) {
         if (!isAccessible()) {
-            eject();
+            triggerTeardown();
         } else {
             m_teardownInProgress = false;
             m_device->broadcastActionDone(QStringLiteral("teardown"));
@@ -379,9 +379,9 @@ void StorageAccess::slotDBusError(const QDBusError &error)
                                       m_device->errorToString(error.name()) + QStringLiteral(": ") + error.message());
 
         checkAccessibility();
-    } else if (m_removeInProgress) {
-        m_removeInProgress = false;
-        m_device->broadcastActionDone(QStringLiteral("remove"),
+    } else if (m_unmountInProgress) {
+        m_unmountInProgress = false;
+        m_device->broadcastActionDone(QStringLiteral("unmount"),
                                       m_device->errorToSolidError(error.name()),
                                       m_device->errorToString(error.name()) + QStringLiteral(": ") + error.message());
         checkAccessibility();
@@ -419,17 +419,17 @@ void StorageAccess::slotSetupDone(int error, const QString &errorString)
     Q_EMIT setupDone(static_cast<Solid::ErrorType>(error), errorString, m_device->udi());
 }
 
-void StorageAccess::slotRemoveRequested()
+void StorageAccess::slotUnmountRequested()
 {
-    m_removeInProgress = true;
-    Q_EMIT removeRequested(m_device->udi());
+    m_unmountInProgress = true;
+    Q_EMIT unmountRequested(m_device->udi());
 }
 
-void StorageAccess::slotRemoveDone(int error, const QString &errorString)
+void StorageAccess::slotUnmountDone(int error, const QString &errorString)
 {
-    m_removeInProgress = false;
+    m_unmountInProgress = false;
     checkAccessibility();
-    Q_EMIT removeDone(static_cast<Solid::ErrorType>(error), errorString, m_device->udi());
+    Q_EMIT unmountDone(static_cast<Solid::ErrorType>(error), errorString, m_device->udi());
 }
 
 void StorageAccess::slotTeardownRequested()
@@ -469,7 +469,7 @@ void StorageAccess::slotRepairDone(int error, const QString &errorString)
     Q_EMIT repairDone(static_cast<Solid::ErrorType>(error), errorString, m_device->udi());
 }
 
-bool StorageAccess::mount()
+bool StorageAccess::triggerSetup()
 {
     const auto path = dbusPath();
 
@@ -487,7 +487,7 @@ bool StorageAccess::mount()
     return c.callWithCallback(msg, this, SLOT(slotDBusReply(QDBusMessage)), SLOT(slotDBusError(QDBusError)));
 }
 
-bool StorageAccess::unmount()
+bool StorageAccess::triggerUnmount()
 {
     const auto path = dbusPath();
 
@@ -501,7 +501,7 @@ bool StorageAccess::unmount()
     return c.callWithCallback(msg, this, SLOT(slotDBusReply(QDBusMessage)), SLOT(slotDBusError(QDBusError)), s_unmountTimeout);
 }
 
-bool StorageAccess::eject()
+bool StorageAccess::triggerTeardown()
 {
     bool isSuccessful = false;
     const QString ctPath = clearTextPath();

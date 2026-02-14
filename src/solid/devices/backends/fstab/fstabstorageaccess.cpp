@@ -105,23 +105,23 @@ void FstabStorageAccess::slotSetupRequested()
     Q_EMIT setupRequested(m_fstabDevice->udi());
 }
 
-bool FstabStorageAccess::remove()
+bool FstabStorageAccess::unmount()
 {
     if (filePath().isEmpty()) {
         return false;
     }
-    m_fstabDevice->broadcastActionRequested(QStringLiteral("remove"));
+    m_fstabDevice->broadcastActionRequested(QStringLiteral("unmount"));
     return FstabHandling::callSystemCommand(QStringLiteral("umount"), {filePath()}, this, [this](QProcess *process) {
         if (process->exitCode() == 0) {
-            m_fstabDevice->broadcastActionDone(QStringLiteral("remove"), Solid::NoError);
+            m_fstabDevice->broadcastActionDone(QStringLiteral("unmount"), Solid::NoError);
         } else if (process->exitCode() == EBUSY) {
-            m_fstabDevice->broadcastActionDone(QStringLiteral("remove"), Solid::DeviceBusy);
+            m_fstabDevice->broadcastActionDone(QStringLiteral("unmount"), Solid::DeviceBusy);
         } else if (process->exitCode() == EPERM) {
-            m_fstabDevice->broadcastActionDone(QStringLiteral("remove"),
+            m_fstabDevice->broadcastActionDone(QStringLiteral("unmount"),
                                                Solid::UnauthorizedOperation,
                                                QString::fromUtf8(process->readAllStandardError().trimmed()));
         } else {
-            m_fstabDevice->broadcastActionDone(QStringLiteral("remove"), Solid::OperationFailed, QString::fromUtf8(process->readAllStandardError().trimmed()));
+            m_fstabDevice->broadcastActionDone(QStringLiteral("unmount"), Solid::OperationFailed, QString::fromUtf8(process->readAllStandardError().trimmed()));
         }
     });
 }

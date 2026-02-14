@@ -38,7 +38,7 @@ public:
 
     bool setup() override;
 
-    bool remove() override;
+    bool unmount() override;
 
     bool teardown() override;
 
@@ -50,13 +50,13 @@ Q_SIGNALS:
 
     void setupDone(Solid::ErrorType error, QVariant data, const QString &udi) override;
 
-    void removeDone(Solid::ErrorType error, QVariant data, const QString &udi) override;
+    void unmountDone(Solid::ErrorType error, QVariant data, const QString &udi) override;
 
     void teardownDone(Solid::ErrorType error, QVariant data, const QString &udi) override;
 
     void setupRequested(const QString &udi) override;
 
-    void removeRequested(const QString &udi) override;
+    void unmountRequested(const QString &udi) override;
 
     void teardownRequested(const QString &udi) override;
 
