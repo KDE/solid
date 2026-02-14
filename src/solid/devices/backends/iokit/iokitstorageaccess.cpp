@@ -81,6 +81,12 @@ bool IOKitStorageAccess::setup()
     return false;
 }
 
+bool IOKitStorageAccess::unmount()
+{
+    // TODO?
+    return false;
+}
+
 bool IOKitStorageAccess::teardown()
 {
     // TODO?
