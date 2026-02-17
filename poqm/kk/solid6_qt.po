@@ -19,13 +19,13 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Qt-Contexts: true\n"
 
-#: solid/devices/backends/fstab/fstabdevice.cpp:61
+#: solid/devices/backends/fstab/fstabdevice.cpp:69
 #, qt-format
 msgctxt "%1 is sharename, %2 is servername"
 msgid "%1 on %2"
 msgstr ""
 
-#: solid/devices/backends/fstab/fstabdevice.cpp:63
+#: solid/devices/backends/fstab/fstabdevice.cpp:71
 #, qt-format
 msgctxt "%1 is mountpoint, %2 is fs type"
 msgid "%1 (%2)"
