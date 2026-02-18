@@ -1,7 +1,5 @@
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# Sergiu Bivol <sergiu@cip.md>, 2009.
-# Sergiu Bivol <sergiu@cip.md>, 2010, 2012, 2014, 2020, 2021, 2022, 2024.
+# This file is distributed under the same license as the solid package.
+# SPDX-FileCopyrightText: 2009, 2010, 2012, 2014, 2020, 2021, 2022, 2024, 2025 Sergiu Bivol <sergiu@cip.md>
 # Cristian Oneț <onet.cristian@gmail.com>, 2010, 2011, 2013.
 #
 msgid ""
@@ -9,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-01-24 18:50+0000\n"
-"PO-Revision-Date: 2024-02-24 15:57+0000\n"
+"PO-Revision-Date: 2025-09-27 13:56+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
 "Language: ro\n"
@@ -18,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 25.08.1\n"
 "X-Qt-Contexts: true\n"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:60
@@ -556,6 +554,8 @@ msgid ""
 "Cannot request authentication for this action. The PolicyKit authentication "
 "system appears to be not available."
 msgstr ""
+"Nu se poate cere autentificarea pentru această acțiune. Sistemul de "
+"autentificare PolicyKit nu pare a fi disponibil."
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:760
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -798,7 +798,7 @@ msgstr ""
 #: tools/solid-hardware/solid-hardware.cpp:277
 msgctxt "solid-hardware|"
 msgid "             # Monitor a devices for changes.\n"
-msgstr ""
+msgstr "             # Monitorizează un dispozitiv pentru schimbări.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:289
 msgctxt "solid-hardware|"
