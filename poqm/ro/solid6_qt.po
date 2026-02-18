@@ -1,7 +1,5 @@
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# SPDX-FileCopyrightText: 2009, 2025 Sergiu Bivol <sergiu@cip.md>
-# Sergiu Bivol <sergiu@cip.md>, 2010, 2012, 2014, 2020, 2021, 2022, 2024.
+# SPDX-FileCopyrightText: 2009, 2010, 2012, 2014, 2020, 2021, 2022, 2024, 2025 Sergiu Bivol <sergiu@cip.md>
+# This file is distributed under the same license as the solid package.
 # Cristian Oneț <onet.cristian@gmail.com>, 2010, 2011, 2013.
 #
 msgid ""
