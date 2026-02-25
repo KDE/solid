@@ -32,6 +32,7 @@ public:
     static QStringList mountPoints(const QString &device);
     static QHash<QString, QString> options(const QString &device);
     static QString fstype(const QString &device);
+    static bool isNetworkFileSystem(const QString &device);
     static bool callSystemCommand(const QString &commandName, const QStringList &args, const QObject *recvr, std::function<void(QProcess *)> callback);
     static void flushMtabCache();
     static void flushFstabCache();

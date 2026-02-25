@@ -64,6 +64,12 @@ bool _k_isFstabNetworkFileSystem(const QString &fstype, const QString &devName)
     return false;
 }
 
+bool Solid::Backends::Fstab::FstabHandling::isNetworkFileSystem(const QString &device)
+{
+    const auto fstype = FstabHandling::fstype(device);
+    return _k_isFstabNetworkFileSystem(fstype, device);
+}
+
 bool _k_isFstabSupportedLocalFileSystem(const QString &fstype)
 {
     if (fstype == QLatin1String("fuse.encfs") //
