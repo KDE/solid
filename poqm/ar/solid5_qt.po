@@ -1,11 +1,11 @@
-# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024, 2025 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
+# SPDX-FileCopyrightText: 2021, 2022, 2023, 2024, 2025, 2026 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
 # Safa Alfulaij <safa1996alfulaij@gmail.com>, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-06-28 15:38+0300\n"
-"PO-Revision-Date: 2025-08-03 15:49+0400\n"
+"PO-Revision-Date: 2026-02-26 13:11+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -27,7 +27,7 @@ msgstr "‏%1 على %2"
 #, qt-format
 msgctxt "%1 is mountpoint, %2 is fs type"
 msgid "%1 (%2)"
-msgstr "‏%1 (‏%2)"
+msgstr "‏%1 ‏(‏%2)"
 
 #: solid/devices/backends/fstab/fstabmanager.cpp:80
 msgctxt "Solid::Backends::Fstab::FstabManager|"
@@ -513,22 +513,22 @@ msgstr "جهاز النواة لنوع نظام الملفات هذا غير م�
 #: solid/devices/backends/udisks2/udisksdevice.cpp:744
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is already mounted"
-msgstr "الجهاز مضموم فعلًا"
+msgstr "الجهاز موصول فعلًا"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:746
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is not mounted"
-msgstr "الجهاز غير مضموم"
+msgstr "الجهاز غير موصول"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:748
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is mounted by another user"
-msgstr "الجهاز مضموم بواسطة مستخدم أخر"
+msgstr "الجهاز موصول بواسطة مستخدم أخر"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:750
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is already unmounting"
-msgstr "الجهاز غير مضموم فعلًا"
+msgstr "الجهاز غير موصول فعلًا"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:752
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -787,13 +787,13 @@ msgstr ""
 msgctxt "solid-hardware|"
 msgid ""
 "             # If applicable, mount the device corresponding to 'udi'.\n"
-msgstr "             # إذا كان ممكناً سيضم الجهاز المقابل لـ 'udi'.\n"
+msgstr "             # إذا كان ممكناً صِل الجهاز المقابل لـ 'udi'.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:268
 msgctxt "solid-hardware|"
 msgid ""
 "             # If applicable, unmount the device corresponding to 'udi'.\n"
-msgstr "             # إذا كان ممكناً سيزيل ضم الجهاز المقابل لـ 'udi'.\n"
+msgstr "             # إذا كان ممكناً سيزيل وصل الجهاز المقابل لـ 'udi'.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:271
 msgctxt "solid-hardware|"
