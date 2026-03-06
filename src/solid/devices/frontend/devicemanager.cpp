@@ -188,7 +188,7 @@ void Solid::DeviceManagerPrivate::_k_deviceAdded(const QString &udi)
     if (m_devicesMap.contains(udi)) {
         DevicePrivate *dev = m_devicesMap[udi].data();
 
-        // Ok, this one was requested somewhere was invalid
+        // OK, this one was requested somewhere was invalid
         // and now becomes magically valid!
 
         if (dev && dev->backendObject() == nullptr) {
@@ -205,7 +205,7 @@ void Solid::DeviceManagerPrivate::_k_deviceRemoved(const QString &udi)
     if (m_devicesMap.contains(udi)) {
         DevicePrivate *dev = m_devicesMap[udi].data();
 
-        // Ok, this one was requested somewhere was valid
+        // OK, this one was requested somewhere was valid
         // and now becomes magically invalid!
 
         if (dev) {
