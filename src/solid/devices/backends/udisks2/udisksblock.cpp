@@ -13,7 +13,7 @@
 #define MINORBITS 20
 #define MINORMASK ((1U << MINORBITS) - 1)
 #define MAJOR(dev) ((unsigned int)((dev) >> MINORBITS))
-#define MINOR(dev) ((unsigned int)((dev)&MINORMASK))
+#define MINOR(dev) ((unsigned int)((dev) & MINORMASK))
 #endif
 
 #include <QDBusConnection>
@@ -40,6 +40,7 @@ Block::Block(Device *dev)
         reply.waitForFinished();
 
         if (reply.isValid()) {
+            QString blockDeviceUdi;
             QDomDocument dom;
             dom.setContent(reply.value());
             QDomNodeList nodeList = dom.documentElement().elementsByTagName(QStringLiteral("node"));
@@ -47,15 +48,17 @@ Block::Block(Device *dev)
                 QDomElement nodeElem = nodeList.item(i).toElement();
                 if (!nodeElem.isNull() && nodeElem.hasAttribute(QStringLiteral("name"))) {
                     const QString udi = QStringLiteral(UD2_DBUS_PATH_BLOCKDEVICES) + QLatin1Char('/') + nodeElem.attribute(QStringLiteral("name"));
-
                     Device device(dev->manager(), udi);
-                    if (device.drivePath() == dev->udi()) {
-                        m_devNum = device.prop(QStringLiteral("DeviceNumber")).toULongLong();
-                        m_devFile = QFile::decodeName(device.prop(QStringLiteral("Device")).toByteArray());
-                        m_hintSystem = device.prop(QStringLiteral("HintSystem")).toBool();
-                        break;
+                    if (device.drivePath() == dev->udi() && (blockDeviceUdi.isEmpty() || blockDeviceUdi.contains(udi))) {
+                        blockDeviceUdi = udi;
                     }
                 }
+            }
+            if (!blockDeviceUdi.isEmpty()) {
+                Device device(dev->manager(), blockDeviceUdi);
+                m_devNum = device.prop(QStringLiteral("DeviceNumber")).toULongLong();
+                m_devFile = QFile::decodeName(device.prop(QStringLiteral("Device")).toByteArray());
+                m_hintSystem = device.prop(QStringLiteral("HintSystem")).toBool();
             }
         } else {
             qCWarning(UDISKS2) << "Failed enumerating UDisks2 objects:" << reply.error().name() << QStringLiteral("\n") << reply.error().message();
