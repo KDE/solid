@@ -10,6 +10,8 @@
 
 #include <config-backends.h>
 
+#include <QCoreApplication>
+
 // do *not* use other defines than BUILD_DEVICE_BACKEND_$backend to include
 // the managers, and keep an alphabetical order
 #ifdef BUILD_DEVICE_BACKEND_fakehw
@@ -23,6 +25,9 @@
 #endif
 #ifdef BUILD_DEVICE_BACKEND_iokit
 #include "backends/iokit/iokitmanager.h"
+#endif
+#ifdef BUILD_DEVICE_BACKEND_kdeconnect
+#include "backends/kdeconnect/kdeconnectmanager.h"
 #endif
 #ifdef BUILD_DEVICE_BACKEND_udev
 #include "backends/udev/udevmanager.h"
@@ -65,6 +70,18 @@ void Solid::ManagerBasePrivate::loadBackends()
 #endif
 #ifdef BUILD_DEVICE_BACKEND_iokit
         m_backends << new Solid::Backends::IOKit::IOKitManager(nullptr);
+#endif
+#ifdef BUILD_DEVICE_BACKEND_kdeconnect
+        // Backend is opt-in for now.
+        if (qEnvironmentVariableIsSet("SOLID_ENABLE_KDECONNECT")) {
+            QCoreApplication::instance()->setProperty("_kde_solid_has_kdeconnect_backend", true);
+
+            // This might seem redundant but kdeconnectd should be able to disable
+            // the backend to avoid it talking to itself.
+            if (!qEnvironmentVariableIsSet("SOLID_DISABLE_KDECONNECT")) {
+                m_backends << new Solid::Backends::KdeConnect::Manager(nullptr);
+            }
+        }
 #endif
 #ifdef BUILD_DEVICE_BACKEND_udev
         m_backends << new Solid::Backends::UDev::UDevManager(nullptr);
