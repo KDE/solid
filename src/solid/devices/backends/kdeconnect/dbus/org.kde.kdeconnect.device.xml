@@ -1,0 +1,90 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+"http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node>
+<interface name="org.kde.kdeconnect.device">
+<property name="type" type="s" access="read"/>
+<property name="name" type="s" access="read"/>
+<property name="iconName" type="s" access="read"/>
+<property name="verificationKey" type="s" access="read"/>
+<property name="statusIconName" type="s" access="read"/>
+<property name="isReachable" type="b" access="read"/>
+<property name="reachableAddresses" type="as" access="read"/>
+<property name="activeProviderNames" type="as" access="read"/>
+<property name="isPaired" type="b" access="read"/>
+<property name="isPairRequested" type="b" access="read"/>
+<property name="isPairRequestedByPeer" type="b" access="read"/>
+<property name="pairState" type="i" access="read"/>
+<property name="supportedPlugins" type="as" access="read"/>
+<signal name="pluginsChanged">
+</signal>
+<signal name="linksChanged">
+</signal>
+<signal name="reachableChanged">
+<arg name="reachable" type="b" direction="out"/>
+</signal>
+<signal name="pairStateChanged">
+<arg name="pairState" type="i" direction="out"/>
+</signal>
+<signal name="pairingFailed">
+<arg name="error" type="s" direction="out"/>
+</signal>
+<signal name="nameChanged">
+<arg name="name" type="s" direction="out"/>
+</signal>
+<signal name="typeChanged">
+<arg name="type" type="s" direction="out"/>
+</signal>
+<signal name="statusIconNameChanged">
+</signal>
+<method name="requestPairing">
+</method>
+<method name="unpair">
+</method>
+<method name="reloadPlugins">
+</method>
+<method name="acceptPairing">
+</method>
+<method name="cancelPairing">
+</method>
+<method name="pluginIconName">
+<arg type="s" direction="out"/>
+<arg name="pluginName" type="s" direction="in"/>
+</method>
+<method name="verificationKey">
+<arg type="s" direction="out"/>
+</method>
+<method name="encryptionInfo">
+<arg type="s" direction="out"/>
+</method>
+<method name="pairStateAsInt">
+<arg type="i" direction="out"/>
+</method>
+<method name="isPaired">
+<arg type="b" direction="out"/>
+</method>
+<method name="isPairRequested">
+<arg type="b" direction="out"/>
+</method>
+<method name="isPairRequestedByPeer">
+<arg type="b" direction="out"/>
+</method>
+<method name="loadedPlugins">
+<arg type="as" direction="out"/>
+</method>
+<method name="hasPlugin">
+<arg type="b" direction="out"/>
+<arg name="name" type="s" direction="in"/>
+</method>
+<method name="pluginsConfigFile">
+<arg type="s" direction="out"/>
+</method>
+<method name="setPluginEnabled">
+<arg name="pluginName" type="s" direction="in"/>
+<arg name="enabled" type="b" direction="in"/>
+</method>
+<method name="isPluginEnabled">
+<arg type="b" direction="out"/>
+<arg name="pluginName" type="s" direction="in"/>
+</method>
+</interface>
+</node>

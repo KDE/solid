@@ -1,0 +1,11 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN" "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node>
+  <interface name="org.kde.kdeconnect.device.battery">
+    <property name="charge" type="i" access="read"/>
+    <property name="isCharging" type="b" access="read"/>
+    <signal name="refreshed">
+      <arg name="isCharging" type="b" direction="out"/>
+      <arg name="charge" type="i" direction="out"/>
+    </signal>
+  </interface>
+</node>
