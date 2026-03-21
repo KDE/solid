@@ -31,7 +31,7 @@ FstabWatcher::FstabWatcher()
     auto mountMonitor = mnt_new_monitor();
 
     if (!mountMonitor) {
-        qCritical(FSTAB_LOG) << "could not start mount monitor";
+        qCCritical(FSTAB_LOG) << "could not start mount monitor";
         return;
     }
     m_mountMonitor = mountMonitor;
@@ -39,19 +39,19 @@ FstabWatcher::FstabWatcher()
     auto r = mnt_monitor_enable_kernel(m_mountMonitor, true);
     if (r < 0) {
         mnt_unref_monitor(m_mountMonitor);
-        qCritical(FSTAB_LOG) << "Failed to enable watching of kernel mount events:" << strerror(errno);
+        qCCritical(FSTAB_LOG) << "Failed to enable watching of kernel mount events:" << strerror(errno);
     }
 
     r = mnt_monitor_enable_userspace(m_mountMonitor, true, NULL);
     if (r < 0) {
         mnt_unref_monitor(m_mountMonitor);
-        qCritical(FSTAB_LOG) << "Failed to enable watching of userspace mount events:" << strerror(errno);
+        qCCritical(FSTAB_LOG) << "Failed to enable watching of userspace mount events:" << strerror(errno);
     }
 
     auto fd = mnt_monitor_get_fd(m_mountMonitor);
     if (fd < 0) {
         mnt_unref_monitor(m_mountMonitor);
-        qCritical(FSTAB_LOG) << "Failed to acquire watch file descriptor" << strerror(errno);
+        qCCritical(FSTAB_LOG) << "Failed to acquire watch file descriptor" << strerror(errno);
         m_mountMonitor = nullptr;
         return;
     }
