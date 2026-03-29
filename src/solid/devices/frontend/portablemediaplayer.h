@@ -31,7 +31,7 @@ class Device;
  *
  * A portable media player is a portable device able to play multimedia files.
  *
- * Some of them have even recording capabilities.
+ * Some of them have recording capabilities.
  */
 class SOLID_EXPORT PortableMediaPlayer : public DeviceInterface
 {
@@ -67,9 +67,7 @@ public:
     ~PortableMediaPlayer() override;
 
     /*!
-     * Get the Solid::DeviceInterface::Type of the PortableMediaPlayer device interface.
-     *
-     * Returns the PortableMediaPlayer device interface type
+     * Returns the Solid::DeviceInterface::Type of the PortableMediaPlayer device interface.
      * \sa Solid::DeviceInterface::Type
      */
     static Type deviceInterfaceType()
@@ -78,31 +76,26 @@ public:
     }
 
     /*!
-     * Retrieves known protocols this device can speak.  This list may be dependent
-     * on installed device driver libraries.
+     * Returns known protocols this device supports.
      *
-     * Returns a list of known protocols this device can speak
+     * This list may be dependent on installed device driver libraries.
      */
     QStringList supportedProtocols() const;
 
     /*!
-     * Retrieves known installed device drivers that claim to handle this device
-     * using the requested protocol.  If protocol is blank, returns a list of
+     * Returns known installed device drivers that claim to handle this device
+     * using the requested \a protocol.
+     *
+     * If \a protocol is omitted, returns a list of
      * all drivers supporting the device.
-     *
-     * \a protocol The protocol to get drivers for.
-     *
-     * Returns a list of installed drivers meeting the criteria
      */
     QStringList supportedDrivers(QString protocol = QString()) const;
 
     /*!
-     * Retrieves a \a driver specific string allowing to access the device.
+     * Returns a \a driver specific string allowing to access the device.
      *
      * For example for the "mtp" driver it will return the serial number
      * of the device.
-     *
-     * Returns the \a driver specific data
      */
     QVariant driverHandle(const QString &driver) const;
 };
