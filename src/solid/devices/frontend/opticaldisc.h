@@ -24,6 +24,8 @@ class Device;
  * \brief This device interface is available on optical discs.
  *
  * An optical disc is a volume that can be inserted in CD-R*,DVD*,Blu-Ray,HD-DVD drives.
+ *
+ * Commonly used in conjunction with OpticalDrive.
  */
 class SOLID_EXPORT OpticalDisc : public StorageVolume
 {
@@ -148,10 +150,8 @@ public:
     ~OpticalDisc() override;
 
     /*!
-     * Get the Solid::DeviceInterface::Type of the OpticalDisc device interface.
-     *
-     * Returns the OpticalDisc device interface type
-     * \sa Solid::Ifaces::Enums::DeviceInterface::Type
+     * Returns the Solid::DeviceInterface::Type of the OpticalDisc device interface.
+     * \sa Solid::DeviceInterface::Type
      */
     static Type deviceInterfaceType()
     {
@@ -159,49 +159,35 @@ public:
     }
 
     /*!
-     * Retrieves the content types this disc contains (audio, video,
-     * data...).
-     *
-     * Returns the flag set indicating the available contents
+     * Returns the flag set indicating the content types
+     * this disc contains (audio, video, data...).
      * \sa Solid::OpticalDisc::ContentType
      */
     ContentTypes availableContent() const;
 
     /*!
-     * Retrieves the disc type (cdr, cdrw...).
-     *
-     * Returns the disc type
+     * Returns the disc type (cdr, cdrw...).
      */
     DiscType discType() const;
 
     /*!
-     * Indicates if it's possible to write additional data to the disc.
-     *
-     * Returns true if the disc is appendable, false otherwise
+     * Returns whether it's possible to append additional data to the disc.
      */
     bool isAppendable() const;
 
     /*!
-     * Indicates if the disc is blank.
-     *
-     * Returns true if the disc is blank, false otherwise
+     * Returns whether the disc is blank.
      */
     bool isBlank() const;
 
     /*!
-     * Indicates if the disc is rewritable.
-     *
-     * A disc is rewritable if you can write on it several times.
-     *
-     * Returns true if the disc is rewritable, false otherwise
+     * Indicates if the disc is rewritable (you can write on it several times).
      */
     bool isRewritable() const;
 
     /*!
-     * Retrieves the disc capacity (that is the maximum size of a
+     * Returns the disc capacity in bytes (the maximum size a
      * volume could have on this disc).
-     *
-     * Returns the capacity of the disc in bytes
      */
     qulonglong capacity() const;
 };
