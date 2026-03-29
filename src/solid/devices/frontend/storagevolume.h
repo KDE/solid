@@ -25,6 +25,29 @@ class Device;
  *
  * A volume is anything that can contain data (partition, optical disc,
  * memory card). It's a particular kind of block device.
+ *
+ * A StorageVolume is commonly used in conjunction with StorageDrive and StorageAccess.
+ *
+ * \table
+ * \header
+ *   \li StorageDrive
+ *   \li StorageVolume
+ *   \li StorageAccess
+ * \row
+ *   \li drives
+ *   \li partition tables / filesystems
+ *   \li mount points / partitions
+ * \endtable
+ *
+ * \code
+ * QList<Solid::Device> devices = Solid::Device::listFromType(Solid::DeviceInterface::StorageVolume, QString());
+ * for (auto device : devices) {
+ *     auto volume = device.as<const Solid::StorageVolume>();
+ *     if (volume) {
+ *         // ...
+ *     }
+ * }
+ * \endcode
  */
 class SOLID_EXPORT StorageVolume : public DeviceInterface
 {
@@ -65,7 +88,7 @@ class SOLID_EXPORT StorageVolume : public DeviceInterface
 
 public:
     /*!
-     * This enum type defines the how a volume is used.
+     * This enum type defines how a volume is used.
      *
      * \value FileSystem A mountable filesystem volume
      * \value PartitionTable A volume containing a partition table
@@ -93,9 +116,7 @@ public:
     ~StorageVolume() override;
 
     /*!
-     * Get the Solid::DeviceInterface::Type of the StorageVolume device interface.
-     *
-     * Returns the StorageVolume device interface type
+     * Returns the Solid::DeviceInterface::Type of the StorageVolume device interface.
      * \sa Solid::DeviceInterface::Type
      */
     static Type deviceInterfaceType()
@@ -104,65 +125,51 @@ public:
     }
 
     /*!
-     * Indicates if this volume should be ignored by applications.
+     * Returns whether this volume should be ignored by applications.
      *
      * If it should be ignored, it generally means that it should be
      * invisible to the user. It's useful for firmware partitions or
      * OS reinstall partitions on some systems.
-     *
-     * Returns true if the volume should be ignored
      */
     bool isIgnored() const;
 
     /*!
-     * Retrieves the type of use for this volume (for example filesystem).
-     *
-     * Returns the usage type
+     * Returns the usage type for this volume (for example filesystem).
      * \sa Solid::StorageVolume::UsageType
      */
     UsageType usage() const;
 
     /*!
-     * Retrieves the filesystem type of this volume.
+     * Returns the filesystem type of this volume, QString() otherwise.
      *
      * FIXME: It's a platform dependent string, maybe we should switch to
      * an enum?
-     *
-     * Returns the filesystem type if applicable, QString() otherwise
      */
     QString fsType() const;
 
     /*!
-     * Retrieves this volume label.
-     *
-     * Returns the volume label if available, QString() otherwise
+     * Returns the volume label if available, QString() otherwise.
      */
     QString label() const;
 
     /*!
-     * Retrieves this volume Universal Unique IDentifier (UUID).
+     * Returns this volume Universal Unique IDentifier (UUID), QString() otherwise.
      *
      * You can generally assume that this identifier is unique with reasonable
      * confidence. Except if the volume UUID has been forged to intentionally
-     * provoke a collision, the probability to have two volumes having the same
+     * provoke a collision, the probability of having two volumes with the same
      * UUID is low.
-     *
-     * Returns the Universal Unique IDentifier if available, QString() otherwise
      */
     QString uuid() const;
 
     /*!
-     * Retrieves this volume size in bytes.
-     *
-     * Returns the size of this volume
+     * Returns this volume size in bytes.
      */
     qulonglong size() const;
 
     /*!
-     * Retrieves the crypto container of this volume.
-     *
      * Returns the encrypted volume containing the current volume if applicable,
-     * an invalid device otherwise
+     * an invalid device otherwise.
      */
     Device encryptedContainer() const;
 
