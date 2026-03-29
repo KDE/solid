@@ -23,68 +23,60 @@ class DevicePrivate;
  * \inheaderfile Solid/Device
  * \inmodule Solid
  *
- * \brief This class allows applications to deal with devices available in the
+ * \brief Allows applications to deal with devices available in the
  * underlying system.
  *
  * Device stores a reference to device data provided by the backend.
+ *
  * Device objects are designed to be used by value. Copying these objects
- * is quite cheap, so using pointers to the me is generally not needed.
+ * is quite cheap, so using pointers is generally not needed.
  */
 class SOLID_EXPORT Device
 {
 public:
     /*!
-     * Retrieves all the devices available in the underlying system.
-     *
-     * Returns the list of the devices available
+     * Returns all devices available in the underlying system.
      */
     static QList<Device> allDevices();
 
     /*!
-     * Retrieves a list of devices of the system given matching the given
-     * constraints (parent and device interface type)
+     * Returns a list of devices matching the given \a type.
      *
-     * \a type device interface type available on the devices we're looking for, or DeviceInterface::Unknown
-     * if there's no constraint on the device interfaces
+     * The \a parentUdi should match the provider for the device. For example:
      *
-     * \a parentUdi UDI of the parent of the devices we're searching for, or QString()
-     * if there's no constraint on the parent
-     *
-     * Returns the list of devices corresponding to the given constraints
-     * \sa Solid::Predicate
+     * \list
+     * \li /org/kde/solid/udev
+     * \li /org/freedesktop/UPower
+     * \li /org/freedesktop/UDisks2
+     * \endlist
      */
     static QList<Device> listFromType(const DeviceInterface::Type &type, const QString &parentUdi = QString());
 
     /*!
-     * Retrieves a list of devices of the system given matching the given
-     * constraints (parent and predicate)
+     * Returns a list of devices matching the given \a predicate query.
      *
-     * \a predicate Predicate that the devices we're searching for must verify
+     * The \a parentUdi should match the provider for the device. For example:
      *
-     * \a parentUdi UDI of the parent of the devices we're searching for, or QString()
-     * if there's no constraint on the parent
+     * \list
+     * \li /org/kde/solid/udev
+     * \li /org/freedesktop/UPower
+     * \li /org/freedesktop/UDisks2
+     * \endlist
      *
-     * Returns the list of devices corresponding to the given constraints
      * \sa Solid::Predicate
      */
     static QList<Device> listFromQuery(const Predicate &predicate, const QString &parentUdi = QString());
 
     /*!
-     * Convenience function see above.
-     *
-     * Returns the list of devices
+     * \overload listFromQuery()
      */
     static QList<Device> listFromQuery(const QString &predicate, const QString &parentUdi = QString());
 
     /*!
-     * Returns the Device containing the filesystem for the given path
-     *
-     * \a path is the canonical path to a filesystem entry, e.g. a file or directory
-     *
-     * Returns a Device containing the given \a path.
+     * Returns the Device containing the filesystem for the given \a path.
      *
      * For Devices implementing the
-     * StorageVolume interface only ones matching UsageType::FileSystem are
+     * StorageVolume interface, only ones matching UsageType::FileSystem are
      * returned, i.e. no backing encrypted volumes.
      * \since 5.73
      * \sa QFileInfo::canonicalFilePath
@@ -92,9 +84,7 @@ public:
     static Device storageAccessFromPath(const QString &path);
 
     /*!
-     * Constructs a device for a given Universal Device Identifier (UDI).
-     *
-     * \a udi the udi of the device to create
+     * Constructs a device for a given Universal Device Identifier \a udi.
      */
     explicit Device(const QString &udi = QString());
 
@@ -105,16 +95,12 @@ public:
     Device &operator=(const Device &device);
 
     /*!
-     * Indicates if this device is valid.
-     *
-     * A device is considered valid if it's available in the system.
-     *
-     * Returns \c true if this device is available, \c false otherwise
+     * Returns if this device is valid (available in the system).
      */
     bool isValid() const;
 
     /*!
-     * Retrieves the Universal Device Identifier (UDI).
+     * Returns the Universal Device Identifier \a udi.
      *
      * \warning Don't use the UDI for anything except communication with Solid. Also don't store
      * UDIs as there's no guarantee that the UDI stays the same when the hardware setup changed.
@@ -122,109 +108,91 @@ public:
      * current boot session. The UDIs may change after a reboot.
      * Similar hardware in other computers may have different values; different
      * hardware could have the same UDI.
-     *
-     * Returns the udi of the device
      */
     QString udi() const;
 
     /*!
-     * Retrieves the Universal Device Identifier (UDI)
-     * of the Device's parent.
-     *
-     * Returns the udi of the device's parent
+     * Returns the Universal Device Identifier (UDI) of the Device's parent.
      */
     QString parentUdi() const;
 
     /*!
-     * Retrieves the parent of the Device.
-     *
-     * Returns the device's parent
+     * Returns the parent of the Device.
      * \sa parentUdi()
      */
     Device parent() const;
 
     /*!
-     * Retrieves the name of the device vendor.
-     *
-     * Returns the vendor name
+     * Returns the name of the device vendor.
      */
     QString vendor() const;
 
     /*!
-     * Retrieves the name of the product corresponding to this device.
-     *
-     * Returns the product name
+     * Returns the name of the product corresponding to this device.
      */
     QString product() const;
 
     /*!
-     * Retrieves the name of the icon representing this device.
-     * The naming follows the freedesktop.org specification.
+     * Returns the name of the icon representing this device.
      *
-     * Returns the icon name
+     * The naming follows the freedesktop.org specification.
      */
     QString icon() const;
 
     /*!
-     * Retrieves the names of the emblems representing the state of this device.
-     * The naming follows the freedesktop.org specification.
+     * Returns the names of the emblems representing the state of this device.
      *
-     * Returns the emblem names
+     * The naming follows the freedesktop.org specification.
      * \since 4.4
      */
     QStringList emblems() const;
 
     /*!
-     * Retrieves the display Name to use for this device.
-     * Same as description when not defined.
+     * Returns the display name to use for this device.
      *
-     * Returns the display Name
+     * Same as description when not defined.
      * \since 5.71
      */
     QString displayName() const;
 
     /*!
-     * Retrieves the description of device.
-     *
-     * Returns the description
+     * Returns the description of this device.
      * \since 4.4
      */
     QString description() const;
 
     /*!
-     * Tests if a device interface is available from the device.
-     *
-     * \a type the device interface type to query
-     *
-     * Returns true if the device interface is available, false otherwise
+     * Tests if a device interface \a type is available from the device.
+     * \code
+     * if (device.isDeviceInterface(Solid::DeviceInterface::StorageAccess)) {
+     *     // ...
+     * }
+     * \endcode
      */
     bool isDeviceInterface(const DeviceInterface::Type &type) const;
 
     /*!
-     * Retrieves a specialized interface to interact with the device corresponding to
-     * a particular device interface.
-     *
-     * \a type the device interface type
-     *
-     * Returns a pointer to the device interface interface if it exists, 0 otherwise
+     * Returns a specialized interface to interact with the device corresponding to
+     * a particular device interface \a type, or nullptr if it doesn't exist.
+     * \code
+     * const Solid::Battery* battery =
+     *     qobject_cast<const Solid::Battery>(device.asDeviceInterface(Solid::DeviceInterface::Battery));
+     * \endcode
      */
     DeviceInterface *asDeviceInterface(const DeviceInterface::Type &type);
 
     /*!
-     * Retrieves a specialized interface to interact with the device corresponding to
-     * a particular device interface.
-     *
-     * \a type the device interface type
-     *
-     * Returns a pointer to the device interface interface if it exists, 0 otherwise
+     * Returns a specialized interface to interact with the device corresponding to
+     * a particular device interface \a type, or nullptr if it doesn't exist.
      */
     const DeviceInterface *asDeviceInterface(const DeviceInterface::Type &type) const;
 
     /*!
-     * Retrieves a specialized interface to interact with the device corresponding
-     * to a given device interface.
-     *
-     * Returns a pointer to the device interface if it exists, 0 otherwise
+     * Returns a specialized interface to interact with the device corresponding
+     * to a given device interface, or nullptr if it doesn't exist.
+     * \code
+     * const Solid::Processor* processor = device.as<Solid::Processor>();
+     * \endcode
      */
     template<class DevIface>
     DevIface *as()
@@ -235,10 +203,11 @@ public:
     }
 
     /*!
-     * Retrieves a specialized interface to interact with the device corresponding
-     * to a given device interface.
-     *
-     * Returns a pointer to the device interface if it exists, 0 otherwise
+     * Returns a specialized interface to interact with the device corresponding
+     * to a given device interface, or nullptr if it doesn't exist.
+     * \code
+     * const Solid::Processor* processor = device.as<const Solid::Processor>();
+     * \endcode
      */
     template<class DevIface>
     const DevIface *as() const
@@ -250,8 +219,11 @@ public:
 
     /*!
      * Tests if a device provides a given device interface.
-     *
-     * Returns true if the interface is available, false otherwise
+     * \code
+     * if (device.is<Solid::StorageDrive>()) {
+     *     // ...
+     * }
+     * \endcode
      */
     template<class DevIface>
     bool is() const
