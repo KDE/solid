@@ -23,7 +23,7 @@ class DeviceInterfacePrivate;
  * \inheaderfile Solid/DeviceInterface
  * \inmodule Solid
  *
- * \brief Base class of all the device interfaces.
+ * \brief Base class of all device interfaces.
  *
  * A device interface describes what a device can do. A device generally has
  * a set of device interfaces.
@@ -73,26 +73,22 @@ public:
     ~DeviceInterface() override;
 
     /*!
-     * Indicates if this device interface is valid.
-     *
-     * A device interface is considered valid if the device it is referring is available in the system.
-     *
-     * Returns \c true if this device interface's device is available, \c false otherwise
+     * Returns if this device interface is valid (available in the system).
      */
     bool isValid() const;
 
     /*!
-     * Returns the class name of the device interface type
+     * Returns the class name of the device interface type.
      */
     static QString typeToString(Type type);
 
     /*!
-     * Returns the device interface type for the given class name
+     * Returns the device interface type for the given class name.
      */
     static Type stringToType(const QString &type);
 
     /*!
-     * Returns a description suitable to display in the UI of the device interface type
+     * Returns a pretty name for the device interface type for use in an application.
      * \since 4.4
      */
     static QString typeDescription(Type type);
