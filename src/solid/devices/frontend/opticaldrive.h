@@ -28,6 +28,8 @@ class Device;
  * \brief This device interface is available on CD-R*,DVD*,Blu-Ray,HD-DVD drives.
  *
  * An OpticalDrive is a storage that can handle optical discs.
+ *
+ * Commonly used in conjunction with OpticalDisk.
  */
 class SOLID_EXPORT OpticalDrive : public StorageDrive
 {
@@ -118,10 +120,8 @@ public:
     ~OpticalDrive() override;
 
     /*!
-     * Get the Solid::DeviceInterface::Type of the OpticalDrive device interface.
-     *
-     * Returns the OpticalDrive device interface type
-     * \sa Solid::Ifaces::Enums::DeviceInterface::Type
+     * Returns the Solid::DeviceInterface::Type of the OpticalDrive device interface.
+     * \sa Solid::DeviceInterface::Type
      */
     static Type deviceInterfaceType()
     {
@@ -129,72 +129,58 @@ public:
     }
 
     /*!
-     * Retrieves the medium types this drive supports.
-     *
-     * Returns the flag set indicating the supported medium types
+     * Returns the flag set indicating the medium types this drive supports.
      */
     MediumTypes supportedMedia() const;
 
     /*!
-     * Retrieves the maximum read speed of this drive in kilobytes per second.
-     *
-     * Returns the maximum read speed
+     * Returns the maximum read speed of this drive in kilobytes per second.
      */
     int readSpeed() const;
 
     /*!
-     * Retrieves the maximum write speed of this drive in kilobytes per second.
-     *
-     * Returns the maximum write speed
+     * Returns the maximum write speed of this drive in kilobytes per second.
      */
     int writeSpeed() const;
 
     /*!
-     * Retrieves the list of supported write speeds of this drive in
+     * Returns the list of supported write speeds of this drive in
      * kilobytes per second.
-     *
-     * Returns the list of supported write speeds
      */
     QList<int> writeSpeeds() const;
 
     /*!
      * Ejects any disc that could be contained in this drive.
-     * If this drive is empty, but has a tray it'll be opened.
+     * If this drive is empty but has a tray it'll be opened.
      *
-     * Returns the status of the eject operation
+     * Returns the status of the eject operation.
      */
     bool eject();
 
 Q_SIGNALS:
     /*!
      * This signal is emitted when the eject button is pressed
-     * on the drive.
+     * on the drive with the given \a udi.
      *
-     * Please note that some (broken) drives doesn't report this event.
-     *
-     * \a udi the UDI of the drive
+     * Please note that some (broken) drives don't report this event.
      */
     void ejectPressed(const QString &udi);
 
     /*!
-     * This signal is emitted when the attempted eject process on this
-     * drive is completed. The signal might be spontaneous, i.e.
-     * it can be triggered by another process.
+     * This signal is emitted when the attempted eject process on the
+     * drive with the given \a udi is completed.
      *
-     * \a error type of error that occurred, if any
+     * The signal might be spontaneous, i.e. it can be triggered by another process.
      *
-     * \a errorData more information about the error, if any
-     *
-     * \a udi the UDI of the volume
+     * Returns an \a error followed by additional \a errorData information, if any.
      */
     void ejectDone(Solid::ErrorType error, QVariant errorData, const QString &udi);
 
     /*!
-     * This signal is emitted when eject on this drive is
-     * requested. The signal might be spontaneous, i.e. it
-     * can be triggered by another process.
+     * This signal is emitted when eject on the drive
+     * with the given \a udi is requested.
      *
-     * \a udi the UDI of the volume
+     * The signal might be spontaneous, i.e. it can be triggered by another process.
      */
     void ejectRequested(const QString &udi);
 };
