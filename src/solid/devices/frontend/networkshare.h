@@ -23,10 +23,28 @@ class NetworkSharePrivate;
  * \inheaderfile Solid/NetworkShare
  * \inmodule Solid
  *
- * \brief NetworkShare interface.
+ * \brief This device interface is available for network share volumes.
  *
- * A NetworkShare interface is used to determine the type of
- * network access.
+ * Used to acquire a list of network device types.
+ *
+ * \code
+ * const auto devices = Solid::Device::listFromType(Solid::DeviceInterface::NetworkShare);
+ * for (const auto &device : devices) {
+ *     switch (device.as<Solid::NetworkShare>()->type()) {
+ *     case Solid::NetworkShare::Cifs:
+ *         hasCifsShare = true;
+ *         continue;
+ *     case Solid::NetworkShare::Smb3:
+ *         hasSmb3Share = true;
+ *         continue;
+ *     case Solid::NetworkShare::Nfs:
+ *         hasNfsShare = true;
+ *         continue;
+ *     default:
+ *         continue;
+ *     }
+ * }
+ * \endcode
  * \since 4.7
  */
 class SOLID_EXPORT NetworkShare : public DeviceInterface
@@ -65,18 +83,16 @@ public:
     /*!
      * This enum type defines the type of networkShare device can be.
      *
-     * \value Unknown a unsupported network protocol
-     * \value Nfs nfs protocol
-     * \value Cifs samba protocol
-     * \value Smb3 samba protocol (version 3)
+     * \value Unknown An unsupported network protocol
+     * \value Nfs NFS protocol
+     * \value Cifs Samba protocol
+     * \value Smb3 Samba protocol (version 3)
      */
     enum ShareType { Unknown, Nfs, Cifs, Smb3 };
     Q_ENUM(ShareType)
 
     /*!
-     * Get the Solid::DeviceInterface::Type of the NetworkShare device interface.
-     *
-     * Returns the NetworkShare device interface type
+     * Returns the Solid::DeviceInterface::Type of the NetworkShare device interface.
      * \sa Solid::DeviceInterface::Type
      */
     static Type deviceInterfaceType()
@@ -85,16 +101,12 @@ public:
     }
 
     /*!
-     * Retrieves the type of network share
-     *
-     * Returns the type of network share
+     * Returns the type of network share.
      */
     ShareType type() const;
 
     /*!
-     * Retrieves the url of network share
-     *
-     * Returns the url of network share
+     * Returns the url of network share.
      */
     QUrl url() const;
 };
