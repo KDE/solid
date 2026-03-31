@@ -92,7 +92,7 @@ public:
      * \value PropertyCheck The predicate contains a comparison that needs to be matched using a ComparisonOperator
      * \value Conjunction The two contained predicates need to be true for this predicate to be true
      * \value Disjunction Either of the two contained predicates may be true for this predicate to be true
-     * \value InterfaceCheck the device type is compared
+     * \value InterfaceCheck The device type is compared
      */
     enum Type { PropertyCheck, Conjunction, Disjunction, InterfaceCheck };
 

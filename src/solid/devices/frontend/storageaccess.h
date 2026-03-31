@@ -43,7 +43,7 @@ class Device;
  * \endtable
  *
  * \code
- * QList<Solid::Device> devices = Solid::Device::listFromType(Solid::DeviceInterface::StorageVolume, QString());
+ * const List<Solid::Device> devices = Solid::Device::listFromType(Solid::DeviceInterface::StorageVolume, QString());
  * for (auto device : devices) {
  *     auto access = device.as<const Solid::StorageAccess>();
  *     if (access) {
