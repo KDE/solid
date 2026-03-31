@@ -13,10 +13,11 @@
 #define MINORBITS 20
 #define MINORMASK ((1U << MINORBITS) - 1)
 #define MAJOR(dev) ((unsigned int)((dev) >> MINORBITS))
-#define MINOR(dev) ((unsigned int)((dev)&MINORMASK))
+#define MINOR(dev) ((unsigned int)((dev) & MINORMASK))
 #endif
 
 #include <QDBusConnection>
+#include <QDBusInterface>
 #include <QDBusPendingReply>
 #include <QDomDocument>
 #include <QFile>
@@ -50,6 +51,23 @@ Block::Block(Device *dev)
 
                     Device device(dev->manager(), udi);
                     if (device.drivePath() == dev->udi()) {
+                        if (device.isPartition()) {
+                            QDBusInterface partitionIface(QStringLiteral(UD2_DBUS_SERVICE),
+                                                          udi,
+                                                          QStringLiteral(UD2_DBUS_INTERFACE_PARTITION),
+                                                          QDBusConnection::systemBus());
+
+                            if (partitionIface.isValid()) {
+                                QVariant table = partitionIface.property("Table");
+                                if (table.isValid() && table.canConvert<QDBusObjectPath>()) {
+                                    Device partitionTable(dev->manager(), table.value<QDBusObjectPath>().path());
+                                    m_devNum = partitionTable.prop(QStringLiteral("DeviceNumber")).toULongLong();
+                                    m_devFile = QFile::decodeName(partitionTable.prop(QStringLiteral("Device")).toByteArray());
+                                    m_hintSystem = partitionTable.prop(QStringLiteral("HintSystem")).toBool();
+                                    break;
+                                }
+                            }
+                        }
                         m_devNum = device.prop(QStringLiteral("DeviceNumber")).toULongLong();
                         m_devFile = QFile::decodeName(device.prop(QStringLiteral("Device")).toByteArray());
                         m_hintSystem = device.prop(QStringLiteral("HintSystem")).toBool();
