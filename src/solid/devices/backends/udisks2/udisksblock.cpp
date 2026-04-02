@@ -17,7 +17,6 @@
 #endif
 
 #include <QDBusConnection>
-#include <QDBusInterface>
 #include <QDBusPendingReply>
 #include <QDomDocument>
 #include <QFile>
@@ -28,55 +27,77 @@ using namespace Solid::Backends::UDisks2;
 
 Block::Block(Device *dev)
     : DeviceInterface(dev)
-    , m_devNum(m_device->prop(QStringLiteral("DeviceNumber")).toULongLong())
-    , m_devFile(QFile::decodeName(m_device->prop(QStringLiteral("Device")).toByteArray()))
+    , m_devNum(0)
 {
+    QDBusMessage call = QDBusMessage::createMethodCall(QStringLiteral(UD2_DBUS_SERVICE),
+                                                       QStringLiteral(UD2_DBUS_PATH),
+                                                       QStringLiteral(DBUS_INTERFACE_MANAGER),
+                                                       QStringLiteral("GetManagedObjects"));
+    QDBusPendingReply<DBUSManagerStruct> reply = QDBusConnection::systemBus().asyncCall(call);
+    reply.waitForFinished();
+
+    if (!reply.isValid()) {
+        qCWarning(UDISKS2) << "Failed enumerating UDisks2 objects:" << reply.error().name() << QStringLiteral("\n") << reply.error().message();
+        return;
+    }
+
+    auto getProp = [](const VariantMapMap &ifaces, const QString &iface, const QString &prop) {
+        return ifaces.value(iface).value(prop);
+    };
+
+    DBUSManagerStruct objects = reply.value();
+
+    const QString udi = dev->udi();
+
+    auto objectIt = objects.find(QDBusObjectPath(udi));
+    if (objectIt == objects.end()) {
+        return;
+    }
+
+    const VariantMapMap &ifaces = objectIt.value();
+
+    // try direct block properties
+    if (ifaces.contains(QStringLiteral(UD2_DBUS_INTERFACE_BLOCK))) {
+        m_devNum = getProp(ifaces, QStringLiteral(UD2_DBUS_INTERFACE_BLOCK), QStringLiteral("DeviceNumber")).toULongLong();
+        m_devFile = QFile::decodeName(getProp(ifaces, QStringLiteral(UD2_DBUS_INTERFACE_BLOCK), QStringLiteral("Device")).toByteArray());
+        m_hintSystem = getProp(ifaces, QStringLiteral(UD2_DBUS_INTERFACE_BLOCK), QStringLiteral("HintSystem")).toBool();
+    }
+
     // we have a drive (non-block device for udisks), so let's find the corresponding (real) block device
     if (m_devNum == 0 || m_devFile.isEmpty()) {
-        QDBusMessage call = QDBusMessage::createMethodCall(QStringLiteral(UD2_DBUS_SERVICE),
-                                                           QStringLiteral(UD2_DBUS_PATH_BLOCKDEVICES),
-                                                           QStringLiteral(DBUS_INTERFACE_INTROSPECT),
-                                                           QStringLiteral("Introspect"));
-        QDBusPendingReply<QString> reply = QDBusConnection::systemBus().asyncCall(call);
-        reply.waitForFinished();
+        for (auto objectIt = objects.begin(); objectIt != objects.end(); ++objectIt) {
+            const VariantMapMap &interfaces = objectIt.value();
 
-        if (reply.isValid()) {
-            QDomDocument dom;
-            dom.setContent(reply.value());
-            QDomNodeList nodeList = dom.documentElement().elementsByTagName(QStringLiteral("node"));
-            for (int i = 0; i < nodeList.count(); i++) {
-                QDomElement nodeElem = nodeList.item(i).toElement();
-                if (!nodeElem.isNull() && nodeElem.hasAttribute(QStringLiteral("name"))) {
-                    const QString udi = QStringLiteral(UD2_DBUS_PATH_BLOCKDEVICES) + QLatin1Char('/') + nodeElem.attribute(QStringLiteral("name"));
+            if (!interfaces.contains(QStringLiteral(UD2_DBUS_INTERFACE_BLOCK))) {
+                continue;
+            }
 
-                    Device device(dev->manager(), udi);
-                    if (device.drivePath() == dev->udi()) {
-                        if (device.isPartition()) {
-                            QDBusInterface partitionIface(QStringLiteral(UD2_DBUS_SERVICE),
-                                                          udi,
-                                                          QStringLiteral(UD2_DBUS_INTERFACE_PARTITION),
-                                                          QDBusConnection::systemBus());
+            QDBusObjectPath drivePath = getProp(interfaces, QStringLiteral(UD2_DBUS_INTERFACE_BLOCK), QStringLiteral("Drive")).value<QDBusObjectPath>();
 
-                            if (partitionIface.isValid()) {
-                                QVariant table = partitionIface.property("Table");
-                                if (table.isValid() && table.canConvert<QDBusObjectPath>()) {
-                                    Device partitionTable(dev->manager(), table.value<QDBusObjectPath>().path());
-                                    m_devNum = partitionTable.prop(QStringLiteral("DeviceNumber")).toULongLong();
-                                    m_devFile = QFile::decodeName(partitionTable.prop(QStringLiteral("Device")).toByteArray());
-                                    m_hintSystem = partitionTable.prop(QStringLiteral("HintSystem")).toBool();
-                                    break;
-                                }
-                            }
-                        }
-                        m_devNum = device.prop(QStringLiteral("DeviceNumber")).toULongLong();
-                        m_devFile = QFile::decodeName(device.prop(QStringLiteral("Device")).toByteArray());
-                        m_hintSystem = device.prop(QStringLiteral("HintSystem")).toBool();
-                        break;
-                    }
+            if (drivePath.path() != udi) {
+                continue;
+            }
+
+            // if partition -> get parent block (partition table)
+            if (interfaces.contains(QStringLiteral(UD2_DBUS_INTERFACE_PARTITION))) {
+                QDBusObjectPath tablePath = getProp(interfaces, QStringLiteral(UD2_DBUS_INTERFACE_PARTITION), QStringLiteral("Table")).value<QDBusObjectPath>();
+
+                auto tableIt = objects.find(tablePath);
+                if (tableIt != objects.end()) {
+                    const VariantMapMap &tableIfs = tableIt.value();
+
+                    m_devNum = getProp(tableIfs, QStringLiteral(UD2_DBUS_INTERFACE_BLOCK), QStringLiteral("DeviceNumber")).toULongLong();
+                    m_devFile = QFile::decodeName(getProp(tableIfs, QStringLiteral(UD2_DBUS_INTERFACE_BLOCK), QStringLiteral("Device")).toByteArray());
+                    m_hintSystem = getProp(tableIfs, QStringLiteral(UD2_DBUS_INTERFACE_BLOCK), QStringLiteral("HintSystem")).toBool();
+                    break;
                 }
             }
-        } else {
-            qCWarning(UDISKS2) << "Failed enumerating UDisks2 objects:" << reply.error().name() << QStringLiteral("\n") << reply.error().message();
+
+            // else use this block device directly
+            m_devNum = getProp(interfaces, QStringLiteral(UD2_DBUS_INTERFACE_BLOCK), QStringLiteral("DeviceNumber")).toULongLong();
+            m_devFile = QFile::decodeName(getProp(interfaces, QStringLiteral(UD2_DBUS_INTERFACE_BLOCK), QStringLiteral("Device")).toByteArray());
+            m_hintSystem = getProp(interfaces, QStringLiteral(UD2_DBUS_INTERFACE_BLOCK), QStringLiteral("HintSystem")).toBool();
+            break;
         }
     }
 
