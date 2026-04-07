@@ -12,6 +12,10 @@
 #include <libmount.h>
 #endif
 
+#ifdef Q_OS_BSD4
+#include <QStringList>
+#endif
+
 class QFileSystemWatcher;
 class QFile;
 class QSocketNotifier;
@@ -31,6 +35,11 @@ public:
 
     static FstabWatcher *instance();
 
+#ifdef Q_OS_BSD4
+protected:
+    void timerEvent(QTimerEvent *event) override;
+#endif
+
 Q_SIGNALS:
     void mtabChanged();
     void fstabChanged();
@@ -41,7 +50,6 @@ private Q_SLOTS:
 #else
     void onFileChanged(const QString &path);
 #endif
-
     void onQuit();
 
 private:
@@ -53,6 +61,9 @@ private:
     QFileSystemWatcher *m_fileSystemWatcher;
     QFile *m_mtabFile;
     bool m_isFstabWatched;
+#ifdef Q_OS_BSD4
+    QStringList m_mounts;
+#endif
 #endif
 };
 }

@@ -13,6 +13,23 @@
 #include <QFileSystemWatcher>
 #include <QSocketNotifier>
 
+#ifdef Q_OS_BSD4
+#include <QTimer>
+#ifdef Q_OS_FREEBSD
+#include <sys/param.h>
+#include <sys/ucred.h>
+#include <sys/mount.h>
+#endif
+#ifdef Q_OS_NETBSD
+#include <sys/types.h>
+#include <sys/statvfs.h>
+#endif
+#ifdef Q_OS_OPENBSD
+#include <sys/types.h>
+#include <sys/mount.h>
+#endif
+#endif
+
 namespace Solid
 {
 namespace Backends
@@ -66,7 +83,7 @@ FstabWatcher::FstabWatcher()
     m_isRoutineInstalled = false;
     m_fileSystemWatcher = new QFileSystemWatcher(this);
 
-#ifndef Q_OS_OPENBSD
+#ifndef Q_OS_BSD4
     m_mtabFile = new QFile(s_mtabFile, this);
     if (m_mtabFile && m_mtabFile->symLinkTarget().startsWith(QLatin1String("/proc/")) && m_mtabFile->open(QIODevice::ReadOnly)) {
         m_socketNotifier = new QSocketNotifier(m_mtabFile->handle(), QSocketNotifier::Exception, this);
@@ -74,6 +91,10 @@ FstabWatcher::FstabWatcher()
     } else {
         m_fileSystemWatcher->addPath(s_mtabFile);
     }
+#else
+    // The BSDs do not have an /etc/mtab. So, we resort to periodically
+    // checking the list of all mounted file sytems for changes.
+    startTimer(1000);
 #endif
 
     m_fileSystemWatcher->addPath(s_fstabPath);
@@ -107,6 +128,54 @@ FstabWatcher::~FstabWatcher()
     m_fileSystemWatcher->setParent(nullptr);
 #endif
 }
+
+#ifdef Q_OS_BSD4
+void FstabWatcher::timerEvent(QTimerEvent* event)
+{
+    Q_UNUSED(event);
+
+#ifndef Q_OS_NETBSD
+    struct statfs *buffer = nullptr;
+#else
+    struct statvfs *buffer = nullptr;
+#endif
+    int number = 0;
+    QStringList currentMounts;
+    bool changed = false;
+
+    if ((number = getmntinfo(&buffer, MNT_NOWAIT)) == -1 || !buffer) {
+        return;
+    }
+
+    for (int i = 0; i < number; ++i) {
+        QString device = QString::fromUtf8(buffer[i].f_mntfromname);
+        QString mountPoint = QString::fromUtf8(buffer[i].f_mntonname);
+        currentMounts << device + QStringLiteral(":") + mountPoint;
+    }
+
+    for (const QString &currentMount : std::as_const(currentMounts)) {
+        if (m_mounts.contains(currentMount)) {
+            continue;
+        }
+        changed = true;
+        break;
+    }
+
+    for (const QString &mount : std::as_const(m_mounts)) {
+        if (currentMounts.contains(mount)) {
+            continue;
+        }
+        changed = true;
+        break;
+    }
+
+    if (changed) {
+        Q_EMIT mtabChanged();
+    }
+
+    m_mounts = currentMounts;
+}
+#endif
 
 void FstabWatcher::onQuit()
 {
