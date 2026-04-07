@@ -19,6 +19,8 @@ FstabNetworkShare::FstabNetworkShare(Solid::Backends::Fstab::FstabDevice *device
         QString fsType = FstabHandling::fstype(m_fstabDevice->device());
         if (fsType == QLatin1String("cifs")) {
             m_type = Solid::NetworkShare::Cifs;
+        } else if (fsType == QLatin1String("smbfs")) {
+            m_type = Solid::NetworkShare::Cifs;
         } else if (fsType == QLatin1String("smb3")) {
             m_type = Solid::NetworkShare::Smb3;
         }
