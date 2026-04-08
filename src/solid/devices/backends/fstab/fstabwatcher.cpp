@@ -13,8 +13,6 @@
 #include <QFileSystemWatcher>
 #include <QSocketNotifier>
 
-#ifdef Q_OS_BSD4
-#include <QTimer>
 #ifdef Q_OS_FREEBSD
 #include <sys/param.h>
 #include <sys/ucred.h>
@@ -27,7 +25,6 @@
 #ifdef Q_OS_OPENBSD
 #include <sys/types.h>
 #include <sys/mount.h>
-#endif
 #endif
 
 namespace Solid

@@ -12,10 +12,6 @@
 #include <libmount.h>
 #endif
 
-#ifdef Q_OS_BSD4
-#include <QStringList>
-#endif
-
 class QFileSystemWatcher;
 class QFile;
 class QSocketNotifier;
