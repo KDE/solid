@@ -140,40 +140,28 @@ void FstabWatcher::timerEvent(QTimerEvent* event)
     struct statvfs *buffer = nullptr;
 #endif
     int number = 0;
-    QStringList currentMounts;
-    bool changed = false;
 
     if ((number = getmntinfo(&buffer, MNT_NOWAIT)) == -1 || !buffer) {
         return;
     }
 
+    std::vector<std::string> currentMounts;
+    currentMounts.reserve(number);
+
     for (int i = 0; i < number; ++i) {
-        QString device = QString::fromUtf8(buffer[i].f_mntfromname);
-        QString mountPoint = QString::fromUtf8(buffer[i].f_mntonname);
-        currentMounts << device + QStringLiteral(":") + mountPoint;
+        currentMounts.emplace_back(std::string(buffer[i].f_mntfromname) + ":" + std::string(buffer[i].f_mntonname));
     }
 
-    for (const QString &currentMount : std::as_const(currentMounts)) {
-        if (m_mounts.contains(currentMount)) {
-            continue;
-        }
-        changed = true;
-        break;
+    bool isSubset = std::all_of(currentMounts.begin(), currentMounts.end(), [&](const std::string &mount) {
+        return std::find(m_mounts.begin(), m_mounts.end(), mount) != m_mounts.end();
+    });
+
+    if (isSubset && m_mounts.size() == currentMounts.size()) {
+        return;
     }
 
-    for (const QString &mount : std::as_const(m_mounts)) {
-        if (currentMounts.contains(mount)) {
-            continue;
-        }
-        changed = true;
-        break;
-    }
-
-    if (changed) {
-        Q_EMIT mtabChanged();
-    }
-
-    m_mounts = currentMounts;
+    m_mounts.swap(currentMounts);
+    Q_EMIT mtabChanged();
 }
 #endif
 

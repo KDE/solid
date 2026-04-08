@@ -62,7 +62,7 @@ private:
     QFile *m_mtabFile;
     bool m_isFstabWatched;
 #ifdef Q_OS_BSD4
-    QStringList m_mounts;
+    std::vector<std::string> m_mounts;
 #endif
 #endif
 };
