@@ -14,8 +14,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.12.3\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Lokalize 22.12.3\n"
 "X-Qt-Contexts: true\n"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:69
@@ -800,15 +800,11 @@ msgstr ""
 "             # Ak je to možné, vysunúť zariadenie zodpovedajúce 'udi'.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:274
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # Listen to all add/remove events on supported hardware."
 msgctxt "solid-hardware|"
 msgid "             # Listen to all add/remove events on supported hardware.\n"
 msgstr ""
 "             # Počúvať na všetkých udalostiach pridania/odstránenia na "
-"podporovanom hardvéri."
+"podporovanom hardvéri.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:277
 msgctxt "solid-hardware|"
@@ -816,10 +812,6 @@ msgid "             # Monitor devices for changes.\n"
 msgstr ""
 
 #: tools/solid-hardware/solid-hardware.cpp:280
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"CanCheck\" request to the device corresponding to "
@@ -828,10 +820,6 @@ msgstr ""
 "             # Ak je to možné, vysunúť zariadenie zodpovedajúce 'udi'.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:283
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"Check\" request to the device corresponding to 'udi'.\n"
@@ -839,10 +827,6 @@ msgstr ""
 "             # Ak je to možné, vysunúť zariadenie zodpovedajúce 'udi'.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:286
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"CanRepair\" request to the device corresponding to "
@@ -851,10 +835,6 @@ msgstr ""
 "             # Ak je to možné, vysunúť zariadenie zodpovedajúce 'udi'.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:289
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"Repair\" request to the device corresponding to "
@@ -920,18 +900,18 @@ msgstr ""
 #: tools/solid-hardware/solid-hardware.cpp:491
 msgctxt "SolidHardware|"
 msgid "no"
-msgstr ""
+msgstr "no"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #: tools/solid-hardware/solid-hardware.cpp:491
 msgctxt "SolidHardware|"
 msgid "yes"
-msgstr ""
+msgstr "yes"
 
 #: tools/solid-hardware/solid-hardware.cpp:487
 msgctxt "SolidHardware|"
 msgid "Device Check: operation is not supported"
-msgstr ""
+msgstr "Device Check: operation is nie je podporovaný."
 
 #: tools/solid-hardware/solid-hardware.cpp:491
 #, qt-format
@@ -954,12 +934,12 @@ msgstr ""
 #: tools/solid-hardware/solid-hardware.cpp:577
 msgctxt "SolidHardware|"
 msgid "no error"
-msgstr ""
+msgstr "žiadna chyba"
 
 #: tools/solid-hardware/solid-hardware.cpp:577
 msgctxt "SolidHardware|"
 msgid "has error"
-msgstr ""
+msgstr "má chybu"
 
 #~ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 #~ msgid "Unknown"
