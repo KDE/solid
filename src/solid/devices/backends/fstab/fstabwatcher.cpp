@@ -142,22 +142,38 @@ void FstabWatcher::timerEvent(QTimerEvent* event)
         return;
     }
 
-    std::vector<std::string> currentMounts;
-    currentMounts.reserve(number);
+    std::vector<std::string> newMounts;
 
     for (int i = 0; i < number; ++i) {
-        currentMounts.emplace_back(std::string(buffer[i].f_mntfromname) + ":" + std::string(buffer[i].f_mntonname));
+        if (std::find_if(m_mounts.begin(),
+                         m_mounts.end(),
+                         [&](const std::string &mount) {
+                             return (mount == std::string(buffer[i].f_mntfromname) + ":" + std::string(buffer[i].f_mntonname));
+                         })
+            == m_mounts.end()) {
+            newMounts.emplace_back(std::string(buffer[i].f_mntfromname) + ":" + std::string(buffer[i].f_mntonname));
+        }
     }
 
-    bool isSubset = std::all_of(currentMounts.begin(), currentMounts.end(), [&](const std::string &mount) {
-        return std::find(m_mounts.begin(), m_mounts.end(), mount) != m_mounts.end();
-    });
-
-    if (isSubset && m_mounts.size() == currentMounts.size()) {
+    if (newMounts.empty() && (m_mounts.size() == (size_t)number)) {
         return;
     }
 
-    m_mounts.swap(currentMounts);
+    m_mounts.erase(std::remove_if(m_mounts.begin(),
+                                  m_mounts.end(),
+                                  [&](const std::string &mount) {
+                                      for (int i = 0; i < number; ++i) {
+                                          std::string bufferEntry = std::string(buffer[i].f_mntfromname) + ":" + std::string(buffer[i].f_mntonname);
+                                          if (mount == bufferEntry) {
+                                              return false;
+                                          }
+                                      }
+                                      return true;
+                                  }),
+                   m_mounts.end());
+
+    m_mounts.insert(m_mounts.end(), newMounts.begin(), newMounts.end());
+
     Q_EMIT mtabChanged();
 }
 #endif
