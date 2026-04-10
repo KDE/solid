@@ -60,6 +60,16 @@ msgctxt "Solid::Backends::IMobile::Manager|"
 msgid "iOS devices"
 msgstr "อุปกรณ์แบบ UPnP"
 
+#: solid/devices/backends/kdeconnect/kdeconnectmanager.cpp:49
+msgctxt "Solid::Backends::KdeConnect::Manager|"
+msgid "KDE Connect"
+msgstr ""
+
+#: solid/devices/backends/kdeconnect/kdeconnectmanager.cpp:50
+msgctxt "Solid::Backends::KdeConnect::Manager|"
+msgid "Battery and storage from connected devices"
+msgstr ""
+
 #: solid/devices/backends/udev/udevdevice.cpp:147
 #, fuzzy
 #| msgid "Computer"

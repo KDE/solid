@@ -55,6 +55,16 @@ msgctxt "Solid::Backends::IMobile::Manager|"
 msgid "iOS devices"
 msgstr "iOS zariadenia"
 
+#: solid/devices/backends/kdeconnect/kdeconnectmanager.cpp:49
+msgctxt "Solid::Backends::KdeConnect::Manager|"
+msgid "KDE Connect"
+msgstr ""
+
+#: solid/devices/backends/kdeconnect/kdeconnectmanager.cpp:50
+msgctxt "Solid::Backends::KdeConnect::Manager|"
+msgid "Battery and storage from connected devices"
+msgstr ""
+
 #: solid/devices/backends/udev/udevdevice.cpp:147
 msgctxt "Solid::Backends::UDev::UDevDevice|"
 msgid "Computer"
@@ -809,7 +819,7 @@ msgstr ""
 #: tools/solid-hardware/solid-hardware.cpp:277
 msgctxt "solid-hardware|"
 msgid "             # Monitor devices for changes.\n"
-msgstr ""
+msgstr "              # Monitorovať zariadenia na zmeny.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:280
 msgctxt "solid-hardware|"
@@ -894,7 +904,7 @@ msgstr "Chyba: %1 nemá rozhranie OpticalDrive."
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanCheck: %1"
-msgstr ""
+msgstr "Zariadenie môže kontrolovať: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #: tools/solid-hardware/solid-hardware.cpp:491
@@ -917,7 +927,7 @@ msgstr "Device Check: operation is nie je podporovaný."
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanRepair: %1"
-msgstr ""
+msgstr "Zariadenie môže opraviť: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:506
 #, qt-format
@@ -929,7 +939,7 @@ msgstr "Chyba: %1"
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device check: %1"
-msgstr ""
+msgstr "Kontrola zariadenia: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:577
 msgctxt "SolidHardware|"
