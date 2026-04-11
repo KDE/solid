@@ -4,12 +4,12 @@
 # Diego Iastrubni <elcuco@kde.org>, 2012.
 # Elkana Bardugo <ttv200@gmail.com>, 2016.
 # Elkana Bardugo <ttv200@gmail.com>, 2017. #zanata
-# SPDX-FileCopyrightText: 2024, 2025 Yaron Shahrabani <sh.yaron@gmail.com>
+# SPDX-FileCopyrightText: 2024, 2025, 2026 Yaron Shahrabani <sh.yaron@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2025-09-17 10:39+0300\n"
+"PO-Revision-Date: 2026-04-10 11:13+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Lokalize 25.08.0\n"
+"X-Generator: Lokalize 25.12.3\n"
 "X-Qt-Contexts: true\n"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:69
@@ -61,12 +61,12 @@ msgstr "התקני iOS"
 #: solid/devices/backends/kdeconnect/kdeconnectmanager.cpp:49
 msgctxt "Solid::Backends::KdeConnect::Manager|"
 msgid "KDE Connect"
-msgstr ""
+msgstr "KDE Connect"
 
 #: solid/devices/backends/kdeconnect/kdeconnectmanager.cpp:50
 msgctxt "Solid::Backends::KdeConnect::Manager|"
 msgid "Battery and storage from connected devices"
-msgstr ""
+msgstr "סוללה ואחסון ממכשירים מחוברים"
 
 #: solid/devices/backends/udev/udevdevice.cpp:147
 msgctxt "Solid::Backends::UDev::UDevDevice|"

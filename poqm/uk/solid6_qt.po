@@ -3,13 +3,13 @@
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2009, 2010, 2011, 2012, 2013, 2014, 2016, 2017, 2019, 2020, 2021, 2022, 2023, 2024, 2025.
+# Yuri Chornoivan <yurchor@ukr.net>, 2009, 2010, 2011, 2012, 2013, 2014, 2016, 2017, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: solid5_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-01 01:49+0000\n"
-"PO-Revision-Date: 2025-02-07 17:04+0200\n"
+"PO-Revision-Date: 2026-04-10 08:23+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -62,12 +62,12 @@ msgstr "Пристрої iOS"
 #: solid/devices/backends/kdeconnect/kdeconnectmanager.cpp:49
 msgctxt "Solid::Backends::KdeConnect::Manager|"
 msgid "KDE Connect"
-msgstr ""
+msgstr "KDE Connect"
 
 #: solid/devices/backends/kdeconnect/kdeconnectmanager.cpp:50
 msgctxt "Solid::Backends::KdeConnect::Manager|"
 msgid "Battery and storage from connected devices"
-msgstr ""
+msgstr "Дані щодо акумулятора та сховища даних від з'єднаних пристроїв"
 
 #: solid/devices/backends/udev/udevdevice.cpp:147
 msgctxt "Solid::Backends::UDev::UDevDevice|"

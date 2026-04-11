@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Qt-Contexts: true\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.9\n"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:69
 #, qt-format
@@ -53,12 +53,12 @@ msgstr "iOS მოწყობილობები"
 #: solid/devices/backends/kdeconnect/kdeconnectmanager.cpp:49
 msgctxt "Solid::Backends::KdeConnect::Manager|"
 msgid "KDE Connect"
-msgstr ""
+msgstr "KDE Connect"
 
 #: solid/devices/backends/kdeconnect/kdeconnectmanager.cpp:50
 msgctxt "Solid::Backends::KdeConnect::Manager|"
 msgid "Battery and storage from connected devices"
-msgstr ""
+msgstr "ელემენტი და საცავი დაკავშირებული მოწყობილობებიდან"
 
 #: solid/devices/backends/udev/udevdevice.cpp:147
 msgctxt "Solid::Backends::UDev::UDevDevice|"

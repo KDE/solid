@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: solid_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-01 01:49+0000\n"
-"PO-Revision-Date: 2023-03-11 16:28+0100\n"
+"PO-Revision-Date: 2026-04-10 12:00+0200\n"
 "Last-Translator: Roman Paholik <wizzardsk@gmail.com>\n"
 "Language-Team: Slovak <kde-sk@linux.sk>\n"
 "Language: sk\n"
@@ -58,12 +58,12 @@ msgstr "iOS zariadenia"
 #: solid/devices/backends/kdeconnect/kdeconnectmanager.cpp:49
 msgctxt "Solid::Backends::KdeConnect::Manager|"
 msgid "KDE Connect"
-msgstr ""
+msgstr "KDE Connect"
 
 #: solid/devices/backends/kdeconnect/kdeconnectmanager.cpp:50
 msgctxt "Solid::Backends::KdeConnect::Manager|"
 msgid "Battery and storage from connected devices"
-msgstr ""
+msgstr "Batéria a úložisko z pripojených zariadení"
 
 #: solid/devices/backends/udev/udevdevice.cpp:147
 msgctxt "Solid::Backends::UDev::UDevDevice|"
