@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: solid_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-01 01:49+0000\n"
-"PO-Revision-Date: 2024-01-26 14:15+0200\n"
+"PO-Revision-Date: 2026-05-01 15:16+0300\n"
 "Last-Translator: Moo\n"
 "Language-Team: lt <kde-i18n-lt@kde.org>\n"
 "Language: lt\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
 "X-Launchpad-Export-Date: 2010-06-05 15:24+0000\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.8\n"
 "X-Qt-Contexts: true\n"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:69
@@ -62,12 +62,12 @@ msgstr "„iOS“ įrenginiai"
 #: solid/devices/backends/kdeconnect/kdeconnectmanager.cpp:49
 msgctxt "Solid::Backends::KdeConnect::Manager|"
 msgid "KDE Connect"
-msgstr ""
+msgstr "KDE Connect"
 
 #: solid/devices/backends/kdeconnect/kdeconnectmanager.cpp:50
 msgctxt "Solid::Backends::KdeConnect::Manager|"
 msgid "Battery and storage from connected devices"
-msgstr ""
+msgstr "Informacija apie akumuliatorių ir saugyklą iš prijungtų įrenginių"
 
 #: solid/devices/backends/udev/udevdevice.cpp:147
 msgctxt "Solid::Backends::UDev::UDevDevice|"
@@ -498,7 +498,7 @@ msgstr "Saugyklos laikmena"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:715
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "You are not authorized to perform this operation"
-msgstr "Jūs neturite įgaliojimų atlikti šios operacijos"
+msgstr "Jūs neturite įgaliojimų atlikti šią operaciją"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:717
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -513,7 +513,7 @@ msgstr "Prašyta operacija patyrė nesėkmę"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:721
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The requested operation has been canceled"
-msgstr "Prašyta operacija buvo nutraukta"
+msgstr "Prašytos operacijos buvo atsisakyta"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:723
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -558,7 +558,7 @@ msgstr "Operacija pažadins diską, kuris yra gilaus miego būsenoje"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:739
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The operation has already been canceled"
-msgstr "Operacija jau buvo nutraukta"
+msgstr "Operacijos jau buvo atsisakyta"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:741
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -566,7 +566,7 @@ msgid ""
 "Cannot request authentication for this action. The PolicyKit authentication "
 "system appears to be not available."
 msgstr ""
-"Nepavyksta prašyti patvirtinti tapatybę šiam veiksmui atlikti. Atrodo, kad "
+"Nepavyksta prašyti tapatybės nustatymo šiam veiksmui atlikti. Atrodo, kad "
 "PolicyKit tapatybės nustatymo sistema yra neprieinama."
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:743
@@ -577,7 +577,7 @@ msgstr "Užklausos nustatyti tapatybę buvo atsisakyta"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:745
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "An unspecified error has occurred"
-msgstr "Įvyko nežinoma klaida"
+msgstr "Įvyko nenurodyta klaida"
 
 #: solid/devices/backends/udisks2/udisksmanager.cpp:106
 msgctxt "Solid::Backends::UDisks2::Manager|"
@@ -623,12 +623,12 @@ msgstr "Nikelio Kadmio"
 #: solid/devices/backends/upower/upowerdevice.cpp:147
 msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 msgid "Nickel Metal Hydride"
-msgstr "Nikelio metalo hibrido"
+msgstr "Nikelio metalo hidrido"
 
 #: solid/devices/backends/upower/upowermanager.cpp:61
 msgctxt "Solid::Backends::UPower::UPowerManager|"
 msgid "Power Management"
-msgstr "Energijos valdymas"
+msgstr "Maitinimo valdymas"
 
 #: solid/devices/backends/upower/upowermanager.cpp:62
 msgctxt "Solid::Backends::UPower::UPowerManager|"
@@ -653,7 +653,7 @@ msgstr "Nikelio Kadmio"
 #: solid/devices/backends/win/windevice.cpp:167
 msgctxt "Solid::Backends::Win::WinDevice|battery technology"
 msgid "Nickel Metal Hydride"
-msgstr "Nikelio metalo hibrido"
+msgstr "Nikelio metalo hidrido"
 
 #: solid/devices/backends/win/windevice.cpp:170
 msgctxt "Solid::Backends::Win::WinDevice|battery technology"
@@ -683,12 +683,12 @@ msgstr "Blokas"
 #: solid/devices/frontend/deviceinterface.cpp:61
 msgctxt "Solid::DeviceInterface|Storage Access device type"
 msgid "Storage Access"
-msgstr "Laikmenos prieiga"
+msgstr "Saugyklos prieiga"
 
 #: solid/devices/frontend/deviceinterface.cpp:63
 msgctxt "Solid::DeviceInterface|Storage Drive device type"
 msgid "Storage Drive"
-msgstr "Laikmenos diskas"
+msgstr "Saugyklos kaupiklis"
 
 #: solid/devices/frontend/deviceinterface.cpp:65
 msgctxt "Solid::DeviceInterface|Optical Drive device type"
@@ -698,7 +698,7 @@ msgstr "Optinis įrenginys"
 #: solid/devices/frontend/deviceinterface.cpp:67
 msgctxt "Solid::DeviceInterface|Storage Volume device type"
 msgid "Storage Volume"
-msgstr "Laikmenos talpa"
+msgstr "Saugyklos talpa"
 
 #: solid/devices/frontend/deviceinterface.cpp:69
 msgctxt "Solid::DeviceInterface|Optical Disc device type"
@@ -723,7 +723,7 @@ msgstr "Akumuliatorius"
 #: solid/devices/frontend/deviceinterface.cpp:77
 msgctxt "Solid::DeviceInterface|Network Share device type"
 msgid "Network Share"
-msgstr "Tinklo bendrinimas"
+msgstr "Tinklo viešinys"
 
 #: tools/solid-hardware/solid-hardware.cpp:218
 #: tools/solid-hardware/solid-hardware.cpp:341
@@ -750,15 +750,16 @@ msgid ""
 "             # neutral fashion,\n"
 "             # - Otherwise only device UDIs are listed.\n"
 msgstr ""
-"             # Pateikti aparatinės įrangos, esančios sistemoje, sąrašą.\n"
-"             # - Jei parametras „nonportableinfo“ yra nurodytas, "
-"pateikiamas\n"
-"             # įrenginių savybių sąrašas (atsargiau, šiuo atveju savybių\n"
-"             # pavadinimai priklauso nuo sąsajos),\n"
-"             # - Jei parametras „details“ yra nurodytas, įrenginių sąsajos "
-"ir\n"
-"             # atitinkamos sąvybės pateikiamos nepriklausomu nuo platformos\n"
-"             # būdu,\n"
+"             # Išvardyti sistemoje esančią aparatinę įrangą.\n"
+"             # - Jei yra nurodytas parametras „nonportableinfo“, tada "
+"išvardijamos\n"
+"             # įrenginių savybės (būkite atsargūs, šiuo atveju savybių\n"
+"             # pavadinimai priklauso nuo vidinės pusės),\n"
+"             # - Jei yra nurodytas parametras „details“, tada įrenginių "
+"sąsajos ir\n"
+"             # atitinkamos savybės išvardijamos nepriklausomu nuo "
+"platformos\n"
+"             # pavidalu,\n"
 "             # - Kitais atvejais pateikiami tik įrenginių UDI.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:245
@@ -767,8 +768,8 @@ msgid ""
 "             # Display all the interfaces and properties of the device\n"
 "             # corresponding to 'udi' in a platform neutral fashion.\n"
 msgstr ""
-"             # Parodyti visas sąsajas ir įrenginio sąvybes\n"
-"             # pagal 'udi' nepriklausomu nuo platformos būdu.\n"
+"             # Parodyti visas įrenginio, kuris atitinka „udi“, sąsajas\n"
+"             # ir savybes nepriklausomu nuo platformos pavidalu.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:251
 msgctxt "solid-hardware|"
@@ -778,9 +779,9 @@ msgid ""
 "             # (be careful, in this case property names are backend "
 "dependent).\n"
 msgstr ""
-"             # Parodyti visas įrenginio sąvybes pagal „udi“\n"
-"             # (atsargiau, šiuo atveju savybių\n"
-"             # pavadinimai priklauso nuo sąsajos).\n"
+"             # Parodyti visas įrenginio, kuris atitinka „udi“,\n"
+"             # savybes (būkite atsargūs, šiuo atveju savybių\n"
+"             # pavadinimai priklauso nuo vidinės pusės).\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:257
 msgctxt "solid-hardware|"
@@ -791,28 +792,30 @@ msgid ""
 "             # branch of the corresponding device,\n"
 "             # - Otherwise the search is done on all the devices.\n"
 msgstr ""
-"             # Pateikti įrenginių UDI sąrašą pagal „predikatą“.\n"
-"             # - Jei „parentUdi“ yra nurodytas, ieškoma tik atitinkamo\n"
-"             # įrenginio atšakoje,\n"
-"             # - Kitu atveju, ieškoma visuose įrenginiuose.\n"
+"             # Pateikti įrenginių, kurie atitinka „predikatą“, UDI sąrašą.\n"
+"             # - Jei yra nurodytas „parentUdi“, tada paieška apribojama\n"
+"             # atitinkamo įrenginio atšaka,\n"
+"             # - Priešingu atveju, paieška atliekama visuose įrenginiuose.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:265
 msgctxt "solid-hardware|"
 msgid ""
 "             # If applicable, mount the device corresponding to 'udi'.\n"
-msgstr "             # Jei įmanoma, prijunkite įrenginį atitinkantį „udi“.\n"
+msgstr ""
+"             # Jei pritaikoma, prijungti įrenginį, kuris atitinka „udi“.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:268
 msgctxt "solid-hardware|"
 msgid ""
 "             # If applicable, unmount the device corresponding to 'udi'.\n"
-msgstr "             # Jei įmanoma, atjunkite įrenginį atitinkantį „udi“.\n"
+msgstr "             # Jei pritaikoma, atjungti, kuris atitinka „udi“.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:271
 msgctxt "solid-hardware|"
 msgid ""
 "             # If applicable, eject the device corresponding to 'udi'.\n"
-msgstr "             # Jei įmanoma, prijunkite įrenginį atitinkantį „udi“.\n"
+msgstr ""
+"             # Jei pritaikoma, išstumti įrenginį, kuris atitinka „udi“.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:274
 msgctxt "solid-hardware|"
@@ -824,60 +827,54 @@ msgstr ""
 #: tools/solid-hardware/solid-hardware.cpp:277
 msgctxt "solid-hardware|"
 msgid "             # Monitor devices for changes.\n"
-msgstr "             # Stebėti, ar yra pakeitimų su įrenginiais.\n"
+msgstr "             # Stebėti, ar yra su įrenginiais susijusių pakeitimų.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:280
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"CanCheck\" request to the device corresponding to "
 "'udi'.\n"
-msgstr "             # Jei įmanoma, prijunkite įrenginį atitinkantį „udi“.\n"
+msgstr ""
+"             # Siųsti užklausą „Gali patikrinti“ į įrenginį, kuris atitinka "
+"„udi“.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:283
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"Check\" request to the device corresponding to 'udi'.\n"
-msgstr "             # Jei įmanoma, prijunkite įrenginį atitinkantį „udi“.\n"
+msgstr ""
+"             # Siųsti užklausą „Patikrinti“ į įrenginį, kuris atitinka "
+"„udi“.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:286
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"CanRepair\" request to the device corresponding to "
 "'udi'.\n"
-msgstr "             # Jei įmanoma, prijunkite įrenginį atitinkantį „udi“.\n"
+msgstr ""
+"             # Siųsti užklausą „Gali pataisyti“ į įrenginį, kuris atitinka "
+"„udi“.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:289
-#, fuzzy
-#| msgctxt "solid-hardware|"
-#| msgid ""
-#| "             # If applicable, eject the device corresponding to 'udi'.\n"
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"Repair\" request to the device corresponding to "
 "'udi'.\n"
-msgstr "             # Jei įmanoma, prijunkite įrenginį atitinkantį „udi“.\n"
+msgstr ""
+"             # Siųsti užklausą „Pataisyti“ į įrenginį, kuris atitinka "
+"„udi“.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:301
 msgctxt "solid-hardware|"
 msgid "KDE tool for querying your hardware from the command line"
-msgstr "KDE įrankis aparatinės įrangos tikrinimui iš komandų eilutės"
+msgstr ""
+"KDE įrankis, skirtas teikti užklausas apie aparatinę įrangą naudojant "
+"komandų eilutę"
 
 #: tools/solid-hardware/solid-hardware.cpp:304
 msgctxt "solid-hardware|"
 msgid "Command to execute"
-msgstr "Komanda vykdymui"
+msgstr "Komanda, kurią vykdyti"
 
 #: tools/solid-hardware/solid-hardware.cpp:306
 msgctxt "solid-hardware|"
@@ -887,7 +884,7 @@ msgstr "Rodyti prieinamas komandas"
 #: tools/solid-hardware/solid-hardware.cpp:328
 msgctxt "solid-hardware|"
 msgid "Show device details"
-msgstr "Rodyti įrenginio informaciją"
+msgstr "Rodyti informaciją apie įrenginį"
 
 #: tools/solid-hardware/solid-hardware.cpp:329
 msgctxt "solid-hardware|"
@@ -897,7 +894,7 @@ msgstr "Rodyti neperkeliamą informaciją"
 #: tools/solid-hardware/solid-hardware.cpp:342
 msgctxt "solid-hardware|"
 msgid "Parent device udi"
-msgstr "Aukštesnio lygmens įrenginio udi"
+msgstr "Viršesnio įrenginio udi"
 
 #: tools/solid-hardware/solid-hardware.cpp:384
 #, qt-format
@@ -909,7 +906,7 @@ msgstr "Sintaksės klaida: nežinoma komanda „%1“"
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Error: %1 does not have the interface StorageAccess."
-msgstr "Klaida: %1 neturi sąsajos Laikmenos prieiga."
+msgstr "Klaida: %1 neturi sąsajos Saugyklos prieiga."
 
 #: tools/solid-hardware/solid-hardware.cpp:449
 #, qt-format
@@ -921,30 +918,30 @@ msgstr "Klaida: %1 neturi sąsajos Optinis diskas."
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanCheck: %1"
-msgstr ""
+msgstr "Įrenginys gali patikrinti: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #: tools/solid-hardware/solid-hardware.cpp:491
 msgctxt "SolidHardware|"
 msgid "no"
-msgstr ""
+msgstr "ne"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #: tools/solid-hardware/solid-hardware.cpp:491
 msgctxt "SolidHardware|"
 msgid "yes"
-msgstr ""
+msgstr "taip"
 
 #: tools/solid-hardware/solid-hardware.cpp:487
 msgctxt "SolidHardware|"
 msgid "Device Check: operation is not supported"
-msgstr ""
+msgstr "Įrenginio patikrinimas: operacija nepalaikoma"
 
 #: tools/solid-hardware/solid-hardware.cpp:491
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanRepair: %1"
-msgstr ""
+msgstr "Įrenginys gali pataisyti: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:506
 #, qt-format
@@ -956,17 +953,17 @@ msgstr "Klaida: %1"
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device check: %1"
-msgstr ""
+msgstr "Įrenginio patikrinimas: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:577
 msgctxt "SolidHardware|"
 msgid "no error"
-msgstr ""
+msgstr "nėra klaidos"
 
 #: tools/solid-hardware/solid-hardware.cpp:577
 msgctxt "SolidHardware|"
 msgid "has error"
-msgstr ""
+msgstr "yra klaida"
 
 #~ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 #~ msgid "Unknown"
