@@ -23,7 +23,6 @@ set(backend_sources
 ecm_qt_declare_logging_category(backend_sources
     HEADER kdeconnect_debug.h
     IDENTIFIER Solid::Backends::KdeConnect::KDECONNECT
-    DEFAULT_SEVERITY Warning
     CATEGORY_NAME kf.solid.backends.kdeconnect
     DESCRIPTION "KDE Connect (Solid)"
     EXPORT SOLID

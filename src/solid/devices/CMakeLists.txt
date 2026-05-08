@@ -81,7 +81,6 @@ set(solid_LIB_SRCS
 ecm_qt_declare_logging_category(solid_LIB_SRCS
     HEADER devices_debug.h
     IDENTIFIER Solid::Frontend::DeviceManager::DEVICEMANAGER
-    DEFAULT_SEVERITY Warning
     CATEGORY_NAME kf.solid.frontend.devicemanager
     DESCRIPTION "Solid (Device Manager)"
     EXPORT SOLID
