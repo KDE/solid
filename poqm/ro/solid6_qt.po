@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2009, 2010, 2012, 2014, 2020, 2021, 2022, 2024, 2025 Sergiu Bivol <sergiu@cip.md>
+# SPDX-FileCopyrightText: 2009, 2010, 2012, 2014, 2020, 2021, 2022, 2024, 2025, 2026 Sergiu Bivol <sergiu@cip.md>
 # This file is distributed under the same license as the solid package.
 # Cristian Oneț <onet.cristian@gmail.com>, 2010, 2011, 2013.
 #
@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-01-24 18:50+0000\n"
-"PO-Revision-Date: 2025-09-27 13:56+0100\n"
+"PO-Revision-Date: 2026-05-16 21:03+0100\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
 "Language: ro\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Lokalize 25.08.1\n"
+"X-Generator: Lokalize 25.12.3\n"
 "X-Qt-Contexts: true\n"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:69
@@ -59,12 +59,12 @@ msgstr "Dispozitive iOS"
 #: solid/devices/backends/kdeconnect/kdeconnectmanager.cpp:49
 msgctxt "Solid::Backends::KdeConnect::Manager|"
 msgid "KDE Connect"
-msgstr ""
+msgstr "KDE Connect"
 
 #: solid/devices/backends/kdeconnect/kdeconnectmanager.cpp:50
 msgctxt "Solid::Backends::KdeConnect::Manager|"
 msgid "Battery and storage from connected devices"
-msgstr ""
+msgstr "Acumulator și stocare de pe dispozitive conectate"
 
 #: solid/devices/backends/udev/udevdevice.cpp:147
 msgctxt "Solid::Backends::UDev::UDevDevice|"
@@ -809,12 +809,16 @@ msgid ""
 "             # Send \"CanCheck\" request to the device corresponding to "
 "'udi'.\n"
 msgstr ""
+"             # Trimite cererea „PoateVerifica” către dispozitivul ce "
+"corespunde „udi”.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:283
 msgctxt "solid-hardware|"
 msgid ""
 "             # Send \"Check\" request to the device corresponding to 'udi'.\n"
 msgstr ""
+"             # Trimite cererea „Verifică” către dispozitivul ce corespunde "
+"„udi”.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:286
 msgctxt "solid-hardware|"
@@ -822,6 +826,8 @@ msgid ""
 "             # Send \"CanRepair\" request to the device corresponding to "
 "'udi'.\n"
 msgstr ""
+"             # Trimite cererea „PoateRepara” către dispozitivul ce "
+"corespunde „udi”.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:289
 msgctxt "solid-hardware|"
@@ -829,6 +835,8 @@ msgid ""
 "             # Send \"Repair\" request to the device corresponding to "
 "'udi'.\n"
 msgstr ""
+"             # Trimite cererea „Repară” către dispozitivul ce corespunde "
+"„udi”.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:301
 msgctxt "solid-hardware|"
@@ -882,7 +890,7 @@ msgstr "Eroare: %1 nu are interfața OpticalDrive."
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanCheck: %1"
-msgstr ""
+msgstr "Dispozitiv PoateVerifica: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:476
 #: tools/solid-hardware/solid-hardware.cpp:491
@@ -905,7 +913,7 @@ msgstr "Verificare dispozitiv: operațiune nepermisă"
 #, qt-format
 msgctxt "SolidHardware|"
 msgid "Device CanRepair: %1"
-msgstr ""
+msgstr "Dispozitiv PoateRepara: %1"
 
 #: tools/solid-hardware/solid-hardware.cpp:506
 #, qt-format
