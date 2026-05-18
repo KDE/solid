@@ -229,11 +229,14 @@ void Manager::onServiceOwnerChanged(const QString &service, const QString &oldOw
     Q_UNUSED(service);
 
     qCDebug(KDECONNECT) << "service owner changed from" << oldOwner << "to" << newOwner;
-    for (const QString &udi : std::as_const(m_interestingDevices)) {
-        Q_EMIT deviceRemoved(udi);
-    }
+    const QStringList devices = m_interestingDevices;
+
     m_interestingDevices.clear();
     m_cache.clear();
+
+    for (const QString &udi : devices) {
+        Q_EMIT deviceRemoved(udi);
+    }
 
     if (!newOwner.isEmpty()) {
         reloadDevices();
@@ -329,7 +332,9 @@ void Manager::addOrRemoveDevice(const QString &udi, bool loadedPluginsChanged)
         Q_EMIT deviceRemoved(udi);
     } else if (loadedPluginsChanged) {
         qCDebug(KDECONNECT) << "Loaded plugins changed, removing and re-adding" << udi;
+        m_interestingDevices.removeOne(udi);
         Q_EMIT deviceRemoved(udi);
+        m_interestingDevices.append(udi);
         Q_EMIT deviceAdded(udi);
     }
 }
