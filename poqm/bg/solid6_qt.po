@@ -2,20 +2,20 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Yasen Pramatarov <yasen@lindeas.com>, 2010, 2021.
-# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Mincho Kondarev <mkondarev@yahoo.de>
+# SPDX-FileCopyrightText: 2022-2026 Mincho Kondarev <mkondarev@yahoo.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: solid_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-01-24 18:50+0000\n"
-"PO-Revision-Date: 2025-02-13 12:30+0100\n"
+"PO-Revision-Date: 2026-05-28 22:27+0200\n"
 "Last-Translator: Mincho Kondarev <mkondarev@yahoo.de>\n"
 "Language-Team: Bulgarian <kde-i18n-doc@kde.org>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 25.03.70\n"
+"X-Generator: Lokalize 26.04.1\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Qt-Contexts: true\n"
 
@@ -59,12 +59,12 @@ msgstr "Устройства iOS"
 #: solid/devices/backends/kdeconnect/kdeconnectmanager.cpp:49
 msgctxt "Solid::Backends::KdeConnect::Manager|"
 msgid "KDE Connect"
-msgstr ""
+msgstr "KDE Connect"
 
 #: solid/devices/backends/kdeconnect/kdeconnectmanager.cpp:50
 msgctxt "Solid::Backends::KdeConnect::Manager|"
 msgid "Battery and storage from connected devices"
-msgstr ""
+msgstr "Батерия и памет на свързаните устройства"
 
 #: solid/devices/backends/udev/udevdevice.cpp:147
 msgctxt "Solid::Backends::UDev::UDevDevice|"
