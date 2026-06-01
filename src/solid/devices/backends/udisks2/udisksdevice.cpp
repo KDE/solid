@@ -806,10 +806,10 @@ QString Device::parentUdi() const
 {
     QString parent;
 
-    if (propertyExists(QStringLiteral("Drive"))) { // block
-        parent = drivePath();
-    } else if (propertyExists(QStringLiteral("Table"))) { // partition
+    if (propertyExists(QStringLiteral("Table"))) { // partition
         parent = prop(QStringLiteral("Table")).value<QDBusObjectPath>().path();
+    } else if (propertyExists(QStringLiteral("Drive"))) { // block
+        parent = drivePath();
     } else if (parent.isEmpty() || parent == QLatin1String("/")) {
         parent = QStringLiteral(UD2_UDI_DISKS_PREFIX);
     }
