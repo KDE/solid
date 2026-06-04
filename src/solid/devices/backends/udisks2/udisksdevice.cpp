@@ -21,49 +21,156 @@
 
 #include <QLocale>
 #include <QMimeDatabase>
+#include <QSettings>
+#include <QStandardPaths>
+
+// Same as KFormat::BinaryUnitDialect
+enum BinaryUnitDialect {
+    DefaultBinaryDialect = -1,
+    IECBinaryDialect,
+    JEDECBinaryDialect,
+    MetricBinaryDialect,
+    LastBinaryDialect = MetricBinaryDialect,
+};
+
+// Same as KFormat::BinarySizeUnits
+enum BinarySizeUnits {
+    DefaultBinaryUnits = -1,
+
+    // The first real unit must be 0 for the current implementation!
+    UnitByte,
+    UnitKiloByte,
+    UnitMegaByte,
+    UnitGigaByte,
+    UnitTeraByte,
+    UnitPetaByte,
+    UnitExaByte,
+    UnitZettaByte,
+    UnitYottaByte,
+    UnitLastUnit = UnitYottaByte,
+};
 
 using namespace Solid::Backends::UDisks2;
 
-// Adapted from KLocale as Solid needs to be Qt-only
+// TODO KF7: Should we just depend on KCoreAddons?
 static QString formatByteSize(double size)
 {
-    // Per IEC 60027-2
+    // Current KDE default is IECBinaryDialect
+    const auto fallbackDialect = IECBinaryDialect;
 
-    // Binary prefixes
-    // Tebi-byte             TiB             2^40    1,099,511,627,776 bytes
-    // Gibi-byte             GiB             2^30    1,073,741,824 bytes
-    // Mebi-byte             MiB             2^20    1,048,576 bytes
-    // Kibi-byte             KiB             2^10    1,024 bytes
+    const auto kdeglobals = QStandardPaths::locate(QStandardPaths::GenericConfigLocation, QStringLiteral("kdeglobals"));
+    QSettings settings(kdeglobals, QSettings::IniFormat);
+    auto dialect = settings.value("Locale/BinaryUnitDialect", fallbackDialect).toInt();
 
-    QString s;
-    // Gibi-byte
-    if (size >= 1073741824.0) {
-        size /= 1073741824.0;
-        if (size > 1024) { // Tebi-byte
-            s = QCoreApplication::translate("udisksdevice", "%1 TiB").arg(QLocale().toString(size / 1024.0, 'f', 1));
-        } else {
-            s = QCoreApplication::translate("udisksdevice", "%1 GiB").arg(QLocale().toString(size, 'f', 1));
+    int unit = 0; // Selects what unit to use
+    double multiplier = 1024.0;
+
+    if (dialect == MetricBinaryDialect) {
+        multiplier = 1000.0;
+    }
+
+    while (qAbs(size) >= multiplier && unit < UnitYottaByte) {
+        size /= multiplier;
+        ++unit;
+    }
+
+    QString numString = QLocale().toString(size, 'f', 1);
+
+    // Do not remove "//:" comments below, they are used by the translators.
+    // NB: we cannot pass pluralization arguments, as the size may be negative
+    if (dialect == MetricBinaryDialect) {
+        switch (unit) {
+        case UnitByte:
+            //: MetricBinaryDialect size in bytes
+            return QCoreApplication::translate("udisksdevice", "%1 B").arg(numString);
+        case UnitKiloByte:
+            //: MetricBinaryDialect size in 1000 bytes
+            return QCoreApplication::translate("udisksdevice", "%1 kB").arg(numString);
+        case UnitMegaByte:
+            //: MetricBinaryDialect size in 10^6 bytes
+            return QCoreApplication::translate("udisksdevice", "%1 MB").arg(numString);
+        case UnitGigaByte:
+            //: MetricBinaryDialect size in 10^9 bytes
+            return QCoreApplication::translate("udisksdevice", "%1 GB").arg(numString);
+        case UnitTeraByte:
+            //: MetricBinaryDialect size in 10^12 bytes
+            return QCoreApplication::translate("udisksdevice", "%1 TB").arg(numString);
+        case UnitPetaByte:
+            //: MetricBinaryDialect size in 10^15 bytes
+            return QCoreApplication::translate("udisksdevice", "%1 PB").arg(numString);
+        case UnitExaByte:
+            //: MetricBinaryDialect size in 10^18 byte
+            return QCoreApplication::translate("udisksdevice", "%1 EB").arg(numString);
+        case UnitZettaByte:
+            //: MetricBinaryDialect size in 10^21 bytes
+            return QCoreApplication::translate("udisksdevice", "%1 ZB").arg(numString);
+        case UnitYottaByte:
+            //: MetricBinaryDialect size in 10^24 bytes
+            return QCoreApplication::translate("udisksdevice", "%1 YB").arg(numString);
+        }
+    } else if (dialect == JEDECBinaryDialect) {
+        switch (unit) {
+        case UnitByte:
+            //: JEDECBinaryDialect memory size in bytes
+            return QCoreApplication::translate("udisksdevice", "%1 B").arg(numString);
+        case UnitKiloByte:
+            //: JEDECBinaryDialect memory size in 1024 bytes
+            return QCoreApplication::translate("udisksdevice", "%1 KB").arg(numString);
+        case UnitMegaByte:
+            //: JEDECBinaryDialect memory size in 10^20 bytes
+            return QCoreApplication::translate("udisksdevice", "%1 MB").arg(numString);
+        case UnitGigaByte:
+            //: JEDECBinaryDialect memory size in 10^30 bytes
+            return QCoreApplication::translate("udisksdevice", "%1 GB").arg(numString);
+        case UnitTeraByte:
+            //: JEDECBinaryDialect memory size in 10^40 bytes
+            return QCoreApplication::translate("udisksdevice", "%1 TB").arg(numString);
+        case UnitPetaByte:
+            //: JEDECBinaryDialect memory size in 10^50 bytes
+            return QCoreApplication::translate("udisksdevice", "%1 PB").arg(numString);
+        case UnitExaByte:
+            //: JEDECBinaryDialect memory size in 10^60 bytes
+            return QCoreApplication::translate("udisksdevice", "%1 EB").arg(numString);
+        case UnitZettaByte:
+            //: JEDECBinaryDialect memory size in 10^70 bytes
+            return QCoreApplication::translate("udisksdevice", "%1 ZB").arg(numString);
+        case UnitYottaByte:
+            //: JEDECBinaryDialect memory size in 10^80 bytes
+            return QCoreApplication::translate("udisksdevice", "%1 YB").arg(numString);
+        }
+    } else { // KFormat::IECBinaryDialect, KFormat::DefaultBinaryDialect
+        switch (unit) {
+        case UnitByte:
+            //: IECBinaryDialect size in bytes
+            return QCoreApplication::translate("udisksdevice", "%1 B").arg(numString);
+        case UnitKiloByte:
+            //: IECBinaryDialect size in 1024 bytes
+            return QCoreApplication::translate("udisksdevice", "%1 KiB").arg(numString);
+        case UnitMegaByte:
+            //: IECBinaryDialect size in 10^20 bytes
+            return QCoreApplication::translate("udisksdevice", "%1 MiB").arg(numString);
+        case UnitGigaByte:
+            //: IECBinaryDialect size in 10^30 bytes
+            return QCoreApplication::translate("udisksdevice", "%1 GiB").arg(numString);
+        case UnitTeraByte:
+            //: IECBinaryDialect size in 10^40 bytes
+            return QCoreApplication::translate("udisksdevice", "%1 TiB").arg(numString);
+        case UnitPetaByte:
+            //: IECBinaryDialect size in 10^50 bytes
+            return QCoreApplication::translate("udisksdevice", "%1 PiB").arg(numString);
+        case UnitExaByte:
+            //: IECBinaryDialect size in 10^60 bytes
+            return QCoreApplication::translate("udisksdevice", "%1 EiB").arg(numString);
+        case UnitZettaByte:
+            //: IECBinaryDialect size in 10^70 bytes
+            return QCoreApplication::translate("udisksdevice", "%1 ZiB").arg(numString);
+        case UnitYottaByte:
+            //: IECBinaryDialect size in 10^80 bytes
+            return QCoreApplication::translate("udisksdevice", "%1 YiB").arg(numString);
         }
     }
-    // Mebi-byte
-    else if (size >= 1048576.0) {
-        size /= 1048576.0;
-        s = QCoreApplication::translate("udisksdevice", "%1 MiB").arg(QLocale().toString(size, 'f', 1));
-    }
-    // Kibi-byte
-    else if (size >= 1024.0) {
-        size /= 1024.0;
-        s = QCoreApplication::translate("udisksdevice", "%1 KiB").arg(QLocale().toString(size, 'f', 1));
-    }
-    // Just byte
-    else if (size > 0) {
-        s = QCoreApplication::translate("udisksdevice", "%1 B").arg(QLocale().toString(size, 'f', 1));
-    }
-    // Nothing
-    else {
-        s = QCoreApplication::translate("udisksdevice", "0 B");
-    }
-    return s;
+
+    Q_UNREACHABLE_RETURN({});
 }
 
 static QString concatBlockDeviceDescription(const QString &name, qulonglong size, bool isExternal)
