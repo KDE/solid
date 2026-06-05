@@ -100,171 +100,297 @@ msgctxt "Solid::Backends::UDev::UDevManager|"
 msgid "Devices declared in your system"
 msgstr "Dispositius declarats en el sistema"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:43
-#, qt-format
-msgctxt "udisksdevice|"
-msgid "%1 TiB"
-msgstr "%1 TiB"
-
-#: solid/devices/backends/udisks2/udisksdevice.cpp:45
-#, qt-format
-msgctxt "udisksdevice|"
-msgid "%1 GiB"
-msgstr "%1 GiB"
-
-#: solid/devices/backends/udisks2/udisksdevice.cpp:51
-#, qt-format
-msgctxt "udisksdevice|"
-msgid "%1 MiB"
-msgstr "%1 MiB"
-
-#: solid/devices/backends/udisks2/udisksdevice.cpp:56
-#, qt-format
-msgctxt "udisksdevice|"
-msgid "%1 KiB"
-msgstr "%1 KiB"
-
-#: solid/devices/backends/udisks2/udisksdevice.cpp:60
+#. MetricBinaryDialect size in bytes
+#. ----------
+#. JEDECBinaryDialect memory size in bytes
+#. ----------
+#. IECBinaryDialect size in bytes
+#: solid/devices/backends/udisks2/udisksdevice.cpp:85
+#: solid/devices/backends/udisks2/udisksdevice.cpp:115
+#: solid/devices/backends/udisks2/udisksdevice.cpp:145
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 B"
 msgstr "%1 B"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:64
+#. MetricBinaryDialect size in 1000 bytes
+#: solid/devices/backends/udisks2/udisksdevice.cpp:88
+#, qt-format
 msgctxt "udisksdevice|"
-msgid "0 B"
-msgstr "0 B"
+msgid "%1 kB"
+msgstr ""
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:75
+#. MetricBinaryDialect size in 10^6 bytes
+#. ----------
+#. JEDECBinaryDialect memory size in 10^20 bytes
+#: solid/devices/backends/udisks2/udisksdevice.cpp:91
+#: solid/devices/backends/udisks2/udisksdevice.cpp:121
+#, fuzzy, qt-format
+#| msgctxt "udisksdevice|"
+#| msgid "%1 MiB"
+msgctxt "udisksdevice|"
+msgid "%1 MB"
+msgstr "%1 MiB"
+
+#. MetricBinaryDialect size in 10^9 bytes
+#. ----------
+#. JEDECBinaryDialect memory size in 10^30 bytes
+#: solid/devices/backends/udisks2/udisksdevice.cpp:94
+#: solid/devices/backends/udisks2/udisksdevice.cpp:124
+#, fuzzy, qt-format
+#| msgctxt "udisksdevice|"
+#| msgid "%1 GiB"
+msgctxt "udisksdevice|"
+msgid "%1 GB"
+msgstr "%1 GiB"
+
+#. MetricBinaryDialect size in 10^12 bytes
+#. ----------
+#. JEDECBinaryDialect memory size in 10^40 bytes
+#: solid/devices/backends/udisks2/udisksdevice.cpp:97
+#: solid/devices/backends/udisks2/udisksdevice.cpp:127
+#, fuzzy, qt-format
+#| msgctxt "udisksdevice|"
+#| msgid "%1 TiB"
+msgctxt "udisksdevice|"
+msgid "%1 TB"
+msgstr "%1 TiB"
+
+#. MetricBinaryDialect size in 10^15 bytes
+#. ----------
+#. JEDECBinaryDialect memory size in 10^50 bytes
+#: solid/devices/backends/udisks2/udisksdevice.cpp:100
+#: solid/devices/backends/udisks2/udisksdevice.cpp:130
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 PB"
+msgstr ""
+
+#. MetricBinaryDialect size in 10^18 byte
+#. ----------
+#. JEDECBinaryDialect memory size in 10^60 bytes
+#: solid/devices/backends/udisks2/udisksdevice.cpp:103
+#: solid/devices/backends/udisks2/udisksdevice.cpp:133
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 EB"
+msgstr ""
+
+#. MetricBinaryDialect size in 10^21 bytes
+#. ----------
+#. JEDECBinaryDialect memory size in 10^70 bytes
+#: solid/devices/backends/udisks2/udisksdevice.cpp:106
+#: solid/devices/backends/udisks2/udisksdevice.cpp:136
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 ZB"
+msgstr ""
+
+#. MetricBinaryDialect size in 10^24 bytes
+#. ----------
+#. JEDECBinaryDialect memory size in 10^80 bytes
+#: solid/devices/backends/udisks2/udisksdevice.cpp:109
+#: solid/devices/backends/udisks2/udisksdevice.cpp:139
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 YB"
+msgstr ""
+
+#. JEDECBinaryDialect memory size in 1024 bytes
+#: solid/devices/backends/udisks2/udisksdevice.cpp:118
+#, fuzzy, qt-format
+#| msgctxt "udisksdevice|"
+#| msgid "%1 KiB"
+msgctxt "udisksdevice|"
+msgid "%1 KB"
+msgstr "%1 KiB"
+
+#. IECBinaryDialect size in 1024 bytes
+#: solid/devices/backends/udisks2/udisksdevice.cpp:148
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 KiB"
+msgstr "%1 KiB"
+
+#. IECBinaryDialect size in 10^20 bytes
+#: solid/devices/backends/udisks2/udisksdevice.cpp:151
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 MiB"
+msgstr "%1 MiB"
+
+#. IECBinaryDialect size in 10^30 bytes
+#: solid/devices/backends/udisks2/udisksdevice.cpp:154
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 GiB"
+msgstr "%1 GiB"
+
+#. IECBinaryDialect size in 10^40 bytes
+#: solid/devices/backends/udisks2/udisksdevice.cpp:157
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 TiB"
+msgstr "%1 TiB"
+
+#. IECBinaryDialect size in 10^50 bytes
+#: solid/devices/backends/udisks2/udisksdevice.cpp:160
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 PiB"
+msgstr ""
+
+#. IECBinaryDialect size in 10^60 bytes
+#: solid/devices/backends/udisks2/udisksdevice.cpp:163
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 EiB"
+msgstr ""
+
+#. IECBinaryDialect size in 10^70 bytes
+#: solid/devices/backends/udisks2/udisksdevice.cpp:166
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 ZiB"
+msgstr ""
+
+#. IECBinaryDialect size in 10^80 bytes
+#: solid/devices/backends/udisks2/udisksdevice.cpp:169
+#, qt-format
+msgctxt "udisksdevice|"
+msgid "%1 YiB"
+msgstr ""
+
+#: solid/devices/backends/udisks2/udisksdevice.cpp:182
 #, qt-format
 msgctxt "QObject|%1 is the size, %2 is the block device name e.g. sda, sda1"
 msgid "%1 External Drive (%2)"
 msgstr "%1 unitat externa (%2)"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:77
+#: solid/devices/backends/udisks2/udisksdevice.cpp:184
 #, qt-format
 msgctxt "QObject|%1 is the size, %2 is the block device name e.g. sda, sda1"
 msgid "%1 Internal Drive (%2)"
 msgstr "%1 unitat interna (%2)"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:81
+#: solid/devices/backends/udisks2/udisksdevice.cpp:188
 #, qt-format
 msgctxt "QObject|%1 is the block device name e.g. sda, sda1"
 msgid "External Drive (%1)"
 msgstr "Unitat externa (%1)"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:83
+#: solid/devices/backends/udisks2/udisksdevice.cpp:190
 #, qt-format
 msgctxt "QObject|%1 is the block device name e.g. sda, sda1"
 msgid "Internal Drive (%1)"
 msgstr "Unitat interna (%1)"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:236
+#: solid/devices/backends/udisks2/udisksdevice.cpp:343
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Swap Space"
 msgstr "Espai d'intercanvi"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:258
+#: solid/devices/backends/udisks2/udisksdevice.cpp:365
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Loop Device"
 msgstr "Dispositiu de bucle «loop»"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:274
+#: solid/devices/backends/udisks2/udisksdevice.cpp:381
 msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
 msgid "CD-ROM"
 msgstr "CD-ROM"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:276
+#: solid/devices/backends/udisks2/udisksdevice.cpp:383
 msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
 msgid "CD-R"
 msgstr "CD-R"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:279
+#: solid/devices/backends/udisks2/udisksdevice.cpp:386
 msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
 msgid "CD-RW"
 msgstr "CD-RW"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:283
+#: solid/devices/backends/udisks2/udisksdevice.cpp:390
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD-ROM"
 msgstr "/DVD-ROM"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:286
+#: solid/devices/backends/udisks2/udisksdevice.cpp:393
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD+R"
 msgstr "/DVD+R"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:289
+#: solid/devices/backends/udisks2/udisksdevice.cpp:396
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD+RW"
 msgstr "/DVD+RW"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:292
+#: solid/devices/backends/udisks2/udisksdevice.cpp:399
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD-R"
 msgstr "/DVD-R"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:295
+#: solid/devices/backends/udisks2/udisksdevice.cpp:402
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD-RW"
 msgstr "/DVD-RW"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:298
+#: solid/devices/backends/udisks2/udisksdevice.cpp:405
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD-RAM"
 msgstr "/DVD-RAM"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:302
+#: solid/devices/backends/udisks2/udisksdevice.cpp:409
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD±R DL"
 msgstr "/DVD±R DL"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:304
+#: solid/devices/backends/udisks2/udisksdevice.cpp:411
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD±R"
 msgstr "/DVD±R"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:309
+#: solid/devices/backends/udisks2/udisksdevice.cpp:416
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD±RW DL"
 msgstr "/DVD±RW DL"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:311
+#: solid/devices/backends/udisks2/udisksdevice.cpp:418
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD±RW"
 msgstr "/DVD±RW"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:315
+#: solid/devices/backends/udisks2/udisksdevice.cpp:422
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/BD-ROM"
 msgstr "/BD-ROM"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:318
+#: solid/devices/backends/udisks2/udisksdevice.cpp:425
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/BD-R"
 msgstr "/BD-R"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:321
+#: solid/devices/backends/udisks2/udisksdevice.cpp:428
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/BD-RE"
 msgstr "/BD-RE"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:324
+#: solid/devices/backends/udisks2/udisksdevice.cpp:431
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/HD DVD-ROM"
 msgstr "/HD DVD-ROM"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:327
+#: solid/devices/backends/udisks2/udisksdevice.cpp:434
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/HD DVD-R"
 msgstr "/HD DVD-R"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:330
+#: solid/devices/backends/udisks2/udisksdevice.cpp:437
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/HD DVD-RW"
 msgstr "/HD DVD-RW"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:334
+#: solid/devices/backends/udisks2/udisksdevice.cpp:441
 #, qt-format
 msgctxt ""
 "Solid::Backends::UDisks2::Device|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
@@ -272,7 +398,7 @@ msgctxt ""
 msgid "External %1%2 Drive"
 msgstr "Unitat %1%2 externa"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:336
+#: solid/devices/backends/udisks2/udisksdevice.cpp:443
 #, qt-format
 msgctxt ""
 "Solid::Backends::UDisks2::Device|%1 is CD-ROM/CD-R/etc; %2 is '/DVD-ROM'/'/"
@@ -280,17 +406,17 @@ msgctxt ""
 msgid "%1%2 Drive"
 msgstr "Unitat %1%2"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:344
+#: solid/devices/backends/udisks2/udisksdevice.cpp:451
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "External Floppy Drive"
 msgstr "Unitat de disquet externa"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:346
+#: solid/devices/backends/udisks2/udisksdevice.cpp:453
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Floppy Drive"
 msgstr "Unitat de disquet"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:378
+#: solid/devices/backends/udisks2/udisksdevice.cpp:485
 #, qt-format
 msgctxt ""
 "Solid::Backends::UDisks2::Device|%1 is the vendor, %2 is the model of the "
@@ -298,272 +424,272 @@ msgctxt ""
 msgid "%1 %2"
 msgstr "%1 %2"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:384
+#: solid/devices/backends/udisks2/udisksdevice.cpp:491
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Drive"
 msgstr "Unitat"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:414
+#: solid/devices/backends/udisks2/udisksdevice.cpp:521
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "CD-ROM"
 msgstr "CD-ROM"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:419
+#: solid/devices/backends/udisks2/udisksdevice.cpp:526
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank CD-R"
 msgstr "CD-R en blanc"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:421
+#: solid/devices/backends/udisks2/udisksdevice.cpp:528
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "CD-R"
 msgstr "CD-R"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:427
+#: solid/devices/backends/udisks2/udisksdevice.cpp:534
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank CD-RW"
 msgstr "CD-RW en blanc"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:429
+#: solid/devices/backends/udisks2/udisksdevice.cpp:536
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "CD-RW"
 msgstr "CD-RW"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:434
+#: solid/devices/backends/udisks2/udisksdevice.cpp:541
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD-ROM"
 msgstr "DVD-ROM"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:439
+#: solid/devices/backends/udisks2/udisksdevice.cpp:546
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD-RAM"
 msgstr "DVD-RAM en blanc"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:441
+#: solid/devices/backends/udisks2/udisksdevice.cpp:548
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD-RAM"
 msgstr "DVD-RAM"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:447
+#: solid/devices/backends/udisks2/udisksdevice.cpp:554
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD-R"
 msgstr "DVD-R en blanc"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:449
+#: solid/devices/backends/udisks2/udisksdevice.cpp:556
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD-R"
 msgstr "DVD-R"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:455
+#: solid/devices/backends/udisks2/udisksdevice.cpp:562
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD+R Dual-Layer"
 msgstr "DVD+R doble capa en blanc"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:457
+#: solid/devices/backends/udisks2/udisksdevice.cpp:564
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD+R Dual-Layer"
 msgstr "DVD+R doble capa"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:463
+#: solid/devices/backends/udisks2/udisksdevice.cpp:570
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD-RW"
 msgstr "DVD-RW en blanc"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:465
+#: solid/devices/backends/udisks2/udisksdevice.cpp:572
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD-RW"
 msgstr "DVD-RW"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:471
+#: solid/devices/backends/udisks2/udisksdevice.cpp:578
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD+R"
 msgstr "DVD+R en blanc"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:473
+#: solid/devices/backends/udisks2/udisksdevice.cpp:580
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD+R"
 msgstr "DVD+R"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:479
+#: solid/devices/backends/udisks2/udisksdevice.cpp:586
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD+RW"
 msgstr "DVD+RW en blanc"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:481
+#: solid/devices/backends/udisks2/udisksdevice.cpp:588
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD+RW"
 msgstr "DVD+RW"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:487
+#: solid/devices/backends/udisks2/udisksdevice.cpp:594
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank DVD+RW Dual-Layer"
 msgstr "DVD+RW doble capa en blanc"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:489
+#: solid/devices/backends/udisks2/udisksdevice.cpp:596
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD+RW Dual-Layer"
 msgstr "DVD+RW doble capa"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:494
+#: solid/devices/backends/udisks2/udisksdevice.cpp:601
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "BD-ROM"
 msgstr "BD-ROM"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:499
+#: solid/devices/backends/udisks2/udisksdevice.cpp:606
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank BD-R"
 msgstr "BD-R en blanc"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:501
+#: solid/devices/backends/udisks2/udisksdevice.cpp:608
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "BD-R"
 msgstr "BD-R"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:507
+#: solid/devices/backends/udisks2/udisksdevice.cpp:614
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank BD-RE"
 msgstr "BD-RE en blanc"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:509
+#: solid/devices/backends/udisks2/udisksdevice.cpp:616
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "BD-RE"
 msgstr "BD-RE"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:514
+#: solid/devices/backends/udisks2/udisksdevice.cpp:621
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "HD DVD-ROM"
 msgstr "HD DVD-ROM"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:519
+#: solid/devices/backends/udisks2/udisksdevice.cpp:626
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank HD DVD-R"
 msgstr "HD DVD-R en blanc"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:521
+#: solid/devices/backends/udisks2/udisksdevice.cpp:628
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "HD DVD-R"
 msgstr "HD DVD-R"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:527
+#: solid/devices/backends/udisks2/udisksdevice.cpp:634
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Blank HD DVD-RW"
 msgstr "HD DVD-RW en blanc"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:529
+#: solid/devices/backends/udisks2/udisksdevice.cpp:636
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "HD DVD-RW"
 msgstr "HD DVD-RW"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:536
+#: solid/devices/backends/udisks2/udisksdevice.cpp:643
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Audio CD"
 msgstr "CD d'àudio"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:549
+#: solid/devices/backends/udisks2/udisksdevice.cpp:656
 #, qt-format
 msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
 msgid "%1 Encrypted Drive"
 msgstr "Unitat encriptada %1"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:551
+#: solid/devices/backends/udisks2/udisksdevice.cpp:658
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Encrypted Drive"
 msgstr "Unitat encriptada"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:556
+#: solid/devices/backends/udisks2/udisksdevice.cpp:663
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Floppy Disk"
 msgstr "Disquet"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:560
+#: solid/devices/backends/udisks2/udisksdevice.cpp:667
 #, qt-format
 msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
 msgid "%1 Removable Media"
 msgstr "Suport extraïble %1"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:562
+#: solid/devices/backends/udisks2/udisksdevice.cpp:669
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Removable Media"
 msgstr "Suports extraïbles"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:566
+#: solid/devices/backends/udisks2/udisksdevice.cpp:673
 #, qt-format
 msgctxt "Solid::Backends::UDisks2::Device|%1 is the size"
 msgid "%1 Media"
 msgstr "Suport %1"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:568
+#: solid/devices/backends/udisks2/udisksdevice.cpp:675
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "Storage Media"
 msgstr "Suports d'emmagatzematge"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:715
+#: solid/devices/backends/udisks2/udisksdevice.cpp:822
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "You are not authorized to perform this operation"
 msgstr "No teniu autorització per a executar aquesta operació"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:717
+#: solid/devices/backends/udisks2/udisksdevice.cpp:824
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is currently busy"
 msgstr "Ara mateix el dispositiu està ocupat"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:719
+#: solid/devices/backends/udisks2/udisksdevice.cpp:826
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The requested operation has failed"
 msgstr "L'operació sol·licitada ha fallat"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:721
+#: solid/devices/backends/udisks2/udisksdevice.cpp:828
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The requested operation has been canceled"
 msgstr "L'operació sol·licitada s'ha cancel·lat"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:723
+#: solid/devices/backends/udisks2/udisksdevice.cpp:830
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "An invalid or malformed option has been given"
 msgstr "S'ha indicat una opció no vàlida o amb format incorrecte"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:725
+#: solid/devices/backends/udisks2/udisksdevice.cpp:832
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The kernel driver for this filesystem type is not available"
 msgstr ""
 "El controlador del nucli per a aquest tipus de sistema de fitxers no està "
 "disponible"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:727
+#: solid/devices/backends/udisks2/udisksdevice.cpp:834
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is already mounted"
 msgstr "El dispositiu ja està muntat"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:729
+#: solid/devices/backends/udisks2/udisksdevice.cpp:836
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is not mounted"
 msgstr "El dispositiu no està muntat"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:731
+#: solid/devices/backends/udisks2/udisksdevice.cpp:838
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is mounted by another user"
 msgstr "El dispositiu està muntat per un altre usuari"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:733
+#: solid/devices/backends/udisks2/udisksdevice.cpp:840
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is already unmounting"
 msgstr "El dispositiu ja s'està desmuntant"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:735
+#: solid/devices/backends/udisks2/udisksdevice.cpp:842
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The operation timed out"
 msgstr "L'operació ha excedit el temps"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:737
+#: solid/devices/backends/udisks2/udisksdevice.cpp:844
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The operation would wake up a disk that is in a deep-sleep state"
 msgstr "L'operació activarà un disc que està en estat d'hibernació"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:739
+#: solid/devices/backends/udisks2/udisksdevice.cpp:846
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The operation has already been canceled"
 msgstr "L'operació ja s'ha cancel·lat"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:741
+#: solid/devices/backends/udisks2/udisksdevice.cpp:848
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid ""
 "Cannot request authentication for this action. The PolicyKit authentication "
@@ -572,12 +698,12 @@ msgstr ""
 "No s'ha pogut sol·licitar autenticació per a aquesta acció. Sembla que el "
 "sistema d'autenticació del PolicyKit no està disponible."
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:743
+#: solid/devices/backends/udisks2/udisksdevice.cpp:850
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The authentication prompt was canceled"
 msgstr "L'indicador d'autenticació s'ha cancel·lat"
 
-#: solid/devices/backends/udisks2/udisksdevice.cpp:745
+#: solid/devices/backends/udisks2/udisksdevice.cpp:852
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "An unspecified error has occurred"
 msgstr "S'ha produït un error no especificat"
@@ -968,6 +1094,10 @@ msgstr "cap error"
 msgctxt "SolidHardware|"
 msgid "has error"
 msgstr "té un error"
+
+#~ msgctxt "udisksdevice|"
+#~ msgid "0 B"
+#~ msgstr "0 B"
 
 #~ msgctxt "Solid::Backends::UPower::UPowerDevice|battery technology"
 #~ msgid "Unknown"
