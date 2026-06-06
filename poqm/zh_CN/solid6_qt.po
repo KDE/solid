@@ -117,36 +117,30 @@ msgstr ""
 #. JEDECBinaryDialect memory size in 10^20 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:91
 #: solid/devices/backends/udisks2/udisksdevice.cpp:121
-#, fuzzy, qt-format
-#| msgctxt "udisksdevice|"
-#| msgid "%1 MiB"
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 MB"
-msgstr "%1 MiB"
+msgstr ""
 
 #. MetricBinaryDialect size in 10^9 bytes
 #. ----------
 #. JEDECBinaryDialect memory size in 10^30 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:94
 #: solid/devices/backends/udisks2/udisksdevice.cpp:124
-#, fuzzy, qt-format
-#| msgctxt "udisksdevice|"
-#| msgid "%1 GiB"
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 GB"
-msgstr "%1 GiB"
+msgstr ""
 
 #. MetricBinaryDialect size in 10^12 bytes
 #. ----------
 #. JEDECBinaryDialect memory size in 10^40 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:97
 #: solid/devices/backends/udisks2/udisksdevice.cpp:127
-#, fuzzy, qt-format
-#| msgctxt "udisksdevice|"
-#| msgid "%1 TiB"
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 TB"
-msgstr "%1 TiB"
+msgstr ""
 
 #. MetricBinaryDialect size in 10^15 bytes
 #. ----------
@@ -190,12 +184,10 @@ msgstr ""
 
 #. JEDECBinaryDialect memory size in 1024 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:118
-#, fuzzy, qt-format
-#| msgctxt "udisksdevice|"
-#| msgid "%1 KiB"
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 KB"
-msgstr "%1 KiB"
+msgstr ""
 
 #. IECBinaryDialect size in 1024 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:148
@@ -1062,7 +1054,3 @@ msgstr "没有错误"
 msgctxt "SolidHardware|"
 msgid "has error"
 msgstr "有错误"
-
-#~ msgctxt "udisksdevice|"
-#~ msgid "0 B"
-#~ msgstr "0 B"

@@ -8,7 +8,7 @@ msgstr ""
 "POT-Creation-Date: 2014-01-24 18:50+0000\n"
 "PO-Revision-Date: 2026-04-18 16:01+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
-"Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
+"Language-Team: Norwegian Nynorsk <l10n-no@nuug.no>\n"
 "Language: nn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -123,8 +123,6 @@ msgstr ""
 #: solid/devices/backends/udisks2/udisksdevice.cpp:91
 #: solid/devices/backends/udisks2/udisksdevice.cpp:121
 #, fuzzy, qt-format
-#| msgctxt "udisksdevice|"
-#| msgid "%1 MiB"
 msgctxt "udisksdevice|"
 msgid "%1 MB"
 msgstr "%1 MiB"
@@ -135,8 +133,6 @@ msgstr "%1 MiB"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:94
 #: solid/devices/backends/udisks2/udisksdevice.cpp:124
 #, fuzzy, qt-format
-#| msgctxt "udisksdevice|"
-#| msgid "%1 GiB"
 msgctxt "udisksdevice|"
 msgid "%1 GB"
 msgstr "%1 GiB"
@@ -147,8 +143,6 @@ msgstr "%1 GiB"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:97
 #: solid/devices/backends/udisks2/udisksdevice.cpp:127
 #, fuzzy, qt-format
-#| msgctxt "udisksdevice|"
-#| msgid "%1 TiB"
 msgctxt "udisksdevice|"
 msgid "%1 TB"
 msgstr "%1 TiB"
@@ -196,8 +190,6 @@ msgstr ""
 #. JEDECBinaryDialect memory size in 1024 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:118
 #, fuzzy, qt-format
-#| msgctxt "udisksdevice|"
-#| msgid "%1 KiB"
 msgctxt "udisksdevice|"
 msgid "%1 KB"
 msgstr "%1 KiB"
@@ -1081,7 +1073,3 @@ msgstr "ingen feil"
 msgctxt "SolidHardware|"
 msgid "has error"
 msgstr "har feil"
-
-#~ msgctxt "udisksdevice|"
-#~ msgid "0 B"
-#~ msgstr "0 B"

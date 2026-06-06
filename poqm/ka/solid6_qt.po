@@ -108,43 +108,37 @@ msgstr "%1 ბ"
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 kB"
-msgstr ""
+msgstr "%1 კბ"
 
 #. MetricBinaryDialect size in 10^6 bytes
 #. ----------
 #. JEDECBinaryDialect memory size in 10^20 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:91
 #: solid/devices/backends/udisks2/udisksdevice.cpp:121
-#, fuzzy, qt-format
-#| msgctxt "udisksdevice|"
-#| msgid "%1 MiB"
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 MB"
-msgstr "%1 მიბ"
+msgstr "%1 მბ"
 
 #. MetricBinaryDialect size in 10^9 bytes
 #. ----------
 #. JEDECBinaryDialect memory size in 10^30 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:94
 #: solid/devices/backends/udisks2/udisksdevice.cpp:124
-#, fuzzy, qt-format
-#| msgctxt "udisksdevice|"
-#| msgid "%1 GiB"
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 GB"
-msgstr "%1 გიბ"
+msgstr "%1 გბ"
 
 #. MetricBinaryDialect size in 10^12 bytes
 #. ----------
 #. JEDECBinaryDialect memory size in 10^40 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:97
 #: solid/devices/backends/udisks2/udisksdevice.cpp:127
-#, fuzzy, qt-format
-#| msgctxt "udisksdevice|"
-#| msgid "%1 TiB"
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 TB"
-msgstr "%1 ტიბ"
+msgstr "%1 ტბ"
 
 #. MetricBinaryDialect size in 10^15 bytes
 #. ----------
@@ -154,7 +148,7 @@ msgstr "%1 ტიბ"
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 PB"
-msgstr ""
+msgstr "%1 პბ"
 
 #. MetricBinaryDialect size in 10^18 byte
 #. ----------
@@ -164,7 +158,7 @@ msgstr ""
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 EB"
-msgstr ""
+msgstr "%1 ფბ"
 
 #. MetricBinaryDialect size in 10^21 bytes
 #. ----------
@@ -174,7 +168,7 @@ msgstr ""
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 ZB"
-msgstr ""
+msgstr "%1 ზბ"
 
 #. MetricBinaryDialect size in 10^24 bytes
 #. ----------
@@ -184,16 +178,14 @@ msgstr ""
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 YB"
-msgstr ""
+msgstr "%1 იბ"
 
 #. JEDECBinaryDialect memory size in 1024 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:118
-#, fuzzy, qt-format
-#| msgctxt "udisksdevice|"
-#| msgid "%1 KiB"
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 KB"
-msgstr "%1 კიბ"
+msgstr "%1 კბ"
 
 #. IECBinaryDialect size in 1024 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:148
@@ -228,28 +220,28 @@ msgstr "%1 ტიბ"
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 PiB"
-msgstr ""
+msgstr "%1 პიბ"
 
 #. IECBinaryDialect size in 10^60 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:163
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 EiB"
-msgstr ""
+msgstr "%1 ეიბ"
 
 #. IECBinaryDialect size in 10^70 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:166
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 ZiB"
-msgstr ""
+msgstr "%1 ზიბ"
 
 #. IECBinaryDialect size in 10^80 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:169
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 YiB"
-msgstr ""
+msgstr "%1 იიბ"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:182
 #, qt-format

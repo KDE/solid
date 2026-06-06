@@ -8,13 +8,13 @@
 # Hasan Kiran <sunder67@hotmail.com>, 2013.
 # Volkan Gezer <volkangezer@gmail.com>, 2013, 2014.
 # Kaan Ozdincer <kaanozdincer@gmail.com>, 2014.
-# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025, 2026 Emir SARI <emir_sari@icloud.com>
+# SPDX-FileCopyrightText: 2022-2026 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: solid_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-01 01:49+0000\n"
-"PO-Revision-Date: 2026-04-10 05:39+0300\n"
+"PO-Revision-Date: 2026-06-05 12:25+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.12.2\n"
+"X-Generator: Lokalize 26.04.0\n"
 "X-Qt-Contexts: true\n"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:69
@@ -113,50 +113,44 @@ msgstr "Sisteminizdeki Aygıtlar"
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 B"
-msgstr "%1 B"
+msgstr "%1 B"
 
 #. MetricBinaryDialect size in 1000 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:88
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 kB"
-msgstr ""
+msgstr "%1 kB"
 
 #. MetricBinaryDialect size in 10^6 bytes
 #. ----------
 #. JEDECBinaryDialect memory size in 10^20 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:91
 #: solid/devices/backends/udisks2/udisksdevice.cpp:121
-#, fuzzy, qt-format
-#| msgctxt "udisksdevice|"
-#| msgid "%1 MiB"
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 MB"
-msgstr "%1 MiB"
+msgstr "%1 MB"
 
 #. MetricBinaryDialect size in 10^9 bytes
 #. ----------
 #. JEDECBinaryDialect memory size in 10^30 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:94
 #: solid/devices/backends/udisks2/udisksdevice.cpp:124
-#, fuzzy, qt-format
-#| msgctxt "udisksdevice|"
-#| msgid "%1 GiB"
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 GB"
-msgstr "%1 GiB"
+msgstr "%1 GB"
 
 #. MetricBinaryDialect size in 10^12 bytes
 #. ----------
 #. JEDECBinaryDialect memory size in 10^40 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:97
 #: solid/devices/backends/udisks2/udisksdevice.cpp:127
-#, fuzzy, qt-format
-#| msgctxt "udisksdevice|"
-#| msgid "%1 TiB"
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 TB"
-msgstr "%1 TiB"
+msgstr "%1 TB"
 
 #. MetricBinaryDialect size in 10^15 bytes
 #. ----------
@@ -166,7 +160,7 @@ msgstr "%1 TiB"
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 PB"
-msgstr ""
+msgstr "%1 PB"
 
 #. MetricBinaryDialect size in 10^18 byte
 #. ----------
@@ -176,7 +170,7 @@ msgstr ""
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 EB"
-msgstr ""
+msgstr "%1 EB"
 
 #. MetricBinaryDialect size in 10^21 bytes
 #. ----------
@@ -186,7 +180,7 @@ msgstr ""
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 ZB"
-msgstr ""
+msgstr "%1 ZB"
 
 #. MetricBinaryDialect size in 10^24 bytes
 #. ----------
@@ -196,72 +190,70 @@ msgstr ""
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 YB"
-msgstr ""
+msgstr "%1 YB"
 
 #. JEDECBinaryDialect memory size in 1024 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:118
-#, fuzzy, qt-format
-#| msgctxt "udisksdevice|"
-#| msgid "%1 KiB"
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 KB"
-msgstr "%1 KiB"
+msgstr "%1 KB"
 
 #. IECBinaryDialect size in 1024 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:148
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 KiB"
-msgstr "%1 KiB"
+msgstr "%1 KiB"
 
 #. IECBinaryDialect size in 10^20 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:151
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 MiB"
-msgstr "%1 MiB"
+msgstr "%1 MiB"
 
 #. IECBinaryDialect size in 10^30 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:154
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 GiB"
-msgstr "%1 GiB"
+msgstr "%1 GiB"
 
 #. IECBinaryDialect size in 10^40 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:157
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 TiB"
-msgstr "%1 TiB"
+msgstr "%1 TiB"
 
 #. IECBinaryDialect size in 10^50 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:160
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 PiB"
-msgstr ""
+msgstr "%1 PiB"
 
 #. IECBinaryDialect size in 10^60 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:163
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 EiB"
-msgstr ""
+msgstr "%1 EiB"
 
 #. IECBinaryDialect size in 10^70 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:166
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 ZiB"
-msgstr ""
+msgstr "%1 ZiB"
 
 #. IECBinaryDialect size in 10^80 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:169
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 YiB"
-msgstr ""
+msgstr "%1 YiB"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:182
 #, qt-format
@@ -345,7 +337,7 @@ msgstr "/DVD-RAM"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:409
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD±R DL"
-msgstr "/DVD±R DL"
+msgstr "/DVD±R DL"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:411
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
@@ -355,7 +347,7 @@ msgstr "/DVD±R"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:416
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD±RW DL"
-msgstr "/DVD±RW DL"
+msgstr "/DVD±RW DL"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:418
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
@@ -380,17 +372,17 @@ msgstr "/BD-RE"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:431
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/HD DVD-ROM"
-msgstr "/HD DVD-ROM"
+msgstr "/HD DVD-ROM"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:434
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/HD DVD-R"
-msgstr "/HD DVD-R"
+msgstr "/HD DVD-R"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:437
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/HD DVD-RW"
-msgstr "/HD DVD-RW"
+msgstr "/HD DVD-RW"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:441
 #, qt-format
