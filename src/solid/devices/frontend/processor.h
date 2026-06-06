@@ -100,10 +100,8 @@ public:
     ~Processor() override;
 
     /*!
-     * Get the Solid::DeviceInterface::Type of the Processor device interface.
-     *
-     * Returns the Processor device interface type
-     * \sa Solid::Ifaces::Enums::DeviceInterface::Type
+     * Returns the Solid::DeviceInterface::Type of the Processor device interface.
+     * \sa Solid::DeviceInterface::Type
      */
     static Type deviceInterfaceType()
     {
@@ -111,34 +109,23 @@ public:
     }
 
     /*!
-     * Retrieves the processor number in the system.
-     *
-     * Returns the internal processor number in the system, starting from zero
+     * Returns the internal processor number in the system, starting from zero.
      */
     int number() const;
 
     /*!
-     * Retrieves the maximum speed of the processor.
-     *
-     * Returns the maximum speed in MHz, or 0 if the device can't be queried for this
-     * information.
+     * Returns the maximum speed of the processor in MHz,
+     * or 0 if the device can't be queried for this information.
      */
     int maxSpeed() const;
 
     /*!
-     * Indicates if the processor can change the CPU frequency.
-     *
-     * True if a processor is able to change its own CPU frequency.
-     *  (generally for power management).
-     *
-     * Returns true if the processor can change CPU frequency, false otherwise
+     * Returns whether the processor can change the CPU frequency.
      */
     bool canChangeFrequency() const;
 
     /*!
-     * Queries the instructions set extensions of the CPU.
-     *
-     * Returns the extensions supported by the CPU
+     * Returns the instructions set extensions supported by the CPU.
      * \sa Solid::Processor::InstructionSet
      */
     InstructionSets instructionSets() const;

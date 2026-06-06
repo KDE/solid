@@ -27,7 +27,7 @@ class Device;
  * \brief This device interface is available on digital camera devices.
  *
  * A digital camera is a device used to transform images into
- * data. Nowaday most digital cameras are multifunctional and
+ * data. Nowadays most digital cameras are multifunctional and
  * able to take photographs, video or sound. On the system side
  * they are a particular type of device holding data, the access
  * method can be different from the typical storage device, hence
@@ -66,9 +66,7 @@ public:
     ~Camera() override;
 
     /*!
-     * Get the Solid::DeviceInterface::Type of the Camera device interface.
-     *
-     * Returns the Camera device interface type
+     * Returns the Solid::DeviceInterface::Type of the Camera device interface.
      * \sa Solid::DeviceInterface::Type
      */
     static Type deviceInterfaceType()
@@ -77,7 +75,7 @@ public:
     }
 
     /*!
-     * Returns known protocols this device can speak.
+     * Returns known protocols this device supports.
      *
      * This list may be dependent
      * on installed device driver libraries.
@@ -85,25 +83,19 @@ public:
     QStringList supportedProtocols() const;
 
     /*!
-     * Retrieves known installed device drivers that claim to handle this device
-     * using the requested protocol.
+     * Returns known installed device drivers that claim to handle this device
+     * using the requested \a protocol.
      *
-     * If protocol is blank, returns a list of
+     * If \a protocol is omitted, returns a list of
      * all drivers supporting the device.
-     *
-     * \a protocol The protocol to get drivers for.
-     *
-     * Returns a list of installed drivers meeting the criteria
      */
     QStringList supportedDrivers(QString protocol = QString()) const;
 
     /*!
-     * Retrieves a \a driver specific string allowing to access the device.
+     * Returns a \a driver specific string allowing to access the device.
      *
      * For example for the "gphoto" driver it will return a list of the
      * form '("usb", vendor_id, product_id)'.
-     *
-     * Returns the driver specific data
      */
     QVariant driverHandle(const QString &driver) const;
 };

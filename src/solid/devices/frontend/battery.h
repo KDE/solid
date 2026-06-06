@@ -205,6 +205,7 @@ public:
 
 private:
     /*!
+     * \internal
      * Creates a new Battery object.
      *
      * You generally won't need this. It's created when necessary using
@@ -219,7 +220,7 @@ public:
     ~Battery() override;
 
     /*!
-     * Get the Solid::DeviceInterface::Type of the Battery device interface.
+     * Returns the Solid::DeviceInterface::Type of the Battery device interface.
      * \sa Solid::DeviceInterface::Type
      */
     static Type deviceInterfaceType()
@@ -228,15 +229,12 @@ public:
     }
 
     /*!
-     * Indicates if this battery is currently present in its bay.
-     *
-     * Returns \c true if the battery is present, \c false otherwise
+     * Returns whether this battery is currently present in its bay.
      */
     bool isPresent() const;
 
     /*!
      * Returns the type of device holding this battery.
-     *
      * \sa Solid::Battery::BatteryType
      */
     Solid::Battery::BatteryType type() const;
@@ -259,10 +257,8 @@ public:
     int capacity() const;
 
     /*!
-     * Retrieves the number of charge cycles this battery has experienced so far,
+     * Returns the number of charge cycles this battery has experienced so far,
      * or -1 if this information is unavailable.
-     *
-     * Returns the number of charge cycles
      * \since 6.9
      */
     int cycleCount() const;
@@ -278,9 +274,9 @@ public:
     bool isPowerSupply() const;
 
     /*!
-     * Retrieves the current charge state of the battery. It can be in a stable
-     * state (no charge), charging or discharging.
+     * Retrieves the current charge state of the battery.
      *
+     * It can be in a stable state (no charge), charging or discharging.
      * \sa Solid::Battery::ChargeState
      */
     Solid::Battery::ChargeState chargeState() const;
@@ -300,33 +296,32 @@ public:
     qlonglong timeToFull() const;
 
     /*!
-     * Retrieves the technology used to manufacture the battery.
+     * Returns the technology used to manufacture the battery.
      *
      * \sa Solid::Battery::Technology
      */
     Solid::Battery::Technology technology() const;
 
     /*!
-     * Amount of energy (measured in Wh) currently available in the power source.
+     * Returns the amount of energy (measured in Wh) currently available in the power source.
      */
     double energy() const;
 
     /*!
-     * Amount of energy (measured in Wh) the battery has when it is full.
+     * Returns the amount of energy (measured in Wh) the battery has when it is full.
      * \since 5.7
      */
     double energyFull() const;
 
     /*!
-     * Amount of energy (measured in Wh) the battery should have by design hen it is full.
-     *
-     * Returns amount of battery energy when full by design in Wh
+     * Returns the amount of energy (measured in Wh) the battery should have by design when it is full.
      * \since 5.7
      */
     double energyFullDesign() const;
 
     /*!
      * Amount of energy being drained from the source, measured in W.
+     *
      * If positive, the source is being discharged, if negative it's being charged.
      */
     double energyRate() const;
@@ -359,9 +354,7 @@ Q_SIGNALS:
      * This signal is emitted if the battery gets plugged in/out of the
      * battery bay.
      *
-     * \a newState the new plugging state of the battery
-     *
-     * \a udi the UDI of the battery with thew new plugging state
+     * Returns the \a newState of the battery with the given \a udi.
      */
     void presentStateChanged(bool newState, const QString &udi);
 
@@ -369,18 +362,14 @@ Q_SIGNALS:
      * This signal is emitted when the charge percent value of this
      * battery has changed.
      *
-     * \a value the new charge percent value of the battery
-     *
-     * \a udi the UDI of the battery with the new charge percent
+     * Returns the new charge percent \a value of the battery with the given \a udi.
      */
     void chargePercentChanged(int value, const QString &udi);
 
     /*!
      * This signal is emitted when the capacity of this battery has changed.
      *
-     * \a value the new capacity of the battery
-     *
-     * \a udi the UDI of the battery with the new capacity
+     * Returns the new capacity \a value of the battery with the given \a udi.
      * \since 4.11
      */
     void capacityChanged(int value, const QString &udi);
@@ -389,10 +378,7 @@ Q_SIGNALS:
      * This signal is emitted when the number of charge cycles of the
      * battery has changed.
      *
-     * \a value the new number of charge cycles of the battery
-     *
-     * \a udi the UDI of the battery with the new number of charge cycles
-     *
+     * Returns the new \a value for the charge cycles of the battery with the given \a udi.
      * \since 6.9
      */
     void cycleCountChanged(int value, const QString &udi);
@@ -401,9 +387,7 @@ Q_SIGNALS:
      * This signal is emitted when the power supply state of the battery
      * changes.
      *
-     * \a newState the new power supply state
-     *
-     * \a udi the UDI of the battery with the new power supply state
+     * Returns the \a newState for the power supply of the battery with the given \a udi.
      * \since 4.11
      */
     void powerSupplyStateChanged(bool newState, const QString &udi);
@@ -412,9 +396,7 @@ Q_SIGNALS:
      * This signal is emitted when the charge state of this battery
      * has changed.
      *
-     * \a newState the new charge state of the battery
-     *
-     * \a udi the UDI of the battery with the new charge state
+     * Returns the new charge state \a newState of the battery with the given \a udi.
      */
     void chargeStateChanged(int newState, const QString &udi = QString());
 
@@ -422,9 +404,7 @@ Q_SIGNALS:
      * This signal is emitted when the time until the battery is empty
      * has changed.
      *
-     * \a time the new remaining time
-     *
-     * \a udi the UDI of the battery with the new remaining time
+     * Returns the new remaining \a time until empty of the battery with the given \a udi.
      * \since 5.0
      */
     void timeToEmptyChanged(qlonglong time, const QString &udi);
@@ -433,9 +413,7 @@ Q_SIGNALS:
      * This signal is emitted when the time until the battery is full
      * has changed.
      *
-     * \a time the new remaining time
-     *
-     * \a udi the UDI of the battery with the new remaining time
+     * Returns the new remaining \a time until full of the battery with the given \a udi.
      * \since 5.0
      */
     void timeToFullChanged(qlonglong time, const QString &udi);
@@ -444,9 +422,7 @@ Q_SIGNALS:
      * This signal is emitted when the energy value of this
      * battery has changed.
      *
-     * \a energy the new energy value of the battery
-     *
-     * \a udi the UDI of the battery with the new energy value
+     * Returns the new \a energy value for the battery with the given \a udi.
      */
     void energyChanged(double energy, const QString &udi);
 
@@ -454,9 +430,7 @@ Q_SIGNALS:
      * This signal is emitted when the energy full value of this
      * battery has changed.
      *
-     * \a energy the new energy full value of the battery
-     *
-     * \a udi the UDI of the battery with the new energy full value
+     * Returns the new full \a energy value of the battery with the given \a udi.
      */
     void energyFullChanged(double energy, const QString &udi);
 
@@ -464,9 +438,7 @@ Q_SIGNALS:
      * This signal is emitted when the energy full design value of this
      * battery has changed.
      *
-     * \a energy the new energy full design value of the battery
-     *
-     * \a udi the UDI of the battery with the new energy full design value
+     * Returns the new \a energy full design value of the battery with the given \a udi.
      */
     void energyFullDesignChanged(double energy, const QString &udi);
 
@@ -476,18 +448,14 @@ Q_SIGNALS:
      *
      * If positive, the source is being discharged, if negative it's being charged.
      *
-     * \a energyRate the new energy rate value of the battery
-     *
-     * \a udi the UDI of the battery with the new charge percent
+     * Returns the new \a energy rate value of the battery with the given \a udi.
      */
     void energyRateChanged(double energyRate, const QString &udi);
 
     /*!
      * This signal is emitted when the voltage in the cell has changed.
      *
-     * \a voltage the new voltage of the cell
-     *
-     * \a udi the UDI of the battery with the new voltage
+     * Returns the new \a voltage of the cell for the battery with the given \a udi.
      * \since 5.0
      */
     void voltageChanged(double voltage, const QString &udi);
@@ -495,9 +463,7 @@ Q_SIGNALS:
     /*!
      * This signal is emitted when the battery temperature has changed.
      *
-     * \a temperature the new temperature of the battery in degrees Celsius
-     *
-     * \a udi the UDI of the battery with the new temperature
+     * Returns the new \a temperature of the battery in degrees Celsius.
      * \since 5.0
      */
     void temperatureChanged(double temperature, const QString &udi);
@@ -505,9 +471,7 @@ Q_SIGNALS:
     /*!
      * This signal is emitted when the estimated battery remaining time changes.
      *
-     * \a time the new remaining time
-     *
-     * \a udi the UDI of the battery with the new remaining time
+     * Returns the new battery remaining \a time for the battery with the given \a udi.
      * \since 5.8
      */
     void remainingTimeChanged(qlonglong time, const QString &udi);

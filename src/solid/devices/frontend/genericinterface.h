@@ -23,8 +23,9 @@ class Device;
  * \inheaderfile Solid/GenericInterface
  * \inmodule Solid
  *
- * \brief Generic interface to deal with a device. It exposes a set of properties
- * and is organized as a key/value set.
+ * \brief Generic interface to deal with a device.
+ *
+ * It exposes a set of properties and is organized as a key/value set.
  *
  * \warning Using this class could expose some backend specific details
  * and lead to non portable code. Use it at your own risk, or during
@@ -72,10 +73,8 @@ public:
     ~GenericInterface() override;
 
     /*!
-     * Get the Solid::DeviceInterface::Type of the GenericInterface device interface.
-     *
-     * Returns the Processor device interface type
-     * \sa Solid::Ifaces::Enums::DeviceInterface::Type
+     * Returns the Solid::DeviceInterface::Type of the GenericInterface device interface.
+     * \sa Solid::DeviceInterface::Type
      */
     static Type deviceInterfaceType()
     {
@@ -83,44 +82,32 @@ public:
     }
 
     /*!
-     * Retrieves a property of the device.
+     * Returns the property \a key of the device, or QVariant() if the property is unknown.
      *
      * \warning Using this method could expose some backend specific details
      * and lead to non portable code. Use it at your own risk, or during
      * transitional phases when the provided device interfaces don't
      * provide the necessary methods.
-     *
-     * \a key the property key
-     *
-     * Returns the actual value of the property, or QVariant() if the
-     * property is unknown
      */
     QVariant property(const QString &key) const;
 
     /*!
-     * Retrieves a key/value map of all the known properties for the device.
+     * Returns a key/value map of all the known properties for the device.
      *
      * \warning Using this method could expose some backend specific details
      * and lead to non portable code. Use it at your own risk, or during
      * transitional phases when the provided device interfaces don't
      * provide the necessary methods.
-     *
-     * Returns all the properties of the device
      */
     QMap<QString, QVariant> allProperties() const;
 
     /*!
-     * Tests if a property exist in the device.
+     * Returns whether a property \a key exists in the device.
      *
      * \warning Using this method could expose some backend specific details
      * and lead to non portable code. Use it at your own risk, or during
      * transitional phases when the provided device interfaces don't
      * provide the necessary methods.
-     *
-     * \a key the property key
-     *
-     * Returns true if the property is available in the device, false
-     * otherwise
      */
     bool propertyExists(const QString &key) const;
 
@@ -128,10 +115,10 @@ Q_SIGNALS:
     /*!
      * This signal is emitted when a property is changed in the device.
      *
-     * \a changes the map describing the property changes that
-     * occurred in the device, keys are property name and values
+     * Returns the map describing the property \a changes that
+     * occurred in the device, keys are property names, and values
      * describe the kind of change done on the device property
-     * (added/removed/modified), it's one of the type Solid::Device::PropertyChange
+     * (added/removed/modified), one of Solid::Device::PropertyChange.
      */
     void propertyChanged(const QMap<QString, int> &changes);
 
@@ -139,9 +126,8 @@ Q_SIGNALS:
      * This signal is emitted when an event occurred in the device.
      * For example when a button is pressed.
      *
-     * \a condition the condition name
-     *
-     * \a reason a message explaining why the condition has been raised
+     * Returns the name for the \a condition of the event
+     * and the \a reason for the condition to have been raised.
      */
     void conditionRaised(const QString &condition, const QString &reason);
 };

@@ -71,10 +71,8 @@ public:
     ~Block() override;
 
     /*!
-     * Get the Solid::DeviceInterface::Type of the Block device interface.
-     *
-     * Returns the Block device interface type
-     * \sa Solid::Ifaces::Enums::DeviceInterface::Type
+     * Returns the Solid::DeviceInterface::Type of the Block device interface.
+     * \sa Solid::DeviceInterface::Type
      */
     static Type deviceInterfaceType()
     {
@@ -82,35 +80,28 @@ public:
     }
 
     /*!
-     * Retrieves the major number of the node file to interact with
+     * Returns the major number of the node file to interact with
      * the device.
-     *
-     * Returns the device major number
      */
     int deviceMajor() const;
 
     /*!
-     * Retrieves the minor number of the node file to interact with
+     * Returns the minor number of the node file to interact with
      * the device.
-     *
-     * Returns the device minor number
      */
     int deviceMinor() const;
 
     /*!
-     * Retrieves the absolute path of the special file to interact
+     * Returns the absolute path of the special file to interact
      * with the device.
-     *
-     * Returns the absolute path of the special file to interact with
-     * the device
      */
     QString device() const;
 
     /*!
-     * Whether this block is considered a system block,
-     * that it requires additional permissions to access (mount/umount)
+     * Returns whether this block is considered a system block,
+     * that is, it requires additional permissions to access (mount/umount).
      *
-     * It defaults to false, if the backend does not support it.
+     * It defaults to false if the backend does not support it.
      *
      * \since 6.15
      */

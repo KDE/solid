@@ -25,6 +25,37 @@ class Device;
  *
  * A storage is anything that can contain a set of volumes (card reader,
  * hard disk, cdrom drive...). It's a particular kind of block device.
+ *
+ * A StorageDrive is commonly used in conjunction with StorageVolume and StorageAccess.
+ *
+ * \table
+ * \header
+ *   \li StorageDrive
+ *   \li StorageVolume
+ *   \li StorageAccess
+ * \row
+ *   \li drives
+ *   \li partition tables / filesystems
+ *   \li mount points / partitions
+ * \endtable
+ *
+ * It can be used to fetch a parent device of a StorageVolume that is a StorageDrive
+ * in order to check its properties, for example:
+ *
+ * \code
+ * const Solid::Device& dev = m_device;
+ * if (dev.is<Solid::StorageVolume>() && dev.parent().is<Solid::StorageDrive>()) {
+ *     auto parent = dev.parent().as<Solid::StorageDrive>();
+ *     if (parent->isRemovable() || parent->isHotpluggable()) {
+ *         usable = false;
+ *     }
+ *
+ *     const Solid::StorageVolume* volume = dev.as<Solid::StorageVolume>();
+ *     if (volume->isIgnored() || volume->usage() != Solid::StorageVolume::FileSystem) {
+ *         usable = false;
+ *     }
+ * }
+ * \endcode
  */
 class SOLID_EXPORT StorageDrive : public DeviceInterface
 {
@@ -119,9 +150,7 @@ public:
     ~StorageDrive() override;
 
     /*!
-     * Get the Solid::DeviceInterface::Type of the StorageDrive device interface.
-     *
-     * Returns the StorageDrive device interface type
+     * Returns the Solid::DeviceInterface::Type of the StorageDrive device interface.
      * \sa Solid::DeviceInterface::Type
      */
     static Type deviceInterfaceType()
@@ -130,70 +159,60 @@ public:
     }
 
     /*!
-     * Retrieves the type of physical interface this storage device is
+     * Returns the bus type of the physical interface this storage device is
      * connected to.
-     *
-     * Returns the bus type
      * \sa Solid::StorageDrive::Bus
      */
     Bus bus() const;
 
     /*!
-     * Retrieves the type of this storage drive.
-     *
-     * Returns the drive type
+     * Returns the type of this storage drive.
      * \sa Solid::StorageDrive::DriveType
      */
     DriveType driveType() const;
 
     /*!
-     * Indicates if the media contained by this drive can be removed.
+     * Returns whether the media contained by this drive can be removed.
      *
-     * For example memory card can be removed from the drive by the user,
+     * For example, a memory card can be removed from the drive by the user,
      * while partitions can't be removed from hard disks.
-     *
-     * Returns true if media can be removed, false otherwise.
      */
     bool isRemovable() const;
 
     /*!
-     * Indicates if this storage device can be plugged or unplugged while
-     * the computer is running.
-     *
-     * Returns true if this storage supports hotplug, false otherwise
+     * Returns whether this storage device can be plugged or unplugged while
+     * the computer is running (that is, it supports hotplugging).
      */
     bool isHotpluggable() const;
 
     /*!
-     * Retrieves this drives size in bytes.
-     *
-     * Returns the size of this drive
+     * Returns this drive's size in bytes.
      */
     qulonglong size() const;
 
     /*!
-     * Indicates if the storage device is currently in use
-     * i.e. if at least one child storage access is
-     * mounted
-     *
-     * Returns true if at least one child storage access is mounted
+     * Returns whether the storage device is currently in use,
+     * that is, if at least one child storage access is
+     * mounted.
      */
     bool isInUse() const;
 
     /*!
-     * Returns the time the drive was deteced.
-     * Typically this means the time a drive was plugged in, or the computer rebooted
+     * Returns the time when the drive was detected.
      *
-     * An invalid datetime may be returned if the underlying information is not available
+     * Typically this means the time a drive was plugged in, or the computer rebooted.
+     *
+     * An invalid datetime may be returned if the underlying information is not available.
      * \since 6.0
      */
     QDateTime timeDetected() const;
 
     /*!
-     * Returns the time media in the drive was deteced.
-     * Typically this means the time a card was inserted into a reader, or the computer rebooted
+     * Returns the time when media in the drive was detected.
      *
-     * An invalid datetime may be returned if the underlying information is not available
+     * Typically this means the time a card was inserted into a reader, or the computer rebooted.
+     *
+     * An invalid datetime may be returned if the underlying information is not available.
      * \since 6.0
      */
     QDateTime timeMediaDetected() const;
