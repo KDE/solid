@@ -57,6 +57,7 @@ static const struct ArmIdPart armParts[] = {
     {0xc27, "Cortex-M7"},
     {0xc60, "Cortex-M0+"},
     {0xd01, "Cortex-A32"},
+    {0xd02, "Cortex-A34"},
     {0xd03, "Cortex-A53"},
     {0xd04, "Cortex-A35"},
     {0xd05, "Cortex-A55"},
@@ -70,11 +71,18 @@ static const struct ArmIdPart armParts[] = {
     {0xd0d, "Cortex-A77"},
     {0xd0e, "Cortex-A76AE"},
     {0xd13, "Cortex-R52"},
+    {0xd14, "Cortex-R82AE"},
+    {0xd15, "Cortex-R82"},
+    {0xd16, "Cortex-R52+"},
     {0xd20, "Cortex-M23"},
     {0xd21, "Cortex-M33"},
+    {0xd22, "Cortex-M55"},
+    {0xd23, "Cortex-M85"},
+    {0xd24, "Cortex-M52"},
     {0xd40, "Neoverse-V1"},
     {0xd41, "Cortex-A78"},
     {0xd42, "Cortex-A78AE"},
+    {0xd43, "Cortex-A65AE"},
     {0xd44, "Cortex-X1"},
     {0xd46, "Cortex-A510"},
     {0xd47, "Cortex-A710"},
@@ -82,7 +90,25 @@ static const struct ArmIdPart armParts[] = {
     {0xd49, "Neoverse-N2"},
     {0xd4a, "Neoverse-E1"},
     {0xd4b, "Cortex-A78C"},
+    {0xd4c, "Cortex-X1C"},
     {0xd4d, "Cortex-A715"},
+    {0xd4e, "Cortex-X3"},
+    {0xd4f, "Neoverse-V2"},
+    {0xd80, "Cortex-A520"},
+    {0xd81, "Cortex-A720"},
+    {0xd82, "Cortex-X4"},
+    {0xd83, "Neoverse-V3AE"},
+    {0xd84, "Neoverse-V3"},
+    {0xd85, "Cortex-X925"},
+    {0xd87, "Cortex-A725"},
+    {0xd88, "Cortex-A520AE"},
+    {0xd89, "Cortex-A720AE"},
+    {0xd8a, "C1-Nano"},
+    {0xd8b, "C1-Pro"},
+    {0xd8c, "C1-Ultra"},
+    {0xd8e, "Neoverse-N3"},
+    {0xd8f, "Cortex-A320"},
+    {0xd90, "C1-Premium"},
     {-1, "unknown"},
 };
 // clang-format on
@@ -105,7 +131,21 @@ static const struct ArmIdPart caviumParts[] = {
     {0x0a1, "ThunderX 88XX"},
     {0x0a2, "ThunderX 81XX"},
     {0x0a3, "ThunderX 83XX"},
-    {0x0af, "ThunderX2 99xx"},
+    {0x0af, "ThunderX2 99XX"},
+    {0x0b0, "OcteonTX2"},
+    {0x0b1, "OcteonTX2 98XX"},
+    {0x0b2, "OcteonTX2 96XX"},
+    {0x0b3, "OcteonTX2 95XX"},
+    {0x0b4, "OcteonTX2 95XXN"},
+    {0x0b5, "OcteonTX2 95XXMM"},
+    {0x0b6, "OcteonTX2 95XXO"},
+    {0x0b8, "ThunderX3-T110"},
+    {-1, "unknown"},
+};
+
+static const struct ArmIdPart ampereParts[] = {
+    {0xac3, "Ampere-1"},
+    {0xac4, "Ampere-1A"},
     {-1, "unknown"},
 };
 
@@ -115,6 +155,7 @@ static const struct ArmIdPart apmParts[] = {
 };
 
 static const struct ArmIdPart qcomParts[] = {
+    {0x001, "Oryon X1"},
     {0x00f, "Scorpion"},
     {0x02d, "Scorpion"},
     {0x04d, "Krait"},
@@ -136,6 +177,9 @@ static const struct ArmIdPart qcomParts[] = {
 
 static const struct ArmIdPart samsungParts[] = {
     {0x001, "exynos-m1"},
+    {0x002, "exynos-m3"},
+    {0x003, "exynos-m4"},
+    {0x004, "exynos-m5"},
     {-1, "unknown"},
 };
 
@@ -143,6 +187,7 @@ static const struct ArmIdPart nvidiaParts[] = {
     {0x000, "Denver"},
     {0x003, "Denver 2"},
     {0x004, "Carmel"},
+    {0x010, "Olympus"},
     {-1, "unknown"},
 };
 
@@ -150,6 +195,22 @@ static const struct ArmIdPart marvellParts[] = {
     {0x131, "Feroceon 88FR131"},
     {0x581, "PJ4/PJ4b"},
     {0x584, "PJ4B-MP"},
+    {-1, "unknown"},
+};
+
+static const struct ArmIdPart microsoftParts[] = {
+    {0xd49, "Azure Cobalt 100"},
+    {-1, "unknown"},
+};
+
+static const struct ArmIdPart phytiumParts[] = {
+    {0x303, "FTC310"},
+    {0x660, "FTC660"},
+    {0x661, "FTC661"},
+    {0x662, "FTC662"},
+    {0x663, "FTC663"},
+    {0x664, "FTC664"},
+    {0x862, "FTC862"},
     {-1, "unknown"},
 };
 
@@ -188,11 +249,14 @@ static const struct ArmIdPart intelParts[] = {
 
 static const struct ArmIdPart fujitsuParts[] = {
     {0x001, "A64FX"},
+    {0x003, "MONAKA"},
     {-1, "unknown"},
 };
 
 static const struct ArmIdPart hisiParts[] = {
     {0xd01, "Kunpeng-920 (TSV110)"},
+    {0xd02, "Kunpeng-930 (HIP09)"},
+    {0xd06, "Kunpeng-950 (HIP12)"},
     {-1, "unknown"},
 };
 
@@ -237,7 +301,9 @@ static const struct ArmCpuImplementer armHwImplementers[] = {
     {0x61, appleParts, "Apple"},
     {0x66, faradayParts, "Faraday"},
     {0x69, intelParts, "Intel"},
-    {0xc0, unknownPart, "Ampere"},
+    {0x6d, microsoftParts, "Microsoft"},
+    {0x70, phytiumParts, "Phytium"},
+    {0xc0, ampereParts, "Ampere"},
     {-1, unknownPart, "unknown"},
 };
 
