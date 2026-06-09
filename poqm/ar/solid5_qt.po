@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-06-28 15:38+0300\n"
-"PO-Revision-Date: 2026-02-26 13:11+0400\n"
+"PO-Revision-Date: 2026-06-08 21:31+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -88,25 +88,25 @@ msgstr "الأجهزة المعلنة في نظامك"
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 TiB"
-msgstr "%1 ت.بايت"
+msgstr "%1 تِبي.بايت"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:45
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 GiB"
-msgstr "%1 ج.بايت"
+msgstr "%1 غِبي.بايت"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:51
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 MiB"
-msgstr "%1 م.بايت"
+msgstr "%1 مِبي.بايت"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:56
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 KiB"
-msgstr "%1 ك.بايت"
+msgstr "%1 كِبي.بايت"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:60
 #, qt-format
