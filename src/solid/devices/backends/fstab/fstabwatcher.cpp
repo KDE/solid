@@ -13,6 +13,20 @@
 #include <QFileSystemWatcher>
 #include <QSocketNotifier>
 
+#ifdef Q_OS_FREEBSD
+#include <sys/param.h>
+#include <sys/ucred.h>
+#include <sys/mount.h>
+#endif
+#ifdef Q_OS_NETBSD
+#include <sys/types.h>
+#include <sys/statvfs.h>
+#endif
+#ifdef Q_OS_OPENBSD
+#include <sys/types.h>
+#include <sys/mount.h>
+#endif
+
 namespace Solid
 {
 namespace Backends
@@ -66,7 +80,7 @@ FstabWatcher::FstabWatcher()
     m_isRoutineInstalled = false;
     m_fileSystemWatcher = new QFileSystemWatcher(this);
 
-#ifndef Q_OS_OPENBSD
+#ifndef Q_OS_BSD4
     m_mtabFile = new QFile(s_mtabFile, this);
     if (m_mtabFile && m_mtabFile->symLinkTarget().startsWith(QLatin1String("/proc/")) && m_mtabFile->open(QIODevice::ReadOnly)) {
         m_socketNotifier = new QSocketNotifier(m_mtabFile->handle(), QSocketNotifier::Exception, this);
@@ -74,6 +88,10 @@ FstabWatcher::FstabWatcher()
     } else {
         m_fileSystemWatcher->addPath(s_mtabFile);
     }
+#else
+    // The BSDs do not have an /etc/mtab. So, we resort to periodically
+    // checking the list of all mounted file sytems for changes.
+    startTimer(1000);
 #endif
 
     m_fileSystemWatcher->addPath(s_fstabPath);
@@ -107,6 +125,60 @@ FstabWatcher::~FstabWatcher()
     m_fileSystemWatcher->setParent(nullptr);
 #endif
 }
+
+#ifdef Q_OS_BSD4
+void FstabWatcher::timerEvent(QTimerEvent* event)
+{
+    Q_UNUSED(event);
+
+#ifndef Q_OS_NETBSD
+    struct statfs *buffer = nullptr;
+#else
+    struct statvfs *buffer = nullptr;
+#endif
+    int number = 0;
+
+    if ((number = getmntinfo(&buffer, MNT_NOWAIT)) == -1 || !buffer) {
+        return;
+    }
+
+    std::vector<std::pair<std::string, std::string>> newMounts;
+
+    for (int i = 0; i < number; ++i) {
+        auto bufferEntries = std::make_pair(std::string_view(buffer[i].f_mntfromname), std::string_view(buffer[i].f_mntonname));
+
+        if (std::find_if(m_mounts.begin(),
+                         m_mounts.end(),
+                         [&](const std::pair<std::string, std::string> &mount) {
+                             return (mount.first == bufferEntries.first && mount.second == bufferEntries.second);
+                         })
+            == m_mounts.end()) {
+            newMounts.emplace_back(std::string(buffer[i].f_mntfromname), std::string(buffer[i].f_mntonname));
+        }
+    }
+
+    if (newMounts.empty() && (m_mounts.size() == (size_t)number)) {
+        return;
+    }
+
+    m_mounts.erase(std::remove_if(m_mounts.begin(),
+                                  m_mounts.end(),
+                                  [&](const std::pair<std::string, std::string> &mount) {
+                                      for (int i = 0; i < number; ++i) {
+                                          auto bufferEntries = std::make_pair(std::string_view(buffer[i].f_mntfromname), std::string_view(buffer[i].f_mntonname));
+                                          if (mount.first == bufferEntries.first && mount.second == bufferEntries.second) {
+                                              return false;
+                                          }
+                                      }
+                                      return true;
+                                  }),
+                   m_mounts.end());
+
+    m_mounts.insert(m_mounts.end(), newMounts.begin(), newMounts.end());
+
+    Q_EMIT mtabChanged();
+}
+#endif
 
 void FstabWatcher::onQuit()
 {
