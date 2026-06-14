@@ -110,7 +110,8 @@ QSet<QString> WinBlock::updateUdiFromBitMask(const DWORD unitmask)
     for (const QString &drive : drives) {
         QSet<QString> udis;
         driveWCHAR[drive.toWCharArray(driveWCHAR)] = 0;
-        if (GetDriveType(driveWCHAR) == DRIVE_REMOTE) { // network drive
+        const UINT driveType = GetDriveType(driveWCHAR);
+        if (driveType == DRIVE_REMOTE) { // network drive
             QSettings settings(QLatin1String("HKEY_CURRENT_USER\\Network\\") + drive.at(0), QSettings::NativeFormat);
             QString path = settings.value("RemotePath").toString();
             if (!path.isEmpty()) {
@@ -119,6 +120,12 @@ QSet<QString> WinBlock::updateUdiFromBitMask(const DWORD unitmask)
                 udis << key;
             }
 
+        } else if (driveType == DRIVE_UNKNOWN || driveType == DRIVE_NO_ROOT_DIR) {
+            // The drive letter has no reachable volume, for example a network
+            // mapping whose share is currently disconnected. Opening such a
+            // drive with CreateFile can block for a long time or fail, so leave
+            // it out of the device list rather than querying the hardware.
+            qDebug() << "ignoring drive without a reachable volume" << drive;
         } else {
             QueryDosDeviceW(driveWCHAR, bufferOut, MAX_PATH);
             dosPath = QString::fromWCharArray(bufferOut);
