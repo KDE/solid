@@ -1081,7 +1081,3 @@ msgstr "без грешка"
 msgctxt "SolidHardware|"
 msgid "has error"
 msgstr "с грешка"
-
-#~ msgctxt "udisksdevice|"
-#~ msgid "0 B"
-#~ msgstr "0 B"
