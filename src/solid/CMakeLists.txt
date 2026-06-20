@@ -92,3 +92,28 @@ install(FILES
   ${Solid_HEADERS}
   DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF}/Solid/solid COMPONENT Devel
 )
+
+ecm_add_installed_library_check(KF6Solid
+    PACKAGE_NAME "KF6Solid"
+    PACKAGE_TARGET_NAMESPACE "KF6::"
+)
+
+ecm_installed_library_check_include_strings(KF6Solid
+    HEADERS ${Solid_CamelCase_HEADERS}
+    PREFIX Solid
+)
+
+# only defined if true
+if (UDEV_FOUND)
+    set(_udev_check_args TYPE BOOL VALUE ${UDev_FOUND})
+else()
+    set(_udev_check_args UNDEFINED)
+endif()
+ecm_installed_library_check_cmake_variable(KF6Solid
+    NAME "Solid_HAVE_UDev"
+    ${_udev_check_args}
+)
+
+ecm_installed_library_check_version_preprocessor_macros(KF6Solid
+    PREFIX SOLID
+)
