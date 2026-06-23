@@ -5,14 +5,14 @@
 # Andrey Cherepanov <skull@kde.ru>, 2011.
 # Alexander Lakhin <exclusion@gmail.com>, 2013.
 # Alexander Yavorsky <kekcuha@gmail.com>, 2020, 2021, 2022, 2023.
-# SPDX-FileCopyrightText: 2024, 2025 Olesya Gerasimenko <translation-team@basealt.ru>
+# SPDX-FileCopyrightText: 2024, 2025, 2026 Olesya Gerasimenko <translation-team@basealt.ru>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-01-24 18:50+0000\n"
-"PO-Revision-Date: 2025-03-03 16:55+0300\n"
-"Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
+"PO-Revision-Date: 2026-06-22 16:42+0300\n"
+"Last-Translator: Olesya Gerasimenko <goa@altlinux.org>\n"
 "Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -66,12 +66,12 @@ msgstr "Устройства под управлением iOS"
 #: solid/devices/backends/kdeconnect/kdeconnectmanager.cpp:49
 msgctxt "Solid::Backends::KdeConnect::Manager|"
 msgid "KDE Connect"
-msgstr ""
+msgstr "KDE Connect"
 
 #: solid/devices/backends/kdeconnect/kdeconnectmanager.cpp:50
 msgctxt "Solid::Backends::KdeConnect::Manager|"
 msgid "Battery and storage from connected devices"
-msgstr ""
+msgstr "Данные об аккумуляторе и хранилище данных от подключённых устройств"
 
 #: solid/devices/backends/udev/udevdevice.cpp:147
 msgctxt "Solid::Backends::UDev::UDevDevice|"
@@ -121,43 +121,37 @@ msgstr "%1 Б"
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 kB"
-msgstr ""
+msgstr "%1 КБ"
 
 #. MetricBinaryDialect size in 10^6 bytes
 #. ----------
 #. JEDECBinaryDialect memory size in 10^20 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:91
 #: solid/devices/backends/udisks2/udisksdevice.cpp:121
-#, fuzzy, qt-format
-#| msgctxt "udisksdevice|"
-#| msgid "%1 MiB"
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 MB"
-msgstr "%1 МиБ"
+msgstr "%1 МБ"
 
 #. MetricBinaryDialect size in 10^9 bytes
 #. ----------
 #. JEDECBinaryDialect memory size in 10^30 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:94
 #: solid/devices/backends/udisks2/udisksdevice.cpp:124
-#, fuzzy, qt-format
-#| msgctxt "udisksdevice|"
-#| msgid "%1 GiB"
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 GB"
-msgstr "%1 ГиБ"
+msgstr "%1 ГБ"
 
 #. MetricBinaryDialect size in 10^12 bytes
 #. ----------
 #. JEDECBinaryDialect memory size in 10^40 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:97
 #: solid/devices/backends/udisks2/udisksdevice.cpp:127
-#, fuzzy, qt-format
-#| msgctxt "udisksdevice|"
-#| msgid "%1 TiB"
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 TB"
-msgstr "%1 ТиБ"
+msgstr "%1 ТБ"
 
 #. MetricBinaryDialect size in 10^15 bytes
 #. ----------
@@ -167,7 +161,7 @@ msgstr "%1 ТиБ"
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 PB"
-msgstr ""
+msgstr "%1 ПБ"
 
 #. MetricBinaryDialect size in 10^18 byte
 #. ----------
@@ -177,7 +171,7 @@ msgstr ""
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 EB"
-msgstr ""
+msgstr "%1 ЭБ"
 
 #. MetricBinaryDialect size in 10^21 bytes
 #. ----------
@@ -187,7 +181,7 @@ msgstr ""
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 ZB"
-msgstr ""
+msgstr "%1 ЗБ"
 
 #. MetricBinaryDialect size in 10^24 bytes
 #. ----------
@@ -197,13 +191,11 @@ msgstr ""
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 YB"
-msgstr ""
+msgstr "%1 ЙБ"
 
 #. JEDECBinaryDialect memory size in 1024 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:118
-#, fuzzy, qt-format
-#| msgctxt "udisksdevice|"
-#| msgid "%1 KiB"
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 KB"
 msgstr "%1 КиБ"
@@ -241,28 +233,28 @@ msgstr "%1 ТиБ"
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 PiB"
-msgstr ""
+msgstr "%1 ПиБ"
 
 #. IECBinaryDialect size in 10^60 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:163
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 EiB"
-msgstr ""
+msgstr "%1 ЭиБ"
 
 #. IECBinaryDialect size in 10^70 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:166
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 ZiB"
-msgstr ""
+msgstr "%1 ЗиБ"
 
 #. IECBinaryDialect size in 10^80 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:169
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 YiB"
-msgstr ""
+msgstr "%1 ЙиБ"
 
 # Возможно, нужно поставить %1 в начале строки, чтобы самая содержательная часть была всегда видна (вся строка может не умещаться в панели "Точки входа"). --aspotashev
 #: solid/devices/backends/udisks2/udisksdevice.cpp:182
