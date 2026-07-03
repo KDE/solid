@@ -8,6 +8,11 @@
 #ifndef SOLID_SOLIDNAMESPACE_H
 #define SOLID_SOLIDNAMESPACE_H
 
+// All KF6 public headers should provide the version macros.
+// Include version header explicitly because the export header
+// (which usually takes care of that) isn't used here
+#include <solid_version.h> // IWYU pragma: export
+
 /*!
  * \namespace Solid
  * \inheaderfile Solid/SolidNamespace
