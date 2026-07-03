@@ -50,6 +50,7 @@ public:
      * \value PortableMediaPlayer A portable media player
      * \value Battery
      * \value NetworkShare A network share interface
+     * \value StorageSubvolumeTree A tree of independent subtrees within a filesystem
      * \omitvalue Last
      */
     enum Type {
@@ -66,6 +67,7 @@ public:
         PortableMediaPlayer = 10,
         Battery = 12,
         NetworkShare = 14,
+        StorageSubvolumeTree = 15,
         Last = 0xffff,
     };
     Q_ENUM(Type)

@@ -36,6 +36,7 @@ Manager::Manager(QObject *parent)
         Solid::DeviceInterface::OpticalDrive,
         Solid::DeviceInterface::OpticalDisc,
         Solid::DeviceInterface::StorageVolume,
+        Solid::DeviceInterface::StorageSubvolumeTree,
     };
 
     qDBusRegisterMetaType<QList<QDBusObjectPath>>();

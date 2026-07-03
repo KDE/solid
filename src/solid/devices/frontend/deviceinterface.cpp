@@ -75,6 +75,8 @@ QString Solid::DeviceInterface::typeDescription(Type type)
         return tr("Battery", "Battery device type");
     case NetworkShare:
         return tr("Network Share", "Network Share device type");
+    case StorageSubvolumeTree:
+        return tr("Storage Subvolume Tree", "Storage Subvolume Tree device type");
     case Last:
         return QString();
     }
