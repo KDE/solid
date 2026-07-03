@@ -81,6 +81,11 @@ if (CMAKE_SYSTEM_NAME MATCHES Linux)
     find_package(LibMount)
     set_package_properties(LibMount PROPERTIES
                            TYPE REQUIRED)
+
+    find_package(Btrfsutil)
+    set_package_properties(Btrfsutil PROPERTIES
+                           TYPE OPTIONAL
+                           PURPOSE "Needed to build Btrfs subvolume support in the UDisks2 backend")
 endif()
 
 include(ECMPoQmTools)
@@ -116,6 +121,7 @@ if (CMAKE_SYSTEM_NAME MATCHES Linux)
         set(UDEV_FOUND TRUE) # for config-solid.h
         add_device_backend(udev)
     endif()
+    set(HAVE_BTRFSUTIL ${Btrfsutil_FOUND})
     set(HAVE_LIBMOUNT ${LibMount_FOUND})
     add_device_backend(fstab)
     if (HAVE_DBUS)
