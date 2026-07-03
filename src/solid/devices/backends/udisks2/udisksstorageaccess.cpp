@@ -245,6 +245,10 @@ QString StorageAccess::filePath() const
         return potentialMountPoint;
     }
 
+    if (mntPoints.contains(QByteArrayLiteral("/\x00"))) {
+        return QStringLiteral("/");
+    }
+
     // Device has bind mounts?
     const QString basePoint = baseMountPoint(m_device->prop(QStringLiteral("Device")).toByteArray());
 
