@@ -57,6 +57,7 @@ set(solid_LIB_SRCS
     devices/frontend/networkshare.cpp
     devices/frontend/battery.cpp
     devices/frontend/predicate.cpp
+    devices/frontend/storagesubvolumetree.cpp
 
     devices/ifaces/battery.cpp
     devices/ifaces/block.cpp
@@ -73,6 +74,7 @@ set(solid_LIB_SRCS
     devices/ifaces/storagedrive.cpp
     devices/ifaces/storagevolume.cpp
     devices/ifaces/storageaccess.cpp
+    devices/ifaces/storagesubvolumetree.cpp
 
     devices/backends/shared/rootdevice.cpp
     devices/backends/shared/cpufeatures.cpp

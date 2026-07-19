@@ -28,6 +28,7 @@
 #include <solid/devices/ifaces/processor.h>
 #include <solid/devices/ifaces/storageaccess.h>
 #include <solid/devices/ifaces/storagedrive.h>
+#include <solid/devices/ifaces/storagesubvolumetree.h>
 #include <solid/devices/ifaces/storagevolume.h>
 #include <solid/genericinterface.h>
 #include <solid/networkshare.h>
@@ -37,6 +38,7 @@
 #include <solid/processor.h>
 #include <solid/storageaccess.h>
 #include <solid/storagedrive.h>
+#include <solid/storagesubvolumetree.h>
 #include <solid/storagevolume.h>
 
 Solid::Device::Device(const QString &udi)
@@ -180,6 +182,8 @@ const Solid::DeviceInterface *Solid::Device::asDeviceInterface(const DeviceInter
             case DeviceInterface::NetworkShare:
                 iface = deviceinterface_cast(Ifaces::NetworkShare, NetworkShare, dev_iface);
                 break;
+            case DeviceInterface::StorageSubvolumeTree:
+                iface = deviceinterface_cast(Ifaces::StorageSubvolumeTree, StorageSubvolumeTree, dev_iface);
             case DeviceInterface::Unknown:
             case DeviceInterface::Last:
                 break;

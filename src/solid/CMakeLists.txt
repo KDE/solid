@@ -58,6 +58,7 @@ ecm_generate_headers(Solid_CamelCase_HEADERS
   Battery
   Predicate
   NetworkShare
+  StorageSubvolumeTree
   SolidNamespace
 
   RELATIVE devices/frontend

@@ -41,6 +41,9 @@
 #ifdef BUILD_DEVICE_BACKEND_win
 #include "backends/win/windevicemanager.h"
 #endif
+#ifdef BUILD_DEVICE_BACKEND_btrfs
+#include "backends/btrfs/btrfsmanager.h"
+#endif
 
 Solid::ManagerBasePrivate::ManagerBasePrivate()
 {
@@ -64,6 +67,9 @@ void Solid::ManagerBasePrivate::loadBackends()
     } else {
 #ifdef BUILD_DEVICE_BACKEND_fstab
         m_backends << new Solid::Backends::Fstab::FstabManager(nullptr);
+#endif
+#ifdef BUILD_DEVICE_BACKEND_btrfs
+        m_backends << new Solid::Backends::Btrfs::BtrfsManager(nullptr);
 #endif
 #ifdef BUILD_DEVICE_BACKEND_imobile
         m_backends << new Solid::Backends::IMobile::Manager(nullptr);
