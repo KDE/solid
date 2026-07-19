@@ -9,6 +9,7 @@
 #include <QMetaEnum>
 #include <QSequentialIterable>
 #include <QStringList>
+#include <QUuid>
 #include <solid/device.h>
 
 namespace Solid
@@ -207,6 +208,10 @@ bool Solid::Predicate::matches(const Device &device) const
             } else if (metaProp.isEnumType() && expected.userType() == QMetaType::Int) {
                 int expectedValue = expected.toInt();
                 expected = QVariant(metaProp.metaType(), &expectedValue);
+            }
+
+            if (metaProp.typeId() == QMetaType::QUuid) {
+                expected = QVariant(QUuid::fromString(expected.toString()));
             }
 
             if (d->compOperator == Mask) {
