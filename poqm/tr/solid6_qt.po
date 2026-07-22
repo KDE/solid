@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: solid_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-01 01:49+0000\n"
-"PO-Revision-Date: 2026-06-05 12:25+0300\n"
+"PO-Revision-Date: 2026-07-21 21:01+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 26.04.0\n"
+"X-Generator: Lokalize 26.04.2\n"
 "X-Qt-Contexts: true\n"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:69
@@ -624,7 +624,7 @@ msgstr "Bu işlemi gerçekleştirmek için yetkiniz yok"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:824
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "The device is currently busy"
-msgstr "Aygıt şu anda meşgul"
+msgstr "Aygıt şu anda meşgûl"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:826
 msgctxt "Solid::Backends::UDisks2::Device|"
