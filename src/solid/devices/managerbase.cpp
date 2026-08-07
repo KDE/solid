@@ -29,6 +29,9 @@
 #ifdef BUILD_DEVICE_BACKEND_kdeconnect
 #include "backends/kdeconnect/kdeconnectmanager.h"
 #endif
+#ifdef BUILD_DEVICE_BACKEND_kiofuse
+#include "backends/kiofuse/kiofusemanager.h"
+#endif
 #ifdef BUILD_DEVICE_BACKEND_udev
 #include "backends/udev/udevmanager.h"
 #endif
@@ -81,6 +84,11 @@ void Solid::ManagerBasePrivate::loadBackends()
             if (!qEnvironmentVariableIsSet("SOLID_DISABLE_KDECONNECT")) {
                 m_backends << new Solid::Backends::KdeConnect::Manager(nullptr);
             }
+        }
+#endif
+#ifdef BUILD_DEVICE_BACKEND_kiofuse
+        if (!qEnvironmentVariableIsSet("SOLID_DISABLE_KIOFUSE")) {
+            m_backends << new Solid::Backends::KioFuse::Manager(nullptr);
         }
 #endif
 #ifdef BUILD_DEVICE_BACKEND_udev
