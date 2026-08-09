@@ -14,11 +14,12 @@
 #include <QDBusConnection>
 #include <QDBusMessage>
 #include <QDBusMetaType>
-#include <QDBusPendingCallWatcher>
-#include <QDBusPendingReply>
+#include <QDBusReply>
 
 using namespace Solid::Backends::KioFuse;
 using namespace Solid::Backends::Shared;
+
+static constexpr int s_replyTimeoutMs = 500;
 
 Manager::Manager(QObject *parent)
     : Solid::Ifaces::DeviceManager(parent)
@@ -98,35 +99,30 @@ void Manager::reload()
 {
     const QDBusMessage msg = QDBusMessage::createMethodCall(Utils::dbusService(), Utils::dbusPath(), Utils::dbusInterface(), QStringLiteral("mounts"));
 
-    auto *watcher = new QDBusPendingCallWatcher(QDBusConnection::sessionBus().asyncCall(msg), this);
-    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, watcher] {
-        watcher->deleteLater();
+    const QDBusReply<QMap<QString, QString>> reply = QDBusConnection::sessionBus().call(msg, QDBus::Block, s_replyTimeoutMs);
+    if (!reply.isValid()) {
+        qCWarning(KIOFUSE_LOG) << "Could not list mounts:" << reply.error().message();
+        return;
+    }
 
-        const QDBusPendingReply<QMap<QString, QString>> reply = *watcher;
-        if (reply.isError()) {
-            qCWarning(KIOFUSE_LOG) << "Could not list mounts:" << reply.error().message();
-            return;
+    const QMap<QString, QString> mounts = reply.value();
+
+    QMap<QString, QString> fresh;
+    for (auto it = mounts.cbegin(); it != mounts.cend(); ++it) {
+        fresh.insert(Utils::udiForUrl(QUrl(it.key())), it.value());
+    }
+
+    const QStringList knownUdis = m_mounts.keys();
+    for (const QString &udi : knownUdis) {
+        if (!fresh.contains(udi)) {
+            m_mounts.remove(udi);
+            Q_EMIT deviceRemoved(udi);
         }
+    }
 
-        const QMap<QString, QString> mounts = reply.value();
-
-        QMap<QString, QString> fresh;
-        for (auto it = mounts.cbegin(); it != mounts.cend(); ++it) {
-            fresh.insert(Utils::udiForUrl(QUrl(it.key())), it.value());
-        }
-
-        const QStringList knownUdis = m_mounts.keys();
-        for (const QString &udi : knownUdis) {
-            if (!fresh.contains(udi)) {
-                m_mounts.remove(udi);
-                Q_EMIT deviceRemoved(udi);
-            }
-        }
-
-        for (auto it = fresh.cbegin(); it != fresh.cend(); ++it) {
-            remember(it.key(), it.value());
-        }
-    });
+    for (auto it = fresh.cbegin(); it != fresh.cend(); ++it) {
+        remember(it.key(), it.value());
+    }
 }
 
 void Manager::remember(const QString &udi, const QString &localPath)
