@@ -6,6 +6,12 @@
 
 #include "kiofusestorageaccess.h"
 #include "kiofusedevice.h"
+#include "kiofuseutils.h"
+
+#include <QDBusConnection>
+#include <QDBusMessage>
+#include <QDBusPendingCallWatcher>
+#include <QDBusPendingReply>
 
 using namespace Solid::Backends::KioFuse;
 
@@ -52,7 +58,28 @@ bool StorageAccess::setup()
 
 bool StorageAccess::teardown()
 {
-    return false;
+    const QString udi = m_device->udi();
+
+    Q_EMIT teardownRequested(udi);
+
+    QDBusMessage msg = QDBusMessage::createMethodCall(Utils::dbusService(), Utils::dbusPath(), Utils::dbusInterface(), QStringLiteral("unmountUrl"));
+    msg.setArguments({m_device->url().toString()});
+
+    auto *watcher = new QDBusPendingCallWatcher(QDBusConnection::sessionBus().asyncCall(msg), this);
+    connect(watcher, &QDBusPendingCallWatcher::finished, this, [this, udi, watcher] {
+        watcher->deleteLater();
+
+        const QDBusPendingReply<> reply = *watcher;
+        if (reply.isError()) {
+            const bool busy = reply.error().name() == QLatin1String("org.kde.KIOFuse.VFS.Error.MountBusy");
+            Q_EMIT teardownDone(busy ? Solid::DeviceBusy : Solid::OperationFailed, reply.error().message(), udi);
+            return;
+        }
+
+        Q_EMIT teardownDone(Solid::NoError, QVariant(), udi);
+    });
+
+    return true;
 }
 
 #include "moc_kiofusestorageaccess.cpp"
