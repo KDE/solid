@@ -31,6 +31,11 @@ Manager::Manager(QObject *parent)
 
     connect(&m_serviceWatcher, &QDBusServiceWatcher::serviceOwnerChanged, this, &Manager::onServiceOwnerChanged);
 
+    QDBusConnection::sessionBus()
+        .connect(Utils::dbusService(), Utils::dbusPath(), Utils::dbusInterface(), QStringLiteral("mountAdded"), this, SLOT(onMountAdded(QString, QString)));
+    QDBusConnection::sessionBus()
+        .connect(Utils::dbusService(), Utils::dbusPath(), Utils::dbusInterface(), QStringLiteral("mountRemoved"), this, SLOT(onMountRemoved(QString)));
+
     reload();
 }
 
@@ -142,6 +147,20 @@ void Manager::forgetAll()
     m_mounts.clear();
 
     for (const QString &udi : udis) {
+        Q_EMIT deviceRemoved(udi);
+    }
+}
+
+void Manager::onMountAdded(const QString &remoteUrl, const QString &localPath)
+{
+    remember(Utils::udiForUrl(QUrl(remoteUrl)), localPath);
+}
+
+void Manager::onMountRemoved(const QString &remoteUrl)
+{
+    const QString udi = Utils::udiForUrl(QUrl(remoteUrl));
+    if (m_mounts.remove(udi) > 0) {
+        qCDebug(KIOFUSE_LOG) << "Mount gone" << remoteUrl;
         Q_EMIT deviceRemoved(udi);
     }
 }
