@@ -266,6 +266,12 @@ bool StorageAccess::isIgnored() const
         return true;
     }
 
+    // The cleartext device of an open container is what holds the storage, and it is a device of
+    // its own, so the container is not shown beside it. (See Bug 402690)
+    if (m_device->isUnlockedEncryptedContainer()) {
+        return true;
+    }
+
     const QString path = filePath();
 
     const bool inUserPath = (path.startsWith(QLatin1String("/media/")) //

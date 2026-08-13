@@ -88,6 +88,13 @@ bool StorageVolume::isIgnored() const
         return true;
     }
 
+    // An open container holds its storage in a cleartext device of its own, which is what the user
+    // is shown and acts on. Showing the container next to it means showing the same storage twice.
+    // A closed one stays, since it is what the user opens. (See Bug 402690)
+    if (m_device->isUnlockedEncryptedContainer()) {
+        return true;
+    }
+
     const Solid::StorageVolume::UsageType usg = usage();
 
     /* clang-format off */

@@ -940,6 +940,16 @@ bool Device::isEncryptedContainer() const
     return hasInterface(QStringLiteral(UD2_DBUS_INTERFACE_ENCRYPTED));
 }
 
+bool Device::isUnlockedEncryptedContainer() const
+{
+    if (!isEncryptedContainer()) {
+        return false;
+    }
+
+    const QString cleartextDevice = prop(QStringLiteral("CleartextDevice")).value<QDBusObjectPath>().path();
+    return !cleartextDevice.isEmpty() && cleartextDevice != QLatin1String("/");
+}
+
 bool Device::isEncryptedCleartext() const
 {
     const QString holderDevice = prop(QStringLiteral("CryptoBackingDevice")).value<QDBusObjectPath>().path();

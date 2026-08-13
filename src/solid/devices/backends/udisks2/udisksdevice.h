@@ -65,6 +65,11 @@ public:
     bool mightBeOpticalDisc() const;
     bool isMounted() const;
     bool isEncryptedContainer() const;
+    /**
+     * Whether this is an encrypted container that is open, in which case the storage it holds is
+     * a device of its own, the cleartext device.
+     */
+    bool isUnlockedEncryptedContainer() const;
     bool isEncryptedCleartext() const;
     bool isRoot() const;
     bool isSwap() const;

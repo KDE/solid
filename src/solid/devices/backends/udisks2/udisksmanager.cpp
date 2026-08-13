@@ -345,6 +345,20 @@ void Manager::slotPropertiesChanged(const QDBusMessage &msg)
         Q_EMIT propertyChanged(udi, changeMap);
     }
 
+    // An encrypted container that is opened is from then on shown as its cleartext device, and is
+    // shown again itself once it is closed. Neither is a device coming or going as far as UDisks2
+    // is concerned, so say it here, or what is listed stays as it was until the next login.
+    // (See Bug 402690)
+    if (knownDevice && iface == QLatin1String(UD2_DBUS_INTERFACE_ENCRYPTED)
+        && (changed.contains(QStringLiteral("CleartextDevice")) || invalidated.contains(QStringLiteral("CleartextDevice")))) {
+        const QString cleartextDevice = deviceProperty(udi, QStringLiteral("CleartextDevice")).value<QDBusObjectPath>().path();
+        if (!cleartextDevice.isEmpty() && cleartextDevice != QLatin1String("/")) {
+            Q_EMIT deviceRemoved(udi);
+        } else {
+            Q_EMIT deviceAdded(udi);
+        }
+    }
+
     // Special handling for optical media insertion/removal.
     if (iface == QLatin1String(UD2_DBUS_INTERFACE_BLOCK) && (changed.contains(QStringLiteral("Size")) || invalidated.contains(QStringLiteral("Size")))) {
         qulonglong size = deviceProperty(udi, QStringLiteral("Size")).toULongLong();
