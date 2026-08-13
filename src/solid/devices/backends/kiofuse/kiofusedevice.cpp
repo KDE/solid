@@ -6,6 +6,7 @@
 
 #include "kiofusedevice.h"
 #include "kiofusemanager.h"
+#include "kiofusenetworkshare.h"
 #include "kiofusestorageaccess.h"
 #include "kiofuseutils.h"
 
@@ -82,6 +83,7 @@ bool Device::queryDeviceInterface(const Solid::DeviceInterface::Type &type) cons
 {
     switch (type) {
     case Solid::DeviceInterface::StorageAccess:
+    case Solid::DeviceInterface::NetworkShare:
         return true;
     default:
         return false;
@@ -93,6 +95,8 @@ QObject *Device::createDeviceInterface(const Solid::DeviceInterface::Type &type)
     switch (type) {
     case Solid::DeviceInterface::StorageAccess:
         return new StorageAccess(this);
+    case Solid::DeviceInterface::NetworkShare:
+        return new NetworkShare(this);
     default:
         return nullptr;
     }

@@ -28,6 +28,7 @@ Manager::Manager(QObject *parent)
     qDBusRegisterMetaType<QMap<QString, QString>>();
 
     m_supportedInterfaces << Solid::DeviceInterface::StorageAccess;
+    m_supportedInterfaces << Solid::DeviceInterface::NetworkShare;
 
     connect(&m_serviceWatcher, &QDBusServiceWatcher::serviceOwnerChanged, this, &Manager::onServiceOwnerChanged);
 

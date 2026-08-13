@@ -5,6 +5,8 @@ set(backend_sources
     kiofusedevice.h
     kiofusestorageaccess.cpp
     kiofusestorageaccess.h
+    kiofusenetworkshare.cpp
+    kiofusenetworkshare.h
     kiofuseutils.cpp
     kiofuseutils.h
 )
