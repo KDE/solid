@@ -115,7 +115,11 @@ void Manager::reload()
 
     QMap<QString, QString> fresh;
     for (auto it = mounts.cbegin(); it != mounts.cend(); ++it) {
-        fresh.insert(Utils::udiForUrl(QUrl(it.key())), it.value());
+        const QUrl url(it.key());
+        if (url.host().isEmpty()) {
+            continue;
+        }
+        fresh.insert(Utils::udiForUrl(url), it.value());
     }
 
     const QStringList knownUdis = m_mounts.keys();
@@ -154,7 +158,12 @@ void Manager::forgetAll()
 
 void Manager::onMountAdded(const QString &remoteUrl, const QString &localPath)
 {
-    remember(Utils::udiForUrl(QUrl(remoteUrl)), localPath);
+    const QUrl url(remoteUrl);
+    if (url.host().isEmpty()) {
+        return;
+    }
+
+    remember(Utils::udiForUrl(url), localPath);
 }
 
 void Manager::onMountRemoved(const QString &remoteUrl)
