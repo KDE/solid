@@ -46,7 +46,7 @@ public:
      * Retrieves the current charge level of the battery normalised
      * to percent.
      *
-     * @return the current charge level normalised to percent
+     * @return the current charge level normalised to percent, or -1 if unknown
      */
     virtual int chargePercent() const = 0;
 

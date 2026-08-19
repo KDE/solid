@@ -96,6 +96,11 @@ Solid::Battery::BatteryType Battery::type() const
 
 int Battery::chargePercent() const
 {
+    const QVariant batteryLevel = m_device.data()->prop(QStringLiteral("BatteryLevel"));
+    if (batteryLevel.isValid() && static_cast<UpDeviceLevel>(batteryLevel.toUInt()) == UP_DEVICE_LEVEL_UNKNOWN) {
+        return -1;
+    }
+
     return qRound(m_device.data()->prop(QStringLiteral("Percentage")).toDouble());
 }
 

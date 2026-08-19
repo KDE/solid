@@ -241,7 +241,7 @@ public:
 
     /*!
      * Returns the current charge level of the battery normalised
-     * to percent.
+     * to percent, or -1 if the charge level is unknown.
      */
     int chargePercent() const;
 
