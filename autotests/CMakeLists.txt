@@ -13,17 +13,17 @@ endif()
 ########### solidhwtest ###############
 
 if (BUILD_DEVICE_BACKEND_fakehw)
-    ecm_add_test(solidhwtest.cpp LINK_LIBRARIES Qt6::Xml Qt6::Test ${LIBS} KF6Solid_static)
+    ecm_add_test(solidhwtest.cpp LINK_LIBRARIES Qt6::Xml Qt6::Test KF6Solid_static)
     target_compile_definitions(solidhwtest PRIVATE SOLID_STATIC_DEFINE=1 FAKE_COMPUTER_XML="${CMAKE_CURRENT_SOURCE_DIR}/../src/solid/devices/backends/fakehw/fakecomputer.xml")
     target_include_directories(solidhwtest PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../src/solid/devices/backends/fakehw)
 endif()
 
 ########### solidmttest ###############
 
-ecm_add_test(solidmttest.cpp LINK_LIBRARIES Qt6::Xml Qt6::Test ${LIBS} KF6Solid_static Qt6::Concurrent)
+ecm_add_test(solidmttest.cpp LINK_LIBRARIES Qt6::Xml Qt6::Test KF6Solid_static Qt6::Concurrent)
 target_compile_definitions(solidmttest PRIVATE SOLID_STATIC_DEFINE=1)
 
 ########### predicatetest ###############
 
-ecm_add_test(predicatetest.cpp LINK_LIBRARIES Qt6::Xml Qt6::Test ${LIBS} KF6Solid_static Qt6::Concurrent)
+ecm_add_test(predicatetest.cpp LINK_LIBRARIES Qt6::Xml Qt6::Test KF6Solid_static Qt6::Concurrent)
 target_compile_definitions(predicatetest PRIVATE SOLID_STATIC_DEFINE=1)
