@@ -76,9 +76,7 @@ public:
             CFStringRef status = DADissenterGetStatusString(dissenter);
             if (status) {
                 qWarning() << "Warning while ejecting" << daContext->device->property("BSD Name").toString() << ":" << QString::fromCFString(status);
-                if (status) {
-                  CFRelease(status);
-                }
+                CFRelease(status);
             }
         }
 
@@ -146,9 +144,7 @@ public:
             CFRunLoopRemoveSource(daContext.runloop, daContext.cancel_signal, kCFRunLoopDefaultMode);
             DASessionSetDispatchQueue(daContext.session, 0);
             DASessionUnscheduleFromRunLoop(daContext.session, daContext.runloop, kCFRunLoopDefaultMode);
-            if (description) {
-              CFRelease(description);
-            }
+            CFRelease(description);
         } else {
             qWarning() << Q_FUNC_INFO << "failed to fetch DiskArbitration description for" << devName;
         }
