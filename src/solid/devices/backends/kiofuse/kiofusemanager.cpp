@@ -12,6 +12,7 @@
 #include "../shared/rootdevice.h"
 
 #include <QDBusConnection>
+#include <QDBusConnectionInterface>
 #include <QDBusMessage>
 #include <QDBusMetaType>
 #include <QDBusReply>
@@ -37,7 +38,10 @@ Manager::Manager(QObject *parent)
     QDBusConnection::sessionBus()
         .connect(Utils::dbusService(), Utils::dbusPath(), Utils::dbusInterface(), QStringLiteral("mountRemoved"), this, SLOT(onMountRemoved(QString)));
 
-    reload();
+    QDBusConnectionInterface *bus = QDBusConnection::sessionBus().interface();
+    if (bus && bus->isServiceRegistered(Utils::dbusService())) {
+        reload();
+    }
 }
 
 Manager::~Manager() = default;
