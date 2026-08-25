@@ -91,8 +91,9 @@ static QMap<QString, QVariant> getProperties(const io_registry_entry_t &entry)
     }
 
     QMap<QString, QVariant> result = q_toVariantMap(propertyDict);
-
-    CFRelease(propertyDict);
+    if (propertyDict) {
+      CFRelease(propertyDict);
+    }
 
     io_name_t className;
     IOObjectGetClass(entry, className);
@@ -113,7 +114,9 @@ static QString getParentDeviceUdi(const io_registry_entry_t &entry)
 
     CFStringRef path = IORegistryEntryCopyPath(parent, kIOServicePlane);
     QString result = QString::fromCFString(path);
-    CFRelease(path);
+    if (path) {
+      CFRelease(path);
+    }
 
     // now we can release the parent
     IOObjectRelease(parent);
@@ -197,7 +200,9 @@ IOKitDevice::IOKitDevice(const QString &udi)
 
     CFStringRef path = udi.toCFString();
     io_registry_entry_t entry = IORegistryEntryCopyFromPath(kIOMasterPortDefault, path);
-    CFRelease(path);
+    if (path) {
+      CFRelease(path);
+    }
 
     if (entry == MACH_PORT_NULL) {
         qWarning() << Q_FUNC_INFO << "Tried to create Device from invalid UDI" << udi;
@@ -217,7 +222,9 @@ IOKitDevice::IOKitDevice(const IOKitDevice &device)
 
     CFStringRef path = device.udi().toCFString();
     io_registry_entry_t entry = IORegistryEntryCopyFromPath(kIOMasterPortDefault, path);
-    CFRelease(path);
+    if (path) {
+      CFRelease(path);
+    }
 
     if (entry == MACH_PORT_NULL) {
         qWarning() << Q_FUNC_INFO << "Tried to create Device from invalid UDI" << device.udi();
@@ -238,7 +245,9 @@ bool IOKitDevice::conformsToIOKitClass(const QString &className) const
     if (!className.isEmpty()) {
         CFStringRef path = udi().toCFString();
         io_registry_entry_t entry = IORegistryEntryCopyFromPath(kIOMasterPortDefault, path);
-        CFRelease(path);
+        if (path) {
+          CFRelease(path);
+        }
         if (entry != MACH_PORT_NULL) {
             conforms = IOObjectConformsTo(entry, className.toLocal8Bit().constData());
             IOObjectRelease(entry);
