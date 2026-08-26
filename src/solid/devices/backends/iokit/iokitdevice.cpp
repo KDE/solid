@@ -86,14 +86,15 @@ static QMap<QString, QVariant> getProperties(const io_registry_entry_t &entry)
 {
     CFMutableDictionaryRef propertyDict = 0;
 
-    if (IORegistryEntryCreateCFProperties(entry, &propertyDict, kCFAllocatorDefault, kNilOptions) != KERN_SUCCESS) {
-        return QMap<QString, QVariant>();
+    if (IORegistryEntryCreateCFProperties(entry, &propertyDict,
+                                          kCFAllocatorDefault,
+                                          kNilOptions) != KERN_SUCCESS ||
+        propertyDict == nullptr) {
+      return QMap<QString, QVariant>();
     }
 
     QMap<QString, QVariant> result = q_toVariantMap(propertyDict);
-    if (propertyDict) {
-      CFRelease(propertyDict);
-    }
+    CFRelease(propertyDict);
 
     io_name_t className;
     IOObjectGetClass(entry, className);
