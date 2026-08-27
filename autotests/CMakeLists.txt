@@ -28,3 +28,10 @@ target_compile_definitions(solidmttest PRIVATE SOLID_STATIC_DEFINE=1)
 ecm_add_test(predicatetest.cpp LINK_LIBRARIES Qt6::Xml Qt6::Test ${LIBS} KF6Solid_static Qt6::Concurrent)
 target_compile_definitions(predicatetest PRIVATE SOLID_STATIC_DEFINE=1)
 
+########### kiofusetest ###############
+
+if (BUILD_DEVICE_BACKEND_kiofuse)
+    ecm_add_test(kiofusetest.cpp LINK_LIBRARIES Qt6::Test ${LIBS} KF6Solid_static)
+    target_compile_definitions(kiofusetest PRIVATE SOLID_STATIC_DEFINE=1)
+    target_include_directories(kiofusetest PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../src/solid/devices/backends/kiofuse)
+endif()
