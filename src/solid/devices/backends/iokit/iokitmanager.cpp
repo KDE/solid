@@ -47,7 +47,9 @@ QStringList IOKitManagerPrivate::devicesFromRegistry(io_iterator_t it)
     while ((obj = IOIteratorNext(it))) {
         CFStringRef pathRef = IORegistryEntryCopyPath(obj, kIOServicePlane);
         const QString path = QString::fromCFString(pathRef);
-        CFRelease(pathRef);
+        if (pathRef) {
+          CFRelease(pathRef);
+        }
 
         if (path.isEmpty()) {
             qWarning() << Q_FUNC_INFO << "IORegistryEntryCopyPath failed";
@@ -207,7 +209,9 @@ std::unique_ptr<QObject> IOKitManager::createDevice(const QString &udi)
 {
     CFStringRef path = udi.toCFString();
     io_registry_entry_t entry = IORegistryEntryCopyFromPath(kIOMasterPortDefault, path);
-    CFRelease(path);
+    if (path) {
+      CFRelease(path);
+    }
 
     // we have to do IOObjectConformsTo - comparing the class names is not good enough
     // if (IOObjectConformsTo(entry, kIOEthernetInterfaceClass)) {

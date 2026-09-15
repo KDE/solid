@@ -44,7 +44,9 @@ QString IOKitStorageAccess::filePath() const
     if (const CFURLRef urlRef = daDict->cfUrLRefForKey(kDADiskDescriptionVolumePathKey)) {
         const CFStringRef mpRef = CFURLCopyFileSystemPath(urlRef, kCFURLPOSIXPathStyle);
         mountPoint = QString::fromCFString(mpRef);
-        CFRelease(mpRef);
+        if (mpRef) {
+          CFRelease(mpRef);
+        }
         m_device->setProperty("mountPoint", QVariant(mountPoint));
         bool isMounted = !mountPoint.isEmpty();
         const QString isMountedKey = QStringLiteral("isMounted");
