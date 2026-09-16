@@ -682,7 +682,7 @@ QString Device::volumeDescription() const
 
 QString Device::icon() const
 {
-    QString iconName = property("HintIconName").toString(); // non-cached
+    QString iconName = prop(QStringLiteral("HintIconName")).toString(); // non-cached
 
     if (!iconName.isEmpty()) {
         return iconName;
