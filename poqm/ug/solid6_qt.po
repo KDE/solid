@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: solid_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-01 01:49+0000\n"
-"PO-Revision-Date: 2026-06-01 18:48-0400\n"
+"PO-Revision-Date: 2026-09-22 18:03+0900\n"
 "Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
-"Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
+"Language-Team: Uyghur <kde-i18n-doc@kde.org>\n"
 "Language: ug\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,7 +29,7 @@ msgstr "%2 دىكى %1"
 #, qt-format
 msgctxt "%1 is mountpoint, %2 is fs type"
 msgid "%1 (%2)"
-msgstr "%1 (%2)"
+msgstr ""
 
 #: solid/devices/backends/fstab/fstabmanager.cpp:80
 msgctxt "Solid::Backends::Fstab::FstabManager|"
@@ -44,7 +44,7 @@ msgstr "سىستېما تونۇيدىغان ئېگەرلەشچان ھۆججەت 
 #: solid/devices/backends/imobile/imobiledevice.cpp:90
 msgctxt "imobiledevice|Company name"
 msgid "Apple"
-msgstr "Apple"
+msgstr ""
 
 #: solid/devices/backends/imobile/imobilemanager.cpp:101
 msgctxt "Solid::Backends::IMobile::Manager|"
@@ -107,7 +107,7 @@ msgstr "سىستېمىڭىزدا تونۇيدىغان ئۈسكۈنە"
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 B"
-msgstr "%1 B"
+msgstr "%1 بايت"
 
 #. MetricBinaryDialect size in 1000 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:88
@@ -121,36 +121,30 @@ msgstr ""
 #. JEDECBinaryDialect memory size in 10^20 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:91
 #: solid/devices/backends/udisks2/udisksdevice.cpp:121
-#, fuzzy, qt-format
-#| msgctxt "udisksdevice|"
-#| msgid "%1 MiB"
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 MB"
-msgstr "%1 MiB"
+msgstr ""
 
 #. MetricBinaryDialect size in 10^9 bytes
 #. ----------
 #. JEDECBinaryDialect memory size in 10^30 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:94
 #: solid/devices/backends/udisks2/udisksdevice.cpp:124
-#, fuzzy, qt-format
-#| msgctxt "udisksdevice|"
-#| msgid "%1 GiB"
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 GB"
-msgstr "%1 GiB"
+msgstr ""
 
 #. MetricBinaryDialect size in 10^12 bytes
 #. ----------
 #. JEDECBinaryDialect memory size in 10^40 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:97
 #: solid/devices/backends/udisks2/udisksdevice.cpp:127
-#, fuzzy, qt-format
-#| msgctxt "udisksdevice|"
-#| msgid "%1 TiB"
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 TB"
-msgstr "%1 TiB"
+msgstr ""
 
 #. MetricBinaryDialect size in 10^15 bytes
 #. ----------
@@ -194,40 +188,38 @@ msgstr ""
 
 #. JEDECBinaryDialect memory size in 1024 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:118
-#, fuzzy, qt-format
-#| msgctxt "udisksdevice|"
-#| msgid "%1 KiB"
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 KB"
-msgstr "%1 KiB"
+msgstr ""
 
 #. IECBinaryDialect size in 1024 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:148
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 KiB"
-msgstr "%1 KiB"
+msgstr ""
 
 #. IECBinaryDialect size in 10^20 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:151
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 MiB"
-msgstr "%1 MiB"
+msgstr ""
 
 #. IECBinaryDialect size in 10^30 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:154
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 GiB"
-msgstr "%1 GiB"
+msgstr ""
 
 #. IECBinaryDialect size in 10^40 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:157
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 TiB"
-msgstr "%1 TiB"
+msgstr ""
 
 #. IECBinaryDialect size in 10^50 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:160
@@ -294,97 +286,97 @@ msgstr "دەۋرىي ئۈسكۈنە"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:381
 msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
 msgid "CD-ROM"
-msgstr "CD-ROM"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:383
 msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
 msgid "CD-R"
-msgstr "CD-R"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:386
 msgctxt "Solid::Backends::UDisks2::Device|First item of %1%2 Drive sentence"
 msgid "CD-RW"
-msgstr "CD-RW"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:390
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD-ROM"
-msgstr "/DVD-ROM"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:393
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD+R"
-msgstr "/DVD+R"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:396
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD+RW"
-msgstr "/DVD+RW"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:399
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD-R"
-msgstr "/DVD-R"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:402
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD-RW"
-msgstr "/DVD-RW"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:405
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD-RAM"
-msgstr "/DVD-RAM"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:409
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD±R DL"
-msgstr "/DVD±R DL"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:411
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD±R"
-msgstr "/DVD±R"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:416
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD±RW DL"
-msgstr "/DVD±RW DL"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:418
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/DVD±RW"
-msgstr "/DVD±RW"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:422
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/BD-ROM"
-msgstr "/BD-ROM"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:425
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/BD-R"
-msgstr "/BD-R"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:428
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/BD-RE"
-msgstr "/BD-RE"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:431
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/HD DVD-ROM"
-msgstr "/HD DVD-ROM"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:434
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/HD DVD-R"
-msgstr "/HD DVD-R"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:437
 msgctxt "Solid::Backends::UDisks2::Device|Second item of %1%2 Drive sentence"
 msgid "/HD DVD-RW"
-msgstr "/HD DVD-RW"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:441
 #, qt-format
@@ -418,7 +410,7 @@ msgctxt ""
 "Solid::Backends::UDisks2::Device|%1 is the vendor, %2 is the model of the "
 "device"
 msgid "%1 %2"
-msgstr "%1 %2"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:491
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -428,7 +420,7 @@ msgstr "قوزغاتقۇچ"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:521
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "CD-ROM"
-msgstr "CD-ROM"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:526
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -438,7 +430,7 @@ msgstr "بوش CD-R"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:528
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "CD-R"
-msgstr "CD-R"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:534
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -448,12 +440,12 @@ msgstr "بوش CD-RW"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:536
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "CD-RW"
-msgstr "CD-RW"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:541
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD-ROM"
-msgstr "DVD-ROM"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:546
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -463,7 +455,7 @@ msgstr "بوش DVD-RAM"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:548
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD-RAM"
-msgstr "DVD-RAM"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:554
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -473,7 +465,7 @@ msgstr "بوش DVD-R"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:556
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD-R"
-msgstr "DVD-R"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:562
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -493,7 +485,7 @@ msgstr "بوش DVD-RW"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:572
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD-RW"
-msgstr "DVD-RW"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:578
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -503,7 +495,7 @@ msgstr "بوش DVD+R"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:580
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD+R"
-msgstr "DVD+R"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:586
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -513,7 +505,7 @@ msgstr "بوش DVD+RW"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:588
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "DVD+RW"
-msgstr "DVD+RW"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:594
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -528,7 +520,7 @@ msgstr "قوش قەۋەتلىك DVD+RW"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:601
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "BD-ROM"
-msgstr "BD-ROM"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:606
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -538,7 +530,7 @@ msgstr "بوش BD-R"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:608
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "BD-R"
-msgstr "BD-R"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:614
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -548,12 +540,12 @@ msgstr "بوش BD-RE"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:616
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "BD-RE"
-msgstr "BD-RE"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:621
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "HD DVD-ROM"
-msgstr "HD DVD-ROM"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:626
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -563,7 +555,7 @@ msgstr "بوش HD DVD-R"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:628
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "HD DVD-R"
-msgstr "HD DVD-R"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:634
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -573,7 +565,7 @@ msgstr "بوش HD DVD-RW"
 #: solid/devices/backends/udisks2/udisksdevice.cpp:636
 msgctxt "Solid::Backends::UDisks2::Device|"
 msgid "HD DVD-RW"
-msgstr "HD DVD-RW"
+msgstr ""
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:643
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -689,8 +681,6 @@ msgid ""
 "Cannot request authentication for this action. The PolicyKit authentication "
 "system appears to be not available."
 msgstr ""
-"بۇ مەشغۇلاتقا كىملىك دەلىللەش مەشغۇلاتى ئىلتىماس قىلالمايدۇ. PolicyKit "
-"كىملىك دەلىللەش سىستېمىسىنى ئىشلەتكىلى بولمايدۇ."
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:850
 msgctxt "Solid::Backends::UDisks2::Device|"
@@ -873,13 +863,16 @@ msgid ""
 "             # neutral fashion,\n"
 "             # - Otherwise only device UDIs are listed.\n"
 msgstr ""
-"             # سىستېمىدىكى ئىشلەتكىلى بولىدىغان قاتتىق دېتال تىزىمىنى "
-"كۆرسىتىدۇ.\n"
-"# - ئەگەر «nonportableinfo» تاللانما بەلگىلەنسە ئۈسكۈنە خاسلىقى (دىققەت، \n"
-"# - بۇ چاغدا كۆرۈنگەن خاسلىق ئاتى ئارقا ئۇچ تىپىغا مۇناسىۋەتلىك).\n"
-"# - ئەگەر «details» تاللانما بەلگىلەنسە ئۈسكۈنە ئېغىزى ۋە  مۇناسىپ خاسلىق "
-"سۇپا بىتەرەپ ئۇسلۇبىدا كۆرۈنىدۇ.\n"
-"# - ئۇنداق بولمىسا ئۈسكۈنەنىڭ UDI تىزىمىنىلا كۆرسىتىدۇ.\n"
+"             # List the hardware available in the system.\n"
+"             # - If the 'nonportableinfo' option is specified, the device\n"
+"             # properties are listed (be careful, in this case property "
+"names\n"
+"             # are backend dependent),\n"
+"             # - If the 'details' option is specified, the device "
+"interfaces\n"
+"             # and the corresponding properties are listed in a platform\n"
+"             # neutral fashion,\n"
+"             # - Otherwise only device UDIs are listed.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:245
 msgctxt "solid-hardware|"
@@ -887,8 +880,6 @@ msgid ""
 "             # Display all the interfaces and properties of the device\n"
 "             # corresponding to 'udi' in a platform neutral fashion.\n"
 msgstr ""
-"             # سۇپا بىتەرەپ ئۇسلۇبىدا udi غا ماس كەلگەن قاتتىق دېتال ئېغىزى "
-"ۋە ئۇنىڭ خاسلىقىنىڭ ھەممىسىنى كۆرسىتىدۇ.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:251
 msgctxt "solid-hardware|"
@@ -898,9 +889,6 @@ msgid ""
 "             # (be careful, in this case property names are backend "
 "dependent).\n"
 msgstr ""
-"             #  udi قاتتىق دېتال ئېغىزى ۋە ئۇنىڭ خاسلىقىغا غا ماس كەلگەن "
-"ھەممىسىنى كۆرسىتىدۇ(دىققەت، بۇ چاغدا كۆرۈنىدىغان خاسلىق ئاتى ئارقا ئۇچ بىلەن "
-"مۇناسىۋەتلىك).\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:257
 msgctxt "solid-hardware|"
@@ -911,10 +899,11 @@ msgid ""
 "             # branch of the corresponding device,\n"
 "             # - Otherwise the search is done on all the devices.\n"
 msgstr ""
-"             # «predicate» بىلەن ماس كەلگەن ئۈسكۈنىنىڭ UDI نى كۆرسىتىدۇ.\n"
-"# - ئەگەر «parentUdi» بەلگىلەنسە ئىزدەش مۇناسىپ ئۈسكۈنە تارماقلىرى "
-"دائىرىسىدە ئېلىپ بېرىلىدۇ.\n"
-"# - ئۇنداق بولمىسا ئىزدەش ھەممە ئۈسكۈنىلەرگە ئېلىپ بېرىلىدۇ.\n"
+"             # List the UDI of devices corresponding to 'predicate'.\n"
+"             # - If 'parentUdi' is specified, the search is restricted to "
+"the\n"
+"             # branch of the corresponding device,\n"
+"             # - Otherwise the search is done on all the devices.\n"
 
 #: tools/solid-hardware/solid-hardware.cpp:265
 msgctxt "solid-hardware|"
