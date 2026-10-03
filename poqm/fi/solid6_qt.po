@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the qt package.
 # Jorma Karvonen <karvonen.jorma@gmail.com>, 2009-2010.
 # Kim Enkovaara <embo@iki.fi>, 2010.
-# SPDX-FileCopyrightText: 2010, 2019, 2020, 2021, 2022, 2023, 2024, 2025 Tommi Nieminen <translator@legisign.org>
+# SPDX-FileCopyrightText: 2010, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026 Tommi Nieminen <translator@legisign.org>
 # Lasse Liehu <lliehu@kolumbus.fi>, 2011.
 # Lasse Liehu <lasse.liehu@gmail.com>, 2011, 2012, 2013, 2014, 2015, 2017.
 #
@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: solid_qt\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-01-24 18:50+0000\n"
-"PO-Revision-Date: 2025-03-23 18:38+0200\n"
+"PO-Revision-Date: 2026-08-30 22:42+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 25.04.0\n"
 "X-Qt-Contexts: true\n"
 
 #: solid/devices/backends/fstab/fstabdevice.cpp:69
@@ -65,12 +65,12 @@ msgstr "iOS-laitteet"
 #: solid/devices/backends/kdeconnect/kdeconnectmanager.cpp:49
 msgctxt "Solid::Backends::KdeConnect::Manager|"
 msgid "KDE Connect"
-msgstr ""
+msgstr "KDE Connect"
 
 #: solid/devices/backends/kdeconnect/kdeconnectmanager.cpp:50
 msgctxt "Solid::Backends::KdeConnect::Manager|"
 msgid "Battery and storage from connected devices"
-msgstr ""
+msgstr "Kytkettyjen laitteiden akut ja talletustila"
 
 #: solid/devices/backends/udev/udevdevice.cpp:147
 msgctxt "Solid::Backends::UDev::UDevDevice|"
@@ -120,43 +120,37 @@ msgstr "%1 B"
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 kB"
-msgstr ""
+msgstr "%1 kt"
 
 #. MetricBinaryDialect size in 10^6 bytes
 #. ----------
 #. JEDECBinaryDialect memory size in 10^20 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:91
 #: solid/devices/backends/udisks2/udisksdevice.cpp:121
-#, fuzzy, qt-format
-#| msgctxt "udisksdevice|"
-#| msgid "%1 MiB"
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 MB"
-msgstr "%1 MiB"
+msgstr "%1 Mt"
 
 #. MetricBinaryDialect size in 10^9 bytes
 #. ----------
 #. JEDECBinaryDialect memory size in 10^30 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:94
 #: solid/devices/backends/udisks2/udisksdevice.cpp:124
-#, fuzzy, qt-format
-#| msgctxt "udisksdevice|"
-#| msgid "%1 GiB"
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 GB"
-msgstr "%1 GiB"
+msgstr "%1 Gt"
 
 #. MetricBinaryDialect size in 10^12 bytes
 #. ----------
 #. JEDECBinaryDialect memory size in 10^40 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:97
 #: solid/devices/backends/udisks2/udisksdevice.cpp:127
-#, fuzzy, qt-format
-#| msgctxt "udisksdevice|"
-#| msgid "%1 TiB"
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 TB"
-msgstr "%1 TiB"
+msgstr "%1 Tt"
 
 #. MetricBinaryDialect size in 10^15 bytes
 #. ----------
@@ -166,7 +160,7 @@ msgstr "%1 TiB"
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 PB"
-msgstr ""
+msgstr "%1 Pt"
 
 #. MetricBinaryDialect size in 10^18 byte
 #. ----------
@@ -176,7 +170,7 @@ msgstr ""
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 EB"
-msgstr ""
+msgstr "%1 Et"
 
 #. MetricBinaryDialect size in 10^21 bytes
 #. ----------
@@ -186,7 +180,7 @@ msgstr ""
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 ZB"
-msgstr ""
+msgstr "%1 Zt"
 
 #. MetricBinaryDialect size in 10^24 bytes
 #. ----------
@@ -196,16 +190,14 @@ msgstr ""
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 YB"
-msgstr ""
+msgstr "%1 Yt"
 
 #. JEDECBinaryDialect memory size in 1024 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:118
-#, fuzzy, qt-format
-#| msgctxt "udisksdevice|"
-#| msgid "%1 KiB"
+#, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 KB"
-msgstr "%1 KiB"
+msgstr "%1 kt"
 
 #. IECBinaryDialect size in 1024 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:148
@@ -240,28 +232,28 @@ msgstr "%1 TiB"
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 PiB"
-msgstr ""
+msgstr "%1 PiB"
 
 #. IECBinaryDialect size in 10^60 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:163
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 EiB"
-msgstr ""
+msgstr "%1 EiB"
 
 #. IECBinaryDialect size in 10^70 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:166
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 ZiB"
-msgstr ""
+msgstr "%1 ZiB"
 
 #. IECBinaryDialect size in 10^80 bytes
 #: solid/devices/backends/udisks2/udisksdevice.cpp:169
 #, qt-format
 msgctxt "udisksdevice|"
 msgid "%1 YiB"
-msgstr ""
+msgstr "%1 YiB"
 
 #: solid/devices/backends/udisks2/udisksdevice.cpp:182
 #, qt-format
