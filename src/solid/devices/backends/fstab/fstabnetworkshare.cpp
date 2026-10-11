@@ -28,8 +28,16 @@ FstabNetworkShare::FstabNetworkShare(Solid::Backends::Fstab::FstabDevice *device
         // The device ID is in "url:mountpoint" format, so strip the mountpoint
         url = url.left(url.lastIndexOf(QStringLiteral(":/")));
     } else if (m_fstabDevice->device().contains(QLatin1String(":/"))) {
-        m_type = Solid::NetworkShare::Nfs;
-        url = QStringLiteral("nfs://%1/%2").arg(m_fstabDevice->vendor(), m_fstabDevice->product());
+        QString fsType = FstabHandling::fstype(m_fstabDevice->device());
+        if (fsType.startsWith(QLatin1String("nfs"))) {
+            m_type = Solid::NetworkShare::Nfs;
+            url = QStringLiteral("nfs://%1/%2").arg(m_fstabDevice->vendor(), m_fstabDevice->product());
+        } else if (fsType == QLatin1String("ceph")) {
+            m_type = Solid::NetworkShare::Unknown;
+            url = QStringLiteral("ceph://%1/%2").arg(m_fstabDevice->vendor(), m_fstabDevice->product());
+        } else {
+            m_type = Solid::NetworkShare::Unknown;
+        }
     } else {
         m_type = Solid::NetworkShare::Unknown;
     }

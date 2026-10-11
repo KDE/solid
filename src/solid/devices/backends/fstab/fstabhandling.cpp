@@ -56,8 +56,10 @@ bool _k_isFstabNetworkFileSystem(const QString &fstype, const QString &devName)
         || fstype == QLatin1String("smbfs") //
         || fstype == QLatin1String("cifs") //
         || fstype == QLatin1String("smb3") //
+        || fstype == QLatin1String("ceph") //
         || fstype == QLatin1String("fuse.sshfs") //
         || fstype == QLatin1String("fuse.rclone") //
+        || fstype == QLatin1String("fuse.ceph") //
         || devName.startsWith(QLatin1String("//"))) {
         return true;
     }

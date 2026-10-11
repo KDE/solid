@@ -36,7 +36,7 @@ FstabDevice::FstabDevice(QString uid)
         m_vendor = m_device.mid(2, m_device.indexOf(QLatin1String("/"), 2) - 2);
         m_product = m_device.mid(m_device.indexOf(QLatin1String("/"), 2) + 1);
         m_storageType = StorageType::NetworkShare;
-    } else if (fstype.startsWith(QLatin1String("nfs"))) {
+    } else if (fstype.startsWith(QLatin1String("nfs")) || fstype == QLatin1String("ceph")) {
         m_vendor = m_device.left(m_device.indexOf(QLatin1String(":/")));
         m_product = m_device.mid(m_device.indexOf(QLatin1String(":/")) + 1);
         m_storageType = StorageType::NetworkShare;
@@ -49,7 +49,7 @@ FstabDevice::FstabDevice(QString uid)
         }
         if ((fstype == QLatin1String("fuse.encfs")) || (fstype == QLatin1String("fuse.cryfs")) || (fstype == QLatin1String("fuse.gocryptfs"))) {
             m_storageType = StorageType::Encrypted;
-        } else if (fstype == QLatin1String("fuse.sshfs") || fstype == QLatin1String("fuse.rclone")) {
+        } else if (fstype == QLatin1String("fuse.sshfs") || fstype == QLatin1String("fuse.rclone") || fstype == QLatin1String("fuse.ceph")) {
             m_storageType = StorageType::NetworkShare;
         }
     }
