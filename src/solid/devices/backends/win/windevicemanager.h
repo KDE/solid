@@ -53,8 +53,6 @@ public:
 
     std::unique_ptr<QObject> createDevice(const QString &udi) override;
 
-    static const WinDeviceManager *instance();
-
     template<class INFO>
     static INFO getDeviceInfo(const QString &devName, int code)
     {
