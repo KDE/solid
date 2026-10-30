@@ -18,7 +18,6 @@ namespace Backends
 {
 namespace Fstab
 {
-class AbstractDeviceFactory;
 
 class FstabManager : public Solid::Ifaces::DeviceManager
 {

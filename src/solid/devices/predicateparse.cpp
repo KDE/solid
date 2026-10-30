@@ -11,7 +11,6 @@ void PredicateParse_mainParse(const char *_code);
 }
 
 #include "predicate.h"
-#include "soliddefs_p.h"
 
 #include <stdlib.h>
 
