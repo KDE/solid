@@ -11,6 +11,8 @@
 
 #include "wininterface.h"
 
+#include <utility>
+
 namespace Solid
 {
 namespace Backends
@@ -23,7 +25,7 @@ class WinBattery : public WinInterface, virtual public Solid::Ifaces::Battery
     Q_INTERFACES(Solid::Ifaces::Battery)
 
 public:
-    typedef QPair<QString, ulong> Battery;
+    typedef std::pair<QString, ulong> Battery;
 
     WinBattery(WinDevice *device);
 

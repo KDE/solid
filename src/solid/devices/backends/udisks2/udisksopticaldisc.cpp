@@ -10,6 +10,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <utility>
 
 #include <QMap>
 #include <QSharedMemory>
@@ -168,7 +169,7 @@ public:
         return false;
     }
 
-    QPair<OpticalDisc::Identity, Solid::OpticalDisc::ContentTypes> &front()
+    std::pair<OpticalDisc::Identity, Solid::OpticalDisc::ContentTypes> &front()
     {
         return *m_info;
     }
@@ -183,7 +184,7 @@ private:
     }
 
     size_t m_n;
-    QPair<OpticalDisc::Identity, Solid::OpticalDisc::ContentTypes> m_info[100];
+    std::pair<OpticalDisc::Identity, Solid::OpticalDisc::ContentTypes> m_info[100];
 };
 
 class SharedContentTypesCache
