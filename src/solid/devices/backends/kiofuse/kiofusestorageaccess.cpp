@@ -52,6 +52,14 @@ bool StorageAccess::setup()
 
 bool StorageAccess::teardown()
 {
+    const QString udi = m_device->udi();
+    QMetaObject::invokeMethod(
+        this,
+        [this, udi] {
+            Q_EMIT teardownDone(Solid::OperationFailed, tr("Remote locations mounted by kio-fuse cannot be unmounted."), udi);
+        },
+        Qt::QueuedConnection);
+
     return false;
 }
 
