@@ -45,7 +45,6 @@ public:
 
 private Q_SLOTS:
     void onMountAdded(const QString &remoteUrl, const QString &localPath);
-    void onMountRemoved(const QString &remoteUrl);
 
 private:
     void onServiceOwnerChanged(const QString &service, const QString &oldOwner, const QString &newOwner);
